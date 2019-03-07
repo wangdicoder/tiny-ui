@@ -1,0 +1,37 @@
+{
+  "name": "tiny-ui-react",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "test": "jest --verbose"
+  },
+  "keywords": [
+    "tiny",
+    "tiny-ui",
+    "design",
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
+  "author": "wangdicoder@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/jest": "^24.0.9",
+    "@types/node": "^11.10.5",
+    "@types/prop-types": "^15.7.0",
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "jest": "^24.1.0",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  }
+}
