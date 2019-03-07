@@ -63,3 +63,6 @@ gen
 
 /node_modules
 /dist
+
+/src/**/style/*.css.map
+/src/**/style/*.css

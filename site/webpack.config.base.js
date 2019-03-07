@@ -2,6 +2,7 @@
  * Created by wangdi on 17/11/18.
  */
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -27,11 +28,25 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader', 'postcss-loader']
+				use: [
+					require.resolve('style-loader'),
+					{
+						loader: require.resolve('css-loader'),
+						options: {
+							importLoaders: 1,
+						},
+					},
+					{
+						loader: require.resolve('postcss-loader'),
+						options: {
+							plugins: () => [autoprefixer]
+						}
+					},
+				],
 			},
 			{
 				test: /\.scss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader']
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 			{
 				test: /\.(ttf|eot|svg|woff|woff2)(\?.+)?$/,
@@ -39,7 +54,7 @@ module.exports = {
 			},
 			{
 				test: /\.(jpe?g|png|gif)(\?.+)?$/,
-				use: 'url-loader'
+				use: 'url-loader',
 			},
 			{
 				test: /\.md$/,

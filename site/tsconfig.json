@@ -16,11 +16,13 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true
   },
-  "include": [
-    "src/**/*"
-  ],
   "exclude": [
     "node_modules",
-    "src/**/__test__/*.tsx"
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
   ]
 }
