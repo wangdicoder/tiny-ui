@@ -1,5 +1,175 @@
-.ty-button{
-    background-color: cornflowerblue;
+@import "../../themes/index";
+
+.ty-btn {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid;
     outline: none;
-    padding: 20px;
+    color: $basic-color;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin: 0 5px 12px;
+    font-weight: 300;
+    font-size: $font-size;
+    letter-spacing: 0;
+    cursor: pointer;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: $font-family;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    //box-shadow: 0 2px 2px 0 hsla(0, 0%, 60%, 0.14), 0 3px 1px -2px hsla(0, 0%, 60%, 0.2), 0 1px 5px 0 hsla(0, 0%, 60%, 0.12);
+    overflow: hidden;
+
+    &__loader{
+        margin-right: 4px;
+        animation: ty-rotate 1s linear infinite;
+    }
+
+    //ripple effect
+    &_ripple:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background: radial-gradient(circle, #000 10%, transparent 10.01%) no-repeat 50%;
+        transform: scale(10);
+        opacity: 0;
+        transition: transform 0.5s, opacity 1s;
+    }
+
+    &_ripple:active:after {
+        transform: scale(0);
+        opacity: 0.2;
+        transition: 0s;
+    }
+
+    &_primary {
+        @include btn-color($primary-color);
+    }
+
+    &_primary_outline {
+        @include btn-color($primary-color, true);
+    }
+
+    &_primary_link {
+        @include btn-text-color($primary-color);
+    }
+
+    &_primary_disabled {
+        @include btn-color-disabled($primary-color);
+    }
+
+    &_info {
+        @include btn-color($blue-color);
+    }
+
+    &_info_outline {
+        @include btn-color($blue-color, true);
+    }
+
+    &_info_link {
+        @include btn-text-color($blue-color);
+    }
+
+    &_info_disabled {
+        @include btn-color-disabled($blue-color);
+    }
+
+    &_green {
+        @include btn-color($green-color);
+    }
+
+    &_green_outline {
+        @include btn-color($green-color, true);
+    }
+
+    &_green_link {
+        @include btn-text-color($green-color);
+    }
+
+    &_green_disabled {
+        @include btn-color-disabled($green-color);
+    }
+
+    &_yellow {
+        @include btn-color($yellow-color);
+    }
+
+    &_yellow_outline {
+        @include btn-color($yellow-color, true);
+    }
+
+    &_yellow_link {
+        @include btn-text-color($yellow-color);
+    }
+
+    &_yellow_disabled {
+        @include btn-color-disabled($yellow-color);
+    }
+
+    &_red {
+        @include btn-color($red-color);
+    }
+
+    &_red_outline {
+        @include btn-color($red-color, true);
+    }
+
+    &_red_link {
+        @include btn-text-color($red-color);
+    }
+
+    &_red_disabled {
+        @include btn-color-disabled($red-color);
+    }
+
+    &_pink {
+        @include btn-color($pink-color);
+    }
+
+    &_pink_outline {
+        @include btn-color($pink-color, true);
+    }
+
+    &_pink_link {
+        @include btn-text-color($pink-color);
+    }
+
+    &_pink_disabled {
+        @include btn-color-disabled($pink-color);
+    }
+
+    &_lg {
+        font-size: 15px;
+        padding: 15px 28px;
+    }
+
+    &_sm {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    &_xs {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+
+    &_block {
+        width: 100%;
+    }
+
+    &_round {
+        border-radius: 50px;
+    }
+
+    &_dash{
+        border-width: 1px;
+        border-style: dashed;
+    }
 }
