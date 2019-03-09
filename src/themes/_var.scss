@@ -1,6 +1,6 @@
-
+$prefix: 'ty-';
 //color
-$basic-color: #666;
+$default-color: #34495e;
 $primary-color: #9c27b0;
 $link-color: $primary-color;
 $blue-color: #00bcd4; //info
@@ -11,6 +11,17 @@ $pink-color: #e91e63;
 $white-color: #fff;
 
 //font
-$font-size : 14px;
+$font-size : 13px;
 $font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
 PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+//button
+$btn-border-radius: 3px;
+$btn-lg-font-size: $font-size + 3px;
+$btn-lg-padding: 15px 28px;
+$btn-md-font-size: $font-size;
+$btn-md-padding: 8px 15px;
+$btn-sm-font-size: $font-size - 2px;
+$btn-sm-padding: 5px 10px;
+$btn-xs-font-size: $font-size - 4px;
+$btn-xs-padding: 2px 6px;

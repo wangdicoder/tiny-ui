@@ -1,16 +1,9 @@
 @mixin btn-color($color, $outline: false) {
-    $shadow-hover: 0 14px 26px -12px rgba($color, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba($color, 0.2);
-    color: #fff;
+    $shadow-hover: 0 14px 16px -12px rgba($color, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba($color, 0.2);
     border-color: $color;
-    background-color: $color;
-    box-shadow: 0 2px 2px 0 rgba($color, 0.14), 0 3px 1px -2px rgba($color, 0.2),
-    0 1px 5px 0 rgba($color, 0.12);
+    box-shadow: 0 1px 2px 0 rgba($color, 0.14);
     &:hover {
         box-shadow: $shadow-hover;
-    }
-
-    &:active {
-        background-color: darken($color, 10%);
     }
 
     @if ($outline) {
@@ -18,7 +11,13 @@
         color: $color;
         &:active {
             background-color: transparent;
-            box-shadow: $shadow-hover, inset 0 3px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: $shadow-hover, inset 0 3px 8px rgba($color, 0.2);
+        }
+    } @else {
+        background-color: $color;
+        color: #fff;
+        &:active {
+            background-color: darken($color, 10%);
         }
     }
 }
@@ -27,7 +26,6 @@
     color: $color;
     border: none;
     box-shadow: none;
-    font-weight: 400;
     &:hover {
         color: lighten($color, 10%);
     }
@@ -41,6 +39,6 @@
     opacity: 0.6;
     cursor: not-allowed;
     &:hover {
-        box-shadow: 0 2px 2px 0 rgba($color, 0.14), 0 3px 1px -2px rgba($color, 0.2), 0 1px 5px 0 rgba($color, 0.12);
+        box-shadow:  0 1px 2px 0 rgba($color, 0.14);
     }
 }

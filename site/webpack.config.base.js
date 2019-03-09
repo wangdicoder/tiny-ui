@@ -13,7 +13,7 @@ module.exports = {
 		path: path.join(__dirname, '/build')
 	},
 	resolve: {
-		extensions: ['.js', '.ts', '.tsx']
+		extensions: ['.js', '.ts', '.tsx', '.json']
 	},
 	module: {
 		rules: [
@@ -23,7 +23,7 @@ module.exports = {
 			},
 			{
 				enforce: "pre",
-				test: /\.js$/,
+				test: /\.tsx?$/,
 				use: "source-map-loader"
 			},
 			{

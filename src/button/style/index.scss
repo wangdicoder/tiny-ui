@@ -1,17 +1,14 @@
 @import "../../themes/index";
 
-.ty-btn {
+.#{$prefix}btn {
     position: relative;
     box-sizing: border-box;
     border: 1px solid;
     outline: none;
-    color: $basic-color;
-    background-color: #fff;
-    border-radius: 3px;
-    padding: 8px 15px;
-    margin: 0 5px 12px;
+    border-radius: $btn-border-radius;
+    line-height: 1;
+    margin: 0 5px 12px 0;
     font-weight: 300;
-    font-size: $font-size;
     letter-spacing: 0;
     cursor: pointer;
     transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -19,7 +16,6 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    //box-shadow: 0 2px 2px 0 hsla(0, 0%, 60%, 0.14), 0 3px 1px -2px hsla(0, 0%, 60%, 0.2), 0 1px 5px 0 hsla(0, 0%, 60%, 0.12);
     overflow: hidden;
 
     &__loader{
@@ -47,6 +43,23 @@
         transform: scale(0);
         opacity: 0.2;
         transition: 0s;
+    }
+
+    &_default {
+        @include btn-color($default-color, true);
+        border-color: #ccc;
+    };
+
+    &_default_outline {
+        @include btn-color($default-color, true);
+    }
+
+    &_default_link {
+        @include btn-text-color($default-color);
+    }
+
+    &_default_disabled {
+        @include btn-color-disabled($default-color);
     }
 
     &_primary {
@@ -146,18 +159,23 @@
     }
 
     &_lg {
-        font-size: 15px;
-        padding: 15px 28px;
+        font-size: $btn-lg-font-size;
+        padding: $btn-lg-padding;
+    }
+
+    &_md {
+        font-size: $btn-md-font-size;
+        padding: $btn-md-padding;
     }
 
     &_sm {
-        font-size: 11px;
-        padding: 5px 10px;
+        font-size: $btn-sm-font-size;
+        padding: $btn-sm-padding;
     }
 
     &_xs {
-        font-size: 9px;
-        padding: 3px 6px;
+        font-size: $btn-xs-font-size;
+        padding: $btn-xs-padding;
     }
 
     &_block {
