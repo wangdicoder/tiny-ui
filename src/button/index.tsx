@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import {IoIosSync} from 'react-icons/io';
 import Group from './button-group';
 
-type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' | 'pink';
+export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' | 'pink';
 export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonProps = {
@@ -67,9 +67,9 @@ const Button = (props: ButtonProps) => {
 };
 
 Button.defaultProps = {
+    prefixCls: 'ty-btn',
     size: 'md',
     color: 'default',
-    prefixCls: 'ty-btn',
 };
 
 Button.Group = Group;

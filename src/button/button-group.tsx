@@ -1,25 +1,33 @@
 import * as React from 'react';
-import {ButtonProps, ButtonSizes} from './index';
+import {ButtonProps, ButtonSizes, ButtonColors} from './index';
+import classNames from 'classnames';
 
 type ButtonGroupProps = {
     children: React.ReactNode,
     size?: ButtonSizes,
     ripple?: boolean,
+    color?: ButtonColors,
+    round?: boolean,
     className?: string,
+    prefixCls?: string,
 };
 
 const ButtonGroup = (props: ButtonGroupProps) => {
-    const {size, ripple, className, children} = props;
+    const {size, ripple, color, round, className, prefixCls, children} = props;
+    const cls = classNames(className, prefixCls, {
+        [`${prefixCls}_round`] : round,
+    });
     return (
-        <div className={className}>
+        <div className={cls}>
             {React.Children.map(children, (child: React.ReactElement<ButtonProps>) => {
-                return React.cloneElement(child, {...child.props, size, ripple});
+                return React.cloneElement(child, {...child.props, size, ripple, color});
             })}
         </div>
     );
 };
 
 ButtonGroup.defaultProps = {
+    prefixCls: 'ty-btn-group',
     size: 'md',
 };
 

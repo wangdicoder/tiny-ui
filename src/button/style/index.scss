@@ -1,13 +1,15 @@
 @import "../../themes/index";
 
-.#{$prefix}btn {
+$btn-prefix: #{$prefix}btn;
+
+.#{$btn-prefix} {
     position: relative;
     box-sizing: border-box;
     border: 1px solid;
     outline: none;
     border-radius: $btn-border-radius;
     line-height: 1;
-    margin: 0 5px 12px 0;
+    margin: 0 7px 12px 0;
     font-weight: 300;
     letter-spacing: 0;
     cursor: pointer;
@@ -18,7 +20,7 @@
     align-items: center;
     overflow: hidden;
 
-    &__loader{
+    &__loader {
         margin-right: 4px;
         animation: ty-rotate 1s linear infinite;
     }
@@ -48,7 +50,8 @@
     &_default {
         @include btn-color($default-color, true);
         border-color: #ccc;
-    };
+    }
+;
 
     &_default_outline {
         @include btn-color($default-color, true);
@@ -78,19 +81,19 @@
         @include btn-color-disabled($primary-color);
     }
 
-    &_info {
+    &_blue {
         @include btn-color($blue-color);
     }
 
-    &_info_outline {
+    &_blue_outline {
         @include btn-color($blue-color, true);
     }
 
-    &_info_link {
+    &_blue_link {
         @include btn-text-color($blue-color);
     }
 
-    &_info_disabled {
+    &_blue_disabled {
         @include btn-color-disabled($blue-color);
     }
 
@@ -183,11 +186,55 @@
     }
 
     &_round {
-        border-radius: 50px;
+        border-radius: 30px;
     }
 
-    &_dash{
+    &_dash {
         border-width: 1px;
         border-style: dashed;
+    }
+
+    &-group {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 7px;
+
+        .#{$btn-prefix} + .#{$btn-prefix} {
+            margin-left: -1px;
+        }
+
+        .#{$btn-prefix} {
+            border-radius: 0;
+            float: left;
+            margin: 0;
+
+            &:hover {
+                z-index: 1;
+            }
+
+            &:first-child {
+                border-top-left-radius: $btn-border-radius;
+                border-bottom-left-radius: $btn-border-radius;
+            }
+
+            &:last-child {
+                border-top-right-radius: $btn-border-radius;
+                border-bottom-right-radius: $btn-border-radius;
+            }
+        }
+
+        &_round{
+            .#{$btn-prefix} {
+                &:first-child {
+                    border-top-left-radius: 30px;
+                    border-bottom-left-radius: 30px;
+                }
+
+                &:last-child {
+                    border-top-right-radius: 30px;
+                    border-bottom-right-radius: 30px;
+                }
+            }
+        }
     }
 }
