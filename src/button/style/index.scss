@@ -51,7 +51,6 @@ $btn-prefix: #{$prefix}btn;
         @include btn-color($default-color, true);
         border-color: #ccc;
     }
-;
 
     &_default_outline {
         @include btn-color($default-color, true);
