@@ -1,0 +1,29 @@
+{
+  "name": "core",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "component/index.ts",
+  "devDependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/node": "^11.10.5",
+    "@types/prop-types": "^15.7.0",
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0"
+  },
+  "dependencies": {
+    "react-icons": "^3.6.0-beta2",
+    "classnames": "^2.2.6"
+  },
+  "scripts": {
+    "build": "rm -rf ../dist && tsc && gulp build",
+    "test": "jest --verbose"
+  }
+}

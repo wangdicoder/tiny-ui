@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ButtonProps, ButtonSizes, ButtonColors} from './index';
+import {ButtonProps, ButtonSizes, ButtonColors} from '.';
 import classNames from 'classnames';
 
 type ButtonGroupProps = {

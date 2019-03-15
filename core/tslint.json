@@ -17,5 +17,5 @@
     "eofline": false,
     "interface-over-type-literal": false
   },
-  "rulesDirectory": ["./src"]
+  "rulesDirectory": ["./component"]
 }
