@@ -7,8 +7,6 @@
     "site"
   ],
   "description": "A friendly ui component set for react",
-  "main": "../dist/index.js",
-  "types": "dist/index.d.ts",
   "keywords": [
     "tiny",
     "tiny-ui",
