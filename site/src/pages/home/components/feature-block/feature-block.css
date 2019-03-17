@@ -1,0 +1,15 @@
+.feature-block {
+  flex: 1;
+  text-align: center; }
+  .feature-block__img {
+    width: 120px; }
+  .feature-block__title {
+    font-weight: 400;
+    color: #4f5059; }
+  .feature-block__desc {
+    font-weight: 300;
+    margin-top: 20px;
+    color: #85888f;
+    font-size: 14px; }
+
+/*# sourceMappingURL=feature-block.css.map */

@@ -1,0 +1,39 @@
+.home {
+  height: calc(100vh - 64px); }
+  .home__slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+    height: 100%; }
+  .home__logo-container {
+    margin-right: 40px; }
+  .home__logo {
+    width: 200px;
+    animation: logo-spin infinite 20s linear; }
+  .home__title {
+    font-weight: 500;
+    font-size: 36px;
+    margin: 0; }
+  .home__subtitle {
+    font-weight: 400;
+    margin: 10px 0 0 0;
+    font-size: 24px;
+    color: #85888f; }
+  .home__btn-group {
+    margin: 20px 0 0 0;
+    display: flex; }
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+  .home__feature-title {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 40px; }
+  .home__features {
+    display: flex;
+    padding: 0 40px; }
+
+/*# sourceMappingURL=home.css.map */

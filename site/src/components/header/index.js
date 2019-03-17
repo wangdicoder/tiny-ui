@@ -1,0 +1,22 @@
+import React from 'react';
+import './header.css';
+import { NavLink, Link } from 'react-router-dom';
+import {version} from '../../../package';
+
+const Header = () => (
+	<header className="header">
+		<Link to="/home">
+			<div className="header__logo">
+				<img src={require('../../assets/logo.svg')} alt="logo" width={35}/>
+				<span className="header__title">Tiny UI</span>
+			</div>
+		</Link>
+		<nav className="header__nav">
+			<li className="header__nav-item"><NavLink to="/home">Home</NavLink></li>
+			<li className="header__nav-item"><NavLink to="/component">Component</NavLink></li>
+			<li className="header__nav-item"><span className="header__version">v{version}</span></li>
+		</nav>
+	</header>
+);
+
+export default Header;

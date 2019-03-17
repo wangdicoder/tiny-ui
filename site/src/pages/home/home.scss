@@ -1,0 +1,58 @@
+.home {
+    height: calc(100vh - 64px);
+
+    &__slider{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 40px;
+        height: 100%;
+    }
+
+    &__logo-container{
+        margin-right: 40px;
+    }
+
+    &__logo {
+        width: 200px;
+        animation: logo-spin infinite 20s linear;
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 36px;
+        margin: 0;
+    }
+
+    &__subtitle {
+        font-weight: 400;
+        margin: 10px 0 0 0;
+        font-size: 24px;
+        color: #85888f;
+    }
+
+    &__btn-group {
+        margin: 20px 0 0 0;
+        display: flex;
+    }
+
+    @keyframes logo-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    &__feature-title{
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+
+    &__features{
+        display: flex;
+        padding: 0 40px;
+    }
+}

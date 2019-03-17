@@ -1,0 +1,20 @@
+.feature-block {
+    flex: 1;
+    text-align: center;
+
+    &__img {
+        width: 120px;
+    }
+
+    &__title {
+        font-weight: 400;
+        color: #4f5059;
+    }
+
+    &__desc {
+        font-weight: 300;
+        margin-top: 20px;
+        color: #85888f;
+        font-size: 14px;
+    }
+}
