@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <Button>Default</Button>
+          <Button disabled>Default</Button>
           <Button outline color="primary">Default</Button>
           <Button link size="xs" color="pink" round>Primary Button</Button>
           <Button color="blue" round>Info Button</Button>
