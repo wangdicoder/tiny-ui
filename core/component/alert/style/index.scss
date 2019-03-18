@@ -45,12 +45,14 @@
         @include alert-mixin($blue-color);
     }
 
+    //disappear animation
     &_slide-up-exit {
         opacity: 1;
         transform-origin: 0 0;
         transform: scaleY(1);
     }
 
+    //disappear animation
     &_slide-up-exit-active {
         opacity: 0;
         transform-origin: 0 0;

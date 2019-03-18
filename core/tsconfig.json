@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./component",
+    "baseUrl": ".",
     "outDir": "../dist",
     "sourceMap": true,
     "module": "commonjs",
@@ -18,7 +18,8 @@
     "noUnusedLocals": true
   },
   "include": [
-    "component"
+    "component",
+    "util"
   ],
   "exclude": [
     "../node_modules",
