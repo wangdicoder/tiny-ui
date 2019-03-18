@@ -5,6 +5,9 @@
     "no-unused-expression": true
   },
   "rules": {
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "no-empty": [true, "allow-empty-functions"],
     "quotemark": [true, "single", "jsx-double"],
     "member-access": [false],
     "ordered-imports": [false],

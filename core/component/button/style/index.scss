@@ -1,4 +1,4 @@
-@import "../../themes/index";
+@import "../../../themes/index";
 
 $btn-prefix: #{$prefix}btn;
 
@@ -10,7 +10,7 @@ $btn-prefix: #{$prefix}btn;
     border-radius: $btn-border-radius;
     line-height: 1;
     margin: 0 7px 12px 0;
-    font-weight: 300;
+    font-weight: $font-weight;
     letter-spacing: 0;
     cursor: pointer;
     transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);

@@ -20,6 +20,9 @@
     display: flex;
     list-style: none;
     height: 100%; }
+  .header__nav-list {
+    height: 100%;
+    margin: 0; }
   .header__nav-item {
     margin-left: 20px;
     font-size: 16px;
@@ -31,9 +34,10 @@
     .header__nav-item a {
       color: #000; }
       .header__nav-item a.active {
-        color: #9325a6; }
+        color: #6E41BF;
+        font-weight: 500; }
   .header__version {
-    background: #9325a6;
+    background: #6E41BF;
     font-size: 12px;
     color: #fff;
     border-radius: 46px;

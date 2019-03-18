@@ -1,5 +1,7 @@
 .home {
-  height: calc(100vh - 64px); }
+  height: calc(100vh - 64px);
+  background: url("../../assets/background.svg") top right no-repeat;
+  background-size: 250px; }
   .home__slider {
     display: flex;
     align-items: center;

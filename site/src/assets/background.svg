@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="272px" height="176px" viewBox="0 0 272 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="274" height="179"></rect>
+        <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-3">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#C86DD7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="121.811151%" y1="28.1138979%" x2="1.2046894%" y2="76.7364995%" id="linearGradient-4">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#ECB3F5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-2.000000, 0.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Mask" fill-rule="nonzero"></g>
+            <g mask="url(#mask-2)" fill-rule="nonzero" id="Rectangle">
+                <g transform="translate(-5.000000, -131.000000)">
+                    <rect fill="url(#linearGradient-3)" transform="translate(83.783014, 150.783014) rotate(-13.000000) translate(-83.783014, -150.783014) " x="14.283014" y="81.283014" width="139" height="139" rx="25"></rect>
+                    <rect fill="url(#linearGradient-4)" transform="translate(201.038288, 159.229030) rotate(-28.000000) translate(-201.038288, -159.229030) " x="84.0382876" y="42.2290299" width="234" height="234" rx="30"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

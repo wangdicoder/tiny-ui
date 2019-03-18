@@ -14,9 +14,7 @@ type ButtonGroupProps = {
 
 const ButtonGroup = (props: ButtonGroupProps) => {
     const {size, ripple, color, round, className, prefixCls, children} = props;
-    const cls = classNames(className, prefixCls, {
-        [`${prefixCls}_round`] : round,
-    });
+    const cls = classNames(prefixCls, {[`${prefixCls}_round`] : round}, className);
     return (
         <div className={cls}>
             {React.Children.map(children, (child: React.ReactElement<ButtonProps>) => {

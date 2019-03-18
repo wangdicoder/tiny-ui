@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.css';
 import { NavLink, Link } from 'react-router-dom';
-import {version} from '../../../package';
+import { version } from '../../../package';
 
 const Header = () => (
 	<header className="header">
@@ -12,9 +12,12 @@ const Header = () => (
 			</div>
 		</Link>
 		<nav className="header__nav">
-			<li className="header__nav-item"><NavLink to="/home">Home</NavLink></li>
-			<li className="header__nav-item"><NavLink to="/component">Component</NavLink></li>
-			<li className="header__nav-item"><span className="header__version">v{version}</span></li>
+			<ul className="header__nav-list">
+				<li className="header__nav-item"><NavLink to="/home">Home</NavLink></li>
+				<li className="header__nav-item"><NavLink to="/component">Component</NavLink></li>
+				<li className="header__nav-item"><span className="header__version">v{version}</span>
+				</li>
+			</ul>
 		</nav>
 	</header>
 );

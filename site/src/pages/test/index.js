@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button } from "core/component";
-import {IoIosAdd} from 'react-icons/io';
+import { Button, Alert } from "core/component";
+import { IoIosAdd } from 'react-icons/io';
 
-const {Group} = Button;
+const { Group } = Button;
 
 const Test = () => {
 
 	return (
-		<div style={{padding: '20px'}}>
+		<div style={{ padding: '20px' }}>
 			<Button disabled>Default</Button>
 			<Button outline color="primary">Default</Button>
 			<Button link size="xs" color="pink" round>Primary Button</Button>
@@ -16,7 +16,8 @@ const Test = () => {
 			<Button disabled ripple size="sm" color="pink">Primary Button</Button>
 			<Button ripple size="sm" color="yellow" round link dash>Primary Button</Button>
 			<Button ripple size="sm" color="yellow" round outline dash>Primary Button</Button>
-			<Button ripple color="pink" dash onClick={() => console.log('dasdasd')}>Primary Button</Button>
+			<Button ripple color="pink" dash onClick={() => console.log('dasdasd')}>Primary
+				Button</Button>
 			<Button size="lg" color="pink" block round>Primary Button</Button>
 			<Button color="pink" round outline icon={<IoIosAdd/>}>Primary Button</Button>
 			<Button size="lg" color="pink" loading outline disabled>Primary Button</Button>
@@ -40,6 +41,11 @@ const Test = () => {
 				<Button disabled>Left</Button>
 				<Button>Right</Button>
 			</Group>
+
+			<Alert closable onClose={() => console.log('abc')}>alert</Alert>
+			<Alert type="error" closeText="close now" afterClose={()=> console.log('done')}>alert</Alert>
+			<Alert type="warning" closable>alert</Alert>
+			<Alert type="success" closable>alert</Alert>
 		</div>
 	);
 };

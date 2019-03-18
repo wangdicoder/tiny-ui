@@ -11,6 +11,7 @@
     "@types/prop-types": "^15.7.0",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
+    "@types/react-transition-group": "^2.0.16",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "gulp": "^4.0.0",
@@ -25,7 +26,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "react-icons": "^3.6.0-beta2"
+    "react-icons": "^3.6.0-beta2",
+    "react-transition-group": "^2.6.1"
   },
   "scripts": {
     "build": "rm -rf ../dist && tsc && gulp build",

@@ -1,3 +1,5 @@
+@import "../../../../core/themes/var";
+
 .header {
     $header-height: 64px;
     z-index: 1;
@@ -30,6 +32,11 @@
         height: 100%;
     }
 
+    &__nav-list{
+        height: 100%;
+        margin: 0;
+    }
+
     &__nav-item {
         margin-left: 20px;
         font-size: 16px;
@@ -43,13 +50,14 @@
             color: #000;
 
             &.active {
-                color: #9325a6;
+                color: $primary-color;
+                font-weight: 500;
             }
         }
     }
 
     &__version {
-        background: #9325a6;
+        background: $primary-color;
         font-size: 12px;
         color: #fff;
         border-radius: 46px;

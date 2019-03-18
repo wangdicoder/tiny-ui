@@ -20,7 +20,7 @@ export type ButtonProps = {
     icon?: React.ReactNode,
     link?: boolean,
     className?: string,
-    children?: React.ReactNode;
+    children?: React.ReactNode,
     prefixCls?: string,
 
     // Allow to pass html attribute
@@ -41,7 +41,6 @@ const Button = (props: ButtonProps) => {
         round, ripple, children, className, prefixCls, ...others
     } = props;
     const cls = classNames(
-        className,
         prefixCls,
         link ? [`${prefixCls}_${color}_link`] :
             (outline ? [`${prefixCls}_${color}_outline`] : [`${prefixCls}_${color}`]),
@@ -53,6 +52,7 @@ const Button = (props: ButtonProps) => {
             [`${prefixCls}_dash`]: outline && dash,  // Only available outline style
             [`ty-btn_${color}_disabled`]: disabled || loading,
         },
+        className,
     );
     return (
         <button

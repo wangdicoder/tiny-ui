@@ -1,7 +1,7 @@
 $prefix: 'ty-';
 //color
 $default-color: #34495e;
-$primary-color: #9c27b0;
+$primary-color: #6E41BF;
 $link-color: $primary-color;
 $blue-color: #00bcd4; //info
 $green-color: #4caf50; //success
@@ -12,6 +12,7 @@ $white-color: #fff;
 
 //font
 $font-size : 13px;
+$font-weight: 300;
 $font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
 PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
 
@@ -25,3 +26,6 @@ $btn-sm-font-size: $font-size - 2px;
 $btn-sm-padding: 5px 10px;
 $btn-xs-font-size: $font-size - 4px;
 $btn-xs-padding: 2px 6px;
+
+//alert
+$alert-border-radius: 3px;

@@ -10,13 +10,13 @@ const FEATURES = [
 		img: require('./img/concise'),
 		title: 'Concise',
 	},{
-		img: require('./img/immediate'),
+		img: require('./img/direct'),
 		title: 'Direct',
 	},{
 		img: require('./img/elegant'),
 		title: 'Elegant',
 	},{
-		img: require('./img/adaptability'),
+		img: require('./img/adaptable'),
 		title: 'Adaptable',
 	},
 ];
@@ -33,7 +33,7 @@ const Home = () => {
 					<h1 className="home__title">Tiny UI</h1>
 					<h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
 					<div className="home__btn-group">
-						<Button ripple color="blue" round size="lg" style={{width: '140px'}}>Start</Button>
+						<Button ripple color="primary" round size="lg" style={{width: '140px'}}>Start</Button>
 						<Button ripple round size="lg" icon={<IoLogoGithub/>}>GitHub</Button>
 					</div>
 				</div>
