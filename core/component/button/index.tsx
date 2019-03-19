@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './style/index.css';
 import classNames from 'classnames';
-import {IoIosSync} from 'react-icons/io';
 import Group from './button-group';
 
 export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' | 'pink';
@@ -23,13 +22,13 @@ export type ButtonProps = {
     children?: React.ReactNode,
     prefixCls?: string,
 
-    // Allow to pass html attribute
+    // Allow to pass html attribute, like onClick
     [others: string]: any,
 };
 
 const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
     if (loading) {
-        return <IoIosSync className="ty-btn__loader"/>;
+        return <span className="ty-btn__loader"/>;
     } else {
         return icon;
     }

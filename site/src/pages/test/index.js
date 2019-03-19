@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Alert } from "core/component";
-import { IoIosAdd } from 'react-icons/io';
+import { Button, Alert, Icon } from "core/component";
 
 const { Group } = Button;
 
@@ -19,7 +18,7 @@ const Test = () => {
 			<Button ripple color="pink" dash onClick={() => console.log('dasdasd')}>Primary
 				Button</Button>
 			<Button size="lg" color="pink" block round>Primary Button</Button>
-			<Button color="pink" round outline icon={<IoIosAdd/>}>Primary Button</Button>
+			<Button color="pink" round outline>Primary Button</Button>
 			<Button size="lg" color="pink" loading outline disabled>Primary Button</Button>
 
 			<Group ripple>
@@ -42,10 +41,12 @@ const Test = () => {
 				<Button>Right</Button>
 			</Group>
 
-			<Alert closable onClose={() => console.log('abc')}>alert</Alert>
-			<Alert type="error" closeText="close now" afterClose={()=> console.log('done')}>alert</Alert>
-			<Alert type="warning" closable>alert</Alert>
-			<Alert type="success" closable>alert</Alert>
+			{/*<Alert closable onClose={() => console.log('abc')}>alert</Alert>*/}
+			{/*<Alert type="error" closeText="close now" afterClose={()=> console.log('done')}>alert</Alert>*/}
+			{/*<Alert type="warning" closable>alert</Alert>*/}
+			{/*<Alert type="success" closable>alert</Alert>*/}
+
+			<Icon type="Info"/>
 		</div>
 	);
 };

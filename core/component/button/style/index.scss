@@ -2,6 +2,11 @@
 
 $btn-prefix: #{$prefix}btn;
 
+@mixin loader_size($size) {
+    height: $size;
+    width: $size;
+}
+
 .#{$btn-prefix} {
     position: relative;
     box-sizing: border-box;
@@ -21,8 +26,13 @@ $btn-prefix: #{$prefix}btn;
     overflow: hidden;
 
     &__loader {
-        margin-right: 4px;
-        animation: ty-rotate 1s linear infinite;
+        margin-right: 5px;
+        border: 1px solid;
+        border-radius: 50%;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        display: inline-block;
+        animation: ty-rotate 500ms linear infinite;
     }
 
     //ripple effect
@@ -163,21 +173,37 @@ $btn-prefix: #{$prefix}btn;
     &_lg {
         font-size: $btn-lg-font-size;
         padding: $btn-lg-padding;
+
+        .#{$btn-prefix}__loader {
+            @include loader_size(15px);
+        }
     }
 
     &_md {
         font-size: $btn-md-font-size;
         padding: $btn-md-padding;
+
+        .#{$btn-prefix}__loader {
+            @include loader_size(13px);
+        }
     }
 
     &_sm {
         font-size: $btn-sm-font-size;
         padding: $btn-sm-padding;
+
+        .#{$btn-prefix}__loader {
+            @include loader_size(11px);
+        }
     }
 
     &_xs {
         font-size: $btn-xs-font-size;
         padding: $btn-xs-padding;
+
+        .#{$btn-prefix}__loader {
+            @include loader_size(9px);
+        }
     }
 
     &_block {
@@ -222,7 +248,7 @@ $btn-prefix: #{$prefix}btn;
             }
         }
 
-        &_round{
+        &_round {
             .#{$btn-prefix} {
                 &:first-child {
                     border-top-left-radius: 30px;
