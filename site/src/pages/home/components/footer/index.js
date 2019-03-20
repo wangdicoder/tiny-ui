@@ -1,7 +1,6 @@
 import React from 'react';
 import './footer.css';
 import { version } from '../../../../../package';
-import { IoLogoGithub } from 'react-icons/io';
 
 const Footer = () => (
 	<footer className="footer">
@@ -11,7 +10,7 @@ const Footer = () => (
 			<p className="footer__version">- v{version} -</p>
 		</div>
 		<div className="footer__github">
-			<IoLogoGithub className="footer__icon"/>
+			{/*<IoLogoGithub className="footer__icon"/>*/}
 			<span>GitHub</span>
 		</div>
 	</footer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './home.css';
-import { Button } from 'core/component';
-import { IoLogoGithub } from 'react-icons/io';
+import { Button, Icon } from 'core/component';
+import GitHubButton from 'react-github-btn';
 import FeatureBlock from "./components/feature-block";
 import Footer from "./components/footer";
 
@@ -34,7 +34,8 @@ const Home = () => {
 					<h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
 					<div className="home__btn-group">
 						<Button ripple color="primary" round size="lg" style={{width: '140px'}}>Start</Button>
-						<Button ripple round size="lg" icon={<IoLogoGithub/>}>GitHub</Button>
+						<Button ripple round size="lg" icon={<Icon type="music"/>}>GitHub</Button>
+						<GitHubButton href="https://github.com/wangdicoder/tiny-ui-react" data-size="large" data-show-count="true" aria-label="Star wangdicoder/tiny-ui-react on GitHub">Star</GitHubButton>
 					</div>
 				</div>
 			</div>

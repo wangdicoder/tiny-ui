@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Alert, Icon } from "core/component";
+import { Button, Alert, Icon, Flip } from "core/component";
 
 const { Group } = Button;
+const { Item } = Flip;
 
 const Test = () => {
 
@@ -47,6 +48,15 @@ const Test = () => {
 			{/*<Alert type="success" closable>alert</Alert>*/}
 
 			<Icon type="Info"/>
+
+			<Flip height={100} style={{width: 400}}>
+				<Item style={{backgroundColor: '#f50'}}>
+					<div>abc</div>
+				</Item>
+				<Item style={{backgroundColor: '#9a7'}}>
+					<div>efg</div>
+				</Item>
+			</Flip>
 		</div>
 	);
 };
