@@ -1,6 +1,7 @@
 @import "../../../themes/index";
 
 .#{$prefix}flip {
+  display: inline-block;
   background-color: transparent;
   box-sizing: border-box;
   perspective: 1000px;

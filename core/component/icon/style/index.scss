@@ -14,7 +14,6 @@
 .#{$prefix}icon {
   font-family: "tiny" !important;
   font-size: 16px;
-  color: $primary-color;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,6 +22,122 @@
     display: inline-block;
     animation: ty-rotate 1s linear infinite;
   }
+}
+
+.ty--wallet:before {
+  content: "\e798";
+}
+
+.ty--add-user:before {
+  content: "\e7ae";
+}
+
+.ty--del-team:before {
+  content: "\e7af";
+}
+
+.ty--del-user:before {
+  content: "\e7b0";
+}
+
+.ty--add-team:before {
+  content: "\e7b1";
+}
+
+.ty--team:before {
+  content: "\e7b2";
+}
+
+.ty--customer-service:before {
+  content: "\e7ca";
+}
+
+.ty--tags:before {
+  content: "\e7e5";
+}
+
+.ty--share:before {
+  content: "\e7e7";
+}
+
+.ty--behance:before {
+  content: "\e87a";
+}
+
+.ty-medium:before {
+  content: "\e87b";
+}
+
+.ty--google:before {
+  content: "\e87c";
+}
+
+.ty--skype:before {
+  content: "\e87d";
+}
+
+.ty--instagram:before {
+  content: "\e87f";
+}
+
+.ty--youtube:before {
+  content: "\e880";
+}
+
+.ty--dropbox:before {
+  content: "\e881";
+}
+
+.ty--android-fill:before {
+  content: "\e882";
+}
+
+.ty--apple-fill:before {
+  content: "\e883";
+}
+
+.ty--html-fill:before {
+  content: "\e884";
+}
+
+.ty--twitter:before {
+  content: "\e885";
+}
+
+.ty--skype-fill:before {
+  content: "\e886";
+}
+
+.ty--weibo:before {
+  content: "\e887";
+}
+
+.ty--youtube-fill:before {
+  content: "\e888";
+}
+
+.ty--wechat-fill:before {
+  content: "\e889";
+}
+
+.ty--chrome-fill:before {
+  content: "\e88a";
+}
+
+.ty--github-fill:before {
+  content: "\e88b";
+}
+
+.ty--facebook-fill:before {
+  content: "\e88d";
+}
+
+.ty--linkedin-fill:before {
+  content: "\e890";
+}
+
+.ty--slack-square-fill:before {
+  content: "\e891";
 }
 
 .ty--file-zip:before {
@@ -49,7 +164,7 @@
   content: "\e607";
 }
 
-.ty--Library:before {
+.ty--library:before {
   content: "\e608";
 }
 
@@ -57,7 +172,7 @@
   content: "\e609";
 }
 
-.ty--Lock1:before {
+.ty--lock1:before {
   content: "\e60a";
 }
 
@@ -73,7 +188,7 @@
   content: "\e60d";
 }
 
-.ty--Key:before {
+.ty--key:before {
   content: "\e60e";
 }
 
@@ -93,7 +208,7 @@
   content: "\e612";
 }
 
-.ty--In-Transit:before {
+.ty--delivery:before {
   content: "\e613";
 }
 
@@ -265,7 +380,7 @@
   content: "\e644";
 }
 
-.ty--Cursor:before {
+.ty--cursor:before {
   content: "\e645";
 }
 
@@ -277,15 +392,15 @@
   content: "\e647";
 }
 
-.ty--Currency-Exchang:before {
+.ty--currency-exchang:before {
   content: "\e648";
 }
 
-.ty--Copyright:before {
+.ty--copyright:before {
   content: "\e649";
 }
 
-.ty--Contacts:before {
+.ty--user:before {
   content: "\e64b";
 }
 
@@ -305,7 +420,7 @@
   content: "\e64f";
 }
 
-.ty--Checked:before {
+.ty--check-circle1:before {
   content: "\e651";
 }
 
@@ -321,7 +436,7 @@
   content: "\e654";
 }
 
-.ty--Cancel:before {
+.ty--close-circle:before {
   content: "\e655";
 }
 
@@ -329,7 +444,7 @@
   content: "\e656";
 }
 
-.ty--Callback:before {
+.ty--callback:before {
   content: "\e658";
 }
 
@@ -341,7 +456,7 @@
   content: "\e65a";
 }
 
-.ty--Cancel1:before {
+.ty--forbid:before {
   content: "\e65b";
 }
 
@@ -353,7 +468,7 @@
   content: "\e65d";
 }
 
-.ty--Bookmark:before {
+.ty--bookmark:before {
   content: "\e65e";
 }
 
@@ -373,7 +488,7 @@
   content: "\e663";
 }
 
-.ty--Attention:before {
+.ty--attention:before {
   content: "\e664";
 }
 
@@ -393,7 +508,7 @@
   content: "\e669";
 }
 
-.ty--Approval:before {
+.ty--approval:before {
   content: "\e66a";
 }
 
@@ -413,7 +528,7 @@
   content: "\e66e";
 }
 
-.ty--XLS:before {
+.ty--xls:before {
   content: "\e670";
 }
 
@@ -425,7 +540,7 @@
   content: "\e673";
 }
 
-.ty--Vip:before {
+.ty--vip:before {
   content: "\e674";
 }
 
@@ -449,7 +564,7 @@
   content: "\e679";
 }
 
-.ty--Upload:before {
+.ty--upload:before {
   content: "\e67a";
 }
 
@@ -537,11 +652,11 @@
   content: "\e690";
 }
 
-.ty--delivery:before {
+.ty--delivered:before {
   content: "\e691";
 }
 
-.ty--share:before {
+.ty--circle-share:before {
   content: "\e692";
 }
 
@@ -707,6 +822,10 @@
 
 .ty--medium-priority:before {
   content: "\e6c9";
+}
+
+.ty--switch-user:before {
+  content: "\e8ea";
 }
 
 .ty--audio-fill:before {

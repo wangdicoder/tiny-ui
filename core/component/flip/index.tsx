@@ -15,6 +15,11 @@ export type FlipTypes = {
   prefixCls?: string,
   className?: string,
   style?: React.CSSProperties,
+} & typeof defaultProps;
+
+const defaultProps = {
+  prefixCls: 'ty-flip',
+  direction: 'horizontal',
 };
 
 const Flip = (props: FlipTypes) => {
@@ -57,10 +62,7 @@ const Flip = (props: FlipTypes) => {
   );
 };
 
-Flip.defaultProps = {
-  prefixCls: 'ty-flip',
-  direction: 'horizontal',
-};
+Flip.defaultProps = defaultProps;
 
 Flip.Item = FlipItem;
 

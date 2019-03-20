@@ -10,6 +10,10 @@ export type IconTypes = {
     spin?: boolean,
     className?: string,
     prefixCls?: string,
+} & typeof defaultProps;
+
+const defaultProps = {
+    prefixCls: 'ty-icon',
 };
 
 const Icon = (props: IconTypes) => {
@@ -25,8 +29,6 @@ const Icon = (props: IconTypes) => {
     );
 };
 
-Icon.defaultProps = {
-    prefixCls: 'ty-icon',
-};
+Icon.defaultProps = defaultProps;
 
 export default Icon;

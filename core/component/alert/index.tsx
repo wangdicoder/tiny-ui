@@ -20,6 +20,11 @@ export type AlertProps = {
   children?: React.ReactNode,
   prefixCls?: string,
   style?: React.CSSProperties,
+} & typeof defaultProps;
+
+const defaultProps = {
+  prefixCls: 'ty-alert',
+  type: 'info',
 };
 
 const Alert = (props: AlertProps) => {
@@ -27,8 +32,8 @@ const Alert = (props: AlertProps) => {
   const [isShow, setShow] = useState<boolean>(true);
   const cls = classNames(
     prefixCls,
-    [`${prefixCls}_${type}`],
     className,
+    [`${prefixCls}_${type}`],
   );
 
   const _closeBtnOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -56,9 +61,6 @@ const Alert = (props: AlertProps) => {
   );
 };
 
-Alert.defaultProps = {
-  prefixCls: 'ty-alert',
-  type: 'info',
-};
+Alert.defaultProps = defaultProps;
 
 export default Alert;

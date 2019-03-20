@@ -10,11 +10,16 @@ type ButtonGroupProps = {
   round?: boolean,
   className?: string,
   prefixCls?: string,
+} & typeof defaultProps;
+
+const defaultProps = {
+  prefixCls: 'ty-btn-group',
+  size: 'md',
 };
 
 const ButtonGroup = (props: ButtonGroupProps) => {
   const {size, ripple, color, round, className, prefixCls, children} = props;
-  const cls = classNames(prefixCls, {[`${prefixCls}_round`]: round}, className);
+  const cls = classNames(prefixCls, className, {[`${prefixCls}_round`]: round});
   return (
     <div className={cls}>
       {React.Children.map(children, (child: React.ReactElement<ButtonProps>) => (
@@ -24,9 +29,6 @@ const ButtonGroup = (props: ButtonGroupProps) => {
   );
 };
 
-ButtonGroup.defaultProps = {
-  prefixCls: 'ty-btn-group',
-  size: 'md',
-};
+ButtonGroup.defaultProps = defaultProps;
 
 export default ButtonGroup;

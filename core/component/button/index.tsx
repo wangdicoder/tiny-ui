@@ -24,6 +24,12 @@ export type ButtonProps = {
 
   // Allow to pass html attribute, like onClick
   [others: string]: any,
+} & typeof defaultProps;
+
+const defaultProps = {
+  prefixCls: 'ty-btn',
+  size: 'md',
+  color: 'default',
 };
 
 const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
@@ -41,6 +47,7 @@ const Button = (props: ButtonProps) => {
   } = props;
   const cls = classNames(
     prefixCls,
+    className,
     link ? [`${prefixCls}_${color}_link`] :
       (outline ? [`${prefixCls}_${color}_outline`] : [`${prefixCls}_${color}`]),
     size && `${prefixCls}_${size}`,
@@ -51,7 +58,6 @@ const Button = (props: ButtonProps) => {
       [`${prefixCls}_dash`]: outline && dash,  // Only available outline style
       [`ty-btn_${color}_disabled`]: disabled || loading,
     },
-    className,
   );
   return (
     <button
@@ -65,11 +71,7 @@ const Button = (props: ButtonProps) => {
   );
 };
 
-Button.defaultProps = {
-  prefixCls: 'ty-btn',
-  size: 'md',
-  color: 'default',
-};
+Button.defaultProps = defaultProps;
 
 Button.Group = Group;
 
