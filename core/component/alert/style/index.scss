@@ -47,14 +47,15 @@
     }
 
     //disappear animation
-    &_slide-up-exit {
-        opacity: 1;
-        transform: scaleY(1);
-    }
+    &_slide-up{
+        &-exit {
+            opacity: 1;
+            transform: scaleY(1);
+        }
 
-    //disappear animation
-    &_slide-up-exit-active {
-        opacity: 0.05;
-        transform: scaleY(0);
+        &-exit-active {
+            opacity: 0.05;
+            transform: scaleY(0);
+        }
     }
 }

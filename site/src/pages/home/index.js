@@ -34,7 +34,7 @@ const Home = () => {
 					<h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
 					<div className="home__btn-group">
 						<Button ripple color="primary" round size="lg" style={{width: '140px'}}>Start</Button>
-						<Button ripple round size="lg" icon={<Icon type="github-fill" color="#000"/>}>GitHub</Button>
+						<Button ripple round size="lg" icon={<Icon type="github" color="#000"/>}>GitHub</Button>
 						<GitHubButton href="https://github.com/wangdicoder/tiny-ui-react" data-size="large" data-show-count="true" aria-label="Star wangdicoder/tiny-ui-react on GitHub">Star</GitHubButton>
 					</div>
 				</div>

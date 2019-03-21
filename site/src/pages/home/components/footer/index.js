@@ -11,7 +11,7 @@ const Footer = () => (
 			<p className="footer__version">- v{version} -</p>
 		</div>
 		<div className="footer__github">
-			<Icon type="github-fill" size={25} color="#fff" className="footer__icon"/>
+			<Icon type="github" size={25} color="#fff" className="footer__icon"/>
 			<span>GitHub</span>
 		</div>
 	</footer>
