@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import './style/index.css';
 import classNames from 'classnames';
-import CollapseItem, { CollapseItemProps } from './collapse-item';
+import CollapsePanel, { CollapsePanelProps } from './collapse-panel';
 
 export type CollapseTypes = {
     defaultActiveKey?: string | string[],
@@ -14,7 +14,7 @@ export type CollapseTypes = {
     showArrow?: boolean,
     bordered?: boolean,
     onChange?: (keys: string[]) => any,
-    children: React.ReactElement<CollapseItemProps>,
+    children: React.ReactElement<CollapsePanelProps>,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -86,8 +86,8 @@ const Collapse = (props: CollapseTypes) => {
 
     return (
         <div className={cls} style={style}>
-            {React.Children.map(children, (child: React.ReactElement<CollapseItemProps>) => {
-                const itemProps: CollapseItemProps = {
+            {React.Children.map(children, (child: React.ReactElement<CollapsePanelProps>) => {
+                const itemProps: CollapsePanelProps = {
                     ...child.props,
                     deletable,
                     showArrow,
@@ -102,6 +102,6 @@ const Collapse = (props: CollapseTypes) => {
 
 Collapse.defaultProps = defaultProps;
 
-Collapse.Item = CollapseItem;
+Collapse.Panel = CollapsePanel;
 
 export default Collapse;

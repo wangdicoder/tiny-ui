@@ -3,7 +3,7 @@ import { Button, Alert, Icon, Flip, Avatar, Collapse } from 'core/component';
 
 const { Group } = Button;
 // const { Item } = Flip;
-const { Item } = Collapse;
+const { Panel } = Collapse;
 
 const Test = () => {
     const [activeKeys, setActiveKeys] = useState([2]);
@@ -79,25 +79,25 @@ const Test = () => {
             {/*</div>*/}
 
             <Collapse bordered={true} deletable defaultActiveKey={[1, 4]} onChange={(keys) => console.log(keys)}>
-                <Item header={getHeader} itemKey={1}>
+                <Panel header={getHeader} itemKey={1}>
                     <Collapse accordion activeKey={activeKeys} onChange={(keys) => {
                         console.log(keys);
                         setActiveKeys(keys);
                     }}>
-                        <Item header="abc header" itemKey={2}>
+                        <Panel header="abc header" itemKey={2}>
                             Inside collapse
-                        </Item>
-                        <Item header="abc header" itemKey={3}>
+                        </Panel>
+                        <Panel header="abc header" itemKey={3}>
                             Inside collapse 2
-                        </Item>
-                        <Item header="abc header" itemKey={4}>
+                        </Panel>
+                        <Panel header="abc header" itemKey={4}>
                             Inside collapse 3
-                        </Item>
+                        </Panel>
                     </Collapse>
-                </Item>
-                <Item header="abc2 header" itemKey={4}>
+                </Panel>
+                <Panel header="abc2 header" itemKey={4}>
                     abc2
-                </Item>
+                </Panel>
             </Collapse>
         </div>
     );

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Icon from '../icon';
 import Animated from '../../util/animated';
 
-export type CollapseItemProps = {
+export type CollapsePanelProps = {
     itemKey: string,
     header: React.ReactNode,
     isActive?: boolean,
@@ -35,7 +35,7 @@ const richNode = (node: React.ReactNode, isActive: boolean) => {
     return typeof node === 'function' ? node(isActive) : node;
 };
 
-const CollapseItem = (props: CollapseItemProps) => {
+const CollapsePanel = (props: CollapsePanelProps) => {
     const {
         itemKey, header, isActive, disabled, extra, deletable, onItemClick, className, style, showArrow,
         prefixCls, children,
@@ -99,6 +99,6 @@ const CollapseItem = (props: CollapseItemProps) => {
     );
 };
 
-CollapseItem.defaultProps = defaultProps;
+CollapsePanel.defaultProps = defaultProps;
 
-export default CollapseItem;
+export default CollapsePanel;
