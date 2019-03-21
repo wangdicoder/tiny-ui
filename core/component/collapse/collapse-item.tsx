@@ -26,6 +26,15 @@ const defaultProps = {
     isActive: false,
 };
 
+/**
+ * Allow to parse active status to a node
+ * @param node
+ * @param isActive
+ */
+const richNode = (node: React.ReactNode, isActive: boolean) => {
+    return typeof node === 'function' ? node(isActive) : node;
+};
+
 const CollapseItem = (props: CollapseItemProps) => {
     const {
         itemKey, header, isActive, disabled, extra, deletable, onItemClick, className, style, showArrow,
@@ -66,12 +75,13 @@ const CollapseItem = (props: CollapseItemProps) => {
             `${prefixCls}__arrow`,
             { [`${prefixCls}__arrow_active`]: isActive },
         );
+
         return (
             <div className={headerCls} onClick={_headerOnClick}>
                 {showArrow && <Icon type="right" className={arrowCls}/>}
-                {header}
+                <div className={`${prefixCls}__title`}>{richNode(header, isActive)}</div>
                 <div className={`${prefixCls}__extra`}>
-                    {deletable ? <span onClick={_removeItem}>✕</span> : extra}
+                    {deletable ? <span onClick={_removeItem}>✕</span> : richNode(extra, isActive)}
                 </div>
             </div>
         );
@@ -82,7 +92,7 @@ const CollapseItem = (props: CollapseItemProps) => {
             {_renderHeader()}
             <Animated isShow={isActive} transitionName={`${prefixCls}_collapse`} duration={0}>
                 <div className={`${prefixCls}__content`}>
-                    {children}
+                    {richNode(children, isActive)}
                 </div>
             </Animated>
         </div>

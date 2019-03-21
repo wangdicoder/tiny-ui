@@ -8,6 +8,12 @@ const { Item } = Collapse;
 const Test = () => {
     const [activeKeys, setActiveKeys] = useState([2]);
 
+    const getHeader = (status) => {
+        return (
+            <div><Icon type={`${status ? 'add-user' : 'del-user' }`} />自定义  header</div>
+        )
+    };
+
     return (
         <div style={{ padding: '20px' }}>
             {/*<Button disabled>Default</Button>*/}
@@ -72,24 +78,25 @@ const Test = () => {
             {/*<Avatar style={{backgroundColor: '#f56a00'}} onClick={() => {console.log('abs')}}><Icon type="wallet" size={20}/></Avatar>*/}
             {/*</div>*/}
 
-            <Collapse deletable defaultActiveKey={[1, 4]} onChange={(keys) => console.log(keys)}>
-                <Item header="abc header" itemKey={1}>
-                    dasda
+            <Collapse bordered={true} deletable defaultActiveKey={[1, 4]} onChange={(keys) => console.log(keys)}>
+                <Item header={getHeader} itemKey={1}>
+                    <Collapse accordion activeKey={activeKeys} onChange={(keys) => {
+                        console.log(keys);
+                        setActiveKeys(keys);
+                    }}>
+                        <Item header="abc header" itemKey={2}>
+                            Inside collapse
+                        </Item>
+                        <Item header="abc header" itemKey={3}>
+                            Inside collapse 2
+                        </Item>
+                        <Item header="abc header" itemKey={4}>
+                            Inside collapse 3
+                        </Item>
+                    </Collapse>
                 </Item>
-                <Item header="abc2 header" disabled itemKey={4}>
+                <Item header="abc2 header" itemKey={4}>
                     abc2
-                </Item>
-            </Collapse>
-
-            <Collapse activeKey={activeKeys} onChange={(keys) => {
-                console.log(keys);
-                // setActiveKeys(keys);
-            }}>
-                <Item header="abc header" itemKey={2}>
-                    Inside collapse
-                </Item>
-                <Item header="abc header" itemKey={3}>
-                    Inside collapse 2
                 </Item>
             </Collapse>
         </div>
