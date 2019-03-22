@@ -7,6 +7,9 @@ export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | '
 export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonProps = {
+    onClick?: React.MouseEventHandler<HTMLButtonElement>,
+    /** html type */
+    type?: string,
     color?: ButtonColors,
     loading?: boolean,
     disabled?: boolean,
@@ -21,15 +24,14 @@ export type ButtonProps = {
     className?: string,
     children?: React.ReactNode,
     prefixCls?: string,
-
-    // Allow to pass html attribute, like onClick
-    [others: string]: any,
 } & typeof defaultProps;
 
 const defaultProps = {
     prefixCls: 'ty-btn',
     size: 'md',
     color: 'default',
+    type: 'button',
+    onClick: () => {},
 };
 
 const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
@@ -42,7 +44,7 @@ const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
 
 const Button = (props: ButtonProps) => {
     const {
-        color, size, block, icon, link, loading, dash, disabled, outline, round, ripple, children, className,
+        onClick, type, color, size, block, icon, link, loading, dash, disabled, outline, round, ripple, children, className,
         prefixCls, ...others
     } = props;
     const cls = classNames(
@@ -61,9 +63,10 @@ const Button = (props: ButtonProps) => {
     );
     return (
         <button
+            onClick={onClick}
             className={cls}
             disabled={disabled || loading}
-            type="button"
+            type={type}
             {...others}>
             {renderIcon(icon, loading)}
             {children}

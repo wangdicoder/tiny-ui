@@ -6,7 +6,7 @@ import {Icon} from 'core/component';
 const Footer = () => (
 	<footer className="footer">
 		<div className="footer__main">
-			<img src={require('../../../../assets/logo-gray.svg')} alt="logo" width={40}/>
+			<img src={require('../../../../assets/logo.svg')} alt="logo" width={40}/>
 			<h3 className="footer__title">Tiny UI</h3>
 			<p className="footer__version">- v{version} -</p>
 		</div>

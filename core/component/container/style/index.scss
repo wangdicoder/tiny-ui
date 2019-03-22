@@ -1,0 +1,37 @@
+@import "../../../themes/index";
+
+.#{$prefix}container {
+  position: fixed;
+
+  &_top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &_top-left {
+    top: 0;
+    left: 0;
+  }
+
+  &_top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &_bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &_bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+
+  &_bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+}

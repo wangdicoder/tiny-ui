@@ -15,6 +15,7 @@ type ButtonGroupProps = {
 const defaultProps = {
     prefixCls: 'ty-btn-group',
     size: 'md',
+    color: 'default',
 };
 
 const ButtonGroup = (props: ButtonGroupProps) => {
