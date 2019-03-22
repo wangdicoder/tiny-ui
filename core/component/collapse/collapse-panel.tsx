@@ -41,6 +41,7 @@ const CollapsePanel = (props: CollapsePanelProps) => {
         prefixCls, children,
     } = props;
     const itemEl = useRef<HTMLDivElement>(null);
+    const contentEl = useRef<HTMLDivElement>(null);
 
     const cls = classNames(
         prefixCls,
@@ -91,9 +92,13 @@ const CollapsePanel = (props: CollapsePanelProps) => {
         <div className={cls} style={style} ref={itemEl}>
             {_renderHeader()}
             <Animated isShow={isActive} transitionName={`${prefixCls}_collapse`} duration={0}>
-                <div className={`${prefixCls}__content`}>
-                    {richNode(children, isActive)}
-                </div>
+                {(state: string) => {
+                    return (
+                        <div ref={contentEl} className={`${prefixCls}__content`}>
+                            {richNode(children, isActive)}
+                        </div>
+                    );
+                }}
             </Animated>
         </div>
     );

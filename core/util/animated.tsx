@@ -24,7 +24,7 @@ const Animated = (props: AnimatedProps) => {
             onExited={onEnd}
             classNames={transitionName}
             timeout={duration}>
-            {typeof children === 'function' ? (status) => children(status) : children}
+            {typeof children === 'function' ? (state) => children(state) : children}
         </CSSTransition>
     );
 };

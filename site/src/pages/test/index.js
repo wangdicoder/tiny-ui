@@ -78,10 +78,10 @@ const Test = () => {
             {/*<Avatar style={{backgroundColor: '#f56a00'}} onClick={() => {console.log('abs')}}><Icon type="wallet" size={20}/></Avatar>*/}
             {/*</div>*/}
 
-            <Collapse bordered={true} deletable defaultActiveKey={[1, 4]} onChange={(keys) => console.log(keys)}>
+            <Collapse bordered={true} deletable defaultActiveKey={[1, 4]}>
                 <Panel header={getHeader} itemKey={1}>
                     <Collapse accordion activeKey={activeKeys} onChange={(keys) => {
-                        console.log(keys);
+                        // console.log(keys);
                         setActiveKeys(keys);
                     }}>
                         <Panel header="abc header" itemKey={2}>
