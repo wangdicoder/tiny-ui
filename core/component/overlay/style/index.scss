@@ -23,6 +23,10 @@
     backdrop-filter: blur(3px);
   }
 
+  &_hidden{
+    display: none;
+  }
+
   &_fade {
     &-enter {
       opacity: 0;
@@ -32,11 +36,19 @@
       opacity: 1;
     }
 
+    &-enter-done{
+      opacity: 1;
+    }
+
     &-exit {
       opacity: 1;
     }
 
     &-exit-active {
+      opacity: 0;
+    }
+
+    &-exit-done{
       opacity: 0;
     }
   }

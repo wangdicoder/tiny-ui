@@ -47,9 +47,8 @@ const Modal = (props: ModalProps) => {
         className,
     );
 
-    console.log(visible);
     return (
-        <Overlay isMount={false} isShow={visible} clickCallback={onCancel}>
+        <Overlay unmountOnExit={false} isShow={visible} clickCallback={onCancel}>
             <div className={cls} style={{ width, ...style }}>
                 <CSSTransition
                     unmountOnExit={unmountOnClose} in={visible} classNames={`${prefixCls}_scale`} timeout={0}>

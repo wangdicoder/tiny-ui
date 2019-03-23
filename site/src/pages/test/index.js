@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Alert, Icon, Flip, Avatar, Collapse, Message, Modal } from 'core/component';
+import { Button, Alert, Icon, Flip, Avatar, Collapse, Message, Modal, Overlay } from 'core/component';
 
 const { Group } = Button;
 // const { Item } = Flip;
@@ -114,14 +114,22 @@ const Test = () => {
                 </Panel>
             </Collapse>
 
-            {/*<Modal title="Basic Modal" visible={visible} onCancel={() => {*/}
-                {/*console.log('cancel');*/}
-                {/*setVisible(false);*/}
-            {/*}} confirmText="Yes">*/}
+            {/*<Modal*/}
+                {/*title="Basic Modal"*/}
+                {/*visible={visible}*/}
+                {/*onCancel={() => {*/}
+                    {/*console.log('cancel');*/}
+                    {/*setVisible(false);*/}
+                {/*}}*/}
+                {/*confirmText="Yes">*/}
                 {/*<label>some content...0</label>*/}
                 {/*<p>some content...</p>*/}
                 {/*<label>some content...</label>*/}
             {/*</Modal>*/}
+
+            <Overlay unmountOnExit={false} isShow={visible} clickCallback={() => setVisible(false)}>
+                abc overlay
+            </Overlay>
         </div>
     );
 };
