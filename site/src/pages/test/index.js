@@ -34,7 +34,7 @@ const Test = () => {
                 {/*<Button ripple size="sm" color="yellow" round outline dash>Primary Button</Button>*/}
                 {/*<Button ripple color="pink" dash onClick={() => console.log('dasdasd')}>Primary*/}
                 {/*Button</Button>*/}
-                {/*<Button size="lg" color="pink" block round>Primary Button</Button>*/}
+                {/*<Button size="lg" color="pink" block round loading>Primary Button</Button>*/}
                 {/*<Button color="pink" round outline>Primary Button</Button>*/}
                 {/*<Button size="lg" color="pink" loading outline disabled>Primary Button</Button>*/}
             </div>
@@ -115,10 +115,13 @@ const Test = () => {
             </Collapse>
 
             <Modal
-                unmountOnClose={true}
+                // centered
+                confirmLoading={false}
+                unmountOnClose={false}
                 maskClosable={true}
-                // title="Basic Modal"
+                header="Basic Modal"
                 visible={visible}
+                animation="slide"
                 onCancel={() => {
                     setVisible(false);
                 }}

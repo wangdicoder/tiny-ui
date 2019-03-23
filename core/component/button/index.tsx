@@ -44,8 +44,8 @@ const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
 
 const Button = (props: ButtonProps) => {
     const {
-        onClick, type, color, size, block, icon, link, loading, dash, disabled, outline, round, ripple, children, className,
-        prefixCls, ...others
+        onClick, type, color, size, block, icon, link, loading, dash, disabled, outline,
+        round, ripple, children, className, prefixCls, ...others
     } = props;
     const cls = classNames(
         prefixCls,

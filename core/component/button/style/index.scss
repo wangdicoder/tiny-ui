@@ -33,6 +33,7 @@ $btn-prefix: #{$prefix}btn;
         border-top-color: transparent;
         display: inline-block;
         animation: ty-rotate 500ms linear infinite;
+        pointer-events: none;
     }
 
     //ripple effect

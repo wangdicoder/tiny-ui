@@ -28,7 +28,7 @@ const defaultProps = {
 
 const Alert = (props: AlertProps) => {
     const { type, closeText, closable, afterClose, onClose, children, className, prefixCls, style } = props;
-    const [isShow, setShow] = useState<boolean>(true);
+    const [isShow, setShow] = useState(true);
     const cls = classNames(
         prefixCls,
         className,

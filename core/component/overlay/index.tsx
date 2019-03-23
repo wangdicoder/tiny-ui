@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './style/index.css';
 import classNames from 'classnames';
 import Portal from '../portal';
@@ -12,14 +12,17 @@ export type OverlayProps = {
     unmountOnExit?: boolean,
     clickCallback?: () => any,
     afterClose?: () => any,
+    zIndex?: number,
     type?: OverlayMaskType,
     prefixCls?: string,
+    style?: React.CSSProperties,
     children?: React.ReactNode,
 } & typeof defaultProps;
 
 const defaultProps = {
     isShow: false,
     unmountOnExit: true,
+    zIndex: 1000,
     prefixCls: 'ty-overlay',
     type: 'default',
     clickCallback: () => {
@@ -28,7 +31,7 @@ const defaultProps = {
 };
 
 const Overlay = (props: OverlayProps) => {
-    const { isShow, unmountOnExit, type, clickCallback, afterClose, prefixCls, children } = props;
+    const { isShow, unmountOnExit, type, zIndex, clickCallback, afterClose, prefixCls, children, style } = props;
     const [isMount, setIsMount] = useState(false);
     const cls = classNames(
         prefixCls,
@@ -41,17 +44,6 @@ const Overlay = (props: OverlayProps) => {
     } else {
         document.body.style.overflow = null;
     }
-
-    const _handleMouseDown = () => {
-        clickCallback();
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', _handleMouseDown);
-        return () => {
-            document.removeEventListener('mousedown', _handleMouseDown);
-        };
-    });
 
     return (
         <Portal>
@@ -66,7 +58,7 @@ const Overlay = (props: OverlayProps) => {
                 unmountOnExit={unmountOnExit}
                 classNames={`${prefixCls}_fade`}
                 timeout={350}>
-                <div className={cls}>
+                <div className={cls} onClick={clickCallback} style={{zIndex, ...style}}>
                     {children}
                 </div>
             </CSSTransition>
