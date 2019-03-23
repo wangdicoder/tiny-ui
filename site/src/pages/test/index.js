@@ -26,17 +26,17 @@ const Test = () => {
 
             <div>
 
-            {/*<Button link size="xs" color="pink" round>Primary Button</Button>*/}
-            {/*<Button color="blue" round>Info Button</Button>*/}
-            {/*<Button color="green">Success Button</Button>*/}
-            {/*<Button disabled ripple size="sm" color="pink">Primary Button</Button>*/}
-            {/*<Button ripple size="sm" color="yellow" round link dash>Primary Button</Button>*/}
-            {/*<Button ripple size="sm" color="yellow" round outline dash>Primary Button</Button>*/}
-            {/*<Button ripple color="pink" dash onClick={() => console.log('dasdasd')}>Primary*/}
-            {/*Button</Button>*/}
-            {/*<Button size="lg" color="pink" block round>Primary Button</Button>*/}
-            {/*<Button color="pink" round outline>Primary Button</Button>*/}
-            {/*<Button size="lg" color="pink" loading outline disabled>Primary Button</Button>*/}
+                {/*<Button link size="xs" color="pink" round>Primary Button</Button>*/}
+                {/*<Button color="blue" round>Info Button</Button>*/}
+                {/*<Button color="green">Success Button</Button>*/}
+                {/*<Button disabled ripple size="sm" color="pink">Primary Button</Button>*/}
+                {/*<Button ripple size="sm" color="yellow" round link dash>Primary Button</Button>*/}
+                {/*<Button ripple size="sm" color="yellow" round outline dash>Primary Button</Button>*/}
+                {/*<Button ripple color="pink" dash onClick={() => console.log('dasdasd')}>Primary*/}
+                {/*Button</Button>*/}
+                {/*<Button size="lg" color="pink" block round>Primary Button</Button>*/}
+                {/*<Button color="pink" round outline>Primary Button</Button>*/}
+                {/*<Button size="lg" color="pink" loading outline disabled>Primary Button</Button>*/}
             </div>
 
             <div>
@@ -114,11 +114,14 @@ const Test = () => {
                 </Panel>
             </Collapse>
 
-            <Modal title="Basic Modal" visible={visible} onCancel={() => setVisible(false)}>
-                <label>some content...</label>
-                <p>some content...</p>
-                <label>some content...</label>
-            </Modal>
+            {/*<Modal title="Basic Modal" visible={visible} onCancel={() => {*/}
+                {/*console.log('cancel');*/}
+                {/*setVisible(false);*/}
+            {/*}} confirmText="Yes">*/}
+                {/*<label>some content...0</label>*/}
+                {/*<p>some content...</p>*/}
+                {/*<label>some content...</label>*/}
+            {/*</Modal>*/}
         </div>
     );
 };

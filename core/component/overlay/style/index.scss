@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 300ms;
 
   &_default {
     background-color: rgba(0, 0, 0, .75);
@@ -20,5 +21,23 @@
   &_inverted {
     background-color: rgba(255, 255, 255, .75);
     backdrop-filter: blur(3px);
+  }
+
+  &_fade {
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+    }
   }
 }

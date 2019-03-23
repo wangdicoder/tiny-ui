@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
 import './style/index.css';
-import Animated from '../../util/animated';
+import { CSSTransition } from 'react-transition-group';
 
 export type AlertProps = {
     type: 'success' | 'info' | 'warning' | 'error',
@@ -50,12 +50,17 @@ const Alert = (props: AlertProps) => {
     );
 
     return (
-        <Animated duration={400} isShow={isShow} onEnd={afterClose} transitionName={`${prefixCls}_slide-up`}>
+        <CSSTransition
+            unmountOnExit={true}
+            timeout={400}
+            in={isShow}
+            onExited={afterClose}
+            classNames={`${prefixCls}_slide-up`}>
             <div className={cls} style={style}>
                 {children}
                 {closeIcon}
             </div>
-        </Animated>
+        </CSSTransition>
     );
 };
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
-import Animated from '../../util/animated';
+import { CSSTransition } from 'react-transition-group';
 
 export type CollapsePanelProps = {
     itemKey: string,
@@ -91,7 +91,7 @@ const CollapsePanel = (props: CollapsePanelProps) => {
     return (
         <div className={cls} style={style} ref={itemEl}>
             {_renderHeader()}
-            <Animated isShow={isActive} transitionName={`${prefixCls}_collapse`} duration={0}>
+            <CSSTransition unmountOnExit={true} in={isActive} classNames={`${prefixCls}_collapse`} timeout={0}>
                 {(state: string) => {
                     return (
                         <div ref={contentEl} className={`${prefixCls}__content`}>
@@ -99,7 +99,7 @@ const CollapsePanel = (props: CollapsePanelProps) => {
                         </div>
                     );
                 }}
-            </Animated>
+            </CSSTransition>
         </div>
     );
 };
