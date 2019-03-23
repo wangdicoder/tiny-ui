@@ -1,16 +1,20 @@
 import * as React from 'react';
 import './style/index.css';
 import classNames from 'classnames';
-import { CSSTransition } from 'react-transition-group';
-import Overlay from '../overlay';
+// import { CSSTransition } from 'react-transition-group';
+import Overlay, { OverlayMaskType } from '../overlay';
 import Button, { ButtonProps } from '../button';
 
 export type ModalProps = {
     visible?: boolean,
-    title?: string,
+    header?: string | React.ReactNode,
+    footer?: null | React.ReactNode,
     width?: number | string,
     closable?: boolean,
     unmountOnClose?: boolean,
+    afterClose?: () => any,
+    maskType?: OverlayMaskType,
+    maskClosable?: boolean,
     onConfirm?: React.MouseEventHandler<HTMLButtonElement>,
     onCancel?: React.MouseEventHandler<HTMLButtonElement>,
     confirmText?: string,
@@ -24,10 +28,12 @@ export type ModalProps = {
 } & typeof defaultProps;
 
 const defaultProps = {
+    visible: false,
     width: 520,
     closable: true,
-    visible: false,
-    unmountOnClose: false,
+    unmountOnClose: true,
+    maskType: 'default',
+    maskClosable: true,
     prefixCls: 'ty-modal',
     confirmText: 'OK',
     cancelText: 'Cancel',
@@ -35,48 +41,69 @@ const defaultProps = {
     },
     onCancel: () => {
     },
+    afterClose: () => {
+    },
 };
 
 const Modal = (props: ModalProps) => {
     const {
-        width, title, visible, closable, unmountOnClose, confirmText, cancelText, onConfirm, onCancel,
-        confirmButtonProps, cancelButtonProps, prefixCls, className, style, children,
+        width, header, footer, visible, closable, maskType, maskClosable, unmountOnClose, afterClose, confirmText,
+        cancelText, onConfirm, onCancel, confirmButtonProps, cancelButtonProps, prefixCls, className, style, children,
     } = props;
     const cls = classNames(
         prefixCls,
         className,
     );
 
+    const _renderFooter = () => {
+        if (React.isValidElement(footer)) {
+            return footer;
+        } else if (footer === null) {
+            return null;
+        } else {
+            return (
+                <div className={`${prefixCls}__footer`}>
+                    <Button
+                        {...cancelButtonProps}
+                        onClick={onCancel}
+                        className={`${prefixCls}__footer-btn`}>
+                        {cancelText}
+                    </Button>
+                    <Button
+                        {...confirmButtonProps}
+                        onClick={onConfirm}
+                        color="primary"
+                        className={`${prefixCls}__footer-btn`}>
+                        {confirmText}
+                    </Button>
+                </div>
+            );
+        }
+    };
+
     return (
-        <Overlay unmountOnExit={false} isShow={visible} clickCallback={onCancel}>
+        <Overlay
+            type={maskType}
+            unmountOnExit={unmountOnClose}
+            isShow={visible}
+            afterClose={afterClose}
+            clickCallback={() => (maskClosable && onCancel())}>
             <div className={cls} style={{ width, ...style }}>
-                <CSSTransition
-                    unmountOnExit={unmountOnClose} in={visible} classNames={`${prefixCls}_scale`} timeout={0}>
-                    <div className={`${prefixCls}__content`}>
-                        {closable && <div className={`${prefixCls}__close-btn`} onClick={onCancel}>✕</div>}
+                {/*<CSSTransition*/}
+                {/*unmountOnExit={unmountOnClose} in={visible} classNames={`${prefixCls}_scale`} timeout={0}>*/}
+                <div className={`${prefixCls}__content`}>
+                    {closable && <div className={`${prefixCls}__close-btn`} onClick={onCancel}>✕</div>}
+                    {header && (
                         <div className={`${prefixCls}__header`}>
-                            <div className={`${prefixCls}__title`}>{title}</div>
+                            <div className={`${prefixCls}__title`}>{header}</div>
                         </div>
-                        <div className={`${prefixCls}__body`}>
-                            {children}
-                        </div>
-                        <div className={`${prefixCls}__footer`}>
-                            <Button
-                                {...cancelButtonProps}
-                                onClick={onCancel}
-                                className={`${prefixCls}__footer-btn`}>
-                                {cancelText}
-                            </Button>
-                            <Button
-                                {...confirmButtonProps}
-                                onClick={onConfirm}
-                                color="primary"
-                                className={`${prefixCls}__footer-btn`}>
-                                {confirmText}
-                            </Button>
-                        </div>
+                    )}
+                    <div className={`${prefixCls}__body`}>
+                        {children}
                     </div>
-                </CSSTransition>
+                    {_renderFooter()}
+                </div>
+                {/*</CSSTransition>*/}
             </div>
         </Overlay>
     );

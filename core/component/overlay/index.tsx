@@ -5,11 +5,14 @@ import classNames from 'classnames';
 import Portal from '../portal';
 import { CSSTransition } from 'react-transition-group';
 
+export type OverlayMaskType = 'default' | 'inverted' | 'none';
+
 export type OverlayProps = {
     isShow?: boolean,
     unmountOnExit?: boolean,
     clickCallback?: () => any,
-    type?: 'default' | 'inverted',
+    afterClose?: () => any,
+    type?: OverlayMaskType,
     prefixCls?: string,
     children?: React.ReactNode,
 } & typeof defaultProps;
@@ -21,10 +24,11 @@ const defaultProps = {
     type: 'default',
     clickCallback: () => {
     },
+    afterClose: () => {},
 };
 
 const Overlay = (props: OverlayProps) => {
-    const { isShow, unmountOnExit, type, clickCallback, prefixCls, children } = props;
+    const { isShow, unmountOnExit, type, clickCallback, afterClose, prefixCls, children } = props;
     const [isMount, setIsMount] = useState(false);
     const cls = classNames(
         prefixCls,
@@ -55,7 +59,10 @@ const Overlay = (props: OverlayProps) => {
                 in={isShow}
                 mountOnEnter={true}
                 onEnter={() => setIsMount(true)}
-                onExited={() => setIsMount(false)}
+                onExited={() => {
+                    setIsMount(false);
+                    afterClose();
+                }}
                 unmountOnExit={unmountOnExit}
                 classNames={`${prefixCls}_fade`}
                 timeout={350}>

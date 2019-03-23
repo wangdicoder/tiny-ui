@@ -114,22 +114,26 @@ const Test = () => {
                 </Panel>
             </Collapse>
 
-            {/*<Modal*/}
-                {/*title="Basic Modal"*/}
-                {/*visible={visible}*/}
-                {/*onCancel={() => {*/}
-                    {/*console.log('cancel');*/}
-                    {/*setVisible(false);*/}
-                {/*}}*/}
-                {/*confirmText="Yes">*/}
-                {/*<label>some content...0</label>*/}
-                {/*<p>some content...</p>*/}
-                {/*<label>some content...</label>*/}
-            {/*</Modal>*/}
+            <Modal
+                unmountOnClose={true}
+                maskClosable={true}
+                // title="Basic Modal"
+                visible={visible}
+                onCancel={() => {
+                    setVisible(false);
+                }}
+                afterClose={() => {
+                    console.log('closed');
+                }}
+                confirmText="Yes">
+                <label>some content...0</label>
+                <p>some content...</p>
+                <label>some content...</label>
+            </Modal>
 
-            <Overlay unmountOnExit={false} isShow={visible} clickCallback={() => setVisible(false)}>
-                abc overlay
-            </Overlay>
+            {/*<Overlay unmountOnExit={false} isShow={visible} clickCallback={() => setVisible(false)}>*/}
+                {/*abc overlay*/}
+            {/*</Overlay>*/}
         </div>
     );
 };
