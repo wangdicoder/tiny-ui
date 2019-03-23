@@ -23,7 +23,8 @@ export type ModalProps = {
     cancelText?: string,
     confirmButtonProps?: ButtonProps,
     cancelButtonProps?: ButtonProps,
-    animation?: 'slide' | 'scale'
+    animation?: 'slide' | 'scale',
+    top?: number,
     zIndex?: number,
     prefixCls?: string,
     className?: string,

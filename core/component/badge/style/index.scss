@@ -1,0 +1,61 @@
+@import "../../../themes/index";
+
+.#{$prefix}badge {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+
+  @mixin badge-base {
+    box-sizing: border-box;
+    display: inline-block;
+    z-index: 10;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: $badge-size;
+    box-shadow: 0 0 0 1.5px #fff;
+  }
+
+  &__count {
+    @include badge-base();
+    font-family: $font-family;
+    min-width: $badge-size;
+    min-height: $badge-size;
+    line-height: $badge-size;
+    padding: 0 5px;
+    color: #fff;
+    font-weight: normal;
+    font-size: $badge-font-size;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  &__dot {
+    @include badge-base();
+    width: $badge-dot-size;
+    height: $badge-dot-size;
+    line-height: $badge-dot-size;
+
+    &_wave {
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: inherit;
+        content: '';
+        animation: ty-processing 1.2s infinite ease-in-out;
+      }
+    }
+  }
+
+  &_no-wrap {
+    .#{$prefix}badge__count, .#{$prefix}badge__dot {
+      display: block;
+      transform: none;
+      position: relative;
+    }
+  }
+}

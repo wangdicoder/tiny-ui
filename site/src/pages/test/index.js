@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Alert, Icon, Flip, Avatar, Collapse, Message, Modal, Overlay } from 'core/component';
+import { Button, Alert, Icon, Flip, Avatar, Collapse, Message, Modal, Overlay, Badge } from 'core/component';
+import './test.css';
 
 const { Group } = Button;
 // const { Item } = Flip;
@@ -135,8 +136,9 @@ const Test = () => {
             </Modal>
 
             {/*<Overlay unmountOnExit={false} isShow={visible} clickCallback={() => setVisible(false)}>*/}
-                {/*abc overlay*/}
+            {/*abc overlay*/}
             {/*</Overlay>*/}
+            
         </div>
     );
 };

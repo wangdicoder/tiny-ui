@@ -1,5 +1,6 @@
 export { default as Alert } from './alert';
 export { default as Avatar } from './avatar';
+export { default as Badge } from './badge';
 export { default as Button } from './button';
 export { default as Col } from './col';
 export { default as Collapse } from './collapse';
@@ -9,3 +10,4 @@ export { default as Row } from './row';
 export { default as Message } from './message';
 export { default as Modal } from './modal';
 export { default as Overlay } from './overlay';
+export { default as Tooltip } from './tooltip';
