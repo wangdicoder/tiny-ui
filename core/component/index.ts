@@ -11,3 +11,4 @@ export { default as Message } from './message';
 export { default as Modal } from './modal';
 export { default as Overlay } from './overlay';
 export { default as Tooltip } from './tooltip';
+export { default as Divider } from './divider';

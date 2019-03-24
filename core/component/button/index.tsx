@@ -45,7 +45,7 @@ const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
 const Button = (props: ButtonProps) => {
     const {
         onClick, type, color, size, block, icon, link, loading, dash, disabled, outline,
-        round, ripple, children, className, prefixCls, ...others
+        round, ripple, children, className, prefixCls, ...restProps
     } = props;
     const cls = classNames(
         prefixCls,
@@ -67,7 +67,7 @@ const Button = (props: ButtonProps) => {
             className={cls}
             disabled={disabled || loading}
             type={type}
-            {...others}>
+            {...restProps}>
             {renderIcon(icon, loading)}
             {children}
         </button>
