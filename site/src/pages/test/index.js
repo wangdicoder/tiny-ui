@@ -160,17 +160,17 @@ const Test = () => {
             </div>
 
             <Row gutter={8} gutterSide align="center" justify="center">
-                <Col span={2} offset={0}>
+                <Col span={2} offset={0} order={3} sm={{order: 1, span: 8}}>
                     <div className="demo-grid">
                         1
                     </div>
                 </Col>
-                <Col span={6}>
+                <Col span={6} order={3}>
                     <div className="demo-grid">
                         2
                     </div>
                 </Col>
-                <Col span={2} offset={0}>
+                <Col span={2} offset={0} order={2}>
                     <div className="demo-grid" style={{padding: 20}}>
                         3
                     </div>

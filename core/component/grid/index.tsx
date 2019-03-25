@@ -1,4 +1,4 @@
 import Row, { RowProps } from './row';
-import Col, { ColProps } from './col';
+import Col, { ColProps, ColSize } from './col';
 
-export { Row, Col, RowProps, ColProps };
+export { Row, Col, RowProps, ColProps, ColSize };
