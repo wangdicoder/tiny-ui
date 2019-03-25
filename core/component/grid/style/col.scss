@@ -1,0 +1,16 @@
+@import "../../../themes/index";
+
+.#{$prefix}col {
+  box-sizing: border-box;
+  display: block;
+
+  @for $i from 1 through 24 {
+    &-#{$i} {
+      width: 100% / (24 / $i);
+    }
+
+    &-offset-#{$i} {
+      margin-left: 100% / (24 / $i);
+    }
+  }
+}

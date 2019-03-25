@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Alert, Icon, Flip, Avatar, Collapse, Message, Modal, Overlay, Badge, Divider } from 'core/component';
+import {
+    Button, Alert, Icon, Flip, Avatar, Collapse, Message, Modal, Overlay, Badge, Divider,
+    Row, Col,
+} from 'core/component';
 import './test.css';
 
 const { Group } = Button;
@@ -12,7 +15,7 @@ const Test = () => {
 
     const getHeader = (status) => {
         return (
-            <div><Icon type={`${status ? 'add-user' : 'del-user'}`}/>自定义 header</div>
+            <div><Icon type={`${status ? 'add-user' : 'del-user'}`}/>custom header</div>
         );
     };
 
@@ -21,7 +24,7 @@ const Test = () => {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
+        <div style={{ padding: '20px' }} className="test">
             <Button onClick={_click}>Default</Button>
             <Button color="primary" onClick={() => setVisible(true)}>Modal Visible</Button>
 
@@ -93,27 +96,29 @@ const Test = () => {
                 {/*<Avatar style={{backgroundColor: '#f56a00'}} onClick={() => {console.log('abs')}}><Icon type="wallet" size={20}/></Avatar>*/}
             </div>
 
-            <Collapse bordered={true} deletable defaultActiveKey={[1, 4]}>
-                <Panel header={getHeader} itemKey={1}>
-                    <Collapse accordion activeKey={activeKeys} onChange={(keys) => {
-                        // console.log(keys);
-                        setActiveKeys(keys);
-                    }}>
-                        <Panel header="abc header" itemKey={2}>
-                            Inside collapse
-                        </Panel>
-                        <Panel header="abc header" itemKey={3}>
-                            Inside collapse 2
-                        </Panel>
-                        <Panel header="abc header" itemKey={4}>
-                            Inside collapse 3
-                        </Panel>
-                    </Collapse>
-                </Panel>
-                <Panel header="abc2 header" itemKey={4}>
-                    abc2
-                </Panel>
-            </Collapse>
+            <div>
+            {/*<Collapse bordered={true} deletable defaultActiveKey={[1, 4]}>*/}
+                {/*<Panel header={getHeader} itemKey={1}>*/}
+                    {/*<Collapse accordion activeKey={activeKeys} onChange={(keys) => {*/}
+                        {/*// console.log(keys);*/}
+                        {/*setActiveKeys(keys);*/}
+                    {/*}}>*/}
+                        {/*<Panel header="abc header" itemKey={2}>*/}
+                            {/*Inside collapse*/}
+                        {/*</Panel>*/}
+                        {/*<Panel header="abc header" itemKey={3}>*/}
+                            {/*Inside collapse 2*/}
+                        {/*</Panel>*/}
+                        {/*<Panel header="abc header" itemKey={4}>*/}
+                            {/*Inside collapse 3*/}
+                        {/*</Panel>*/}
+                    {/*</Collapse>*/}
+                {/*</Panel>*/}
+                {/*<Panel header="abc2 header" itemKey={4}>*/}
+                    {/*abc2*/}
+                {/*</Panel>*/}
+            {/*</Collapse>*/}
+            </div>
 
             <Modal
                 // centered
@@ -140,17 +145,37 @@ const Test = () => {
             {/*</Overlay>*/}
 
             <div>
-                Home
-                <Divider type="vertical" dashed/>
-                List
-                <Divider type="vertical" />
-                Details
+                {/*Home*/}
+                {/*<Divider type="vertical" dashed/>*/}
+                {/*List*/}
+                {/*<Divider type="vertical"/>*/}
+                {/*Details*/}
             </div>
 
-            <Divider>Hello</Divider>
-            <Divider dashed>Hello</Divider>
-            <Divider/>
-            <Divider dashed/>
+            <div>
+                {/*<Divider>Hello</Divider>*/}
+                {/*<Divider dashed>Hello</Divider>*/}
+                {/*<Divider/>*/}
+                {/*<Divider dashed/>*/}
+            </div>
+
+            <Row gutter={8} gutterSide align="center" justify="center">
+                <Col span={2} offset={0}>
+                    <div className="demo-grid">
+                        1
+                    </div>
+                </Col>
+                <Col span={6}>
+                    <div className="demo-grid">
+                        2
+                    </div>
+                </Col>
+                <Col span={2} offset={0}>
+                    <div className="demo-grid" style={{padding: 20}}>
+                        3
+                    </div>
+                </Col>
+            </Row>
         </div>
     );
 };
