@@ -45,8 +45,8 @@ const Alert = (props: AlertProps) => {
         <span
             className={`${prefixCls}__close-btn`}
             onClick={_closeBtnOnClick}>
-      {closeText || '✕'}
-    </span>
+            {closeText || '✕'}
+        </span>
     );
 
     return (
