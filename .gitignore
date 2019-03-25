@@ -10,3 +10,5 @@
 
 /core/**/style/*.css.map
 /core/**/style/*.css
+
+/site/src/pages/test
