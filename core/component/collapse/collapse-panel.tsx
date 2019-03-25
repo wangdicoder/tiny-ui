@@ -103,6 +103,7 @@ const CollapsePanel = (props: CollapsePanelProps) => {
         <div className={cls} style={style} ref={itemEl}>
             {_renderHeader()}
             <CSSTransition
+                mountOnEnter={true}
                 unmountOnExit={false}
                 in={isActive}
                 classNames={`${prefixCls}__content_collapse`}
