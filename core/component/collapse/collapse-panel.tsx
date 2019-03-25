@@ -88,13 +88,29 @@ const CollapsePanel = (props: CollapsePanelProps) => {
         );
     };
 
+    const _getContentHeight = () => {
+        return contentEl && contentEl.current && contentEl.current.scrollHeight;
+    };
+
+    const transitionStyles = {
+        entering: { height: 0 },
+        entered: { height: _getContentHeight() },
+        exiting: { height: _getContentHeight() },
+        exited: { height: 0 },
+    };
+
     return (
         <div className={cls} style={style} ref={itemEl}>
             {_renderHeader()}
-            <CSSTransition unmountOnExit={true} in={isActive} classNames={`${prefixCls}_collapse`} timeout={0}>
+            <CSSTransition
+                unmountOnExit={false}
+                in={isActive}
+                classNames={`${prefixCls}__content_collapse`}
+                timeout={0}>
                 {(state: string) => {
                     return (
-                        <div ref={contentEl} className={`${prefixCls}__content`}>
+                        <div ref={contentEl} className={`${prefixCls}__content`}
+                             style={{ ...transitionStyles[state]}}>
                             {richNode(children, isActive)}
                         </div>
                     );

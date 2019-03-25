@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "react-transition-group": "^2.6.1"
+    "react-transition-group": "^2.7.0"
   },
   "scripts": {
     "build": "rm -rf ../dist && tsc && gulp build",

@@ -52,7 +52,7 @@ const Collapse = (props: CollapseTypes) => {
     const cls = classNames(
         prefixCls,
         className,
-        {[`${prefixCls}_borderless`] : !bordered},
+        { [`${prefixCls}_borderless`]: !bordered },
     );
 
     const _itemClickCallback = (itemKey: string) => {
