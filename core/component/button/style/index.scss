@@ -1,11 +1,8 @@
 @import "../../../themes/index";
+@import "../../../themes/mixin";
+@import "../../../themes/native/button";
 
 $btn-prefix: #{$prefix}btn;
-
-@mixin loader_size($size) {
-    height: $size;
-    width: $size;
-}
 
 .#{$btn-prefix} {
     position: relative;
@@ -25,15 +22,14 @@ $btn-prefix: #{$prefix}btn;
     align-items: center;
     overflow: hidden;
 
+    @mixin loader_size($size) {
+        height: $size;
+        width: $size;
+    }
+
     &__loader {
         margin-right: 5px;
-        border: 1px solid;
-        border-radius: 50%;
-        border-right-color: transparent;
-        border-top-color: transparent;
-        display: inline-block;
-        animation: ty-rotate 500ms linear infinite;
-        pointer-events: none;
+        @include loader();
     }
 
     //ripple effect

@@ -1,0 +1,11 @@
+@import "./animation";
+
+@mixin loader($border-width: 1px){
+  border: $border-width solid;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  display: inline-block;
+  animation: ty-rotate 500ms linear infinite;
+  pointer-events: none;
+}

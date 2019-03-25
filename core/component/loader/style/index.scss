@@ -1,0 +1,70 @@
+@import "../../../themes/index";
+@import "../../../themes/mixin";
+
+.#{$prefix}loader {
+  position: relative;
+  display: inline-block;
+
+  @mixin loader-size($size) {
+    .#{$prefix}loader {
+      &__indicator {
+        @include loader($size/5 - 2);
+        width: $size;
+        height: $size;
+        margin: 5px;
+        opacity: .8;
+      }
+
+      &__label {
+        font-size: $size - 3px;
+        line-height: $size - 3px;
+        margin: 5px 0;
+        font-family: $font-family;
+        user-select: none;
+        opacity: .8;
+      }
+    }
+  }
+
+  &_default {
+    @include loader-size(20px);
+  }
+
+  &_lg {
+    @include loader-size(25px);
+  }
+
+  &_sm {
+    @include loader-size(15px);
+  }
+
+  &__loader-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 5;
+    color: $primary-color;
+
+    &:not(:last-child) {
+      position: absolute;
+    }
+
+    &_vertical {
+      flex-direction: column;
+    }
+  }
+
+  &__container {
+    &_loading {
+      opacity: .5;
+    }
+
+    &_blurred {
+      filter: blur(1px);
+      overflow: hidden;
+    }
+  }
+}
