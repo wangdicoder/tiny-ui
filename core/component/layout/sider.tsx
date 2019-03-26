@@ -4,20 +4,16 @@ import classnames from 'classnames';
 import Icon from '../icon';
 import SiderContext from './sider-context';
 
-export type CollapseType = 'clickTrigger' | 'responsive';
 export type SiderTheme = 'light' | 'dark';
 
 export type SiderProps = {
-    collapsible?: boolean;
     collapsed?: boolean;
     defaultCollapsed?: boolean;
-    onCollapse?: (collapsed: boolean, type: CollapseType) => void;
+    onCollapse?: (collapsed: boolean) => void;
     trigger?: React.ReactNode;
     width?: number | string;
     collapsedWidth?: number | string;
-    breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
     theme?: SiderTheme;
-    onBreakpoint?: (broken: boolean) => void;
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -26,7 +22,6 @@ export type SiderProps = {
 
 const defaultProps = {
     prefixCls: 'ty-layout-sider',
-    collapsible: false,
     defaultCollapsed: false,
     width: 160,
     collapsedWidth: 64,
@@ -34,7 +29,7 @@ const defaultProps = {
 };
 
 const Sider = (props: SiderProps) => {
-    const { collapsedWidth, width, prefixCls, className, style, children } = props;
+    const { collapsedWidth, width, onCollapse, theme, prefixCls, className, style, children } = props;
     let collapsed;
     if ('collapsed' in props) {
         collapsed = props.collapsed;
@@ -53,18 +48,30 @@ const Sider = (props: SiderProps) => {
     };
 
     const cls = classnames(prefixCls, className, {
-        [`${prefixCls}-collapsed`]: sideCollapsed,
+        [`${prefixCls}_light`]: theme === 'light',
     });
+
+    const _collapseBtnOnClick = () => {
+        const collapsedVal = !sideCollapsed;
+        if (!('collapsed' in props)) {
+            setSideCollapsed(collapsedVal);
+        }
+        onCollapse && onCollapse(collapsedVal);
+    };
 
     const _renderTrigger = () => {
         return (
-            <div onClick={() => setSideCollapsed(!sideCollapsed)}>
-                <Icon type="left"/>
+            <div className={`${prefixCls}__trigger`} onClick={_collapseBtnOnClick}>
+                <Icon type="left" className={`${prefixCls}__trigger-icon`}/>
             </div>
         );
     };
 
     useEffect(() => {
+        if ('collapsed' in props) {
+            setSideCollapsed(props.collapsed);
+        }
+
         siderHook.addSider('add');
         return () => {
             siderHook.removeSider('remove');

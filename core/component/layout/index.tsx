@@ -40,7 +40,8 @@ const Layout = (props: BasicLayoutProps) => {
     });
 
     return (
-        <SiderContext.Provider value={{ addSider: () => setHasSider(true), removeSider: () => setHasSider(false) }}>
+        <SiderContext.Provider
+            value={{ addSider: () => setHasSider(true), removeSider: () => setHasSider(false) }}>
             <div className={cls} style={style} {...restProps}>{children}</div>
         </SiderContext.Provider>
     );

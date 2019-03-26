@@ -30,5 +30,50 @@
 }
 
 .#{$prefix}layout-sider {
+  position: relative;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: all 200ms;
+  overflow: hidden;
+  background: $layout-sider-background;
+  color: #fff;
+
+  &:last-child {
+    .#{$prefix}layout-sider__trigger-icon {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__children {
+    flex: 1;
+  }
+
+  &__trigger {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    cursor: pointer;
+    height: 40px;
+    background-color: rgb(0, 33, 64);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_light {
+    background-color: #fff;
+    color: #333;
+
+    .#{$prefix}layout-sider {
+      &__trigger {
+        background-color: #efefef;
+      }
+
+      &__trigger-icon {
+        color: #bbb;
+      }
+    }
+  }
 }

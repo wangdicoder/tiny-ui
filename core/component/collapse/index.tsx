@@ -73,7 +73,7 @@ const Collapse = (props: CollapseTypes) => {
     };
 
     const updateActiveItems = (items: string[]) => {
-        if (!activeKey) { // only for defaultKey
+        if (!('activeKey' in props)) { // only for defaultKey
             setActiveItems(items);
         }
         onChange(items);
