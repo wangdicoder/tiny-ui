@@ -38,6 +38,7 @@
   overflow: hidden;
   background: $layout-sider-background;
   color: #fff;
+  overflow-y: auto;
 
   &:last-child {
     .#{$prefix}layout-sider__trigger-icon {

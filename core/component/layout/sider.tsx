@@ -7,13 +7,14 @@ import SiderContext from './sider-context';
 export type SiderTheme = 'light' | 'dark';
 
 export type SiderProps = {
-    collapsed?: boolean;
-    defaultCollapsed?: boolean;
-    onCollapse?: (collapsed: boolean) => void;
-    trigger?: React.ReactNode;
-    width?: number | string;
-    collapsedWidth?: number | string;
-    theme?: SiderTheme;
+    collapsible?: boolean,
+    collapsed?: boolean,
+    defaultCollapsed?: boolean,
+    onCollapse?: (collapsed: boolean) => void,
+    trigger?: React.ReactNode,
+    width?: number | string,
+    collapsedWidth?: number | string,
+    theme?: SiderTheme,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -23,14 +24,18 @@ export type SiderProps = {
 const defaultProps = {
     prefixCls: 'ty-layout-sider',
     defaultCollapsed: false,
-    width: 160,
-    collapsedWidth: 64,
+    width: 200,
+    collapsedWidth: 70,
     theme: 'dark',
     trigger: null,
+    collapsible: false,
 };
 
 const Sider = (props: SiderProps) => {
-    const { collapsedWidth, width, onCollapse, theme, trigger, prefixCls, className, style, children } = props;
+    const {
+        collapsible, collapsedWidth, width, onCollapse, theme, trigger, prefixCls,
+        className, style, children,
+    } = props;
     let collapsed;
     if ('collapsed' in props) {
         collapsed = props.collapsed;
@@ -61,6 +66,10 @@ const Sider = (props: SiderProps) => {
     };
 
     const _renderTrigger = () => {
+        if (!collapsible) {
+            return null;
+        }
+
         if (trigger) {
             return trigger;
         }

@@ -1,5 +1,6 @@
 .header {
-  z-index: 1;
+  position: relative;
+  z-index: 100;
   height: 64px;
   background: #fff;
   box-shadow: 0 2px 9px 0 rgba(37, 38, 94, 0.1);
