@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import './style/index.css';
 import classnames from 'classnames';
-import Side from './side';
-import SideContext from './side-context';
+import Sider from './sider';
+import SiderContext from './sider-context';
 
 export type BasicLayoutProps = {
     prefixCls?: string,
@@ -16,34 +16,40 @@ const defaultProps = {
     prefixCls: 'ty-layout',
 };
 
+/**
+ * Template layout for generating header, footer and content
+ * @param props
+ * @constructor
+ */
 const BasicLayout = (props: BasicLayoutProps) => {
     const { prefixCls, className, style, children, ...restProps } = props;
     const cls = classnames(prefixCls, className);
     return <div className={cls} style={style} {...restProps}>{children}</div>;
 };
 
+/**
+ * Layout component
+ * @param props
+ * @constructor
+ */
 const Layout = (props: BasicLayoutProps) => {
     const { prefixCls, className, style, children, ...restProps } = props;
-    const [hasSide, setHasSide] = useState(false);
+    const [hasSider, setHasSider] = useState(false);
     const cls = classnames(prefixCls, className, {
-        [`${prefixCls}_has-side`]: hasSide,
+        [`${prefixCls}_has-sider`]: hasSider,
     });
 
-    const addSide = (val: string) => {
-        setHasSide(true);
-    };
-
-    const removeSide = (val: string) => {
-        setHasSide(false);
-    };
-
     return (
-        <SideContext.Provider value={{ addSide, removeSide }}>
+        <SiderContext.Provider value={{ addSider: () => setHasSider(true), removeSider: () => setHasSider(false) }}>
             <div className={cls} style={style} {...restProps}>{children}</div>
-        </SideContext.Provider>
+        </SiderContext.Provider>
     );
 };
 
+/**
+ * Generator
+ * @param props
+ */
 const layoutGenerator = (props: BasicLayoutProps): React.ReactNode => {
     return (layoutProps: BasicLayoutProps) => {
         return (<BasicLayout {...layoutProps} prefixCls={props.prefixCls}/>);
@@ -58,6 +64,6 @@ Layout.defaultProps = defaultProps;
 Layout.Header = Header;
 Layout.Footer = Footer;
 Layout.Content = Content;
-Layout.Side = Side;
+Layout.Sider = Sider;
 
 export default Layout;

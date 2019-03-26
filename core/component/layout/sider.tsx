@@ -2,12 +2,12 @@ import * as React from 'react';
 import { useState, useContext, useEffect } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
-import SideContext from './side-context';
+import SiderContext from './sider-context';
 
 export type CollapseType = 'clickTrigger' | 'responsive';
 export type SiderTheme = 'light' | 'dark';
 
-export type SideProps = {
+export type SiderProps = {
     collapsible?: boolean;
     collapsed?: boolean;
     defaultCollapsed?: boolean;
@@ -25,7 +25,7 @@ export type SideProps = {
 } & typeof defaultProps;
 
 const defaultProps = {
-    prefixCls: 'ty-layout-side',
+    prefixCls: 'ty-layout-sider',
     collapsible: false,
     defaultCollapsed: false,
     width: 160,
@@ -33,7 +33,7 @@ const defaultProps = {
     theme: 'dark',
 };
 
-const Side = (props: SideProps) => {
+const Sider = (props: SiderProps) => {
     const { collapsedWidth, width, prefixCls, className, style, children } = props;
     let collapsed;
     if ('collapsed' in props) {
@@ -42,14 +42,14 @@ const Side = (props: SideProps) => {
         collapsed = props.defaultCollapsed;
     }
     const [sideCollapsed, setSideCollapsed] = useState(collapsed);
-    const sideHook = useContext(SideContext);
-    const sideWidth = sideCollapsed ? collapsedWidth : width;
+    const siderHook = useContext(SiderContext);
+    const siderWidth = sideCollapsed ? collapsedWidth : width;
 
     const outerStyle = {
         ...style,
-        width: sideWidth,
-        maxWidth: sideWidth,
-        minWidth: sideWidth,
+        width: siderWidth,
+        maxWidth: siderWidth,
+        minWidth: siderWidth,
     };
 
     const cls = classnames(prefixCls, className, {
@@ -65,9 +65,9 @@ const Side = (props: SideProps) => {
     };
 
     useEffect(() => {
-        sideHook.addSide('add');
+        siderHook.addSider('add');
         return () => {
-            sideHook.removeSide('remove');
+            siderHook.removeSider('remove');
         };
     });
 
@@ -79,6 +79,6 @@ const Side = (props: SideProps) => {
     );
 };
 
-Side.defaultProps = defaultProps;
+Sider.defaultProps = defaultProps;
 
-export default Side;
+export default Sider;
