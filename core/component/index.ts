@@ -7,6 +7,7 @@ export { default as Collapse } from './collapse';
 export { default as Divider } from './divider';
 export { default as Flip } from './flip';
 export { default as Icon } from './icon';
+export { default as Layout } from './layout';
 export { default as Loader } from './loader';
 export { default as Row } from './row';
 export { default as Message } from './message';

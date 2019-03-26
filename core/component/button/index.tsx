@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './style/index.css';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import Group from './button-group';
 
 export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' | 'pink';
@@ -47,7 +47,7 @@ const Button = (props: ButtonProps) => {
         onClick, type, color, size, block, icon, link, loading, dash, disabled, outline,
         round, ripple, children, className, prefixCls, ...restProps
     } = props;
-    const cls = classNames(
+    const cls = classnames(
         prefixCls,
         className,
         link ? [`${prefixCls}_${color}_link`] :

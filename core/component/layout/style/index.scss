@@ -1,0 +1,30 @@
+@import "../../../themes/index";
+
+.#{$prefix}layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  &_has-side {
+    flex-direction: row;
+  }
+}
+
+.#{$prefix}layout-header {
+  height: $layout-header-height;
+  background-color: $layout-header-background;
+}
+
+.#{$prefix}layout-footer {
+  padding: $layout-footer-padding;
+  background-color: $layout-footer-background;
+}
+
+.#{$prefix}layout-content {
+  flex: 1;
+  background-color: $layout-body-background;
+}
+
+.#{$prefix}layout-side {
+
+}
