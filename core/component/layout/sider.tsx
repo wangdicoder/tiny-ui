@@ -26,10 +26,11 @@ const defaultProps = {
     width: 160,
     collapsedWidth: 64,
     theme: 'dark',
+    trigger: null,
 };
 
 const Sider = (props: SiderProps) => {
-    const { collapsedWidth, width, onCollapse, theme, prefixCls, className, style, children } = props;
+    const { collapsedWidth, width, onCollapse, theme, trigger, prefixCls, className, style, children } = props;
     let collapsed;
     if ('collapsed' in props) {
         collapsed = props.collapsed;
@@ -60,6 +61,10 @@ const Sider = (props: SiderProps) => {
     };
 
     const _renderTrigger = () => {
+        if (trigger) {
+            return trigger;
+        }
+
         return (
             <div className={`${prefixCls}__trigger`} onClick={_collapseBtnOnClick}>
                 <Icon type="left" className={`${prefixCls}__trigger-icon`}/>
