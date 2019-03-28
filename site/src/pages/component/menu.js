@@ -5,8 +5,14 @@ const GUIDE_MENU = [{
     title: 'Customise Theme',
     route: '/customise-theme',
 },{
+    title: 'Use in create-react-app',
+    route: '/use-with-create-react-app',
+},{
     title: 'Change Log',
     route: '/change-log',
+},{
+    title: 'FAQ',
+    route: '/faq',
 },];
 
 const COMPONENT_MENU = [{

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "../dist",
+    "outDir": "./lib",
     "sourceMap": true,
     "module": "commonjs",
     "target": "es5",
@@ -18,11 +18,12 @@
     "noUnusedLocals": true
   },
   "include": [
-    "component",
+    "src",
     "util"
   ],
   "exclude": [
+    "./node_modules",
     "../node_modules",
-    "component/**/__test__/*.tsx"
+    "src/**/__test__/*.tsx"
   ]
 }

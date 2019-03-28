@@ -8,8 +8,12 @@
 /site/node_modules
 /dist
 
+*.css
+*.css.map
 /core/**/style/*.css.map
 /core/**/style/*.css
 
 /site/src/pages/test
-/core/component/template
+/core/src/template
+
+/core/lib

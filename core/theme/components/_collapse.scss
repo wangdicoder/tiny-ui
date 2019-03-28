@@ -1,0 +1,108 @@
+@import "../var";
+
+.#{$prefix}collapse {
+  box-sizing: border-box;
+  border-radius: $collapse-border-radius;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-family: $font-family;
+  border: 1px solid #d9d9d9;
+  border-bottom: 0;
+  background-color: #fafafa;
+
+  &-item {
+    box-sizing: border-box;
+    border-bottom: 1px solid #d9d9d9;
+
+    &:last-child {
+      border-radius: 0 0 $collapse-border-radius $collapse-border-radius;
+
+      .#{$prefix}collapse-item__content {
+        border-radius: 0 0 $collapse-border-radius $collapse-border-radius;
+      }
+    }
+
+    &__header {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      position: relative;
+      padding: 12px 16px;
+      color: rgba(0, 0, 0, .85);
+      line-height: 22px;
+      cursor: pointer;
+      transition: all 300ms;
+
+      &:hover {
+        background-color: #efefef;
+      }
+
+      &_disabled {
+        color: rgba(0, 0, 0, .25);
+        cursor: not-allowed;
+      }
+    }
+
+    &__arrow {
+      margin-right: 15px;
+      transform: rotate(0);
+      text-align: center;
+      font-size: 12px;
+      color: inherit;
+      transition: all 300ms;
+
+      &_active {
+        transform: rotate(90deg);
+      }
+    }
+
+    &__title {
+      flex: 1;
+    }
+
+    &__extra {
+      color: inherit;
+      font-size: 11px;
+      margin-left: 15px;
+    }
+
+    &__content {
+      overflow: hidden;
+      color: rgba(0, 0, 0, .65);
+      background-color: #fff;
+      border-top: 1px solid #d9d9d9;
+      padding: 0 16px;
+      box-sizing: border-box;
+      transition: height 300ms;
+
+      &:before, &:after {
+        content: '';
+        height: 16px;
+        display: block;
+      }
+
+      &_collapse-exit-done {
+        border-top: 0;
+      }
+    }
+  }
+
+  &_borderless {
+    border: 0;
+    background-color: #fff;
+  }
+
+  &_borderless > .#{$prefix}collapse-item {
+    &:last-child {
+      border-radius: 0;
+    }
+  }
+
+  &_borderless > .#{$prefix}collapse-item > .#{$prefix}collapse-item__content {
+    border-radius: 0;
+    border-top: 0;
+    padding-top: 4px;
+  }
+}
+
+

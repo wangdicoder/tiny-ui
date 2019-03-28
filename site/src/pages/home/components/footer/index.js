@@ -1,7 +1,7 @@
 import React from 'react';
 import './footer.css';
 import { version } from '../../../../../package';
-import {Icon} from 'core/component';
+import {Icon} from 'core/src';
 
 const Footer = () => (
 	<footer className="footer">

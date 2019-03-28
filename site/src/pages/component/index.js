@@ -1,8 +1,8 @@
 import React from 'react';
 import './component-page.css';
-import { Layout } from 'core/component';
+import { Layout } from 'core/src';
 import { COMPONENT_MENU, GUIDE_MENU } from './menu';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const { Sider } = Layout;
 

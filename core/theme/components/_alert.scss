@@ -1,0 +1,61 @@
+@import "../var";
+
+@mixin alert-mixin($color) {
+    background-color: $color;
+    box-shadow: 0 14px 16px -12px rgba($color, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba($color, 0.2);
+}
+
+.#{$prefix}alert {
+    display: flex;
+    font-family: $font-family;
+    border-radius: $alert-border-radius;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 15px 16px 15px 20px;
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: $font-weight;
+    opacity: 1;
+    font-size: $font-size;
+    transition: all 400ms;
+    transform-origin: center top;
+    justify-content: space-between;
+    align-items: flex-start;
+    overflow: hidden;
+
+    &__close-btn {
+        cursor: pointer;
+        float: right;
+        color: #fff;
+        user-select: none;
+    }
+
+    &_error {
+        @include alert-mixin($red-color);
+    }
+
+    &_warning {
+        @include alert-mixin($yellow-color);
+    }
+
+    &_success {
+        @include alert-mixin($green-color);
+    }
+
+    &_info {
+        @include alert-mixin($blue-color);
+    }
+
+    //disappear animation
+    &_slide-up{
+        &-exit {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        &-exit-active {
+            opacity: 0.05;
+            transform: scaleY(0);
+        }
+    }
+}
