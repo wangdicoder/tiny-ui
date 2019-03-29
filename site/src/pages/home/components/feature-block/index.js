@@ -1,5 +1,5 @@
 import React from 'react';
-import './feature-block.css';
+import './feature-block.scss';
 
 const FeatureBlock = ({ img, title }) => (
 	<div className="feature-block">

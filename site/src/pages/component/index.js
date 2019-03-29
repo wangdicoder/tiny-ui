@@ -1,5 +1,5 @@
 import React from 'react';
-import './component-page.css';
+import './component-page.scss';
 import { Layout } from 'core/src';
 import { COMPONENT_MENU, GUIDE_MENU } from './menu';
 import { NavLink } from 'react-router-dom';

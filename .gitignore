@@ -8,10 +8,10 @@
 /site/node_modules
 /dist
 
-*.css
-*.css.map
-/core/**/style/*.css.map
-/core/**/style/*.css
+/core/themes/**/*.css.map
+/core/themes/**/*.css
+/site/src/**/*.css.map
+/site/src/**/*.css
 
 /site/src/pages/test
 /core/src/template

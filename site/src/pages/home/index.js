@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.css';
+import './home.scss';
 import { Button, Icon } from 'core/src';
 import GitHubButton from 'react-github-btn';
 import FeatureBlock from './components/feature-block';

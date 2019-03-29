@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "./lib",
     "sourceMap": true,
     "module": "commonjs",
-    "target": "es5",
-    "lib": ["es5", "es6", "es7", "dom"],
+    "target": "es6",
+    "lib": [
+      "es7",
+      "dom"
+    ],
     "jsx": "react",
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,11 +21,6 @@
   },
   "include": [
     "src",
-    "util"
-  ],
-  "exclude": [
-    "./node_modules",
-    "../node_modules",
-    "src/**/__test__/*.tsx"
+    "utils"
   ]
 }

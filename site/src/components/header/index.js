@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import './header.scss';
 import { NavLink, Link } from 'react-router-dom';
 import { version } from '../../../package';
 
