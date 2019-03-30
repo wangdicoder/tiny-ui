@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "./lib",
-    "sourceMap": true,
+    "outDir": "lib",
+    "sourceMap": false,
     "module": "commonjs",
     "target": "es6",
     "lib": [
@@ -20,7 +20,6 @@
     "noUnusedLocals": true
   },
   "include": [
-    "src",
-    "utils"
+    "src"
   ]
 }

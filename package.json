@@ -6,6 +6,7 @@
     "core",
     "site"
   ],
+  "main": "lib/index.js",
   "description": "A friendly ui component set for react",
   "keywords": [
     "tiny",

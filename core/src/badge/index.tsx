@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import warning from '../../utils/warning';
 
 export type BadgeProps = {
     count?: React.ReactNode | number,
@@ -40,7 +39,7 @@ const Badge = (props: BadgeProps) => {
     const dotCls = classNames(`${prefixCls}__dot`, { [`${prefixCls}__dot_wave`]: processing });
     const textCls = classNames(`${prefixCls}__count`);
 
-    warning(!dot && processing, 'only dot badge has the processing effect');
+    // warning(!dot && processing, 'only dot badge has the processing effect');
 
     const _renderCount = () => {
         const isZero = (typeof count === 'number') && count === 0;

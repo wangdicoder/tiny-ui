@@ -41,11 +41,11 @@
     "react-transition-group": "^2.7.0"
   },
   "scripts": {
-    "build": "rm -rf lib && tsc",
-    "dist-style": "gulp --gulpfile scripts/gulpfile.js",
+    "build": "rm -rf lib && tsc && npm run dist",
+    "dist-style": "gulp --gulpfile scripts/gulpfile.js && node scripts/generate-style.js",
     "dist-dev": "NODE_ENV=development webpack --config webpack.config.js --progress --colors",
     "dist-prod": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
-    "dist": "rm -rf dist && npm run dist-dev && npm run dist-prod",
+    "dist": "rm -rf dist && npm run dist-dev && npm run dist-prod && npm run dist-style",
     "test": "jest"
   },
   "peerDependencies": {

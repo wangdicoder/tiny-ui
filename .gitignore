@@ -14,7 +14,7 @@
 /site/src/**/*.css
 
 /site/src/pages/test
-/core/src/template
+/core/template
 
 /core/lib
 /core/dist

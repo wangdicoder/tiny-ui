@@ -1,2 +1,10 @@
 # Created by .ignore support plugin (hsz.mobi)
 node_modules
+site
+
+core/scripts
+core/template
+core/test
+core/jest.config.js
+core/test-setup.js
+core/webpack.config.js
