@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+node_modules
+
+scripts
+template
+test
+jest.config.js
+test-setup.js
+webpack.config.js

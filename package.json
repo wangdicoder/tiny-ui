@@ -21,10 +21,5 @@
     "frontend"
   ],
   "author": "wangdicoder@gmail.com",
-  "license": "MIT",
-  "scripts": {
-    "build": "yarn workspace core run build",
-    "dev": "yarn workspace site run start",
-    "test": "yarn workspaces run test"
-  }
+  "license": "MIT"
 }

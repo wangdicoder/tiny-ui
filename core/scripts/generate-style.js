@@ -31,8 +31,8 @@ function mkdir(filename, path) {
 }
 
 function writeFile(filename, path) {
-    const jsContent = `import '../styles/components/${filename}.scss'`;
-    const cssContent = `import '../styles/components/${filename}.css'`;
+    const jsContent = `import '../../styles/components/${filename}.scss'`;
+    const cssContent = `import '../../styles/components/${filename}.css'`;
     fs.writeFile(path + '/index.js', jsContent, (err, cb) => {
         if (err) {
             throw err;

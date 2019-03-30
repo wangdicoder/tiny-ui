@@ -1,15 +1,15 @@
 sudo: false
-language: node_js
-node_js:
-  - "8"
+    language: node_js
+    node_js:
+      - "8"
 
-cache:
-  directories:
-    - node_modules
+    cache:
+      directories:
+        - node_modules
 
-branches:
-  only:
-    - master
+    branches:
+      only:
+        - master
 
-script:
-  npm run test
+    script:
+      npm run test
