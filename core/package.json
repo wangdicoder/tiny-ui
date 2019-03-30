@@ -1,9 +1,28 @@
 {
   "name": "tiny-ui",
   "version": "0.0.44",
+  "description": "A friendly ui component set for react",
   "license": "MIT",
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
+  "keywords": [
+    "tiny",
+    "tiny-ui",
+    "design",
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangdicoder/tiny-ui.git"
+  },
+  "author": "Di Wang (wangdicoder@gmail.com)",
+  "homepage": "http://tiny-ui.org/",
   "devDependencies": {
     "@types/classnames": "^2.2.7",
     "@types/enzyme": "^3.9.0",
