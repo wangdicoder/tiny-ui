@@ -4,12 +4,11 @@ import { GUIDE_MENU } from '../shared/sider-menu/menu';
 import { Switch, Route } from 'react-router-dom';
 import SiderMenu from '../shared/sider-menu';
 
-const ComponentPage = (props) => {
-
+export default () => {
     return (
         <Layout className="component-page">
             <SiderMenu />
-            <Layout>
+            <Layout className="component-page__layout">
                 <Switch>
                     {GUIDE_MENU.map((menu) => (
                         <Route key={menu.title} path={`${menu.route}`} component={menu.component}/>
@@ -19,5 +18,3 @@ const ComponentPage = (props) => {
         </Layout>
     );
 };
-
-export default ComponentPage;

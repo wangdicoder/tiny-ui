@@ -1,3 +1,4 @@
+import React, {lazy} from 'react';
 import GetStartedPage from '../../guide/get-started';
 import CustomiseThemePage from '../../guide/customise-theme';
 
@@ -25,6 +26,7 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Button',
         route: '/button',
+        component: React.lazy(() => import('../../../docs/component/button')),
     }, {
         title: 'Icon',
         route: '/icon',

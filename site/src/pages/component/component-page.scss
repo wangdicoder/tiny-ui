@@ -1,0 +1,8 @@
+@import "../../base";
+
+.component-page {
+  &__layout {
+    height: calc(100vh - #{$header-height});
+    overflow-y: auto;
+  }
+}

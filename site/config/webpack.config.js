@@ -309,18 +309,6 @@ module.exports = function(webpackEnv) {
           include: paths.appSrc,
         },
         {
-          test: /\.md$/,
-          use: [{
-            loader: 'html-loader'
-          }, {
-            loader: 'markdown-loader',
-            options: {
-              pedantic: true,
-              renderer: markdownRenderer(["javascript", "bash", "xml", "css", "markdown", "scss"])
-            }
-          }]
-        },
-        {
           test: /\.tsx?$/,
           use: 'ts-loader',
           exclude: /node_modules/
