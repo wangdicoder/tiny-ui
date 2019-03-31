@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 const SiderContext = React.createContext({
-    addSider: (val: string) => {
+    addSider: () => {
     },
-    removeSider: (val: string) => {
+    removeSider: () => {
     },
 });
 

@@ -27,13 +27,14 @@
     "eslint-plugin-react": "7.12.4",
     "file-loader": "2.0.0",
     "fs-extra": "7.0.1",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
-    "marked": "^0.6.1",
+    "markdown-loader": "^5.0.0",
     "mini-css-extract-plugin": "0.5.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
@@ -42,16 +43,16 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
-    "prettier": "^1.16.4",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",
     "raw-loader": "^2.0.0",
     "react": "^16.8.4",
     "react-app-polyfill": "^0.2.2",
+    "react-code-view": "^1.1.13",
     "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.4",
     "react-github-btn": "^1.0.3",
-    "react-router-dom": "^4.4.0",
+    "react-router-dom": "^5.0.0",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
@@ -69,10 +70,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wangdicoder/tiny-ui-react"
-  },
+  "repository": "https://github.com/wangdicoder/tiny-ui-react",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -131,5 +129,12 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "devDependencies": {
+    "html-loader": "^0.5.5",
+    "markdown-loader": "^5.0.0",
+    "react-markdown-reader": "^1.1.0"
+  },
+  "main": "index.js",
+  "license": "MIT"
 }

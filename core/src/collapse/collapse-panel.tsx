@@ -92,7 +92,7 @@ const CollapsePanel = (props: CollapsePanelProps) => {
         return contentEl && contentEl.current && contentEl.current.scrollHeight;
     };
 
-    const transitionStyles = {
+    const transitionStyles: any = {
         entering: { height: 0 },
         entered: { height: _getContentHeight() },
         exiting: { height: _getContentHeight() },

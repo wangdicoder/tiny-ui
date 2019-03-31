@@ -1,7 +1,6 @@
-@import "../../../../core/themes/var";
+@import "../../base";
 
 .header {
-    $header-height: 64px;
     position: relative;
     z-index: 100;
     height: $header-height;
@@ -51,14 +50,14 @@
             color: #000;
 
             &.active {
-                color: $primary-color;
+                color: $main-color;
                 font-weight: 500;
             }
         }
     }
 
     &__version {
-        background: $primary-color;
+        background: $main-color;
         font-size: 12px;
         color: #fff;
         border-radius: 46px;

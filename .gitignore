@@ -6,7 +6,7 @@
 /node_modules
 /core/node_modules
 /site/node_modules
-/dist
+/site/dist
 
 /core/themes/**/*.css.map
 /core/themes/**/*.css

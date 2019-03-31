@@ -86,9 +86,9 @@ const Sider = (props: SiderProps) => {
             setSideCollapsed(props.collapsed);
         }
 
-        siderHook.addSider('add');
+        siderHook.addSider();
         return () => {
-            siderHook.removeSider('remove');
+            siderHook.removeSider();
         };
     });
 

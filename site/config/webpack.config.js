@@ -23,7 +23,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-
+const markdownRenderer = require('react-markdown-reader').renderer;
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -301,7 +301,7 @@ module.exports = function(webpackEnv) {
               options: {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
-                
+
               },
               loader: require.resolve('eslint-loader'),
             },
@@ -309,13 +309,21 @@ module.exports = function(webpackEnv) {
           include: paths.appSrc,
         },
         {
+          test: /\.md$/,
+          use: [{
+            loader: 'html-loader'
+          }, {
+            loader: 'markdown-loader',
+            options: {
+              pedantic: true,
+              renderer: markdownRenderer(["javascript", "bash", "xml", "css", "markdown", "scss"])
+            }
+          }]
+        },
+        {
           test: /\.tsx?$/,
           use: 'ts-loader',
           exclude: /node_modules/
-        },
-        {
-          test: /\.md$/,
-          use: 'raw-loader'
         },
         {
           // "oneOf" will traverse all following loaders until one will
@@ -343,7 +351,7 @@ module.exports = function(webpackEnv) {
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
-                
+
                 plugins: [
                   [
                     require.resolve('babel-plugin-named-asset-import'),
@@ -382,7 +390,7 @@ module.exports = function(webpackEnv) {
                 ],
                 cacheDirectory: true,
                 cacheCompression: isEnvProduction,
-                
+
                 // If an error happens in a package, it's possible to be
                 // because it was compiled. Thus, we don't want the browser
                 // debugger to show the original code. Instead, the code

@@ -12,7 +12,7 @@ export type CollapseTypes = {
     deletable?: boolean,
     showArrow?: boolean,
     bordered?: boolean,
-    onChange?: (keys: string[]) => any,
+    onChange?: (keys: string | string[]) => any,
     children: React.ReactElement<CollapsePanelProps>,
     prefixCls?: string,
     className?: string,

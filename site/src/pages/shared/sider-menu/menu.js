@@ -1,9 +1,14 @@
+import GetStartedPage from '../../guide/get-started';
+import CustomiseThemePage from '../../guide/customise-theme';
+
 const GUIDE_MENU = [{
     title: 'Get Started',
     route: '/get-started',
+    component: GetStartedPage,
 },{
     title: 'Customise Theme',
     route: '/customise-theme',
+    component: CustomiseThemePage,
 },{
     title: 'Use in create-react-app',
     route: '/use-with-create-react-app',

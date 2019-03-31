@@ -1,26 +1,29 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+type ColSpanType = number | string;
+
 export type ColSize = {
-    span?: number,
-    offset?: number,
-    order?: number,
+    span?: ColSpanType,
+    offset?: ColSpanType,
+    order?: ColSpanType,
 };
 
 export type ColProps = {
-    span?: number,
-    offset?: number,
-    order?: number,
-    xs?: number | ColSize;
-    sm?: number | ColSize;
-    md?: number | ColSize;
-    lg?: number | ColSize;
-    xl?: number | ColSize;
-    xxl?: number | ColSize;
+    span?: ColSpanType,
+    offset?: ColSpanType,
+    order?: ColSpanType,
+    xs?: ColSpanType | ColSize,
+    sm?: ColSpanType | ColSize,
+    md?: ColSpanType | ColSize,
+    lg?: ColSpanType | ColSize,
+    xl?: ColSpanType | ColSize,
+    xxl?: ColSpanType | ColSize,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
-    children: React.ReactNode,
+    children?: React.ReactNode,
+    [size: string]: any,  // solve index signature
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -30,18 +33,18 @@ const defaultProps = {
     order: 0,
 };
 
+const ScreenType = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+
 const Col = (props: ColProps) => {
-    const { span, offset, order, prefixCls, className, style, children, ...others } = props;
+    const { span, offset, order, prefixCls, className, style, children } = props;
     let sizeClassObj = {};
-    ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].forEach(size => {
+    ScreenType.forEach(size => {
         let sizeProps: ColSize = {};
         if (typeof props[size] === 'number') {
             sizeProps.span = props[size];
         } else if (typeof props[size] === 'object') {
             sizeProps = props[size] || {};
         }
-
-        delete others[size];
 
         sizeClassObj = {
             ...sizeClassObj,

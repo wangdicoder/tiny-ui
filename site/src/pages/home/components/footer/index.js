@@ -1,7 +1,7 @@
 import React from 'react';
 import './footer.scss';
 import { version } from '../../../../../package';
-import {Icon} from 'core/src';
+import {Icon} from 'tiny-ui/src';
 
 const Footer = () => (
 	<footer className="footer">

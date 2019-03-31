@@ -4,7 +4,7 @@
   "description": "A friendly ui component set for react",
   "license": "MIT",
   "main": "lib/index.js",
-  "typings": "types/index.d.ts",
+  "typings": "typings/index.d.ts",
   "keywords": [
     "tiny",
     "tiny-ui",
@@ -35,7 +35,6 @@
     "clean-webpack-plugin": "^2.0.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "extract-text-webpack-plugin": "^3.0.2",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-postcss": "^8.0.0",

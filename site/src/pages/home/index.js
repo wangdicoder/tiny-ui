@@ -1,6 +1,6 @@
 import React from 'react';
 import './home.scss';
-import { Button, Icon } from 'core/src';
+import { Button, Icon } from 'tiny-ui/src';
 import GitHubButton from 'react-github-btn';
 import FeatureBlock from './components/feature-block';
 import Footer from './components/footer';
@@ -26,7 +26,7 @@ const FEATURES = [
 const Home = (props) => {
 
     const navigateToComponentPage = () => {
-        props.history.push('/components/get-started');
+        props.history.push('/get-started');
     };
 
     const openGithub = () => {

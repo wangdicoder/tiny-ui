@@ -1,13 +1,10 @@
-@import "../base";
+@import "../../../base";
 
-.component-page {
+.sider-menu {
   height: calc(100vh - 64px);
-
-  &__sider {
-    border-right: 1px solid #d5d5d5;
-    padding: 20px 0;
-    font-family: "Avenir Next", Arial, "Helvetica Neue", Helvetica, sans-serif;
-  }
+  border-right: 1px solid #d5d5d5;
+  padding: 20px 0;
+  font-family: "Avenir Next", Arial, "Helvetica Neue", Helvetica, sans-serif;
 
   &__title {
     margin: 0 30px;
@@ -54,7 +51,7 @@
         transition: height 300ms;
       }
 
-      &:after{
+      &:after {
         position: absolute;
         content: '';
         top: 0;

@@ -10,7 +10,6 @@ export { default as Icon } from './icon';
 export { default as Layout } from './layout';
 export { default as Loader } from './loader';
 export { default as Row } from './row';
-export { default as Message } from './message';
 export { default as Modal } from './modal';
 export { default as Overlay } from './overlay';
 export { default as Tooltip } from './tooltip';
