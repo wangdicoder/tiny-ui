@@ -16,6 +16,7 @@ const MarkdownViewer = ({ content }) => {
 				table: props => <div className="code-table-container">{renderingGenerator(props, 'table', 'code-table')}</div>,
 				code: CodeBlock,
                 inlineCode: props => renderingGenerator(props, 'code', 'code-inline-code'),
+				listItem: props => renderingGenerator(props, 'li', 'code-list-item'),
 			}}
 		/>
 	);

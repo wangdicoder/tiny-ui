@@ -55,6 +55,14 @@
     }
   }
 
+  &_left:before, &_right:after {
+    width: 5%;
+  }
+
+  &_left:after, &_right:before {
+    width: 95%;
+  }
+
   &_inner-text {
     display: inline-block;
     padding: 0 10px;

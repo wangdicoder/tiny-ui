@@ -76,6 +76,7 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Divider',
         route: '/divider',
+        component: lazy(() => import('./docs/component/divider'))
     }],
 }];
 
