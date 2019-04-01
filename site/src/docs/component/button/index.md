@@ -19,27 +19,27 @@ import { Alert } from 'rsuite';
 
 ## Methods
 
-### `Alert.info`
+### Alert.info
 
-```
+```js
 Alert.info(content: string, duration?: number, onClose?: () => void);
 ```
 
-### `Alert.success`
+### Alert.success
 
-```
+```js
 Alert.success(content: string, duration?: number, onClose?: () => void);
 ```
 
-### `Alert.warning`
+### Alert.warning
 
-```
+```js
 Alert.warning(content: string, duration?: number, onClose?: () => void);
 ```
 
-### `Alert.error`
+### Alert.error
 
-```
+```js
 Alert.error(content: string, duration?: number, onClose?: () => void);
 ```
 
@@ -55,7 +55,7 @@ _props description_
 
 Global config
 
-```
+```js
 Alert.config(options:Options);
 ```
 

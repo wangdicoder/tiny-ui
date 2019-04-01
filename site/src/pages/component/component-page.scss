@@ -1,7 +1,10 @@
 @import "../../base";
 
 .component-page {
+  font-size: 14px;
+
   &__layout {
+    padding: 30px;
     height: calc(100vh - #{$header-height});
     overflow-y: auto;
   }

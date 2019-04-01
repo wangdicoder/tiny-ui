@@ -2,13 +2,13 @@
 
 duration is a option
 
-```
+```js
 Alert.info(content: string, duration?: number, onClose?: () => void);
 ```
 
 <!--start-code-->
 
-```js
+```jsx
 render(<Button color="blue">Blue Button</Button>);
 ```
 

@@ -3,7 +3,7 @@ import CodeViewer from './CodeViewer';
 import MarkdownViewer from './MarkdownViewer';
 
 const matchCodeString = (text) => {
-    const reg = /```js([\s\S]*?)```/;
+    const reg = /```jsx([\s\S]*?)```/;
     const res = reg.exec(text);
     return res && res[1];
 };

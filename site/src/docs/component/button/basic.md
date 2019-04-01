@@ -2,7 +2,7 @@
 
 <!--start-code-->
 
-```js
+```jsx
 render(<Button color="primary" ripple>Click Me Test</Button>);
 ```
 
