@@ -33,6 +33,7 @@
     a {
       text-decoration: none;
       color: #333;
+      transition: all 300ms;
 
       &:hover {
         color: $main-color;

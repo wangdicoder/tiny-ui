@@ -26,7 +26,7 @@ const FEATURES = [
 const Home = (props) => {
 
     const navigateToComponentPage = () => {
-        props.history.push('/get-started');
+        props.history.push('/components/get-started');
     };
 
     const openGithub = () => {

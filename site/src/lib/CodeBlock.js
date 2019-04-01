@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github.css';
+import './github.scss';
 
 const CodeBlock = ({ value, language }) => {
     const codeEl = useRef(null);

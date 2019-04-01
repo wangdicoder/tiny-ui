@@ -4,6 +4,7 @@
     border: solid 1px #eaeefb;
     border-radius: 4px;
     transition: 0.2s;
+    margin: 10px 0;
   }
 
   &__previewer {
@@ -68,6 +69,15 @@
     margin: 0.5em 0 0.5em;
   }
 
+  &-link {
+    text-decoration: none;
+    color: #1890ff;
+    font-weight: 500;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
   &-inline-code {
     color: #333;
     background: #f8f8f8;
@@ -77,6 +87,7 @@
   &-table {
     border-collapse: collapse;
     border-spacing: 0;
+    font-family: "Avenir Next", Arial, "Helvetica Neue", Helvetica, sans-serif;
 
     tr {
       border-top: 1px solid #c6cbd1;
@@ -94,7 +105,7 @@
       border: 1px solid #dfe2e5;
     }
 
-    th{
+    th {
       background-color: #fafafa;
       white-space: nowrap;
       max-width: 250px;

@@ -10,7 +10,7 @@ const MarkdownViewer = ({ content }) => {
 		<ReactMarkdown
 			source={content}
 			renderers={{
-				link: props => renderingGenerator(props, 'a', 'code-link'),
+                link: props => <a className="code-link" href={props.href} target="_blank">{props.children}</a>,
 				heading: props => renderingGenerator(props, HEADINGS[props.level - 1], `code-heading-${props.level}`),
 				paragraph: props => renderingGenerator(props, 'p', 'code-p'),
 				table: props => <div className="code-table-container">{renderingGenerator(props, 'table', 'code-table')}</div>,

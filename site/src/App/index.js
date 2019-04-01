@@ -14,6 +14,7 @@ class App extends React.PureComponent {
                     <Route exact path="/home" component={HomePage}/>
                     {process.env.NODE_ENV === 'development' && <Route exact path="/test" component={TestPage}/>}
                     <Route path="/components/:page" component={ComponentPage}/>
+                    <Redirect from="/components" to="/components/get-started"/>
                     <Redirect from="/" to="/home"/>
                 </Switch>
             </Router>
