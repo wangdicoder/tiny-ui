@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MarkdownViewer from './MarkdownViewer';
 import composeCodeExamples from './composeCodeExamples';
 
-const createComponentExample = ({ componentName, examples, dependencies }) => {
+export default ({ componentName, examples, dependencies }) => {
     const file = require(`../docs/component/${componentName}/index.md`);
     const renderCoderViews = composeCodeExamples(componentName, examples, dependencies);
 
@@ -27,5 +27,3 @@ const createComponentExample = ({ componentName, examples, dependencies }) => {
     };
 
 };
-
-export default createComponentExample;

@@ -29,7 +29,7 @@ const LoadSourceCodeViewer = ({ componentName, example, scope }) => {
         });
     }, []);
 
-    if (!code) return 'loading...';
+    if (!code) return null;
     return (
         <div>
             <MarkdownViewer content={md}/>

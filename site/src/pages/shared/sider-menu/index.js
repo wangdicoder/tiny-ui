@@ -1,6 +1,6 @@
 import React from 'react';
 import './sider-menu.scss';
-import { COMPONENT_MENU, GUIDE_MENU } from './menu';
+import { COMPONENT_MENU, GUIDE_MENU } from '../../../menu';
 import { NavLink } from 'react-router-dom';
 import { Layout } from 'tiny-ui/src';
 const { Sider } = Layout;
@@ -12,7 +12,7 @@ const SiderMenu = () => (
             {GUIDE_MENU.map((menu, idx) => (
                 <li key={idx} className="sider-menu__menu-item">
                     <NavLink
-                        to={`${menu.route}`}
+                        to={`/components${menu.route}`}
                         activeClassName="sider-menu__menu-item_active">
                         {menu.title}
                     </NavLink>

@@ -1,15 +1,13 @@
 import React, {lazy} from 'react';
-import GetStartedPage from '../../guide/get-started';
-import CustomiseThemePage from '../../guide/customise-theme';
 
 const GUIDE_MENU = [{
     title: 'Get Started',
     route: '/get-started',
-    component: GetStartedPage,
+    component: lazy(() => import('./docs/guide/get-started')),
 },{
     title: 'Customise Theme',
     route: '/customise-theme',
-    component: CustomiseThemePage,
+    // component: lazy(() => import('../../guide/customise-theme')),
 },{
     title: 'Use in create-react-app',
     route: '/use-with-create-react-app',
@@ -26,7 +24,7 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Button',
         route: '/button',
-        component: React.lazy(() => import('../../../docs/component/button')),
+        component: lazy(() => import('./docs/component/button')),
     }, {
         title: 'Icon',
         route: '/icon',
