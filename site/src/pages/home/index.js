@@ -37,6 +37,7 @@ const Home = (props) => {
         <div className="home">
             <div className="home__slider">
                 <div className="home__logo-container">
+                    <img src={require('../../assets/react-logo.svg')} alt="react" className="home__react-logo"/>
                     <img src={require('../../assets/logo.svg')} alt="logo" className="home__logo"/>
                 </div>
                 <div>

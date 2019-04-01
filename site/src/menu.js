@@ -7,16 +7,19 @@ const GUIDE_MENU = [{
 },{
     title: 'Customise Theme',
     route: '/customise-theme',
-    // component: lazy(() => import('../../guide/customise-theme')),
+    component: lazy(() => import('./docs/guide/customise-theme')),
 },{
     title: 'Use in create-react-app',
     route: '/use-with-create-react-app',
+    component: lazy(() => import('./docs/guide/use-react-app')),
 },{
     title: 'Change Log',
     route: '/change-log',
+    component: lazy(() => import('./docs/guide/change-log')),
 },{
     title: 'FAQ',
     route: '/faq',
+    component: lazy(() => import('./docs/guide/faq')),
 },];
 
 const COMPONENT_MENU = [{

@@ -1,4 +1,4 @@
-# Alert
+# Button
 
 The global prompt information used after the interaction in the page is suspended in the middle of the top of the page.
 

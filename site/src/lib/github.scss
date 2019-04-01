@@ -12,7 +12,8 @@ Customised by Di Wang <wangdicoder@gmail.com>
   overflow-x: auto;
   padding: 0.5em;
   color: #333;
-  background: #f8f8f8;
+  background: #f9fafc;
+  border: 1px solid #eee;
 }
 
 .hljs-comment,
@@ -24,7 +25,7 @@ Customised by Di Wang <wangdicoder@gmail.com>
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-subst {
-  color: rgba($main-color, .9);
+  color: rgba($main-color, .95);
   font-weight: bold;
 }
 

@@ -1,62 +1,71 @@
 @import "../../base";
 
 .home {
-    height: calc(100vh - #{$header-height});
-    background: url("../../assets/background.svg") top right no-repeat;
-    background-size: 250px;
+  height: calc(100vh - #{$header-height});
+  background: url("../../assets/background.svg") top right no-repeat;
+  background-size: 250px;
 
-    &__slider{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 40px;
-        height: 100%;
-    }
+  &__slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+    height: 100%;
+  }
 
-    &__logo-container{
-        margin-right: 40px;
-    }
+  &__logo-container {
+    position: relative;
+    margin-right: 40px;
+  }
 
-    &__logo {
-        width: 200px;
-        animation: logo-spin infinite 20s linear;
-    }
+  &__react-logo {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    left: -250px;
+    top: -250px;
+    animation: logo-spin infinite 50s linear;
+  }
 
-    &__title {
-        font-weight: 500;
-        font-size: 36px;
-        margin: 0;
-    }
+  &__logo {
+    width: 200px;
+  }
 
-    &__subtitle {
-        font-weight: 400;
-        margin: 10px 0 0 0;
-        font-size: 24px;
-        color: #85888f;
-    }
+  &__title {
+    font-weight: 500;
+    font-size: 36px;
+    margin: 0;
+  }
 
-    &__btn-group {
-        margin: 20px 0 0 0;
-        display: flex;
-    }
+  &__subtitle {
+    font-weight: 400;
+    margin: 10px 0 0 0;
+    font-size: 24px;
+    color: #85888f;
+  }
 
-    &__feature-title{
-        text-align: center;
-        font-weight: 500;
-        margin-bottom: 40px;
-    }
+  &__btn-group {
+    margin: 20px 0 0 0;
+    display: flex;
+  }
 
-    &__features{
-        display: flex;
-        padding: 0 40px;
-    }
+  &__feature-title {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
 
-    @keyframes logo-spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(-360deg);
-        }
+  &__features {
+    display: flex;
+    padding: 0 40px;
+  }
+
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
     }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
 }

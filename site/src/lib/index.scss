@@ -1,3 +1,4 @@
+@import "../base";
 
 .code-viewer {
   &__container {
@@ -54,6 +55,8 @@
 
   &-heading-1 {
     margin: 5px 0 10px;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 10px;
   }
 
   &-heading-2 {
@@ -71,7 +74,7 @@
 
   &-link {
     text-decoration: none;
-    color: #1890ff;
+    color: $main-color;
     font-weight: 500;
     &:hover{
       text-decoration: underline;
