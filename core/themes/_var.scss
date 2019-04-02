@@ -10,6 +10,9 @@ $red-color: #f44336; //error
 $pink-color: #e91e63;
 $white-color: #fff;
 
+//common
+$border-radius: 3px;
+
 //font
 $font-size: 13px;
 $font-weight: 300;
@@ -34,7 +37,7 @@ $layout-footer-padding: 24px 50px;
 $layout-sider-background: #12131a;
 
 //button
-$btn-border-radius: 3px;
+$btn-border-radius: $border-radius;
 $btn-lg-font-size: $font-size + 3px;
 $btn-lg-padding: 12px 28px;
 $btn-md-font-size: $font-size;
@@ -62,3 +65,12 @@ $badge-dot-size: 6px;
 
 //divider
 $divider-line-color: #e4e4e4;
+
+//input
+$input-border-radius: $border-radius;
+$input-sm-padding: 2px 6px;;
+$input-sm-font-size: 12px;
+$input-md-padding: 6px 8px;
+$input-md-font-size: 14px;
+$input-lg-padding: 10px 11px;
+$input-lg-font-size: 17px;

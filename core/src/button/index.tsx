@@ -6,9 +6,6 @@ export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | '
 export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonProps = {
-    onClick?: React.MouseEventHandler<HTMLButtonElement>,
-    /** html type */
-    type?: 'button' | 'submit' | 'reset',
     color?: ButtonColors,
     loading?: boolean,
     disabled?: boolean,
@@ -30,7 +27,6 @@ const defaultProps = {
     prefixCls: 'ty-btn',
     size: 'md',
     color: 'default',
-    type: 'button',
     onClick: () => {
     },
 };
@@ -45,7 +41,7 @@ const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
 
 const Button = (props: ButtonProps) => {
     const {
-        onClick, type, color, size, block, icon, link, loading, dash, disabled, outline,
+        color, size, block, icon, link, loading, dash, disabled, outline,
         round, ripple, children, className, prefixCls, style, ...restProps
     } = props;
     const cls = classnames(
@@ -64,10 +60,8 @@ const Button = (props: ButtonProps) => {
     );
     return (
         <button
-            onClick={onClick}
             className={cls}
             disabled={disabled || loading}
-            type={type}
             style={style}
             {...restProps}>
             {renderIcon(icon, loading)}
