@@ -2,23 +2,23 @@ import React, {lazy} from 'react';
 
 const GUIDE_MENU = [{
     title: 'Get Started',
-    route: '/get-started',
+    route: 'get-started',
     component: lazy(() => import('./docs/guide/get-started')),
 },{
     title: 'Customise Theme',
-    route: '/customise-theme',
+    route: 'customise-theme',
     component: lazy(() => import('./docs/guide/customise-theme')),
 },{
     title: 'Use in create-react-app',
-    route: '/use-with-create-react-app',
+    route: 'use-with-create-react-app',
     component: lazy(() => import('./docs/guide/use-react-app')),
 },{
     title: 'Change Log',
-    route: '/change-log',
+    route: 'change-log',
     component: lazy(() => import('./docs/guide/change-log')),
 },{
     title: 'FAQ',
-    route: '/faq',
+    route: 'faq',
     component: lazy(() => import('./docs/guide/faq')),
 },];
 
@@ -26,56 +26,56 @@ const COMPONENT_MENU = [{
     title: 'Basic',
     children: [{
         title: 'Button',
-        route: '/button',
+        route: 'button',
         component: lazy(() => import('./docs/component/button')),
     }, {
         title: 'Icon',
-        route: '/icon',
+        route: 'icon',
     }, {
         title: 'Color',
-        route: '/color',
+        route: 'color',
     }, {
         title: 'Typography',
-        route: '/typography',
+        route: 'typography',
     }],
 }, {
     title: 'Layout',
     children: [{
         title: 'Grid',
-        route: '/grid',
+        route: 'grid',
     }, {
         title: 'Layout',
-        route: '/layout',
+        route: 'layout',
     }],
 }, {
     title: 'Form',
     children: [{
         title: 'Radio',
-        route: '/radio',
+        route: 'radio',
     }],
 }, {
     title: 'Data Display',
     children: [{
         title: 'Avatar',
-        route: '/avatar',
+        route: 'avatar',
     }, {
         title: 'Badge',
-        route: '/badge',
+        route: 'badge',
     }],
 }, {
     title: 'Feedback',
     children: [{
         title: 'Alert',
-        route: '/alert',
+        route: 'alert',
     }, {
         title: 'Modal',
-        route: '/modal',
+        route: 'modal',
     }],
 }, {
     title: 'Miscellany',
     children: [{
         title: 'Divider',
-        route: '/divider',
+        route: 'divider',
         component: lazy(() => import('./docs/component/divider'))
     }],
 }];

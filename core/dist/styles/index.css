@@ -1665,6 +1665,10 @@
       border-top: 1px solid #e4e4e4;
       -webkit-transform: translateY(50%);
               transform: translateY(50%); }
+  .ty-divider_left:before, .ty-divider_right:after {
+    width: 5%; }
+  .ty-divider_left:after, .ty-divider_right:before {
+    width: 95%; }
   .ty-divider_inner-text {
     display: inline-block;
     padding: 0 10px; }

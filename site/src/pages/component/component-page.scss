@@ -8,4 +8,40 @@
     height: calc(100vh - #{$header-height});
     overflow-y: auto;
   }
+
+  &__divider {
+    margin: 40px 0 30px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    a {
+      text-decoration: none;
+      font-size: 15px;
+      line-height: 15px;
+      color: $main-color;
+
+      &:hover {
+        .component-page__footer-icon-left {
+          left: -5px;
+        }
+        .component-page__footer-icon-right {
+          left: 5px;
+        }
+      }
+    }
+
+    &-label {
+      margin: 0 10px;
+    }
+
+    &-icon-left, &-icon-right {
+      position: relative;
+      left: 0;
+      transition: all 400ms;
+    }
+  }
 }

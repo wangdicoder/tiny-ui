@@ -12,7 +12,7 @@ const SiderMenu = () => (
             {GUIDE_MENU.map((menu, idx) => (
                 <li key={idx} className="sider-menu__menu-item">
                     <NavLink
-                        to={`/components${menu.route}`}
+                        to={`/components/${menu.route}`}
                         activeClassName="sider-menu__menu-item_active">
                         {menu.title}
                     </NavLink>
@@ -29,7 +29,7 @@ const SiderMenu = () => (
                         {mainMenu.children.map((menu, idx) => (
                             <li key={idx} className="sider-menu__menu-item">
                                 <NavLink
-                                    to={`/components${menu.route}`}
+                                    to={`/components/${menu.route}`}
                                     activeClassName="sider-menu__menu-item_active">
                                     {menu.title}
                                 </NavLink>
