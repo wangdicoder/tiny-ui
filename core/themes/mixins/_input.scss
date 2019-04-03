@@ -1,0 +1,60 @@
+@import "../var";
+
+@mixin input-default($isField: true) {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, .65);
+  border: 1px solid #d9d9d9;
+  transition: all .3s;
+  outline: 0;
+  border-radius: $input-border-radius;
+
+  @if ($isField) {
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:focus {
+      border-color: rgba($primary-color, 0.8);
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    }
+
+    &::placeholder {
+      color: #BFBFBF;
+    }
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+    background-color: #f2f3f5;
+    color: #999;
+    border-color: #e7e9eb;
+
+    &:hover {
+      border-color: #e7e9eb;
+    }
+  }
+
+  &_sm {
+    font-size: $input-sm-font-size;
+    padding: $input-sm-padding;
+    line-height: $input-sm-height - 1px;
+    height: $input-sm-height;
+  }
+
+  &_md {
+    font-size: $input-md-font-size;
+    padding: $input-md-padding;
+    line-height: $input-md-height - 1px;
+    height: $input-md-height;
+  }
+
+  &_lg {
+    font-size: $input-lg-font-size;
+    padding: $input-lg-padding;
+    line-height: $input-lg-height - 1px;
+    height: $input-lg-height;
+  }
+}

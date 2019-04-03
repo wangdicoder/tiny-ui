@@ -1,61 +1,75 @@
 @import "../var";
+@import "../mixins/input";
 
 .#{$prefix}input {
-  box-sizing: border-box;
-  margin: 0;
-  list-style: none;
-  position: relative;
-  display: inline-block;
-  color: rgba(0, 0, 0, .65);
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
-  transition: all .3s;
-  outline: 0;
+  @include input-default();
+  z-index: 1;
 
-  &:hover {
-    border-color: $primary-color;
-  }
-
-  &:focus {
-    border-color: rgba($primary-color, 0.8);
-    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
-  }
-
-  &::placeholder {
-    color: #BFBFBF;
-  }
-
-  &_disabled {
-    cursor: not-allowed;
-    background-color: #f2f3f5;
-    color: #999;
-    border-color: #e7e9eb;
-
-    &:hover {
-      border-color: #e7e9eb;
-    }
-  }
-
-  &_block{
+  &_block {
     width: 100%;
     display: block;
   }
 
-  &_sm {
-    font-size: $input-sm-font-size;
-    padding: $input-sm-padding;
-    line-height: $input-sm-font-size;
+  &-group {
+    box-sizing: border-box;
+
+    .#{$prefix}input {
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+      }
+    }
   }
 
-  &_md {
-    font-size: $input-md-font-size;
-    padding: $input-md-padding;
-    line-height: $input-md-font-size;
-  }
+  &-group-addon {
+    @include input-default(false);
+    background-color: #fafafa;
 
-  &_lg {
-    font-size: $input-lg-font-size;
-    padding: $input-lg-padding;
-    line-height: $input-lg-font-size;
+    &:first-child {
+      border-right: 0;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &:last-child {
+      border-left: 0;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    &_btn {
+      z-index: 1;
+      cursor: pointer;
+      transition: all 300ms;
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: #fff;
+      user-select: none;
+      left: -1px; //cover input right border
+
+      &:hover {
+        border-color: transparent;
+        background-color: rgba($primary-color, .8);
+      }
+
+      &:active {
+        background-color: darken($primary-color, 2.5%);
+      }
+    }
   }
 }

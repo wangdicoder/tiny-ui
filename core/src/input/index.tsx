@@ -1,7 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
+import InputGroup from './input-group';
+import InputGroupAddon from './input-group-addon';
 
-type InputSizes = 'sm' | 'md' | 'lg';
+export type InputSizes = 'sm' | 'md' | 'lg';
 
 export type InputProps = {
     defaultValue?: string,
@@ -34,10 +36,21 @@ const Input = (props: InputProps) => {
     };
 
     return (
-        <input disabled={disabled} className={cls} style={style} onChange={inputOnChange} {...restProps}/>
+        <input
+            defaultValue={defaultValue}
+            value={value}
+            disabled={disabled}
+            className={cls}
+            style={style}
+            onChange={inputOnChange}
+            {...restProps}
+        />
     );
 };
 
 Input.defaultProps = defaultProps;
+
+Input.Group = InputGroup;
+Input.Addon = InputGroupAddon;
 
 export default Input;

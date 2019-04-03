@@ -11,7 +11,7 @@ $pink-color: #e91e63;
 $white-color: #fff;
 
 //common
-$border-radius: 3px;
+$border-radius: 2px;
 
 //font
 $font-size: 13px;
@@ -68,9 +68,16 @@ $divider-line-color: #e4e4e4;
 
 //input
 $input-border-radius: $border-radius;
-$input-sm-padding: 2px 6px;;
+$input-sm-padding: 0 4px;
+$input-sm-height: 21px;
 $input-sm-font-size: 12px;
-$input-md-padding: 6px 8px;
+$input-md-padding: 0 8px;
 $input-md-font-size: 14px;
-$input-lg-padding: 10px 11px;
+$input-md-height: 31px;
+$input-lg-padding: 0 11px;
 $input-lg-font-size: 17px;
+$input-lg-height: 42px;
+
+//textarea
+$textarea-font-size: 14px;
+$textarea-padding: 5px;

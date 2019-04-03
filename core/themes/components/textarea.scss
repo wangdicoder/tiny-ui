@@ -1,0 +1,9 @@
+@import "../var";
+@import "../mixins/input";
+
+.#{$prefix}textarea {
+  @include input-default();
+  width: 100%;
+  font-size: $textarea-font-size;
+  padding: $textarea-padding;
+}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import FlipItem, { FlipItemProps } from './flip-item';
+import warning from '../utils/warning';
 
 export type FlipTypes = {
     children: React.ReactElement<FlipItemProps>,
@@ -36,8 +37,8 @@ const Flip = (props: FlipTypes) => {
         },
     );
 
-    // warning(!children || React.Children.count(children) !== 2,
-    //     'Children must contain front and back components.', true);
+    warning(!children || React.Children.count(children) !== 2,
+        'Children must contain front and back components.', true);
 
     return (
         <div className={cls} style={{ height, ...style }}>

@@ -14,7 +14,7 @@
     "noEmitHelpers": true, // disable inline transpilation helpers in each file
     "jsx": "react", // transform JSX
     "lib": ["dom", "es2017"], // you will need to include polyfills for es2017 manually
-    "types": ["jest"], // which global types to use
+    "types": ["node", "jest"], // which global types to use
     "target": "es5", // "es2015" for ES6+ engines
     "module": "es2015", // "es2015" for tree-shaking
     "moduleResolution": "node",

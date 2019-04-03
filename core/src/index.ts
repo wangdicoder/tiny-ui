@@ -13,4 +13,5 @@ export { default as Loader } from './loader';
 export { default as Row } from './row';
 export { default as Modal } from './modal';
 export { default as Overlay } from './overlay';
+export { default as Textarea } from './textarea';
 // export { default as Tooltip } from './tooltip';
