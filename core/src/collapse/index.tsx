@@ -68,10 +68,10 @@ const Collapse = (props: CollapseTypes) => {
                 items.push(itemKey);
             }
         }
-        updateActiveItems(items);
+        _updateActiveItems(items);
     };
 
-    const updateActiveItems = (items: string[]) => {
+    const _updateActiveItems = (items: string[]) => {
         if (!('activeKey' in props)) { // only for defaultKey
             setActiveItems(items);
         }

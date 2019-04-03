@@ -26,17 +26,6 @@
     }
   }
 
-  &_disabled {
-    cursor: not-allowed;
-    background-color: #f2f3f5;
-    color: #999;
-    border-color: #e7e9eb;
-
-    &:hover {
-      border-color: #e7e9eb;
-    }
-  }
-
   &_sm {
     font-size: $input-sm-font-size;
     padding: $input-sm-padding;
@@ -56,5 +45,16 @@
     padding: $input-lg-padding;
     line-height: $input-lg-height - 1px;
     height: $input-lg-height;
+  }
+}
+
+@mixin input-default-disabled {
+  cursor: not-allowed;
+  background-color: #f2f3f5;
+  color: #999;
+  border-color: #e7e9eb;
+
+  &:hover {
+    border-color: #e7e9eb;
   }
 }

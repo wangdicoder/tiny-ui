@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { InputGroupAddonProps } from './input-group-addon';
-import { InputProps, InputSizes } from '.';
+import { InputSizes } from '.';
 
 export type InputGroupProps = {
     inside?: boolean,
@@ -10,7 +9,7 @@ export type InputGroupProps = {
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
-    children: React.ReactElement<InputProps | InputGroupAddonProps>,
+    children: React.ReactNode,
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -21,16 +20,17 @@ const defaultProps = {
 };
 
 const InputGroup = (props: InputGroupProps) => {
-    const { disabled, size, prefixCls, className, style, children } = props;
+    const { inside, disabled, size, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
 
     return (
         <div className={cls} style={style}>
-            {React.Children.map(children, (child) => {
+            {React.Children.map(children, (child: any) => {
                 const childProps = {
                     ...child.props,
                     disabled,
                     size,
+                    inside,
                 };
                 return React.cloneElement(child, childProps);
             })}

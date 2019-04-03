@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import InputGroup from './input-group';
 import InputGroupAddon from './input-group-addon';
+import InputGroupButton from './input-group-button';
 
 export type InputSizes = 'sm' | 'md' | 'lg';
 
@@ -52,5 +53,6 @@ Input.defaultProps = defaultProps;
 
 Input.Group = InputGroup;
 Input.Addon = InputGroupAddon;
+Input.Button = InputGroupButton;
 
 export default Input;
