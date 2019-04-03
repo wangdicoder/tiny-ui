@@ -1,11 +1,14 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 
 export type TextareaProps = {
+    limit?: number,
+    counter?: React.ReactNode,
     defaultValue?: string,
     value?: string,
     rows?: number,
     onChange?: (value: any, event: React.FormEvent<HTMLTextAreaElement>) => void,
+    onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>,
     disabled?: boolean,
     prefixCls?: string,
     className?: string,
@@ -15,28 +18,54 @@ export type TextareaProps = {
 const defaultProps = {
     prefixCls: 'ty-textarea',
     disabled: false,
-    rows: 3,
 };
 
 const Textarea = (props: TextareaProps) => {
-    const { defaultValue, value, rows, onChange, disabled, prefixCls, className, style } = props;
+    const {
+        limit, counter, defaultValue, value, rows, onChange,
+        disabled, prefixCls, className, style,
+    } = props;
     const cls = classnames(prefixCls, className, {
         [`${prefixCls}_disabled`]: disabled,
     });
+    const [count, setCount] = useState(0);
 
-    const inputOnChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    const _inputOnChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
+        setCount(e.currentTarget.value.length);
         onChange && onChange(e.currentTarget.value, e);
     };
 
-    return (
-        <textarea
-            rows={rows}
-            value={value}
-            defaultValue={defaultValue}
-            className={cls} style={style}
-            onChange={inputOnChange}
-        />
-    );
+    if (limit || counter) {
+        return (
+            <span className={`${prefixCls}-container`}>
+                <textarea
+                    maxLength={limit}
+                    rows={rows}
+                    value={value}
+                    defaultValue={defaultValue}
+                    disabled={disabled}
+                    className={cls}
+                    style={style}
+                    onChange={_inputOnChange}
+                />
+                <span className={`${prefixCls}__counter`}>
+                    {counter && (typeof counter === 'function') ? counter(count) : `${count}/${limit}`}
+                </span>
+            </span>
+        );
+    } else {
+        return (
+            <textarea
+                rows={rows}
+                value={value}
+                defaultValue={defaultValue}
+                disabled={disabled}
+                className={cls}
+                style={style}
+                onChange={_inputOnChange}
+            />
+        );
+    }
 };
 
 Textarea.defaultProps = defaultProps;
