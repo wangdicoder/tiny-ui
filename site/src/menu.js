@@ -1,6 +1,10 @@
 import React, {lazy} from 'react';
 
 const GUIDE_MENU = [{
+    title: 'Tiny UI Introduction',
+    route: 'introduction',
+    component: lazy(() => import('./docs/guide/introduction')),
+}, {
     title: 'Get Started',
     route: 'get-started',
     component: lazy(() => import('./docs/guide/get-started')),

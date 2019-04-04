@@ -9,7 +9,7 @@
   margin-bottom: 20px;
   font-weight: 300;
   opacity: 1;
-  font-size: 13px;
+  font-size: 14px;
   transition: all 400ms;
   -webkit-transform-origin: center top;
           transform-origin: center top;
@@ -452,25 +452,25 @@
     .ty-btn_pink_disabled:hover {
       box-shadow: 0 1px 2px 0 rgba(233, 30, 99, 0.14); }
   .ty-btn_lg {
-    font-size: 16px;
+    font-size: 17px;
     padding: 12px 28px; }
     .ty-btn_lg .ty-btn__loader {
       height: 15px;
       width: 15px; }
   .ty-btn_md {
-    font-size: 13px;
+    font-size: 14px;
     padding: 8px 15px; }
     .ty-btn_md .ty-btn__loader {
       height: 13px;
       width: 13px; }
   .ty-btn_sm {
-    font-size: 11px;
+    font-size: 12px;
     padding: 5px 10px; }
     .ty-btn_sm .ty-btn__loader {
       height: 11px;
       width: 11px; }
   .ty-btn_xs {
-    font-size: 9px;
+    font-size: 10px;
     padding: 2px 6px; }
     .ty-btn_xs .ty-btn__loader {
       height: 9px;
@@ -2429,6 +2429,159 @@
     -webkit-animation: ty-rotate 1s linear infinite;
             animation: ty-rotate 1s linear infinite; }
 
+.ty-input {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.65);
+  border: 1px solid #d9d9d9;
+  transition: all .3s;
+  outline: 0;
+  border-radius: 3px;
+  z-index: 1; }
+  .ty-input:hover {
+    border-color: #6E41BF; }
+  .ty-input:focus {
+    border-color: rgba(110, 65, 191, 0.8);
+    box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
+  .ty-input::-webkit-input-placeholder {
+    color: #BFBFBF; }
+  .ty-input:-ms-input-placeholder {
+    color: #BFBFBF; }
+  .ty-input::-ms-input-placeholder {
+    color: #BFBFBF; }
+  .ty-input::placeholder {
+    color: #BFBFBF; }
+  .ty-input_sm {
+    font-size: 12px;
+    padding: 0 4px;
+    line-height: 20px;
+    height: 21px; }
+  .ty-input_md {
+    font-size: 14px;
+    padding: 0 8px;
+    line-height: 30px;
+    height: 31px; }
+  .ty-input_lg {
+    font-size: 17px;
+    padding: 0 11px;
+    line-height: 41px;
+    height: 42px; }
+  .ty-input_disabled {
+    cursor: not-allowed;
+    background-color: #f4f4f5;
+    color: #999;
+    border-color: #e7e9eb; }
+    .ty-input_disabled:hover {
+      border-color: #e7e9eb; }
+  .ty-input_block {
+    width: 100%;
+    display: block; }
+  .ty-input-group {
+    box-sizing: border-box; }
+    .ty-input-group .ty-input:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0; }
+    .ty-input-group .ty-input:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0; }
+    .ty-input-group .ty-input:not(:first-child):not(:last-child) {
+      border-radius: 0; }
+  .ty-input-group-btn:first-child, .ty-input-group-addon:first-child {
+    border-right: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0; }
+  .ty-input-group-btn:last-child, .ty-input-group-addon:last-child {
+    border-left: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0; }
+  .ty-input-group-btn:not(:first-child):not(:last-child), .ty-input-group-addon:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0; }
+  .ty-input-group-addon {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.65);
+    border: 1px solid #d9d9d9;
+    transition: all .3s;
+    outline: 0;
+    border-radius: 3px;
+    background-color: #fafafa; }
+    .ty-input-group-addon_sm {
+      font-size: 12px;
+      padding: 0 4px;
+      line-height: 20px;
+      height: 21px; }
+    .ty-input-group-addon_md {
+      font-size: 14px;
+      padding: 0 8px;
+      line-height: 30px;
+      height: 31px; }
+    .ty-input-group-addon_lg {
+      font-size: 17px;
+      padding: 0 11px;
+      line-height: 41px;
+      height: 42px; }
+    .ty-input-group-addon_disabled {
+      cursor: not-allowed;
+      background-color: #f4f4f5;
+      color: #999;
+      border-color: #e7e9eb; }
+      .ty-input-group-addon_disabled:hover {
+        border-color: #e7e9eb; }
+  .ty-input-group-btn {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.65);
+    border: 1px solid #d9d9d9;
+    transition: all .3s;
+    outline: 0;
+    border-radius: 3px;
+    z-index: 1;
+    cursor: pointer;
+    background-color: #6E41BF;
+    border-color: #6E41BF;
+    color: #fff;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    left: -1px; }
+    .ty-input-group-btn_sm {
+      font-size: 12px;
+      padding: 0 4px;
+      line-height: 20px;
+      height: 21px; }
+    .ty-input-group-btn_md {
+      font-size: 14px;
+      padding: 0 8px;
+      line-height: 30px;
+      height: 31px; }
+    .ty-input-group-btn_lg {
+      font-size: 17px;
+      padding: 0 11px;
+      line-height: 41px;
+      height: 42px; }
+    .ty-input-group-btn:hover {
+      border-color: transparent;
+      background-color: rgba(110, 65, 191, 0.8); }
+    .ty-input-group-btn:active {
+      background-color: #683db6; }
+    .ty-input-group-btn_disabled {
+      border-color: transparent;
+      cursor: not-allowed;
+      background-color: rgba(110, 65, 191, 0.3); }
+      .ty-input-group-btn_disabled:hover {
+        background-color: rgba(110, 65, 191, 0.3); }
+      .ty-input-group-btn_disabled:active {
+        background-color: rgba(110, 65, 191, 0.3); }
+
 .ty-layout {
   box-sizing: border-box;
   display: flex;
@@ -2445,12 +2598,12 @@
 .ty-layout-footer {
   box-sizing: border-box;
   padding: 24px 50px;
-  background-color: #f0f2f5; }
+  background-color: #fff; }
 
 .ty-layout-content {
   flex: 1;
   box-sizing: border-box;
-  background-color: #f0f2f5; }
+  background-color: #fff; }
 
 .ty-layout-sider {
   position: relative;
@@ -2734,5 +2887,113 @@
     align-items: flex-end; }
   .ty-row_align-baseline {
     align-items: baseline; }
+
+.ty-select-native {
+  display: inline-flex;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: #182026;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  line-height: 18px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4gIDxwYXRoIGZpbGw9IiMzOTNFNDgiIGQ9Ik0wLjIyMiw1LjYxMyBMNS40NTEsMC4yMjMgQzUuNzU2MjEyMDksLTAuMDc0MzYzMjMzMyA2LjI0Mjc4NzkxLC0wLjA3NDM2MzIzMzMgNi41NDgsMC4yMjMgTDExLjc3OCw1LjYxMyBDMTIuMTgsNi4wMjcgMTIuMDI1LDYuNjY3IDExLjQwNyw2LjY2NyBMMC41OTIsNi42NjcgQy0wLjAyNCw2LjY2NyAtMC4xOCw2LjAyNyAwLjIyMiw1LjYxMyBaIE0wLjU5Miw5LjMzMyBMMTEuNDA3LDkuMzMzIEMxMi4wMjUsOS4zMzMgMTIuMTgsOS45NzMgMTEuNzc3LDEwLjM4NyBMNi41NDcsMTUuNzc3IEM2LjI0MTkxMjU4LDE2LjA3MzcxNDMgNS43NTYwODc0MiwxNi4wNzM3MTQzIDUuNDUxLDE1Ljc3NyBMMC4yMjIsMTAuMzg3IEMtMC4xOCw5Ljk3MyAtMC4wMjQsOS4zMzMgMC41OTIsOS4zMzMgWiIvPjwvc3ZnPg==");
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .62em auto, 100%;
+  transition: all .3s;
+  outline: none; }
+  .ty-select-native:hover {
+    border-color: #6E41BF; }
+  .ty-select-native:focus {
+    border-color: rgba(110, 65, 191, 0.8);
+    box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
+  .ty-select-native_disabled {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4gIDxwYXRoIGZpbGw9IiMzOTNFNDgiIGQ9Ik0wLjIyMiw1LjYxMyBMNS40NTEsMC4yMjMgQzUuNzU2MjEyMDksLTAuMDc0MzYzMjMzMyA2LjI0Mjc4NzkxLC0wLjA3NDM2MzIzMzMgNi41NDgsMC4yMjMgTDExLjc3OCw1LjYxMyBDMTIuMTgsNi4wMjcgMTIuMDI1LDYuNjY3IDExLjQwNyw2LjY2NyBMMC41OTIsNi42NjcgQy0wLjAyNCw2LjY2NyAtMC4xOCw2LjAyNyAwLjIyMiw1LjYxMyBaIE0wLjU5Miw5LjMzMyBMMTEuNDA3LDkuMzMzIEMxMi4wMjUsOS4zMzMgMTIuMTgsOS45NzMgMTEuNzc3LDEwLjM4NyBMNi41NDcsMTUuNzc3IEM2LjI0MTkxMjU4LDE2LjA3MzcxNDMgNS43NTYwODc0MiwxNi4wNzM3MTQzIDUuNDUxLDE1Ljc3NyBMMC4yMjIsMTAuMzg3IEMtMC4xOCw5Ljk3MyAtMC4wMjQsOS4zMzMgMC41OTIsOS4zMzMgWiIvPjwvc3ZnPg==");
+    background-size: .52em auto, 100%;
+    background-color: #ddd;
+    opacity: 0.75;
+    color: #a5a5a5;
+    cursor: not-allowed;
+    resize: none; }
+    .ty-select-native_disabled:hover {
+      border-color: transparent; }
+    .ty-select-native_disabled:focus {
+      border-color: transparent;
+      box-shadow: none; }
+  .ty-select-native_sm {
+    padding: 3px 25px 3px 7px;
+    font-size: 12px; }
+  .ty-select-native_md {
+    padding: 6px 25px 6px 10px;
+    font-size: 14px; }
+  .ty-select-native_lg {
+    padding: 9px 25px 9px 12px;
+    font-size: 16px; }
+
+.ty-textarea {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.65);
+  border: 1px solid #d9d9d9;
+  transition: all .3s;
+  outline: 0;
+  border-radius: 3px;
+  width: 100%;
+  font-size: 14px;
+  padding: 5px;
+  overflow: hidden; }
+  .ty-textarea:hover {
+    border-color: #6E41BF; }
+  .ty-textarea:focus {
+    border-color: rgba(110, 65, 191, 0.8);
+    box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
+  .ty-textarea::-webkit-input-placeholder {
+    color: #BFBFBF; }
+  .ty-textarea:-ms-input-placeholder {
+    color: #BFBFBF; }
+  .ty-textarea::-ms-input-placeholder {
+    color: #BFBFBF; }
+  .ty-textarea::placeholder {
+    color: #BFBFBF; }
+  .ty-textarea_sm {
+    font-size: 12px;
+    padding: 0 4px;
+    line-height: 20px;
+    height: 21px; }
+  .ty-textarea_md {
+    font-size: 14px;
+    padding: 0 8px;
+    line-height: 30px;
+    height: 31px; }
+  .ty-textarea_lg {
+    font-size: 17px;
+    padding: 0 11px;
+    line-height: 41px;
+    height: 42px; }
+  .ty-textarea_disabled {
+    cursor: not-allowed;
+    background-color: #f4f4f5;
+    color: #999;
+    border-color: #e7e9eb; }
+    .ty-textarea_disabled:hover {
+      border-color: #e7e9eb; }
+  .ty-textarea-container {
+    position: relative; }
+    .ty-textarea-container .ty-textarea {
+      padding-bottom: 20px; }
+      .ty-textarea-container .ty-textarea__counter {
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+        font-size: 14px;
+        color: #666; }
 
 /*# sourceMappingURL=index.css.map */

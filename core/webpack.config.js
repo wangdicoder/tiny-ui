@@ -1,8 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const __DEV__ = process.env.NODE_ENV === 'development';
-const filename = __DEV__ ? '[name].js' : '[name].min.js';
+const filename = __DEV__ ? 'tiny.js' : 'tiny.min.js';
 
 module.exports = {
     mode: process.env.NODE_ENV,
@@ -26,6 +27,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ['./dist'],
+        }),
+        new webpack.SourceMapDevToolPlugin({
+            filename: 'tiny.map'
         }),
     ],
     externals: {
