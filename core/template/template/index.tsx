@@ -5,6 +5,7 @@ export type XProps = {
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
+    children?: React.ReactNode,
 } & typeof defaultProps;
 
 const defaultProps = {};

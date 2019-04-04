@@ -14,7 +14,7 @@ $white-color: #fff;
 $border-radius: 3px;
 
 //font
-$font-size: 13px;
+$font-size: 14px;
 $font-weight: 300;
 $font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
 PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -72,7 +72,7 @@ $input-sm-padding: 0 4px;
 $input-sm-height: 21px;
 $input-sm-font-size: 12px;
 $input-md-padding: 0 8px;
-$input-md-font-size: 14px;
+$input-md-font-size: $font-size;
 $input-md-height: 31px;
 $input-lg-padding: 0 11px;
 $input-lg-font-size: 17px;
@@ -81,3 +81,12 @@ $input-lg-height: 42px;
 //textarea
 $textarea-font-size: 14px;
 $textarea-padding: 5px;
+
+//select
+$select-sm-padding: 3px 25px 3px 7px;
+$select-sm-font-size: 12px;
+$select-md-padding: 6px 25px 6px 10px;
+$select-md-font-size: $font-size;
+$select-lg-padding: 9px 25px 9px 12px;
+$select-lg-font-size: 16px;
+$select-border-radius: $border-radius;
