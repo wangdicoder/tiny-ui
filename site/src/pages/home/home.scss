@@ -52,12 +52,23 @@
   &__feature-title {
     text-align: center;
     font-weight: 500;
-    margin-bottom: 40px;
+    margin: 60px 0 40px;
   }
 
   &__features {
     display: flex;
     padding: 0 40px;
+  }
+
+  &__blueprint {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__p {
+    text-align: center;
+    color: #888;
   }
 
   @keyframes logo-spin {

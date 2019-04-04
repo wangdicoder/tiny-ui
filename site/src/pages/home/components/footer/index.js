@@ -1,6 +1,6 @@
 import React from 'react';
 import './footer.scss';
-import { version } from '../../../../../package';
+import { version } from '../../../../../../core/package';
 import {Icon} from 'tiny-ui/src';
 
 const Footer = () => (
