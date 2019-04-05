@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import FlipItem, { FlipItemProps } from './flip-item';
-import warning from '../utils/warning';
+import warning from '../_utils/warning';
 
 export type FlipTypes = {
     children: React.ReactElement<FlipItemProps>,

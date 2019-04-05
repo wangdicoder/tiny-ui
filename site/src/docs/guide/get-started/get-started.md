@@ -51,7 +51,7 @@ And import stylesheets manually,
 import 'tiny-ui/dist/styles/tiny.scss'; // or 'tiny-ui/dist/styles/tiny.css'
 ```
 
-## Use modularized tiny-ui
+### Use modularized tiny-ui
 
 To avoid the problem of packaging files too large in a production environment, load a component depending on demand.
 
@@ -81,3 +81,34 @@ To avoid the problem of packaging files too large in a production environment, l
     import 'tiny-ui/lib/avatar/style/css';          // for css
     // import 'tiny-ui/lib/avatar/style';           // that will import scss
     ```
+
+### Use in browser (UMD)
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tiny-ui@{version_number}/dist/styles/index.css" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- tiny.js must be added following by react.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tiny-ui@{version_number}/dist/tiny.js" crossorigin></script>
+  </head>
+  <body>
+    <div id="root">loading...</div>
+    
+    <script type="text/babel">
+      const { Button } = tiny;
+    
+      ReactDOM.render(
+      	<Button color="primary" ripple>Click me</Button>,
+      	document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
+```

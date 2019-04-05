@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import warning from '../utils/warning';
+import warning from '../_utils/warning';
 
 export type BadgeProps = {
     count?: React.ReactNode | number,

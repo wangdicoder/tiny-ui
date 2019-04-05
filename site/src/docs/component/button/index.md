@@ -1,83 +1,27 @@
 # Button
 
-The global prompt information used after the interaction in the page is suspended in the middle of the top of the page.
+To trigger an operation.
 
-* `Alert.info` Information reminder。
-* `Alert.success` Success information reminder。
-* `Alert.warning` Warning message。
-* `Alert.error` Error message。
+## When To Use
+A button means an operation (or a series of operations). Clicking a button will trigger corresponding business logic.
 
 ## Usage
 
 ```js
-import { Alert } from 'rsuite';
+import { Button } from 'tiny-ui';
+
+const { Group } = Button;
 ```
 
 ## Examples
 
 <!--{demo}-->
 
-## Methods
+## API
 
-### Alert.info
-
-```js
-Alert.info(content: string, duration?: number, onClose?: () => void);
-```
-
-### Alert.success
-
-```js
-Alert.success(content: string, duration?: number, onClose?: () => void);
-```
-
-### Alert.warning
-
-```js
-Alert.warning(content: string, duration?: number, onClose?: () => void);
-```
-
-### Alert.error
-
-```js
-Alert.error(content: string, duration?: number, onClose?: () => void);
-```
-
-_props description_
-
-| Property   | Type`(Default)` | Description |
+| Property   | Type            | Description |
 | ---------- | --------------- | ----------- |
 | content \* | string          | The content of alert                                                                                      |
 | duration   | number `(2000)` | The duration of the display, automatically closes the reminder box after the duration (unit:milliseconds) |
 | onClose    | ()=>void        | Callback when Alert is closed                                                                             |
 
-### `Alert.config`
-
-Global config
-
-```js
-Alert.config(options:Options);
-```
-
-## Types
-
-### Options
-
-```typescript
-type Options = {
-  top?: number;
-  duration?: number;
-  getContainer?: () => HTMLElement;
-};
-```
-
-* top - Distance from the top of the page (unit:px, default:5)
-* duration - Alert duration (default:2000，unit: milliseconds)
-* getContainer - The parent container of Alert
-
-## Related components
-
-* [`<Popover>`](./popover)
-* [`<Tooltip>`](./tooltip)
-* [`<Message>`](./message)
-* [`<Notification>`](./notification)

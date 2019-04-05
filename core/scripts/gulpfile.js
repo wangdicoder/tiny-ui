@@ -13,7 +13,7 @@ const DIST_PATH = '../dist/styles';
 const MODULARIZED_DIST_PATH = '../lib/styles';
 
 function build_scss() {
-    return src(`${SOURCE_PATH}/index.scss`)
+    return src(`${SOURCE_PATH}/tiny.scss`)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([autoprefixer]))
@@ -22,7 +22,7 @@ function build_scss() {
 }
 
 function min_css() {
-    return src(`${DIST_PATH}/index.css`)
+    return src(`${DIST_PATH}/tiny.css`)
     .pipe(sourcemaps.init())
     .pipe(cleancss())
     .pipe(rename(path => {

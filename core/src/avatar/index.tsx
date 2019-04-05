@@ -29,20 +29,6 @@ const Avatar = (props: AvatarProps) => {
     const textEl = useRef<HTMLSpanElement>(null);
     const [scale, setScale] = useState(1);
 
-    useEffect(() => {
-        if (outerEl && outerEl.current && textEl && textEl.current &&
-            textEl.current.className === `${prefixCls}__text`) {
-            const textElWidth = textEl.current.offsetWidth;
-            const outerElWidth = outerEl.current.offsetWidth;
-            // leave 4px padding for left and right side
-            if (outerElWidth - 8 < textElWidth) {
-                setScale((outerElWidth - 8) / textElWidth);
-            } else {
-                setScale(1);
-            }
-        }
-    });
-
     const cls = classNames(
         prefixCls,
         className,
@@ -87,10 +73,25 @@ const Avatar = (props: AvatarProps) => {
         lineHeight: `${size}px`,
         ...style,
     };
+
+    useEffect(() => {
+        if (outerEl && outerEl.current && textEl && textEl.current &&
+            textEl.current.className === `${prefixCls}__text`) {
+            const textElWidth = textEl.current.offsetWidth;
+            const outerElWidth = outerEl.current.offsetWidth;
+            // leave 4px padding for left and right side
+            if (outerElWidth - 8 < textElWidth) {
+                setScale((outerElWidth - 8) / textElWidth);
+            } else {
+                setScale(1);
+            }
+        }
+    });
+
     return (
         <span ref={outerEl} className={cls} style={styles} onClick={onClick}>
-      {renderItem()}
-    </span>
+            {renderItem()}
+        </span>
     );
 };
 
