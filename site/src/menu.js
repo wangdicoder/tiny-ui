@@ -56,6 +56,10 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Radio',
         route: 'radio',
+    }, {
+        title: 'Native Select',
+        route: 'native-select',
+        component: lazy(() => import('./docs/component/nativeselect'))
     }],
 }, {
     title: 'Data Display',

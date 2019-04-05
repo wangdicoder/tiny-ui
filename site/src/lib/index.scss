@@ -11,6 +11,7 @@
   &__previewer {
     color: rgba(0, 0, 0, 0.65);
     padding: 24px;
+    overflow-x: auto;
   }
 
   &__editor {
@@ -40,7 +41,7 @@
     font-size: 14px;
 
     &:hover {
-      color: #20a0ff;
+      color: $main-color;
       background-color: #f9fafc;
     }
   }
@@ -102,7 +103,6 @@
     margin-bottom: 10px;
     border-collapse: collapse;
     border-spacing: 0;
-    font-family: "Monospaced Number", "Avenir Next", Arial, "Helvetica Neue", Helvetica, sans-serif;
 
     tr {
       border-top: 1px solid #c6cbd1;

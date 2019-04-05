@@ -7,8 +7,7 @@ $select-arrow: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm
   -webkit-appearance: none;
   cursor: pointer;
   color: #182026;
-  width: 100%;
-  max-width: 100%;
+  min-width: 200px;
   margin: 0;
   line-height: 18px;
   vertical-align: middle;
