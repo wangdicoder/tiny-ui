@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-
-const strokePresetColors = ['primary', 'blue', 'green', 'yellow', 'red', 'pink'];
+import { strokeLineCaps, strokePresetColors } from '.';
 
 export type BarProps = {
     percent?: number,
@@ -9,7 +8,7 @@ export type BarProps = {
     format?: (percent: number) => React.ReactNode,
     /** Determine display the label */
     showInfo?: boolean,
-    strokeLinecap?: 'round' | 'square',
+    strokeLinecap?: strokeLineCaps,
     strokeColor?: string,
     strokeWidth?: number,
     /** Determine display the label in the bar or right of bar */
@@ -36,6 +35,9 @@ const Bar = (props: BarProps) => {
         percent, format, showInfo, innerText, strokeWidth, strokeColor, strokeLinecap, backgroundType,
         prefixCls, className, style,
     } = props;
+    let percentage: number = percent > 100 ? 100 : percent;
+    percentage = percentage < 0 ? 0 : percentage;
+
     const cls = classnames(prefixCls, className, `${prefixCls}_${strokeLinecap}`);
 
     const strokeBgCls = classnames(`${prefixCls}__bg`, {
@@ -48,16 +50,16 @@ const Bar = (props: BarProps) => {
 
     const _renderLabel = () => {
         if (showInfo && !innerText) {
-            return format ? format(percent) : <span className={`${prefixCls}__text`}>{percent}%</span>;
+            return format ? format(percentage) : <span className={`${prefixCls}__text`}>{percentage}%</span>;
         }
         return null;
     };
 
     const _renderInnerLabel = () => {
         if (showInfo && innerText) {
-            return format ? format(percent) : (
+            return format ? format(percentage) : (
                 <div className={`${prefixCls}__inner-text`} style={{ lineHeight: `${strokeWidth}px` }}>
-                    {percent}%
+                    {percentage}%
                 </div>
             );
         }
@@ -70,7 +72,7 @@ const Bar = (props: BarProps) => {
                 <div
                     className={strokeBgCls}
                     style={{
-                        width: `${percent}%`,
+                        width: `${percentage}%`,
                         backgroundColor: (strokePresetColors.includes(strokeColor) ? '' : strokeColor),
                     }}>
                     <div className={effectCls}/>

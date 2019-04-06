@@ -1,6 +1,9 @@
 import Circle from './circle';
 import Bar from './bar';
 
+export type strokeLineCaps = 'round' | 'square';
+export const strokePresetColors = ['primary', 'blue', 'green', 'yellow', 'red', 'pink'];
+
 const Progress = {
     Circle,
     Bar,
