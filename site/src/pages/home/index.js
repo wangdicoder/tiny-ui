@@ -67,6 +67,7 @@ const Home = (props) => {
 
             <h1 className="home__feature-title">Blueprint</h1>
             <p className="home__p">This project is still under development. However, before we release version 1, we will implement these components listing in the diagram below.</p>
+            <p className="home__p">Disclaimer: this project is very much under development. The API is subject to change without notice.</p>
             <img src={require('./img/blueprint.png')} alt="blueprint" className="home__blueprint"/>
 
             <Footer/>
