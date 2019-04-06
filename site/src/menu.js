@@ -59,7 +59,7 @@ const COMPONENT_MENU = [{
     }, {
         title: 'Native Select',
         route: 'native-select',
-        component: lazy(() => import('./docs/component/nativeselect'))
+        component: lazy(() => import('./docs/component/native-select'))
     }],
 }, {
     title: 'Data Display',
@@ -69,6 +69,10 @@ const COMPONENT_MENU = [{
     }, {
         title: 'Badge',
         route: 'badge',
+    }, {
+        title: 'Progress',
+        route: 'progress',
+        component: lazy(() => import('./docs/component/progress'))
     }],
 }, {
     title: 'Feedback',
