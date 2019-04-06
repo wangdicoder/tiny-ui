@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { strokeLineCaps } from '.';
+import { strokeLineCaps, strokePresetColors } from '.';
 
 export type CircleProps = {
     percent?: number,
@@ -19,10 +19,10 @@ export type CircleProps = {
 const defaultProps = {
     prefixCls: 'ty-progress-circle',
     percent: 0,
-    strokeWidth: 6,
-    width: 126,
+    strokeWidth: 8,
+    width: 120,
     strokeLinecap: 'round',
-    strokeColor: '#6E41BF',
+    strokeColor: 'primary',
 };
 
 const Circle = (props: CircleProps) => {
@@ -30,6 +30,10 @@ const Circle = (props: CircleProps) => {
     const cls = classnames(prefixCls, className);
     let percentage: number = percent > 100 ? 100 : percent;
     percentage = percentage < 0 ? 0 : percentage;
+
+    const strokeBgCls = classnames(`${prefixCls}__path`, {
+        [`${prefixCls}__path_${strokeColor}`]: strokePresetColors.includes(strokeColor),
+    });
 
     const _relativeStrokeWidth = (): string => {
         return (strokeWidth / width * 100).toFixed(1);
@@ -51,7 +55,6 @@ const Circle = (props: CircleProps) => {
         return {
             strokeDasharray: `${perimeter}px,${perimeter}px`,
             strokeDashoffset: (1 - percentage / 100) * perimeter + 'px',
-            transition: 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease',
         };
     };
 
@@ -67,17 +70,13 @@ const Circle = (props: CircleProps) => {
                 <path
                     className={`${prefixCls}__bg`}
                     d={_trackPath()}
-                    stroke="#e5e9f2"
                     strokeWidth={_relativeStrokeWidth()}
-                    fill="none"
                 />
                 <path
-                    className={`${prefixCls}__path`}
+                    className={strokeBgCls}
                     d={_trackPath()}
                     strokeLinecap={strokeLinecap}
-                    stroke={strokeColor}
                     strokeWidth={_relativeStrokeWidth()}
-                    fill="none"
                     style={_circlePathStyle()}
                 />
             </svg>

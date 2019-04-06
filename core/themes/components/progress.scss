@@ -17,8 +17,7 @@
     position: relative;
     text-align: right;
     height: 100%;
-    transition: all .4s cubic-bezier(.08, .82, .17, 1) 0s;
-
+    transition: all .6s;
     &_primary {
       background-color: $primary-color;
     }
@@ -108,7 +107,40 @@
   display: inline-block;
   position: relative;
 
-  &__text{
+  &__bg {
+    stroke: #e5e9f2;
+    fill: none;
+  }
+
+  &__path {
+    fill: none;
+    transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease;
+    &_primary {
+      stroke: $primary-color;
+    }
+
+    &_yellow {
+      stroke: $yellow-color;
+    }
+
+    &_blue {
+      stroke: $blue-color;
+    }
+
+    &_red {
+      stroke: $red-color;
+    }
+
+    &_green {
+      stroke: $green-color;
+    }
+
+    &_pink {
+      stroke: $pink-color;
+    }
+  }
+
+  &__text {
     position: absolute;
     top: 50%;
     left: 50%;

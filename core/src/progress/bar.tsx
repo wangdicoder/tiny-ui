@@ -9,7 +9,7 @@ export type BarProps = {
     /** Determine display the label */
     showInfo?: boolean,
     strokeLinecap?: strokeLineCaps,
-    strokeColor?: string,
+    strokeColor?: string | string[],
     strokeWidth?: number,
     /** Determine display the label in the bar or right of bar */
     innerText?: boolean,
@@ -41,8 +41,13 @@ const Bar = (props: BarProps) => {
     const cls = classnames(prefixCls, className, `${prefixCls}_${strokeLinecap}`);
 
     const strokeBgCls = classnames(`${prefixCls}__bg`, {
-        [`${prefixCls}__bg_${strokeColor}`]: strokePresetColors.includes(strokeColor),
+        [`${prefixCls}__bg_${strokeColor}`]: (typeof strokeColor === 'string') &&
+        strokePresetColors.includes(strokeColor),
     });
+
+    const background = (typeof strokeColor === 'string') ?
+        (strokePresetColors.includes(strokeColor) ? '' : strokeColor) :
+        `linear-gradient(to right, ${strokeColor.join(',')})`;
 
     const effectCls = classnames(`${prefixCls}__effect`, {
         [`${prefixCls}__effect_${backgroundType}`]: backgroundType,
@@ -73,7 +78,7 @@ const Bar = (props: BarProps) => {
                     className={strokeBgCls}
                     style={{
                         width: `${percentage}%`,
-                        backgroundColor: (strokePresetColors.includes(strokeColor) ? '' : strokeColor),
+                        background,
                     }}>
                     <div className={effectCls}/>
                     {_renderInnerLabel()}
