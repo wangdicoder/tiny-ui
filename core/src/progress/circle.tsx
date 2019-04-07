@@ -13,6 +13,7 @@ export type CircleProps = {
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
+    textStyle?: React.CSSProperties,
     children?: React.ReactNode,
 } & typeof defaultProps;
 
@@ -26,7 +27,8 @@ const defaultProps = {
 };
 
 const Circle = (props: CircleProps) => {
-    const { percent, format, width, strokeColor, strokeWidth, strokeLinecap, prefixCls, className, style } = props;
+    const { percent, format, width, strokeColor, strokeWidth, strokeLinecap,
+        prefixCls, className, style, textStyle } = props;
     const cls = classnames(prefixCls, className);
     let percentage: number = percent > 100 ? 100 : percent;
     percentage = percentage < 0 ? 0 : percentage;
@@ -60,7 +62,7 @@ const Circle = (props: CircleProps) => {
 
     const _renderLabel = (): React.ReactNode => {
         return (
-            <div className={`${prefixCls}__text`}>{format ? format(percent) : `${percentage}%`}</div>
+            <div className={`${prefixCls}__text`} style={textStyle}>{format ? format(percent) : `${percentage}%`}</div>
         );
     };
 

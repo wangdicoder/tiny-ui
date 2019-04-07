@@ -1,4 +1,6 @@
-### Basic
+### Progress bar
+
+A standard progress bar.
 
 <!--start-code-->
 

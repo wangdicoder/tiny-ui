@@ -17,6 +17,7 @@ const MarkdownViewer = ({ content }) => {
 				code: CodeBlock,
                 inlineCode: props => renderingGenerator(props, 'code', 'code-inline-code'),
 				listItem: props => renderingGenerator(props, 'li', 'code-list-item'),
+				blockquote: props => renderingGenerator(props, 'blockquote', 'code-blockquote'),
 			}}
 		/>
 	);

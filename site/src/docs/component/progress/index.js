@@ -1,9 +1,9 @@
 import React from 'react';
 import createComponentExample from '../../../lib';
-import { Progress } from 'tiny-ui/src';
+import { Progress, Button } from 'tiny-ui/src';
 
 export default createComponentExample({
     componentName: 'progress',
-    examples: ['basic', 'internal-text', 'active'],
-    dependencies: { Progress },
+    examples: ['progress-bar', 'progress-circle', 'internal-text', 'active', 'linear-gradient', 'dynamic', 'custom-text', 'square-linecaps'],
+    dependencies: { Progress, Button },
 });

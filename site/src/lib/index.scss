@@ -99,6 +99,14 @@
     list-style-type: circle;
   }
 
+  &-blockquote{
+    padding-left: .8em;
+    color: #697b8c;
+    font-size: 90%;
+    border-left: 4px solid #ebedf0;
+    margin: 1em 0;
+  }
+
   &-table {
     margin-bottom: 10px;
     border-collapse: collapse;
@@ -124,12 +132,12 @@
       background-color: #fafafa;
       white-space: nowrap;
       max-width: 250px;
+      min-width: 120px;
       font-weight: 500;
     }
 
     td {
       color: #24292e;
-      font-size: 15px;
 
       .code-inline-code {
         font-size: 12px;
