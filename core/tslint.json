@@ -18,7 +18,6 @@
     "arrow-parens": false,
     "object-literal-sort-keys": false,
     "no-trailing-whitespace": false,
-    "eofline": false,
     "interface-over-type-literal": false
   },
   "rulesDirectory": ["./src"]

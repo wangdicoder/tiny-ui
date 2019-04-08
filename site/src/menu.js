@@ -52,7 +52,7 @@ const COMPONENT_MENU = [{
         route: 'layout',
     }],
 }, {
-    title: 'Form',
+    title: 'FormItem',
     children: [{
         title: 'Radio',
         route: 'radio',

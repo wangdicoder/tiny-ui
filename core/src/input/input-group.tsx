@@ -20,7 +20,7 @@ const defaultProps = {
 };
 
 const InputGroup = (props: InputGroupProps) => {
-    const { inside, disabled, size, prefixCls, className, style, children } = props;
+    const { disabled, size, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
 
     return (
@@ -30,7 +30,6 @@ const InputGroup = (props: InputGroupProps) => {
                     ...child.props,
                     disabled,
                     size,
-                    inside,
                 };
                 return React.cloneElement(child, childProps);
             })}

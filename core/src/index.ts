@@ -6,6 +6,7 @@ export { default as Col } from './col';
 export { default as Collapse } from './collapse';
 export { default as Divider } from './divider';
 export { default as Flip } from './flip';
+export { default as Form } from './form';
 export { default as Icon } from './icon';
 export { default as Input } from './input';
 export { default as Layout } from './layout';

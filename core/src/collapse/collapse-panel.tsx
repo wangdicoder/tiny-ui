@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import { CSSTransition } from 'react-transition-group';
@@ -62,8 +61,8 @@ const CollapsePanel = (props: CollapsePanelProps) => {
      */
     const _removeItem = (e: React.MouseEvent<HTMLSpanElement>) => {
         e.stopPropagation();
-        if (!disabled && itemEl && itemEl.current && itemEl.current.parentNode) {
-            itemEl.current.parentNode.removeChild(itemEl.current);
+        if (!disabled && itemEl.current) {
+            itemEl.current.parentNode!.removeChild(itemEl.current);
         }
     };
 
