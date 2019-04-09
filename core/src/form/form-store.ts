@@ -5,7 +5,7 @@ import cloneDeep from 'lodash/cloneDeep';
 /**
  * Define a form listener
  */
-export type FormListener = { name: string, fn: () => void };
+export type FormListener = { name: string, fn: (isOnChange: boolean) => void };
 
 /**
  * Define a validator
@@ -25,13 +25,13 @@ export type FormErrors = { [key: string]: string | boolean };
 export default class FormStore {
     private readonly defaultFieldsValue = {};
     private listeners: FormListener[] = [];
-    private fieldsValue: {};
+    private fieldValues: {};
     private rules: FormRules;
     private errors: FormErrors = {};
 
     constructor(values = {}, rules: FormRules = {}) {
         this.defaultFieldsValue = values;
-        this.fieldsValue = cloneDeep(values);
+        this.fieldValues = cloneDeep(values);
         this.rules = rules;
     }
 
@@ -40,7 +40,23 @@ export default class FormStore {
      * @param name
      */
     public getFieldValue(name: string) {
-        return get(this.fieldsValue, name);
+        return get(this.fieldValues, name);
+    }
+
+    /**
+     * Get multiple fields value
+     * @param names
+     */
+    public getFieldValues(names?: object): {} {
+        if (names) {
+            const values: { [key: string]: any } = {};
+            Object.keys(names).forEach((name) => {
+                values[name] = get(this.fieldValues, name);
+            });
+            return values;
+        } else {
+            return this.fieldValues;
+        }
     }
 
     /**
@@ -49,28 +65,16 @@ export default class FormStore {
      * @param value
      */
     public setFieldValue(name: string, value: any) {
-        set(this.fieldsValue, name, value);
+        set(this.fieldValues, name, value);
         this.notify(name);
-    }
-
-    /**
-     * Get multiple fields value
-     * @param names
-     */
-    public getFieldsValue(names?: object): {} {
-        if (names) {
-            return Object.keys(names).map((name) => get(this.fieldsValue, name));
-        } else {
-            return this.fieldsValue;
-        }
     }
 
     /**
      * Set multiple fields value
      * @param fields
      */
-    public setFieldsValue(fields: { [key: string]: any } = {}): void {
-        Object.keys(fields).forEach((key) => this.setFieldValue(key, fields[key]));
+    public setFieldValues(fields: { [name: string]: any } = {}): void {
+        Object.keys(fields).forEach((name) => this.setFieldValue(name, fields[name]));
     }
 
     /**
@@ -78,7 +82,7 @@ export default class FormStore {
      */
     public resetFields(): void {
         this.errors = {};
-        this.fieldsValue = cloneDeep(this.defaultFieldsValue);
+        this.fieldValues = cloneDeep(this.defaultFieldsValue);
         this.notify();
     }
 
@@ -96,7 +100,7 @@ export default class FormStore {
      * Validate all fields
      */
     public validateFields(): void {
-        Object.keys(this.fieldsValue).forEach((name) => {
+        Object.keys(this.fieldValues).forEach((name) => {
             this.validateField(name);
         });
         this.notify();
@@ -106,7 +110,7 @@ export default class FormStore {
      * Set and merge fields rules
      * @param rules
      */
-    public setFieldsRules(rules: FormRules): void {
+    public setFieldRules(rules: FormRules): void {
         this.rules = { ...this.rules, ...rules };
     }
 
@@ -120,13 +124,6 @@ export default class FormStore {
     }
 
     /**
-     * Get all field error info
-     */
-    public getFieldErrors(): FormErrors {
-        return this.errors;
-    }
-
-    /**
      * Get a field error info
      * @param name
      */
@@ -134,7 +131,39 @@ export default class FormStore {
         return this.errors[name];
     }
 
-    public subscribe(name: string, fn: () => void) {
+    /**
+     * Get all field error info
+     */
+    public getFieldErrors(names?: object): FormErrors {
+        if (names) {
+            const errors: { [name: string]: string | boolean } = {};
+            Object.keys(names).forEach((name) => {
+                errors[name] = this.getFieldError(name);
+            });
+            return errors;
+        } else {
+            return this.errors;
+        }
+    }
+
+    /**
+     * Set a field error info
+     * @param name
+     * @param error
+     */
+    public setFieldError(name: string, error: string | boolean): void {
+        this.errors[name] = error;
+    }
+
+    /**
+     * Set multiple field error info
+     * @param fields
+     */
+    public setFieldErrors(fields: { [name: string]: any } = {}): void {
+        Object.keys(fields).forEach((name) => this.setFieldError(name, fields[name]));
+    }
+
+    public subscribe(name: string, fn: (isOnChange: boolean) => void) {
         this.listeners.push({ name, fn });
 
         // provide an unmount function
@@ -147,10 +176,10 @@ export default class FormStore {
     public notify(name?: string) {
         if (name) {
             const idx = this.listeners.findIndex(listener => listener.name === name);
-            (idx > -1) && this.listeners[idx].fn();
+            (idx > -1) && this.listeners[idx].fn(true);
         } else {
             this.listeners.forEach((listener) => {
-                listener.fn();
+                listener.fn(false);
             });
         }
     }

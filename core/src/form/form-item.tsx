@@ -7,7 +7,9 @@ export type FormItemProps = {
     label?: string,
     helpDesc?: string,
     notice?: string,
+    /** Validate value when field is on change state */
     validateOnChange?: boolean,
+    /** Validate value when field is on blur state */
     validateOnBlur?: boolean,
     prefixCls?: string,
     className?: string,
@@ -53,9 +55,9 @@ const FormItem = (props: FormItemProps) => {
             store.setFieldValue(name, value);
 
             // unmount
-            return store.subscribe(name, () => {
+            return store.subscribe(name, (isOnChange: boolean) => {
                 setValue(store.getFieldValue(name));
-                validateOnChange && validateAndUpdateError();
+                (!isOnChange || validateOnChange) && validateAndUpdateError();
             });
         }
     }, []);
