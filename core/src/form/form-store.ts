@@ -10,7 +10,7 @@ export type FormListener = { name: string, fn: () => void };
 /**
  * Define a validator
  */
-export type FormValidator = (value: any) => (string | boolean);
+export type FormValidator = (value: any) => string | boolean;
 
 /**
  * Field rules. eg, {password: (val) => val.length >= 6}
@@ -23,13 +23,14 @@ export type FormRules = { [key: string]: FormValidator };
 export type FormErrors = { [key: string]: string | boolean };
 
 export default class FormStore {
-    private defaultFieldsValue = {};
+    private readonly defaultFieldsValue = {};
     private listeners: FormListener[] = [];
     private fieldsValue: {};
     private rules: FormRules;
     private errors: FormErrors = {};
 
     constructor(values = {}, rules: FormRules = {}) {
+        this.defaultFieldsValue = values;
         this.fieldsValue = cloneDeep(values);
         this.rules = rules;
     }
@@ -50,15 +51,6 @@ export default class FormStore {
     public setFieldValue(name: string, value: any) {
         set(this.fieldsValue, name, value);
         this.notify(name);
-    }
-
-    /**
-     * Set single field's default value
-     * @param name
-     * @param value
-     */
-    public setFieldDefaultValue(name: string, value: any): void {
-        set(this.defaultFieldsValue, name, value);
     }
 
     /**
@@ -98,7 +90,6 @@ export default class FormStore {
         const validator = this.rules[name];
         const value = this.getFieldValue(name);
         this.errors[name] = validator ? validator(value) : true;
-        this.notify(name);
     }
 
     /**
@@ -108,6 +99,7 @@ export default class FormStore {
         Object.keys(this.fieldsValue).forEach((name) => {
             this.validateField(name);
         });
+        this.notify();
     }
 
     /**
@@ -147,14 +139,14 @@ export default class FormStore {
 
         // provide an unmount function
         return () => {
-            const idx = this.listeners.findIndex((listener) => listener.name === name);
+            const idx = this.listeners.findIndex(listener => listener.name === name);
             (idx > -1) && this.listeners.splice(idx, 1);
         };
     }
 
     public notify(name?: string) {
         if (name) {
-            const idx = this.listeners.findIndex((listener) => listener.name === name);
+            const idx = this.listeners.findIndex(listener => listener.name === name);
             (idx > -1) && this.listeners[idx].fn();
         } else {
             this.listeners.forEach((listener) => {

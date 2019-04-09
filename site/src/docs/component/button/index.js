@@ -1,4 +1,3 @@
-import React from 'react';
 import createComponentExample from '../../../lib';
 import { Button } from 'tiny-ui/src';
 

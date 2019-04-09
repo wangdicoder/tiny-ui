@@ -1,4 +1,4 @@
-import React, {lazy} from 'react';
+import {lazy} from 'react';
 
 const GUIDE_MENU = [{
     title: 'Tiny UI Introduction',

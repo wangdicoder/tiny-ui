@@ -1,4 +1,3 @@
-import React from 'react';
 import createComponentExample from '../../../lib';
 import { NativeSelect } from 'tiny-ui/src';
 

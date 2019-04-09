@@ -6,7 +6,7 @@ import { Icon } from 'tiny-ui/src';
 // flat menu array
 const menus = [...GUIDE_MENU, ...COMPONENT_MENU].reduce((res, menu) => {
     if (menu.children) {
-        menu.children.map((child) => {
+        menu.children.forEach((child) => {
             res.push({ title: child.title, route: child.route });
         });
     } else {
