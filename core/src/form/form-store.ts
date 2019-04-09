@@ -2,65 +2,164 @@ import set from 'lodash/set';
 import get from 'lodash/get';
 import cloneDeep from 'lodash/cloneDeep';
 
-const deepGet = get;
-const deepSet = set;
+/**
+ * Define a form listener
+ */
+export type FormListener = { name: string, fn: () => void };
 
-export type FormListener = (name: string) => void;
-// export type FormValidator = (value: any, values: any) => boolean | string;
-// export type FormRules = { [key: string]: FormValidator };
-// export type FormErrors = { [key: string]: string | undefined };
+/**
+ * Define a validator
+ */
+export type FormValidator = (value: any) => (string | boolean);
+
+/**
+ * Field rules. eg, {password: (val) => val.length >= 6}
+ */
+export type FormRules = { [key: string]: FormValidator };
+
+/**
+ * Identify field errors. eg, {password: 'the length is less than 6'}
+ */
+export type FormErrors = { [key: string]: string | boolean };
 
 export default class FormStore {
-    private defaultValues: {} = {};
+    private defaultFieldsValue = {};
     private listeners: FormListener[] = [];
-    private values: {};
-    // private rules: FormRules;
-    // private errors: FormErrors = {};
+    private fieldsValue: {};
+    private rules: FormRules;
+    private errors: FormErrors = {};
 
-    constructor(values = {}) {
-        this.values = cloneDeep(values) as any;
+    constructor(values = {}, rules: FormRules = {}) {
+        this.fieldsValue = cloneDeep(values);
+        this.rules = rules;
     }
 
-    public get(name: string) {
-        return deepGet(this.values, name);
+    /**
+     * Get single field value
+     * @param name
+     */
+    public getFieldValue(name: string) {
+        return get(this.fieldsValue, name);
     }
 
-    public set(name: string, value: any) {
-        deepSet(this.values, name, value);
+    /**
+     * Set single field value
+     * @param name
+     * @param value
+     */
+    public setFieldValue(name: string, value: any) {
+        set(this.fieldsValue, name, value);
         this.notify(name);
     }
 
-    public getValues(): {} {
-        return this.values;
+    /**
+     * Set single field's default value
+     * @param name
+     * @param value
+     */
+    public setFieldDefaultValue(name: string, value: any): void {
+        set(this.defaultFieldsValue, name, value);
     }
 
-    public setValues(values = {}): void {
-        this.values = { ...this.values, ...values };
-        this.notify('*');
+    /**
+     * Get multiple fields value
+     * @param names
+     */
+    public getFieldsValue(names?: object): {} {
+        if (names) {
+            return Object.keys(names).map((name) => get(this.fieldsValue, name));
+        } else {
+            return this.fieldsValue;
+        }
     }
 
-    public setDefaultValues(name: string, value: any): void {
-        deepSet(this.defaultValues, name, value);
+    /**
+     * Set multiple fields value
+     * @param fields
+     */
+    public setFieldsValue(fields: { [key: string]: any } = {}): void {
+        Object.keys(fields).forEach((key) => this.setFieldValue(key, fields[key]));
     }
 
-    public reset(): void {
-        this.values = cloneDeep(this.defaultValues);
-        this.notify('*');
+    /**
+     * Reset fields' value to the default value
+     */
+    public resetFields(): void {
+        this.errors = {};
+        this.fieldsValue = cloneDeep(this.defaultFieldsValue);
+        this.notify();
     }
 
-    public subscribe(listener: FormListener) {
-        this.listeners.push(listener);
+    /**
+     * Validate field
+     * @param name
+     */
+    public validateField(name: string): void {
+        const validator = this.rules[name];
+        const value = this.getFieldValue(name);
+        this.errors[name] = validator ? validator(value) : true;
+        this.notify(name);
+    }
 
-        // provide a unmount function
+    /**
+     * Validate all fields
+     */
+    public validateFields(): void {
+        Object.keys(this.fieldsValue).forEach((name) => {
+            this.validateField(name);
+        });
+    }
+
+    /**
+     * Set and merge fields rules
+     * @param rules
+     */
+    public setFieldsRules(rules: FormRules): void {
+        this.rules = { ...this.rules, ...rules };
+    }
+
+    /**
+     * Configure a validator for a field
+     * @param name
+     * @param validator
+     */
+    public setFieldValidator(name: string, validator: FormValidator): void {
+        this.rules[name] = validator;
+    }
+
+    /**
+     * Get all field error info
+     */
+    public getFieldErrors(): FormErrors {
+        return this.errors;
+    }
+
+    /**
+     * Get a field error info
+     * @param name
+     */
+    public getFieldError(name: string): string | boolean {
+        return this.errors[name];
+    }
+
+    public subscribe(name: string, fn: () => void) {
+        this.listeners.push({ name, fn });
+
+        // provide an unmount function
         return () => {
-            const idx = this.listeners.indexOf(listener);
-            if (idx !== -1) {
-                this.listeners.splice(idx, 1);
-            }
+            const idx = this.listeners.findIndex((listener) => listener.name === name);
+            (idx > -1) && this.listeners.splice(idx, 1);
         };
     }
 
-    public notify(name: string) {
-        this.listeners.forEach(listener => listener(name));
+    public notify(name?: string) {
+        if (name) {
+            const idx = this.listeners.findIndex((listener) => listener.name === name);
+            (idx > -1) && this.listeners[idx].fn();
+        } else {
+            this.listeners.forEach((listener) => {
+                listener.fn();
+            });
+        }
     }
 }

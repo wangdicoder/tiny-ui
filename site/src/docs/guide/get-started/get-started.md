@@ -16,7 +16,7 @@ $ yarn add tiny-ui
 ```
 
 ### Import in Browser
-Add script and link tags in your browser and use the global variable `tiny`. We provide `tiny.js` `tiny.css` and `tiny.min.js` `tiny.min.css` under **tiny-ui/dist** in tiny's npm package.
+Add script and link tags in your browser and use the global variable `tiny`. We provide `tiny.js` `index.css` and `tiny.min.js` `index.min.css` under **tiny-ui/dist** in tiny's npm package.
 
 - Development environment - It is recommended to use an uncompressed version for easy debugging
     ```html

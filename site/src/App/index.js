@@ -12,7 +12,7 @@ class App extends React.PureComponent {
                 <Switch>
                     <Route exact path="/home" component={HomePage}/>
                     <Route path="/components/:page" component={ComponentPage}/>
-                    <Redirect from="/components" to="/components/get-started"/>
+                    <Redirect from="/components" to="/components/introduction"/>
                     <Redirect from="/" to="/home"/>
                 </Switch>
             </>

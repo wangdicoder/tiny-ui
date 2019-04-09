@@ -8,6 +8,7 @@ export type FormItemProps = {
     helpDesc?: string,
     notice?: string,
     defaultValue?: any,
+    validator?: (val: any) => boolean | string
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -19,32 +20,37 @@ const defaultProps = {
 };
 
 const FormItem = (props: FormItemProps) => {
-    const { name, defaultValue, prefixCls, className, style, children } = props;
+    const { name, label, validator, defaultValue, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
     const store = React.useContext(FormStoreContext);
-    const [value, setValue] = useState(name && store ? store.get(name) : undefined);
+    const [value, setValue] = useState(name && store ? store.getFieldValue(name) : undefined);
+    const [error, setError] = useState(name && store ? store.getFieldError(name) : undefined);
 
     const onChange = useCallback((val: any) => {
-        store && store.set(name, val);
+        store && store.setFieldValue(name, val);
     }, [store]);
 
     const onBlur = useCallback(() => {
-        console.log('blur');
+        // console.log('blur');
     }, [store]);
 
     useEffect(() => {
         if (store) {
-            store.setDefaultValues(name, defaultValue);
+            store.setFieldDefaultValue(name, defaultValue);
+            store.setFieldValue(name, value);
+            store.setFieldValidator(name, validator ? validator : () => true);
 
             // unmount
-            return store.subscribe(() => {
-                setValue(store.get(name));
+            return store.subscribe(name, () => {
+                setValue(store.getFieldValue(name));
+                setError(store.getFieldError(name));
             });
         }
     }, []);
 
     return (
         <div className={cls} style={style}>
+            {label && <label>{label}</label>}
             {React.Children.map(children, (child) => {
                 if (React.isValidElement(child)) {
                     const childProps = {
@@ -57,6 +63,7 @@ const FormItem = (props: FormItemProps) => {
                     return React.cloneElement(child, childProps);
                 }
             })}
+            <div>{error}</div>
         </div>
     );
 };
