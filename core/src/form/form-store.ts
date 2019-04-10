@@ -15,17 +15,19 @@ export type FormValidator = (value: any) => string | boolean;
 /**
  * Field rules. eg, {password: (val) => val.length >= 6}
  */
-export type FormRules = { [key: string]: FormValidator };
+export type FormRules = { [name: string]: FormValidator };
 
 /**
  * Identify field errors. eg, {password: 'the length is less than 6'}
  */
-export type FormErrors = { [key: string]: string | boolean };
+export type FormErrors = { [name: string]: string | boolean };
+
+export type FormValues = { [name: string]: any };
 
 export default class FormStore {
-    private readonly defaultFieldsValue = {};
+    private readonly defaultFieldsValue: FormValues;
     private listeners: FormListener[] = [];
-    private fieldValues: {};
+    private fieldValues: FormValues;
     private rules: FormRules;
     private errors: FormErrors = {};
 
@@ -73,7 +75,7 @@ export default class FormStore {
      * Set multiple fields value
      * @param fields
      */
-    public setFieldValues(fields: { [name: string]: any } = {}): void {
+    public setFieldValues(fields: FormValues = {}): void {
         Object.keys(fields).forEach((name) => this.setFieldValue(name, fields[name]));
     }
 
@@ -98,12 +100,14 @@ export default class FormStore {
 
     /**
      * Validate all fields
+     * @param fn: Pass errors and field value to the function
      */
-    public validateFields(): void {
+    public validateFields(fn?: (err: FormErrors, values: FormValues) => void): void {
         Object.keys(this.fieldValues).forEach((name) => {
             this.validateField(name);
         });
         this.notify();
+        fn && fn(this.errors, this.fieldValues);
     }
 
     /**
@@ -159,7 +163,7 @@ export default class FormStore {
      * Set multiple field error info
      * @param fields
      */
-    public setFieldErrors(fields: { [name: string]: any } = {}): void {
+    public setFieldErrors(fields: FormValues = {}): void {
         Object.keys(fields).forEach((name) => this.setFieldError(name, fields[name]));
     }
 
