@@ -6,7 +6,7 @@ import FormStoreContext from './form-store-context';
 export type FormItemProps = {
     name: string,
     label?: React.ReactNode,
-    helpDesc?: React.ReactNode,
+    helper?: React.ReactNode,
     notice?: React.ReactNode,
     /** Validate value when field is on change state */
     validateOnChange?: boolean,
@@ -25,7 +25,8 @@ const defaultProps = {
 };
 
 const FormItem = (props: FormItemProps) => {
-    const { name, label, validateOnChange, validateOnBlur, prefixCls, className, style, children } = props;
+    const { name, label, helper, notice, validateOnChange, validateOnBlur,
+        prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
     const store = React.useContext(FormStoreContext);
     const [value, setValue] = useState(name && store ? store.getFieldValue(name) : undefined);
@@ -87,6 +88,8 @@ const FormItem = (props: FormItemProps) => {
                     }
                 })}
                 <div className={`${prefixCls}__addon`}>
+                    {notice && <div className={`${prefixCls}__notice`}>{notice}</div>}
+                    {helper && <div className={`${prefixCls}__helper`}>{helper}</div>}
                     <CSSTransition
                         timeout={0}
                         in={showError}
