@@ -2,6 +2,7 @@
 @import "../animation";
 
 .#{$prefix}badge {
+  font-family: $font-family;
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -19,7 +20,6 @@
 
   &__count {
     @include badge-base();
-    font-family: $font-family;
     min-width: $badge-size;
     min-height: $badge-size;
     line-height: $badge-size;

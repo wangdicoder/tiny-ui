@@ -1,6 +1,7 @@
 @import "../var";
 
 .#{$prefix}form-item {
+  font-family: $font-family;
 
   &__label {
     box-sizing: border-box;

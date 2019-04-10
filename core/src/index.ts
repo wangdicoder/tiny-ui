@@ -16,5 +16,6 @@ export { default as Row } from './row';
 export { default as Modal } from './modal';
 export { default as Overlay } from './overlay';
 export { default as Progress } from './progress';
+export { default as Switch } from './switch';
 export { default as Textarea } from './textarea';
 // export { default as Tooltip } from './tooltip';

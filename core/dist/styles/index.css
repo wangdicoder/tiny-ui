@@ -1724,6 +1724,60 @@
     -webkit-transform: rotateX(-180deg);
             transform: rotateX(-180deg); }
 
+.ty-form-item__label {
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: right;
+  vertical-align: top; }
+
+.ty-form-item__controls {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-left: 10px; }
+
+.ty-form-item__addon {
+  margin: 7px 0; }
+
+.ty-form-item__error {
+  height: 14px;
+  line-height: 14px;
+  font-size: 12px;
+  color: #f30;
+  opacity: 0;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  transition: all 250ms; }
+  .ty-form-item__error_slide-enter {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px); }
+  .ty-form-item__error_slide-enter-done {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  .ty-form-item__error_slide-exit {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  .ty-form-item__error_slide-exit-done {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px); }
+
+.ty-form-item__helper {
+  font-size: 12px;
+  color: #999; }
+
+.ty-form-item__notice {
+  font-size: 12px;
+  border-radius: 2px;
+  background: #fff7cc;
+  color: #333;
+  padding: 5px;
+  margin-bottom: 3px; }
+
 @font-face {
   font-family: 'tiny';
   src: url("fonts/iconfont.eot");
@@ -2766,6 +2820,30 @@
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 300ms; }
+    .ty-modal__content_slide-enter {
+      -webkit-transform: translateY(-20px);
+              transform: translateY(-20px); }
+    .ty-modal__content_slide-enter-done {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-modal__content_slide-exit {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-modal__content_slide-exit-done {
+      -webkit-transform: translateY(-20px);
+              transform: translateY(-20px); }
+    .ty-modal__content_scale-enter {
+      -webkit-transform: scale(0);
+              transform: scale(0); }
+    .ty-modal__content_scale-enter-done {
+      -webkit-transform: scale(1);
+              transform: scale(1); }
+    .ty-modal__content_scale-exit {
+      -webkit-transform: scale(1);
+              transform: scale(1); }
+    .ty-modal__content_scale-exit-done {
+      -webkit-transform: scale(0);
+              transform: scale(0); }
   .ty-modal__header {
     box-sizing: border-box;
     padding: 16px 24px;
@@ -2806,30 +2884,6 @@
   .ty-modal_centered {
     align-items: center;
     top: 0; }
-  .ty-modal_slide-enter {
-    -webkit-transform: translateY(-20px);
-            transform: translateY(-20px); }
-  .ty-modal_slide-enter-done {
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-  .ty-modal_slide-exit {
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-  .ty-modal_slide-exit-done {
-    -webkit-transform: translateY(-20px);
-            transform: translateY(-20px); }
-  .ty-modal_scale-enter {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  .ty-modal_scale-enter-done {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
-  .ty-modal_scale-exit {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
-  .ty-modal_scale-exit-done {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
 
 .ty-overlay {
   position: fixed;
@@ -2839,7 +2893,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition: opacity 300ms; }
+  transition: opacity 300ms;
+  opacity: 0; }
   .ty-overlay_default {
     background-color: rgba(0, 0, 0, 0.75);
     -webkit-backdrop-filter: blur(3px);
@@ -2848,12 +2903,8 @@
     background-color: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px); }
-  .ty-overlay_hidden {
-    display: none; }
   .ty-overlay_fade-enter {
     opacity: 0; }
-  .ty-overlay_fade-enter-active {
-    opacity: 1; }
   .ty-overlay_fade-enter-done {
     opacity: 1; }
   .ty-overlay_fade-exit {
@@ -2861,7 +2912,8 @@
   .ty-overlay_fade-exit-active {
     opacity: 0; }
   .ty-overlay_fade-exit-done {
-    opacity: 0; }
+    opacity: 0;
+    display: none; }
 
 .ty-progress-bar {
   display: flex;

@@ -1,6 +1,7 @@
 @import "../var";
 
 .#{$prefix}avatar {
+  font-family: $font-family;
   display: inline-block;
   text-align: center;
   background: $avatar-bg;

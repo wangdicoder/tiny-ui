@@ -2,6 +2,7 @@
 @import "../mixins/common";
 
 .#{$prefix}loader {
+  font-family: $font-family;
   position: relative;
   display: inline-block;
 

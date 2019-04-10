@@ -3,6 +3,7 @@
 
 .#{$prefix}input {
   @include input-default();
+  font-family: $font-family;
   z-index: 1;
 
   &_disabled {
