@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classNames from 'classnames';
 import Portal from '../portal';
 import { CSSTransition } from 'react-transition-group';
@@ -9,8 +9,11 @@ export type OverlayProps = {
     isShow?: boolean,
     unmountOnExit?: boolean,
     clickCallback?: () => void,
-    afterClose?: () => void,
     zIndex?: number,
+    onEnter?: () => void,
+    onExit?: () => void,
+    onEntered?: () => void,
+    onExited?: () => void,
     type?: OverlayMaskType,
     prefixCls?: string,
     style?: React.CSSProperties,
@@ -23,38 +26,38 @@ const defaultProps = {
     zIndex: 1000,
     prefixCls: 'ty-overlay',
     type: 'default',
-    clickCallback: () => {
-    },
-    afterClose: () => {},
 };
 
 const Overlay = (props: OverlayProps) => {
-    const { isShow, unmountOnExit, type, zIndex, clickCallback, afterClose, prefixCls, children, style } = props;
+    const { isShow, unmountOnExit, type, zIndex, clickCallback, onEnter, onEntered, onExit, onExited,
+        prefixCls, children, style } = props;
     const cls = classNames(
         prefixCls,
         `${prefixCls}_${type}`,
     );
 
-    if (isShow) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = null;
-    }
+    useEffect(() => {
+        if (isShow) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = null;
+        }
+    }, [isShow]);
 
     return (
         <Portal>
             <CSSTransition
+                appear={true}
+                onEnter={onEnter}
+                onEntered={onEntered}
+                onExit={onExit}
+                onExited={onExited}
                 in={isShow}
-                onExited={() => {
-                    afterClose();
-                }}
                 mountOnEnter={true}
                 unmountOnExit={unmountOnExit}
                 classNames={`${prefixCls}_fade`}
                 timeout={{exit: 300, enter: 0}}>
-                <div className={cls} onClick={clickCallback} style={{zIndex, ...style}}>
-                    {children}
-                </div>
+                <div className={cls} onClick={clickCallback} style={{zIndex, ...style}}>{children}</div>
             </CSSTransition>
         </Portal>
     );

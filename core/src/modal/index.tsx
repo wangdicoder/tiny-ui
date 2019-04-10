@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay, { OverlayMaskType } from '../overlay';
@@ -53,8 +53,6 @@ const defaultProps = {
     },
     onCancel: () => {
     },
-    afterClose: () => {
-    },
 };
 
 const Modal = (props: ModalProps) => {
@@ -64,6 +62,9 @@ const Modal = (props: ModalProps) => {
         confirmButtonProps, cancelButtonProps, animation, zIndex, prefixCls, className, children,
         style, maskStyle, headerStyle, bodyStyle, footerStyle,
     } = props;
+    // The visible attribute controls the overlay status,
+    // modal visible is triggered by overlay's enter and exit statuses
+    const [modalVisible, setModalVisible] = useState(visible);
     const cls = classNames(
         prefixCls,
         className,
@@ -99,11 +100,13 @@ const Modal = (props: ModalProps) => {
 
     return (
         <Overlay
+            onEnter={() => setModalVisible(true)}
+            onExit={() => setModalVisible(false)}
             zIndex={zIndex}
             type={maskType}
             unmountOnExit={unmountOnClose}
             isShow={visible}
-            afterClose={afterClose}
+            onExited={afterClose}
             clickCallback={() => (maskClosable && onCancel())}
             style={maskStyle}>
             <div className={cls}>
@@ -111,7 +114,7 @@ const Modal = (props: ModalProps) => {
                     style={{ width, ...style }}
                     onClick={(e) => e.stopPropagation()}>
                     <CSSTransition
-                        unmountOnExit={false} in={visible} classNames={`${prefixCls}_${animation}`} timeout={0}>
+                        appear={true} in={modalVisible} classNames={`${prefixCls}__content_${animation}`} timeout={0}>
                         <div className={`${prefixCls}__content`}>
                             {closable && <div className={`${prefixCls}__close-btn`} onClick={onCancel}>✕</div>}
                             {header && (
