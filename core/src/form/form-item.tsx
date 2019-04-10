@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import classnames from 'classnames';
+import { CSSTransition } from 'react-transition-group';
 import FormStoreContext from './form-store-context';
 
 export type FormItemProps = {
     name: string,
-    label?: string,
-    helpDesc?: string,
-    notice?: string,
+    label?: React.ReactNode,
+    helpDesc?: React.ReactNode,
+    notice?: React.ReactNode,
     /** Validate value when field is on change state */
     validateOnChange?: boolean,
     /** Validate value when field is on blur state */
@@ -29,6 +30,8 @@ const FormItem = (props: FormItemProps) => {
     const store = React.useContext(FormStoreContext);
     const [value, setValue] = useState(name && store ? store.getFieldValue(name) : undefined);
     const [error, setError] = useState(name && store ? store.getFieldError(name) : undefined);
+    // Control the animation display
+    const [showError, setShowError] = useState(false);
 
     // Delegate onChange event
     const onChange = useCallback((val: any) => {
@@ -41,21 +44,26 @@ const FormItem = (props: FormItemProps) => {
     };
 
     // Delegate onFocus event
+    // If the form field in on focus status, remove the error info
     const onFocus = () => {
-        setError('');
+        setShowError(false);
     };
 
     const validateAndUpdateError = useCallback(() => {
         store!.validateField(name);
-        setError(store!.getFieldError(name));
+        const err = store!.getFieldError(name);
+        setError(err);
+        setShowError(!!err);
     }, [store]);
 
     useEffect(() => {
         if (store) {
             store.setFieldValue(name, value);
 
-            // unmount
+            // unmount!
             return store.subscribe(name, (isOnChange: boolean) => {
+                // When the field is updated, this subscription function will be invoked
+                // In this function, update the input value and do the validation work
                 setValue(store.getFieldValue(name));
                 (!isOnChange || validateOnChange) && validateAndUpdateError();
             });
@@ -64,20 +72,29 @@ const FormItem = (props: FormItemProps) => {
 
     return (
         <div className={cls} style={style}>
-            {label && <label>{label}</label>}
-            {React.Children.map(children, (child) => {
-                if (React.isValidElement(child)) {
-                    const childProps = {
-                        ...child.props,
-                        value,
-                        onChange,
-                        onBlur,
-                        onFocus,
-                    };
-                    return React.cloneElement(child, childProps);
-                }
-            })}
-            {!!error && <div>{error}</div>}
+            {label && (React.isValidElement(label) ? label : <label className={`${prefixCls}__label`}>{label}</label>)}
+            <div className={`${prefixCls}__controls`}>
+                {React.Children.map(children, (child) => {
+                    if (React.isValidElement(child)) {
+                        const childProps = {
+                            ...child.props,
+                            value,
+                            onChange,
+                            onBlur,
+                            onFocus,
+                        };
+                        return React.cloneElement(child, childProps);
+                    }
+                })}
+                <div className={`${prefixCls}__addon`}>
+                    <CSSTransition
+                        timeout={0}
+                        in={showError}
+                        classNames={`${prefixCls}__error_slide`}>
+                        <div className={`${prefixCls}__error`}>{error}</div>
+                    </CSSTransition>
+                </div>
+            </div>
         </div>
     );
 };
