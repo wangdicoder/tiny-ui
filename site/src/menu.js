@@ -52,14 +52,21 @@ const COMPONENT_MENU = [{
         route: 'layout',
     }],
 }, {
-    title: 'FormItem',
+    title: 'Form Item',
     children: [{
+        title: 'Form',
+        route: 'form',
+    },{
         title: 'Radio',
         route: 'radio',
     }, {
+        title: 'Switch',
+        route: 'switch',
+        component: lazy(() => import('./docs/component/switch')),
+    }, {
         title: 'Native Select',
         route: 'native-select',
-        component: lazy(() => import('./docs/component/native-select'))
+        component: lazy(() => import('./docs/component/native-select')),
     }],
 }, {
     title: 'Data Display',
