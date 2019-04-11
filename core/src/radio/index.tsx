@@ -1,11 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
+import RadioGroup from './radio-group';
 
 export type RadioProps = {
     defaultChecked?: boolean,
     checked?: boolean,
     value?: string,
-    onChange?: (val: boolean, event: React.FormEvent<HTMLInputElement>) => void,
+    onChange?: (checked: boolean, event: React.FormEvent<HTMLInputElement>) => void,
     disabled?: boolean,
     prefixCls?: string,
     className?: string,
@@ -46,5 +47,7 @@ const Radio = (props: RadioProps) => {
 };
 
 Radio.defaultProps = defaultProps;
+
+Radio.Group = RadioGroup;
 
 export default Radio;
