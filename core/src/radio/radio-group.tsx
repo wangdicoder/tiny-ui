@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { RadioProps } from '.';
 
 export type RadioGroupProps = {
+    name?: string,
+    defaultValue?: string,
     value?: string,
     onChange?: (value: string, event: React.FormEvent<HTMLInputElement>) => void,
     disabled?: boolean,
@@ -17,19 +19,28 @@ const defaultProps = {
 };
 
 const RadioGroup = (props: RadioGroupProps) => {
-    const { value, onChange, disabled, prefixCls, className, style, children } = props;
+    const { name, onChange, disabled, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
+    const [value, setValue] = useState(props.value ? props.value : props.defaultValue);
 
     const _onChange = (checked: boolean, e: React.FormEvent<HTMLInputElement>) => {
-        onChange && onChange(e.currentTarget.value, e);
+        if (!disabled) {
+            !('value' in props) && setValue(e.currentTarget.value);
+            onChange && onChange(e.currentTarget.value, e);
+        }
     };
+
+    useEffect(() => {
+        ('value' in props) && setValue(props.value!);
+    });
 
     return (
         <div className={cls} style={style}>
             {React.Children.map(children, (child) => {
                 const childProps = {
                     ...child.props,
-                    disabled,
+                    name,
+                    disabled: child.props.disabled || disabled,
                     checked: value === child.props.value,
                     onChange: _onChange,
                 };
