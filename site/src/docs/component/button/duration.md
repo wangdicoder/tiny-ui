@@ -1,11 +1,11 @@
 ### Another Example
 
-duration is a option
+Loading
 
 <!--start-code-->
 
 ```jsx
-render(<Button color="blue">Blue Button</Button>);
+render(<Button color="blue" loading>Blue Button</Button>);
 ```
 
 <!--end-code-->

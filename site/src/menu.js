@@ -57,6 +57,10 @@ const COMPONENT_MENU = [{
         title: 'Form',
         route: 'form',
     },{
+        title: 'Checkbox',
+        route: 'checkbox',
+        component: lazy(() => import('./docs/component/checkbox')),
+    },{
         title: 'Radio',
         route: 'radio',
         component: lazy(() => import('./docs/component/radio')),

@@ -1,6 +1,6 @@
 # Radio
 
-A single entry component. If there are only two options, consider using the [`Switch`](/components/switch) component.
+A single entry component. If there are only two options, consider using the `Switch` component.
 
 ## Scenario
 
