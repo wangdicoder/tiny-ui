@@ -2,7 +2,7 @@
 
 A divider line separates different content.
 
-## When To Use
+## Scenario
 
 - Divide sections of article.
 - Divide inline text and links such as the operation column of table.

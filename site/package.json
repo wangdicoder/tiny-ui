@@ -27,6 +27,7 @@
     "eslint-plugin-react": "7.12.4",
     "file-loader": "2.0.0",
     "fs-extra": "7.0.1",
+    "gh-pages": "^2.0.1",
     "highlight.js": "^9.15.6",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "4.0.0-alpha.2",
@@ -69,7 +70,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "repository": "https://github.com/wangdicoder/tiny-ui-react",
   "eslintConfig": {

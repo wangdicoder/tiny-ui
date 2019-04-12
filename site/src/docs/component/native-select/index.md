@@ -2,7 +2,7 @@
 
 Select component to select value from options.
 
-## When To Use
+## Scenario
 - It is a light weight select component which wraps native `<select>` element.
 - A dropdown menu for displaying choices
 - Group options - an elegant alternative to the native `<optgroup>`

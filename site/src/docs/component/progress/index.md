@@ -2,7 +2,7 @@
 
 Display the current progress of an operation flow.
 
-## When To Use
+## Scenario
 If it will take a long time to complete an operation, you can use Progress to show the current progress and status.
 - When an operation will interrupt the current interface, or it needs to run in the background for more than 2 seconds.
 - When you need to display the completion percentage of an operation.

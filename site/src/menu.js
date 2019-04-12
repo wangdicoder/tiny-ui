@@ -59,6 +59,7 @@ const COMPONENT_MENU = [{
     },{
         title: 'Radio',
         route: 'radio',
+        component: lazy(() => import('./docs/component/radio')),
     }, {
         title: 'Switch',
         route: 'switch',
