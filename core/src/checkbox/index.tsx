@@ -33,7 +33,7 @@ const Checkbox = (props: CheckboxProps) => {
     };
 
     useEffect(() => {
-        ('checked' in props) && setChecked(checked);
+        ('checked' in props) && setChecked(props.checked!);
     });
 
     return (
