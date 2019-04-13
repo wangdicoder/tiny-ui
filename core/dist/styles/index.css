@@ -46,6 +46,7 @@
             transform: scaleY(0); }
 
 .ty-avatar {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   display: inline-block;
   text-align: center;
   background: #ccc;
@@ -107,6 +108,7 @@
     opacity: 0; } }
 
 .ty-badge {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -120,7 +122,6 @@
             transform: translateX(-50%) translateY(-50%);
     border-radius: 18px;
     box-shadow: 0 0 0 1.5px #fff;
-    font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
     min-width: 18px;
     min-height: 18px;
     line-height: 18px;
@@ -506,6 +507,98 @@
     .ty-btn-group_round .ty-btn:last-child {
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px; }
+
+.ty-checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+  margin-right: 8px;
+  color: rgba(0, 0, 0, 0.75); }
+  .ty-checkbox:hover .ty-checkbox__inner {
+    border-color: #6E41BF; }
+  .ty-checkbox__native {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    margin: 0;
+    padding: 0; }
+  .ty-checkbox__inner {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+    transition: 200ms; }
+    .ty-checkbox__inner:before {
+      content: '';
+      position: absolute;
+      display: block;
+      border: 1px solid #fff;
+      margin-top: -1px;
+      left: 3px;
+      right: 3px;
+      top: 50%;
+      transition: all 200ms;
+      -webkit-transform: scale(0);
+              transform: scale(0); }
+    .ty-checkbox__inner:after {
+      content: '';
+      display: inline-block;
+      border: 2px solid #fff;
+      border-left: 0;
+      border-top: 0;
+      width: 4px;
+      height: 8px;
+      top: 1px;
+      left: 4px;
+      position: absolute;
+      -webkit-transform: rotate(45deg) scale(0);
+              transform: rotate(45deg) scale(0);
+      transition: all 200ms;
+      -webkit-transform-origin: center;
+              transform-origin: center; }
+    .ty-checkbox__inner + span {
+      padding: 0 5px;
+      line-height: 16px; }
+  .ty-checkbox_checked .ty-checkbox__inner {
+    background-color: #6E41BF;
+    border-color: #6E41BF; }
+    .ty-checkbox_checked .ty-checkbox__inner:after {
+      -webkit-transform: rotate(45deg) scale(1);
+              transform: rotate(45deg) scale(1); }
+    .ty-checkbox_checked .ty-checkbox__inner:before {
+      -webkit-transform: scale(0);
+              transform: scale(0); }
+  .ty-checkbox_indeterminate .ty-checkbox__inner {
+    background-color: #6E41BF;
+    border-color: #6E41BF; }
+    .ty-checkbox_indeterminate .ty-checkbox__inner:before {
+      -webkit-transform: scale(1);
+              transform: scale(1); }
+    .ty-checkbox_indeterminate .ty-checkbox__inner:after {
+      -webkit-transform: rotate(45deg) scale(0);
+              transform: rotate(45deg) scale(0); }
+  .ty-checkbox_disabled .ty-checkbox__native {
+    cursor: not-allowed; }
+  .ty-checkbox_disabled .ty-checkbox__inner {
+    background-color: #f5f5f5;
+    border-color: #d9d9d9 !important; }
+    .ty-checkbox_disabled .ty-checkbox__inner:after {
+      border-color: rgba(0, 0, 0, 0.25); }
+    .ty-checkbox_disabled .ty-checkbox__inner + span {
+      color: rgba(0, 0, 0, 0.25); }
 
 .ty-col {
   box-sizing: border-box;
@@ -1622,7 +1715,45 @@
     bottom: 0;
     right: 0; }
 
+.ty-date-picker {
+  width: 280px;
+  font-size: 14px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+
+.ty-date-picker-header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee; }
+  .ty-date-picker-header__caption {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box; }
+  .ty-date-picker-header__month, .ty-date-picker-header__year {
+    margin: 0 3px; }
+  .ty-date-picker-header__prev-month, .ty-date-picker-header__next-month {
+    margin: 0 6px; }
+  .ty-date-picker-header__prev-year, .ty-date-picker-header__prev-month, .ty-date-picker-header__next-month, .ty-date-picker-header__next-year {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 16px; }
+  .ty-date-picker-header__prev-year, .ty-date-picker-header__prev-month, .ty-date-picker-header__next-month, .ty-date-picker-header__next-year, .ty-date-picker-header__month, .ty-date-picker-header__year {
+    box-sizing: border-box;
+    cursor: pointer; }
+    .ty-date-picker-header__prev-year:hover, .ty-date-picker-header__prev-month:hover, .ty-date-picker-header__next-month:hover, .ty-date-picker-header__next-year:hover, .ty-date-picker-header__month:hover, .ty-date-picker-header__year:hover {
+      color: #6E41BF; }
+
+.ty-date-picker-day {
+  padding: 15px 10px; }
+  .ty-date-picker-day__table {
+    width: 100%; }
+  .ty-date-picker-day__head-item {
+    font-weight: 400; }
+
 .ty-divider {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   box-sizing: border-box;
@@ -1724,59 +1855,56 @@
     -webkit-transform: rotateX(-180deg);
             transform: rotateX(-180deg); }
 
-.ty-form-item__label {
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 12px;
-  line-height: 30px;
-  text-align: right;
-  vertical-align: top; }
-
-.ty-form-item__controls {
-  box-sizing: border-box;
-  display: inline-block;
-  margin-left: 10px; }
-
-.ty-form-item__addon {
-  margin: 7px 0; }
-
-.ty-form-item__error {
-  height: 14px;
-  line-height: 14px;
-  font-size: 12px;
-  color: #f30;
-  opacity: 0;
-  -webkit-transform: translateY(-10px);
-          transform: translateY(-10px);
-  transition: all 250ms; }
-  .ty-form-item__error_slide-enter {
+.ty-form-item {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif; }
+  .ty-form-item__label {
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: right;
+    vertical-align: top; }
+  .ty-form-item__controls {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-left: 10px; }
+  .ty-form-item__addon {
+    margin: 7px 0; }
+  .ty-form-item__error {
+    height: 14px;
+    line-height: 14px;
+    font-size: 12px;
+    color: #f30;
     opacity: 0;
     -webkit-transform: translateY(-10px);
-            transform: translateY(-10px); }
-  .ty-form-item__error_slide-enter-done {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-  .ty-form-item__error_slide-exit {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-  .ty-form-item__error_slide-exit-done {
-    opacity: 0;
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px); }
-
-.ty-form-item__helper {
-  font-size: 12px;
-  color: #999; }
-
-.ty-form-item__notice {
-  font-size: 12px;
-  border-radius: 2px;
-  background: #fff7cc;
-  color: #333;
-  padding: 5px;
-  margin-bottom: 3px; }
+            transform: translateY(-10px);
+    transition: all 250ms; }
+    .ty-form-item__error_slide-enter {
+      opacity: 0;
+      -webkit-transform: translateY(-10px);
+              transform: translateY(-10px); }
+    .ty-form-item__error_slide-enter-done {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-form-item__error_slide-exit {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-form-item__error_slide-exit-done {
+      opacity: 0;
+      -webkit-transform: translateY(-10px);
+              transform: translateY(-10px); }
+  .ty-form-item__helper {
+    font-size: 12px;
+    color: #999; }
+  .ty-form-item__notice {
+    font-size: 12px;
+    border-radius: 2px;
+    background: #fff7cc;
+    color: #333;
+    padding: 5px;
+    margin-bottom: 3px; }
 
 @font-face {
   font-family: 'tiny';
@@ -2493,6 +2621,7 @@
   transition: all .3s;
   outline: 0;
   border-radius: 3px;
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   z-index: 1; }
   .ty-input:hover {
     border-color: #6E41BF; }
@@ -2712,6 +2841,7 @@
     opacity: 0; } }
 
 .ty-loader {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   position: relative;
   display: inline-block; }
   .ty-loader_default .ty-loader__indicator {
@@ -2916,6 +3046,7 @@
     display: none; }
 
 .ty-progress-bar {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   display: flex;
   align-items: center;
   font-size: 13px; }
@@ -2974,6 +3105,7 @@
     border-radius: 0; }
 
 .ty-progress-circle {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   display: inline-block;
   position: relative; }
   .ty-progress-circle__bg {
@@ -3037,6 +3169,63 @@
   100% {
     opacity: 0;
     width: 100%; } }
+
+.ty-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+  margin-right: 8px;
+  color: rgba(0, 0, 0, 0.75); }
+  .ty-radio__native {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    margin: 0;
+    padding: 0; }
+  .ty-radio__inner {
+    box-sizing: border-box;
+    display: flex;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: #fff;
+    border: 1px solid #6E41BF;
+    align-items: center;
+    justify-content: center; }
+    .ty-radio__inner:after {
+      box-sizing: border-box;
+      display: inline-block;
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background-color: #6E41BF;
+      transition: all 200ms;
+      -webkit-transform: scale(0);
+              transform: scale(0); }
+    .ty-radio__inner + span {
+      padding: 0 5px;
+      line-height: 16px; }
+  .ty-radio_checked .ty-radio__inner:after {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  .ty-radio_disabled .ty-radio__native {
+    cursor: not-allowed; }
+  .ty-radio_disabled .ty-radio__inner {
+    border-color: #d9d9d9; }
+    .ty-radio_disabled .ty-radio__inner:after {
+      background-color: rgba(0, 0, 0, 0.2); }
+    .ty-radio_disabled .ty-radio__inner + span {
+      color: rgba(0, 0, 0, 0.25); }
 
 .ty-row {
   box-sizing: border-box;
@@ -3110,6 +3299,163 @@
     padding: 9px 25px 9px 12px;
     font-size: 16px; }
 
+@keyframes ty-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes ty-processing {
+  0% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 0.5; }
+  100% {
+    -webkit-transform: scale(2.8);
+            transform: scale(2.8);
+    opacity: 0; } }
+
+.ty-switch {
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer; }
+  .ty-switch__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: background-color 300ms;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
+  .ty-switch__thumb {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+    transition: all 300ms;
+    color: rgba(0, 0, 0, 0.25); }
+  .ty-switch__label {
+    box-sizing: border-box;
+    display: block;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    padding-left: 11px;
+    padding-right: 5px;
+    transition: all 300ms; }
+  .ty-switch_checked .ty-switch__bg {
+    background-color: #6E41BF; }
+  .ty-switch_checked .ty-switch__thumb {
+    left: 100%;
+    border-color: #6E41BF;
+    color: #6E41BF; }
+  .ty-switch_checked .ty-switch__label {
+    padding-left: 5px;
+    padding-right: 11px; }
+  .ty-switch_disabled {
+    cursor: not-allowed;
+    opacity: .4; }
+  .ty-switch_loading .ty-switch__thumb:before {
+    display: inline-block !important; }
+  .ty-switch_sm {
+    margin: 0 10px;
+    font-size: 9px;
+    width: 29px;
+    height: 14px; }
+    .ty-switch_sm .ty-switch__bg {
+      border-radius: 18px; }
+    .ty-switch_sm .ty-switch__thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 18px; }
+      .ty-switch_sm .ty-switch__thumb:before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border: 1px solid;
+        border-radius: 50%;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        display: inline-block;
+        -webkit-animation: ty-rotate 500ms linear infinite;
+                animation: ty-rotate 500ms linear infinite;
+        pointer-events: none;
+        display: none; }
+    .ty-switch_sm .ty-switch__label {
+      line-height: 14px; }
+  .ty-switch_md {
+    margin: 0 12px;
+    font-size: 12px;
+    width: 36px;
+    height: 16px; }
+    .ty-switch_md .ty-switch__bg {
+      border-radius: 22px; }
+    .ty-switch_md .ty-switch__thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 22px; }
+      .ty-switch_md .ty-switch__thumb:before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border: 1px solid;
+        border-radius: 50%;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        display: inline-block;
+        -webkit-animation: ty-rotate 500ms linear infinite;
+                animation: ty-rotate 500ms linear infinite;
+        pointer-events: none;
+        display: none; }
+    .ty-switch_md .ty-switch__label {
+      line-height: 17px; }
+  .ty-switch_lg {
+    margin: 0 14px;
+    font-size: 14px;
+    width: 42px;
+    height: 20px; }
+    .ty-switch_lg .ty-switch__bg {
+      border-radius: 26px; }
+    .ty-switch_lg .ty-switch__thumb {
+      width: 26px;
+      height: 26px;
+      border-radius: 26px; }
+      .ty-switch_lg .ty-switch__thumb:before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        border: 1px solid;
+        border-radius: 50%;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        display: inline-block;
+        -webkit-animation: ty-rotate 500ms linear infinite;
+                animation: ty-rotate 500ms linear infinite;
+        pointer-events: none;
+        display: none; }
+    .ty-switch_lg .ty-switch__label {
+      line-height: 20px; }
+
 .ty-textarea {
   box-sizing: border-box;
   margin: 0;
@@ -3120,6 +3466,7 @@
   transition: all .3s;
   outline: 0;
   border-radius: 3px;
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   width: 100%;
   font-size: 14px;
   padding: 5px;

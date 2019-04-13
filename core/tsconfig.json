@@ -4,9 +4,9 @@
     "outDir": "lib",
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
     "esModuleInterop": true, // enable to do "import React ..." instead of "import * as React ..."
-    "allowJs": true, // include js files
-    "checkJs": true, // typecheck js files
-    "declaration": false, // don't emit declarations
+    "allowJs": false, // include js files
+    "checkJs": false, // typecheck js files
+    "declaration": true, // don't emit declarations
     "emitDecoratorMetadata": true, // include only if using decorators
     "experimentalDecorators": true, // include only if using decorators
     "forceConsistentCasingInFileNames": true,

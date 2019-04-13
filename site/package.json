@@ -71,7 +71,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "yarn run build && gh-pages -d build"
   },
   "repository": "https://github.com/wangdicoder/tiny-ui-react",
   "eslintConfig": {

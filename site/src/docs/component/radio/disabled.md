@@ -16,7 +16,7 @@ const Wrapper = () => {
     <Group value={value} onChange={(val) => setValue(val)} disabled={disabled}>
       <Radio value="a">A</Radio>
       <Radio value="b">B</Radio>
-      <Radio value="c">C</Radio>
+      <Radio value="c" disabled>C</Radio>
       <Radio value="d">D</Radio>
     </Group>
     <br/>
