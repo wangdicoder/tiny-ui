@@ -21,7 +21,8 @@ const defaultProps = {
 const DatePicker = (props: DatePickerProps) => {
     const { prefixCls, className, style } = props;
     const cls = classnames(prefixCls, className);
-    const [date, setDate] = useState(('value' in props) ? props.value : props.defaultValue);
+    const [date, setDate] = useState(props.value ? props.value : props.defaultValue);
+    const [panelDate, setPanelDate] = useState(new Date());
 
     useEffect(() => {
 
@@ -29,8 +30,13 @@ const DatePicker = (props: DatePickerProps) => {
 
     return (
         <div className={cls} style={style}>
-            <PickerHeader/>
-            <PickerDay date={date} onChange={(val) => setDate(val)}/>
+            <PickerHeader date={panelDate} onChange={(val) => setPanelDate(val)}/>
+            <PickerDay
+                date={date}
+                onChange={(val) => setDate(val)}
+                panelDate={panelDate}
+                panelOnChange={(val) => setPanelDate(val)}
+            />
         </div>
     );
 };
