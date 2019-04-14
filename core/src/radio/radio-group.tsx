@@ -21,7 +21,7 @@ const defaultProps = {
 const RadioGroup = (props: RadioGroupProps) => {
     const { name, onChange, disabled, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
-    const [value, setValue] = useState(props.value ? props.value : props.defaultValue);
+    const [value, setValue] = useState(('value' in props) ? props.value : props.defaultValue);
 
     const _onChange = (checked: boolean, e: React.FormEvent<HTMLInputElement>) => {
         if (!disabled) {

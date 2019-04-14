@@ -23,7 +23,7 @@ const defaultProps = {
 
 const Checkbox = (props: CheckboxProps) => {
     const { value, disabled, onChange, indeterminate, prefixCls, className, style, children } = props;
-    const [checked, setChecked] = useState(props.checked ? props.checked : props.defaultChecked);
+    const [checked, setChecked] = useState(('checked' in props) ? props.checked : props.defaultChecked);
     const cls = classnames(prefixCls, className, {
         [`${prefixCls}_indeterminate`]: indeterminate && !checked,
         [`${prefixCls}_checked`]: checked && !indeterminate,

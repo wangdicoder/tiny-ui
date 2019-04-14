@@ -22,7 +22,7 @@ const defaultProps = {
 
 const Radio = (props: RadioProps) => {
     const { name, value, disabled, onChange, prefixCls, className, style, children } = props;
-    const [checked, setChecked] = useState(props.checked ? props.checked : props.defaultChecked);
+    const [checked, setChecked] = useState(('checked' in props) ? props.checked : props.defaultChecked);
     const cls = classnames(prefixCls, className, {
         [`${prefixCls}_checked`]: checked,
         [`${prefixCls}_disabled`]: disabled,
