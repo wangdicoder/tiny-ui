@@ -4,6 +4,8 @@ import PickerHeader from './picker-header';
 import PickerDay from './picker-day';
 
 export type DatePickerProps = {
+    value?: Date,
+    onChange?: (date: Date) => void,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -17,11 +19,11 @@ const defaultProps = {
 const DatePicker = (props: DatePickerProps) => {
     const { prefixCls, className, style } = props;
     const cls = classnames(prefixCls, className);
-    
+
     return (
         <div className={cls} style={style}>
-            <PickerHeader />
-            <PickerDay />
+            <PickerHeader/>
+            <PickerDay onChange={(date) => console.log(date.toLocaleDateString())}/>
         </div>
     );
 };
