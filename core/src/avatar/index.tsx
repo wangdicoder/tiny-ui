@@ -29,14 +29,9 @@ const Avatar = (props: AvatarProps) => {
     const textEl = useRef<HTMLSpanElement>(null);
     const [scale, setScale] = useState(1);
 
-    const cls = classNames(
-        prefixCls,
-        className,
-        `${prefixCls}_${shape}`,
-        {
-            [`${prefixCls}_clickable`]: onClick,
-        },
-    );
+    const cls = classNames(prefixCls, className, `${prefixCls}_${shape}`, {
+        [`${prefixCls}_clickable`]: onClick,
+    });
 
     const renderItem = () => {
         if (children) {
@@ -51,7 +46,7 @@ const Avatar = (props: AvatarProps) => {
     const renderChildren = () => {
         if (typeof children === 'string') {
             let textStyle: React.CSSProperties = {};
-            if (textEl && textEl.current) {
+            if (textEl.current) {
                 textStyle = {
                     msTransform: `scale(${scale})`,
                     WebkitTransform: `scale(${scale})`,
@@ -61,7 +56,7 @@ const Avatar = (props: AvatarProps) => {
                     left: `calc(50% - ${Math.round(textEl.current.offsetWidth / 2)}px)`,
                 };
             }
-            return <span className={`${prefixCls}__text`} ref={textEl} style={textStyle}>{children}</span>;
+            return <span ref={textEl} className={`${prefixCls}__text`} style={textStyle}>{children}</span>;
         } else {
             return children;
         }
@@ -75,8 +70,7 @@ const Avatar = (props: AvatarProps) => {
     };
 
     useEffect(() => {
-        if (outerEl && outerEl.current && textEl && textEl.current &&
-            textEl.current.className === `${prefixCls}__text`) {
+        if (outerEl.current && textEl.current && textEl.current.className === `${prefixCls}__text`) {
             const textElWidth = textEl.current.offsetWidth;
             const outerElWidth = outerEl.current.offsetWidth;
             // leave 4px padding for left and right side

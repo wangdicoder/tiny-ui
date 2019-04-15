@@ -31,6 +31,13 @@
     text-align: center;
   }
 
+  &__custom{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(50%) translateY(-50%);
+  }
+
   &__dot {
     @include badge-base();
     width: $badge-dot-size;

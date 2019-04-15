@@ -48,7 +48,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 And import stylesheets manually,
 ```jsx
-import 'tiny-ui/dist/styles/tiny.scss'; // or 'tiny-ui/dist/styles/tiny.css'
+import 'tiny-ui/dist/styles/index.css';
 ```
 
 ### Use modularized tiny-ui
@@ -62,7 +62,7 @@ To avoid the problem of packaging files too large in a production environment, l
     
     {
       "plugins": [
-        ["import", { "libraryName": "tiny-ui", "style": "css" }] // `style: true` for less
+        ["import", { "libraryName": "tiny-ui", "style": "css" }] // `style: true` for scss
       ]
     }
     ```

@@ -14,6 +14,7 @@ export type BadgeProps = {
     title?: string,
     prefixCls?: string,
     style?: React.CSSProperties,
+    badgeStyle?: React.CSSProperties,
     className?: string,
     children?: React.ReactNode,
 } & typeof defaultProps;
@@ -30,7 +31,10 @@ const defaultProps = {
 };
 
 const Badge = (props: BadgeProps) => {
-    const { count, color, max, dot, processing, showZero, text, title, className, prefixCls, style, children } = props;
+    const {
+        count, color, max, dot, processing, showZero, text, title,
+        className, prefixCls, style, badgeStyle, children,
+    } = props;
     const cls = classNames(
         prefixCls,
         className,
@@ -38,7 +42,6 @@ const Badge = (props: BadgeProps) => {
     );
 
     const dotCls = classNames(`${prefixCls}__dot`, { [`${prefixCls}__dot_wave`]: processing });
-    const textCls = classNames(`${prefixCls}__count`);
 
     warning(!dot && processing, 'only dot badge has the processing effect');
 
@@ -47,17 +50,25 @@ const Badge = (props: BadgeProps) => {
         if (isZero && !showZero) {
             return null;
         }
-        return (
-            <sup title={title} className={textCls} style={{ backgroundColor: color }}>
-                {text || (count > max ? `${max}+` : count)}
-            </sup>
-        );
+
+        if (typeof count === 'number') {
+            return (
+                <sup title={title} className={`${prefixCls}__count`} style={{ backgroundColor: color, ...badgeStyle }}>
+                    {text || (count > max ? `${max}+` : count)}
+                </sup>
+            );
+        } else {
+            return <span className={`${prefixCls}__custom`}>{count}</span>;
+        }
     };
 
     return (
         <span className={cls} style={style}>
             {children}
-            {dot ? <sup title={title} className={dotCls} style={{ backgroundColor: color }}/> : _renderCount()}
+            {dot ?
+                (<sup title={title} className={dotCls} style={{ backgroundColor: color, ...badgeStyle }}/>) :
+                _renderCount()
+            }
         </span>
     );
 };

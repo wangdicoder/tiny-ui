@@ -78,13 +78,15 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Avatar',
         route: 'avatar',
+        component: lazy(() => import('./docs/component/avatar')),
     }, {
         title: 'Badge',
         route: 'badge',
+        component: lazy(() => import('./docs/component/badge')),
     }, {
         title: 'Progress',
         route: 'progress',
-        component: lazy(() => import('./docs/component/progress'))
+        component: lazy(() => import('./docs/component/progress')),
     }],
 }, {
     title: 'Feedback',

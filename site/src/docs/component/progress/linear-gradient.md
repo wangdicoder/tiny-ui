@@ -2,7 +2,7 @@
 
 A package of `linear-gradient`. Pass a color array to set the `strokeColor`.
 
-> More linear gradient color preset, please visit [Awesome Gradient](https://wangdicoder.github.io/awesome-gradient/).
+> More linear gradient color presets, please visit [Awesome Gradient](https://wangdicoder.github.io/awesome-gradient/).
 
 <!--start-code-->
 

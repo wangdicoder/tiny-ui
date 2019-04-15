@@ -23,7 +23,7 @@ const _barText = (val) => {
 };
 
 const Wrapper = () => {
-  const [percent, setPercent] = React.useState(0);
+  const [percent, setPercent] = React.useState(90);
 
   return (
     <div>
