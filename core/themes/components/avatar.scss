@@ -22,7 +22,10 @@
   }
 
   &__text {
-
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+    transform: translateX(-50%);
   }
 
   &_circle {

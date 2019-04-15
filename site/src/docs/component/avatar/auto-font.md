@@ -5,8 +5,8 @@ For letter type Avatar, when the letters are too long to display, the font size 
 <!--start-code-->
 
 ```jsx
-const UserList = ['Tom', 'U', 'Lucy', 'Edward'];
-const colorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
+const UserList = ['A', 'Tom', 'Jack', 'Stuart', 'UUUUUUUU'];
+const colorList = ['#7265e6', '#f56a00', '#ffbf00', '#00a2ae', '#f56a00'];
 
 const Wrapper = () => {
   const [user, setUser] = React.useState(UserList[0]);

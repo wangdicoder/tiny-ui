@@ -47,13 +47,11 @@ const Avatar = (props: AvatarProps) => {
         if (typeof children === 'string') {
             let textStyle: React.CSSProperties = {};
             if (textEl.current) {
+                const transformString = `scale(${scale}) translateX(-50%)`;
                 textStyle = {
-                    msTransform: `scale(${scale})`,
-                    WebkitTransform: `scale(${scale})`,
-                    transform: `scale(${scale})`,
-                    position: 'absolute',
-                    display: 'inline-block',
-                    left: `calc(50% - ${Math.round(textEl.current.offsetWidth / 2)}px)`,
+                    msTransform: transformString,
+                    WebkitTransform: transformString,
+                    transform: transformString,
                 };
             }
             return <span ref={textEl} className={`${prefixCls}__text`} style={textStyle}>{children}</span>;
