@@ -64,6 +64,13 @@
     height: 100%; }
   .ty-avatar__icon {
     color: #fff; }
+  .ty-avatar__text {
+    position: absolute;
+    left: 50%;
+    -webkit-transform-origin: 0 center;
+            transform-origin: 0 center;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
   .ty-avatar_circle {
     border-radius: 50%; }
   .ty-avatar_square {
@@ -131,6 +138,12 @@
     font-size: 12px;
     white-space: nowrap;
     text-align: center; }
+  .ty-badge__custom {
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transform: translateX(50%) translateY(-50%);
+            transform: translateX(50%) translateY(-50%); }
   .ty-badge__dot {
     box-sizing: border-box;
     display: inline-block;
@@ -1717,9 +1730,10 @@
 
 .ty-date-picker {
   width: 280px;
-  font-size: 14px;
   box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px; }
 
 .ty-date-picker-header {
   box-sizing: border-box;
@@ -1733,7 +1747,8 @@
     justify-content: center;
     box-sizing: border-box; }
   .ty-date-picker-header__month, .ty-date-picker-header__year {
-    margin: 0 3px; }
+    margin: 0 3px;
+    font-weight: 500; }
   .ty-date-picker-header__prev-month, .ty-date-picker-header__next-month {
     margin: 0 6px; }
   .ty-date-picker-header__prev-year, .ty-date-picker-header__prev-month, .ty-date-picker-header__next-month, .ty-date-picker-header__next-year {
@@ -1750,7 +1765,38 @@
   .ty-date-picker-day__table {
     width: 100%; }
   .ty-date-picker-day__head-item {
+    box-sizing: border-box;
     font-weight: 400; }
+  .ty-date-picker-day__data-item {
+    box-sizing: border-box;
+    text-align: center; }
+  .ty-date-picker-day__day-cell, .ty-date-picker-day__week-cell {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    margin: 0 auto;
+    line-height: 22px;
+    width: 24px;
+    height: 24px; }
+  .ty-date-picker-day__week-cell {
+    color: rgba(0, 0, 0, 0.65); }
+  .ty-date-picker-day__day-cell {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: all 300ms;
+    border-radius: 100%;
+    border: 1px solid transparent; }
+    .ty-date-picker-day__day-cell_active {
+      color: rgba(0, 0, 0, 0.8); }
+    .ty-date-picker-day__day-cell_today {
+      border-color: #6E41BF;
+      color: #6E41BF;
+      font-weight: 500; }
+    .ty-date-picker-day__day-cell_selected {
+      background-color: #6E41BF;
+      color: #fff; }
 
 .ty-divider {
   font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;

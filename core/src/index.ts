@@ -1,3 +1,4 @@
+export { default as Affix } from './affix';
 export { default as Alert } from './alert';
 export { default as Avatar } from './avatar';
 export { default as Badge } from './badge';

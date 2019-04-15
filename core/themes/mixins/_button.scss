@@ -7,10 +7,10 @@
   }
 
   @if ($outline) {
-    background-color: transparent;
+    background-color: #fff;
     color: $color;
     &:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: $shadow-hover, inset 0 3px 8px rgba($color, 0.2);
     }
   } @else {
