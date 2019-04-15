@@ -93,9 +93,11 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Alert',
         route: 'alert',
+        component: lazy(() => import('./docs/component/alert')),
     }, {
         title: 'Modal',
         route: 'modal',
+        component: lazy(() => import('./docs/component/modal')),
     }],
 }, {
     title: 'Miscellany',

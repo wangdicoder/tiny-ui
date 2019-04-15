@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay, { OverlayMaskType } from '../overlay';
@@ -57,7 +57,7 @@ const defaultProps = {
 
 const Modal = (props: ModalProps) => {
     const {
-        width, centered, header, footer, visible, closable, maskType, maskClosable, unmountOnClose,
+        width, centered, top, header, footer, visible, closable, maskType, maskClosable, unmountOnClose,
         afterClose, confirmText, cancelText, onConfirm, onCancel, confirmLoading,
         confirmButtonProps, cancelButtonProps, animation, zIndex, prefixCls, className, children,
         style, maskStyle, headerStyle, bodyStyle, footerStyle,
@@ -109,13 +109,11 @@ const Modal = (props: ModalProps) => {
             onExited={afterClose}
             clickCallback={() => (maskClosable && onCancel())}
             style={maskStyle}>
-            <div className={cls}>
-                <div
-                    style={{ width, ...style }}
-                    onClick={(e) => e.stopPropagation()}>
+            <div className={cls} style={{ top }}>
+                <div style={{ width, ...style }}>
                     <CSSTransition
                         appear={true} in={modalVisible} classNames={`${prefixCls}__content_${animation}`} timeout={0}>
-                        <div className={`${prefixCls}__content`}>
+                        <div className={`${prefixCls}__content`} onClick={(e) => e.stopPropagation()}>
                             {closable && <div className={`${prefixCls}__close-btn`} onClick={onCancel}>✕</div>}
                             {header && (
                                 <div className={`${prefixCls}__header`} style={headerStyle}>
