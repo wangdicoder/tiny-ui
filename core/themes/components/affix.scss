@@ -1,3 +1,8 @@
 @import "../var";
 
-.#{$prefix}affix {}
+.#{$prefix}affix {
+
+  &-container {
+    position: relative;
+  }
+}

@@ -38,6 +38,9 @@ const Affix = (props: AffixProps) => {
             const distanceTop = placeholderRect.top;
             const distanceBottom = document.documentElement.clientHeight - placeholderRect.bottom;
 
+            console.log(placeholderRect);
+            console.log(container!.current!.getBoundingClientRect());
+            console.log('------');
             if (distanceTop - offsetTop <= 0) {
                 setAffixStyle({
                     position: 'fixed',
@@ -70,7 +73,6 @@ const Affix = (props: AffixProps) => {
     };
 
     useEffect(() => {
-        console.log(container!.current!.getBoundingClientRect());
         affixEl.current && setPlaceholderHeight(affixEl.current.clientHeight);
         window.addEventListener('scroll', _onScrollListener);
 
