@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import classnames from 'classnames';
 
 import AffixContainer from './affix-container';
+import AffixContext from './affix-context';
 
 export type AffixProps = {
     offsetBottom?: number,
@@ -28,6 +29,7 @@ const Affix = (props: AffixProps) => {
     const placeholderEl = useRef<HTMLDivElement>(null);
     const affixEl = useRef<HTMLDivElement>(null);
     const cls = classnames(prefixCls, className);
+    const container = useContext(AffixContext);
 
     const _onScrollListener = (): void => {
         if (affixEl.current && placeholderEl.current) {
@@ -68,6 +70,7 @@ const Affix = (props: AffixProps) => {
     };
 
     useEffect(() => {
+        console.log(container!.current!.getBoundingClientRect());
         affixEl.current && setPlaceholderHeight(affixEl.current.clientHeight);
         window.addEventListener('scroll', _onScrollListener);
 
@@ -85,6 +88,6 @@ const Affix = (props: AffixProps) => {
 
 Affix.defaultProps = defaultProps;
 
-Affix.container = AffixContainer;
+Affix.Container = AffixContainer;
 
 export default Affix;
