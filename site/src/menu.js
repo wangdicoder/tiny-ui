@@ -84,6 +84,10 @@ const COMPONENT_MENU = [{
         route: 'badge',
         component: lazy(() => import('./docs/component/badge')),
     }, {
+        title: 'Flip',
+        route: 'flip',
+        component: lazy(() => import('./docs/component/flip')),
+    }, {
         title: 'Progress',
         route: 'progress',
         component: lazy(() => import('./docs/component/progress')),

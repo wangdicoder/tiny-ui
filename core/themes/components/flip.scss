@@ -7,19 +7,19 @@
   perspective: 1000px;
 
   &:hover .#{$prefix}flip__inner_hor {
-    transform: rotateY(180deg);
-  }
-
-  &:hover .#{$prefix}flip__inner_hor_reverse {
     transform: rotateY(-180deg);
   }
 
+  &:hover .#{$prefix}flip__inner_hor_reverse {
+    transform: rotateY(180deg);
+  }
+
   &:hover .#{$prefix}flip__inner_ver {
-    transform: rotateX(180deg);
+    transform: rotateX(-180deg);
   }
 
   &:hover .#{$prefix}flip__inner_ver_reverse {
-    transform: rotateX(-180deg);
+    transform: rotateX(180deg);
   }
 
   &__inner {
@@ -42,19 +42,19 @@
 
   &__item-back {
     &_hor {
-      transform: rotateY(180deg);
-    }
-
-    &_hor_reverse {
       transform: rotateY(-180deg);
     }
 
+    &_hor_reverse {
+      transform: rotateY(180deg);
+    }
+
     &_ver {
-      transform: rotateX(180deg);
+      transform: rotateX(-180deg);
     }
 
     &_ver_reverse {
-      transform: rotateX(-180deg);
+      transform: rotateX(180deg);
     }
   }
 }

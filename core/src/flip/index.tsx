@@ -4,8 +4,8 @@ import FlipItem, { FlipItemProps } from './flip-item';
 import warning from '../_utils/warning';
 
 export type FlipTypes = {
-    children: React.ReactElement<FlipItemProps>,
-    /** A certain parent height to prevent the hover empty issue */
+    /** A certain parent width and height to prevent the hover empty issue */
+    width: string | number,
     height: string | number,
     /** Flip direction */
     direction?: 'horizontal' | 'vertical',
@@ -14,15 +14,17 @@ export type FlipTypes = {
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
+    children: React.ReactElement<FlipItemProps>,
 } & typeof defaultProps;
 
 const defaultProps = {
     prefixCls: 'ty-flip',
     direction: 'horizontal',
+    reverse: false,
 };
 
 const Flip = (props: FlipTypes) => {
-    const { height, direction, reverse, prefixCls, className, children, style } = props;
+    const { width, height, direction, reverse, prefixCls, className, children, style } = props;
     const cls = classNames(
         prefixCls,
         className,
@@ -41,7 +43,7 @@ const Flip = (props: FlipTypes) => {
         'Children must contain front and back components.', true);
 
     return (
-        <div className={cls} style={{ height, ...style }}>
+        <div className={cls} style={{ width, height, ...style }}>
             <div className={innerCls}>
                 {React.Children.map(children, (child: React.ReactElement<FlipItemProps>, index: number) => (
                     React.cloneElement(child, {

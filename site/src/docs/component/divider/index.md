@@ -23,6 +23,6 @@ import { Divider } from 'tiny-ui';
 | --------- | -------------------------------- | ----------------------------- | ------------ |
 | type      | direction type of divider        | enum: `horizontal` `vertical` | `horizontal` |
 | dashed    | whether line is dashed           | boolean                       | false        |
-| align     | position of title inside divider | enum: `left` `right` `center` | `center`       |
+| align     | position of title inside divider | enum: `left` `right` `center` | `center`     |
 | style	    | style object of container	object |                               | -            |
 | className	| className of container           | string                        | -            |
