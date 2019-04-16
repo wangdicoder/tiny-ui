@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 
 export type TextareaProps = {
+    rows?: number,
     limit?: number,
-    counter?: React.ReactNode,
+    counter?: (count: number) => React.ReactNode,
     defaultValue?: string,
     value?: string,
-    rows?: number,
     onChange?: (value: any, event: React.FormEvent<HTMLTextAreaElement>) => void,
-    onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>,
     disabled?: boolean,
     prefixCls?: string,
     className?: string,
@@ -23,7 +22,7 @@ const defaultProps = {
 const Textarea = (props: TextareaProps) => {
     const {
         limit, counter, defaultValue, value, rows, onChange,
-        disabled, prefixCls, className, style,
+        disabled, prefixCls, className, style, ...restProps
     } = props;
     const cls = classnames(prefixCls, className, {
         [`${prefixCls}_disabled`]: disabled,
@@ -46,6 +45,7 @@ const Textarea = (props: TextareaProps) => {
                     disabled={disabled}
                     className={cls}
                     style={style}
+                    {...restProps}
                     onChange={_inputOnChange}
                 />
                 <span className={`${prefixCls}__counter`}>
@@ -63,6 +63,7 @@ const Textarea = (props: TextareaProps) => {
                 className={cls}
                 style={style}
                 onChange={_inputOnChange}
+                {...restProps}
             />
         );
     }

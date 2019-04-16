@@ -1,4 +1,4 @@
-import {lazy} from 'react';
+import { lazy } from 'react';
 
 const GUIDE_MENU = [{
     title: 'Tiny UI Introduction',
@@ -8,23 +8,23 @@ const GUIDE_MENU = [{
     title: 'Get Started',
     route: 'get-started',
     component: lazy(() => import('./docs/guide/get-started')),
-},{
+}, {
     title: 'Customise Theme',
     route: 'customise-theme',
     component: lazy(() => import('./docs/guide/customise-theme')),
-},{
+}, {
     title: 'Use in create-react-app',
     route: 'use-with-create-react-app',
     component: lazy(() => import('./docs/guide/use-react-app')),
-},{
+}, {
     title: 'Change Log',
     route: 'change-log',
     component: lazy(() => import('./docs/guide/change-log')),
-},{
+}, {
     title: 'FAQ',
     route: 'faq',
     component: lazy(() => import('./docs/guide/faq')),
-},];
+}];
 
 const COMPONENT_MENU = [{
     title: 'Basic',
@@ -56,11 +56,15 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Form',
         route: 'form',
-    },{
+    }, {
         title: 'Checkbox',
         route: 'checkbox',
         component: lazy(() => import('./docs/component/checkbox')),
-    },{
+    }, {
+        title: 'Native Select',
+        route: 'native-select',
+        component: lazy(() => import('./docs/component/native-select')),
+    }, {
         title: 'Radio',
         route: 'radio',
         component: lazy(() => import('./docs/component/radio')),
@@ -69,9 +73,9 @@ const COMPONENT_MENU = [{
         route: 'switch',
         component: lazy(() => import('./docs/component/switch')),
     }, {
-        title: 'Native Select',
-        route: 'native-select',
-        component: lazy(() => import('./docs/component/native-select')),
+        title: 'Textarea',
+        route: 'textarea',
+        component: lazy(() => import('./docs/component/textarea')),
     }],
 }, {
     title: 'Data Display',
@@ -108,7 +112,7 @@ const COMPONENT_MENU = [{
     children: [{
         title: 'Divider',
         route: 'divider',
-        component: lazy(() => import('./docs/component/divider'))
+        component: lazy(() => import('./docs/component/divider')),
     }],
 }];
 

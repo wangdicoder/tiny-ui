@@ -15,7 +15,9 @@
     "components",
     "ui",
     "framework",
-    "frontend"
+    "frontend",
+    "react hook component",
+    "typescript"
   ],
   "repository": {
     "type": "git",

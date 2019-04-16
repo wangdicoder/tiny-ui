@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 
+import AffixContainer from './affix-container';
+
 export type AffixProps = {
     offsetBottom?: number,
     offsetTop?: number,
-    target?: () => HTMLElement,
     onChange?: (affixed: boolean, isTop: boolean | undefined) => void;
     prefixCls?: string,
     className?: string,
@@ -16,13 +17,12 @@ const defaultProps = {
     prefixCls: 'ty-affix',
     offsetTop: 0,
     offsetBottom: 0,
-    target: () => window,
 };
 
 let lastAffixState = false;
 
 const Affix = (props: AffixProps) => {
-    const { offsetTop, offsetBottom, target, onChange, prefixCls, className, style, children } = props;
+    const { offsetTop, offsetBottom, onChange, prefixCls, className, style, children } = props;
     const [placeholderHeight, setPlaceholderHeight] = useState(0);
     const [affixStyle, setAffixStyle] = useState<React.CSSProperties>({});
     const placeholderEl = useRef<HTMLDivElement>(null);
@@ -69,10 +69,10 @@ const Affix = (props: AffixProps) => {
 
     useEffect(() => {
         affixEl.current && setPlaceholderHeight(affixEl.current.clientHeight);
-        target().addEventListener('scroll', _onScrollListener);
+        window.addEventListener('scroll', _onScrollListener);
 
         return () => {
-            target().removeEventListener('scroll', _onScrollListener);
+            window.removeEventListener('scroll', _onScrollListener);
         };
     }, []);
 
@@ -84,5 +84,7 @@ const Affix = (props: AffixProps) => {
 };
 
 Affix.defaultProps = defaultProps;
+
+Affix.container = AffixContainer;
 
 export default Affix;
