@@ -198,11 +198,11 @@
   outline: none;
   border-radius: 3px;
   line-height: 1;
-  margin: 0 7px 12px 0;
+  margin: 0 7px 0 0;
   font-weight: 300;
   letter-spacing: 0;
   cursor: pointer;
-  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 200ms cubic-bezier(0.4, 0, 1, 1), background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
   font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   display: inline-flex;
   justify-content: center;
@@ -242,23 +242,23 @@
   .ty-btn_default {
     border-color: #2f4356;
     box-shadow: 0 1px 2px 0 rgba(52, 73, 94, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #34495e;
     border-color: #ccc; }
     .ty-btn_default:hover {
       box-shadow: 0 14px 16px -12px rgba(52, 73, 94, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(52, 73, 94, 0.2); }
     .ty-btn_default:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(52, 73, 94, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(52, 73, 94, 0.2), inset 0 3px 8px rgba(52, 73, 94, 0.2); }
   .ty-btn_default_outline {
     border-color: #2f4356;
     box-shadow: 0 1px 2px 0 rgba(52, 73, 94, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #34495e; }
     .ty-btn_default_outline:hover {
       box-shadow: 0 14px 16px -12px rgba(52, 73, 94, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(52, 73, 94, 0.2); }
     .ty-btn_default_outline:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(52, 73, 94, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(52, 73, 94, 0.2), inset 0 3px 8px rgba(52, 73, 94, 0.2); }
   .ty-btn_default_link {
     color: #34495e;
@@ -285,12 +285,12 @@
   .ty-btn_primary_outline {
     border-color: #683db6;
     box-shadow: 0 1px 2px 0 rgba(110, 65, 191, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #6E41BF; }
     .ty-btn_primary_outline:hover {
       box-shadow: 0 14px 16px -12px rgba(110, 65, 191, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(110, 65, 191, 0.2); }
     .ty-btn_primary_outline:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(110, 65, 191, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(110, 65, 191, 0.2), inset 0 3px 8px rgba(110, 65, 191, 0.2); }
   .ty-btn_primary_link {
     color: #6E41BF;
@@ -317,12 +317,12 @@
   .ty-btn_blue_outline {
     border-color: #00b1c7;
     box-shadow: 0 1px 2px 0 rgba(0, 188, 212, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #00bcd4; }
     .ty-btn_blue_outline:hover {
       box-shadow: 0 14px 16px -12px rgba(0, 188, 212, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2); }
     .ty-btn_blue_outline:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(0, 188, 212, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2), inset 0 3px 8px rgba(0, 188, 212, 0.2); }
   .ty-btn_blue_link {
     color: #00bcd4;
@@ -349,12 +349,12 @@
   .ty-btn_green_outline {
     border-color: #48a64c;
     box-shadow: 0 1px 2px 0 rgba(76, 175, 80, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #4caf50; }
     .ty-btn_green_outline:hover {
       box-shadow: 0 14px 16px -12px rgba(76, 175, 80, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2); }
     .ty-btn_green_outline:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(76, 175, 80, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2), inset 0 3px 8px rgba(76, 175, 80, 0.2); }
   .ty-btn_green_link {
     color: #4caf50;
@@ -381,12 +381,12 @@
   .ty-btn_yellow_outline {
     border-color: #f29000;
     box-shadow: 0 1px 2px 0 rgba(255, 152, 0, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #ff9800; }
     .ty-btn_yellow_outline:hover {
       box-shadow: 0 14px 16px -12px rgba(255, 152, 0, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(255, 152, 0, 0.2); }
     .ty-btn_yellow_outline:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(255, 152, 0, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(255, 152, 0, 0.2), inset 0 3px 8px rgba(255, 152, 0, 0.2); }
   .ty-btn_yellow_link {
     color: #ff9800;
@@ -413,12 +413,12 @@
   .ty-btn_red_outline {
     border-color: #f3382a;
     box-shadow: 0 1px 2px 0 rgba(244, 67, 54, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #f44336; }
     .ty-btn_red_outline:hover {
       box-shadow: 0 14px 16px -12px rgba(244, 67, 54, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(244, 67, 54, 0.2); }
     .ty-btn_red_outline:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(244, 67, 54, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(244, 67, 54, 0.2), inset 0 3px 8px rgba(244, 67, 54, 0.2); }
   .ty-btn_red_link {
     color: #f44336;
@@ -445,12 +445,12 @@
   .ty-btn_pink_outline {
     border-color: #e4165c;
     box-shadow: 0 1px 2px 0 rgba(233, 30, 99, 0.14);
-    background-color: transparent;
+    background-color: #fff;
     color: #e91e63; }
     .ty-btn_pink_outline:hover {
       box-shadow: 0 14px 16px -12px rgba(233, 30, 99, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2); }
     .ty-btn_pink_outline:active {
-      background-color: transparent;
+      background-color: #fff;
       box-shadow: 0 14px 16px -12px rgba(233, 30, 99, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2), inset 0 3px 8px rgba(233, 30, 99, 0.2); }
   .ty-btn_pink_link {
     color: #e91e63;
@@ -1859,17 +1859,17 @@
   -webkit-perspective: 1000px;
           perspective: 1000px; }
   .ty-flip:hover .ty-flip__inner_hor {
-    -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg); }
-  .ty-flip:hover .ty-flip__inner_hor_reverse {
     -webkit-transform: rotateY(-180deg);
             transform: rotateY(-180deg); }
+  .ty-flip:hover .ty-flip__inner_hor_reverse {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); }
   .ty-flip:hover .ty-flip__inner_ver {
-    -webkit-transform: rotateX(180deg);
-            transform: rotateX(180deg); }
-  .ty-flip:hover .ty-flip__inner_ver_reverse {
     -webkit-transform: rotateX(-180deg);
             transform: rotateX(-180deg); }
+  .ty-flip:hover .ty-flip__inner_ver_reverse {
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg); }
   .ty-flip__inner {
     position: relative;
     box-sizing: border-box;
@@ -1889,17 +1889,17 @@
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden; }
   .ty-flip__item-back_hor {
-    -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg); }
-  .ty-flip__item-back_hor_reverse {
     -webkit-transform: rotateY(-180deg);
             transform: rotateY(-180deg); }
+  .ty-flip__item-back_hor_reverse {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); }
   .ty-flip__item-back_ver {
-    -webkit-transform: rotateX(180deg);
-            transform: rotateX(180deg); }
-  .ty-flip__item-back_ver_reverse {
     -webkit-transform: rotateX(-180deg);
             transform: rotateX(-180deg); }
+  .ty-flip__item-back_ver_reverse {
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg); }
 
 .ty-form-item {
   font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif; }
