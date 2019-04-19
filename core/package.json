@@ -58,8 +58,10 @@
     "webpack-cli": "^3.3.0"
   },
   "dependencies": {
+    "@types/raf": "^3.4.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.11",
+    "raf": "^3.4.1",
     "react-transition-group": "^2.7.0"
   },
   "scripts": {
