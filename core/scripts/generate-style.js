@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const LIB_INPUT_DIR = path.resolve(__dirname, '../lib');
-const BLACK_LIST = ['styles', 'portal', '_utils'];
+const BLACK_LIST = ['countdown', 'styles', 'portal', '_utils'];
 
 function geFileList(path) {
     const files = fs.readdirSync(path);

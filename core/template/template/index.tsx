@@ -11,7 +11,7 @@ export type XProps = {
 const defaultProps = {};
 
 const X = (props: XProps) => {
-    const { prefixCls, className, style } = props;
+    const { prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
     
     return (
