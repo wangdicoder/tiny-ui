@@ -1,19 +1,21 @@
 import * as React from 'react';
 import classnames from 'classnames';
 
-export type XProps = {
+export type TimePickerProps = {
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
     children?: React.ReactNode,
 } & typeof defaultProps;
 
-const defaultProps = {};
+const defaultProps = {
+    prefixCls: 'ty-time-picker',
+};
 
-const X = (props: XProps) => {
+const TimePicker = (props: TimePickerProps) => {
     const { prefixCls, className, style } = props;
     const cls = classnames(prefixCls, className);
-    
+
     return (
         <div className={cls} style={style}>
 
@@ -21,6 +23,6 @@ const X = (props: XProps) => {
     );
 };
 
-X.defaultProps = defaultProps;
+TimePicker.defaultProps = defaultProps;
 
-export default X;
+export default TimePicker;
