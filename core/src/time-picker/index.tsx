@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
+import TimePanel from './time-panel';
 
 export type TimePickerProps = {
     prefixCls?: string,
@@ -18,7 +19,9 @@ const TimePicker = (props: TimePickerProps) => {
 
     return (
         <div className={cls} style={style}>
-
+            <TimePanel count={24}/>
+            <TimePanel count={60}/>
+            <TimePanel count={60}/>
         </div>
     );
 };

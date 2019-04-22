@@ -1,6 +1,7 @@
 @import "../var";
 
 .#{$prefix}date-picker {
+  display: inline-block;
   width: 280px;
   box-sizing: border-box;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .15);

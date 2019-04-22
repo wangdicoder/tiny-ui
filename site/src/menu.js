@@ -88,6 +88,10 @@ const COMPONENT_MENU = [{
         route: 'badge',
         component: lazy(() => import('./docs/component/badge')),
     }, {
+        title: 'Countdown',
+        route: 'countdown',
+        component: lazy(() => import('./docs/component/countdown')),
+    }, {
         title: 'Flip',
         route: 'flip',
         component: lazy(() => import('./docs/component/flip')),
