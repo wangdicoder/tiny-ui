@@ -1,10 +1,10 @@
 # Countdown
 
-To trigger an operation.
+A countdown component
 
 ## Scenario
 
-A button means an operation (or a series of operations). Clicking a button will trigger corresponding business logic.
+Countdown activities, like seckill.
 
 ## Usage
 

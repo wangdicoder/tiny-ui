@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useState, useRef } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
+import Icon from '../icon';
 
 export type AlertProps = {
-    type: 'success' | 'info' | 'warning' | 'error',
+    title?: string,
+    type?: 'success' | 'info' | 'warning' | 'error',
+    icon?: boolean | ReactNode,
+    iconSize?: number,
     /** Whether Alert can be closed */
     closable?: boolean,
     /** Close text to show */
@@ -21,11 +25,17 @@ export type AlertProps = {
 const defaultProps = {
     prefixCls: 'ty-alert',
     type: 'info',
-    onClose: () => {
-    },
+    iconSize: 14,
 };
 
-const setStyle = (node: HTMLElement) => {
+const IconType = {
+    success: 'check-fill',
+    info: 'info-fill',
+    warning: 'warn-fill',
+    error: 'close-fill',
+};
+
+const setClosedStyle = (node: HTMLElement) => {
     node.style.borderTopWidth = '0';
     node.style.paddingTop = '0';
     node.style.marginTop = '0';
@@ -36,7 +46,10 @@ const setStyle = (node: HTMLElement) => {
 };
 
 const Alert = (props: AlertProps) => {
-    const { type, closeText, closable, afterClose, onClose, children, className, prefixCls, style } = props;
+    const {
+        title, type, icon, iconSize, closeText, closable, afterClose, onClose,
+        children, className, prefixCls, style,
+    } = props;
     const [isShow, setShow] = useState(true);
     const ref = useRef<HTMLDivElement>(null);
     const cls = classNames(
@@ -46,9 +59,9 @@ const Alert = (props: AlertProps) => {
     );
 
     const closeBtnOnClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-        ref.current && setStyle(ref.current);
+        ref.current && setClosedStyle(ref.current);
         setShow(false);
-        (onClose)(e);
+        onClose && (onClose)(e);
     };
 
     // Setting close text attribute also allows to be closable
@@ -60,6 +73,14 @@ const Alert = (props: AlertProps) => {
         </span>
     );
 
+    const renderIcon = () => {
+        if (typeof icon === 'boolean') {
+            return <Icon type={IconType[type]} size={iconSize} className={`${prefixCls}__icon`}/>;
+        }
+
+        return icon;
+    };
+
     return (
         <CSSTransition
             unmountOnExit={true}
@@ -68,7 +89,11 @@ const Alert = (props: AlertProps) => {
             onExited={afterClose}
             classNames={`${prefixCls}_slide-up`}>
             <div className={cls} style={style} ref={ref}>
-                {children}
+                {icon && renderIcon()}
+                <div>
+                    {title && <p className={`${prefixCls}__title`}>{title}</p>}
+                    {children}
+                </div>
                 {closeIcon}
             </div>
         </CSSTransition>

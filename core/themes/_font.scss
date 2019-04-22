@@ -107,6 +107,54 @@
   content: "\e7f2";
 }
 
+.ty--check-fill:before {
+  content: "\e844";
+}
+
+.ty--left-fill:before {
+  content: "\e845";
+}
+
+.ty--down-fill:before {
+  content: "\e846";
+}
+
+.ty--minus-fill:before {
+  content: "\e847";
+}
+
+.ty--close-fill:before {
+  content: "\e848";
+}
+
+.ty--info-fill:before {
+  content: "\e849";
+}
+
+.ty--up-fill:before {
+  content: "\e84a";
+}
+
+.ty--right-fill:before {
+  content: "\e84b";
+}
+
+.ty--plus-fill:before {
+  content: "\e84c";
+}
+
+.ty--question-fill:before {
+  content: "\e84d";
+}
+
+.ty--play-fill:before {
+  content: "\e84e";
+}
+
+.ty--warn-fill:before {
+  content: "\e84f";
+}
+
 .ty--behance:before {
   content: "\e87a";
 }
@@ -195,11 +243,7 @@
   content: "\e604";
 }
 
-.ty--Mark-As-Favourite:before {
-  content: "\e605";
-}
-
-.ty--Maintenance:before {
+.ty--maintain:before {
   content: "\e607";
 }
 

@@ -1,9 +1,11 @@
 ### Basic
 
+The simplest usage for short messages.
+
 <!--start-code-->
 
 ```jsx
-render(<div></div>);
+render(<Alert>Info alert</Alert>);
 ```
 
 <!--end-code-->

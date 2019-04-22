@@ -1,8 +1,8 @@
 import createComponentExample from '../../../lib';
-import { Button } from 'tiny-ui/src';
+import { Alert } from 'tiny-ui/src';
 
 export default createComponentExample({
     componentName: 'alert',
-    examples: ['basic'],
-    dependencies: { Button },
+    examples: ['basic', 'type', 'closable', 'title', 'icon', 'close-btn'],
+    dependencies: { Alert },
 });
