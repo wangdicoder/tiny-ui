@@ -2,9 +2,10 @@ import React, { useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
 
 export type TimePanelProps = {
+    value: number,
     count: number,
+    onChange: (num: number) => void,
     prefixCls?: string,
-    children?: React.ReactNode,
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -12,7 +13,7 @@ const defaultProps = {
 };
 
 const TimePanel = (props: TimePanelProps) => {
-    const { count, prefixCls } = props;
+    const { value, count, onChange, prefixCls } = props;
     const [selectedIdx, setSelectedIdx] = useState(-1);
     const panelRef = useRef<HTMLDivElement>(null);
     const ulRef = useRef<HTMLUListElement>(null);
@@ -21,19 +22,24 @@ const TimePanel = (props: TimePanelProps) => {
         const target = e.target as HTMLElement;
         if (target.nodeName === 'LI') {
             const idx: string | undefined = target.dataset.idx;
-            idx && scrollToTop(target, +idx);
+            const elHeight = target.clientHeight;
+            if (idx) {
+                scrollToTop(+idx, elHeight);
+                onChange && onChange(+idx);
+            }
         }
     };
 
-    const scrollToTop = (target: HTMLElement, idx: number) => {
+    const scrollToTop = (idx: number, elHeight: number = 30) => {
         setSelectedIdx(idx);
         panelRef.current && panelRef.current.scrollTo({
-            top: +idx * target.clientHeight,
+            top: idx * elHeight,
             behavior: 'smooth',
         });
     };
 
     useEffect(() => {
+        scrollToTop(value);
         ulRef.current && ulRef.current.addEventListener('click', ulOnClick);
 
         return () => {
