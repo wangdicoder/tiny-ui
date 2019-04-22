@@ -2,7 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import Group from './button-group';
 
-export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' | 'pink';
+export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' ;
 export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonProps = {

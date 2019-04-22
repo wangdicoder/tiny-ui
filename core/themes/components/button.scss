@@ -151,22 +151,6 @@ $btn-prefix: #{$prefix}btn;
     @include btn-color-disabled($red-color);
   }
 
-  &_pink {
-    @include btn-color($pink-color);
-  }
-
-  &_pink_outline {
-    @include btn-color($pink-color, true);
-  }
-
-  &_pink_link {
-    @include btn-text-color($pink-color);
-  }
-
-  &_pink_disabled {
-    @include btn-color-disabled($pink-color);
-  }
-
   &_lg {
     font-size: $btn-lg-font-size;
     padding: $btn-lg-padding;
