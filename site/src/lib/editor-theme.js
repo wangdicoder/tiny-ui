@@ -1,17 +1,18 @@
 const colors = {
     char: "#484848",
     comment: "#999999",
-    keyword: "#0b8235",
+    keyword: "#d73a49",
+    attrName: "#6f42c1",
     primitive: "#5a9bcf",
     string: "#008dff",
     variable: "#d7deea",
     boolean: "#ff8b50",
     punctuation: "#999",
-    tag: "#6f42c1",
-    function: "#d73a49",
-    className: "#FAC863",
+    tag: "#22863a",
+    function: "#032f62",
+    className: "#d73a49",
     method: "#6699CC",
-    operator: "#fc929e",
+    operator: "#24292e",
 };
 
 const theme /*: PrismTheme */ = {
@@ -22,7 +23,7 @@ const theme /*: PrismTheme */ = {
         {
             types: ["attr-name"],
             style: {
-                color: colors.keyword,
+                color: colors.attrName,
             },
         },
         {
@@ -87,13 +88,13 @@ const theme /*: PrismTheme */ = {
             },
         },
         {
-            types: ["operator", "entity", "url", "variable"],
+            types: ["entity", "url", "variable"],
             style: {
-                color: colors.variable,
+                color: colors.function,
             },
         },
         {
-            types: ["keyword"],
+            types: ["keyword", "operator"],
             style: {
                 color: colors.keyword,
             },

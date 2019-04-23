@@ -1,0 +1,47 @@
+@import "../var";
+
+.#{$prefix}dropdown {
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+
+  &__overlay {
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    position: absolute;
+    transition: all 300ms;
+    transform: translateY(0);
+    z-index: 1;
+  }
+
+  &__overlay_slide {
+    &-enter {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+
+    &-enter-done {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+
+    &-exit-done {
+      opacity: 0;
+      transform: translateY(-5px);
+      display: none;
+    }
+
+  }
+}

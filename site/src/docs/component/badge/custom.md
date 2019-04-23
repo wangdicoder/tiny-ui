@@ -2,7 +2,7 @@
 
 Set `color` to display the dot badge with different colors. `processing` can show an wave animation.
 
-> Only dot badge has `processing` effect.
+> Only the dot badge has the `processing` effect.
 
 <!--start-code-->
 
