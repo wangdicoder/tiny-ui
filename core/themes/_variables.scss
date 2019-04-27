@@ -1,105 +1,114 @@
-$prefix: 'ty-';
+$prefix: 'ty-'                        !default;
 
 //color
-$default-color: #34495e;
-$primary-color: #6E41BF;
-$link-color: $primary-color;
-$blue-color: #00bcd4; //info
-$blue-light-color: #91d5ff;
-$blue-lighter-color: #e6f7ff;
-$green-color: #4caf50; //success
-$green-light-color: #b7eb8f;
-$green-lighter-color: #f6ffed;
-$yellow-color: #ff9800; //warn
-$yellow-light-color: #ffe58f;
-$yellow-lighter-color: #fffbe6;
-$red-color: #f44336; //error
-$red-light-color: #ffa39e;
-$red-lighter-color: #fff1f0;
-$white-color: #fff;
+$default-color: #34495e               !default;
+$primary-color: #6E41BF               !default;
+$link-color: $primary-color           !default;
+
+//info
+$blue-color: #00bcd4                  !default;
+$blue-light-color: #91d5ff            !default;
+$blue-lighter-color: #e6f7ff          !default;
+
+//success
+$green-color: #4caf50                 !default;
+$green-light-color: #b7eb8f           !default;
+$green-lighter-color: #f6ffed         !default;
+
+//warn
+$yellow-color: #ff9800                !default;
+$yellow-light-color: #ffe58f          !default;
+$yellow-lighter-color: #fffbe6        !default;
+
+//error
+$red-color: #f44336                   !default;
+$red-light-color: #ffa39e             !default;
+$red-lighter-color: #fff1f0           !default;
+$white-color: #fff                    !default;
 
 //common
-$border-radius: 3px;
+$border-radius: 3px                   !default;
 
 //font
-$font-size: 14px;
-$font-weight: 300;
+$font-path: 'fonts'                   !default;
+$font-size: 14px                      !default;
+$font-weight: 300                     !default;
 $font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif !default;
 
 //responsive breakpoints
-$size-xs: 480px;
-$size-sm: 600px;
-$size-md: 840px;
-$size-lg: 960px;
-$size-xl: 1280px;
-$size-xxl: 1440px;
+$size-xs: 480px                       !default;
+$size-sm: 600px                       !default;
+$size-md: 840px                       !default;
+$size-lg: 960px                       !default;
+$size-xl: 1280px                      !default;
+$size-xxl: 1440px                     !default;
 
 //layout
-$layout-body-background: #fff;
-$layout-header-background: #fff;
-$layout-header-padding: 0 50px;
-$layout-header-height: 60px;
-$layout-footer-background: #fff;
-$layout-footer-padding: 24px 50px;
-$layout-sider-background: #12131a;
+$layout-body-background: #fff         !default;
+$layout-header-background: #fff       !default;
+$layout-header-padding: 0 50px        !default;
+$layout-header-height: 60px           !default;
+$layout-footer-background: #fff       !default;
+$layout-footer-padding: 24px 50px     !default;
+$layout-sider-background: #12131a     !default;
 
 //button
-$btn-border-radius: $border-radius;
-$btn-lg-font-size: $font-size + 3px;
-$btn-lg-padding: 12px 28px;
-$btn-md-font-size: $font-size;
-$btn-md-padding: 8px 15px;
-$btn-sm-font-size: $font-size - 2px;
-$btn-sm-padding: 5px 10px;
-$btn-xs-font-size: $font-size - 4px;
-$btn-xs-padding: 2px 6px;
+$btn-border-radius: $border-radius    !default;
+$btn-lg-font-size: $font-size + 3px   !default;
+$btn-lg-padding: 12px 28px            !default;
+$btn-md-font-size: $font-size         !default;
+$btn-md-padding: 8px 15px             !default;
+$btn-sm-font-size: $font-size - 2px   !default;
+$btn-sm-padding: 5px 10px             !default;
+$btn-xs-font-size: $font-size - 4px   !default;
+$btn-xs-padding: 2px 6px              !default;
 
 //alert
-$alert-border-radius: 3px;
+$alert-border-radius: 3px             !default;
 
 //avatar
-$avatar-bg: #ccc;
-$avatar-color: #fff;
-$avatar-border-radius: 2px;
+$avatar-bg: #ccc                      !default;
+$avatar-color: #fff                   !default;
+$avatar-border-radius: 2px            !default;
 
 //collapse
-$collapse-border-radius: 4px;
+$collapse-border-radius: 4px          !default;
 
 //badge
-$badge-font-size: 12px;
-$badge-size: 18px;
-$badge-dot-size: 6px;
+$badge-font-size: 12px                !default;
+$badge-size: 18px                     !default;
+$badge-dot-size: 6px                  !default;
 
 //divider
-$divider-line-color: #e4e4e4;
+$divider-line-color: #e4e4e4          !default;
 
 //input
-$input-border-radius: $border-radius;
-$input-sm-padding: 0 4px;
-$input-sm-height: 21px;
-$input-sm-font-size: 12px;
-$input-md-padding: 0 8px;
-$input-md-font-size: $font-size;
-$input-md-height: 31px;
-$input-lg-padding: 0 11px;
-$input-lg-font-size: 17px;
-$input-lg-height: 42px;
+$input-border-radius: $border-radius  !default;
+$input-sm-padding: 0 4px              !default;
+$input-sm-height: 21px                !default;
+$input-sm-font-size: 12px             !default;
+$input-md-padding: 0 8px              !default;
+$input-md-font-size: $font-size       !default;
+$input-md-height: 31px                !default;
+$input-lg-padding: 0 11px             !default;
+$input-lg-font-size: 17px             !default;
+$input-lg-height: 42px                !default;
 
 //textarea
-$textarea-font-size: 14px;
-$textarea-padding: 5px;
+$textarea-font-size: 14px             !default;
+$textarea-padding: 5px                !default;
 
 //select
-$select-sm-padding: 3px 25px 3px 7px;
-$select-sm-font-size: 12px;
-$select-md-padding: 6px 25px 6px 10px;
-$select-md-font-size: $font-size;
-$select-lg-padding: 9px 25px 9px 12px;
-$select-lg-font-size: 16px;
-$select-border-radius: $border-radius;
+$select-sm-padding: 3px 25px 3px 7px  !default;
+$select-sm-font-size: 12px            !default;
+$select-md-padding: 6px 25px 6px 10px !default;
+$select-md-font-size: $font-size      !default;
+$select-lg-padding: 9px 25px 9px 12px !default;
+$select-lg-font-size: 16px            !default;
+$select-border-radius: $border-radius !default;
 
 //switch
-$switch-md-font-size: 12px;
-$switch-sm-font-size: 9px;
-$switch-lg-font-size: 14px;
+$switch-md-font-size: 12px            !default;
+$switch-sm-font-size: 9px             !default;
+$switch-lg-font-size: 14px            !default;
