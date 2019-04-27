@@ -9,6 +9,7 @@ export type AvatarProps = {
     shape?: 'circle' | 'square',
     size?: number,
     src?: string,
+    presence?: 'online' | 'busy' | 'away' | 'offline',
     alt?: string,
     onClick?: React.MouseEventHandler<HTMLAnchorElement>,
     children?: React.ReactNode,
@@ -25,7 +26,7 @@ const defaultProps = {
 };
 
 const Avatar = (props: AvatarProps) => {
-    const { icon, shape, size, src, alt, onClick, children, prefixCls, className, style } = props;
+    const { icon, shape, size, src, presence, alt, onClick, children, prefixCls, className, style } = props;
     const outerEl = useRef<HTMLSpanElement>(null);
     const textEl = useRef<HTMLSpanElement>(null);
     const [scale, setScale] = useState(1);
@@ -42,6 +43,10 @@ const Avatar = (props: AvatarProps) => {
         } else {
             return <Icon type={icon} className={`${prefixCls}__icon`} size={size - 10}/>;
         }
+    };
+
+    const renderPresence = () => {
+        return <i className={`${prefixCls}__presence ${prefixCls}__presence_${presence}`}/>;
     };
 
     const renderChildren = () => {
@@ -64,6 +69,7 @@ const Avatar = (props: AvatarProps) => {
     const styles = {
         width: size,
         height: size,
+        fontSize: size / 2,
         lineHeight: `${size - 4}px`,
         ...style,
     };
@@ -84,6 +90,7 @@ const Avatar = (props: AvatarProps) => {
     return (
         <span ref={outerEl} className={cls} style={styles} onClick={onClick}>
             {renderItem()}
+            {presence && renderPresence()}
         </span>
     );
 };

@@ -9,7 +9,6 @@
   color: $avatar-color;
   white-space: nowrap;
   position: relative;
-  overflow: hidden;
   vertical-align: middle;
   user-select: none;
   border: 2px solid #fff;
@@ -30,8 +29,38 @@
     transform: translateX(-50%);
   }
 
+  &__presence {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.1rem #fff;
+    height: .5em;
+    width: .5em;
+
+    &_online {
+      background-color: $green-color;
+    }
+
+    &_busy {
+      background-color: $red-color;
+    }
+
+    &_away {
+      background-color: $yellow-color;
+    }
+
+    &_offline {
+      background-color: $grey-color;
+    }
+  }
+
   &_circle {
     border-radius: 50%;
+
+    .#{$prefix}avatar__img {
+      border-radius: 50%;
+    }
   }
 
   &_square {
@@ -47,7 +76,7 @@
       z-index: 1;
 
       & + .#{$prefix}avatar {
-        margin-left: -.8em;
+        margin-left: -.7em;
       }
 
       &:hover {
