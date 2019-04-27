@@ -1,4 +1,5 @@
-@import "../var";
+@import "../variables";
+@import "./overlay";
 
 .#{$prefix}modal {
   position: relative;

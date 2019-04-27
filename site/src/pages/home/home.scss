@@ -2,7 +2,7 @@
 
 .home {
   height: calc(100vh - #{$header-height});
-  background: url("../../assets/background.svg") top right no-repeat;
+  //background: url("../../assets/background.svg") top right no-repeat;
   background-size: 250px;
 
   &__slider {
@@ -47,6 +47,11 @@
   &__btn-group {
     margin: 20px 0 0 0;
     display: flex;
+  }
+
+  &__main{
+    background: url("../../assets/bg-features.jpg") top center no-repeat;
+    background-size: cover;
   }
 
   &__feature-title {

@@ -15,11 +15,11 @@ const FEATURES = [
     }, {
         img: require('./img/direct.png'),
         title: 'Consistent',
-        desc: 'All components have a consistent design style'
+        desc: 'All components have a consistent design style',
     }, {
         img: require('./img/elegant.png'),
         title: 'Elegant',
-        desc: 'Thanks for React Hook, the source code is more light weight'
+        desc: 'Thanks for React Hook, the source code is more light weight',
     }, {
         img: require('./img/adaptable.png'),
         title: 'Adaptable',
@@ -58,18 +58,22 @@ const Home = (props) => {
                 </div>
             </div>
 
-            <h1 className="home__feature-title">Design Principle</h1>
-            <div className="home__features">
-                {FEATURES.map((feature, idx) => (
-                    <FeatureBlock key={idx} img={feature.img} title={feature.title} desc={feature.desc}/>
-                ))}
+            <div className="home__main">
+                <h1 className="home__feature-title">Design Principle</h1>
+                <div className="home__features">
+                    {FEATURES.map((feature, idx) => (
+                        <FeatureBlock key={idx} img={feature.img} title={feature.title} desc={feature.desc}/>
+                    ))}
+                </div>
+
+                <h1 className="home__feature-title">Blueprint</h1>
+                <p className="home__p">This project is still under development. However, before release version 1, we
+                    will implement these components listing in the diagram below.</p>
+                <p className="home__p">Disclaimer: this project is very much under development. The API is subject to
+                    change without notice.</p>
+                <img src={require('./img/blueprint.png')} alt="blueprint" className="home__blueprint"/>
+
             </div>
-
-            <h1 className="home__feature-title">Blueprint</h1>
-            <p className="home__p">This project is still under development. However, before release version 1, we will implement these components listing in the diagram below.</p>
-            <p className="home__p">Disclaimer: this project is very much under development. The API is subject to change without notice.</p>
-            <img src={require('./img/blueprint.png')} alt="blueprint" className="home__blueprint"/>
-
             <Footer/>
         </div>
     );
