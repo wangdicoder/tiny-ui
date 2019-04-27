@@ -109,7 +109,7 @@ $ npm install babel-plugin-import --save-dev
 - };
 + module.exports = override(
 +   fixBabelImports('import', {
-+     libraryName: 'tiny',
++     libraryName: 'tiny-ui',
 +     style: 'css',
 +   }),
 + );

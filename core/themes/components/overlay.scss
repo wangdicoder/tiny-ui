@@ -21,7 +21,7 @@
     backdrop-filter: blur(3px);
   }
 
-  &_hidden{
+  &_none {
 
   }
 
@@ -30,7 +30,7 @@
       opacity: 0;
     }
 
-    &-enter-done{
+    &-enter-done {
       opacity: 1;
     }
 
@@ -42,7 +42,7 @@
       opacity: 0;
     }
 
-    &-exit-done{
+    &-exit-done {
       opacity: 0;
       display: none;
     }

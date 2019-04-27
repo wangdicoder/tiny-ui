@@ -3,6 +3,6 @@ import { Avatar, Button } from 'tiny-ui/src';
 
 export default createComponentExample({
     componentName: 'avatar',
-    examples: ['basic', 'type', 'auto-font'],
+    examples: ['basic', 'type', 'group', 'auto-font'],
     dependencies: { Button, Avatar },
 });

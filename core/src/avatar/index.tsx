@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
+import AvatarGroup from './avatar-group';
 
 export type AvatarProps = {
     icon?: string,
@@ -18,7 +19,7 @@ export type AvatarProps = {
 
 const defaultProps = {
     prefixCls: 'ty-avatar',
-    size: 35,
+    size: 38,
     shape: 'circle',
     icon: 'user',
 };
@@ -63,7 +64,7 @@ const Avatar = (props: AvatarProps) => {
     const styles = {
         width: size,
         height: size,
-        lineHeight: `${size}px`,
+        lineHeight: `${size - 4}px`,
         ...style,
     };
 
@@ -88,5 +89,7 @@ const Avatar = (props: AvatarProps) => {
 };
 
 Avatar.defaultProps = defaultProps;
+
+Avatar.Group = AvatarGroup;
 
 export default Avatar;

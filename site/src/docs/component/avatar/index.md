@@ -10,6 +10,8 @@ Display user's profile picture
 
 ```js
 import { Avatar } from 'tiny-ui';
+
+const { Group } = Avatar;
 ```
 
 ## Examples

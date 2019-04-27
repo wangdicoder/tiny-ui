@@ -1,6 +1,7 @@
 @import "../variables";
 
 .#{$prefix}avatar {
+  box-sizing: border-box;
   font-family: $font-family;
   display: inline-block;
   text-align: center;
@@ -11,6 +12,7 @@
   overflow: hidden;
   vertical-align: middle;
   user-select: none;
+  border: 2px solid #fff;
 
   &__img {
     width: 100%;
@@ -38,5 +40,19 @@
 
   &_clickable {
     cursor: pointer;
+  }
+
+  &-group {
+    .#{$prefix}avatar {
+      z-index: 1;
+
+      & + .#{$prefix}avatar {
+        margin-left: -.8em;
+      }
+
+      &:hover {
+        z-index: 2;
+      }
+    }
   }
 }

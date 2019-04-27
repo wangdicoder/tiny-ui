@@ -42,7 +42,7 @@ const Overlay = (props: OverlayProps) => {
         } else {
             document.body.style.overflow = null;
         }
-    }, [isShow]);
+    });
 
     return (
         <Portal>
