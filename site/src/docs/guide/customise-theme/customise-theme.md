@@ -11,15 +11,14 @@ There are some major variables below, all less variables could be found in [Defa
 $default-color: #34495e               !default;
 $primary-color: #6E41BF               !default;
 $link-color: $primary-color           !default;
+$blue-color: #00bcd4                  !default;
+$green-color: #4caf50                 !default;
+$yellow-color: #ff9800                !default;
+$red-color: #f44336                   !default;
+$border-radius: 3px                   !default;
+$font-size: 14px                      !default;
+$font-weight: 400                     !default;
 
-//responsive breakpoints
-$size-xs: 480px                       !default;
-$size-sm: 600px                       !default;
-$size-md: 840px                       !default;
-$size-lg: 960px                       !default;
-$size-xl: 1280px                      !default;
-$size-xxl: 1440px                     !default;
-$btn-border-radius: $border-radius    !default;
 ```
 
 Please report an issue if the existing list of variables is not enough for you.
@@ -61,7 +60,7 @@ In the entry file of your project, import this style file.
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-/** Place here */
+/** insert here */
 import './theme-variables.scss';
 import './index.scss';
 import App from './App';
@@ -69,4 +68,4 @@ import App from './App';
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-Note: This way will load the styles of all components, regardless of your demand, which cause style option of **babel-plugin-import** not working.
+Note: This way will load the styles of all components, regardless of your demand, which cause style option of `babel-plugin-import` not working.
