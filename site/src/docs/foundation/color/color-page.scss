@@ -1,0 +1,69 @@
+.color-page {
+
+  &__color-panel {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  &__color-block {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 15px;
+    float: left;
+  }
+
+  &__table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-weight: 600;
+
+    tr {
+      border: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    td {
+      padding: 10px;
+      color: #525F7F;
+      width: 400px;
+      line-height: 40px;
+    }
+  }
+}
+
+.color-card {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  &__header {
+    width: 200px;
+    height: 100px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0 0 5px 5px;
+    background-color: #f4f5f7;
+    padding: 20px 10px;
+  }
+
+  &__title, &__subtitle {
+    margin: 0;
+  }
+
+  &__title {
+    font-size: 11px;
+    color: #62748c;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: #525f7f;
+  }
+}

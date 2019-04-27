@@ -27,17 +27,14 @@ const GUIDE_MENU = [{
 }];
 
 const COMPONENT_MENU = [{
-    title: 'Basic',
+    title: 'Foundation',
     children: [{
-        title: 'Button',
-        route: 'button',
-        component: lazy(() => import('./docs/component/button')),
+        title: 'Color',
+        route: 'color',
+        component: lazy(() => import('./docs/foundation/color')),
     }, {
         title: 'Icon',
         route: 'icon',
-    }, {
-        title: 'Color',
-        route: 'color',
     }, {
         title: 'Typography',
         route: 'typography',
@@ -50,6 +47,33 @@ const COMPONENT_MENU = [{
     }, {
         title: 'Layout',
         route: 'layout',
+    }],
+}, {
+    title: 'Data Display',
+    children: [{
+        title: 'Avatar',
+        route: 'avatar',
+        component: lazy(() => import('./docs/component/avatar')),
+    }, {
+        title: 'Badge',
+        route: 'badge',
+        component: lazy(() => import('./docs/component/badge')),
+    }, {
+        title: 'Button',
+        route: 'button',
+        component: lazy(() => import('./docs/component/button')),
+    }, {
+        title: 'Countdown',
+        route: 'countdown',
+        component: lazy(() => import('./docs/component/countdown')),
+    }, {
+        title: 'Flip',
+        route: 'flip',
+        component: lazy(() => import('./docs/component/flip')),
+    }, {
+        title: 'Progress',
+        route: 'progress',
+        component: lazy(() => import('./docs/component/progress')),
     }],
 }, {
     title: 'Form Item',
@@ -76,29 +100,6 @@ const COMPONENT_MENU = [{
         title: 'Textarea',
         route: 'textarea',
         component: lazy(() => import('./docs/component/textarea')),
-    }],
-}, {
-    title: 'Data Display',
-    children: [{
-        title: 'Avatar',
-        route: 'avatar',
-        component: lazy(() => import('./docs/component/avatar')),
-    }, {
-        title: 'Badge',
-        route: 'badge',
-        component: lazy(() => import('./docs/component/badge')),
-    }, {
-        title: 'Countdown',
-        route: 'countdown',
-        component: lazy(() => import('./docs/component/countdown')),
-    }, {
-        title: 'Flip',
-        route: 'flip',
-        component: lazy(() => import('./docs/component/flip')),
-    }, {
-        title: 'Progress',
-        route: 'progress',
-        component: lazy(() => import('./docs/component/progress')),
     }],
 }, {
     title: 'Feedback',

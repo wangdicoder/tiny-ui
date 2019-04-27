@@ -6,7 +6,7 @@
   padding: 10px 30px 10px 13px;
   position: relative;
   margin-bottom: 15px;
-  font-weight: 300;
+  font-weight: 400;
   opacity: 1;
   font-size: 14px;
   transition: all 300ms;
@@ -56,6 +56,7 @@
     color: #00b1c7; }
 
 .ty-avatar {
+  box-sizing: border-box;
   font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
   display: inline-block;
   text-align: center;
@@ -63,12 +64,12 @@
   color: #fff;
   white-space: nowrap;
   position: relative;
-  overflow: hidden;
   vertical-align: middle;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  border: 2px solid #fff; }
   .ty-avatar__img {
     width: 100%;
     height: 100%; }
@@ -81,12 +82,36 @@
             transform-origin: 0 center;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%); }
+  .ty-avatar__presence {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.1rem #fff;
+    height: .5em;
+    width: .5em; }
+    .ty-avatar__presence_online {
+      background-color: #4caf50; }
+    .ty-avatar__presence_busy {
+      background-color: #f44336; }
+    .ty-avatar__presence_away {
+      background-color: #ff9800; }
+    .ty-avatar__presence_offline {
+      background-color: #bcc3ce; }
   .ty-avatar_circle {
     border-radius: 50%; }
+    .ty-avatar_circle .ty-avatar__img {
+      border-radius: 50%; }
   .ty-avatar_square {
     border-radius: 2px; }
   .ty-avatar_clickable {
     cursor: pointer; }
+  .ty-avatar-group .ty-avatar {
+    z-index: 1; }
+    .ty-avatar-group .ty-avatar + .ty-avatar {
+      margin-left: -.7em; }
+    .ty-avatar-group .ty-avatar:hover {
+      z-index: 2; }
 
 @-webkit-keyframes ty-rotate {
   0% {
@@ -209,7 +234,7 @@
   border-radius: 3px;
   line-height: 1;
   margin: 0 7px 0 0;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0;
   cursor: pointer;
   transition: box-shadow 200ms cubic-bezier(0.4, 0, 1, 1), background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
