@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
-
-type Container = HTMLElement | Window;
+import { Container, getNodeHeight, getRect, getScroll } from '../_utils/dom';
 
 export type AffixProps = {
     container?: () => Container,
@@ -24,31 +23,6 @@ type AffixMode = {
     top: boolean,
     bottom: boolean,
     offset: number,
-};
-
-const getScroll = (node: Container, isVertical: boolean): number => {
-    if (typeof window === 'undefined') {
-        return 0;
-    }
-    const windowProp = isVertical ? 'pageYOffset' : 'pageXOffset';
-    const elementProp = isVertical ? 'scrollTop' : 'scrollLeft';
-    return node === window ? (node as Window)[windowProp] : (node as HTMLElement)[elementProp];
-};
-
-const getRect = (node: Container = window) => {
-    return node !== window
-        ? (node as HTMLElement).getBoundingClientRect()
-        : { top: 0, left: 0, bottom: 0 };
-};
-
-const getNodeHeight = (node: Container) => {
-    if (!node) {
-        return 0;
-    }
-    if (node === window) {
-        return window.innerHeight;
-    }
-    return (node as HTMLElement).clientHeight;
 };
 
 const affixMode: AffixMode = {

@@ -1,3 +1,5 @@
+import { withLocale } from './intl-provider/with-locale';
+
 export { default as Affix } from './affix';
 export { default as Alert } from './alert';
 export { default as Avatar } from './avatar';
@@ -14,6 +16,7 @@ export { default as Flip } from './flip';
 export { default as Form } from './form';
 export { default as Icon } from './icon';
 export { default as Input } from './input';
+export { default as IntlProvider } from './intl-provider';
 export { default as Layout } from './layout';
 export { default as Loader } from './loader';
 export { default as NativeSelect } from './select-native';
@@ -26,4 +29,5 @@ export { default as Switch } from './switch';
 export { default as Textarea } from './textarea';
 export { default as TimePicker } from './time-picker';
 export { default as Typography } from './typography';
+export { withLocale };
 // export { default as Tooltip } from './tooltip';
