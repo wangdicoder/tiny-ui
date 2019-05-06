@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import Portal from '../portal';
 import { CSSTransition } from 'react-transition-group';
@@ -29,8 +29,10 @@ const defaultProps = {
 };
 
 const Overlay = (props: OverlayProps) => {
-    const { isShow, unmountOnExit, type, zIndex, clickCallback, onEnter, onEntered, onExit, onExited,
-        prefixCls, children, style } = props;
+    const {
+        isShow, unmountOnExit, type, zIndex, clickCallback, onEnter, onEntered, onExit, onExited,
+        prefixCls, children, style,
+    } = props;
     const cls = classNames(
         prefixCls,
         `${prefixCls}_${type}`,
@@ -56,8 +58,8 @@ const Overlay = (props: OverlayProps) => {
                 mountOnEnter={true}
                 unmountOnExit={unmountOnExit}
                 classNames={`${prefixCls}_fade`}
-                timeout={{exit: 300, enter: 0}}>
-                <div className={cls} onClick={clickCallback} style={{zIndex, ...style}}>{children}</div>
+                timeout={{ exit: 300, enter: 0 }}>
+                <div className={cls} onClick={clickCallback} style={{ zIndex, ...style }}>{children}</div>
             </CSSTransition>
         </Portal>
     );

@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Icon from '../icon';
@@ -7,7 +6,7 @@ import Icon from '../icon';
 export type AlertProps = {
     title?: string,
     type?: 'success' | 'info' | 'warning' | 'error',
-    icon?: boolean | ReactNode,
+    icon?: boolean | React.ReactNode,
     iconSize?: number,
     /** Whether Alert can be closed */
     closable?: boolean,

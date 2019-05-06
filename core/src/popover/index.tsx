@@ -5,7 +5,7 @@ import { getScroll, getRect } from '../_utils/dom';
 import { isOneOf, camelCaseToDash } from '../_utils/general';
 import Portal from '../portal';
 
-// TODO: Possible add focus or active trigger type
+// TODO: Possible add focus or active trigger type?
 type TriggerTypes = 'click' | 'hover' | 'contextMenu';
 type PlacementTypes = 'topLeft' | 'topCenter' | 'topRight' |
     'bottomLeft' | 'bottomCenter' | 'bottomRight' |
@@ -38,7 +38,7 @@ const defaultProps = {
 
 const Popover = (props: PopoverProps) => {
     const {
-        overlay, placement, trigger, arrow,
+        onVisibleChange, overlay, placement, trigger, arrow,
         prefixCls, className, overlayClassName, style, overlayStyle, children,
     } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}_${camelCaseToDash(placement)}`);
@@ -105,7 +105,7 @@ const Popover = (props: PopoverProps) => {
                     break;
 
                 case 'leftCenter':
-                    overlayStl.top = scrollTop + triggerRect.top  + triggerRect.height / 2 - overlayRect.height / 2;
+                    overlayStl.top = scrollTop + triggerRect.top + triggerRect.height / 2 - overlayRect.height / 2;
                     overlayStl.left = scrollLeft + triggerRect.left - overlayRect.width - ARROW_SIZE;
                     arrowStl.top = '50%';
                     break;
@@ -123,7 +123,7 @@ const Popover = (props: PopoverProps) => {
                     break;
 
                 case 'rightCenter':
-                    overlayStl.top = scrollTop + triggerRect.top  + triggerRect.height / 2 - overlayRect.height / 2;
+                    overlayStl.top = scrollTop + triggerRect.top + triggerRect.height / 2 - overlayRect.height / 2;
                     overlayStl.left = scrollLeft + triggerRect.right + ARROW_SIZE;
                     arrowStl.top = '50%';
                     break;
@@ -146,10 +146,12 @@ const Popover = (props: PopoverProps) => {
     const show = (): void => {
         setVisible(true);
         calcPosition();
+        onVisibleChange && onVisibleChange(true);
     };
 
     const hide = (): void => {
         setVisible(false);
+        onVisibleChange && onVisibleChange(false);
     };
 
     const handleClick = (e: Event): void => {
@@ -160,13 +162,16 @@ const Popover = (props: PopoverProps) => {
         }
     };
 
-    const handleClickOutside = (e: Event) => {
+    const handleClickOutside = (e: Event): void => {
         if (containerRef.current && !containerRef.current.contains((e.target as HTMLElement))) {
             hide();
             document.removeEventListener('click', handleClickOutside);
         }
     };
 
+    /**
+     * Initialise event
+     */
     useEffect(() => {
         if (isOneOf('hover', trigger) && containerRef.current) {
             containerRef.current.addEventListener('mouseenter', show);
@@ -192,6 +197,21 @@ const Popover = (props: PopoverProps) => {
             }
         };
     }, []);
+
+    /**
+     * Initialise status
+     */
+    useEffect(() => {
+        if (visible) {
+            show();
+        } else {
+            hide();
+        }
+    }, []);
+
+    useEffect(() => {
+        ('visible' in props) && setVisible(props.visible);
+    });
 
     return (
         <div className={cls} style={style} ref={containerRef}>

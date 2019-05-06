@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ButtonProps, ButtonSizes, ButtonColors } from '.';
 import classnames from 'classnames';
 

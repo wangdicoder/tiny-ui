@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import AvatarGroup from './avatar-group';

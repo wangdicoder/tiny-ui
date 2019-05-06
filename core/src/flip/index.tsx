@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import FlipItem, { FlipItemProps } from './flip-item';
 import warning from '../_utils/warning';
