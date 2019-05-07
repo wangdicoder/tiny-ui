@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import { getScroll, getRect } from '../_utils/dom';
 import { isOneOf, camelCaseToDash } from '../_utils/general';
-import Portal from '../portal';
 
 // TODO: Possible add focus or active trigger type?
 type TriggerTypes = 'click' | 'hover' | 'contextMenu';
@@ -216,18 +215,16 @@ const Popover = (props: PopoverProps) => {
     return (
         <div className={cls} style={style} ref={containerRef}>
             <div className={`${prefixCls}__trigger`} ref={triggerRef}>{children}</div>
-            <Portal>
-                <CSSTransition
-                    mountOnEnter={true}
-                    in={visible}
-                    classNames={`${prefixCls}__overlay_slide`}
-                    timeout={{ enter: 0, exit: 300 }}>
-                    <div ref={overlayRef} className={overlayCls} style={{ ...overlayStyle, ...overlayPosition }}>
-                        {overlay}
-                        {arrow && <span className={`${prefixCls}__overlay-arrow`} style={arrowPosition}/>}
-                    </div>
-                </CSSTransition>
-            </Portal>
+            <CSSTransition
+                mountOnEnter={true}
+                in={visible}
+                classNames={`${prefixCls}__overlay_slide`}
+                timeout={{ enter: 0, exit: 300 }}>
+                <div ref={overlayRef} className={overlayCls} style={{ ...overlayStyle, ...overlayPosition }}>
+                    {overlay}
+                    {arrow && <span className={`${prefixCls}__overlay-arrow`} style={arrowPosition}/>}
+                </div>
+            </CSSTransition>
         </div>
     );
 };

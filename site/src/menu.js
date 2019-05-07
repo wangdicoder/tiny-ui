@@ -111,6 +111,10 @@ const COMPONENT_MENU = [{
         title: 'Modal',
         route: 'modal',
         component: lazy(() => import('./docs/component/modal')),
+    }, {
+        title: 'Popover',
+        route: 'popover',
+        component: lazy(() => import('./docs/component/popover')),
     }],
 }, {
     title: 'Miscellany',
