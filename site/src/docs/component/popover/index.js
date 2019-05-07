@@ -1,8 +1,8 @@
 import createComponentExample from '../../../lib';
-import { Popover } from 'tiny-ui/src';
+import { Popover, Button } from 'tiny-ui/src';
 
 export default createComponentExample({
     componentName: 'popover',
-    examples: ['basic'],
-    dependencies: { Popover },
+    examples: ['basic', 'placement', 'arrow'],
+    dependencies: { Popover, Button },
 });
