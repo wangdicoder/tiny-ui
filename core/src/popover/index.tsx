@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
-import { getScroll, getRect } from '../_utils/dom';
+import { getRect } from '../_utils/dom';
 import { isOneOf, camelCaseToDash } from '../_utils/general';
 
 // TODO: Possible add focus or active trigger type?
@@ -55,81 +55,79 @@ const Popover = (props: PopoverProps) => {
         if (overlayRef.current && triggerRef.current) {
             const overlayStl: React.CSSProperties = {};
             const arrowStl: React.CSSProperties = {};
-            const scrollTop = getScroll(triggerRef.current.ownerDocument!.documentElement);
-            const scrollLeft = getScroll(triggerRef.current.ownerDocument!.documentElement, false);
             const triggerRect = getRect(triggerRef.current);
             const overlayRect = getRect(overlayRef.current);
 
             switch (placement) {
                 case 'topLeft':
-                    overlayStl.top = scrollTop + triggerRect.top - overlayRect.height - ARROW_SIZE;
-                    overlayStl.left = scrollLeft + triggerRect.left;
+                    overlayStl.bottom = `calc(100% + ${ARROW_SIZE}px`;
+                    overlayStl.left = 0;
                     arrowStl.left = triggerRect.width / 2;
                     break;
 
                 case 'topCenter':
-                    overlayStl.top = scrollTop + triggerRect.top - overlayRect.height - ARROW_SIZE;
-                    overlayStl.left = scrollLeft + triggerRect.left + triggerRect.width / 2 - overlayRect.width / 2;
+                    overlayStl.bottom = `calc(100% + ${ARROW_SIZE}px`;
+                    overlayStl.left = triggerRect.width / 2 - overlayRect.width / 2;
                     arrowStl.left = '50%';
                     break;
 
                 case 'topRight':
-                    overlayStl.top = scrollTop + triggerRect.top - overlayRect.height - ARROW_SIZE;
-                    overlayStl.left = scrollLeft + triggerRect.left + triggerRect.width - overlayRect.width;
+                    overlayStl.bottom = `calc(100% + ${ARROW_SIZE}px`;
+                    overlayStl.right = 0;
                     arrowStl.right = triggerRect.width / 2;
                     break;
 
                 case 'bottomLeft':
-                    overlayStl.top = scrollTop + triggerRect.bottom + ARROW_SIZE;
-                    overlayStl.left = scrollLeft + triggerRect.left;
+                    overlayStl.top = `calc(100% + ${ARROW_SIZE}px`;
+                    overlayStl.left = 0;
                     arrowStl.left = triggerRect.width / 2;
                     break;
 
                 case 'bottomCenter':
-                    overlayStl.top = scrollTop + triggerRect.bottom + ARROW_SIZE;
-                    overlayStl.left = scrollLeft + triggerRect.left + triggerRect.width / 2 - overlayRect.width / 2;
+                    overlayStl.top = `calc(100% + ${ARROW_SIZE}px`;
+                    overlayStl.left = triggerRect.width / 2 - overlayRect.width / 2;
                     arrowStl.left = '50%';
                     break;
 
                 case 'bottomRight':
-                    overlayStl.top = scrollTop + triggerRect.bottom + ARROW_SIZE;
-                    overlayStl.left = scrollLeft + triggerRect.left + triggerRect.width - overlayRect.width;
+                    overlayStl.top = `calc(100% + ${ARROW_SIZE}px`;
+                    overlayStl.right = 0;
                     arrowStl.right = triggerRect.width / 2;
                     break;
 
                 case 'leftTop':
-                    overlayStl.top = scrollTop + triggerRect.top;
-                    overlayStl.left = scrollLeft + triggerRect.left - overlayRect.width - ARROW_SIZE;
+                    overlayStl.top = 0;
+                    overlayStl.right = `calc(100% + ${ARROW_SIZE}px`;
                     arrowStl.top = triggerRect.height / 2;
                     break;
 
                 case 'leftCenter':
-                    overlayStl.top = scrollTop + triggerRect.top + triggerRect.height / 2 - overlayRect.height / 2;
-                    overlayStl.left = scrollLeft + triggerRect.left - overlayRect.width - ARROW_SIZE;
+                    overlayStl.top = triggerRect.height / 2 - overlayRect.height / 2;
+                    overlayStl.right = `calc(100% + ${ARROW_SIZE}px`;
                     arrowStl.top = '50%';
                     break;
 
                 case 'leftBottom':
-                    overlayStl.top = scrollTop + triggerRect.bottom - overlayRect.height;
-                    overlayStl.left = scrollLeft + triggerRect.left - overlayRect.width - ARROW_SIZE;
+                    overlayStl.bottom = 0;
+                    overlayStl.right = `calc(100% + ${ARROW_SIZE}px`;
                     arrowStl.bottom = triggerRect.height / 2;
                     break;
 
                 case 'rightTop':
-                    overlayStl.top = scrollTop + triggerRect.top;
-                    overlayStl.left = scrollLeft + triggerRect.right + ARROW_SIZE;
+                    overlayStl.top = 0;
+                    overlayStl.left = `calc(100% + ${ARROW_SIZE}px`;
                     arrowStl.top = triggerRect.height / 2;
                     break;
 
                 case 'rightCenter':
-                    overlayStl.top = scrollTop + triggerRect.top + triggerRect.height / 2 - overlayRect.height / 2;
-                    overlayStl.left = scrollLeft + triggerRect.right + ARROW_SIZE;
+                    overlayStl.top = triggerRect.height / 2 - overlayRect.height / 2;
+                    overlayStl.left = `calc(100% + ${ARROW_SIZE}px`;
                     arrowStl.top = '50%';
                     break;
 
                 case 'rightBottom':
-                    overlayStl.top = scrollTop + triggerRect.bottom - overlayRect.height;
-                    overlayStl.left = scrollLeft + triggerRect.right + ARROW_SIZE;
+                    overlayStl.bottom = 0;
+                    overlayStl.left = `calc(100% + ${ARROW_SIZE}px`;
                     arrowStl.bottom = triggerRect.height / 2;
                     break;
 
