@@ -11,7 +11,6 @@ const Wrapper = () => {
   return (
     <>
       <Switch
-        checked={true}
         disabled={disabled}
       />
       <br/><br/>

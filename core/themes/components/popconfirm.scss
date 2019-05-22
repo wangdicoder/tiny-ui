@@ -1,6 +1,7 @@
 @import "../variables";
 @import "./button";
 @import "./icon";
+@import "./popover";
 
 .#{$prefix}popconfirm {
   padding: 16px;
