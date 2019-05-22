@@ -36,8 +36,10 @@ const Switch = (props: SwitchProps) => {
     });
 
     const onClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-        !(disabled || loading) && onChange && onChange(!checked, e);
-        !('checked' in props) && setChecked(!checked);
+        if (!(disabled || loading)) {
+            onChange && onChange(!checked, e);
+            !('checked' in props) && setChecked(!checked);
+        }
     };
 
     useEffect(() => {
