@@ -5,8 +5,8 @@ import { getRect } from '../_utils/dom';
 import { isOneOf, camelCaseToDash } from '../_utils/general';
 
 // TODO: Possible add focus or active trigger type?
-type TriggerTypes = 'click' | 'hover' | 'contextMenu';
-type PlacementTypes = 'topLeft' | 'topCenter' | 'topRight' |
+export type TriggerTypes = 'click' | 'hover' | 'contextMenu';
+export type PlacementTypes = 'topLeft' | 'topCenter' | 'topRight' |
     'bottomLeft' | 'bottomCenter' | 'bottomRight' |
     'leftTop' | 'leftCenter' | 'leftBottom' |
     'rightTop' | 'rightCenter' | 'rightBottom';
