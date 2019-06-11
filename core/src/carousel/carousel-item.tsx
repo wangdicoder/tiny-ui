@@ -8,15 +8,17 @@ export type CarouselItemProps = {
     children?: React.ReactNode,
 } & typeof defaultProps;
 
-const defaultProps = {};
+const defaultProps = {
+    prefixCls: 'ty-carousel-item',
+};
 
 const CarouselItem = (props: CarouselItemProps) => {
-    const { prefixCls, className, style } = props;
+    const { prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
 
     return (
         <div className={cls} style={style}>
-
+            {children}
         </div>
     );
 };
