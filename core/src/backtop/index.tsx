@@ -85,7 +85,7 @@ const BackTop = (props: BackTopProps) => {
         return () => {
             targetNode.removeEventListener('scroll', onScroll);
         };
-    });
+    }, []);
 
     if (visible) {
         return (
