@@ -9,19 +9,19 @@ const GitHub_URL = 'https://github.com/wangdicoder/tiny-ui-react';
 
 const FEATURES = [
     {
-        img: require('./img/concise.png'),
+        img: require('../../assets/concise.png'),
         title: 'Concise',
         desc: 'All components have easy and friendly api',
     }, {
-        img: require('./img/direct.png'),
+        img: require('../../assets/direct.png'),
         title: 'Consistent',
         desc: 'All components have a consistent design style',
     }, {
-        img: require('./img/elegant.png'),
+        img: require('../../assets/elegant.png'),
         title: 'Elegant',
         desc: 'Thanks for React Hook, the source code is more light weight',
     }, {
-        img: require('./img/adaptable.png'),
+        img: require('../../assets/adaptable.png'),
         title: 'Adaptable',
         desc: 'Completely customisable for all components',
     },
@@ -71,7 +71,7 @@ const Home = (props) => {
                     will implement these components listing in the diagram below.</p>
                 <p className="home__p">Disclaimer: this project is very much under development. The API is subject to
                     change without notice.</p>
-                <img src={require('./img/blueprint.png')} alt="blueprint" className="home__blueprint"/>
+                <img src={require('../../assets/blueprint.png')} alt="blueprint" className="home__blueprint"/>
 
             </div>
             <Footer/>

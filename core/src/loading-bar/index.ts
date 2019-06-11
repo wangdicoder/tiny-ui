@@ -52,7 +52,7 @@ const start = () => {
     }
 };
 
-const succeeded = () => {
+const succeed = () => {
     rafId && raf.cancel(rafId);
 
     if (outerDiv && loadingBar) {
@@ -61,7 +61,7 @@ const succeeded = () => {
     }
 };
 
-const failed = () => {
+const fail = () => {
     rafId && raf.cancel(rafId);
 
     if (outerDiv && loadingBar) {
@@ -87,6 +87,6 @@ const createComponent = () => {
 
 export default {
     start,
-    succeeded,
-    failed,
+    succeed,
+    fail,
 };

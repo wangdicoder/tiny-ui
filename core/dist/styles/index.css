@@ -113,6 +113,20 @@
     .ty-avatar-group .ty-avatar:hover {
       z-index: 2; }
 
+.ty-backtop {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 200ms linear 0s, visibility; }
+
 @-webkit-keyframes ty-rotate {
   0% {
     -webkit-transform: rotate(0deg);
@@ -523,6 +537,24 @@
     .ty-btn-group_round .ty-btn:last-child {
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px; }
+
+.ty-carousel {
+  overflow-x: hidden; }
+  .ty-carousel__container {
+    position: relative;
+    height: 300px; }
+  .ty-carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 0;
+    transition: -webkit-transform 400ms ease-in-out;
+    transition: transform 400ms ease-in-out;
+    transition: transform 400ms ease-in-out, -webkit-transform 400ms ease-in-out; }
 
 .ty-checkbox {
   position: relative;
@@ -2713,6 +2745,8 @@
     box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
   .ty-input::-webkit-input-placeholder {
     color: #BFBFBF; }
+  .ty-input::-moz-placeholder {
+    color: #BFBFBF; }
   .ty-input:-ms-input-placeholder {
     color: #BFBFBF; }
   .ty-input::-ms-input-placeholder {
@@ -3015,6 +3049,19 @@
     -webkit-filter: blur(1px);
             filter: blur(1px);
     overflow: hidden; }
+
+.ty-loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; }
+  .ty-loading-bar__inner {
+    height: 3px;
+    width: 0;
+    opacity: 1;
+    transition: opacity 400ms;
+    background-color: #6E41BF; }
 
 .ty-overlay {
   position: fixed;
@@ -4801,6 +4848,8 @@
     border-color: rgba(110, 65, 191, 0.8);
     box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
   .ty-textarea::-webkit-input-placeholder {
+    color: #BFBFBF; }
+  .ty-textarea::-moz-placeholder {
     color: #BFBFBF; }
   .ty-textarea:-ms-input-placeholder {
     color: #BFBFBF; }
