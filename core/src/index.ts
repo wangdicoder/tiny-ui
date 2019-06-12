@@ -21,6 +21,7 @@ export { default as IntlProvider } from './intl-provider';
 export { default as Layout } from './layout';
 export { default as Loader } from './loader';
 export { default as LoadingBar } from './loading-bar';
+export { default as Message } from './message';
 export { default as NativeSelect } from './select-native';
 export { default as Row } from './row';
 export { default as Modal } from './modal';
