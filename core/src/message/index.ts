@@ -1,27 +1,34 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Message, { MessageProps } from './message';
+import Message, { MessageProps, MessageType } from './message';
 
-const createComponent = (props: MessageProps) => {
+type CreateComponent = (
+    content: string, duration: number, onClose: () => void, props: MessageProps,
+) => void;
+
+const createComponent: CreateComponent = (content, duration, onClose, props) => {
+    const containers = document.querySelectorAll('.ty-message-container');
+    const lastContainer = containers.length > 0 ? (containers[containers.length - 1] as HTMLElement) : null;
+
+    const offset = props.offset || 15;
+    const top = lastContainer ? parseInt(lastContainer.style.top || '0', 10) +
+        lastContainer.offsetHeight + offset : offset;
+
     const div = document.createElement('div');
+    div.className = 'ty-message-container';
     document.body.appendChild(div);
+    div.style.top = `${top}px`;
 
-    // const containers = document.querySelectorAll('.ty-message');
-    // const lastContainer = containers.length > 0 ? (containers[containers.length - 1] as HTMLElement) : null;
-
-    // props.top = lastContainer ?
-    //     parseInt(lastContainer.style.top!, 10) + lastContainer.offsetHeight + props.offset : props.offset;
-
-    const component = React.createElement(Message, {type: 'info', ...props});
-
+    const component = React.createElement(Message, { type: props.type, content, duration, onClose, ...props });
     render(component, div);
 };
 
-type MessageContainer = { [name: string]: () => void };
-const messageContainer: MessageContainer = {};
+const messageContainer: any = {};
 
 ['success', 'error', 'warning', 'info', 'loading'].forEach((type) => {
-    messageContainer[type] = (options = {}) => createComponent(options);
+    messageContainer[type] = (
+        content: string, duration: number, onClose: () => void, options: MessageProps = { type: (type as MessageType) },
+    ) => createComponent(content, duration, onClose, options);
 });
 
 export default messageContainer;

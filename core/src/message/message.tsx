@@ -2,8 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
 
+export type MessageType =  'success' | 'error' | 'warning' | 'info' | 'loading';
 export type MessageProps = {
-    type: 'success' | 'error' | 'warning' | 'info' | 'loading'
+    type: MessageType,
     content?: string,
     duration?: number,
     top?: number,
@@ -44,7 +45,7 @@ const Message = (props: MessageProps) => {
     return (
         <div className={cls} style={style}>
             {renderIcon()}
-            {content}
+            <span className={`${prefixCls}__content`}>{content}</span>
         </div>
     );
 };

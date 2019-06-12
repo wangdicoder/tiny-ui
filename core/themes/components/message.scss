@@ -1,9 +1,21 @@
 @import "../variables";
 
-.ty-message {
+.#{$prefix}message {
+  position: relative;
   padding: 10px 16px;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  pointer-events: all;
+
+  &-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  &__content {
+    font-size: 14px;
+  }
 }
