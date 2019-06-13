@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
+import { CSSTransition } from 'react-transition-group';
 
-export type MessageType =  'success' | 'error' | 'warning' | 'info' | 'loading';
+export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 export type MessageProps = {
     type: MessageType,
-    content?: string,
-    duration?: number,
-    top?: number,
-    offset?: number,
+    willUnmount: (height: number) => void,
+    content: string,
+    duration: number,
     icon?: React.ReactNode | boolean,
-    onClose?: () => void,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -18,35 +17,58 @@ export type MessageProps = {
 
 const defaultProps = {
     prefixCls: 'ty-message',
-    top: 0,
-    offset: 15,
-    duration: 3000,
+    icon: true,
 };
 
 const IconType: any = {
-    success: 'check-fill',
-    info: 'info-fill',
-    warning: 'warn-fill',
-    error: 'close-fill',
+    success: { name: 'check-fill', color: '#52c41a' },
+    info: { name: 'info-fill', color: '#1890ff' },
+    loading: { name: 'sync', color: '#1890ff' },
+    warning: { name: 'warn-fill', color: '#faad14' },
+    error: { name: 'close-fill', color: '#f5222d' },
 };
 
 const Message = (props: MessageProps) => {
-    const { type, icon, content, prefixCls, className, style } = props;
+    const { type, icon, content, duration, willUnmount, prefixCls, className, style } = props;
     const cls = classnames(prefixCls, className);
+    const ref = useRef<HTMLDivElement>(null);
+    const [visible, setVisible] = useState(true);
 
     const renderIcon = () => {
         if (typeof icon === 'boolean') {
-            return <Icon type={IconType[type]} size={16} className={`${prefixCls}__icon`}/>;
+            return icon && (
+                <Icon
+                    type={IconType[type].name}
+                    color={IconType[type].color}
+                    size={16}
+                    spin={type === 'loading'}
+                    className={`${prefixCls}__icon`}
+                />
+            );
         }
 
         return icon;
     };
 
+    useEffect(() => {
+        const height = (ref.current && ref.current.offsetHeight) || 0;
+        setTimeout(() => {
+            setVisible(false);
+            willUnmount(height);
+        }, duration);
+    }, []);
+
     return (
-        <div className={cls} style={style}>
-            {renderIcon()}
-            <span className={`${prefixCls}__content`}>{content}</span>
-        </div>
+        <CSSTransition
+            in={visible}
+            appear={true}
+            timeout={0}
+            classNames={`${prefixCls}_fade-slide`}>
+            <div className={cls} style={style} ref={ref}>
+                {renderIcon()}
+                <span className={`${prefixCls}__content`}>{content}</span>
+            </div>
+        </CSSTransition>
     );
 };
 

@@ -27,6 +27,10 @@
   content: "\e6f9";
 }
 
+.ty--sync:before {
+  content: "\e786";
+}
+
 .ty--wallet:before {
   content: "\e798";
 }
@@ -773,10 +777,6 @@
 
 .ty--resize-diagonal:before {
   content: "\e6a2";
-}
-
-.ty--refresh:before {
-  content: "\e6a3";
 }
 
 .ty--redo:before {
