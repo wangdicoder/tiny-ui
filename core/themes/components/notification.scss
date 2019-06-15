@@ -1,25 +1,26 @@
 @import "../variables";
 
 .#{$prefix}notification {
-  width: 380px;
-  position: fixed;
-  margin-bottom: 16px;
-  background-color: #fff;
-  z-index: 99;
+  position: relative;
+  padding: 16px 24px;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, .65);
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
 
-  &__container {
-    position: relative;
-    padding: 16px 24px;
-    border-radius: 3px;
-    color: rgba(0, 0, 0, .65);
-    font-size: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
-  }
+  &-container {
+    width: 380px;
+    position: fixed;
+    margin-bottom: 16px;
+    background-color: #fff;
+    z-index: 99;
+    transition: top 200ms;
 
-  &_top-right {
-    top: 0;
-    right: 0;
-    margin-right: 24px;
+    &_top-right {
+      top: 0;
+      right: 0;
+      margin-right: 24px;
+    }
   }
 
   &__close {
@@ -28,5 +29,11 @@
     top: 16px;
     cursor: pointer;
     color: rgba(0, 0, 0, .2);
+    user-select: none;
+    transition: all 300ms;
+
+    &:hover {
+      color: rgba(0, 0, 0, .7);
+    }
   }
 }

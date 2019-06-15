@@ -1,17 +1,14 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import classnames from 'classnames';
-import { camelCaseToDash } from '../_utils/general';
 
-export type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 export type NotificationProps = {
     title?: ReactNode,
     description?: ReactNode,
     footer?: ReactNode
-    onClick?: () => void,
-    onClose?: () => void,
-    willUnmount: () => void,
+    onClick?: React.MouseEventHandler,
+    onClose?: React.MouseEventHandler,
+    willUnmount: (height: number) => void,
     duration?: number,
-    placement: NotificationPlacement,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -20,24 +17,41 @@ export type NotificationProps = {
 
 const defaultProps = {
     prefixCls: 'ty-notification',
+    duration: 4500,
 };
 
+let timer: number | null = null;
+let height: number = 0;
+
 const Notification = (props: NotificationProps) => {
-    const { title, description, footer, placement, prefixCls, className, style } = props;
-    const cls = classnames(prefixCls, className, `${prefixCls}_${camelCaseToDash(placement)}`);
+    const {
+        title, description, footer, duration, willUnmount, onClick, onClose,
+        prefixCls, className, style,
+    } = props;
+    const cls = classnames(prefixCls, className);
+    const ref = useRef<HTMLDivElement>(null);
+
+    const closeBtnOnClick = (e: React.MouseEvent) => {
+        timer && clearTimeout(timer);
+        willUnmount(height);
+        onClose && onClose(e);
+    };
 
     useEffect(() => {
-        
+        height = (ref.current && ref.current.offsetHeight) || 0;
+        if (duration !== 0) {
+            timer = setTimeout(() => {
+                willUnmount(height);
+            }, duration);
+        }
     }, []);
 
     return (
-        <div className={cls}>
-            <div className={`${prefixCls}__container`} style={style}>
-                <div>{title}</div>
-                <div>{description}</div>
-                {footer}
-                <div className={`${prefixCls}__close`}>✕</div>
-            </div>
+        <div className={cls} style={style} onClick={onClick} ref={ref}>
+            <div>{title}</div>
+            <div>{description}</div>
+            {footer}
+            <div className={`${prefixCls}__close`} onClick={closeBtnOnClick}>✕</div>
         </div>
     );
 };
