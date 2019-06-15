@@ -25,6 +25,7 @@ export { default as Message } from './message';
 export { default as NativeSelect } from './select-native';
 export { default as Row } from './row';
 export { default as Modal } from './modal';
+export { default as Notification } from './notification';
 export { default as Overlay } from './overlay';
 export { default as Popconfirm } from './popconfirm';
 export { default as Popover } from './popover';
