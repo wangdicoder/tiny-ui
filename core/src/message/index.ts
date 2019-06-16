@@ -55,9 +55,9 @@ const createComponent: CreateComponent = (content, duration = 3000, onClose, opt
 const messageContainer: any = {};
 
 ['success', 'error', 'warning', 'info', 'loading'].forEach((type) => {
-    messageContainer[type] = (
-        content: string, duration: number, onClose: () => void, options: Options,
-    ) => createComponent(content, duration, onClose, { ...options, type: (type as MessageType) });
+    messageContainer[type] = (content: string, duration: number, onClose: () => void, options: Options) => {
+        createComponent(content, duration, onClose, { ...options, type: (type as MessageType) });
+    };
 });
 
 messageContainer.warn = messageContainer.warning;

@@ -8,6 +8,7 @@
   font-size: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
   box-sizing: border-box;
+  display: flex;
 
   &-container {
     width: $notification-width;
@@ -48,5 +49,17 @@
     &:hover {
       color: rgba(0, 0, 0, .7);
     }
+  }
+
+  &__title {
+    padding-right: 24px;
+    margin-bottom: 5px;
+    color: rgba(0,0,0,0.85);
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &__icon{
+    margin-right: 15px;
   }
 }

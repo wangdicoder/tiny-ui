@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, MouseEventHandler } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-import Notification, { NotificationProps } from './notification';
+import Notification, { NotificationProps, NotificationType } from './notification';
 import raf from 'raf';
 import { camelCaseToDash } from '../_utils/general';
 
@@ -15,8 +15,9 @@ type Options = {
     footer?: ReactNode,
     duration?: number,
     placement?: NotificationPlacement,
-    onClose?: React.MouseEventHandler,
-    onClick?: React.MouseEventHandler,
+    onClose?: MouseEventHandler,
+    onClick?: MouseEventHandler,
+    icon?: ReactNode,
 };
 type UnmountDom = (
     queryName: string, containerDiv: HTMLElement, position: number, height: number, direction: Direction,
@@ -36,7 +37,7 @@ const unmountDom: UnmountDom = (queryName, containerDiv, position, height, direc
     });
 };
 
-const createComponent = (options: Options) => {
+const createComponent = (options: Options, type: NotificationType) => {
     const placement = options.placement || 'topRight';
     const queryName = `${className}_${camelCaseToDash(placement)}`;
     const containers = document.querySelectorAll(`.${queryName}`);
@@ -53,6 +54,7 @@ const createComponent = (options: Options) => {
     div.style[direction] = `${position}px`;
 
     const props: NotificationProps = {
+        type,
         title: options.title,
         description: options.description,
         footer: options.footer,
@@ -73,9 +75,18 @@ const createComponent = (options: Options) => {
 };
 
 const open = (options: Options = {}) => {
-    createComponent(options);
+    createComponent(options, undefined);
 };
 
-export default {
-    open,
-};
+const notificationContainer: any = {};
+
+['success', 'error', 'warning', 'info'].forEach((type) => {
+    notificationContainer[type] = (options: Options = {}) => {
+        createComponent(options, (type as NotificationType));
+    };
+});
+
+notificationContainer.open = open;
+notificationContainer.warn = notificationContainer.warning;
+
+export default notificationContainer;
