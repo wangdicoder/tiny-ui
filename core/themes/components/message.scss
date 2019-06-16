@@ -11,6 +11,10 @@
   opacity: 0;
   transform: translateY(-5px);
   box-sizing: border-box;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  pointer-events: all;
 
   &-container {
     display: flex;
@@ -43,5 +47,9 @@
 
   &__icon {
     margin-right: 5px;
+  }
+
+  &__extra {
+    margin-left: 15px;
   }
 }

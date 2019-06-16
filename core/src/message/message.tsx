@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, ReactNode } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
 import { CSSTransition } from 'react-transition-group';
@@ -8,7 +8,8 @@ export type MessageProps = {
     type: MessageType,
     content: string,
     duration: number,
-    icon?: React.ReactNode,
+    icon?: ReactNode,
+    extra?: ReactNode,
     willUnmount: (height: number) => void,
     prefixCls?: string,
     className?: string,
@@ -28,7 +29,7 @@ const IconType: any = {
 };
 
 const Message = (props: MessageProps) => {
-    const { type, icon, content, duration, willUnmount, prefixCls, className, style } = props;
+    const { type, icon, content, duration, willUnmount, extra, prefixCls, className, style } = props;
     const cls = classnames(prefixCls, className);
     const ref = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(true);
@@ -68,6 +69,7 @@ const Message = (props: MessageProps) => {
             <div className={cls} style={style} ref={ref}>
                 {renderIcon()}
                 <span className={`${prefixCls}__content`}>{content}</span>
+                {extra && <div className={`${prefixCls}__extra`}>{extra}</div>}
             </div>
         </CSSTransition>
     );

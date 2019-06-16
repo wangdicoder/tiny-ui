@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import Message, { MessageProps, MessageType } from './message';
 import raf from 'raf';
 
 const className = '.ty-message-container';
 
-type Options = { top?: number, offset?: number, icon?: React.ReactNode, className?: string };
+type Options = { top?: number, offset?: number, icon?: ReactNode, extra?: ReactNode, className?: string };
 type CreateComponent = (
     type: MessageType, content: string, duration: number, onClose: () => void, options: Options,
 ) => void;
@@ -46,6 +46,7 @@ const createComponent: CreateComponent = (type, content, duration = 3000, onClos
         content,
         duration,
         icon: options.icon,
+        extra: options.extra,
         className: options.className,
         willUnmount: (height) => {
             const updatedTop = parseInt(div.style.top || '0', 10);
@@ -56,6 +57,7 @@ const createComponent: CreateComponent = (type, content, duration = 3000, onClos
     render(component, div);
 };
 
+// TODO: Override function
 const messageContainer: any = (content: string, duration: number, onClose: () => void, options: Options) => {
     createComponent(undefined, content, duration, onClose, options);
 };
