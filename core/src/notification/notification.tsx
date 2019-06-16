@@ -8,6 +8,7 @@ export type NotificationProps = {
     onClick?: React.MouseEventHandler,
     onClose?: React.MouseEventHandler,
     willUnmount: (height: number) => void,
+    didMount: () => void;
     duration?: number,
     prefixCls?: string,
     className?: string,
@@ -25,7 +26,7 @@ let height: number = 0;
 
 const Notification = (props: NotificationProps) => {
     const {
-        title, description, footer, duration, willUnmount, onClick, onClose,
+        title, description, footer, duration, willUnmount, didMount, onClick, onClose,
         prefixCls, className, style,
     } = props;
     const cls = classnames(prefixCls, className);
@@ -38,7 +39,9 @@ const Notification = (props: NotificationProps) => {
     };
 
     useEffect(() => {
+        didMount();
         height = (ref.current && ref.current.offsetHeight) || 0;
+
         if (duration !== 0) {
             timer = setTimeout(() => {
                 willUnmount(height);

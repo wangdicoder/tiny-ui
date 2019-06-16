@@ -7,19 +7,32 @@
   color: rgba(0, 0, 0, .65);
   font-size: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  box-sizing: border-box;
 
   &-container {
-    width: 380px;
+    width: $notification-width;
     position: fixed;
-    margin-bottom: 16px;
     background-color: #fff;
     z-index: 99;
-    transition: top 200ms;
+    box-sizing: border-box;
+    transition: all 200ms;
 
-    &_top-right {
-      top: 0;
-      right: 0;
-      margin-right: 24px;
+    &_top-right, &_bottom-right {
+      right: -($notification-width + $notification-margin);
+      margin-right: $notification-margin;
+    }
+
+    &_top-left, &_bottom-left {
+      left: -($notification-width + $notification-margin);
+      margin-left: $notification-margin;
+    }
+
+    &_top-left, &_top-right {
+      margin-bottom: 16px;
+    }
+
+    &_bottom-left, &_bottom-right {
+      margin-top: 16px;
     }
   }
 
