@@ -35,8 +35,10 @@ const Message = (props: MessageProps) => {
     const [visible, setVisible] = useState(true);
 
     const renderIcon = () => {
-        if (typeof icon === 'boolean') {
-            return icon && (
+        if (React.isValidElement(icon)) {
+            return icon;
+        } else if (typeof icon === 'string') {
+            return (
                 <Icon
                     type={IconType[type].name}
                     color={IconType[type].color}
@@ -47,7 +49,7 @@ const Message = (props: MessageProps) => {
             );
         }
 
-        return icon;
+        return null;
     };
 
     useEffect(() => {

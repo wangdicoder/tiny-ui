@@ -112,9 +112,17 @@ const COMPONENT_MENU = [{
         route: 'loading-bar',
         component: lazy(() => import('./docs/component/loading-bar')),
     },  {
+        title: 'Message',
+        route: 'message',
+        component: lazy(() => import('./docs/component/message')),
+    }, {
         title: 'Modal',
         route: 'modal',
         component: lazy(() => import('./docs/component/modal')),
+    }, {
+        title: 'Notification',
+        route: 'notification',
+        component: lazy(() => import('./docs/component/notification')),
     }, {
         title: 'Popover',
         route: 'popover',

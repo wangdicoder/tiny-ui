@@ -3,6 +3,6 @@ import { Button, Modal } from 'tiny-ui/src';
 
 export default createComponentExample({
     componentName: 'modal',
-    examples: ['basic', 'custom-footer', 'position', 'animation'],
+    examples: ['basic', 'custom-footer', 'placement.md', 'animation'],
     dependencies: { Button, Modal },
 });

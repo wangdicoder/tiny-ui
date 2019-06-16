@@ -61,6 +61,7 @@ const createComponent = (options: Options, type: NotificationType) => {
         duration: options.duration,
         onClose: options.onClose,
         onClick: options.onClick,
+        icon: options.icon,
         didMount: () => {
             // When notification component mounted, set up the position to display the entry animation
             placement.includes('Right') ? div.style.right = `0px` : div.style.left = `0px`;

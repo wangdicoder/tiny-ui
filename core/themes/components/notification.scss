@@ -1,4 +1,5 @@
 @import "../variables";
+@import "./icon";
 
 .#{$prefix}notification {
   position: relative;
@@ -14,7 +15,7 @@
     width: $notification-width;
     position: fixed;
     background-color: #fff;
-    z-index: 99;
+    z-index: 999;
     box-sizing: border-box;
     transition: all 200ms;
 

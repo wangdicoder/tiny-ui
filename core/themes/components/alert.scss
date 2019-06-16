@@ -1,5 +1,6 @@
 @import "../variables";
 @import "../mixins/alert";
+@import "./icon";
 
 .#{$prefix}alert {
   border: 1px solid;
