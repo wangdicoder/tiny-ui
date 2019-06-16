@@ -3,13 +3,13 @@ import classnames from 'classnames';
 import Icon from '../icon';
 import { CSSTransition } from 'react-transition-group';
 
-export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading';
+export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading' | undefined;
 export type MessageProps = {
     type: MessageType,
-    willUnmount: (height: number) => void,
     content: string,
     duration: number,
-    icon?: React.ReactNode | boolean,
+    icon?: React.ReactNode,
+    willUnmount: (height: number) => void,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -17,7 +17,6 @@ export type MessageProps = {
 
 const defaultProps = {
     prefixCls: 'ty-message',
-    icon: true,
 };
 
 const IconType: any = {
@@ -37,7 +36,7 @@ const Message = (props: MessageProps) => {
     const renderIcon = () => {
         if (React.isValidElement(icon)) {
             return icon;
-        } else if (typeof icon === 'string') {
+        } else if (typeof type === 'string') {
             return (
                 <Icon
                     type={IconType[type].name}

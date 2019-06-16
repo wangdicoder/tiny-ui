@@ -6,8 +6,10 @@ import raf from 'raf';
 const className = '.ty-message-container';
 const OFFSET = 15; // The gap between each message
 
-type Options = { type: MessageType, offset?: number };
-type CreateComponent = (content: string, duration: number, onClose: () => void, options: Options) => void;
+type Options = { offset?: number, icon?: React.ReactNode, className?: string };
+type CreateComponent = (
+    type: MessageType, content: string, duration: number, onClose: () => void, options: Options,
+) => void;
 type UnmountDom = (containerDiv: HTMLElement, top: number, height: number, onClose?: () => void) => void;
 
 const unmountDom: UnmountDom = (containerDiv, top, height, onClose) => {
@@ -25,7 +27,7 @@ const unmountDom: UnmountDom = (containerDiv, top, height, onClose) => {
     onClose && onClose();
 };
 
-const createComponent: CreateComponent = (content, duration = 3000, onClose, options) => {
+const createComponent: CreateComponent = (type, content, duration = 3000, onClose, options) => {
     const containers = document.querySelectorAll(className);
     const lastContainer = containers.length > 0 ? (containers[containers.length - 1] as HTMLElement) : null;
 
@@ -39,10 +41,11 @@ const createComponent: CreateComponent = (content, duration = 3000, onClose, opt
     div.style.top = `${top}px`;
 
     const props: MessageProps = {
-        ...options,
-        type: options.type,
+        type,
         content,
         duration,
+        icon: options.icon,
+        className: options.className,
         willUnmount: (height) => {
             const updatedTop = parseInt(div.style.top || '0', 10);
             unmountDom(div, updatedTop, height, onClose);
@@ -52,11 +55,13 @@ const createComponent: CreateComponent = (content, duration = 3000, onClose, opt
     render(component, div);
 };
 
-const messageContainer: any = {};
+const messageContainer: any = (content: string, duration: number, onClose: () => void, options: Options) => {
+    createComponent(undefined, content, duration, onClose, options);
+};
 
 ['success', 'error', 'warning', 'info', 'loading'].forEach((type) => {
     messageContainer[type] = (content: string, duration: number, onClose: () => void, options: Options) => {
-        createComponent(content, duration, onClose, { ...options, type: (type as MessageType) });
+        createComponent((type as MessageType), content, duration, onClose, options);
     };
 });
 
