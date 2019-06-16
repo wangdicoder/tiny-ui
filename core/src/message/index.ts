@@ -4,13 +4,14 @@ import Message, { MessageProps, MessageType } from './message';
 import raf from 'raf';
 
 const className = '.ty-message-container';
-const OFFSET = 15; // The gap between each message
 
-type Options = { offset?: number, icon?: React.ReactNode, className?: string };
+type Options = { top?: number, offset?: number, icon?: React.ReactNode, className?: string };
 type CreateComponent = (
     type: MessageType, content: string, duration: number, onClose: () => void, options: Options,
 ) => void;
 type UnmountDom = (containerDiv: HTMLElement, top: number, height: number, onClose?: () => void) => void;
+
+let offset: number;
 
 const unmountDom: UnmountDom = (containerDiv, top, height, onClose) => {
     unmountComponentAtNode(containerDiv);
@@ -21,19 +22,19 @@ const unmountDom: UnmountDom = (containerDiv, top, height, onClose) => {
         for (let i = 0; i < len; i++) {
             const element = containers[i] as HTMLElement;
             const elementTop = parseInt((element as HTMLElement).style.top || '0', 10);
-            elementTop > top && (element.style.top = `${elementTop - height - OFFSET}px`);
+            elementTop > top && (element.style.top = `${elementTop - height - offset}px`);
         }
     });
     onClose && onClose();
 };
 
-const createComponent: CreateComponent = (type, content, duration = 3000, onClose, options) => {
+const createComponent: CreateComponent = (type, content, duration = 3000, onClose, options = {}) => {
     const containers = document.querySelectorAll(className);
     const lastContainer = containers.length > 0 ? (containers[containers.length - 1] as HTMLElement) : null;
 
-    const offset = options.offset || OFFSET;
+    offset = options.offset || 16;
     const top = lastContainer ? parseInt(lastContainer.style.top || '0', 10) +
-        lastContainer.offsetHeight + offset : offset;
+        lastContainer.offsetHeight + offset : (options.top || 15);
 
     const div = document.createElement('div');
     div.className = 'ty-message-container';

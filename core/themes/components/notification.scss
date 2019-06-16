@@ -28,14 +28,6 @@
       left: -($notification-width + $notification-margin);
       margin-left: $notification-margin;
     }
-
-    &_top-left, &_top-right {
-      margin-bottom: 16px;
-    }
-
-    &_bottom-left, &_bottom-right {
-      margin-top: 16px;
-    }
   }
 
   &__close {
