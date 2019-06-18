@@ -1,17 +1,23 @@
-# Button
+# Breadcrumb
 
-To trigger an operation.
+A breadcrumb displays the current location within a hierarchy. It allows going back to states higher up in the hierarchy.
 
 ## Scenario
 
-A button means an operation (or a series of operations). Clicking a button will trigger corresponding business logic.
+- When the system has more than two layers in a hierarchy.
+
+- When you need to inform the user of where they are.
+
+- When the user may need to navigate back to a higher level.
+
+- When the application has multi-layer architecture.
 
 ## Usage
 
 ```js
-import { Button } from 'tiny-ui';
+import { Breadcrumb } from 'tiny-ui';
 
-const { Group } = Button;
+const { Item } = Breadcrumb;
 ```
 
 ## Examples

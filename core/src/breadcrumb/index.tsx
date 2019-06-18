@@ -18,16 +18,14 @@ const defaultProps = {
 const Breadcrumb = (props: BreadcrumbProps) => {
     const { separator, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
-    const childrenCount = React.Children.count(children);
 
     return (
         <nav className={cls} style={style}>
             <ol className={`${prefixCls}__ol`}>
-                {React.Children.map(children, (child: ReactElement<BreadcrumbItemProps>, index: number) => {
+                {React.Children.map(children, (child: ReactElement<BreadcrumbItemProps>) => {
                     const childProps: BreadcrumbItemProps = {
                         ...child.props,
                         separator,
-                        last: childrenCount === index + 1,
                     };
                     return React.cloneElement(child, childProps);
                 })}

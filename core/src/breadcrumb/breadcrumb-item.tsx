@@ -7,7 +7,6 @@ export type BreadcrumbItemProps = {
     className?: string,
     style?: React.CSSProperties,
     children?: React.ReactNode,
-    last?: boolean,
 };
 
 const defaultProps = {
@@ -15,13 +14,13 @@ const defaultProps = {
 };
 
 const BreadcrumbItem = (props: BreadcrumbItemProps) => {
-    const { separator, last, prefixCls, className, style, children } = props;
+    const { separator, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
 
     return (
         <li className={cls} style={style}>
             {children}
-            <span className={`${prefixCls}__separator`}>{!last && separator}</span>
+            <span className={`${prefixCls}__separator`}>{separator}</span>
         </li>
     );
 };

@@ -49,6 +49,13 @@ const COMPONENT_MENU = [{
         route: 'layout',
     }],
 }, {
+    title: 'Navigation',
+    children: [{
+        title: 'Breadcrumb',
+        route: 'breadcrumb',
+        component: lazy(() => import('./docs/component/breadcrumb')),
+    },],
+}, {
     title: 'Data Display',
     children: [{
         title: 'Avatar',

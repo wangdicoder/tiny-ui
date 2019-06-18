@@ -1,8 +1,8 @@
 import createComponentExample from '../../../lib';
-import { Button } from 'tiny-ui/src';
+import { Breadcrumb, Icon } from 'tiny-ui/src';
 
 export default createComponentExample({
-    componentName: 'button',
-    examples: ['basic'],
-    dependencies: { Button },
+    componentName: 'breadcrumb',
+    examples: ['basic', 'icon'],
+    dependencies: { Breadcrumb, Icon },
 });

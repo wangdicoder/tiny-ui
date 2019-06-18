@@ -16,5 +16,25 @@
     &__separator {
       margin: 0 8px;
     }
+
+    a {
+      color: rgba(0, 0, 0, 0.45);
+      transition: all 300ms;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &:last-child {
+      color: rgba(0, 0, 0, 0.75);
+
+      .#{$prefix}breadcrumb-item {
+
+        &__separator {
+          display: none;
+        }
+      }
+    }
   }
 }

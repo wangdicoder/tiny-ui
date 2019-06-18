@@ -1,18 +1,17 @@
-### Basic Usage
+### With Icon
 
-The simplest use
+Using an icon replaces a text or combination.
 
 <!--start-code-->
 
 ```jsx
 render(
   <Breadcrumb>
-    <Breadcrumb.Item>Home</Breadcrumb.Item>
     <Breadcrumb.Item>
-      <a href="">Project Center</a>
+      <Icon type="Home" />
     </Breadcrumb.Item>
     <Breadcrumb.Item>
-      <a href="">Project List</a>
+      <a href=""><Icon type="Inspection" />Project List</a>
     </Breadcrumb.Item>
     <Breadcrumb.Item>A Project</Breadcrumb.Item>
   </Breadcrumb>
