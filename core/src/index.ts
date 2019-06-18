@@ -5,6 +5,7 @@ export { default as Alert } from './alert';
 export { default as Avatar } from './avatar';
 export { default as BackTop } from './backtop';
 export { default as Badge } from './badge';
+export { default as Breadcrumb } from './breadcrumb';
 export { default as Button } from './button';
 export { default as Carousel } from './carousel';
 export { default as Checkbox } from './checkbox';

@@ -99,7 +99,7 @@ $input-lg-font-size: 17px             !default;
 $input-lg-height: 42px                !default;
 
 //textarea
-$textarea-font-size: 14px             !default;
+$textarea-font-size: $font-size       !default;
 $textarea-padding: 5px                !default;
 
 //select
@@ -119,3 +119,6 @@ $switch-lg-font-size: 14px            !default;
 //notification
 $notification-width: 380px            !default;
 $notification-margin: 20px            !default;
+
+//breadcrumb
+$breadcrumb-font-size: $font-size     !default;

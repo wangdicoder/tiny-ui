@@ -1,0 +1,20 @@
+@import "../variables";
+
+.#{$prefix}breadcrumb {
+
+  &__ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: $breadcrumb-font-size;
+  }
+
+  &-item {
+    &__separator {
+      margin: 0 8px;
+    }
+  }
+}
