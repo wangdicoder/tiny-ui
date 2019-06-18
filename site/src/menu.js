@@ -108,6 +108,10 @@ const COMPONENT_MENU = [{
         route: 'alert',
         component: lazy(() => import('./docs/component/alert')),
     }, {
+        title: 'Loader',
+        route: 'loader',
+        component: lazy(() => import('./docs/component/loader')),
+    }, {
         title: 'Loading Bar',
         route: 'loading-bar',
         component: lazy(() => import('./docs/component/loading-bar')),

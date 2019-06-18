@@ -6,7 +6,7 @@ export type LoaderProps = {
     size?: 'sm' | 'default' | 'lg',
     /** loading status */
     loading?: boolean,
-    tip?: string | null,
+    tip?: string,
     vertical?: boolean,
     blurred?: boolean,
     prefixCls?: string,
@@ -19,7 +19,6 @@ const defaultProps = {
     prefixCls: 'ty-loader',
     size: 'default',
     loading: true,
-    tip: null,
     vertical: false,
     blurred: true,
 };
@@ -43,7 +42,7 @@ const Loader = (props: LoaderProps) => {
             {loading && (
                 <div className={indicatorCls}>
                     {indicator ? indicator : <div className={`${prefixCls}__indicator`}/>}
-                    <span className={`${prefixCls}__label`}>{tip}</span>
+                    {tip && <span className={`${prefixCls}__label`}>{tip}</span>}
                 </div>
             )}
             {children && (
