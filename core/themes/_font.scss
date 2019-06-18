@@ -59,6 +59,18 @@
   content: "\e7ca";
 }
 
+.ty--scan:before {
+  content: "\e7d4";
+}
+
+.ty--heart:before {
+  content: "\e7df";
+}
+
+.ty--star:before {
+  content: "\e7e0";
+}
+
 .ty--link:before {
   content: "\e7e2";
 }
@@ -111,6 +123,10 @@
   content: "\e7f2";
 }
 
+.ty--fire:before {
+  content: "\e842";
+}
+
 .ty--check-fill:before {
   content: "\e844";
 }
@@ -157,6 +173,18 @@
 
 .ty--warn-fill:before {
   content: "\e84f";
+}
+
+.ty--heart-fill:before {
+  content: "\e850";
+}
+
+.ty--fire-fill:before {
+  content: "\e866";
+}
+
+.ty--star-fill:before {
+  content: "\e86a";
 }
 
 .ty--behance:before {
@@ -279,7 +307,7 @@
   content: "\e60e";
 }
 
-.ty--Inspection:before {
+.ty--inspection:before {
   content: "\e60f";
 }
 
@@ -307,15 +335,11 @@
   content: "\e616";
 }
 
-.ty--Icons-Cup:before {
-  content: "\e617";
-}
-
 .ty--Hot-Article:before {
   content: "\e618";
 }
 
-.ty--Home:before {
+.ty--home:before {
   content: "\e61a";
 }
 

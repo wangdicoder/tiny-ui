@@ -8,10 +8,10 @@ Using an icon replaces a text or combination.
 render(
   <Breadcrumb>
     <Breadcrumb.Item>
-      <Icon type="Home" />
+      <Icon type="home" />
     </Breadcrumb.Item>
     <Breadcrumb.Item>
-      <a href=""><Icon type="Inspection" />Project List</a>
+      <a href="#/components/breadcrumb"><Icon type="inspection" />Project List</a>
     </Breadcrumb.Item>
     <Breadcrumb.Item>A Project</Breadcrumb.Item>
   </Breadcrumb>
