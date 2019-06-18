@@ -100,6 +100,10 @@ const COMPONENT_MENU = [{
         route: 'radio',
         component: lazy(() => import('./docs/component/radio')),
     }, {
+        title: 'Rate',
+        route: 'rate',
+        component: lazy(() => import('./docs/component/rate')),
+    }, {
         title: 'Switch',
         route: 'switch',
         component: lazy(() => import('./docs/component/switch')),

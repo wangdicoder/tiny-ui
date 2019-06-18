@@ -81,7 +81,7 @@ const Rate = (props: RateProps) => {
     };
 
     const onClick = (e: React.MouseEvent) => {
-        if (clearable) {
+        if (!disabled && clearable) {
             const val = tmpValue === value ? 0 : tmpValue;
             setTmpValue(val);
             !('value' in props) && setValue(val);

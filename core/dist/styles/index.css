@@ -41,6 +41,15 @@
 .ty--customer-service:before {
   content: "\e7ca"; }
 
+.ty--scan:before {
+  content: "\e7d4"; }
+
+.ty--heart:before {
+  content: "\e7df"; }
+
+.ty--star:before {
+  content: "\e7e0"; }
+
 .ty--link:before {
   content: "\e7e2"; }
 
@@ -80,6 +89,9 @@
 .ty--arrow-down:before {
   content: "\e7f2"; }
 
+.ty--fire:before {
+  content: "\e842"; }
+
 .ty--check-fill:before {
   content: "\e844"; }
 
@@ -115,6 +127,15 @@
 
 .ty--warn-fill:before {
   content: "\e84f"; }
+
+.ty--heart-fill:before {
+  content: "\e850"; }
+
+.ty--fire-fill:before {
+  content: "\e866"; }
+
+.ty--star-fill:before {
+  content: "\e86a"; }
 
 .ty--behance:before {
   content: "\e87a"; }
@@ -206,7 +227,7 @@
 .ty--key:before {
   content: "\e60e"; }
 
-.ty--Inspection:before {
+.ty--inspection:before {
   content: "\e60f"; }
 
 .ty--Info:before {
@@ -227,13 +248,10 @@
 .ty--Image-File:before {
   content: "\e616"; }
 
-.ty--Icons-Cup:before {
-  content: "\e617"; }
-
 .ty--Hot-Article:before {
   content: "\e618"; }
 
-.ty--Home:before {
+.ty--home:before {
   content: "\e61a"; }
 
 .ty--Hand-Cursor:before {
@@ -743,7 +761,7 @@
   box-sizing: border-box;
   padding: 10px 30px 10px 13px;
   position: relative;
-  margin-bottom: 15px;
+  margin: 7px 0;
   font-weight: 400;
   opacity: 1;
   font-size: 14px;
@@ -959,6 +977,29 @@
     -webkit-transform: none;
             transform: none;
     position: relative; }
+
+.ty-breadcrumb__ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px; }
+
+.ty-breadcrumb-item__separator {
+  margin: 0 8px; }
+
+.ty-breadcrumb-item a {
+  color: rgba(0, 0, 0, 0.45);
+  transition: all 300ms; }
+  .ty-breadcrumb-item a:hover {
+    color: #6E41BF; }
+
+.ty-breadcrumb-item:last-child {
+  color: rgba(0, 0, 0, 0.75); }
+  .ty-breadcrumb-item:last-child .ty-breadcrumb-item__separator {
+    display: none; }
 
 @keyframes ty-rotate {
   0% {
@@ -2744,6 +2785,15 @@
 .ty--customer-service:before {
   content: "\e7ca"; }
 
+.ty--scan:before {
+  content: "\e7d4"; }
+
+.ty--heart:before {
+  content: "\e7df"; }
+
+.ty--star:before {
+  content: "\e7e0"; }
+
 .ty--link:before {
   content: "\e7e2"; }
 
@@ -2783,6 +2833,9 @@
 .ty--arrow-down:before {
   content: "\e7f2"; }
 
+.ty--fire:before {
+  content: "\e842"; }
+
 .ty--check-fill:before {
   content: "\e844"; }
 
@@ -2818,6 +2871,15 @@
 
 .ty--warn-fill:before {
   content: "\e84f"; }
+
+.ty--heart-fill:before {
+  content: "\e850"; }
+
+.ty--fire-fill:before {
+  content: "\e866"; }
+
+.ty--star-fill:before {
+  content: "\e86a"; }
 
 .ty--behance:before {
   content: "\e87a"; }
@@ -2909,7 +2971,7 @@
 .ty--key:before {
   content: "\e60e"; }
 
-.ty--Inspection:before {
+.ty--inspection:before {
   content: "\e60f"; }
 
 .ty--Info:before {
@@ -2930,13 +2992,10 @@
 .ty--Image-File:before {
   content: "\e616"; }
 
-.ty--Icons-Cup:before {
-  content: "\e617"; }
-
 .ty--Hot-Article:before {
   content: "\e618"; }
 
-.ty--Home:before {
+.ty--home:before {
   content: "\e61a"; }
 
 .ty--Hand-Cursor:before {
@@ -3819,6 +3878,15 @@
 .ty--customer-service:before {
   content: "\e7ca"; }
 
+.ty--scan:before {
+  content: "\e7d4"; }
+
+.ty--heart:before {
+  content: "\e7df"; }
+
+.ty--star:before {
+  content: "\e7e0"; }
+
 .ty--link:before {
   content: "\e7e2"; }
 
@@ -3858,6 +3926,9 @@
 .ty--arrow-down:before {
   content: "\e7f2"; }
 
+.ty--fire:before {
+  content: "\e842"; }
+
 .ty--check-fill:before {
   content: "\e844"; }
 
@@ -3893,6 +3964,15 @@
 
 .ty--warn-fill:before {
   content: "\e84f"; }
+
+.ty--heart-fill:before {
+  content: "\e850"; }
+
+.ty--fire-fill:before {
+  content: "\e866"; }
+
+.ty--star-fill:before {
+  content: "\e86a"; }
 
 .ty--behance:before {
   content: "\e87a"; }
@@ -3984,7 +4064,7 @@
 .ty--key:before {
   content: "\e60e"; }
 
-.ty--Inspection:before {
+.ty--inspection:before {
   content: "\e60f"; }
 
 .ty--Info:before {
@@ -4005,13 +4085,10 @@
 .ty--Image-File:before {
   content: "\e616"; }
 
-.ty--Icons-Cup:before {
-  content: "\e617"; }
-
 .ty--Hot-Article:before {
   content: "\e618"; }
 
-.ty--Home:before {
+.ty--home:before {
   content: "\e61a"; }
 
 .ty--Hand-Cursor:before {
@@ -4710,6 +4787,15 @@
 .ty--customer-service:before {
   content: "\e7ca"; }
 
+.ty--scan:before {
+  content: "\e7d4"; }
+
+.ty--heart:before {
+  content: "\e7df"; }
+
+.ty--star:before {
+  content: "\e7e0"; }
+
 .ty--link:before {
   content: "\e7e2"; }
 
@@ -4749,6 +4835,9 @@
 .ty--arrow-down:before {
   content: "\e7f2"; }
 
+.ty--fire:before {
+  content: "\e842"; }
+
 .ty--check-fill:before {
   content: "\e844"; }
 
@@ -4784,6 +4873,15 @@
 
 .ty--warn-fill:before {
   content: "\e84f"; }
+
+.ty--heart-fill:before {
+  content: "\e850"; }
+
+.ty--fire-fill:before {
+  content: "\e866"; }
+
+.ty--star-fill:before {
+  content: "\e86a"; }
 
 .ty--behance:before {
   content: "\e87a"; }
@@ -4875,7 +4973,7 @@
 .ty--key:before {
   content: "\e60e"; }
 
-.ty--Inspection:before {
+.ty--inspection:before {
   content: "\e60f"; }
 
 .ty--Info:before {
@@ -4896,13 +4994,10 @@
 .ty--Image-File:before {
   content: "\e616"; }
 
-.ty--Icons-Cup:before {
-  content: "\e617"; }
-
 .ty--Hot-Article:before {
   content: "\e618"; }
 
-.ty--Home:before {
+.ty--home:before {
   content: "\e61a"; }
 
 .ty--Hand-Cursor:before {
@@ -5838,6 +5933,15 @@
 .ty--customer-service:before {
   content: "\e7ca"; }
 
+.ty--scan:before {
+  content: "\e7d4"; }
+
+.ty--heart:before {
+  content: "\e7df"; }
+
+.ty--star:before {
+  content: "\e7e0"; }
+
 .ty--link:before {
   content: "\e7e2"; }
 
@@ -5877,6 +5981,9 @@
 .ty--arrow-down:before {
   content: "\e7f2"; }
 
+.ty--fire:before {
+  content: "\e842"; }
+
 .ty--check-fill:before {
   content: "\e844"; }
 
@@ -5912,6 +6019,15 @@
 
 .ty--warn-fill:before {
   content: "\e84f"; }
+
+.ty--heart-fill:before {
+  content: "\e850"; }
+
+.ty--fire-fill:before {
+  content: "\e866"; }
+
+.ty--star-fill:before {
+  content: "\e86a"; }
 
 .ty--behance:before {
   content: "\e87a"; }
@@ -6003,7 +6119,7 @@
 .ty--key:before {
   content: "\e60e"; }
 
-.ty--Inspection:before {
+.ty--inspection:before {
   content: "\e60f"; }
 
 .ty--Info:before {
@@ -6024,13 +6140,10 @@
 .ty--Image-File:before {
   content: "\e616"; }
 
-.ty--Icons-Cup:before {
-  content: "\e617"; }
-
 .ty--Hot-Article:before {
   content: "\e618"; }
 
-.ty--Home:before {
+.ty--home:before {
   content: "\e61a"; }
 
 .ty--Hand-Cursor:before {
@@ -6871,6 +6984,27 @@
       background-color: rgba(0, 0, 0, 0.2); }
     .ty-radio_disabled .ty-radio__inner + span {
       color: rgba(0, 0, 0, 0.25); }
+
+.ty-rate {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+  .ty-rate__item {
+    position: relative; }
+  .ty-rate__item-first, .ty-rate__item-second {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    cursor: pointer; }
+  .ty-rate__item-first {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden; }
 
 .ty-row {
   box-sizing: border-box;
