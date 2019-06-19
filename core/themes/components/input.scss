@@ -1,100 +1,160 @@
 @import "../variables";
-@import "../mixins/input";
 
 .#{$prefix}input {
-  @include input-default();
+  position: relative;
   font-family: $font-family;
-  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  color: $input-font-color;
+  border: 1px solid #d9d9d9;
+  transition: all .3s;
+  outline: 0;
+  border-radius: $input-border-radius;
+  font-size: $font-size;
+
+  &_sm {
+    font-size: $input-sm-font-size;
+    padding: $input-sm-padding;
+    height: $input-sm-height;
+    line-height: $input-sm-height;
+  }
+
+  &_md {
+    font-size: $input-md-font-size;
+    padding: $input-md-padding;
+    height: $input-md-height;
+    line-height: $input-md-height;
+  }
+
+  &_lg {
+    font-size: $input-lg-font-size;
+    padding: $input-lg-padding;
+    height: $input-lg-height;
+    line-height: $input-lg-height;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &:focus {
+    border-color: rgba($primary-color, 0.8);
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+  }
+
+  &::placeholder {
+    color: #BFBFBF;
+  }
 
   &_disabled {
-    @include input-default-disabled();
-  }
+    cursor: not-allowed;
+    background-color: #f4f4f5;
+    color: #999;
 
-  &_block {
-    width: 100%;
-    display: block;
-  }
-
-  &-group {
-    box-sizing: border-box;
-
-    .#{$prefix}input {
-      &:first-child {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      &:last-child {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-
-      &:not(:first-child):not(:last-child) {
-        border-radius: 0;
-      }
+    &:hover {
+      border-color: #d9d9d9;
     }
   }
+}
 
-  &-group-btn, &-group-addon {
+.#{$prefix}input-group {
+  width: 100%;
+  display: table;
+  box-sizing: border-box;
+
+  & > .#{$prefix}input, .#{$prefix}input-group-addon, .#{$prefix}input-group-btn {
+    display: table-cell;
+  }
+
+  .#{$prefix}input {
+    z-index: 1;
+
     &:first-child {
-      border-right: 0;
-      border-bottom-right-radius: 0;
       border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
     &:last-child {
-      border-left: 0;
-      border-bottom-left-radius: 0;
       border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
 
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
+    }
+  }
+}
+
+.#{$prefix}input-group-addon {
+  background-color: #fafafa;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1;
+  border-radius: $input-border-radius;
+
+  &_sm {
+    font-size: $input-sm-font-size;
+    padding: $input-sm-padding;
+  }
+
+  &_md {
+    font-size: $input-md-font-size;
+    padding: $input-md-padding;
+  }
+
+  &_lg {
+    font-size: $input-lg-font-size;
+    padding: $input-lg-padding;
+  }
+
+  &:first-child {
+    border-right: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &:last-child {
+    border-left: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.#{$prefix}input-group-btn {
+
+  &__btn {
+    margin-right: 0 !important;
+  }
+
+  &:first-child {
+    .#{$prefix}input-group-btn__btn {
+      border-right: 0;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  &:last-child {
+    .#{$prefix}input-group-btn__btn {
+      border-left: 0;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
+
+  &:not(:first-child):not(:last-child) {
+    .#{$prefix}input-group-btn__btn {
+      border-radius: 0;
       border-left: 0;
       border-right: 0;
-    }
-  }
-
-  &-group-addon {
-    @include input-default(false);
-    background-color: #fafafa;
-
-    &_disabled {
-      @include input-default-disabled();
-    }
-  }
-
-  &-group-btn {
-    @include input-default(false);
-    z-index: 1;
-    cursor: pointer;
-    background-color: $primary-color;
-    border-color: $primary-color;
-    color: #fff;
-    user-select: none;
-    left: -1px; //cover input right border
-
-    &:hover {
-      border-color: transparent;
-      background-color: rgba($primary-color, .8);
-    }
-
-    &:active {
-      background-color: darken($primary-color, 2.5%);
-    }
-
-    &_disabled {
-      border-color: transparent;
-      cursor: not-allowed;
-      background-color: rgba($primary-color, .3);
-
-      &:hover {
-        background-color: rgba($primary-color, .3);
-      }
-
-      &:active {
-        background-color: rgba($primary-color, .3);
-      }
     }
   }
 }

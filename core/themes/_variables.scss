@@ -33,8 +33,11 @@ $gray-color: #bcc3ce                  !default;
 $border-radius: 3px                   !default;
 
 //font
+$font-color: rgba(0, 0, 0, .65)       !default;
 $font-path: 'fonts'                   !default;
 $font-size: 14px                      !default;
+$font-size-sm: 13px                   !default;
+$font-size-lg: 16px                   !default;
 $font-weight: 400                     !default;
 $font-family: 'Open Sans', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif !default;
@@ -58,14 +61,12 @@ $layout-sider-background: #12131a     !default;
 
 //button
 $btn-border-radius: $border-radius    !default;
-$btn-lg-font-size: $font-size + 3px   !default;
+$btn-lg-font-size: $font-size-lg      !default;
 $btn-lg-padding: 12px 28px            !default;
 $btn-md-font-size: $font-size         !default;
 $btn-md-padding: 8px 15px             !default;
-$btn-sm-font-size: $font-size - 2px   !default;
+$btn-sm-font-size: $font-size-sm      !default;
 $btn-sm-padding: 5px 10px             !default;
-$btn-xs-font-size: $font-size - 4px   !default;
-$btn-xs-padding: 2px 6px              !default;
 
 //alert
 $alert-border-radius: 3px             !default;
@@ -87,15 +88,16 @@ $badge-dot-size: 6px                  !default;
 $divider-line-color: #e4e4e4          !default;
 
 //input
+$input-font-color: $font-color        !default;
 $input-border-radius: $border-radius  !default;
 $input-sm-padding: 0 4px              !default;
-$input-sm-height: 21px                !default;
-$input-sm-font-size: 12px             !default;
-$input-md-padding: 0 8px              !default;
+$input-sm-height: 24px                !default;
+$input-sm-font-size: $font-size-sm    !default;
+$input-md-padding: 0 6px              !default;
 $input-md-font-size: $font-size       !default;
-$input-md-height: 31px                !default;
-$input-lg-padding: 0 11px             !default;
-$input-lg-font-size: 17px             !default;
+$input-md-height: 32px                !default;
+$input-lg-padding: 0 8px              !default;
+$input-lg-font-size: $font-size-lg    !default;
 $input-lg-height: 42px                !default;
 
 //textarea
@@ -104,11 +106,11 @@ $textarea-padding: 5px                !default;
 
 //select
 $select-sm-padding: 3px 25px 3px 7px  !default;
-$select-sm-font-size: 12px            !default;
+$select-sm-font-size: $font-size-sm   !default;
 $select-md-padding: 6px 25px 6px 10px !default;
 $select-md-font-size: $font-size      !default;
 $select-lg-padding: 9px 25px 9px 12px !default;
-$select-lg-font-size: 16px            !default;
+$select-lg-font-size: $font-size-lg   !default;
 $select-border-radius: $border-radius !default;
 
 //switch

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Group from './button-group';
 
 export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' ;
-export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type ButtonSizes = 'sm' | 'md' | 'lg';
 
 export type ButtonProps = {
     onClick?: React.MouseEventHandler<HTMLButtonElement>

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { InputSizes } from './index';
+import { InputSizes } from '.';
 
 export type InputGroupAddonProps = {
     inside?: boolean,
@@ -25,7 +25,7 @@ const InputGroupAddon = (props: InputGroupAddonProps) => {
         [`${prefixCls}_inside`]: inside,
     });
 
-    return <span className={cls} style={style}>{children}</span>;
+    return <div className={cls} style={style}>{children}</div>;
 };
 
 InputGroupAddon.defaultProps = defaultProps;

@@ -178,15 +178,6 @@ $btn-prefix: #{$prefix}btn;
     }
   }
 
-  &_xs {
-    font-size: $btn-xs-font-size;
-    padding: $btn-xs-padding;
-
-    .#{$btn-prefix}__loader {
-      @include loader_size(9px);
-    }
-  }
-
   &_block {
     width: 100%;
   }

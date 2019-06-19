@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import InputGroup from './input-group';
 import InputGroupAddon from './input-group-addon';
@@ -9,12 +9,11 @@ export type InputSizes = 'sm' | 'md' | 'lg';
 export type InputProps = {
     defaultValue?: string,
     value?: string,
-    onChange?: (value: any, event: React.FormEvent<HTMLInputElement>) => void,
-    onEnterPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void,
+    onChange?: (value: any, event: FormEvent<HTMLInputElement>) => void,
+    onEnterPress?: (event: KeyboardEvent<HTMLInputElement>) => void,
     onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>, // prevent covering keydown event by enter press
     size?: InputSizes,
     disabled?: boolean,
-    block?: boolean,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -24,22 +23,22 @@ const defaultProps = {
     prefixCls: 'ty-input',
     size: 'md',
     disabled: false,
-    block: false,
 };
 
 const Input = (props: InputProps) => {
-    const { defaultValue, value, onChange, size, block, onEnterPress, onKeyDown,
-        disabled, prefixCls, className, style, ...restProps } = props;
+    const {
+        defaultValue, value, onChange, size, onEnterPress, onKeyDown,
+        disabled, prefixCls, className, style, ...restProps
+    } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}_${size}`, {
         [`${prefixCls}_disabled`]: disabled,
-        [`${prefixCls}_block`]: block,
     });
 
-    const _inputOnChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const inputOnChange = (e: FormEvent<HTMLInputElement>) => {
         onChange && onChange(e.currentTarget.value, e);
     };
 
-    const _inputOnKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const inputOnKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.keyCode === 13) {
             onEnterPress && onEnterPress(e);
         }
@@ -53,8 +52,8 @@ const Input = (props: InputProps) => {
             disabled={disabled}
             className={cls}
             style={style}
-            onChange={_inputOnChange}
-            onKeyDown={_inputOnKeydown}
+            onChange={inputOnChange}
+            onKeyDown={inputOnKeydown}
             {...restProps}
         />
     );
