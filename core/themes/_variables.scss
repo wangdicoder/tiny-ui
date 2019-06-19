@@ -42,6 +42,10 @@ $font-weight: 400                     !default;
 $font-family: 'Open Sans', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif !default;
 
+$height-sm: 24px                      !default;
+$height-md: 32px                      !default;
+$height-lg: 42px                      !default;
+
 //responsive breakpoints
 $size-xs: 480px                       !default;
 $size-sm: 600px                       !default;
@@ -62,11 +66,14 @@ $layout-sider-background: #12131a     !default;
 //button
 $btn-border-radius: $border-radius    !default;
 $btn-lg-font-size: $font-size-lg      !default;
-$btn-lg-padding: 12px 28px            !default;
+$btn-lg-padding: 0 28px               !default;
+$btn-lg-height: $height-lg            !default;
 $btn-md-font-size: $font-size         !default;
-$btn-md-padding: 8px 15px             !default;
+$btn-md-padding: 0 15px               !default;
+$btn-md-height: $height-md            !default;
 $btn-sm-font-size: $font-size-sm      !default;
-$btn-sm-padding: 5px 10px             !default;
+$btn-sm-padding: 0 10px               !default;
+$btn-sm-height: $height-sm            !default;
 
 //alert
 $alert-border-radius: 3px             !default;

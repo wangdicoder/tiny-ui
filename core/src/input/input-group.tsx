@@ -26,7 +26,7 @@ const InputGroup = (props: InputGroupProps) => {
             {React.Children.map(children, (child: React.ReactElement) => {
                 const childProps = {
                     ...child.props,
-                    disabled,
+                    disabled: ('disabled' in child.props) ? child.props.disabled : disabled,
                     size,
                 };
                 return React.cloneElement(child, childProps);

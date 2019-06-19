@@ -152,6 +152,7 @@ $btn-prefix: #{$prefix}btn;
   }
 
   &_lg {
+    height: $btn-lg-height;
     font-size: $btn-lg-font-size;
     padding: $btn-lg-padding;
 
@@ -161,6 +162,7 @@ $btn-prefix: #{$prefix}btn;
   }
 
   &_md {
+    height: $btn-md-height;
     font-size: $btn-md-font-size;
     padding: $btn-md-padding;
 
@@ -170,6 +172,7 @@ $btn-prefix: #{$prefix}btn;
   }
 
   &_sm {
+    height: $btn-sm-height;
     font-size: $btn-sm-font-size;
     padding: $btn-sm-padding;
 
