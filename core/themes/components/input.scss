@@ -13,23 +13,41 @@
   border-radius: $input-border-radius;
   font-size: $font-size;
 
+  &__wrapper {
+    position: relative;
+    color: $input-font-color;
+  }
+
+  &__prefix, &__suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    margin: 0 8px;
+  }
+
+  &__prefix {
+    left: 0;
+  }
+
+  &__suffix {
+    right: 0;
+  }
+
   &_sm {
     font-size: $input-sm-font-size;
-    padding: $input-sm-padding;
     height: $input-sm-height;
     line-height: $input-sm-height;
   }
 
   &_md {
     font-size: $input-md-font-size;
-    padding: $input-md-padding;
     height: $input-md-height;
     line-height: $input-md-height;
   }
 
   &_lg {
     font-size: $input-lg-font-size;
-    padding: $input-lg-padding;
     height: $input-lg-height;
     line-height: $input-lg-height;
   }
@@ -56,43 +74,41 @@
       border-color: #d9d9d9;
     }
   }
-
-  &_inside{
-    padding: 0 30px;
-  }
 }
 
 .#{$prefix}input-group {
   width: 100%;
   display: table;
+  border-collapse: separate;
+  border-spacing: 0;
   box-sizing: border-box;
   position: relative;
 
-  & > .#{$prefix}input, .#{$prefix}input-group-addon, .#{$prefix}input-group-btn {
+  & > .#{$prefix}input__wrapper, .#{$prefix}input-group-addon {
     display: table-cell;
   }
 
-  .#{$prefix}input {
+  .#{$prefix}input__wrapper {
     z-index: 1;
 
     &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      .#{$prefix}input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
 
     &:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      .#{$prefix}input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
 
     &:not(:first-child):not(:last-child) {
-      border-radius: 0;
-    }
-  }
-
-  &_inside {
-    .#{$prefix}input {
-      border-radius: $input-border-radius !important;
+      .#{$prefix}input {
+        border-radius: 0;
+      }
     }
   }
 }
@@ -104,6 +120,7 @@
   text-align: center;
   line-height: 1;
   border-radius: $input-border-radius;
+  color: $input-font-color;
 
   &_sm {
     font-size: $input-sm-font-size;
@@ -133,29 +150,10 @@
     border-radius: 0;
     border-left: 0;
     border-right: 0;
+    padding: 0 7px;
   }
 
-  &_inside {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    z-index: 2;
-    min-width: 30px;
-
-    &:first-child {
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &:last-child {
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-
-  &_no-border{
+  &_no-border {
     border: none;
   }
 }

@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { InputSizes } from '.';
 
 export type InputGroupAddonProps = {
-    inside?: boolean,
     noBorder: boolean,
     prefixCls?: string,
     size?: InputSizes,
@@ -19,9 +18,8 @@ const defaultProps = {
 };
 
 const InputGroupAddon = (props: InputGroupAddonProps) => {
-    const { noBorder, inside, size, prefixCls, className, style, children } = props;
+    const { noBorder, size, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}_${size}`, {
-        [`${prefixCls}_inside`]: inside,
         [`${prefixCls}_no-border`]: noBorder,
     });
 

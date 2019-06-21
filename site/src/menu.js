@@ -92,6 +92,10 @@ const COMPONENT_MENU = [{
         route: 'checkbox',
         component: lazy(() => import('./docs/component/checkbox')),
     }, {
+        title: 'Input',
+        route: 'input',
+        component: lazy(() => import('./docs/component/input')),
+    }, {
         title: 'Native Select',
         route: 'native-select',
         component: lazy(() => import('./docs/component/native-select')),
