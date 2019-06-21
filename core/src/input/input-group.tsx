@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { InputSizes } from '.';
 
 export type InputGroupProps = {
+    inside?: boolean,
     size?: InputSizes,
     disabled?: boolean,
     prefixCls?: string,
@@ -18,16 +19,19 @@ const defaultProps = {
 };
 
 const InputGroup = (props: InputGroupProps) => {
-    const { disabled, size, prefixCls, className, style, children } = props;
-    const cls = classnames(prefixCls, className);
+    const { inside, disabled, size, prefixCls, className, style, children } = props;
+    const cls = classnames(prefixCls, className, {
+        [`${prefixCls}_inside`]: inside,
+    });
 
     return (
         <div className={cls} style={style}>
             {React.Children.map(children, (child: React.ReactElement) => {
                 const childProps = {
                     ...child.props,
-                    disabled: ('disabled' in child.props) ? child.props.disabled : disabled,
+                    disabled,
                     size,
+                    inside,
                 };
                 return React.cloneElement(child, childProps);
             })}

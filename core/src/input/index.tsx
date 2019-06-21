@@ -2,11 +2,11 @@ import React, { FormEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import InputGroup from './input-group';
 import InputGroupAddon from './input-group-addon';
-import InputGroupButton from './input-group-button';
 
 export type InputSizes = 'sm' | 'md' | 'lg';
 
 export type InputProps = {
+    inside?: boolean,
     defaultValue?: string,
     value?: string,
     onChange?: (value: any, event: FormEvent<HTMLInputElement>) => void,
@@ -27,11 +27,12 @@ const defaultProps = {
 
 const Input = (props: InputProps) => {
     const {
-        defaultValue, value, onChange, size, onEnterPress, onKeyDown,
+        inside, defaultValue, value, onChange, size, onEnterPress, onKeyDown,
         disabled, prefixCls, className, style, ...restProps
     } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}_${size}`, {
         [`${prefixCls}_disabled`]: disabled,
+        [`${prefixCls}_inside`]: inside,
     });
 
     const inputOnChange = (e: FormEvent<HTMLInputElement>) => {
@@ -63,6 +64,5 @@ Input.defaultProps = defaultProps;
 
 Input.Group = InputGroup;
 Input.Addon = InputGroupAddon;
-Input.Button = InputGroupButton;
 
 export default Input;
