@@ -4,18 +4,31 @@
   position: relative;
   font-family: $font-family;
   box-sizing: border-box;
-  width: 100%;
-  margin: 0;
   color: $input-font-color;
-  border: 1px solid #d9d9d9;
-  transition: all .3s;
-  outline: 0;
-  border-radius: $input-border-radius;
-  font-size: $font-size;
 
-  &__wrapper {
-    position: relative;
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
     color: $input-font-color;
+    border: 1px solid #d9d9d9;
+    transition: all .3s;
+    outline: 0;
+    border-radius: $input-border-radius;
+    font-size: $font-size;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:focus {
+      border-color: rgba($primary-color, 0.8);
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    }
+
+    &::placeholder {
+      color: #BFBFBF;
+    }
   }
 
   &__prefix, &__suffix {
@@ -34,79 +47,111 @@
     right: 0;
   }
 
+  &__clear-btn {
+    display: inline-block;
+    color: rgba(0, 0, 0, .25);
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+  }
+
   &_sm {
-    font-size: $input-sm-font-size;
-    height: $input-sm-height;
-    line-height: $input-sm-height;
+    .#{$prefix}input {
+      &__input {
+        font-size: $input-sm-font-size;
+        height: $input-sm-height;
+        line-height: $input-sm-height;
+      }
+
+      &__clear-btn {
+        transform: scale(.7);
+      }
+    }
   }
 
   &_md {
-    font-size: $input-md-font-size;
-    height: $input-md-height;
-    line-height: $input-md-height;
+    .#{$prefix}input {
+      &__input {
+        font-size: $input-md-font-size;
+        height: $input-md-height;
+        line-height: $input-md-height;
+      }
+
+      &__clear-btn {
+        transform: scale(.8);
+      }
+    }
   }
 
   &_lg {
-    font-size: $input-lg-font-size;
-    height: $input-lg-height;
-    line-height: $input-lg-height;
-  }
-
-  &:hover {
-    border-color: $primary-color;
-  }
-
-  &:focus {
-    border-color: rgba($primary-color, 0.8);
-    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
-  }
-
-  &::placeholder {
-    color: #BFBFBF;
+    .#{$prefix}input {
+      &__input {
+        font-size: $input-lg-font-size;
+        height: $input-lg-height;
+        line-height: $input-lg-height;
+      }
+    }
   }
 
   &_disabled {
-    cursor: not-allowed;
-    background-color: #f4f4f5;
-    color: #999;
+    .#{$prefix}input__input {
+      cursor: not-allowed;
+      background-color: #f4f4f5;
+      color: #999;
 
-    &:hover {
-      border-color: #d9d9d9;
+      &:hover {
+        border-color: #d9d9d9;
+      }
     }
   }
 }
 
 .#{$prefix}input-group {
   width: 100%;
-  display: table;
-  border-collapse: separate;
-  border-spacing: 0;
+  display: flex;
   box-sizing: border-box;
   position: relative;
 
-  & > .#{$prefix}input__wrapper, .#{$prefix}input-group-addon {
-    display: table-cell;
+  & > .#{$prefix}input-group-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .#{$prefix}input__wrapper {
+  &_sm {
+    height: $input-sm-height;
+  }
+
+  &_md {
+    height: $input-md-height;
+  }
+
+  &_lg {
+    height: $input-lg-height;
+  }
+
+  .#{$prefix}input {
     z-index: 1;
+    flex: 1;
 
     &:first-child {
-      .#{$prefix}input {
+      .#{$prefix}input__input {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
 
     &:last-child {
-      .#{$prefix}input {
+      .#{$prefix}input__input {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
     }
 
     &:not(:first-child):not(:last-child) {
-      .#{$prefix}input {
+      .#{$prefix}input__input {
         border-radius: 0;
       }
     }
@@ -121,6 +166,7 @@
   line-height: 1;
   border-radius: $input-border-radius;
   color: $input-font-color;
+  padding: 0 7px;
 
   &_sm {
     font-size: $input-sm-font-size;
@@ -155,5 +201,6 @@
 
   &_no-border {
     border: none;
+    padding: 0;
   }
 }

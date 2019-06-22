@@ -16,15 +16,12 @@ const defaultProps = {
 };
 
 const Icon = (props: IconTypes) => {
-    const { type, color, size, style, spin, className, prefixCls } = props;
-    const cls = classNames(
-        prefixCls,
-        `ty--${type}`,
-        { [`${prefixCls}_spin`]: spin },
-        className,
-    );
+    const { type, color, size, style, spin, className, prefixCls, ...restProps } = props;
+    const cls = classNames(prefixCls, className, `ty--${type}`, {
+        [`${prefixCls}_spin`]: spin,
+    });
     return (
-        <i className={cls} style={{ color, fontSize: size, ...style }}/>
+        <i className={cls} style={{ color, fontSize: size, ...style }} {...restProps}/>
     );
 };
 

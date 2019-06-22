@@ -12,7 +12,7 @@ render(
     <Group size="sm">
       <Input/>
       <Addon noBorder>
-        <Button size="sm" block color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
+        <Button color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
           <Icon type="search-left"/>
         </Button>
       </Addon>
@@ -21,7 +21,7 @@ render(
     <Group>
       <Input/>
       <Addon noBorder>
-        <Button block color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
+        <Button color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
           <Icon type="search-left"/>
         </Button>
       </Addon>
@@ -30,7 +30,7 @@ render(
     <Group size="lg">
       <Input/>
       <Addon noBorder>
-        <Button size="lg" block color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
+        <Button color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
           Search
         </Button>
       </Addon>
