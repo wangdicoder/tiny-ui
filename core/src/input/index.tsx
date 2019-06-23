@@ -20,6 +20,7 @@ export type InputProps = {
     className?: string,
     style?: React.CSSProperties,
     forwardedRef?: any,
+    [prop: string]: any,
 };
 
 const defaultProps = {

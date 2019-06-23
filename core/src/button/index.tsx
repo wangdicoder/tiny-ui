@@ -43,9 +43,7 @@ const Button = (props: ButtonProps) => {
         color, size, block, icon, link, loading, dash, disabled, outline, onClick,
         round, ripple, children, className, prefixCls, style, ...restProps
     } = props;
-    const cls = classnames(
-        prefixCls,
-        className,
+    const cls = classnames(prefixCls, className,
         link ? [`${prefixCls}_${color}_link`] :
             (outline ? [`${prefixCls}_${color}_outline`] : [`${prefixCls}_${color}`]),
         size && `${prefixCls}_${size}`,

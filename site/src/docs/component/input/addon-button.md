@@ -2,6 +2,8 @@
 
 Add a button in `Addon` component to compose an input form, like search function.
 
+> Pass `noBorder` prop to `Addon` component.
+
 <!--start-code-->
 
 ```jsx
@@ -13,7 +15,7 @@ render(
       <Input/>
       <Addon noBorder>
         <Button color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
-          <Icon type="search-left"/>
+          <Icon type="search"/>
         </Button>
       </Addon>
     </Group>
@@ -22,7 +24,7 @@ render(
       <Input/>
       <Addon noBorder>
         <Button color="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
-          <Icon type="search-left"/>
+          <Icon type="search"/>
         </Button>
       </Addon>
     </Group>

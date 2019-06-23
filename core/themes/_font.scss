@@ -31,6 +31,10 @@
   content: "\e786";
 }
 
+.ty--eye:before {
+  content: "\e78f";
+}
+
 .ty--wallet:before {
   content: "\e798";
 }
@@ -287,20 +291,8 @@
   content: "\e609";
 }
 
-.ty--lock1:before {
-  content: "\e60a";
-}
-
-.ty--Light-At-The-End:before {
-  content: "\e60b";
-}
-
 .ty--Left-Round:before {
   content: "\e60c";
-}
-
-.ty--Leave:before {
-  content: "\e60d";
 }
 
 .ty--key:before {
@@ -327,16 +319,12 @@
   content: "\e613";
 }
 
-.ty--Idea:before {
+.ty--idea:before {
   content: "\e615";
 }
 
 .ty--Image-File:before {
   content: "\e616";
-}
-
-.ty--Hot-Article:before {
-  content: "\e618";
 }
 
 .ty--home:before {
@@ -347,16 +335,12 @@
   content: "\e61b";
 }
 
-.ty--Graduation-Cap:before {
+.ty--education:before {
   content: "\e61c";
 }
 
 .ty--Frame:before {
   content: "\e61d";
-}
-
-.ty--Full-Trash:before {
-  content: "\e61e";
 }
 
 .ty--GIF:before {
@@ -371,11 +355,7 @@
   content: "\e621";
 }
 
-.ty--Fine-Print:before {
-  content: "\e622";
-}
-
-.ty--Feedback:before {
+.ty--feedback:before {
   content: "\e624";
 }
 
@@ -399,10 +379,6 @@
   content: "\e62a";
 }
 
-.ty--Entering-Heaven-:before {
-  content: "\e62c";
-}
-
 .ty--Down-Round:before {
   content: "\e62d";
 }
@@ -419,7 +395,7 @@
   content: "\e630";
 }
 
-.ty--Empty-Trash:before {
+.ty--trash:before {
   content: "\e631";
 }
 
@@ -591,7 +567,7 @@
   content: "\e660";
 }
 
-.ty--Audio-File:before {
+.ty--audio-File:before {
   content: "\e662";
 }
 
@@ -635,10 +611,6 @@
   content: "\e66d";
 }
 
-.ty--ZIP1:before {
-  content: "\e66e";
-}
-
 .ty--xls:before {
   content: "\e670";
 }
@@ -663,15 +635,11 @@
   content: "\e676";
 }
 
-.ty--WAV:before {
-  content: "\e677";
-}
-
 .ty--Video-File:before {
   content: "\e678";
 }
 
-.ty--Video-Projector:before {
+.ty--projector:before {
   content: "\e679";
 }
 
@@ -717,10 +685,6 @@
 
 .ty--trademark:before {
   content: "\e685";
-}
-
-.ty--unlock1:before {
-  content: "\e686";
 }
 
 .ty--todo-list:before {
@@ -771,7 +735,7 @@
   content: "\e695";
 }
 
-.ty--search-right:before {
+.ty--search-reverse:before {
   content: "\e698";
 }
 
@@ -955,7 +919,7 @@
   content: "\e63f";
 }
 
-.ty--search-left:before {
+.ty--search:before {
   content: "\e64a";
 }
 
@@ -993,4 +957,8 @@
 
 .ty--skin:before {
   content: "\e696";
+}
+
+.ty--eye-close:before {
+  content: "\e8ff";
 }
