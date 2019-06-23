@@ -96,6 +96,10 @@ const COMPONENT_MENU = [{
         route: 'input',
         component: lazy(() => import('./docs/component/input')),
     }, {
+        title: 'Input Password',
+        route: 'input-password',
+        component: lazy(() => import('./docs/component/input-password')),
+    }, {
         title: 'Native Select',
         route: 'native-select',
         component: lazy(() => import('./docs/component/native-select')),

@@ -20,6 +20,9 @@
 .ty--sync:before {
   content: "\e786"; }
 
+.ty--eye:before {
+  content: "\e78f"; }
+
 .ty--wallet:before {
   content: "\e798"; }
 
@@ -212,17 +215,8 @@
 .ty--Left-Arrow:before {
   content: "\e609"; }
 
-.ty--lock1:before {
-  content: "\e60a"; }
-
-.ty--Light-At-The-End:before {
-  content: "\e60b"; }
-
 .ty--Left-Round:before {
   content: "\e60c"; }
-
-.ty--Leave:before {
-  content: "\e60d"; }
 
 .ty--key:before {
   content: "\e60e"; }
@@ -242,14 +236,11 @@
 .ty--delivery:before {
   content: "\e613"; }
 
-.ty--Idea:before {
+.ty--idea:before {
   content: "\e615"; }
 
 .ty--Image-File:before {
   content: "\e616"; }
-
-.ty--Hot-Article:before {
-  content: "\e618"; }
 
 .ty--home:before {
   content: "\e61a"; }
@@ -257,14 +248,11 @@
 .ty--Hand-Cursor:before {
   content: "\e61b"; }
 
-.ty--Graduation-Cap:before {
+.ty--education:before {
   content: "\e61c"; }
 
 .ty--Frame:before {
   content: "\e61d"; }
-
-.ty--Full-Trash:before {
-  content: "\e61e"; }
 
 .ty--GIF:before {
   content: "\e61f"; }
@@ -275,10 +263,7 @@
 .ty--File:before {
   content: "\e621"; }
 
-.ty--Fine-Print:before {
-  content: "\e622"; }
-
-.ty--Feedback:before {
+.ty--feedback:before {
   content: "\e624"; }
 
 .ty--Favourite-File:before {
@@ -296,9 +281,6 @@
 .ty--Expired:before {
   content: "\e62a"; }
 
-.ty--Entering-Heaven-:before {
-  content: "\e62c"; }
-
 .ty--Down-Round:before {
   content: "\e62d"; }
 
@@ -311,7 +293,7 @@
 .ty--Download1:before {
   content: "\e630"; }
 
-.ty--Empty-Trash:before {
+.ty--trash:before {
   content: "\e631"; }
 
 .ty--Down-Right-Round:before {
@@ -440,7 +422,7 @@
 .ty--Binoculars:before {
   content: "\e660"; }
 
-.ty--Audio-File:before {
+.ty--audio-File:before {
   content: "\e662"; }
 
 .ty--Bearish:before {
@@ -473,9 +455,6 @@
 .ty--About:before {
   content: "\e66d"; }
 
-.ty--ZIP1:before {
-  content: "\e66e"; }
-
 .ty--xls:before {
   content: "\e670"; }
 
@@ -494,13 +473,10 @@
 .ty--Voice-Presentation:before {
   content: "\e676"; }
 
-.ty--WAV:before {
-  content: "\e677"; }
-
 .ty--Video-File:before {
   content: "\e678"; }
 
-.ty--Video-Projector:before {
+.ty--projector:before {
   content: "\e679"; }
 
 .ty--upload:before {
@@ -535,9 +511,6 @@
 
 .ty--trademark:before {
   content: "\e685"; }
-
-.ty--unlock1:before {
-  content: "\e686"; }
 
 .ty--todo-list:before {
   content: "\e687"; }
@@ -575,7 +548,7 @@
 .ty--settings1:before {
   content: "\e695"; }
 
-.ty--search-right:before {
+.ty--search-reverse:before {
   content: "\e698"; }
 
 .ty--ruler:before {
@@ -713,7 +686,7 @@
 .ty--zoomout:before {
   content: "\e63f"; }
 
-.ty--search-left:before {
+.ty--search:before {
   content: "\e64a"; }
 
 .ty--creditcard:before {
@@ -742,6 +715,9 @@
 
 .ty--skin:before {
   content: "\e696"; }
+
+.ty--eye-close:before {
+  content: "\e8ff"; }
 
 .ty-icon {
   font-family: "tiny" !important;
@@ -1262,29 +1238,26 @@
     .ty-btn_red_disabled:hover {
       box-shadow: 0 1px 2px 0 rgba(244, 67, 54, 0.14); }
   .ty-btn_lg {
-    font-size: 17px;
-    padding: 12px 28px; }
+    height: 42px;
+    font-size: 16px;
+    padding: 0 28px; }
     .ty-btn_lg .ty-btn__loader {
       height: 15px;
       width: 15px; }
   .ty-btn_md {
+    height: 32px;
     font-size: 14px;
-    padding: 8px 15px; }
+    padding: 0 15px; }
     .ty-btn_md .ty-btn__loader {
       height: 13px;
       width: 13px; }
   .ty-btn_sm {
-    font-size: 12px;
-    padding: 5px 10px; }
+    height: 24px;
+    font-size: 13px;
+    padding: 0 10px; }
     .ty-btn_sm .ty-btn__loader {
       height: 11px;
       width: 11px; }
-  .ty-btn_xs {
-    font-size: 10px;
-    padding: 2px 6px; }
-    .ty-btn_xs .ty-btn__loader {
-      height: 9px;
-      width: 9px; }
   .ty-btn_block {
     width: 100%; }
   .ty-btn_round {
@@ -1386,9 +1359,9 @@
       border: 2px solid #fff;
       border-left: 0;
       border-top: 0;
-      width: 4px;
+      width: 5px;
       height: 8px;
-      top: 1px;
+      top: 2px;
       left: 4px;
       position: absolute;
       -webkit-transform: rotate(45deg) scale(0);
@@ -2764,6 +2737,9 @@
 .ty--sync:before {
   content: "\e786"; }
 
+.ty--eye:before {
+  content: "\e78f"; }
+
 .ty--wallet:before {
   content: "\e798"; }
 
@@ -2956,17 +2932,8 @@
 .ty--Left-Arrow:before {
   content: "\e609"; }
 
-.ty--lock1:before {
-  content: "\e60a"; }
-
-.ty--Light-At-The-End:before {
-  content: "\e60b"; }
-
 .ty--Left-Round:before {
   content: "\e60c"; }
-
-.ty--Leave:before {
-  content: "\e60d"; }
 
 .ty--key:before {
   content: "\e60e"; }
@@ -2986,14 +2953,11 @@
 .ty--delivery:before {
   content: "\e613"; }
 
-.ty--Idea:before {
+.ty--idea:before {
   content: "\e615"; }
 
 .ty--Image-File:before {
   content: "\e616"; }
-
-.ty--Hot-Article:before {
-  content: "\e618"; }
 
 .ty--home:before {
   content: "\e61a"; }
@@ -3001,14 +2965,11 @@
 .ty--Hand-Cursor:before {
   content: "\e61b"; }
 
-.ty--Graduation-Cap:before {
+.ty--education:before {
   content: "\e61c"; }
 
 .ty--Frame:before {
   content: "\e61d"; }
-
-.ty--Full-Trash:before {
-  content: "\e61e"; }
 
 .ty--GIF:before {
   content: "\e61f"; }
@@ -3019,10 +2980,7 @@
 .ty--File:before {
   content: "\e621"; }
 
-.ty--Fine-Print:before {
-  content: "\e622"; }
-
-.ty--Feedback:before {
+.ty--feedback:before {
   content: "\e624"; }
 
 .ty--Favourite-File:before {
@@ -3040,9 +2998,6 @@
 .ty--Expired:before {
   content: "\e62a"; }
 
-.ty--Entering-Heaven-:before {
-  content: "\e62c"; }
-
 .ty--Down-Round:before {
   content: "\e62d"; }
 
@@ -3055,7 +3010,7 @@
 .ty--Download1:before {
   content: "\e630"; }
 
-.ty--Empty-Trash:before {
+.ty--trash:before {
   content: "\e631"; }
 
 .ty--Down-Right-Round:before {
@@ -3184,7 +3139,7 @@
 .ty--Binoculars:before {
   content: "\e660"; }
 
-.ty--Audio-File:before {
+.ty--audio-File:before {
   content: "\e662"; }
 
 .ty--Bearish:before {
@@ -3217,9 +3172,6 @@
 .ty--About:before {
   content: "\e66d"; }
 
-.ty--ZIP1:before {
-  content: "\e66e"; }
-
 .ty--xls:before {
   content: "\e670"; }
 
@@ -3238,13 +3190,10 @@
 .ty--Voice-Presentation:before {
   content: "\e676"; }
 
-.ty--WAV:before {
-  content: "\e677"; }
-
 .ty--Video-File:before {
   content: "\e678"; }
 
-.ty--Video-Projector:before {
+.ty--projector:before {
   content: "\e679"; }
 
 .ty--upload:before {
@@ -3279,9 +3228,6 @@
 
 .ty--trademark:before {
   content: "\e685"; }
-
-.ty--unlock1:before {
-  content: "\e686"; }
 
 .ty--todo-list:before {
   content: "\e687"; }
@@ -3319,7 +3265,7 @@
 .ty--settings1:before {
   content: "\e695"; }
 
-.ty--search-right:before {
+.ty--search-reverse:before {
   content: "\e698"; }
 
 .ty--ruler:before {
@@ -3457,7 +3403,7 @@
 .ty--zoomout:before {
   content: "\e63f"; }
 
-.ty--search-left:before {
+.ty--search:before {
   content: "\e64a"; }
 
 .ty--creditcard:before {
@@ -3487,6 +3433,9 @@
 .ty--skin:before {
   content: "\e696"; }
 
+.ty--eye-close:before {
+  content: "\e8ff"; }
+
 .ty-icon {
   font-family: "tiny" !important;
   font-size: 16px;
@@ -3499,160 +3448,273 @@
             animation: ty-rotate 1s linear infinite; }
 
 .ty-input {
-  box-sizing: border-box;
-  margin: 0;
   position: relative;
-  display: inline-block;
-  color: rgba(0, 0, 0, 0.65);
-  border: 1px solid #d9d9d9;
-  transition: all .3s;
-  outline: 0;
-  border-radius: 3px;
   font-family: "Open Sans", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif;
-  z-index: 1; }
-  .ty-input:hover {
-    border-color: #6E41BF; }
-  .ty-input:focus {
-    border-color: rgba(110, 65, 191, 0.8);
-    box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
-  .ty-input::-webkit-input-placeholder {
-    color: #BFBFBF; }
-  .ty-input::-moz-placeholder {
-    color: #BFBFBF; }
-  .ty-input:-ms-input-placeholder {
-    color: #BFBFBF; }
-  .ty-input::-ms-input-placeholder {
-    color: #BFBFBF; }
-  .ty-input::placeholder {
-    color: #BFBFBF; }
-  .ty-input_sm {
-    font-size: 12px;
-    padding: 0 4px;
-    line-height: 20px;
-    height: 21px; }
-  .ty-input_md {
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.65); }
+  .ty-input__input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.65);
+    border: 1px solid #d9d9d9;
+    transition: all .3s;
+    outline: 0;
+    border-radius: 3px;
+    font-size: 14px; }
+    .ty-input__input:hover {
+      border-color: #6E41BF; }
+    .ty-input__input:focus {
+      border-color: rgba(110, 65, 191, 0.8);
+      box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
+    .ty-input__input::-webkit-input-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input::-moz-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input:-ms-input-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input::-ms-input-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input::placeholder {
+      color: #BFBFBF; }
+  .ty-input__prefix, .ty-input__suffix {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    z-index: 2;
+    margin: 0 8px; }
+  .ty-input__prefix {
+    left: 0; }
+  .ty-input__suffix {
+    right: 0; }
+  .ty-input__clear-btn {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.25);
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 2px;
+    cursor: pointer; }
+  .ty-input_sm .ty-input__input {
+    font-size: 13px;
+    height: 24px;
+    line-height: 24px; }
+  .ty-input_sm .ty-input__clear-btn {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  .ty-input_md .ty-input__input {
     font-size: 14px;
-    padding: 0 8px;
-    line-height: 30px;
-    height: 31px; }
-  .ty-input_lg {
-    font-size: 17px;
-    padding: 0 11px;
-    line-height: 41px;
-    height: 42px; }
-  .ty-input_disabled {
+    height: 32px;
+    line-height: 32px; }
+  .ty-input_md .ty-input__clear-btn {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8); }
+  .ty-input_lg .ty-input__input {
+    font-size: 16px;
+    height: 42px;
+    line-height: 42px; }
+  .ty-input_disabled .ty-input__input {
     cursor: not-allowed;
     background-color: #f4f4f5;
-    color: #999;
-    border-color: #e7e9eb; }
-    .ty-input_disabled:hover {
-      border-color: #e7e9eb; }
-  .ty-input_block {
-    width: 100%;
-    display: block; }
-  .ty-input-group {
-    box-sizing: border-box; }
-    .ty-input-group .ty-input:first-child {
+    color: #999; }
+    .ty-input_disabled .ty-input__input:hover {
+      border-color: #d9d9d9; }
+
+.ty-input-group {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  position: relative; }
+  .ty-input-group > .ty-input-group-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .ty-input-group_sm {
+    height: 24px; }
+  .ty-input-group_md {
+    height: 32px; }
+  .ty-input-group_lg {
+    height: 42px; }
+  .ty-input-group .ty-input {
+    z-index: 1;
+    flex: 1; }
+    .ty-input-group .ty-input:first-child .ty-input__input {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0; }
-    .ty-input-group .ty-input:last-child {
+    .ty-input-group .ty-input:last-child .ty-input__input {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0; }
-    .ty-input-group .ty-input:not(:first-child):not(:last-child) {
+    .ty-input-group .ty-input:not(:first-child):not(:last-child) .ty-input__input {
       border-radius: 0; }
-  .ty-input-group-btn:first-child, .ty-input-group-addon:first-child {
+
+.ty-input-group-addon {
+  background-color: #fafafa;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, 0.65);
+  padding: 0 7px; }
+  .ty-input-group-addon_sm {
+    font-size: 13px; }
+  .ty-input-group-addon_md {
+    font-size: 14px; }
+  .ty-input-group-addon_lg {
+    font-size: 16px; }
+  .ty-input-group-addon:first-child {
     border-right: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
-  .ty-input-group-btn:last-child, .ty-input-group-addon:last-child {
+  .ty-input-group-addon:last-child {
     border-left: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0; }
-  .ty-input-group-btn:not(:first-child):not(:last-child), .ty-input-group-addon:not(:first-child):not(:last-child) {
+  .ty-input-group-addon:not(:first-child):not(:last-child) {
     border-radius: 0;
     border-left: 0;
-    border-right: 0; }
-  .ty-input-group-addon {
+    border-right: 0;
+    padding: 0 7px; }
+  .ty-input-group-addon_no-border {
+    border: none;
+    padding: 0; }
+
+.ty-input {
+  position: relative;
+  font-family: "Open Sans", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.65); }
+  .ty-input__input {
     box-sizing: border-box;
+    width: 100%;
     margin: 0;
-    position: relative;
-    display: inline-block;
     color: rgba(0, 0, 0, 0.65);
     border: 1px solid #d9d9d9;
     transition: all .3s;
     outline: 0;
     border-radius: 3px;
-    background-color: #fafafa; }
-    .ty-input-group-addon_sm {
-      font-size: 12px;
-      padding: 0 4px;
-      line-height: 20px;
-      height: 21px; }
-    .ty-input-group-addon_md {
-      font-size: 14px;
-      padding: 0 8px;
-      line-height: 30px;
-      height: 31px; }
-    .ty-input-group-addon_lg {
-      font-size: 17px;
-      padding: 0 11px;
-      line-height: 41px;
-      height: 42px; }
-    .ty-input-group-addon_disabled {
-      cursor: not-allowed;
-      background-color: #f4f4f5;
-      color: #999;
-      border-color: #e7e9eb; }
-      .ty-input-group-addon_disabled:hover {
-        border-color: #e7e9eb; }
-  .ty-input-group-btn {
-    box-sizing: border-box;
-    margin: 0;
-    position: relative;
+    font-size: 14px; }
+    .ty-input__input:hover {
+      border-color: #6E41BF; }
+    .ty-input__input:focus {
+      border-color: rgba(110, 65, 191, 0.8);
+      box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
+    .ty-input__input::-webkit-input-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input::-moz-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input:-ms-input-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input::-ms-input-placeholder {
+      color: #BFBFBF; }
+    .ty-input__input::placeholder {
+      color: #BFBFBF; }
+  .ty-input__prefix, .ty-input__suffix {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    z-index: 2;
+    margin: 0 8px; }
+  .ty-input__prefix {
+    left: 0; }
+  .ty-input__suffix {
+    right: 0; }
+  .ty-input__clear-btn {
     display: inline-block;
-    color: rgba(0, 0, 0, 0.65);
-    border: 1px solid #d9d9d9;
-    transition: all .3s;
-    outline: 0;
-    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.25);
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 2px;
+    cursor: pointer; }
+  .ty-input_sm .ty-input__input {
+    font-size: 13px;
+    height: 24px;
+    line-height: 24px; }
+  .ty-input_sm .ty-input__clear-btn {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  .ty-input_md .ty-input__input {
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px; }
+  .ty-input_md .ty-input__clear-btn {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8); }
+  .ty-input_lg .ty-input__input {
+    font-size: 16px;
+    height: 42px;
+    line-height: 42px; }
+  .ty-input_disabled .ty-input__input {
+    cursor: not-allowed;
+    background-color: #f4f4f5;
+    color: #999; }
+    .ty-input_disabled .ty-input__input:hover {
+      border-color: #d9d9d9; }
+
+.ty-input-group {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  position: relative; }
+  .ty-input-group > .ty-input-group-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .ty-input-group_sm {
+    height: 24px; }
+  .ty-input-group_md {
+    height: 32px; }
+  .ty-input-group_lg {
+    height: 42px; }
+  .ty-input-group .ty-input {
     z-index: 1;
-    cursor: pointer;
-    background-color: #6E41BF;
-    border-color: #6E41BF;
-    color: #fff;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    left: -1px; }
-    .ty-input-group-btn_sm {
-      font-size: 12px;
-      padding: 0 4px;
-      line-height: 20px;
-      height: 21px; }
-    .ty-input-group-btn_md {
-      font-size: 14px;
-      padding: 0 8px;
-      line-height: 30px;
-      height: 31px; }
-    .ty-input-group-btn_lg {
-      font-size: 17px;
-      padding: 0 11px;
-      line-height: 41px;
-      height: 42px; }
-    .ty-input-group-btn:hover {
-      border-color: transparent;
-      background-color: rgba(110, 65, 191, 0.8); }
-    .ty-input-group-btn:active {
-      background-color: #683db6; }
-    .ty-input-group-btn_disabled {
-      border-color: transparent;
-      cursor: not-allowed;
-      background-color: rgba(110, 65, 191, 0.3); }
-      .ty-input-group-btn_disabled:hover {
-        background-color: rgba(110, 65, 191, 0.3); }
-      .ty-input-group-btn_disabled:active {
-        background-color: rgba(110, 65, 191, 0.3); }
+    flex: 1; }
+    .ty-input-group .ty-input:first-child .ty-input__input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0; }
+    .ty-input-group .ty-input:last-child .ty-input__input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0; }
+    .ty-input-group .ty-input:not(:first-child):not(:last-child) .ty-input__input {
+      border-radius: 0; }
+
+.ty-input-group-addon {
+  background-color: #fafafa;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, 0.65);
+  padding: 0 7px; }
+  .ty-input-group-addon_sm {
+    font-size: 13px; }
+  .ty-input-group-addon_md {
+    font-size: 14px; }
+  .ty-input-group-addon_lg {
+    font-size: 16px; }
+  .ty-input-group-addon:first-child {
+    border-right: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0; }
+  .ty-input-group-addon:last-child {
+    border-left: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0; }
+  .ty-input-group-addon:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 0 7px; }
+  .ty-input-group-addon_no-border {
+    border: none;
+    padding: 0; }
+
+.ty-input-pwd__suffix {
+  cursor: pointer; }
 
 .ty-layout {
   box-sizing: border-box;
@@ -3857,6 +3919,9 @@
 .ty--sync:before {
   content: "\e786"; }
 
+.ty--eye:before {
+  content: "\e78f"; }
+
 .ty--wallet:before {
   content: "\e798"; }
 
@@ -4049,17 +4114,8 @@
 .ty--Left-Arrow:before {
   content: "\e609"; }
 
-.ty--lock1:before {
-  content: "\e60a"; }
-
-.ty--Light-At-The-End:before {
-  content: "\e60b"; }
-
 .ty--Left-Round:before {
   content: "\e60c"; }
-
-.ty--Leave:before {
-  content: "\e60d"; }
 
 .ty--key:before {
   content: "\e60e"; }
@@ -4079,14 +4135,11 @@
 .ty--delivery:before {
   content: "\e613"; }
 
-.ty--Idea:before {
+.ty--idea:before {
   content: "\e615"; }
 
 .ty--Image-File:before {
   content: "\e616"; }
-
-.ty--Hot-Article:before {
-  content: "\e618"; }
 
 .ty--home:before {
   content: "\e61a"; }
@@ -4094,14 +4147,11 @@
 .ty--Hand-Cursor:before {
   content: "\e61b"; }
 
-.ty--Graduation-Cap:before {
+.ty--education:before {
   content: "\e61c"; }
 
 .ty--Frame:before {
   content: "\e61d"; }
-
-.ty--Full-Trash:before {
-  content: "\e61e"; }
 
 .ty--GIF:before {
   content: "\e61f"; }
@@ -4112,10 +4162,7 @@
 .ty--File:before {
   content: "\e621"; }
 
-.ty--Fine-Print:before {
-  content: "\e622"; }
-
-.ty--Feedback:before {
+.ty--feedback:before {
   content: "\e624"; }
 
 .ty--Favourite-File:before {
@@ -4133,9 +4180,6 @@
 .ty--Expired:before {
   content: "\e62a"; }
 
-.ty--Entering-Heaven-:before {
-  content: "\e62c"; }
-
 .ty--Down-Round:before {
   content: "\e62d"; }
 
@@ -4148,7 +4192,7 @@
 .ty--Download1:before {
   content: "\e630"; }
 
-.ty--Empty-Trash:before {
+.ty--trash:before {
   content: "\e631"; }
 
 .ty--Down-Right-Round:before {
@@ -4277,7 +4321,7 @@
 .ty--Binoculars:before {
   content: "\e660"; }
 
-.ty--Audio-File:before {
+.ty--audio-File:before {
   content: "\e662"; }
 
 .ty--Bearish:before {
@@ -4310,9 +4354,6 @@
 .ty--About:before {
   content: "\e66d"; }
 
-.ty--ZIP1:before {
-  content: "\e66e"; }
-
 .ty--xls:before {
   content: "\e670"; }
 
@@ -4331,13 +4372,10 @@
 .ty--Voice-Presentation:before {
   content: "\e676"; }
 
-.ty--WAV:before {
-  content: "\e677"; }
-
 .ty--Video-File:before {
   content: "\e678"; }
 
-.ty--Video-Projector:before {
+.ty--projector:before {
   content: "\e679"; }
 
 .ty--upload:before {
@@ -4372,9 +4410,6 @@
 
 .ty--trademark:before {
   content: "\e685"; }
-
-.ty--unlock1:before {
-  content: "\e686"; }
 
 .ty--todo-list:before {
   content: "\e687"; }
@@ -4412,7 +4447,7 @@
 .ty--settings1:before {
   content: "\e695"; }
 
-.ty--search-right:before {
+.ty--search-reverse:before {
   content: "\e698"; }
 
 .ty--ruler:before {
@@ -4550,7 +4585,7 @@
 .ty--zoomout:before {
   content: "\e63f"; }
 
-.ty--search-left:before {
+.ty--search:before {
   content: "\e64a"; }
 
 .ty--creditcard:before {
@@ -4579,6 +4614,9 @@
 
 .ty--skin:before {
   content: "\e696"; }
+
+.ty--eye-close:before {
+  content: "\e8ff"; }
 
 .ty-icon {
   font-family: "tiny" !important;
@@ -4766,6 +4804,9 @@
 .ty--sync:before {
   content: "\e786"; }
 
+.ty--eye:before {
+  content: "\e78f"; }
+
 .ty--wallet:before {
   content: "\e798"; }
 
@@ -4958,17 +4999,8 @@
 .ty--Left-Arrow:before {
   content: "\e609"; }
 
-.ty--lock1:before {
-  content: "\e60a"; }
-
-.ty--Light-At-The-End:before {
-  content: "\e60b"; }
-
 .ty--Left-Round:before {
   content: "\e60c"; }
-
-.ty--Leave:before {
-  content: "\e60d"; }
 
 .ty--key:before {
   content: "\e60e"; }
@@ -4988,14 +5020,11 @@
 .ty--delivery:before {
   content: "\e613"; }
 
-.ty--Idea:before {
+.ty--idea:before {
   content: "\e615"; }
 
 .ty--Image-File:before {
   content: "\e616"; }
-
-.ty--Hot-Article:before {
-  content: "\e618"; }
 
 .ty--home:before {
   content: "\e61a"; }
@@ -5003,14 +5032,11 @@
 .ty--Hand-Cursor:before {
   content: "\e61b"; }
 
-.ty--Graduation-Cap:before {
+.ty--education:before {
   content: "\e61c"; }
 
 .ty--Frame:before {
   content: "\e61d"; }
-
-.ty--Full-Trash:before {
-  content: "\e61e"; }
 
 .ty--GIF:before {
   content: "\e61f"; }
@@ -5021,10 +5047,7 @@
 .ty--File:before {
   content: "\e621"; }
 
-.ty--Fine-Print:before {
-  content: "\e622"; }
-
-.ty--Feedback:before {
+.ty--feedback:before {
   content: "\e624"; }
 
 .ty--Favourite-File:before {
@@ -5042,9 +5065,6 @@
 .ty--Expired:before {
   content: "\e62a"; }
 
-.ty--Entering-Heaven-:before {
-  content: "\e62c"; }
-
 .ty--Down-Round:before {
   content: "\e62d"; }
 
@@ -5057,7 +5077,7 @@
 .ty--Download1:before {
   content: "\e630"; }
 
-.ty--Empty-Trash:before {
+.ty--trash:before {
   content: "\e631"; }
 
 .ty--Down-Right-Round:before {
@@ -5186,7 +5206,7 @@
 .ty--Binoculars:before {
   content: "\e660"; }
 
-.ty--Audio-File:before {
+.ty--audio-File:before {
   content: "\e662"; }
 
 .ty--Bearish:before {
@@ -5219,9 +5239,6 @@
 .ty--About:before {
   content: "\e66d"; }
 
-.ty--ZIP1:before {
-  content: "\e66e"; }
-
 .ty--xls:before {
   content: "\e670"; }
 
@@ -5240,13 +5257,10 @@
 .ty--Voice-Presentation:before {
   content: "\e676"; }
 
-.ty--WAV:before {
-  content: "\e677"; }
-
 .ty--Video-File:before {
   content: "\e678"; }
 
-.ty--Video-Projector:before {
+.ty--projector:before {
   content: "\e679"; }
 
 .ty--upload:before {
@@ -5281,9 +5295,6 @@
 
 .ty--trademark:before {
   content: "\e685"; }
-
-.ty--unlock1:before {
-  content: "\e686"; }
 
 .ty--todo-list:before {
   content: "\e687"; }
@@ -5321,7 +5332,7 @@
 .ty--settings1:before {
   content: "\e695"; }
 
-.ty--search-right:before {
+.ty--search-reverse:before {
   content: "\e698"; }
 
 .ty--ruler:before {
@@ -5459,7 +5470,7 @@
 .ty--zoomout:before {
   content: "\e63f"; }
 
-.ty--search-left:before {
+.ty--search:before {
   content: "\e64a"; }
 
 .ty--creditcard:before {
@@ -5488,6 +5499,9 @@
 
 .ty--skin:before {
   content: "\e696"; }
+
+.ty--eye-close:before {
+  content: "\e8ff"; }
 
 .ty-icon {
   font-family: "tiny" !important;
@@ -5835,29 +5849,26 @@
     .ty-btn_red_disabled:hover {
       box-shadow: 0 1px 2px 0 rgba(244, 67, 54, 0.14); }
   .ty-btn_lg {
-    font-size: 17px;
-    padding: 12px 28px; }
+    height: 42px;
+    font-size: 16px;
+    padding: 0 28px; }
     .ty-btn_lg .ty-btn__loader {
       height: 15px;
       width: 15px; }
   .ty-btn_md {
+    height: 32px;
     font-size: 14px;
-    padding: 8px 15px; }
+    padding: 0 15px; }
     .ty-btn_md .ty-btn__loader {
       height: 13px;
       width: 13px; }
   .ty-btn_sm {
-    font-size: 12px;
-    padding: 5px 10px; }
+    height: 24px;
+    font-size: 13px;
+    padding: 0 10px; }
     .ty-btn_sm .ty-btn__loader {
       height: 11px;
       width: 11px; }
-  .ty-btn_xs {
-    font-size: 10px;
-    padding: 2px 6px; }
-    .ty-btn_xs .ty-btn__loader {
-      height: 9px;
-      width: 9px; }
   .ty-btn_block {
     width: 100%; }
   .ty-btn_round {
@@ -5911,6 +5922,9 @@
 
 .ty--sync:before {
   content: "\e786"; }
+
+.ty--eye:before {
+  content: "\e78f"; }
 
 .ty--wallet:before {
   content: "\e798"; }
@@ -6104,17 +6118,8 @@
 .ty--Left-Arrow:before {
   content: "\e609"; }
 
-.ty--lock1:before {
-  content: "\e60a"; }
-
-.ty--Light-At-The-End:before {
-  content: "\e60b"; }
-
 .ty--Left-Round:before {
   content: "\e60c"; }
-
-.ty--Leave:before {
-  content: "\e60d"; }
 
 .ty--key:before {
   content: "\e60e"; }
@@ -6134,14 +6139,11 @@
 .ty--delivery:before {
   content: "\e613"; }
 
-.ty--Idea:before {
+.ty--idea:before {
   content: "\e615"; }
 
 .ty--Image-File:before {
   content: "\e616"; }
-
-.ty--Hot-Article:before {
-  content: "\e618"; }
 
 .ty--home:before {
   content: "\e61a"; }
@@ -6149,14 +6151,11 @@
 .ty--Hand-Cursor:before {
   content: "\e61b"; }
 
-.ty--Graduation-Cap:before {
+.ty--education:before {
   content: "\e61c"; }
 
 .ty--Frame:before {
   content: "\e61d"; }
-
-.ty--Full-Trash:before {
-  content: "\e61e"; }
 
 .ty--GIF:before {
   content: "\e61f"; }
@@ -6167,10 +6166,7 @@
 .ty--File:before {
   content: "\e621"; }
 
-.ty--Fine-Print:before {
-  content: "\e622"; }
-
-.ty--Feedback:before {
+.ty--feedback:before {
   content: "\e624"; }
 
 .ty--Favourite-File:before {
@@ -6188,9 +6184,6 @@
 .ty--Expired:before {
   content: "\e62a"; }
 
-.ty--Entering-Heaven-:before {
-  content: "\e62c"; }
-
 .ty--Down-Round:before {
   content: "\e62d"; }
 
@@ -6203,7 +6196,7 @@
 .ty--Download1:before {
   content: "\e630"; }
 
-.ty--Empty-Trash:before {
+.ty--trash:before {
   content: "\e631"; }
 
 .ty--Down-Right-Round:before {
@@ -6332,7 +6325,7 @@
 .ty--Binoculars:before {
   content: "\e660"; }
 
-.ty--Audio-File:before {
+.ty--audio-File:before {
   content: "\e662"; }
 
 .ty--Bearish:before {
@@ -6365,9 +6358,6 @@
 .ty--About:before {
   content: "\e66d"; }
 
-.ty--ZIP1:before {
-  content: "\e66e"; }
-
 .ty--xls:before {
   content: "\e670"; }
 
@@ -6386,13 +6376,10 @@
 .ty--Voice-Presentation:before {
   content: "\e676"; }
 
-.ty--WAV:before {
-  content: "\e677"; }
-
 .ty--Video-File:before {
   content: "\e678"; }
 
-.ty--Video-Projector:before {
+.ty--projector:before {
   content: "\e679"; }
 
 .ty--upload:before {
@@ -6427,9 +6414,6 @@
 
 .ty--trademark:before {
   content: "\e685"; }
-
-.ty--unlock1:before {
-  content: "\e686"; }
 
 .ty--todo-list:before {
   content: "\e687"; }
@@ -6467,7 +6451,7 @@
 .ty--settings1:before {
   content: "\e695"; }
 
-.ty--search-right:before {
+.ty--search-reverse:before {
   content: "\e698"; }
 
 .ty--ruler:before {
@@ -6605,7 +6589,7 @@
 .ty--zoomout:before {
   content: "\e63f"; }
 
-.ty--search-left:before {
+.ty--search:before {
   content: "\e64a"; }
 
 .ty--creditcard:before {
@@ -6634,6 +6618,9 @@
 
 .ty--skin:before {
   content: "\e696"; }
+
+.ty--eye-close:before {
+  content: "\e8ff"; }
 
 .ty-icon {
   font-family: "tiny" !important;
@@ -7070,7 +7057,7 @@
       box-shadow: none; }
   .ty-select-native_sm {
     padding: 3px 25px 3px 7px;
-    font-size: 12px; }
+    font-size: 13px; }
   .ty-select-native_md {
     padding: 6px 25px 6px 10px;
     font-size: 14px; }
@@ -7266,18 +7253,18 @@
   .ty-textarea::placeholder {
     color: #BFBFBF; }
   .ty-textarea_sm {
-    font-size: 12px;
+    font-size: 13px;
     padding: 0 4px;
-    line-height: 20px;
-    height: 21px; }
+    line-height: 23px;
+    height: 24px; }
   .ty-textarea_md {
     font-size: 14px;
-    padding: 0 8px;
-    line-height: 30px;
-    height: 31px; }
+    padding: 0 6px;
+    line-height: 31px;
+    height: 32px; }
   .ty-textarea_lg {
-    font-size: 17px;
-    padding: 0 11px;
+    font-size: 16px;
+    padding: 0 8px;
     line-height: 41px;
     height: 42px; }
   .ty-textarea_disabled {
