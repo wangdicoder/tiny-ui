@@ -100,13 +100,13 @@ const Input = (props: InputProps) => {
     delete restProps.defaultValue;
 
     return (
-        <div className={cls}>
+        <div className={cls} style={style}>
             {prefix && <div ref={prefixRef} className={`${prefixCls}__prefix`}>{prefix}</div>}
             <input
                 value={value}
                 disabled={disabled}
                 className={`${prefixCls}__input`}
-                style={{ paddingLeft: inputPadding.paddingLeft, paddingRight: inputPadding.paddingRight, ...style }}
+                style={{ paddingLeft: inputPadding.paddingLeft, paddingRight: inputPadding.paddingRight }}
                 onChange={inputOnChange}
                 onKeyDown={inputOnKeydown}
                 {...restProps}

@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, useEffect, MouseEvent } from 'react';
 import classnames from 'classnames';
 import CheckableTag from './checkable-tag';
 
@@ -36,15 +36,21 @@ const Tag = (props: TagProps) => {
      * Callback when the close button is clicked.
      * @param e
      */
-    const closeBtnOnClick = (e: MouseEvent) => {
+    const closeBtnOnClick = (e: MouseEvent<HTMLSpanElement>) => {
         onClose && onClose(e);
-        setVisible(false);
+        !e.defaultPrevented && setVisible(false);
     };
 
     const tagStyle: React.CSSProperties = {
-        color: color ? (PresetColors.includes(color) ? undefined : color) : undefined,
+        backgroundColor: color ? (PresetColors.includes(color) ? undefined : color) : undefined,
+        borderColor: color ? (PresetColors.includes(color) ? undefined : color) : undefined,
+        color: color ? (PresetColors.includes(color) ? undefined : '#fff') : undefined,
         ...style,
     };
+
+    useEffect(() => {
+        ('visible' in props) && setVisible(props.visible);
+    });
 
     return (
         <div className={cls} style={tagStyle} onClick={onClick}>

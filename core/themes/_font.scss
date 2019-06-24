@@ -11,6 +11,14 @@
   font-style: normal;
 }
 
+.ty--close:before {
+  content: "\eadd";
+}
+
+.ty--plus:before {
+  content: "\e605";
+}
+
 .ty--switch:before {
   content: "\e697";
 }
@@ -125,6 +133,10 @@
 
 .ty--arrow-down:before {
   content: "\e7f2";
+}
+
+.ty--minus:before {
+  content: "\e7fd";
 }
 
 .ty--fire:before {
