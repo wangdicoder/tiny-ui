@@ -35,6 +35,7 @@ export { default as Progress } from './progress';
 export { default as Radio } from './radio';
 export { default as Rate } from './rate';
 export { default as Switch } from './switch';
+export { default as Tag } from './tag';
 export { default as Textarea } from './textarea';
 export { default as TimePicker } from './time-picker';
 export { default as Typography } from './typography';

@@ -1,0 +1,109 @@
+@import "../variables";
+
+.#{$prefix}tag {
+  user-select: none;
+  display: none;
+  margin-right: 8px;
+  padding: 0 7px;
+  font-size: 12px;
+  border: 1px solid #d9d9d9;;
+  border-radius: $tag-border-radius;
+  color: $font-color;
+  background: #fafafa;
+
+  &_visible {
+    display: inline-block;
+  }
+
+  &__close-btn {
+    cursor: pointer;
+    font-size: 10px;
+    margin-left: 5px;
+    line-height: 1;
+    transition: all 300ms;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &_magenta {
+    color: #eb2f96;
+    background: #fff0f6;
+    border-color: #ffadd2;
+  }
+
+  &_red {
+    color: #f5222d;
+    background: #fff1f0;
+    border-color: #ffa39e;
+  }
+
+  &_volcano {
+    color: #fa541c;
+    background: #fff2e8;
+    border-color: #ffbb96;
+  }
+
+  &_orange {
+    color: #fa8c16;
+    background: #fff7e6;
+    border-color: #ffd591;
+  }
+
+  &_gold {
+    color: #faad14;
+    background: #fffbe6;
+    border-color: #ffe58f;
+  }
+
+  &_lime {
+    color: #a0d911;
+    background: #fcffe6;
+    border-color: #eaff8f;
+  }
+
+  &_green {
+    color: #52c41a;
+    background: #f6ffed;
+    border-color: #b7eb8f;
+  }
+
+  &_cyan {
+    color: #13c2c2;
+    background: #e6fffb;
+    border-color: #87e8de;
+  }
+
+  &_blue {
+    color: #1890ff;
+    background: #e6f7ff;
+    border-color: #91d5ff;
+  }
+
+  &_geekblue {
+    color: #2f54eb;
+    background: #f0f5ff;
+    border-color: #adc6ff;
+  }
+
+  &_purple {
+    color: #722ed1;
+    background: #f9f0ff;
+    border-color: #d3adf7;
+  }
+}
+
+.#{$prefix}checkable-tag {
+  background-color: #fff;
+  color: $primary-color;
+  border-color: #fff;
+  transition: all 300ms;
+  cursor: pointer;
+
+  &_checked {
+    background-color: $primary-color;
+    color: #fff;
+    border-color: $primary-color;
+  }
+}
