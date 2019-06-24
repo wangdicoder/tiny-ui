@@ -19,7 +19,6 @@ export type InputProps = {
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
-    forwardedRef?: any,
     [prop: string]: any,
 };
 
@@ -36,7 +35,7 @@ const DEFAULT_MARGIN = 16; // 8px * 2
 const Input = (props: InputProps) => {
     const {
         clearable, prefix, suffix, onChange, size, onEnterPress, onKeyDown,
-        disabled, prefixCls, className, style, forwardedRef, ...restProps
+        disabled, prefixCls, className, style, ...restProps
     } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}_${size}`, {
         [`${prefixCls}_disabled`]: disabled,

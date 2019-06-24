@@ -42,14 +42,14 @@ const EditableTagGroup = () => {
         <Tag key={idx} closable={idx !== 0} onClose={() => handleClose(tag)}>{tag}</Tag>
       ))}
       {inputVisible && (
-        <Input 
-          ref={inputRef}
-          size="small"
+        <Input
+          autoFocus
+          size="sm"
           style={{ width: 78, display: 'inline-block' }}
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputConfirm}
-          onPressEnter={handleInputConfirm}
+          onEnterPress={handleInputConfirm}
         />
       )}
       {!inputVisible && (
