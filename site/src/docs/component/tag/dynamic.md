@@ -22,7 +22,7 @@ const EditableTagGroup = () => {
   };
   
   const handleInputConfirm = () => {
-    let tagValues = [...tags];
+    const tagValues = [...tags];
     if (inputValue && tags.indexOf(inputValue) === -1) {
       tagValues.push(inputValue);
     }
@@ -32,16 +32,17 @@ const EditableTagGroup = () => {
   };
   
   const handleClose = (removedTag) => {
-    const tags = tags.filter(tag => tag !== removedTag);
-    setTags(tags);
+    const tagValues = [...tags]; 
+    const filtered = tagValues.filter(tag => tag !== removedTag);
+    setTags(filtered);
   };
     
   return (
     <div>
       {tags.map((tag, idx) => (
-        <Tag key={idx} closable={idx !== 0} onClose={() => handleClose(tag)}>{tag}</Tag>
+        <Tag key={tag} closable={idx !== 0} onClose={() => handleClose(tag)}>{tag}</Tag>
       ))}
-      {inputVisible && (
+      {inputVisible ? (
         <Input
           autoFocus
           size="sm"
@@ -51,8 +52,9 @@ const EditableTagGroup = () => {
           onBlur={handleInputConfirm}
           onEnterPress={handleInputConfirm}
         />
-      )}
-      {!inputVisible && (
+      )
+      : 
+      (
         <Tag onClick={showInput} style={{ background: '#fff', borderStyle: 'dashed' }}>
           <Icon type="plus" size={11}/> New Tag
         </Tag>

@@ -10,6 +10,7 @@ export type TagProps = {
     closable?: boolean,
     onClose?: (e: MouseEvent) => void,
     onClick?: (e: MouseEvent) => void,
+    defaultVisible?: boolean,
     visible?: boolean,
     prefixCls?: string,
     className?: string,
@@ -20,12 +21,12 @@ export type TagProps = {
 const defaultProps = {
     prefixCls: 'ty-tag',
     closable: false,
-    visible: true,
+    defaultVisible: true,
 };
 
 const Tag = (props: TagProps) => {
     const { color, closable, onClose, onClick, prefixCls, className, style, children } = props;
-    const [visible, setVisible] = useState(('visible' in props) ? props.visible : true);
+    const [visible, setVisible] = useState(('visible' in props) ? props.visible : props.defaultVisible);
     const cls = classnames(prefixCls, className, {
         [`${prefixCls}_${color}`]: color && PresetColors.includes(color),
         [`${prefixCls}_visible`]: visible,
@@ -38,7 +39,10 @@ const Tag = (props: TagProps) => {
      */
     const closeBtnOnClick = (e: MouseEvent<HTMLSpanElement>) => {
         onClose && onClose(e);
-        !e.defaultPrevented && setVisible(false);
+        if (e.defaultPrevented) {
+            return;
+        }
+        !('visible' in props) && setVisible(false);
     };
 
     const tagStyle: React.CSSProperties = {

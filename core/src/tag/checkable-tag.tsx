@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import Tag from '.';
 
 export type CheckableTagProps = {
-    visible?: boolean,
     defaultChecked?: boolean,
     checked?: boolean,
     onChange?: (checked: boolean, e: MouseEvent) => void,
@@ -19,7 +18,7 @@ const defaultProps = {
 };
 
 const CheckableTag = (props: CheckableTagProps) => {
-    const { visible, onChange, prefixCls, className, style, children } = props;
+    const { onChange, prefixCls, className, style, children } = props;
     const [checked, setChecked] = useState(('checked' in props) ? props.checked : props.defaultChecked);
     const cls = classnames(prefixCls, className, {
         [`${prefixCls}_checked`]: checked,
@@ -38,15 +37,7 @@ const CheckableTag = (props: CheckableTagProps) => {
         ('checked' in props) && setChecked(props.checked);
     });
 
-    return (
-        <Tag
-            className={cls}
-            style={style}
-            visible={visible}
-            onClick={itemOnClick}>
-            {children}
-        </Tag>
-    );
+    return <Tag className={cls} style={style} onClick={itemOnClick}>{children}</Tag>;
 };
 
 CheckableTag.defaultProps = defaultProps;
