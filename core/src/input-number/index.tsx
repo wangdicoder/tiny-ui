@@ -62,9 +62,12 @@ const InputNumber = (props: InputNumberProps) => {
      * Correct the number when the input component is on the blur event
      */
     const inputOnBlur = () => {
-        let val = +value;
+        if (value.trim().length === 0) {
+            return;
+        }
 
-        if (!isNaN(val)) {
+        let val = +value;
+        if (isValid(val)) {
             if (val > max) {
                 val = Number(max);
             } else if (val < min) {
