@@ -3,9 +3,6 @@
 
 .#{$prefix}textarea {
   @include input-default();
-  font-family: $font-family;
-  width: 100%;
-  font-size: $textarea-font-size;
   padding: $textarea-padding;
   overflow: hidden;
 
