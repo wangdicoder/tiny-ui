@@ -18,6 +18,7 @@ export { default as Flip } from './flip';
 export { default as Form } from './form';
 export { default as Icon } from './icon';
 export { default as Input } from './input';
+export { default as InputNumber } from './input-number';
 export { default as InputPassword } from './input-password';
 export { default as IntlProvider } from './intl-provider';
 export { default as Layout } from './layout';
