@@ -3,7 +3,7 @@
 .#{$prefix}collapse {
   box-sizing: border-box;
   border-radius: $collapse-border-radius;
-  color: rgba(0, 0, 0, 0.65);
+  color: $font-color;
   font-size: 14px;
   font-family: $font-family;
   border: 1px solid #d9d9d9;
@@ -71,19 +71,9 @@
       color: rgba(0, 0, 0, .65);
       background-color: #fff;
       border-top: 1px solid #d9d9d9;
-      padding: 0 16px;
+      padding: 16px;
       box-sizing: border-box;
       transition: height 300ms;
-
-      &:before, &:after {
-        content: '';
-        height: 16px;
-        display: block;
-      }
-
-      &_collapse-exit-done {
-        border-top: 0;
-      }
     }
   }
 
@@ -105,4 +95,7 @@
   }
 }
 
+.collapse-transition {
+  transition: .3s height ease-in-out,.3s padding-top ease-in-out,.3s padding-bottom ease-in-out;
+}
 

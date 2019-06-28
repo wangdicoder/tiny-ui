@@ -5,6 +5,7 @@ import CollapsePanel, { CollapsePanelProps } from './collapse-panel';
 export type CollapseTypes = {
     defaultActiveKey?: string | string[],
     activeKey?: string | string[],
+    duration?: number,
     /** Only open one panel */
     accordion?: boolean,
     /** Allow to delete */
@@ -25,8 +26,7 @@ const defaultProps = {
     deletable: false,
     accordion: false,
     defaultActiveKey: [],
-    onChange: () => {
-    },
+    duration: 300,
 };
 
 /**
@@ -39,19 +39,17 @@ const toArray = (activeKey: string | string[]) => {
 
 const Collapse = (props: CollapseTypes) => {
     const {
-        defaultActiveKey, activeKey, accordion, bordered, onChange, deletable, showArrow, prefixCls, className, style,
-        children,
+        defaultActiveKey, activeKey, duration, accordion, bordered, onChange, deletable, showArrow,
+        prefixCls, className, style, children,
     } = props;
     let currentActiveKey: string | string[] = defaultActiveKey;
     if (activeKey) {
         currentActiveKey = activeKey;
     }
     const [activeItems, setActiveItems] = useState<string[]>(toArray(currentActiveKey));
-    const cls = classNames(
-        prefixCls,
-        className,
-        { [`${prefixCls}_borderless`]: !bordered },
-    );
+    const cls = classNames(prefixCls, className, {
+        [`${prefixCls}_borderless`]: !bordered,
+    });
 
     const _itemClickCallback = (itemKey: string) => {
         let items = activeItems;
@@ -74,7 +72,7 @@ const Collapse = (props: CollapseTypes) => {
         if (!('activeKey' in props)) { // only for defaultKey
             setActiveItems(items);
         }
-        onChange(items);
+        onChange && onChange(items);
     };
 
     useEffect(() => {
@@ -84,9 +82,10 @@ const Collapse = (props: CollapseTypes) => {
 
     return (
         <div className={cls} style={style}>
-            {React.Children.map(children, (child: React.ReactElement<CollapsePanelProps>) => {
+            {React.Children.map(children, (child) => {
                 const itemProps: CollapsePanelProps = {
                     ...child.props,
+                    duration,
                     deletable,
                     showArrow,
                     isActive: activeItems.includes(child.props.itemKey),
