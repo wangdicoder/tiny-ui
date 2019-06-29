@@ -70,6 +70,10 @@ const COMPONENT_MENU = [{
         route: 'button',
         component: lazy(() => import('./docs/component/button')),
     }, {
+        title: 'Collapse',
+        route: 'collapse',
+        component: lazy(() => import('./docs/component/collapse')),
+    }, {
         title: 'Countdown',
         route: 'countdown',
         component: lazy(() => import('./docs/component/countdown')),
