@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import classnames from 'classnames';
 
 export type TimelineItemProps = {
     dot?: React.ReactNode,
+    dotStyle?: CSSProperties,
     prefixCls?: string,
     className?: string,
-    style?: React.CSSProperties,
+    style?: CSSProperties,
     children?: React.ReactNode,
 } & typeof defaultProps;
 
@@ -14,14 +15,14 @@ const defaultProps = {
 };
 
 const TimelineItem = (props: TimelineItemProps) => {
-    const { dot, prefixCls, className, style, children } = props;
+    const { dot, dotStyle, prefixCls, className, style, children } = props;
     const cls = classnames(prefixCls, className);
 
     return (
         <li className={cls} style={style}>
             <div className={`${prefixCls}__head`}>
                 <div className={`${prefixCls}__dot-container`}>
-                    {dot || <span className={`${prefixCls}__dot`}/>}
+                    {dot || <span className={`${prefixCls}__dot`} style={dotStyle}/>}
                 </div>
             </div>
             <div className={`${prefixCls}__content`}>{children}</div>

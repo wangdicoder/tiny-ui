@@ -89,6 +89,10 @@ const COMPONENT_MENU = [{
         title: 'Tag',
         route: 'tag',
         component: lazy(() => import('./docs/component/tag')),
+    }, {
+        title: 'Timeline',
+        route: 'timeline',
+        component: lazy(() => import('./docs/component/timeline')),
     }],
 }, {
     title: 'Form Item',

@@ -10,7 +10,6 @@
   list-style: none;
 }
 
-
 .#{$prefix}timeline-item {
   position: relative;
   box-sizing: border-box;
@@ -21,7 +20,7 @@
 
   &:last-child {
     .#{$prefix}timeline-item__head {
-      &:before{
+      &:before {
         display: none;
       }
     }
@@ -45,7 +44,7 @@
     }
   }
 
-  &__dot-container{
+  &__dot-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -63,6 +62,28 @@
   &__content {
     position: relative;
     top: 0;
-    margin-left: 25px;
+    padding-left: 25px;
+  }
+
+  &_left, &_right {
+    .#{$prefix}timeline-item__head {
+      left: 50%;
+    }
+  }
+
+  &_left {
+    .#{$prefix}timeline-item__content {
+      left: 50%;
+      width: 50%;
+    }
+  }
+
+  &_right {
+    .#{$prefix}timeline-item__content {
+      width: 50%;
+      text-align: right;
+      padding-left: 0;
+      padding-right: 9px;
+    }
   }
 }
