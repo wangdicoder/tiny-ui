@@ -1,0 +1,44 @@
+@import "../variables";
+
+.#{$prefix}split {
+  display: flex;
+  height: 30px;
+  width: 100%;
+
+  &_horizontal {
+    flex-direction: row;
+  }
+
+  &_vertical {
+    flex-direction: column;
+  }
+}
+
+.#{$prefix}split-pane {
+
+}
+
+.#{$prefix}split-bar {
+  background-color: #f8f8f9;
+
+
+  &_horizontal {
+    height: 100%;
+    width: 6px;
+    cursor: ew-resize;
+
+    &:active{
+      cursor: col-resize;
+    }
+  }
+
+  &_vertical {
+    height: 6px;
+    width: 100%;
+    cursor: nw-resize;
+
+    &:active{
+      cursor: col-resize;
+    }
+  }
+}
