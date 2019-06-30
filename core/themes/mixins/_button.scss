@@ -1,44 +1,17 @@
-@mixin btn-color($color, $outline: false) {
-  $shadow-hover: 0 14px 16px -12px rgba($color, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba($color, 0.2);
-  border-color: darken($color, 2.5%);
-  box-shadow: 0 1px 2px 0 rgba($color, 0.14);
-  &:hover {
-    box-shadow: $shadow-hover;
-  }
+@mixin btn-color($color) {
+  border-color: $color;
+  background-color: $color;
+  color: #fff;
 
-  @if ($outline) {
-    background-color: #fff;
-    color: $color;
-    &:active {
-      background-color: #fff;
-      box-shadow: $shadow-hover, inset 0 3px 8px rgba($color, 0.2);
-    }
-  } @else {
-    background-color: $color;
+  &:hover {
+    opacity: .85;
     color: #fff;
-    &:active {
-      background-color: darken($color, 10%);
-    }
-  }
-}
-
-@mixin btn-text-color($color) {
-  color: $color;
-  border: none;
-  box-shadow: none;
-  &:hover {
-    color: lighten($color, 10%);
+    border-color: $color;
   }
 
   &:active {
-    color: darken($color, 8%);
-  }
-}
-
-@mixin btn-color-disabled($color) {
-  opacity: 0.6;
-  cursor: not-allowed;
-  &:hover {
-    box-shadow: 0 1px 2px 0 rgba($color, 0.14);
+    opacity: 1;
+    border-color: darken($color, 10%);
+    background-color: darken($color, 10%);
   }
 }

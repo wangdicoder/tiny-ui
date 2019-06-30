@@ -9,7 +9,7 @@
   @mixin loader-size($size) {
     .#{$prefix}loader {
       &__indicator {
-        @include loader($size/5 - 2);
+        @include loader();
         width: $size;
         height: $size;
         margin: 5px;

@@ -11,11 +11,8 @@ export type ButtonProps = {
     loading?: boolean,
     disabled?: boolean,
     block?: boolean,
-    outline?: boolean,
     size?: ButtonSizes,
     round?: boolean,
-    ripple?: boolean,
-    dash?: boolean,
     icon?: React.ReactNode,
     link?: boolean,
     className?: string,
@@ -28,33 +25,33 @@ const defaultProps = {
     prefixCls: 'ty-btn',
     size: 'md',
     color: 'default',
-};
-
-const renderIcon = (icon: React.ReactNode, loading: boolean = false) => {
-    if (loading) {
-        return <span className="ty-btn__loader"/>;
-    } else {
-        return icon;
-    }
+    loading: false,
+    disabled: false,
 };
 
 const Button = (props: ButtonProps) => {
     const {
-        color, size, block, icon, link, loading, dash, disabled, outline, onClick,
-        round, ripple, children, className, prefixCls, style, ...restProps
+        color, size, block, icon, link, loading, disabled, onClick,
+        round, children, className, prefixCls, style, ...restProps
     } = props;
-    const cls = classnames(prefixCls, className,
-        link ? [`${prefixCls}_${color}_link`] :
-            (outline ? [`${prefixCls}_${color}_outline`] : [`${prefixCls}_${color}`]),
-        size && `${prefixCls}_${size}`,
-        {
-            [`${prefixCls}_block`]: block,
-            [`${prefixCls}_round`]: round,
-            [`${prefixCls}_ripple`]: ripple,
-            [`${prefixCls}_dash`]: outline && dash,  // Only available outline style
-            [`ty-btn_${color}_disabled`]: disabled || loading,
-        },
-    );
+    const cls = classnames(prefixCls, className, {
+        [`${prefixCls}_${color}`]: color,
+        [`${prefixCls}_${size}`]: size,
+        [`${prefixCls}_link`]: link,
+        [`${prefixCls}_block`]: block,
+        [`${prefixCls}_round`]: round,
+        [`${prefixCls}_disabled`]: disabled,
+        [`${prefixCls}_loading`]: loading,
+    });
+
+    const renderIcon = () => {
+        if (loading) {
+            return <span className={`${prefixCls}__loader`}/>;
+        } else {
+            return icon;
+        }
+    };
+
     return (
         <button
             onClick={onClick}
@@ -62,8 +59,8 @@ const Button = (props: ButtonProps) => {
             disabled={disabled || loading}
             style={style}
             {...restProps}>
-            {renderIcon(icon, loading)}
-            {children}
+            {renderIcon()}
+            <span>{children}</span>
         </button>
     );
 };

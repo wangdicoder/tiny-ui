@@ -1,11 +1,30 @@
 @import "../animation";
 
-@mixin loader($border-width: 1px){
-  border: $border-width solid;
+@mixin loader($size: 14px, $color: #fff) {
+  box-sizing: border-box;
   border-radius: 50%;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  display: inline-block;
-  animation: ty-rotate 500ms linear infinite;
-  pointer-events: none;
+  width: $size;
+  height: $size;
+  border: 2px solid rgba($color, .2);
+  border-top-color: $color;
+  animation: spin 600ms infinite linear;
+}
+
+@mixin loader-size($size: 14px) {
+  width: $size;
+  height: $size;
+}
+
+@mixin loader-color($color: #fff) {
+  border-color: rgba($color, .2);
+  border-top-color: $color;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }

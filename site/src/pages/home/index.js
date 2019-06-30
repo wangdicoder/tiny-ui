@@ -44,7 +44,7 @@ const Home = (props) => {
                     <img src={require('../../assets/react-logo.svg')} alt="react" className="home__react-logo"/>
                     <img src={require('../../assets/logo.svg')} alt="logo" className="home__logo"/>
                 </div>
-                <div>
+                <div style={{ position: 'relative' }}>
                     <h1 className="home__title">Tiny UI</h1>
                     <h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
                     <div className="home__btn-group">

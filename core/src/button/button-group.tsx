@@ -5,7 +5,6 @@ import classnames from 'classnames';
 type ButtonGroupProps = {
     children: React.ReactElement<ButtonProps>,
     size?: ButtonSizes,
-    ripple?: boolean,
     color?: ButtonColors,
     round?: boolean,
     className?: string,
@@ -20,12 +19,14 @@ const defaultProps = {
 };
 
 const ButtonGroup = (props: ButtonGroupProps) => {
-    const { size, ripple, color, round, className, prefixCls, style, children } = props;
-    const cls = classnames(prefixCls, className, { [`${prefixCls}_round`]: round });
+    const { size, color, round, className, prefixCls, style, children } = props;
+    const cls = classnames(prefixCls, className, {
+        [`${prefixCls}_round`]: round,
+    });
     return (
         <div className={cls} style={style}>
             {React.Children.map(children, (child: React.ReactElement<ButtonProps>) => {
-                const btnProps = { ...child.props, size, ripple, color };
+                const btnProps = { ...child.props, size, color };
                 return React.cloneElement(child, btnProps);
             })}
         </div>
