@@ -9,7 +9,7 @@
   @mixin loader-size($size) {
     .#{$prefix}loader {
       &__indicator {
-        @include loader();
+        @include loader($size, $primary-color);
         width: $size;
         height: $size;
         margin: 5px;
@@ -28,15 +28,15 @@
   }
 
   &_default {
-    @include loader-size(20px);
+    @include loader-size(22px);
   }
 
   &_lg {
-    @include loader-size(25px);
+    @include loader-size(28px);
   }
 
   &_sm {
-    @include loader-size(15px);
+    @include loader-size(14px);
   }
 
   &__loader-container {
