@@ -15,13 +15,13 @@ type ButtonGroupProps = {
 const defaultProps = {
     prefixCls: 'ty-btn-group',
     size: 'md',
-    color: 'default',
 };
 
 const ButtonGroup = (props: ButtonGroupProps) => {
     const { size, color, round, className, prefixCls, style, children } = props;
     const cls = classnames(prefixCls, className, {
         [`${prefixCls}_round`]: round,
+        [`${prefixCls}_${color}`]: color,
     });
     return (
         <div className={cls} style={style}>

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Group from './button-group';
 
-export type ButtonColors = 'default' | 'primary' | 'blue' | 'red' | 'yellow' | 'green' ;
+export type ButtonColors = 'primary' | 'blue' | 'red' | 'yellow' | 'green' ;
 export type ButtonSizes = 'sm' | 'md' | 'lg';
 
 export type ButtonProps = {
@@ -24,7 +24,6 @@ export type ButtonProps = {
 const defaultProps = {
     prefixCls: 'ty-btn',
     size: 'md',
-    color: 'default',
     loading: false,
     disabled: false,
 };

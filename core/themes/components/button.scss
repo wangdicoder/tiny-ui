@@ -4,7 +4,7 @@
 
 $btn-prefix: #{$prefix}btn;
 
-.#{$prefix}btn {
+.#{$btn-prefix} {
   box-sizing: border-box;
   border: 1px solid #d0d0d5;
   outline: none;
@@ -35,7 +35,7 @@ $btn-prefix: #{$prefix}btn;
   }
 
   &:active {
-    background-color: #f7f9fa;;
+    background-color: #f7f9fa;
     color: darken($primary-color, 10%);
     border-color: darken($primary-color, 10%);
   }
@@ -69,7 +69,7 @@ $btn-prefix: #{$prefix}btn;
   }
 
   &_primary, &_blue, &_green, &_yellow, &_red {
-    .#{$prefix}btn__loader {
+    .#{$btn-prefix}__loader {
       @include loader-color(#fff);
     }
   }
@@ -120,15 +120,23 @@ $btn-prefix: #{$prefix}btn;
     pointer-events: none;
   }
 
-  & + .#{$prefix}btn {
+  & + .#{$btn-prefix} {
     margin-left: 10px;
   }
 }
 
-.#{$prefix}btn-group {
+.#{$btn-prefix}-group {
   display: inline-block;
+  line-height: 1.5;
   vertical-align: middle;
-  margin-right: 7px;
+
+  .#{$btn-prefix} {
+    position: relative;
+  }
+
+  & + .#{$btn-prefix}-group {
+    margin-left: 10px;
+  }
 
   .#{$btn-prefix} + .#{$btn-prefix} {
     margin-left: -1px;
@@ -164,6 +172,14 @@ $btn-prefix: #{$prefix}btn;
       &:last-child {
         border-top-right-radius: 30px;
         border-bottom-right-radius: 30px;
+      }
+    }
+  }
+
+  &_primary, &_blue, &_green, &_yellow, &_red {
+    .#{$btn-prefix} {
+      &:not(:first-child) {
+        border-left-color: rgba(255, 255, 255, .2);
       }
     }
   }
