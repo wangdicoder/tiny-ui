@@ -9,7 +9,6 @@
   box-sizing: border-box;
   padding: 10px 30px 10px 13px;
   position: relative;
-  margin: 7px 0;
   font-weight: $font-weight;
   opacity: 1;
   font-size: $font-size;
@@ -18,6 +17,10 @@
   overflow: hidden;
   display: flex;
   align-items: flex-start;
+
+  & + & {
+    margin-top: 14px;
+  }
 
   &__title {
     box-sizing: border-box;

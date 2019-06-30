@@ -1,9 +1,17 @@
-### Default
+### Type
+
+There are `primary` button, `default` button, and `link` button.
 
 <!--start-code-->
 
 ```jsx
-render(<Button color="primary" ripple>Click Me Test</Button>);
+render(
+  <>
+    <Button>Default Button</Button>
+    <Button color="primary">Primary Button</Button>
+    <Button link>Link</Button>
+  </>
+);
 ```
 
 <!--end-code-->

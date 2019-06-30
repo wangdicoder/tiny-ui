@@ -29,6 +29,10 @@ $btn-prefix: #{$prefix}btn;
     vertical-align: middle;
   }
 
+  & + .#{$btn-prefix} {
+    margin-left: 10px;
+  }
+
   &:hover {
     color: $primary-color;
     border-color: $primary-color;
@@ -102,10 +106,28 @@ $btn-prefix: #{$prefix}btn;
 
   &_block {
     width: 100%;
+
+    & + & {
+      margin: 0;
+    }
   }
 
   &_round {
     border-radius: 30px;
+  }
+
+  &_link {
+    color: $primary-color;
+    background-color: transparent;
+    border: 0;
+
+    &:active {
+      background-color: transparent;
+    }
+
+    .#{$btn-prefix}__loader {
+      @include loader-color($primary-color);
+    }
   }
 
   &_loading {
@@ -119,33 +141,23 @@ $btn-prefix: #{$prefix}btn;
     cursor: not-allowed;
     pointer-events: none;
   }
-
-  & + .#{$btn-prefix} {
-    margin-left: 10px;
-  }
 }
 
 .#{$btn-prefix}-group {
   display: inline-block;
-  line-height: 1.5;
-  vertical-align: middle;
-
-  .#{$btn-prefix} {
-    position: relative;
-  }
 
   & + .#{$btn-prefix}-group {
     margin-left: 10px;
   }
 
-  .#{$btn-prefix} + .#{$btn-prefix} {
-    margin-left: -1px;
-  }
-
   .#{$btn-prefix} {
+    position: relative;
     border-radius: 0;
     float: left;
-    margin: 0;
+
+    & + .#{$btn-prefix} {
+      margin-left: -1px;
+    }
 
     &:hover {
       z-index: 1;

@@ -15,6 +15,7 @@ render(
       </Alert>
     </Loader>
     <br/>
+    <br/>
     <Loader tip="Loading..." vertical>
       <Alert
         title="Alert message title"

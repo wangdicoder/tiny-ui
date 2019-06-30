@@ -29,6 +29,10 @@ const GUIDE_MENU = [{
 const COMPONENT_MENU = [{
     title: 'Foundation',
     children: [{
+        title: 'Button',
+        route: 'button',
+        component: lazy(() => import('./docs/component/button')),
+    }, {
         title: 'Color',
         route: 'color',
         component: lazy(() => import('./docs/foundation/color')),
@@ -65,10 +69,6 @@ const COMPONENT_MENU = [{
         title: 'Badge',
         route: 'badge',
         component: lazy(() => import('./docs/component/badge')),
-    }, {
-        title: 'Button',
-        route: 'button',
-        component: lazy(() => import('./docs/component/button')),
     }, {
         title: 'Collapse',
         route: 'collapse',

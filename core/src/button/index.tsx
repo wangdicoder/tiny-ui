@@ -25,7 +25,6 @@ const defaultProps = {
     prefixCls: 'ty-btn',
     size: 'md',
     loading: false,
-    disabled: false,
 };
 
 const Button = (props: ButtonProps) => {
@@ -47,7 +46,7 @@ const Button = (props: ButtonProps) => {
         if (loading) {
             return <span className={`${prefixCls}__loader`}/>;
         } else {
-            return icon;
+            return <span>{icon}</span>;
         }
     };
 
