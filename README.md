@@ -10,3 +10,4 @@
 ![npm](https://img.shields.io/npm/dw/tiny-ui.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/tiny-ui.svg)
 ![GitHub issues](https://img.shields.io/github/issues/wangdicoder/tiny-ui-react.svg)
+![NPM](https://img.shields.io/npm/l/tiny-ui.svg)

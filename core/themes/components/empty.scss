@@ -1,0 +1,18 @@
+@import "../variables";
+
+.#{$prefix}empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__image {
+    max-width: 120px;
+  }
+
+  &__desc {
+    color: $font-color;
+    font-size: $font-size;
+    font-family: $font-family;
+  }
+}

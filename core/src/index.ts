@@ -14,6 +14,7 @@ export { default as Collapse } from './collapse';
 export { default as Countdown } from './countdown';
 export { default as DatePicker } from './date-picker';
 export { default as Divider } from './divider';
+export { default as Empty } from './empty';
 export { default as Flip } from './flip';
 export { default as Form } from './form';
 export { default as Icon } from './icon';
