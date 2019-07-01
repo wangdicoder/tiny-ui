@@ -19,6 +19,19 @@ export const getRect = (node: Container = window): ClientRect => {
         };
 };
 
+/**
+ * Get element absolute position relative to the root
+ * @param node
+ */
+export const getAbsolutePosition = (node: Container = window): { x: number, y: number } => {
+    if (node === window) {
+        return { x: 0, y: 0 };
+    }
+    const x = (node as HTMLElement).getBoundingClientRect().left + document.documentElement.scrollLeft;
+    const y = (node as HTMLElement).getBoundingClientRect().top + document.documentElement.scrollTop;
+    return { x, y };
+};
+
 export const getNodeHeight = (node: Container): number => {
     if (!node) {
         return 0;

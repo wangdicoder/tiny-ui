@@ -14,4 +14,3 @@ Tiny UI is a set of UI components and widgets built on React.js **16.8+**, which
 ## Environment Support
 - React >= 16.8
 - Modern browsers and IE >= 11
-- Supports server-side rendering(SSR)
