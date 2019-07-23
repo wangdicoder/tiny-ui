@@ -10,6 +10,7 @@ export type CircleProps = {
     strokeWidth?: number,
     strokeLinecap?: strokeLineCaps,
     strokeColor?: string,
+    reverse?: boolean,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -24,11 +25,14 @@ const defaultProps = {
     width: 120,
     strokeLinecap: 'round',
     strokeColor: 'primary',
+    reverse: false,
 };
 
 const Circle = (props: CircleProps) => {
-    const { percent, format, width, strokeColor, strokeWidth, strokeLinecap,
-        prefixCls, className, style, textStyle } = props;
+    const {
+        percent, format, width, strokeColor, strokeWidth, strokeLinecap, reverse,
+        prefixCls, className, style, textStyle,
+    } = props;
     const cls = classnames(prefixCls, className);
     let percentage: number = percent > 100 ? 100 : percent;
     percentage = percentage < 0 ? 0 : percentage;
@@ -54,9 +58,10 @@ const Circle = (props: CircleProps) => {
 
     const _circlePathStyle = (): React.CSSProperties => {
         const perimeter = _perimeter();
+        const strokeDash = reverse ? (percentage / 100 + 1) : (1 - percentage / 100);
         return {
-            strokeDasharray: `${perimeter}px,${perimeter}px`,
-            strokeDashoffset: (1 - percentage / 100) * perimeter + 'px',
+            strokeDasharray: `${perimeter}px, ${perimeter}px`,
+            strokeDashoffset: strokeDash * perimeter + 'px',
         };
     };
 

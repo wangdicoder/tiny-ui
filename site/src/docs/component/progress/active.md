@@ -1,6 +1,6 @@
 ### Active Background Style
 
-Set `backgroundType` to display different bar backgrounds
+Set `backgroundType` to display different bar backgrounds.
 
 <!--start-code-->
 

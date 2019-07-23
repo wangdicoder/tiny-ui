@@ -1,6 +1,6 @@
 ### Internal Text
 
-Set `innerText` to display the text inside the bar
+Set `innerText` to display the text inside the bar.
 
 <!--start-code-->
 

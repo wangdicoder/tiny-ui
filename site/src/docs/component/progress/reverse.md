@@ -1,6 +1,8 @@
-### Dynamic progress
+### Reverse direction
 
-Control the value.
+Set `reverse` to control the direction.
+
+> This is only for **Circle** progress.
 
 <!--start-code-->
 
@@ -18,8 +20,10 @@ const Wrapper = () => {
         <Button onClick={() => (percent < 100) && setPercent(percent + 10)}>+</Button>
       </Group>
       
-      <Bar percent={percent} />
-      <Circle percent={percent} />
+      <br/>
+      
+      <Circle percent={percent} reverse/>
+      <Circle percent={percent} style={{ marginLeft: 10 }}/>
     </div>
   );
 };

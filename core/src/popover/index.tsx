@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
-import { getRect } from '../_utils/dom';
+import { getRect, getAbsolutePosition } from '../_utils/dom';
 import { isOneOf, camelCaseToDash } from '../_utils/general';
+import Portal from '../portal';
 
 // TODO: Possible add focus or active trigger type?
 export type TriggerTypes = 'click' | 'hover' | 'contextMenu';
@@ -12,6 +13,7 @@ export type PlacementTypes = 'topLeft' | 'topCenter' | 'topRight' |
     'rightTop' | 'rightCenter' | 'rightBottom';
 
 export type PopoverProps = {
+    theme?: 'light' | 'dark',
     defaultVisible?: boolean,
     visible?: boolean,
     onVisibleChange?: (visible: boolean) => void,
@@ -19,8 +21,6 @@ export type PopoverProps = {
     arrow?: boolean,
     placement?: PlacementTypes,
     overlay?: React.ReactNode,
-    overlayClassName?: string,
-    overlayStyle?: React.CSSProperties,
     prefixCls?: string,
     className?: string,
     style?: React.CSSProperties,
@@ -33,17 +33,15 @@ const defaultProps = {
     defaultVisible: false,
     trigger: 'hover',
     arrow: false,
+    theme: 'light',
 };
 
 const Popover = (props: PopoverProps) => {
     const {
         onVisibleChange, overlay, placement, trigger, arrow,
-        prefixCls, className, overlayClassName, style, overlayStyle, children,
+        prefixCls, className, style, children,
     } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}_${camelCaseToDash(placement)}`);
-    const overlayCls = classnames(`${prefixCls}__overlay`, overlayClassName,
-        `${prefixCls}__overlay_${camelCaseToDash(placement)}`);
-    const containerRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
     const [overlayPosition, setOverlayPosition] = useState<React.CSSProperties>({});
@@ -56,6 +54,7 @@ const Popover = (props: PopoverProps) => {
             const overlayStl: React.CSSProperties = {};
             const arrowStl: React.CSSProperties = {};
             const triggerRect = getRect(triggerRef.current);
+            const triggerPos = getAbsolutePosition(triggerRef.current);
             const overlayRect = getRect(overlayRef.current);
 
             switch (placement) {
@@ -78,8 +77,8 @@ const Popover = (props: PopoverProps) => {
                     break;
 
                 case 'bottomLeft':
-                    overlayStl.top = `calc(100% + ${ARROW_SIZE}px`;
-                    overlayStl.left = 0;
+                    overlayStl.top = triggerPos.y + triggerRect.height + ARROW_SIZE;
+                    overlayStl.left = triggerPos.x;
                     arrowStl.left = triggerRect.width / 2;
                     break;
 
@@ -160,7 +159,8 @@ const Popover = (props: PopoverProps) => {
     };
 
     const handleClickOutside = (e: Event): void => {
-        if (containerRef.current && !containerRef.current.contains((e.target as HTMLElement))) {
+        if ((triggerRef.current && !triggerRef.current.contains((e.target as HTMLElement))) &&
+            (overlayRef.current && !overlayRef.current.contains((e.target as HTMLElement)))) {
             hide();
             document.removeEventListener('click', handleClickOutside);
         }
@@ -170,9 +170,9 @@ const Popover = (props: PopoverProps) => {
      * Initialise event
      */
     useEffect(() => {
-        if (isOneOf('hover', trigger) && containerRef.current) {
-            containerRef.current.addEventListener('mouseenter', show);
-            containerRef.current.addEventListener('mouseleave', hide);
+        if (isOneOf('hover', trigger) && triggerRef.current) {
+            triggerRef.current.addEventListener('mouseenter', show);
+            triggerRef.current.addEventListener('mouseleave', hide);
         }
         if (isOneOf('click', trigger) && triggerRef.current) {
             triggerRef.current.addEventListener('click', handleClick);
@@ -181,10 +181,17 @@ const Popover = (props: PopoverProps) => {
             triggerRef.current.addEventListener('contextmenu', handleClick);
         }
 
+        visible ? show() : hide();
+        if (triggerRef.current) {
+            const child = triggerRef.current.children[0];
+            triggerRef.current.style.display = ('style' in child) ?
+                ((child as HTMLElement).style.display || 'inline-block') : 'inline-block';
+        }
+
         return () => {
-            if (isOneOf('hover', trigger) && containerRef.current) {
-                containerRef.current.removeEventListener('mouseenter', show);
-                containerRef.current.removeEventListener('mouseleave', hide);
+            if (isOneOf('hover', trigger) && triggerRef.current) {
+                triggerRef.current.removeEventListener('mouseenter', show);
+                triggerRef.current.removeEventListener('mouseleave', hide);
             }
             if (isOneOf('click', trigger) && triggerRef.current) {
                 triggerRef.current.removeEventListener('click', handleClick);
@@ -195,35 +202,26 @@ const Popover = (props: PopoverProps) => {
         };
     }, []);
 
-    /**
-     * Initialise status
-     */
-    useEffect(() => {
-        if (visible) {
-            show();
-        } else {
-            hide();
-        }
-    }, []);
-
     useEffect(() => {
         ('visible' in props) && setVisible(props.visible);
     });
 
     return (
-        <div className={cls} style={style} ref={containerRef}>
+        <>
             <div className={`${prefixCls}__trigger`} ref={triggerRef}>{children}</div>
-            <CSSTransition
-                mountOnEnter={true}
-                in={visible}
-                classNames={`${prefixCls}__overlay_slide`}
-                timeout={{ enter: 0, exit: 300 }}>
-                <div ref={overlayRef} className={overlayCls} style={{ ...overlayStyle, ...overlayPosition }}>
-                    {overlay}
-                    {arrow && <span className={`${prefixCls}__overlay-arrow`} style={arrowPosition}/>}
-                </div>
-            </CSSTransition>
-        </div>
+            <Portal>
+                <CSSTransition
+                    mountOnEnter={true}
+                    in={visible}
+                    classNames={`${prefixCls}__overlay_slide`}
+                    timeout={{ enter: 0, exit: 300 }}>
+                    <div ref={overlayRef} className={cls} style={{ ...style, ...overlayPosition }}>
+                        {overlay}
+                        {arrow && <span className={`${prefixCls}__overlay-arrow`} style={arrowPosition}/>}
+                    </div>
+                </CSSTransition>
+            </Portal>
+        </>
     );
 };
 
