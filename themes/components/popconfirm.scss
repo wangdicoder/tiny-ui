@@ -1,0 +1,22 @@
+@import "../variables";
+@import "button";
+@import "icon";
+@import "popover";
+
+.#{$prefix}popconfirm {
+  padding: 16px;
+  color: rgba(0, 0, 0, 0.65);
+
+  &__messages {
+    padding: 0 0 12px;
+    font-size: 14px;
+  }
+
+  &__buttons {
+    text-align: right;
+  }
+
+  &__title {
+    margin-left: 5px;
+  }
+}

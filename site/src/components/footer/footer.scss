@@ -1,0 +1,39 @@
+.footer {
+  margin-top: 100px;
+  background-color: #292c33;
+  text-align: center;
+
+  &__main {
+    padding: 40px 0 30px;
+  }
+
+  &__title {
+    font-size: 24px;
+    color: #d2d3d6;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__version {
+    font-size: 13px;
+    color: #65676e;
+    margin: 20px 0 0 0;
+  }
+
+  &__github {
+    border-top: 1px solid #404349;
+    padding: 20px 0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    margin-right: 5px;
+  }
+
+  &__link {
+    text-decoration-line: none;
+  }
+}

@@ -1,0 +1,156 @@
+@import "../../base";
+
+.md {
+
+  &__layout {
+    display: flex;
+    margin: 0 -8px;
+  }
+
+  &__column {
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  &__demo {
+    border: 1px solid #eaeefb;
+    border-radius: 3px;
+    margin-bottom: 16px;
+
+    .md {
+      &__heading-3 {
+        font-size: 16px;
+        font-weight: 500;
+        padding: 0 35px;
+        position: relative;
+        margin-bottom: 15px;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 24px;
+          width: 3px;
+          height: 17px;
+          transform: translateY(-50%);
+          background-color: rgba($main-color, .8);
+        }
+      }
+
+      &__p {
+        font-size: 14px;
+        padding: 0 24px;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  &__pre-container {
+    .prism-code {
+      margin: 0;
+      border: 1px solid #eee;
+      border-radius: 3px;
+    }
+  }
+
+  &__heading-1 {
+    margin: 5px 0 10px;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 10px;
+  }
+
+  &__heading-2 {
+    font-size: 23px;
+    margin: 1.6em 0 0.6em;
+  }
+
+  &__heading-3 {
+    margin: 1.5em 0 0.3em;
+  }
+
+  &__p {
+    color: #34343d;
+    margin: 0.5em 0 0.5em;
+    line-height: 28px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-color;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__inline-code {
+    color: #333;
+    background-color: #f2f4f5;
+    border: 1px solid #eee;
+    padding: 0 0.2em;
+    font-size: 13px;
+    border-radius: 2px;
+  }
+
+  &__list-item {
+    color: #45454d;
+    margin: 1em 0;
+    list-style-type: circle;
+  }
+
+  &__blockquote {
+    padding-left: .8em;
+    color: #697b8c;
+    font-size: 90%;
+    border-left: 4px solid #ebedf0;
+    margin: 1em 0;
+  }
+
+  &__table {
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border-top: 1px solid #ebedf0;
+    border-bottom: 1px solid #ebedf0;
+
+    th,
+    td {
+      text-align: left;
+      padding: 10px 13px;
+    }
+
+    th {
+      color: #5c6b77;
+      font-weight: 500;
+      white-space: nowrap;
+      background: rgba(0, 0, 0, .02);
+      border-bottom: 2px solid #ebedf0;
+    }
+
+    tr {
+      border-top: 1px solid #ebedf0;
+      background: #fff;
+
+      &:nth-child(2n) {
+        background: #f6f8fa;
+      }
+    }
+
+    td {
+      color: #24292e;
+
+      &:first-child {
+        width: 20%;
+        color: #595959;
+        font-weight: 600;
+      }
+
+      .md__inline-code {
+        font-size: 12px;
+        color: #c41d7f;
+      }
+    }
+  }
+}

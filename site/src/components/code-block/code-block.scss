@@ -1,0 +1,52 @@
+@import "../../base";
+
+.code-block {
+  &__container {
+    border-top: solid 1px #eaeefb;
+    transition: 0.2s;
+    margin: 20px 0 0;
+  }
+
+  &__previewer {
+    color: rgba(0, 0, 0, 0.65);
+    padding: 24px;
+  }
+
+  &__editor-container {
+    position: relative;
+    background-color: #f9fafc;
+    border-top: solid 1px #eaeefb;
+    padding: 15px;
+    overflow-x: scroll;
+
+    .npm__react-simple-code-editor__textarea {
+      outline: none;
+    }
+  }
+
+  &__editor-wrapper {
+    width: 800px;
+    position: absolute;
+  }
+
+  &__controller {
+    border-top: dashed 1px #eaeefb;
+    height: 36px;
+    line-height: 36px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    text-align: center;
+    color: #d3dce6;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+    font-size: 12px;
+
+    &:hover {
+      color: $main-color;
+      background-color: #f9fafc;
+    }
+  }
+}

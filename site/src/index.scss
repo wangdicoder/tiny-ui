@@ -1,16 +1,17 @@
-@import "./base";
-
 body {
   margin: 0;
   padding: 0;
   font-family: "Open Sans", "Avenir Next", Arial, "Helvetica Neue", Helvetica, sans-serif;
   box-sizing: border-box;
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0d1a26;
+  font-weight: 500;
 }
 
 strong {
@@ -18,9 +19,5 @@ strong {
 }
 
 a {
-  color: $main-color;
-  text-decoration: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
+  text-decoration-line: none;
 }

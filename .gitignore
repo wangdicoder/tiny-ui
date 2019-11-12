@@ -4,18 +4,5 @@
 *.iml
 
 /node_modules
-/core/node_modules
-/site/node_modules
-/site/dist
-
-/core/themes/**/*.css.map
-/core/themes/**/*.css
-/site/src/**/*.css.map
-/site/src/**/*.css
-
-/site/src/pages/test
-/core/template
-
-/core/lib
-
 /site/build
+/lib

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://tiny-ui.org">
-    <img width="200" src="https://github.com/wangdicoder/tiny-ui-react/blob/master/site/src/assets/logo.svg">
+    <img width="200" src="https://github.com/wangdicoder/tiny-ui-react/blob/master/site/src/assets/logo/logo.svg">
   </a>
 </p>
 
