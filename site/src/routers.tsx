@@ -1,6 +1,13 @@
 import { lazy } from 'react';
 
-const GUIDE_MENU = [{
+export type RouterItem = {
+  title: string,
+  route?: string,
+  component?: any,
+  children?: RouterItem[],
+};
+
+export const GUIDE_MENU: RouterItem[] = [{
   title: 'Tiny UI Introduction',
   route: 'introduction',
   component: lazy(() => import('../../docs/introduction.md')),
@@ -26,7 +33,7 @@ const GUIDE_MENU = [{
   component: lazy(() => import('../../docs/faq.md')),
 }];
 
-const COMPONENT_MENU = [{
+export const COMPONENT_MENU: RouterItem[] = [{
   title: 'Foundation',
   children: [{
     title: 'Button',
@@ -177,8 +184,3 @@ const COMPONENT_MENU = [{
     component: lazy(() => import('../../components/divider/index.md')),
   }],
 }];
-
-export {
-  GUIDE_MENU,
-  COMPONENT_MENU,
-};

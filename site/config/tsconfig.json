@@ -19,7 +19,7 @@
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "outDir": "../dist/",
+    "outDir": "../dist",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
@@ -33,8 +33,8 @@
     ]
   },
   "include": [
-    "../src/",
-    "../types/",
-    "../../components/"
+    "../src/**/*",
+    "../types/*",
+    "../../components/**/*"
   ]
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
-import { version, repository } from '../../../../package';
+import { version, repository } from '../../../../package.json';
 
 const Header = () => (
   <>

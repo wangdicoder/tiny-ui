@@ -13,7 +13,7 @@ const devConfig = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, '../public/index.html'),
+      template: path.resolve(__dirname, '../public/index.html'),
       inject: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
