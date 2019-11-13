@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 
 const GUIDE_MENU = [{
   title: 'Tiny UI Introduction',
@@ -68,31 +68,31 @@ const COMPONENT_MENU = [{
   }, {
     title: 'Badge',
     route: 'badge',
-    // component: lazy(() => import('./docs/component/badge')),
+    component: lazy(() => import('../../components/badge/index.md')),
   }, {
     title: 'Collapse',
     route: 'collapse',
-    // component: lazy(() => import('./docs/component/collapse')),
+    component: lazy(() => import('../../components/collapse/index.md')),
   }, {
     title: 'Countdown',
     route: 'countdown',
-    // component: lazy(() => import('./docs/component/countdown')),
+    component: lazy(() => import('../../components/countdown/index.md')),
   }, {
     title: 'Flip',
     route: 'flip',
-    // component: lazy(() => import('./docs/component/flip')),
+    component: lazy(() => import('../../components/flip/index.md')),
   }, {
     title: 'Progress',
     route: 'progress',
-    // component: lazy(() => import('./docs/component/progress')),
+    component: lazy(() => import('../../components/progress/index.md')),
   }, {
     title: 'Tag',
     route: 'tag',
-    // component: lazy(() => import('./docs/component/tag')),
+    component: lazy(() => import('../../components/tag/index.md')),
   }, {
     title: 'Timeline',
     route: 'timeline',
-    // component: lazy(() => import('./docs/component/timeline')),
+    component: lazy(() => import('../../components/timeline/index.md')),
   }],
 }, {
   title: 'Form Item',
@@ -102,35 +102,35 @@ const COMPONENT_MENU = [{
   }, {
     title: 'Checkbox',
     route: 'checkbox',
-    // component: lazy(() => import('./docs/component/checkbox')),
+    component: lazy(() => import('../../components/checkbox/index.md')),
   }, {
     title: 'Input',
     route: 'input',
-    // component: lazy(() => import('./docs/component/input')),
+    component: lazy(() => import('../../components/input/index.md')),
   }, {
     title: 'Input Password',
     route: 'input-password',
-    // component: lazy(() => import('./docs/component/input-password')),
+    component: lazy(() => import('../../components/input-password/index.md')),
   }, {
     title: 'Native Select',
     route: 'native-select',
-    // component: lazy(() => import('./docs/component/native-select')),
+    component: lazy(() => import('../../components/select-native/index.md')),
   }, {
     title: 'Radio',
     route: 'radio',
-    // component: lazy(() => import('./docs/component/radio')),
+    component: lazy(() => import('../../components/radio/index.md')),
   }, {
     title: 'Rate',
     route: 'rate',
-    // component: lazy(() => import('./docs/component/rate')),
+    component: lazy(() => import('../../components/rate/index.md')),
   }, {
     title: 'Switch',
     route: 'switch',
-    // component: lazy(() => import('./docs/component/switch')),
+    component: lazy(() => import('../../components/switch/index.md')),
   }, {
     title: 'Textarea',
     route: 'textarea',
-    // component: lazy(() => import('./docs/component/textarea')),
+    component: lazy(() => import('../../components/textarea/index.md')),
   }],
 }, {
   title: 'Feedback',
@@ -141,38 +141,40 @@ const COMPONENT_MENU = [{
   }, {
     title: 'Loader',
     route: 'loader',
-    // component: lazy(() => import('./docs/component/loader')),
+    component: lazy(() => import('../../components/loader/index.md')),
   }, {
     title: 'Loading Bar',
     route: 'loading-bar',
-    // component: lazy(() => import('./docs/component/loading-bar')),
+    component: lazy(() => import('../../components/loading-bar/index.md')),
   }, {
     title: 'Message',
     route: 'message',
-    // component: lazy(() => import('./docs/component/message')),
+    component: lazy(() => import('../../components/message/index.md')),
   }, {
     title: 'Modal',
     route: 'modal',
-    // component: lazy(() => import('./docs/component/modal')),
+    component: lazy(() => import('../../components/modal/index.md')),
   }, {
     title: 'Notification',
     route: 'notification',
     component: lazy(() => import('../../components/notification/index.md')),
-  }, {
-    title: 'Popover',
-    route: 'popover',
-    // component: lazy(() => import('./docs/component/popover')),
-  }, {
-    title: 'Popconfirm',
-    route: 'popconfirm',
-    // component: lazy(() => import('./docs/component/popconfirm')),
-  }],
+  },
+  //   {
+  //   title: 'Popover',
+  //   route: 'popover',
+  //   component: lazy(() => import('../../components/popover/index.md')),
+  // }, {
+  //   title: 'Popconfirm',
+  //   route: 'popconfirm',
+  //   component: lazy(() => import('../../components/popconfirm/index.md')),
+  // }
+  ],
 }, {
   title: 'Miscellany',
   children: [{
     title: 'Divider',
     route: 'divider',
-    // component: lazy(() => import('./docs/component/divider')),
+    component: lazy(() => import('../../components/divider/index.md')),
   }],
 }];
 

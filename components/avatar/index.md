@@ -1,5 +1,8 @@
 import AutoFont from './demo/auto-font.md'
+import Basic from './demo/basic.md'
 import Group from './demo/group.md'
+import Presence from './demo/presence.md'
+import Type from './demo/type.md'
 
 # Avatar
 
@@ -21,10 +24,13 @@ const { Group } = Avatar;
 
 <layout>
   <column>
+    <Basic/>
+    <Type/>
     <Group/>
-    <AutoFont/>
   </column>
   <column>
+    <Presence/>
+    <AutoFont/>
   </column>
 </layout>
 
