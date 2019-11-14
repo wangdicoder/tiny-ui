@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {render, mount} from 'enzyme';
-import Button from '..';
+import Button from './';
 
 const {Group} = Button;
 

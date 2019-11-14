@@ -28,7 +28,8 @@
     "sourceMap": true,
     "strict": true,
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "target": "es5"
   },
