@@ -4,7 +4,6 @@
   "description": "A friendly ui component set for react",
   "license": "MIT",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
   "keywords": [
     "tiny",
     "tiny-ui",
@@ -33,7 +32,8 @@
     "dev": "webpack-dev-server --config site/config/webpack.dev.js",
     "site:build": "webpack --config site/config/webpack.prod.js",
     "site:deploy": "npm run site:build && gh-pages -d site/build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint components --ext .ts,.tsx"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -72,7 +72,6 @@
     "eslint": "^6.5.1",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-mdx": "^1.5.6",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "file-loader": "^4.2.0",
@@ -87,6 +86,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
+    "prettier": "1.19.1",
     "prism-react-renderer": "^1.0.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

@@ -2,29 +2,32 @@ import React from 'react';
 import classnames from 'classnames';
 
 export type TypographyProps = {
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
 };
 
 const generator = (type: string, defaultPrefixCls: string) => {
-    const Component = (props: TypographyProps) => {
-        const { prefixCls, className, style, children } = props;
-        const cls = classnames(prefixCls, className);
+  const Component = (props: TypographyProps) => {
+    const { prefixCls, className, style, children } = props;
+    const cls = classnames(prefixCls, className);
 
-        return React.createElement(type, {
-            style,
-            className: cls,
-            children,
-        });
-    };
+    return React.createElement(
+      type,
+      {
+        style,
+        className: cls,
+      },
+      children
+    );
+  };
 
-    Component.defaultProps = {
-        prefixCls: defaultPrefixCls,
-    };
+  Component.defaultProps = {
+    prefixCls: defaultPrefixCls,
+  };
 
-    return Component;
+  return Component;
 };
 
 const H1 = generator('h1', 'ty-h1');

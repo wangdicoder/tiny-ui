@@ -25,7 +25,6 @@
     "outDir": "lib/",
     "pretty": true,
     "removeComments": true,
-    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "types": [

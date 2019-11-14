@@ -48,7 +48,7 @@ export default class Home extends React.PureComponent<HomeProps, any> {
             <img src={require('../../assets/logo/react-logo.svg')} alt="react" className="home__react-logo"/>
             <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo"/>
           </div>
-          <div style={{position: 'relative'}}>
+          <div style={{ position: 'relative' }}>
             <h1 className="home__title">Tiny UI</h1>
             <h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
             <div className="home__btn-group">
@@ -56,7 +56,7 @@ export default class Home extends React.PureComponent<HomeProps, any> {
                 round
                 color="primary"
                 size="lg"
-                style={{width: '140px'}}
+                style={{ width: '140px' }}
                 onClick={this._navigateToComponentPage}>
                 Start
               </Button>

@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
-    "noEmit": true,
+    "outDir": "../dist/",
+    "resolveJsonModule": true,
     "types": [
       "node"
     ],
