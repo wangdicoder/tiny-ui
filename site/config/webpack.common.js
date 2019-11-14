@@ -8,9 +8,6 @@ module.exports = {
 		path: path.resolve(__dirname, '../build'),
 	},
 	resolve: {
-		alias: {
-			'@tiny': path.resolve(__dirname, '../../components'),
-		},
 		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
 	},
 	module: {

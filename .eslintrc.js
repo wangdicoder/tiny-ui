@@ -35,7 +35,7 @@ module.exports = {
     },
   },
   rules: {
-    semi: ['error', 'never'],
+    semi: ['error', 'always'],
     'no-console': 'off',
     'no-unused-vars': [
       'warn',
@@ -63,4 +63,4 @@ module.exports = {
       },
     ],
   },
-};
+}

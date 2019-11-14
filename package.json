@@ -25,7 +25,7 @@
   "author": "Di Wang<wangdicoder@gmail.com>",
   "homepage": "https://tiny-ui.dev/",
   "scripts": {
-    "build": "rm -rf lib && tsc && npm run dist",
+    "build": "rm -rf lib && tsc -p tsconfig.json && npm run dist",
     "dist-style": "gulp --gulpfile scripts/gulpfile.js && node scripts/generate-style.js",
     "dist-dev": "NODE_ENV=development webpack --config webpack.config.js --progress --colors",
     "dist-prod": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",

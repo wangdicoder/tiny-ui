@@ -1,33 +1,39 @@
 /** https://github.com/piotrwitek/react-redux-typescript-guide#baseline-tsconfigjson */
 {
   "compilerOptions": {
-    "outDir": "lib",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
     "allowJs": false,
+    "allowSyntheticDefaultImports": true,
     "checkJs": false,
     "declaration": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "noEmitHelpers": true,
-    "noImplicitReturns": true,
     "jsx": "react",
-    "lib": ["dom", "es2017"],
-    "types": ["node"],
-    "target": "es5",
-    "module": "es2015",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
-    "strict": true,
+    "noEmitHelpers": true,
+    "noImplicitReturns": true,
+    "outDir": "lib/",
     "pretty": true,
     "removeComments": true,
-    "sourceMap": true
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "types": [
+      "node"
+    ],
+    "target": "es5"
   },
   "include": [
-    "components"
+    "components/"
   ]
 }
