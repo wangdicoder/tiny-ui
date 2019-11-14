@@ -9,16 +9,18 @@ import { components } from './components/markdown-tag';
 import Header from './components/header';
 import HomePage from './containers/home';
 import ComponentsLayoutPage from './containers/components-layout';
+import Test from './containers/test';
 
 const App = () => (
   <HashRouter>
     <div>
-      <Header/>
+      <Header />
       <Switch>
-        <Route exact path="/home" component={HomePage}/>
-        <Route path="/components/:page" component={ComponentsLayoutPage}/>
-        <Redirect from="/components" to="/components/introduction"/>
-        <Redirect from="/" to="/home"/>
+        <Route exact path="/home" component={HomePage} />
+        <Route path="/components/:page" component={ComponentsLayoutPage} />
+        <Route path="/test" component={Test} />
+        <Redirect from="/components" to="/components/introduction" />
+        <Redirect from="/" to="/home" />
       </Switch>
     </div>
   </HashRouter>
@@ -26,7 +28,7 @@ const App = () => (
 
 ReactDom.render(
   <MDXProvider components={components}>
-    <App/>
+    <App />
   </MDXProvider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

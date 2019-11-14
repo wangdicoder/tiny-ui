@@ -6,3 +6,6 @@
 /node_modules
 /site/build
 /lib
+
+/site/src/containers/test/index.tsx
+.prettierignore

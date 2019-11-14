@@ -20,7 +20,7 @@ const CodeBlock = ({ children, className, live }: CodeBlockProps) => {
 
   useEffect(() => {
     el.current && setEditorContainerHeight((el.current as HTMLDivElement).offsetHeight + 30); // padding 15px
-  }, [el]);
+  });
 
   if (live) {
     return (

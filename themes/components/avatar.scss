@@ -3,7 +3,9 @@
 .#{$prefix}avatar {
   box-sizing: border-box;
   font-family: $font-family;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   background: $avatar-bg;
   color: $avatar-color;

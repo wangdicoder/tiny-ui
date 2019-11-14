@@ -10,50 +10,50 @@ import ComponentFooter from './footer';
 const { Content } = Layout;
 
 type Props = {
-  location: Location,
-  match: any,
+  location: Location;
+  match: any;
 };
 
-export default (props: Props) => {
-
+const ComponentLayout = (props: Props) => {
   useEffect(() => {
-    console.log(props)
     const { state } = props.location;
-    if (state && ('name' in state)) {
+    if (state && 'name' in state) {
       document.title = `${state.name} | Tiny UI `;
     }
   });
 
   return (
     <Layout className="component-page">
-      <SidebarMenu/>
+      <SidebarMenu />
       <Layout className="component-page__layout">
         <Content>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-              {GUIDE_MENU.map((menu) => (
+              {GUIDE_MENU.map(menu => (
                 <Route
                   key={menu.title}
                   path={`/components/${menu.route}`}
                   component={menu.component}
                 />
               ))}
-              {COMPONENT_MENU.map((group) => (
-                group.children!.map((menu) => (
+              {COMPONENT_MENU.map(group =>
+                group.children!.map(menu => (
                   <Route
                     key={menu.title}
                     path={`/components/${menu.route}`}
                     component={menu.component}
                   />
                 ))
-              ))}
+              )}
             </Switch>
           </Suspense>
 
-          <Divider className="component-page__divider"/>
-          <ComponentFooter routeName={props.match.params.page}/>
+          <Divider className="component-page__divider" />
+          <ComponentFooter routeName={props.match.params.page} />
         </Content>
       </Layout>
     </Layout>
   );
 };
+
+export default ComponentLayout;

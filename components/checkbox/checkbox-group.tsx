@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { CheckboxProps } from './index';
+import { CheckboxProps } from '.';
 
 export type CheckboxGroupProps = {
-  defaultValue?: string[],
-  value?: string[],
+  defaultValue?: string[];
+  value?: string[];
   onChange?: (value: string[]) => void;
-  disabled?: boolean,
-  prefixCls?: string,
-  className?: string,
-  style?: React.CSSProperties,
-  children: React.ReactElement<CheckboxProps>,
+  disabled?: boolean;
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  children: React.ReactElement<CheckboxProps>;
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -39,7 +39,7 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
   };
 
   useEffect(() => {
-    ('value' in props) && setValue([...props.value!]);
+    'value' in props && setValue([...props.value!]);
   });
 
   return (
