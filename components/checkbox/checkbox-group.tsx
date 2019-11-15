@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { CheckboxProps } from '.';
 import { BaseProps } from '../_utils/props';
 
@@ -17,7 +17,7 @@ const CheckboxGroup = ({
   ...restProps
 }: CheckboxGroupProps) => {
   const { onChange, disabled, className, style, children } = restProps;
-  const cls = classnames(prefixCls, className);
+  const cls = classNames(prefixCls, className);
   const [value, setValue] = useState(restProps.value ? restProps.value : defaultValue);
 
   const _onChange = (checked: boolean, event: React.FormEvent<HTMLInputElement>) => {

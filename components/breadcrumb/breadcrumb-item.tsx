@@ -1,30 +1,25 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type BreadcrumbItemProps = {
-    separator?: React.ReactNode,
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
+export interface BreadcrumbItemProps extends BaseProps {
+  separator?: React.ReactNode;
+  children?: React.ReactNode;
+}
+
+const BreadcrumbItem = ({
+  prefixCls = 'ty-breadcrumb-item',
+  ...restProps
+}: BreadcrumbItemProps) => {
+  const { separator, className, style, children } = restProps;
+  const cls = classNames(prefixCls, className);
+
+  return (
+    <li className={cls} style={style}>
+      {children}
+      <span className={`${prefixCls}__separator`}>{separator}</span>
+    </li>
+  );
 };
-
-const defaultProps = {
-    prefixCls: 'ty-breadcrumb-item',
-};
-
-const BreadcrumbItem = (props: BreadcrumbItemProps) => {
-    const { separator, prefixCls, className, style, children } = props;
-    const cls = classnames(prefixCls, className);
-
-    return (
-        <li className={cls} style={style}>
-            {children}
-            <span className={`${prefixCls}__separator`}>{separator}</span>
-        </li>
-    );
-};
-
-BreadcrumbItem.defaultProps = defaultProps;
 
 export default BreadcrumbItem;

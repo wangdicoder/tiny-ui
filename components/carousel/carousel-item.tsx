@@ -1,28 +1,20 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type CarouselItemProps = {
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
-} & typeof defaultProps;
+export interface CarouselItemProps extends BaseProps {
+  children?: React.ReactNode;
+}
 
-const defaultProps = {
-    prefixCls: 'ty-carousel-item',
+const CarouselItem = ({ prefixCls = 'ty-carousel-item', ...restProps }: CarouselItemProps) => {
+  const { className, style, children } = restProps;
+  const cls = classNames(prefixCls, className);
+
+  return (
+    <div className={cls} style={style}>
+      {children}
+    </div>
+  );
 };
-
-const CarouselItem = (props: CarouselItemProps) => {
-    const { prefixCls, className, style, children } = props;
-    const cls = classnames(prefixCls, className);
-
-    return (
-        <div className={cls} style={style}>
-            {children}
-        </div>
-    );
-};
-
-CarouselItem.defaultProps = defaultProps;
 
 export default CarouselItem;

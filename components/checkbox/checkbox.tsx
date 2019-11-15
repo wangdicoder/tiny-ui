@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
 export interface CheckboxProps extends BaseProps {
@@ -23,7 +23,7 @@ const Checkbox: React.FC<CheckboxProps> & { Group?: any } = ({
   const [checked, setChecked] = useState(
     'checked' in restProps ? restProps.checked : defaultChecked
   );
-  const cls = classnames(prefixCls, className, {
+  const cls = classNames(prefixCls, className, {
     [`${prefixCls}_indeterminate`]: indeterminate && !checked,
     [`${prefixCls}_checked`]: checked && !indeterminate,
     [`${prefixCls}_disabled`]: disabled,

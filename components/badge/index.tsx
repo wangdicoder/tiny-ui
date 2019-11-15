@@ -17,17 +17,6 @@ export interface BadgeProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const defaultProps = {
-  count: 0,
-  prefixCls: 'ty-badge',
-  color: '#f2453d',
-  max: 99,
-  dot: false,
-  processing: false,
-  showZero: false,
-  text: undefined,
-};
-
 const Badge = ({
   count = 0,
   prefixCls = 'ty-badge',
@@ -77,7 +66,5 @@ const Badge = ({
     </span>
   );
 };
-
-Badge.defaultProps = defaultProps;
 
 export default Badge;
