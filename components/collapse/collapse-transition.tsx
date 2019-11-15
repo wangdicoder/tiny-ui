@@ -6,13 +6,24 @@ type CollapseTransitionProps = {
   children: React.ReactElement;
 };
 
-export default class CollapseTransition extends PureComponent<CollapseTransitionProps, {}> {
+type CollapseTransitionState = {
+  isShow: boolean;
+};
+
+export default class CollapseTransition extends PureComponent<
+  CollapseTransitionProps,
+  CollapseTransitionState
+> {
   selfRef: any;
   leaveTimer: any;
   enterTimer: any;
 
   static defaultProps = {
     duration: 300,
+  };
+
+  state = {
+    isShow: false,
   };
 
   componentDidMount(): void {
@@ -25,9 +36,25 @@ export default class CollapseTransition extends PureComponent<CollapseTransition
     this.leave();
   }
 
-  componentWillReceiveProps(nextProps: any) {
-    if (this.props.isShow !== nextProps.isShow) {
-      this.triggerChange(nextProps.isShow);
+  static getDerivedStateFromProps(
+    nextProps: Readonly<CollapseTransitionProps>,
+    prevState: Readonly<CollapseTransitionState>
+  ) {
+    if (nextProps.isShow !== prevState.isShow) {
+      return {
+        isShow: nextProps.isShow,
+      };
+    }
+
+    return null;
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<CollapseTransitionProps>,
+    prevState: Readonly<CollapseTransitionState>
+  ): void {
+    if (this.props.isShow !== prevProps.isShow) {
+      this.triggerChange(this.props.isShow);
     }
   }
 

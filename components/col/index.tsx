@@ -20,9 +20,6 @@ export interface ColProps extends BaseProps {
   lg?: ColSpanType | ColSize;
   xl?: ColSpanType | ColSize;
   xxl?: ColSpanType | ColSize;
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
   children?: React.ReactNode;
   [size: string]: any; // solve index signature
 }

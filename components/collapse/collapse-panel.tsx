@@ -11,13 +11,10 @@ export interface CollapsePanelProps extends BaseProps {
   isActive?: boolean;
   disabled?: boolean;
   extra?: React.ReactNode;
-  className?: string;
   deletable?: boolean;
   /** header click callback */
-  onItemClick?: (itemKey: string) => any;
-  style?: React.CSSProperties;
+  onItemClick?: (itemKey: string) => void;
   showArrow?: boolean;
-  prefixCls?: string;
   children?: React.ReactNode;
 }
 
