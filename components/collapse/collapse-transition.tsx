@@ -127,7 +127,7 @@ export default class CollapseTransition extends PureComponent<
     el.style.overflow = el.dataset.oldOverflow;
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <div
         className="collapse-transition"

@@ -64,6 +64,7 @@
   }
 
   &__heading-1 {
+    font-size: 28px;
     margin: 5px 0 10px;
     border-bottom: 1px solid #eaecef;
     padding-bottom: 10px;
@@ -82,9 +83,11 @@
     color: #34343d;
     margin: 0.5em 0 0.5em;
     line-height: 28px;
+    font-size: 15px;
   }
 
   &__link {
+    font-size: 14px;
     text-decoration: none;
     color: $main-color;
     font-weight: 500;
@@ -104,6 +107,7 @@
   }
 
   &__list-item {
+    font-size: 14px;
     color: #45454d;
     margin: 1em 0;
     list-style-type: circle;
@@ -118,6 +122,7 @@
   }
 
   &__table {
+    font-size: 15px;
     margin-bottom: 10px;
     border-collapse: collapse;
     border-spacing: 0;

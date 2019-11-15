@@ -1,40 +1,35 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { InputSizes } from './index';
+import { BaseProps } from '../_utils/props';
 
-export type InputGroupProps = {
-    size?: InputSizes,
-    disabled?: boolean,
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children: React.ReactElement,
-} & typeof defaultProps;
+export interface InputGroupProps extends BaseProps {
+  size?: InputSizes;
+  disabled?: boolean;
+  children: React.ReactElement;
+}
 
-const defaultProps = {
-    prefixCls: 'ty-input-group',
-    disabled: false,
-    size: 'md',
+const InputGroup = ({
+  prefixCls = 'ty-input-group',
+  disabled = false,
+  size = 'md',
+  ...restProps
+}: InputGroupProps) => {
+  const { className, style, children } = restProps;
+  const cls = classNames(prefixCls, className);
+
+  return (
+    <div className={cls} style={style}>
+      {React.Children.map(children, (child: React.ReactElement) => {
+        const childProps = {
+          ...child.props,
+          disabled,
+          size,
+        };
+        return React.cloneElement(child, childProps);
+      })}
+    </div>
+  );
 };
-
-const InputGroup = (props: InputGroupProps) => {
-    const { disabled, size, prefixCls, className, style, children } = props;
-    const cls = classnames(prefixCls, className);
-
-    return (
-        <div className={cls} style={style}>
-            {React.Children.map(children, (child: React.ReactElement) => {
-                const childProps = {
-                    ...child.props,
-                    disabled,
-                    size,
-                };
-                return React.cloneElement(child, childProps);
-            })}
-        </div>
-    );
-};
-
-InputGroup.defaultProps = defaultProps;
 
 export default InputGroup;
