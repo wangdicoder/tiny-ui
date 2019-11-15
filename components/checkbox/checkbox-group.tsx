@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { CheckboxProps } from '.';
+import { BaseProps } from '../_utils/props';
 
-export type CheckboxGroupProps = {
+export interface CheckboxGroupProps extends BaseProps {
   defaultValue?: string[];
   value?: string[];
   onChange?: (value: string[]) => void;
   disabled?: boolean;
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
   children: React.ReactElement<CheckboxProps>;
-} & typeof defaultProps;
+}
 
-const defaultProps = {
-  prefixCls: 'ty-checkbox-group',
-  defaultValue: [],
-};
-
-const CheckboxGroup = (props: CheckboxGroupProps) => {
-  const { onChange, disabled, prefixCls, className, style, children } = props;
+const CheckboxGroup = ({
+  prefixCls = 'ty-checkbox-group',
+  defaultValue = [],
+  ...restProps
+}: CheckboxGroupProps) => {
+  const { onChange, disabled, className, style, children } = restProps;
   const cls = classnames(prefixCls, className);
-  const [value, setValue] = useState(props.value ? props.value : props.defaultValue);
+  const [value, setValue] = useState(restProps.value ? restProps.value : defaultValue);
 
   const _onChange = (checked: boolean, event: React.FormEvent<HTMLInputElement>) => {
     if (!disabled) {
@@ -33,13 +30,13 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
         value.push(name);
       }
       // Update state
-      !('value' in props) && setValue([...value]);
+      !('value' in restProps) && setValue([...value]);
       onChange && onChange(value);
     }
   };
 
   useEffect(() => {
-    'value' in props && setValue([...props.value!]);
+    'value' in restProps && setValue([...restProps.value!]);
   });
 
   return (
@@ -56,7 +53,5 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
     </div>
   );
 };
-
-CheckboxGroup.defaultProps = defaultProps;
 
 export default CheckboxGroup;

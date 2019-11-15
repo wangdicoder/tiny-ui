@@ -7,12 +7,8 @@ export interface AvatarGroupProps extends BaseProps {
   children: React.ReactElement<AvatarProps>;
 }
 
-const defaultProps = {
-  prefixCls: 'ty-avatar-group',
-} as Partial<AvatarGroupProps>;
-
-const AvatarGroup = (props: AvatarGroupProps) => {
-  const { prefixCls, className, style, children } = props;
+const AvatarGroup = ({ prefixCls = 'ty-avatar-group', ...restProps }: AvatarGroupProps) => {
+  const { className, style, children } = restProps;
   const cls = classnames(prefixCls, className);
 
   return (
@@ -21,7 +17,5 @@ const AvatarGroup = (props: AvatarGroupProps) => {
     </span>
   );
 };
-
-AvatarGroup.defaultProps = defaultProps;
 
 export default AvatarGroup;

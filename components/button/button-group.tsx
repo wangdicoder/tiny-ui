@@ -11,15 +11,14 @@ export interface ButtonGroupProps extends BaseProps {
   disabled?: boolean;
 }
 
-const defaultProps = {
-  prefixCls: 'ty-btn-group',
-  size: 'md' as ButtonSize,
-  disabled: false,
-  round: false,
-} as Partial<ButtonGroupProps>;
-
-const ButtonGroup = (props: ButtonGroupProps) => {
-  const { size, color, round, disabled, className, prefixCls, style, children } = props;
+const ButtonGroup = ({
+  prefixCls = 'ty-btn-group',
+  size = 'md',
+  disabled = false,
+  round = false,
+  ...restProps
+}: ButtonGroupProps) => {
+  const { color, className, style, children } = restProps;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_round`]: round,
     [`${prefixCls}_${color}`]: color,
@@ -38,7 +37,5 @@ const ButtonGroup = (props: ButtonGroupProps) => {
     </div>
   );
 };
-
-ButtonGroup.defaultProps = defaultProps;
 
 export default ButtonGroup;

@@ -18,29 +18,25 @@ export interface ButtonProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const defaultProps = {
-  prefixCls: 'ty-btn',
-  size: 'md' as ButtonSize,
-  loading: false,
-} as Partial<ButtonProps>;
-
-const Button: React.FC<ButtonProps> & { Group?: any } = (props: ButtonProps) => {
+const Button: React.FC<ButtonProps> & { Group?: any } = ({
+  prefixCls = 'ty-btn',
+  size = 'md',
+  loading = false,
+  ...restProps
+}: ButtonProps) => {
   const {
     color,
-    size,
     block,
     icon,
     link,
-    loading,
     disabled,
     onClick,
     round,
     children,
     className,
-    prefixCls,
     style,
-    ...restProps
-  } = props;
+    ...otherProps
+  } = restProps;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${color}`]: color,
     [`${prefixCls}_${size}`]: size,
@@ -65,13 +61,11 @@ const Button: React.FC<ButtonProps> & { Group?: any } = (props: ButtonProps) => 
       className={cls}
       disabled={disabled || loading}
       style={style}
-      {...restProps}>
+      {...otherProps}>
       {renderIcon()}
       <span>{children}</span>
     </button>
   );
 };
-
-Button.defaultProps = defaultProps;
 
 export default Button;
