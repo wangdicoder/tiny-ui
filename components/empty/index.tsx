@@ -5,7 +5,7 @@ import { BaseProps } from '../_utils/props';
 export interface EmptyProps extends BaseProps {
   image?: string | ReactNode;
   imageStyle?: CSSProperties;
-  description?: string;
+  description?: boolean | string | React.ReactNode;
   descStyle?: CSSProperties;
   children?: React.ReactNode;
 }
@@ -35,11 +35,13 @@ const Empty = ({ prefixCls = 'ty-empty', description = 'No Data', ...restProps }
 
   return (
     <div className={cls} style={style}>
-      {renderImage()}
-      <p className={`${prefixCls}__desc`} style={descStyle}>
-        {description}
-      </p>
-      {children}
+      <div className={`${prefixCls}__image-container`}>{renderImage()}</div>
+      {typeof description === 'boolean' && !description ? null : (
+        <p className={`${prefixCls}__desc`} style={descStyle}>
+          {description}
+        </p>
+      )}
+      {children && <div className={`${prefixCls}__footer`}>{children}</div>}
     </div>
   );
 };

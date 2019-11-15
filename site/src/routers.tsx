@@ -111,6 +111,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/countdown/index.md')),
       },
       {
+        title: 'Empty',
+        route: 'empty',
+        component: lazy(() => import('../../components/empty/index.md')),
+      },
+      {
         title: 'Flip',
         route: 'flip',
         component: lazy(() => import('../../components/flip/index.md')),

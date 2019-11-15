@@ -122,7 +122,7 @@
   }
 
   &__table {
-    font-size: 15px;
+    font-size: 13px;
     margin-bottom: 10px;
     border-collapse: collapse;
     border-spacing: 0;
@@ -147,19 +147,20 @@
     tr {
       border-top: 1px solid #ebedf0;
       background: #fff;
-
-      &:nth-child(2n) {
-        background: #f6f8fa;
-      }
     }
 
     td {
-      color: #24292e;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      color: #314659;
 
       &:first-child {
         width: 20%;
         color: #595959;
         font-weight: 600;
+      }
+
+      &:nth-child(3) {
+        color: #c41d7f;
       }
 
       .md__inline-code {
