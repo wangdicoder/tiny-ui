@@ -1,28 +1,21 @@
-import React, {useState, useEffect, useRef} from 'react';
-import classnames from 'classnames';
-import {Container, getNodeHeight, getRect, getScroll} from '../_utils/dom';
+import React, { useState, useEffect, useRef } from 'react';
+import classNames from 'classnames';
+import { Container, getNodeHeight, getRect, getScroll } from '../_utils/dom';
+import { BaseProps } from '../_utils/props';
 
-export type AffixProps = {
-  container?: () => Container,
-  offsetBottom?: number,
-  offsetTop?: number,
-  relative?: boolean,
+export interface AffixProps extends BaseProps {
+  container?: () => Container;
+  offsetBottom?: number;
+  offsetTop?: number;
+  relative?: boolean;
   onChange?: (affixed: boolean, isTop: boolean | undefined) => void;
-  prefixCls?: string,
-  className?: string,
-  style?: React.CSSProperties,
-  children?: React.ReactNode,
-} & typeof defaultProps;
-
-const defaultProps = {
-  prefixCls: 'ty-affix',
-  container: () => window,
-};
+  children?: React.ReactNode;
+}
 
 type AffixMode = {
-  top: boolean,
-  bottom: boolean,
-  offset: number,
+  top: boolean;
+  bottom: boolean;
+  offset: number;
 };
 
 const affixMode: AffixMode = {
@@ -33,13 +26,13 @@ const affixMode: AffixMode = {
 
 let lastAffixed: boolean | null = null;
 
-const Affix = (props: AffixProps) => {
-  const {container, relative, offsetTop, offsetBottom, onChange, prefixCls, className, style, children} = props;
+const Affix = ({ prefixCls = 'ty-affix', container = () => window, ...restProps }: AffixProps) => {
+  const { relative, offsetTop, offsetBottom, onChange, className, style, children } = restProps;
   const [placeholderNodeStyle, setPlaceholderNodeStyle] = useState<React.CSSProperties>({});
   const [affixNodeStyle, setAffixNodeStyle] = useState<React.CSSProperties>({});
-  const placeholderEl = useRef<HTMLDivElement>(null);
-  const affixEl = useRef<HTMLDivElement>(null);
-  const cls = classnames(prefixCls, className);
+  const placeholderEl = useRef<HTMLDivElement | null>(null);
+  const affixEl = useRef<HTMLDivElement | null>(null);
+  const cls = classNames(prefixCls, className);
 
   const getAffixMode = () => {
     if (typeof offsetTop !== 'number' && typeof offsetBottom !== 'number') {
@@ -77,12 +70,12 @@ const Affix = (props: AffixProps) => {
       return;
     }
     const containerScrollTop = getScroll(affixContainer, true);
-    const affixOffset = getOffset(placeholderEl.current, affixContainer);
+    const affixOffset = getOffset(placeholderEl.current!, affixContainer);
     const containerHeight = getNodeHeight(affixContainer);
-    const affixHeight = placeholderEl.current.offsetHeight;
+    const affixHeight = placeholderEl.current!.offsetHeight;
     const containerRect = getRect(affixContainer);
 
-    const affixChildHeight = affixEl.current.offsetHeight;
+    const affixChildHeight = affixEl.current!.offsetHeight;
 
     const affixStyle: React.CSSProperties = {
       width: affixOffset.width,
@@ -106,15 +99,17 @@ const Affix = (props: AffixProps) => {
       }
       setAffixStyle(affixStyle, true, true);
       setContainerStyle(containerStyle);
-    } else if (affixMode.bottom && containerScrollTop
-      < affixOffset.top + affixHeight + affixMode.offset - containerHeight) {
+    } else if (
+      affixMode.bottom &&
+      containerScrollTop < affixOffset.top + affixHeight + affixMode.offset - containerHeight
+    ) {
       // affix bottom
       affixStyle.height = affixHeight;
       if (relative) {
         affixStyle.zIndex = 1;
         affixStyle.position = 'absolute';
-        affixStyle.top = containerScrollTop
-          - (affixOffset.top + affixHeight + affixMode.offset - containerHeight);
+        affixStyle.top =
+          containerScrollTop - (affixOffset.top + affixHeight + affixMode.offset - containerHeight);
         containerStyle.position = 'relative';
       } else {
         affixStyle.zIndex = 1;
@@ -130,7 +125,10 @@ const Affix = (props: AffixProps) => {
   };
 
   const setAffixStyle = (
-    affixStyle: React.CSSProperties, affixed: boolean = false, isTop: boolean | undefined = undefined) => {
+    affixStyle: React.CSSProperties,
+    affixed: boolean = false,
+    isTop: boolean | undefined = undefined
+  ) => {
     setAffixNodeStyle(affixStyle);
 
     if (lastAffixed !== affixed) {
@@ -156,12 +154,12 @@ const Affix = (props: AffixProps) => {
   }, []);
 
   return (
-    <div ref={placeholderEl} style={{...placeholderNodeStyle, ...style}}>
-      <div ref={affixEl} className={cls} style={affixNodeStyle}>{children}</div>
+    <div ref={placeholderEl} style={{ ...placeholderNodeStyle, ...style }}>
+      <div ref={affixEl} className={cls} style={affixNodeStyle}>
+        {children}
+      </div>
     </div>
   );
 };
-
-Affix.defaultProps = defaultProps;
 
 export default Affix;

@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { AvatarProps } from './avatar';
 import { BaseProps } from '../_utils/props';
 
@@ -9,7 +9,7 @@ export interface AvatarGroupProps extends BaseProps {
 
 const AvatarGroup = ({ prefixCls = 'ty-avatar-group', ...restProps }: AvatarGroupProps) => {
   const { className, style, children } = restProps;
-  const cls = classnames(prefixCls, className);
+  const cls = classNames(prefixCls, className);
 
   return (
     <span className={cls} style={style}>
