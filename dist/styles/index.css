@@ -1230,11 +1230,22 @@
     transition: 200ms;
     line-height: 1;
     vertical-align: middle; }
+    .ty-checkbox__inner:before {
+      content: '';
+      position: absolute;
+      display: block;
+      border: 1px solid #fff;
+      margin-top: -1px;
+      left: 3px;
+      right: 3px;
+      top: 50%;
+      transition: all 200ms;
+      transform: scale(0); }
     .ty-checkbox__inner:after {
       transform: rotate(45deg) scaleY(1);
       pointer-events: none;
       box-sizing: content-box;
-      content: "";
+      content: '';
       border: 2px solid #fff;
       border-left: 0;
       border-top: 0;

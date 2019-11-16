@@ -73,7 +73,7 @@ $ npm install react-app-rewired customize-cra --save-dev
 
 Then update `package.json` file.
 
-```json
+```diff
 /* package.json */
 
 "scripts": {
@@ -105,7 +105,7 @@ $ npm install babel-plugin-import --save-dev
 
 Then modify `config-overrides.js`.
 
-```js
+```diff
 + const { override, fixBabelImports } = require('customize-cra');
 
 - module.exports = function override(config, env) {
@@ -122,7 +122,7 @@ Then modify `config-overrides.js`.
 
 Remove the `@import '~tiny-ui/dist/index.css';` statement added before because `babel-plugin-import` will import styles and import components like below:
 
-```js
+```diff
 // src/App.js
 
   import React, { Component } from 'react';
