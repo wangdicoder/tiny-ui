@@ -5,6 +5,7 @@
 
 /node_modules
 /site/build
+/site/dist
 /lib
 
 /site/src/containers/test/index.tsx

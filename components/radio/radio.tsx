@@ -35,7 +35,7 @@ const Radio: React.FC<RadioProps> & { Group?: any } = ({
 
   useEffect(() => {
     'checked' in restProps && setChecked(restProps.checked!);
-  });
+  }, [restProps.checked]);
 
   return (
     <label className={cls} style={style}>

@@ -41,14 +41,14 @@ Create a new style file, e.g. `theme-variables.scss`.
 **The variable order is very important. Import the default variable code must be placed in the last line.**
 
 ```css
-// Your variable overrides
+/** Your variable overrides */
 $primary-color: #007bff;
 ...
 
-// Icon font path, required
+/** Icon font path, required */
 $font-path: '~tiny-ui/themes/fonts';
 
-// Default variables
+/** Default variables */
 @import "~tiny-ui/themes/index.scss";
 ```
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { RadioProps } from './index';
 import { BaseProps } from '../_utils/props';
 
@@ -14,7 +14,7 @@ export interface RadioGroupProps extends BaseProps {
 
 const RadioGroup = ({ prefixCls = 'ty-radio-group', ...restProps }: RadioGroupProps) => {
   const { name, onChange, disabled, className, style, children } = restProps;
-  const cls = classnames(prefixCls, className);
+  const cls = classNames(prefixCls, className);
   const [value, setValue] = useState(
     'value' in restProps ? restProps.value : restProps.defaultValue
   );
@@ -28,7 +28,7 @@ const RadioGroup = ({ prefixCls = 'ty-radio-group', ...restProps }: RadioGroupPr
 
   useEffect(() => {
     'value' in restProps && setValue(restProps.value!);
-  });
+  }, [restProps.value]);
 
   return (
     <div className={cls} style={style}>

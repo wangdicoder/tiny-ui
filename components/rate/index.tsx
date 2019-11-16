@@ -110,19 +110,21 @@ const Rate = ({
 
   return (
     <ul className={cls} style={style} onMouseLeave={onMouseLeave}>
-      {[...Array(count).fill(0)].map((_, idx) => (
-        <Item
-          key={idx}
-          index={idx + 1}
-          half={half}
-          character={character}
-          prefixCls={prefixCls}
-          onMouseEnter={onMouseEnter}
-          onClick={onClick}
-          value={half ? tmpValue! : Math.round(tmpValue!)}
-          color={color}
-        />
-      ))}
+      {Array(count)
+        .fill(0)
+        .map((_, idx) => (
+          <Item
+            key={idx}
+            index={idx + 1}
+            half={half}
+            character={character}
+            prefixCls={prefixCls}
+            onMouseEnter={onMouseEnter}
+            onClick={onClick}
+            value={half ? tmpValue! : Math.round(tmpValue!)}
+            color={color}
+          />
+        ))}
     </ul>
   );
 };

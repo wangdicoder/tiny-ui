@@ -3,7 +3,6 @@ scripts
 template
 test
 docs
-dist
 jest.config.js
 test-setup.js
 webpack.config.js

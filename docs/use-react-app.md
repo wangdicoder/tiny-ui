@@ -26,7 +26,7 @@ $ npm install tiny-ui --save
 
 Modify `src/App.js`, import Button component from `tiny-ui`.
 
-```js
+```jsx
 import React, { Component } from 'react';
 import Button from 'tiny-ui/lib/button';
 import './App.css';
@@ -44,10 +44,10 @@ class App extends Component {
 export default App;
 ```
 
-Add `tiny-ui/dist/index.css` at the top of `src/App.css`.
+Add `tiny-ui/dist/styles/index.css` at the top of `src/App.css`.
 
 ```css
-@import '~tiny-ui/dist/index.css';
+@import '~tiny-ui/dist/styles/index.css';
 
 .App {
   text-align: center;
@@ -70,6 +70,8 @@ Import react-app-rewired and modify the scripts field in package.json. Due to ne
 ```bash
 $ npm install react-app-rewired customize-cra --save-dev
 ```
+
+Then update `package.json` file.
 
 ```json
 /* package.json */
@@ -95,11 +97,13 @@ module.exports = function override(config, env) {
 
 ### Use babel-plugin-import
 
-[babel-plugin-import](https://github.com/ant-design/babel-plugin-import) is a babel plugin for importing components on demand. We are now trying to install it and modify `config-overrides.js`.
+[babel-plugin-import](https://github.com/ant-design/babel-plugin-import) is a babel plugin for importing components on demand. We are now trying to install it.
 
 ```bash
 $ npm install babel-plugin-import --save-dev
 ```
+
+Then modify `config-overrides.js`.
 
 ```js
 + const { override, fixBabelImports } = require('customize-cra');
