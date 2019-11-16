@@ -7,3 +7,12 @@ dist
 jest.config.js
 test-setup.js
 webpack.config.js
+site
+.idea
+.travis.yml
+.babelrc
+.prettierignore
+.prettierrc
+postcss.config.js
+.DS_Store
+*.iml

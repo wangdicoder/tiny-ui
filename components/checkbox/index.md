@@ -28,6 +28,7 @@ const { Group } = Checkbox;
     <Group/>
   </column>
   <column>
+    <CheckAll/>
     <Disabled/>
   </column>
 </layout>

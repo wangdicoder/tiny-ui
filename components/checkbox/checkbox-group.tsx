@@ -37,7 +37,7 @@ const CheckboxGroup = ({
 
   useEffect(() => {
     'value' in restProps && setValue([...restProps.value!]);
-  });
+  }, [restProps.value]);
 
   return (
     <div className={cls} style={style}>
