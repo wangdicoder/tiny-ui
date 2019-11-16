@@ -1,18 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import Sidebar from './sidebar';
 import SidebarContext from './sidebar-context';
 
 export type BasicProps = {
-  prefixCls?: string,
-  className?: string,
-  style?: React.CSSProperties,
-  children?: React.ReactNode,
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
 };
 
 export type BasicPropsWithTagName = {
-  tagName: 'header' | 'footer' | 'main' | 'section'
+  tagName: 'header' | 'footer' | 'main' | 'section';
 } & BasicProps;
 
 const defaultProps = {
@@ -26,7 +26,7 @@ const defaultProps = {
  */
 const Basic = (props: BasicPropsWithTagName) => {
   const { prefixCls, className, style, children, tagName, ...restProps } = props;
-  const classString = classnames(className, prefixCls);
+  const classString = classNames(className, prefixCls);
   return React.createElement(tagName, { className: classString, style, ...restProps }, children);
 };
 
@@ -38,23 +38,24 @@ const Basic = (props: BasicPropsWithTagName) => {
 const Layout = (props: BasicProps) => {
   const { prefixCls, className, style, children, ...restProps } = props;
   const [hasSidebar, setHasSidebar] = useState(false);
-  const cls = classnames(prefixCls, className, {
+  const cls = classNames(prefixCls, className, {
     [`${prefixCls}_has-sidebar`]: hasSidebar,
   });
 
   return (
     <SidebarContext.Provider
       value={{ addSidebar: () => setHasSidebar(true), removeSidebar: () => setHasSidebar(false) }}>
-      <section className={cls} style={style} {...restProps}>{children}</section>
+      <section className={cls} style={style} {...restProps}>
+        {children}
+      </section>
     </SidebarContext.Provider>
   );
 };
 
-
 type GeneratorProps = {
-  prefixCls: string,
-  tagName: 'header' | 'footer' | 'main' | 'section',
-}
+  prefixCls: string;
+  tagName: 'header' | 'footer' | 'main' | 'section';
+};
 
 /**
  * Generator

@@ -1,74 +1,72 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type TextareaProps = {
-    rows?: number,
-    limit?: number,
-    counter?: (count: number) => React.ReactNode,
-    defaultValue?: string,
-    value?: string,
-    onChange?: (value: any, event: React.FormEvent<HTMLTextAreaElement>) => void,
-    disabled?: boolean,
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-} & typeof defaultProps;
+export interface TextareaProps extends BaseProps {
+  rows?: number;
+  limit?: number;
+  counter?: (count?: number) => React.ReactNode;
+  defaultValue?: string;
+  value?: string;
+  onChange?: (value: any, event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  disabled?: boolean;
+}
 
-const defaultProps = {
-    prefixCls: 'ty-textarea',
-    disabled: false,
+const Textarea = ({ prefixCls = 'ty-textarea', disabled = false, ...restProps }: TextareaProps) => {
+  const {
+    limit,
+    counter,
+    defaultValue,
+    value,
+    rows,
+    onChange,
+    className,
+    style,
+    ...otherProps
+  } = restProps;
+  const cls = classNames(prefixCls, className, {
+    [`${prefixCls}_disabled`]: disabled,
+  });
+  const [count, setCount] = useState(0);
+
+  const textareaOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCount(e.currentTarget.value.length);
+    onChange && onChange(e.currentTarget.value, e);
+  };
+
+  if (limit || counter) {
+    return (
+      <span className={`${prefixCls}-container`}>
+        <textarea
+          {...otherProps}
+          maxLength={limit}
+          rows={rows}
+          value={value}
+          defaultValue={defaultValue}
+          disabled={disabled}
+          className={cls}
+          style={style}
+          onChange={textareaOnChange}
+        />
+        <span className={`${prefixCls}__counter`}>
+          {counter && typeof counter === 'function' ? counter(count) : `${count}/${limit}`}
+        </span>
+      </span>
+    );
+  } else {
+    return (
+      <textarea
+        {...restProps}
+        rows={rows}
+        value={value}
+        defaultValue={defaultValue}
+        disabled={disabled}
+        className={cls}
+        style={style}
+        onChange={textareaOnChange}
+      />
+    );
+  }
 };
-
-const Textarea = (props: TextareaProps) => {
-    const {
-        limit, counter, defaultValue, value, rows, onChange,
-        disabled, prefixCls, className, style, ...restProps
-    } = props;
-    const cls = classnames(prefixCls, className, {
-        [`${prefixCls}_disabled`]: disabled,
-    });
-    const [count, setCount] = useState(0);
-
-    const _inputOnChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
-        setCount(e.currentTarget.value.length);
-        onChange && onChange(e.currentTarget.value, e);
-    };
-
-    if (limit || counter) {
-        return (
-            <span className={`${prefixCls}-container`}>
-                <textarea
-                    maxLength={limit}
-                    rows={rows}
-                    value={value}
-                    defaultValue={defaultValue}
-                    disabled={disabled}
-                    className={cls}
-                    style={style}
-                    {...restProps}
-                    onChange={_inputOnChange}
-                />
-                <span className={`${prefixCls}__counter`}>
-                    {counter && (typeof counter === 'function') ? counter(count) : `${count}/${limit}`}
-                </span>
-            </span>
-        );
-    } else {
-        return (
-            <textarea
-                rows={rows}
-                value={value}
-                defaultValue={defaultValue}
-                disabled={disabled}
-                className={cls}
-                style={style}
-                onChange={_inputOnChange}
-                {...restProps}
-            />
-        );
-    }
-};
-
-Textarea.defaultProps = defaultProps;
 
 export default Textarea;

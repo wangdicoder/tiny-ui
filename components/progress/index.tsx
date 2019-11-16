@@ -1,12 +1,13 @@
 import Circle from './circle';
 import Bar from './bar';
 
-export type strokeLineCaps = 'round' | 'square';
-export const strokePresetColors = ['primary', 'blue', 'green', 'yellow', 'red'];
+export { strokeLineCaps, strokePresetColors } from './shared-props';
+export { BarProps, BarBackgroundType } from './bar';
+export { CircleProps } from './circle';
 
 const Progress = {
-    Circle,
-    Bar,
+  Circle,
+  Bar,
 };
 
 export default Progress;

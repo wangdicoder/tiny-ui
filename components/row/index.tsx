@@ -1,27 +1,28 @@
 import React from 'react';
 import classNames from 'classnames';
-import {ColProps} from '../col';
+import { ColProps } from '../col';
+import { BaseProps } from '../_utils/props';
 
-export type RowProps = {
-  gutter?: number,
+export type RowAlign = 'top' | 'center' | 'bottom' | 'baseline';
+export type RowJustify =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly';
+
+export interface RowProps extends BaseProps {
+  gutter?: number;
   /** gutter padding includes first and end child  */
-  gutterSide?: boolean,
-  align?: 'top' | 'center' | 'bottom' | 'baseline';
-  justify?: 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
-  prefixCls?: string,
-  className?: string,
-  style?: React.CSSProperties,
-  children: React.ReactElement<ColProps>
-} & typeof defaultProps;
+  gutterSide?: boolean;
+  align?: RowAlign;
+  justify?: RowJustify;
+  children: React.ReactElement<ColProps>;
+}
 
-const defaultProps = {
-  prefixCls: 'ty-row',
-  gutter: 0,
-  gutterSide: false,
-};
-
-const Row = (props: RowProps) => {
-  const {gutter, align, justify, gutterSide, prefixCls, className, style, children} = props;
+const Row = ({ prefixCls = 'ty-row', gutter = 0, gutterSide = false, ...restProps }: RowProps) => {
+  const { align, justify, className, style, children } = restProps;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_align-${align}`]: align,
     [`${prefixCls}_justify-${justify}`]: justify,
@@ -30,24 +31,23 @@ const Row = (props: RowProps) => {
   return (
     <div className={cls} style={style}>
       {React.Children.map(children, (child, index) => {
-        const gutterStyle = gutter ? {
-          paddingLeft: !gutterSide && (index === 0) ? 0 : gutter / 2,  // first child left padding
-          paddingRight: !gutterSide && (index === React.Children.count(children) - 1) ? 0 : gutter / 2,
-        } : {};
-        return (
-          React.cloneElement(child, {
-            ...child.props,
-            style: {
-              ...child.props.style,
-              ...gutterStyle,
-            },
-          })
-        );
+        const gutterStyle = gutter
+          ? {
+              paddingLeft: !gutterSide && index === 0 ? 0 : gutter / 2, // first child left padding
+              paddingRight:
+                !gutterSide && index === React.Children.count(children) - 1 ? 0 : gutter / 2,
+            }
+          : {};
+        return React.cloneElement(child, {
+          ...child.props,
+          style: {
+            ...child.props.style,
+            ...gutterStyle,
+          },
+        });
       })}
     </div>
   );
 };
-
-Row.defaultProps = defaultProps;
 
 export default Row;

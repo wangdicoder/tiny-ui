@@ -1,0 +1,6 @@
+/site/src/containers/test
+/dist/**/*
+/docs
+/lib/**/*
+/themes
+/node_modules

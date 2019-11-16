@@ -1,17 +1,15 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type TypographyProps = {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
+export interface TypographyProps extends BaseProps {
   children?: React.ReactNode;
-};
+}
 
 const generator = (type: string, defaultPrefixCls: string) => {
   const Component = (props: TypographyProps) => {
     const { prefixCls, className, style, children } = props;
-    const cls = classnames(prefixCls, className);
+    const cls = classNames(prefixCls, className);
 
     return React.createElement(
       type,

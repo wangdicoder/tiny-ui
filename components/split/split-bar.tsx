@@ -1,35 +1,24 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
+import { SplitMode } from './shared-props';
 
-export type SplitBarProps = {
-    mode: 'horizontal' | 'vertical',
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
-} & typeof defaultProps;
+export interface SplitBarProps extends BaseProps {
+  mode: SplitMode;
+  children?: React.ReactNode;
+}
 
-const defaultProps = {
-    prefixCls: 'ty-split-bar',
+const SplitBar = ({ prefixCls = 'ty-split-bar', ...restProps }: SplitBarProps) => {
+  const { mode, className, style } = restProps;
+  const cls = classNames(prefixCls, className, {
+    [`${prefixCls}_${mode}`]: mode,
+  });
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    console.log(e);
+  };
+
+  return <div className={cls} style={style} onMouseMove={onMouseMove}></div>;
 };
-
-const SplitBar = (props: SplitBarProps) => {
-    const { mode, prefixCls, className, style } = props;
-    const cls = classnames(prefixCls, className, {
-        [`${prefixCls}_${mode}`]: mode,
-    });
-
-    const onMouseMove = (e: React.MouseEvent) => {
-        console.log(e);
-    };
-
-    return (
-        <div className={cls} style={style} onMouseMove={onMouseMove}>
-
-        </div>
-    );
-};
-
-SplitBar.defaultProps = defaultProps;
 
 export default SplitBar;

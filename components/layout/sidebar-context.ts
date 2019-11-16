@@ -1,10 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 
 const SidebarContext = React.createContext({
-    addSidebar: () => {
-    },
-    removeSidebar: () => {
-    },
+  addSidebar: () => {},
+  removeSidebar: () => {},
 });
 
 export default SidebarContext;

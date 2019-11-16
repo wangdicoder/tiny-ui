@@ -1,12 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
-import { ButtonProps, ButtonSize, ButtonColor } from './button';
+import { BaseProps, Size, Color } from '../_utils/props';
+import { ButtonProps } from './button';
+
+export { Size, Color };
 
 export interface ButtonGroupProps extends BaseProps {
   children: React.ReactElement<ButtonProps>;
-  size?: ButtonSize;
-  color?: ButtonColor;
+  size?: Size;
+  color?: Color;
   round?: boolean;
   disabled?: boolean;
 }

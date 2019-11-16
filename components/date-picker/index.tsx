@@ -1,46 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import PickerHeader from './picker-header';
 import PickerDay from './picker-day';
+import { BaseProps } from '../_utils/props';
 
-export type DatePickerProps = {
-    defaultValue?: Date,
-    value?: Date,
-    onChange?: (date: Date) => void,
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
-} & typeof defaultProps;
+export interface DatePickerProps extends BaseProps {
+  defaultValue?: Date;
+  value?: Date;
+  onChange?: (date: Date) => void;
+  children?: React.ReactNode;
+}
 
-const defaultProps = {
-    prefixCls: 'ty-date-picker',
-    defaultValue: new Date(),
+const DatePicker = ({
+  prefixCls = 'ty-date-picker',
+  defaultValue = new Date(),
+  ...restProps
+}: DatePickerProps) => {
+  const { className, style } = restProps;
+  const cls = classNames(prefixCls, className);
+  const [date, setDate] = useState(restProps.value ? restProps.value : defaultValue);
+  const [panelDate, setPanelDate] = useState(new Date());
+
+  useEffect(() => {});
+
+  return (
+    <div className={cls} style={style}>
+      <PickerHeader date={panelDate} onChange={val => setPanelDate(val)} />
+      <PickerDay
+        date={date}
+        onChange={val => setDate(val)}
+        panelDate={panelDate}
+        panelOnChange={val => setPanelDate(val)}
+      />
+    </div>
+  );
 };
-
-const DatePicker = (props: DatePickerProps) => {
-    const { prefixCls, className, style } = props;
-    const cls = classnames(prefixCls, className);
-    const [date, setDate] = useState(props.value ? props.value : props.defaultValue);
-    const [panelDate, setPanelDate] = useState(new Date());
-
-    useEffect(() => {
-
-    });
-
-    return (
-        <div className={cls} style={style}>
-            <PickerHeader date={panelDate} onChange={(val) => setPanelDate(val)}/>
-            <PickerDay
-                date={date}
-                onChange={(val) => setDate(val)}
-                panelDate={panelDate}
-                panelOnChange={(val) => setPanelDate(val)}
-            />
-        </div>
-    );
-};
-
-DatePicker.defaultProps = defaultProps;
 
 export default DatePicker;

@@ -1,34 +1,26 @@
 import React, { useEffect } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type SplitPaneProps = {
-    min?: number,
-    getMin?: (min: number) => void,
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
+export interface SplitPaneProps extends BaseProps {
+  min?: number;
+  getMin?: (min: number) => void;
+  children?: React.ReactNode;
+}
+
+const SplitPane = ({ prefixCls = 'ty-split-pane', ...restProps }: SplitPaneProps) => {
+  const { min, getMin, className, style, children } = restProps;
+  const cls = classNames(prefixCls, className);
+
+  useEffect(() => {
+    getMin && getMin(min || 40);
+  }, []);
+
+  return (
+    <div className={cls} style={style}>
+      {children}
+    </div>
+  );
 };
-
-const defaultProps = {
-    prefixCls: 'ty-split-pane',
-};
-
-const SplitPane = (props: SplitPaneProps) => {
-    const { min, getMin, prefixCls, className, style, children } = props;
-    const cls = classnames(prefixCls, className);
-
-    useEffect(() => {
-        getMin && getMin(min || 40);
-    }, []);
-
-    return (
-        <div className={cls} style={style}>
-            {children}
-        </div>
-    );
-};
-
-SplitPane.defaultProps = defaultProps;
 
 export default SplitPane;

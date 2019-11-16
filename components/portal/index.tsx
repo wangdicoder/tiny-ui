@@ -1,20 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export type PortalProps = {
-    container?: HTMLElement,
-    children?: React.ReactNode,
-} & typeof defaultProps;
+export interface PortalProps {
+  container?: HTMLElement;
+  children?: React.ReactNode;
+}
 
-const defaultProps = {
-    container: document.body,
+const Portal = ({ container = document.body, ...restProps }: PortalProps) => {
+  const { children } = restProps;
+  return ReactDOM.createPortal(children, container);
 };
-
-const Portal = (props: PortalProps) => {
-    const { container, children } = props;
-    return ReactDOM.createPortal(children, container);
-};
-
-Portal.defaultProps = defaultProps;
 
 export default Portal;

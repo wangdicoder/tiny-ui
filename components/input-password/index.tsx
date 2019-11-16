@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import Input from '../input';
 import Icon from '../icon';
+import { BaseProps } from '../_utils/props';
 
-export type InputPasswordProps = {
-  suffix?: boolean,
-  visibleOnClick?: () => void,
-  prefixCls?: string,
-  className?: string,
-  style?: React.CSSProperties,
-  children?: React.ReactNode,
-} & typeof defaultProps;
+export interface InputPasswordProps extends BaseProps {
+  suffix?: boolean;
+  visibleOnClick?: () => void;
+  children?: React.ReactNode;
+}
 
-const defaultProps = {
-  suffix: true,
-  visibleOnClick: () => {},
-  prefixCls: 'ty-input-pwd',
-};
-
-const InputPassword = (props: InputPasswordProps) => {
-  const { prefixCls, className, style, suffix: showSuffix, visibleOnClick, ...restProps } = props;
-  const cls = classnames(prefixCls, className);
+const InputPassword = ({
+  suffix = true,
+  visibleOnClick = () => {},
+  prefixCls = 'ty-input-pwd',
+  ...restProps
+}: InputPasswordProps) => {
+  const { className, style, ...otherProps } = restProps;
+  const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(false);
 
-  const suffix = () => (
-    <div className={`${prefixCls}__suffix`} onClick={() => {
-      setVisible(!visible);
-      visibleOnClick();
-    }}>
-      {visible ? <Icon type="eye"/> : <Icon type="eye-close"/>}
+  const renderSuffix = () => (
+    <div
+      className={`${prefixCls}__suffix`}
+      onClick={() => {
+        setVisible(!visible);
+        visibleOnClick();
+      }}>
+      {visible ? <Icon type="eye" /> : <Icon type="eye-close" />}
     </div>
   );
 
@@ -37,12 +36,10 @@ const InputPassword = (props: InputPasswordProps) => {
       className={cls}
       style={style}
       type={visible ? 'text' : 'password'}
-      suffix={showSuffix ? suffix() : null}
-      {...restProps}
+      suffix={suffix ? renderSuffix() : null}
+      {...otherProps}
     />
   );
 };
-
-InputPassword.defaultProps = defaultProps;
 
 export default InputPassword;

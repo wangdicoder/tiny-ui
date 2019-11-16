@@ -2,69 +2,64 @@ import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import Portal from '../portal';
 import { CSSTransition } from 'react-transition-group';
+import { BaseProps } from '../_utils/props';
 
 export type OverlayMaskType = 'default' | 'inverted' | 'none';
 
-export type OverlayProps = {
-    isShow?: boolean,
-    unmountOnExit?: boolean,
-    clickCallback?: () => void,
-    zIndex?: number,
-    onEnter?: () => void,
-    onExit?: () => void,
-    onEntered?: () => void,
-    onExited?: () => void,
-    type?: OverlayMaskType,
-    prefixCls?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
-} & typeof defaultProps;
+export interface OverlayProps extends BaseProps {
+  isShow?: boolean;
+  unmountOnExit?: boolean;
+  clickCallback?: (e: React.MouseEvent) => void;
+  zIndex?: number;
+  onEnter?: () => void;
+  onExit?: () => void;
+  onEntered?: () => void;
+  onExited?: () => void;
+  type?: OverlayMaskType;
+  children?: React.ReactNode;
+}
 
-const defaultProps = {
-    isShow: false,
-    unmountOnExit: true,
-    zIndex: 1000,
-    prefixCls: 'ty-overlay',
-    type: 'default',
+const Overlay = ({
+  isShow = false,
+  unmountOnExit = true,
+  zIndex = 1000,
+  prefixCls = 'ty-overlay',
+  type = 'default',
+  ...restProps
+}: OverlayProps) => {
+  const { clickCallback, onEnter, onEntered, onExit, onExited, children, style } = restProps;
+  const cls = classNames(prefixCls, `${prefixCls}_${type}`);
+
+  useEffect(() => {
+    if (isShow) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
+
+  return (
+    <Portal>
+      <CSSTransition
+        appear={true}
+        onEnter={onEnter}
+        onEntered={onEntered}
+        onExit={onExit}
+        onExited={onExited}
+        in={isShow}
+        mountOnEnter={true}
+        unmountOnExit={unmountOnExit}
+        classNames={`${prefixCls}_fade`}
+        timeout={{ exit: 300, enter: 0 }}>
+        <div
+          className={cls}
+          onClick={clickCallback ? clickCallback : undefined}
+          style={{ zIndex, ...style }}>
+          {children}
+        </div>
+      </CSSTransition>
+    </Portal>
+  );
 };
-
-const Overlay = (props: OverlayProps) => {
-    const {
-        isShow, unmountOnExit, type, zIndex, clickCallback, onEnter, onEntered, onExit, onExited,
-        prefixCls, children, style,
-    } = props;
-    const cls = classNames(
-        prefixCls,
-        `${prefixCls}_${type}`,
-    );
-
-    useEffect(() => {
-        if (isShow) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    });
-
-    return (
-        <Portal>
-            <CSSTransition
-                appear={true}
-                onEnter={onEnter}
-                onEntered={onEntered}
-                onExit={onExit}
-                onExited={onExited}
-                in={isShow}
-                mountOnEnter={true}
-                unmountOnExit={unmountOnExit}
-                classNames={`${prefixCls}_fade`}
-                timeout={{ exit: 300, enter: 0 }}>
-                <div className={cls} onClick={clickCallback} style={{ zIndex, ...style }}>{children}</div>
-            </CSSTransition>
-        </Portal>
-    );
-};
-
-Overlay.defaultProps = defaultProps;
 
 export default Overlay;

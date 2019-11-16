@@ -1,37 +1,35 @@
-import * as React from 'react';
-import classnames from 'classnames';
+import React from 'react';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type DividerProps = {
-    type?: 'horizontal' | 'vertical',
-    dashed?: boolean,
-    align?: 'left' | 'right' | 'center',
-    className?: string,
-    style?: React.CSSProperties,
-    prefixCls?: string,
-    children?: React.ReactNode,
-} & typeof defaultProps;
+export type DivideType = 'horizontal' | 'vertical';
+export type DivideAlign = 'left' | 'right' | 'center';
 
-const defaultProps = {
-    prefixCls: 'ty-divider',
-    type: 'horizontal',
-    dashed: false,
-    align: 'center',
+export interface DividerProps extends BaseProps {
+  type?: DivideType;
+  dashed?: boolean;
+  align?: DivideAlign;
+  children?: React.ReactNode;
+}
+
+const Divider = ({
+  prefixCls = 'ty-divider',
+  type = 'horizontal',
+  dashed = false,
+  align = 'center',
+  ...restProps
+}: DividerProps) => {
+  const { className, style, children } = restProps;
+  const cls = classNames(prefixCls, className, `${prefixCls}_${type}`, `${prefixCls}_${align}`, {
+    [`${prefixCls}_${type}-dashed`]: dashed,
+    [`${prefixCls}_text`]: children,
+  });
+
+  return (
+    <div className={cls} style={style}>
+      {children && <span className={`${prefixCls}_inner-text`}>{children}</span>}
+    </div>
+  );
 };
-
-const Divider = (props: DividerProps) => {
-    const { type, dashed, align, className, style, prefixCls, children } = props;
-    const cls = classnames(prefixCls, className, `${prefixCls}_${type}`, `${prefixCls}_${align}`, {
-        [`${prefixCls}_${type}-dashed`]: dashed,
-        [`${prefixCls}_text`]: children,
-    });
-
-    return (
-        <div className={cls} style={style}>
-            {children && <span className={`${prefixCls}_inner-text`}>{children}</span>}
-        </div>
-    );
-};
-
-Divider.defaultProps = defaultProps;
 
 export default Divider;

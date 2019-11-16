@@ -162,7 +162,7 @@ export const COMPONENT_MENU: RouterItem[] = [
       {
         title: 'Native Select',
         route: 'native-select',
-        component: lazy(() => import('../../components/select-native/index.md')),
+        component: lazy(() => import('../../components/native-select/index.md')),
       },
       {
         title: 'Radio',

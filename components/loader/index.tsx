@@ -1,59 +1,50 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type LoaderProps = {
-    indicator?: React.ReactNode,
-    size?: 'sm' | 'default' | 'lg',
-    /** loading status */
-    loading?: boolean,
-    tip?: string,
-    vertical?: boolean,
-    blurred?: boolean,
-    prefixCls?: string,
-    className?: string,
-    style?: React.CSSProperties,
-    children?: React.ReactNode,
-} & typeof defaultProps;
+export interface LoaderProps extends BaseProps {
+  indicator?: React.ReactNode;
+  size?: 'sm' | 'default' | 'lg';
+  /** loading status */
+  loading?: boolean;
+  tip?: string;
+  vertical?: boolean;
+  blurred?: boolean;
+  children?: React.ReactNode;
+}
 
-const defaultProps = {
-    prefixCls: 'ty-loader',
-    size: 'default',
-    loading: true,
-    vertical: false,
-    blurred: true,
-};
+const Loader = ({
+  prefixCls = 'ty-loader',
+  size = 'default',
+  loading = true,
+  vertical = false,
+  blurred = true,
+  ...restProps
+}: LoaderProps) => {
+  const { indicator, tip, className, style, children } = restProps;
+  const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
+    [`${prefixCls}_spinning`]: loading,
+  });
 
-const Loader = (props: LoaderProps) => {
-    const { indicator, size, loading, tip, vertical, blurred, prefixCls, className, style, children } = props;
-    const cls = classnames(prefixCls, className, `${prefixCls}_${size}`, {
-        [`${prefixCls}_spinning`]: loading,
-    });
+  const indicatorCls = classNames(`${prefixCls}__loader-container`, {
+    [`${prefixCls}__loader-container_vertical`]: vertical,
+  });
+  const containerCls = classNames(`${prefixCls}__container`, {
+    [`${prefixCls}__container_loading`]: loading,
+    [`${prefixCls}__container_blurred`]: loading && blurred,
+  });
 
-    const indicatorCls = classnames(`${prefixCls}__loader-container`, {
-        [`${prefixCls}__loader-container_vertical`]: vertical,
-    });
-    const containerCls = classnames(`${prefixCls}__container`, {
-        [`${prefixCls}__container_loading`]: loading,
-        [`${prefixCls}__container_blurred`]: loading && blurred,
-    });
-
-    return (
-        <div className={cls} style={style}>
-            {loading && (
-                <div className={indicatorCls}>
-                    {indicator ? indicator : <div className={`${prefixCls}__indicator`}/>}
-                    {tip && <span className={`${prefixCls}__label`}>{tip}</span>}
-                </div>
-            )}
-            {children && (
-                <div className={containerCls}>
-                    {children}
-                </div>
-            )}
+  return (
+    <div className={cls} style={style}>
+      {loading && (
+        <div className={indicatorCls}>
+          {indicator ? indicator : <div className={`${prefixCls}__indicator`} />}
+          {tip && <span className={`${prefixCls}__label`}>{tip}</span>}
         </div>
-    );
+      )}
+      {children && <div className={containerCls}>{children}</div>}
+    </div>
+  );
 };
-
-Loader.defaultProps = defaultProps;
 
 export default Loader;

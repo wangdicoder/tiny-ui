@@ -1,23 +1,16 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { BaseProps } from '../_utils/props';
 
-export type TooltipProps = {
-    prefixCls?: string,
-    className?: string,
-};
+export interface TooltipProps extends BaseProps {
+  children?: React.ReactNode;
+}
 
 const Tooltip = (props: TooltipProps) => {
-    const { className, prefixCls } = props;
-    const cls = classnames(
-        prefixCls,
-        className,
-    );
+  const { className, prefixCls } = props;
+  const cls = classNames(prefixCls, className);
 
-    return (
-        <div className={cls}>
-
-        </div>
-    );
+  return <div className={cls}></div>;
 };
 
 export default Tooltip;

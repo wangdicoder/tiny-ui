@@ -1,17 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, Size, Color } from '../_utils/props';
 
-export type ButtonColor = 'primary' | 'blue' | 'red' | 'yellow' | 'green';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export { Size, Color };
 
 export interface ButtonProps extends BaseProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  color?: ButtonColor;
+  color?: Color;
   loading?: boolean;
   disabled?: boolean;
   block?: boolean;
-  size?: ButtonSize;
+  size?: Size;
   round?: boolean;
   icon?: React.ReactNode;
   link?: boolean;
