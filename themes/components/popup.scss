@@ -1,0 +1,26 @@
+@import "../variables";
+
+.#{$prefix}popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &__container, &__content {
+    position: absolute;
+  }
+
+  &__container {
+    &_hide {
+      display: none;
+    }
+  }
+
+  &_top-center, &_top-left, &_top-right {
+    bottom: 0;
+  }
+
+  &_top-center {
+    transform: translateX(-50%);
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import Popover, { PlacementTypes, TriggerTypes } from '../popover';
+import Popover, { PlacementTypes, TriggerTypes } from '../popover/old';
 import Icon from '../icon';
 import Button from '../button';
 import { BaseProps } from '../_utils/props';

@@ -1,114 +1,22 @@
 @import "../variables";
 
 .#{$prefix}popover {
-  box-sizing: border-box;
-  background-color: #fff;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
-  border-radius: 4px;
-  position: absolute;
-  transition: all 300ms;
-  transform: translateY(0);
-  z-index: 1;
-  white-space: nowrap;
 
-  &_top-left, &_top-center {
-    .#{$prefix}popover__overlay-arrow {
-      top: 100%;
-      border-top-color: #fff;
-      margin-left: -5px;
-    }
-  }
-
-  &_top-right {
-    .#{$prefix}popover__overlay-arrow {
-      top: 100%;
-      border-top-color: #fff;
-      margin-right: -5px;
-    }
-  }
-
-  &_bottom-left, &_bottom-center {
-    .#{$prefix}popover__overlay-arrow {
-      bottom: 100%;
-      border-bottom-color: #fff;
-      margin-left: -5px;
-    }
-  }
-
-  &_bottom-right {
-    .#{$prefix}popover__overlay-arrow {
-      bottom: 100%;
-      border-bottom-color: #fff;
-      margin-right: -5px;
-    }
-  }
-
-  &_left-top, &_left-center {
-    .#{$prefix}popover__overlay-arrow {
-      left: 100%;
-      border-left-color: #fff;
-      margin-top: -5px;
-    }
-  }
-
-  &_left-bottom {
-    .#{$prefix}popover__overlay-arrow {
-      left: 100%;
-      border-left-color: #fff;
-      margin-bottom: -5px;
-    }
-  }
-
-  &_right-top, &_right-center {
-    .#{$prefix}popover__overlay-arrow {
-      right: 100%;
-      border-right-color: #fff;
-      margin-top: -5px;
-    }
-  }
-
-  &_right-bottom {
-    .#{$prefix}popover__overlay-arrow {
-      right: 100%;
-      border-right-color: #fff;
-      margin-bottom: -5px;
-    }
-  }
-
-  &__trigger {
+  &__bubble {
     box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 4px;
+    white-space: nowrap;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
   }
 
-  &__overlay-arrow {
-    position: absolute;
-    border: 5px solid transparent;
+  &__bubble-title {
+    padding: 5px 15px;
+    color: #000;
+    border-bottom: 1px solid #e8e8e8;
   }
 
-  &__overlay_slide {
-    &-enter {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
-
-    &-enter-done {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    &-exit {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    &-exit-active {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
-
-    &-exit-done {
-      opacity: 0;
-      transform: translateY(-5px);
-      display: none;
-    }
+  &__bubble-content {
+    padding: 12px 15px;
   }
 }

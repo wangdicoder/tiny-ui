@@ -38,7 +38,7 @@ const Checkbox: React.FC<CheckboxProps> & { Group?: any } = ({
 
   useEffect(() => {
     'checked' in restProps && setChecked(restProps.checked!);
-  });
+  }, [restProps.checked]);
 
   return (
     <label className={cls} style={style}>

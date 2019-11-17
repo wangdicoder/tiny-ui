@@ -6,10 +6,7 @@ const baseConfig = require('./webpack.common');
 
 const devConfig = {
   mode: 'development',
-  devtool: 'eval-source-map',
-  // output: {
-  // 	publicPath: path.resolve(__dirname, 'public'),
-  // },
+  devtool: 'cheap-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',

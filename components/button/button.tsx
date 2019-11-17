@@ -17,54 +17,112 @@ export interface ButtonProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> & { Group?: any } = ({
-  prefixCls = 'ty-btn',
-  size = 'md',
-  loading = false,
-  ...restProps
-}: ButtonProps) => {
-  const {
-    color,
-    block,
-    icon,
-    link,
-    disabled,
-    onClick,
-    round,
-    children,
-    className,
-    style,
-    ...otherProps
-  } = restProps;
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_${color}`]: color,
-    [`${prefixCls}_${size}`]: size,
-    [`${prefixCls}_link`]: link,
-    [`${prefixCls}_block`]: block,
-    [`${prefixCls}_round`]: round,
-    [`${prefixCls}_disabled`]: disabled,
-    [`${prefixCls}_loading`]: loading,
-  });
+export interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>> {
+  Group?: any;
+}
 
-  const renderIcon = () => {
-    if (loading) {
-      return <span className={`${prefixCls}__loader`} />;
-    } else {
-      return <span>{icon}</span>;
-    }
-  };
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      prefixCls = 'ty-btn',
+      size = 'md',
+      loading = false,
+      color,
+      block,
+      icon,
+      link,
+      disabled,
+      onClick,
+      round,
+      children,
+      className,
+      style,
+      ...otherProps
+    }: ButtonProps,
+    ref
+  ) => {
+    const cls = classNames(prefixCls, className, {
+      [`${prefixCls}_${color}`]: color,
+      [`${prefixCls}_${size}`]: size,
+      [`${prefixCls}_link`]: link,
+      [`${prefixCls}_block`]: block,
+      [`${prefixCls}_round`]: round,
+      [`${prefixCls}_disabled`]: disabled,
+      [`${prefixCls}_loading`]: loading,
+    });
 
-  return (
-    <button
-      onClick={onClick}
-      className={cls}
-      disabled={disabled || loading}
-      style={style}
-      {...otherProps}>
-      {renderIcon()}
-      <span>{children}</span>
-    </button>
-  );
-};
+    const renderIcon = () => {
+      if (loading) {
+        return <span className={`${prefixCls}__loader`} />;
+      } else {
+        return <span>{icon}</span>;
+      }
+    };
+
+    return (
+      <button
+        ref={ref}
+        onClick={onClick}
+        className={cls}
+        disabled={disabled || loading}
+        style={style}
+        {...otherProps}>
+        {renderIcon()}
+        <span>{children}</span>
+      </button>
+    );
+  }
+) as CompoundedComponent;
+
+// const Button: React.FC<ButtonProps> & { Group?: any } = ({
+//   prefixCls = 'ty-btn',
+//   size = 'md',
+//   loading = false,
+//   ...restProps
+// }: ButtonProps) => {
+//   const {
+//     color,
+//     block,
+//     icon,
+//     link,
+//     disabled,
+//     onClick,
+//     round,
+//     children,
+//     className,
+//     style,
+//     ...otherProps
+//   } = restProps;
+//   const cls = classNames(prefixCls, className, {
+//     [`${prefixCls}_${color}`]: color,
+//     [`${prefixCls}_${size}`]: size,
+//     [`${prefixCls}_link`]: link,
+//     [`${prefixCls}_block`]: block,
+//     [`${prefixCls}_round`]: round,
+//     [`${prefixCls}_disabled`]: disabled,
+//     [`${prefixCls}_loading`]: loading,
+//   });
+//
+//   const renderIcon = () => {
+//     if (loading) {
+//       return <span className={`${prefixCls}__loader`} />;
+//     } else {
+//       return <span>{icon}</span>;
+//     }
+//   };
+//
+//   return (
+//     <button
+//       onClick={onClick}
+//       className={cls}
+//       disabled={disabled || loading}
+//       style={style}
+//       {...otherProps}>
+//       {renderIcon()}
+//       <span>{children}</span>
+//     </button>
+//   );
+// };
 
 export default Button;
