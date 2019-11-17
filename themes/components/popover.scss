@@ -1,22 +1,19 @@
 @import "../variables";
 
 .#{$prefix}popover {
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 4px;
+  white-space: nowrap;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
 
-  &__bubble {
-    box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 4px;
-    white-space: nowrap;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
-  }
-
-  &__bubble-title {
+  &__title {
     padding: 5px 15px;
     color: #000;
     border-bottom: 1px solid #e8e8e8;
   }
 
-  &__bubble-content {
+  &__content {
     padding: 12px 15px;
   }
 }

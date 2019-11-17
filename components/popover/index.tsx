@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import Popup, { PlacementType } from '../popup';
 import warning from '../_utils/warning';
@@ -20,9 +20,9 @@ const Popover = ({
   trigger = 'hover',
   ...restProps
 }: PopoverProps) => {
-  const { title, content, children } = restProps;
+  const { title, content, className, children } = restProps;
   const [showPopup, setShowPopup] = useState(false);
-  // const cls = classNames(className, prefixCls);
+  const cls = classNames(className, prefixCls);
   const [container, setContainer] = useState<HTMLElement | undefined>(undefined);
 
   const handlePopupMouseOver = () => {
@@ -59,13 +59,8 @@ const Popover = ({
   if (children) {
     return (
       <>
-        {/*<div className={cls} style={{ display: 'inline-block' }}>*/}
-        {/*  {children}*/}
-        {/*</div>*/}
         {React.cloneElement(React.Children.only(children), {
-          ref: (el: any) => {
-            setContainer(el);
-          },
+          ref: (el: any) => setContainer(el),
         })}
         <Popup
           target={container}
@@ -73,9 +68,9 @@ const Popover = ({
           placement={placement}
           onMouseOver={handlePopupMouseOver}
           onMouseOut={handlePopupMouseOut}>
-          <div className={`${prefixCls}__bubble`}>
-            <div className={`${prefixCls}__bubble-title`}>{title}</div>
-            <div className={`${prefixCls}__bubble-content`}>{content}</div>
+          <div className={cls}>
+            <div className={`${prefixCls}__title`}>{title}</div>
+            <div className={`${prefixCls}__content`}>{content}</div>
           </div>
         </Popup>
       </>
