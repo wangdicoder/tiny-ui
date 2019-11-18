@@ -4,8 +4,7 @@ import { BaseProps, Size, Color } from '../_utils/props';
 
 export { Size, Color };
 
-export interface ButtonProps extends BaseProps {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'>, BaseProps{
   color?: Color;
   loading?: boolean;
   disabled?: boolean;
@@ -17,12 +16,12 @@ export interface ButtonProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-export interface CompoundedComponent
+export interface ButtonComponent
   extends React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>> {
   Group?: any;
 }
 
-const Button: CompoundedComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       prefixCls = 'ty-btn',
@@ -33,7 +32,6 @@ const Button: CompoundedComponent = React.forwardRef<HTMLButtonElement, ButtonPr
       icon,
       link,
       disabled,
-      onClick,
       round,
       children,
       className,
@@ -52,7 +50,7 @@ const Button: CompoundedComponent = React.forwardRef<HTMLButtonElement, ButtonPr
       [`${prefixCls}_loading`]: loading,
     });
 
-    const renderIcon = () => {
+    const renderIcon = (): React.ReactElement => {
       if (loading) {
         return <span className={`${prefixCls}__loader`} />;
       } else {
@@ -63,7 +61,6 @@ const Button: CompoundedComponent = React.forwardRef<HTMLButtonElement, ButtonPr
     return (
       <button
         ref={ref}
-        onClick={onClick}
         className={cls}
         disabled={disabled || loading}
         style={style}
