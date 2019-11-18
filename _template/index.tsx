@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 export interface XProps {
@@ -8,7 +8,7 @@ export interface XProps {
   children?: React.ReactNode;
 }
 
-const X = (props: XProps) => {
+const X = (props: XProps): React.ReactElement => {
   const { prefixCls, className, style, children } = props;
   const cls = classNames(prefixCls, className);
 
