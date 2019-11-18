@@ -7,8 +7,8 @@ import warning from '../_utils/warning';
 export type TriggerType = 'hover' | 'focus' | 'click' | 'context-menu';
 
 export interface PopoverProps extends BaseProps {
-  title?: string;
-  content?: string;
+  title?: React.ReactNode;
+  content?: React.ReactNode;
   placement?: PlacementType;
   trigger?: TriggerType;
   children: React.ReactElement;

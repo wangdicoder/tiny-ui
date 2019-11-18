@@ -149,11 +149,11 @@ const Popup = ({
 
   useEffect(() => {
     if (target && popupRef.current) {
-      const offset = getOffset({ target, popup: popupRef.current, topGap, leftGap, placement });
+      const offset = getOffset({ target, popup: popupRef.current!, topGap, leftGap, placement });
       setLeft(`${offset.left}px`);
       setTop(`${offset.top}px`);
     }
-  }, [show]);
+  }, [show, top, left, topGap, leftGap, placement]);
 
   return (
     <Portal>

@@ -1,3 +1,6 @@
+import Basic from './demo/basic.md'
+import Placement from './demo/placement.md'
+
 # Popover
 
 To trigger an operation.
@@ -16,7 +19,8 @@ import { Popover } from 'tiny-ui';
 
 <layout>
   <column>
-    
+    <Basic/>
+    <Placement/>
   </column>
   <column>
     

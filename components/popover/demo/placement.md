@@ -1,107 +1,109 @@
+<demo>
+
 ### Placement
 
 There are 12 placement options available.
 
-<!--start-code-->
+```jsx live
+() => {
+  const content = (
+    <div style={{ padding: '0 20px' }}>
+      <p>This is a content placeholder</p>
+      <p>This is a content placeholder</p>
+      <p>This is a content placeholder</p>
+    </div>
+  );
 
-```jsx
-const Overlay = () => (
-  <div style={{ padding: '0 20px' }}>
-    <p>This is a content placeholder</p>
-    <p>This is a content placeholder</p>
-    <p>This is a content placeholder</p>
-  </div>
-)
-
-render(
-  <table>
-    <tbody>
-      <tr>
-        <td></td>
-        <td>
-          <Popover overlay={<Overlay />} placement="topLeft">
-            <Button>TL</Button>
-          </Popover>
-        </td>
-        <td>
-          <Popover overlay={<Overlay />} placement="topCenter">
-            <Button>TC</Button>
-          </Popover>
-        </td>
-        <td>
-          <Popover overlay={<Overlay />} placement="topRight">
-            <Button>TR</Button>
-          </Popover>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <Popover overlay={<Overlay />} placement="leftTop">
-            <Button>LT</Button>
-          </Popover>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-          <Popover overlay={<Overlay />} placement="rightTop">
-            <Button>RT</Button>
-          </Popover>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <Popover overlay={<Overlay />} placement="leftCenter">
-            <Button>LC</Button>
-          </Popover>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-          <Popover overlay={<Overlay />} placement="rightCenter">
-            <Button>RC</Button>
-          </Popover>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <Popover overlay={<Overlay />} placement="leftBottom">
-            <Button>LB</Button>
-          </Popover>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-          <Popover overlay={<Overlay />} placement="rightBottom">
-            <Button>RB</Button>
-          </Popover>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          <Popover overlay={<Overlay />} placement="bottomLeft">
-            <Button>BL</Button>
-          </Popover>
-        </td>
-        <td>
-          <Popover overlay={<Overlay />} placement="bottomCenter">
-            <Button>BC</Button>
-          </Popover>
-        </td>
-        <td>
-          <Popover overlay={<Overlay />} placement="bottomRight">
-            <Button>BR</Button>
-          </Popover>
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-);
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>
+            <Popover content={content} placement="top-left">
+              <Button>TL</Button>
+            </Popover>
+          </td>
+          <td>
+            <Popover content={content} placement="top-center">
+              <Button>TC</Button>
+            </Popover>
+          </td>
+          <td>
+            <Popover content={content} placement="top-right">
+              <Button>TR</Button>
+            </Popover>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <Popover content={content} placement="left-top">
+              <Button>LT</Button>
+            </Popover>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <Popover content={content} placement="right-top">
+              <Button>RT</Button>
+            </Popover>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Popover content={content} placement="left-center">
+              <Button>LC</Button>
+            </Popover>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <Popover content={content} placement="right-center">
+              <Button>RC</Button>
+            </Popover>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Popover content={content} placement="left-bottom">
+              <Button>LB</Button>
+            </Popover>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <Popover content={content} placement="right-bottom">
+              <Button>RB</Button>
+            </Popover>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <Popover content={content} placement="bottom-left">
+              <Button>BL</Button>
+            </Popover>
+          </td>
+          <td>
+            <Popover content={content} placement="bottom-center">
+              <Button>BC</Button>
+            </Popover>
+          </td>
+          <td>
+            <Popover content={content} placement="bottom-right">
+              <Button>BR</Button>
+            </Popover>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
 ```
 
-<!--end-code-->
+</demo>
