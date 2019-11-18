@@ -4,9 +4,6 @@
     "allowJs": true,
     "outDir": "../dist/",
     "resolveJsonModule": true,
-    "types": [
-      "node"
-    ],
     "typeRoots": [
       "../types/",
       "../../node_modules/@types/"
