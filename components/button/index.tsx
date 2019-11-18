@@ -1,7 +1,7 @@
 import Button from './button';
 import ButtonGroup from './button-group';
 
-export { ButtonProps } from './button';
+export { ButtonProps, ButtonColor } from './button';
 export { ButtonGroupProps } from './button-group';
 
 Button.Group = ButtonGroup;

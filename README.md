@@ -12,4 +12,4 @@
 ![GitHub issues](https://img.shields.io/github/issues/wangdicoder/tiny-ui-react.svg)
 ![NPM](https://img.shields.io/npm/l/tiny-ui.svg)
 
-This project is under developing
+This project is under development.

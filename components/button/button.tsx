@@ -1,11 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { BaseProps, Size, Color } from '../_utils/props';
+import { BaseProps, Size } from '../_utils/props';
 
-export { Size, Color };
+export { Size };
+export type ButtonColor = 'primary' | 'default' | 'blue' | 'red' | 'yellow' | 'green';
 
-export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'>, BaseProps{
-  color?: Color;
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'>, BaseProps {
+  color?: ButtonColor;
   loading?: boolean;
   disabled?: boolean;
   block?: boolean;
@@ -16,7 +17,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'>, B
   children?: React.ReactNode;
 }
 
-export interface ButtonComponent
+interface ButtonComponent
   extends React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>> {
   Group?: any;
 }
@@ -26,12 +27,12 @@ const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>
     {
       prefixCls = 'ty-btn',
       size = 'md',
+      color = 'default',
       loading = false,
-      color,
-      block,
+      disabled = false,
+      block = false,
       icon,
       link,
-      disabled,
       round,
       children,
       className,
