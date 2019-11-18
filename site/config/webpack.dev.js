@@ -6,7 +6,7 @@ const baseConfig = require('./webpack.common');
 
 const devConfig = {
   mode: 'development',
-  devtool: 'cheap-source-map',
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',

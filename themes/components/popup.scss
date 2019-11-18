@@ -15,12 +15,4 @@
       display: none;
     }
   }
-
-  &_top-center, &_top-left, &_top-right {
-    bottom: 0;
-  }
-
-  &_top-center {
-    transform: translateX(-50%);
-  }
 }

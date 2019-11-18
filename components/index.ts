@@ -34,7 +34,6 @@ export { default as Notification } from './notification';
 export { default as Overlay } from './overlay';
 // export { default as Popconfirm } from './popconfirm';
 export { default as Popover } from './popover';
-export { default as Popup } from './popup';
 export { default as Progress } from './progress';
 export { default as Radio } from './radio';
 export { default as Rate } from './rate';

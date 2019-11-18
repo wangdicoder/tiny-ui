@@ -36,7 +36,6 @@ const Popover = ({
   useEffect(() => {
     if (!container) return undefined;
 
-    console.log(container);
     if (trigger === 'hover') {
       container.addEventListener('mouseenter', () => {
         setShowPopup(true);

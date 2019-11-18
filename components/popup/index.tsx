@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Portal from '../portal';
 import { BaseProps } from '../_utils/props';
@@ -46,57 +46,77 @@ const getOffset = ({
   leftGap: number;
   placement: PlacementType;
 }): Offset => {
-  const rect = getRect(target);
+  const targetRect = getRect(target);
   const popupRect = getRect(popup);
-  let top = rect.top + getScroll(window);
-  let left = rect.left + getScroll(window, false);
+  let top = targetRect.top + getScroll(window);
+  let left = targetRect.left + getScroll(window, false);
 
   switch (placement) {
-    case 'bottom-center':
-      top = top + topGap + rect.height;
-      left = left + leftGap + rect.width / 2;
-      break;
-
-    case 'bottom-left':
-      top = top + topGap + rect.height;
+    case 'top-left':
+      top = top - topGap - popupRect.height;
       left = left + leftGap;
       break;
 
     case 'top-center':
-      top = top - topGap;
-      left = left + leftGap + rect.width / 2;
-      break;
-
-    case 'top-left':
-      top = top - topGap;
-      left = left + leftGap;
+      top = top - topGap - popupRect.height;
+      left = left + leftGap + targetRect.width / 2 - popupRect.width / 2;
       break;
 
     case 'top-right':
-      top = top - topGap;
-      left = left + leftGap + rect.width - popupRect.width;
+      top = top - topGap - popupRect.height;
+      left = left + leftGap + targetRect.width - popupRect.width;
       break;
 
-    // case 'left':
-    //   top = top + rect.height / 2;
-    //   left = left - leftGap;
-    //   break;
-    //
-    // case 'right':
-    //   top = top + rect.height / 2;
-    //   left = left + rect.width + leftGap;
-    //   break;
-    //
-    // case 'right-start':
-    //   top = top + topGap;
-    //   left = left + rect.width + leftGap;
-    //   break;
+    case 'bottom-left':
+      top = top + topGap + targetRect.height;
+      left = left + leftGap;
+      break;
+
+    case 'bottom-center':
+      top = top + topGap + targetRect.height;
+      left = left + leftGap + targetRect.width / 2;
+      break;
+
+    case 'bottom-right':
+      top = top + topGap + targetRect.height;
+      left = left + leftGap + targetRect.width - popupRect.width;
+      break;
+
+    case 'left-top':
+      top = top + topGap;
+      left = left - leftGap - popupRect.width;
+      break;
+
+    case 'left-center':
+      top = top + topGap + targetRect.height / 2 - popupRect.height / 2;
+      left = left - leftGap - popupRect.width;
+      break;
+
+    case 'left-bottom':
+      top = top + topGap + targetRect.height - popupRect.height;
+      left = left - leftGap - popupRect.width;
+      break;
+
+    case 'right-top':
+      top = top + topGap;
+      left = left + leftGap + targetRect.width;
+      break;
+
+    case 'right-center':
+      top = top + targetRect.height / 2 - popupRect.height / 2;
+      left = left + leftGap + targetRect.width;
+      break;
+
+    case 'right-bottom':
+      top = top + topGap + targetRect.height - popupRect.height;
+      left = left + leftGap + targetRect.width;
+      break;
   }
 
   return {
     top,
     left,
-    width: rect.width,
+    width: targetRect.width,
     placement,
   };
 };
@@ -125,17 +145,15 @@ const Popup = ({
   const contentCls = classNames(`${prefixCls}__content`, className, `${prefixCls}_${placement}`);
   const [top, setTop] = useState('0');
   const [left, setLeft] = useState('0');
+  const popupRef = useRef<HTMLDivElement | null>(null);
 
-  const popupRef = useCallback(
-    popup => {
-      if (target) {
-        const offset = getOffset({ target, popup, topGap, leftGap, placement });
-        setLeft(`${offset.left}px`);
-        setTop(`${offset.top}px`);
-      }
-    },
-    [target]
-  );
+  useEffect(() => {
+    if (target && popupRef.current) {
+      const offset = getOffset({ target, popup: popupRef.current, topGap, leftGap, placement });
+      setLeft(`${offset.left}px`);
+      setTop(`${offset.top}px`);
+    }
+  }, [show]);
 
   return (
     <Portal>
@@ -143,7 +161,6 @@ const Popup = ({
         <div className={containerCls} style={{ left, top, zIndex }}>
           <div
             ref={popupRef}
-            style={{ width: 'auto' }}
             className={contentCls}
             onMouseOut={onMouseOut}
             onMouseOver={onMouseOver}
