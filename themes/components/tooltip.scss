@@ -1,5 +1,40 @@
 @import "../variables";
 
 .#{$prefix}tooltip {
+  font-size: 12px;
 
+  .#{$prefix}popover {
+    &__arrow{
+      width: $tooltip-arrow-size;
+      height: $tooltip-arrow-size;
+    }
+
+    &__content {
+      padding: 5px 8px;
+    }
+  }
+
+  &_top-left, &_top-right, &_top-center {
+    .#{$prefix}popover__arrow {
+      bottom: -$tooltip-arrow-size/2;
+    }
+  }
+
+  &_bottom-left, &_bottom-right, &_bottom-center {
+    .#{$prefix}popover__arrow {
+      top: -$tooltip-arrow-size/2;
+    }
+  }
+
+  &_left-top, &_left-center, &_left-bottom {
+    .#{$prefix}popover__arrow {
+      right: -$tooltip-arrow-size/2;
+    }
+  }
+
+  &_right-top, &_right-center, &_right-bottom {
+    .#{$prefix}popover__arrow {
+      left: -$tooltip-arrow-size/2;
+    }
+  }
 }
