@@ -1,17 +1,20 @@
 import Basic from './demo/basic.md'
 import Placement from './demo/placement.md'
+import Trigger from './demo/trigger.md'
 
 # Popover
 
-To trigger an operation.
+The floating card popped by clicking or hovering.
 
 ## Scenario
 
-A button means an operation (or a series of operations). Clicking a button will trigger corresponding business logic.
+A simple popup menu to provide extra information or operations.
+
+Comparing with `Tooltip`, besides information `Popover` can also provide action elements like links and buttons.
 
 ## Usage
 
-```js
+```jsx
 import { Popover } from 'tiny-ui';
 ```
 
@@ -23,7 +26,7 @@ import { Popover } from 'tiny-ui';
     <Placement/>
   </column>
   <column>
-    
+    <Trigger/>
   </column>
 </layout>
 

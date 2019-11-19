@@ -8,14 +8,14 @@ The simplest usage.
 () => {
   const content = (
     <div>
-      <p>Content</p>
-      <p>Content</p>
+      <p>This is the content</p>
+      <p>This is the content</p>
     </div>
   );
 
   return (
     <Popover title="Title" content={content}>
-      <Button type="primary">Hover me</Button>
+      <Button color="primary">Hover me</Button>
     </Popover> 
   );
 }

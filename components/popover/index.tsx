@@ -20,7 +20,7 @@ const Popover = ({
   placement = 'top-center',
   trigger = 'hover',
   ...restProps
-}: PopoverProps) => {
+}: PopoverProps): React.ReactElement | null => {
   const { title, content, className, children } = restProps;
   const [popupVisible, setPopupVisible] = useState(false);
   const cls = classNames(className, prefixCls);
@@ -113,8 +113,8 @@ const Popover = ({
           onMouseOver={handlePopupMouseOver}
           onMouseOut={handlePopupMouseOut}>
           <div className={cls} ref={popupRef}>
-            <div className={`${prefixCls}__title`}>{title}</div>
-            <div className={`${prefixCls}__content`}>{content}</div>
+            {title && <div className={`${prefixCls}__title`}>{title}</div>}
+            {content && <div className={`${prefixCls}__content`}>{content}</div>}
           </div>
         </Popup>
       </>

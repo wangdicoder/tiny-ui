@@ -74,7 +74,7 @@ const getOffset = ({
 
     case 'bottom-center':
       top = top + topGap + targetRect.height;
-      left = left + leftGap + targetRect.width / 2;
+      left = left + leftGap + targetRect.width / 2 - popupRect.width / 2;
       break;
 
     case 'bottom-right':
