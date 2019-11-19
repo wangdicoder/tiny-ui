@@ -19,21 +19,21 @@
 
     .md {
       &__heading-3 {
+        color: #314659;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: 600;
         position: relative;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         margin-left: 24px;
         margin-right: 24px;
-        padding-left: 10px;
 
         &:after {
           content: '';
           position: absolute;
-          top: 50%;
+          top: calc(100% + 5px);
           left: 0;
-          width: 3px;
-          height: 17px;
+          width: 20px;
+          height: 2px;
           transform: translateY(-50%);
           background-color: rgba($main-color, .8);
         }
