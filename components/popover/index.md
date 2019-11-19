@@ -1,6 +1,7 @@
 import Basic from './demo/basic.md'
 import Placement from './demo/placement.md'
 import Trigger from './demo/trigger.md'
+import Controlled from './demo/controlled.md'
 
 # Popover
 
@@ -27,6 +28,7 @@ import { Popover } from 'tiny-ui';
   </column>
   <column>
     <Trigger/>
+    <Controlled/>
   </column>
 </layout>
 
