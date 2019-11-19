@@ -11,6 +11,9 @@ export interface PopoverProps extends BaseProps {
   title?: React.ReactNode;
   content?: React.ReactNode;
   placement?: PlacementType;
+  visible?: boolean;
+  defaultVisible?: boolean;
+  onVisibleChange?: (visible: boolean) => void;
 
   /** Determine whether display an arrow */
   arrow?: boolean;
@@ -34,15 +37,18 @@ const Popover = ({
   prefixCls = 'ty-popover',
   placement = 'top-center',
   trigger = 'hover',
+  defaultVisible = false,
   arrow = true,
   gap = 0,
   mouseEnterDelay = 100,
   mouseLeaveDelay = 100,
   ...restProps
 }: PopoverProps): React.ReactElement | null => {
-  const { title, content, className, children } = restProps;
+  const { title, content, visible, onVisibleChange, className, children } = restProps;
   const cls = classNames(className, prefixCls, `${prefixCls}_${placement}`);
-  const [popupVisible, setPopupVisible] = useState<boolean>(false);
+  const [popupVisible, setPopupVisible] = useState(
+    'visible' in restProps ? visible : defaultVisible
+  );
   const [arrowStyle, setArrowStyle] = useState<React.CSSProperties>({});
   const [target, setTarget] = useState<HTMLElement | undefined>(undefined);
   const [delayHidePopupTimer, setDelayHidePopupTimer] = useState<number | undefined>(undefined);
@@ -60,11 +66,13 @@ const Popover = ({
 
   const displayPopup = useCallback(() => {
     setPopupVisible(true);
-  }, []);
+    onVisibleChange && onVisibleChange(true);
+  }, [onVisibleChange]);
 
   const hidePopup = useCallback(() => {
     setPopupVisible(false);
-  }, []);
+    onVisibleChange && onVisibleChange(false);
+  }, [onVisibleChange]);
 
   const delayDisplayPopup = useCallback((): void => {
     const delayDisplayPopupTimer = window.setTimeout(() => {
@@ -180,6 +188,10 @@ const Popover = ({
     const style = getArrowPlacementStyle(target, placement);
     setArrowStyle(style);
   }, [target, placement]);
+
+  useEffect(() => {
+    'visible' in restProps && setPopupVisible(restProps.visible);
+  }, [restProps.visible]);
 
   if (children) {
     return (
