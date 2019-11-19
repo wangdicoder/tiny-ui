@@ -8,8 +8,8 @@ The simplest usage.
 () => {
   const content = (
     <div>
-      <p>This is the content</p>
-      <p>This is the content</p>
+      <div>This is the content</div>
+      <div>This is the content</div>
     </div>
   );
 

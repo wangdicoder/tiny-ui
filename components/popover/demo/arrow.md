@@ -7,9 +7,9 @@ Arrowing to the trigger is also available.
 ```jsx
 const Overlay = () => (
   <div style={{ padding: '0 20px' }}>
-    <p>This is a content placeholder</p>
-    <p>This is a content placeholder</p>
-    <p>This is a content placeholder</p>
+    <div>This is a content placeholder</div>
+    <div>This is a content placeholder</div>
+    <div>This is a content placeholder</div>
   </div>
 )
 
