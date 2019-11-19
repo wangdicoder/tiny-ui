@@ -1,8 +1,8 @@
 <demo>
 
-### Three ways to trigger
+### Four ways to trigger
 
-Mouse to click, focus and move in.
+Mouse to click, right click, focus and move in.
 
 ```jsx live
 () => {
@@ -23,6 +23,9 @@ Mouse to click, focus and move in.
       </Popover>
       <Popover content={content} title="Title" trigger="click">
         <Button>Click me</Button>
+      </Popover>
+      <Popover content={content} title="Title" trigger="context-menu">
+        <Button>Right Click me</Button>
       </Popover>
     </>
   );

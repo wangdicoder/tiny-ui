@@ -1,4 +1,9 @@
-# Popconfirm
+import Basic from './demo/basic.md'
+import Placement from './demo/placement.md'
+import Locale from './demo/locale.md'
+import Icon from './demo/icon.md'
+
+# PopConfirm
 
 A simple and compact confirmation dialog of an action.
 
@@ -10,18 +15,20 @@ The difference with the confirm modal dialog is that it's more lightweight than 
 
 ## Usage
 
-```js
-import { Popconfirm } from 'tiny-ui';
+```jsx
+import { PopConfirm } from 'tiny-ui';
 ```
 
 ## Examples
 
 <layout>
   <column>
-    
+    <Basic/>
+    <Placement/>
   </column>
   <column>
-    
+    <Locale/>
+    <Icon/>
   </column>
 </layout>
 

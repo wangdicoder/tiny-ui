@@ -1,45 +1,46 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import Popover, { PlacementTypes, TriggerTypes } from '../popover/old';
+import Popover, { TriggerType } from '../popover';
+import { PlacementType } from '../popup';
 import Icon from '../icon';
 import Button from '../button';
 import { BaseProps } from '../_utils/props';
 
-export interface PopconfirmProps extends BaseProps {
+export interface PopConfirmProps extends BaseProps {
   title?: string;
   confirmText?: string;
   cancelText?: string;
   onConfirm?: (e: React.MouseEvent) => void;
   onCancel?: (e: React.MouseEvent) => void;
   icon?: React.ReactNode;
-  placement?: PlacementTypes;
-  trigger?: TriggerTypes | TriggerTypes[];
-  children?: React.ReactNode;
+  placement?: PlacementType;
+  trigger?: TriggerType;
+  children: React.ReactElement;
 }
 
-const Popconfirm = ({
+const PopConfirm = ({
   prefixCls = 'ty-popconfirm',
-  placement = 'topCenter',
+  placement = 'top-center',
   trigger = 'click',
   confirmText = 'Yes',
   cancelText = 'No',
   ...restProps
-}: PopconfirmProps): React.ReactElement => {
+}: PopConfirmProps): React.ReactElement => {
   const { title, icon, onConfirm, onCancel, className, style, children } = restProps;
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(false);
 
-  const cancelOnClick = (e: React.MouseEvent) => {
+  const cancelOnClick = (e: React.MouseEvent): void => {
     setVisible(false);
     onCancel && onCancel(e);
   };
 
-  const confirmOnClick = (e: React.MouseEvent) => {
+  const confirmOnClick = (e: React.MouseEvent): void => {
     setVisible(false);
     onConfirm && onConfirm(e);
   };
 
-  const overlay = () => {
+  const overlay = (): React.ReactElement => {
     return (
       <div className={cls} style={style}>
         <div className={`${prefixCls}__messages`}>
@@ -64,8 +65,7 @@ const Popconfirm = ({
       onVisibleChange={(val: boolean): void => {
         setVisible(val);
       }}
-      overlay={overlay()}
-      arrow
+      content={overlay()}
       placement={placement}
       trigger={trigger}>
       {children}
@@ -73,4 +73,4 @@ const Popconfirm = ({
   );
 };
 
-export default Popconfirm;
+export default PopConfirm;

@@ -224,11 +224,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'popover',
         component: lazy(() => import('../../components/popover/index.md')),
       },
-      //{
-      //   title: 'Popconfirm',
-      //   route: 'popconfirm',
-      //   component: lazy(() => import('../../components/popconfirm/index.md')),
-      // }
+      {
+        title: 'PopConfirm',
+        route: 'pop-confirm',
+        component: lazy(() => import('../../components/pop-confirm/index.md')),
+      },
     ],
   },
   {

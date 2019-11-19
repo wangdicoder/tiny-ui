@@ -32,7 +32,6 @@ export interface PopoverProps extends BaseProps {
   children: React.ReactElement;
 }
 
-let eventTarget: EventTarget | null = null;
 const Popover = ({
   prefixCls = 'ty-popover',
   placement = 'top-center',
@@ -51,6 +50,7 @@ const Popover = ({
   );
   const [arrowStyle, setArrowStyle] = useState<React.CSSProperties>({});
   const [target, setTarget] = useState<HTMLElement | undefined>(undefined);
+  const [eventTarget, setEventTarget] = useState<EventTarget | null>(null);
   const [delayHidePopupTimer, setDelayHidePopupTimer] = useState<number | undefined>(undefined);
   const [delayDisplayPopupTimer, setDelayDisplayPopupTimer] = useState<number | undefined>(
     undefined
@@ -60,7 +60,7 @@ const Popover = ({
   const isInPopup = (): boolean => {
     const eventEl = eventTarget as HTMLElement;
     const flag: boolean = (popupRef.current as HTMLDivElement).contains(eventEl);
-    eventTarget = null;
+    setEventTarget(null);
     return flag;
   };
 
@@ -126,7 +126,7 @@ const Popover = ({
 
   const handleClickOutside = useCallback(
     (e: Event): void => {
-      eventTarget = e.target;
+      setEventTarget(e.target);
       if (isInPopup()) return;
 
       hidePopup();
