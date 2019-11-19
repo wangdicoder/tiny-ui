@@ -6,6 +6,7 @@ import warning from '../_utils/warning';
 import { getArrowPlacementStyle } from './arrow-placement';
 
 export type TriggerType = 'hover' | 'focus' | 'click' | 'context-menu';
+export type PopoverTheme = 'white' | 'dark';
 
 export interface PopoverProps extends BaseProps {
   title?: React.ReactNode;
@@ -14,6 +15,8 @@ export interface PopoverProps extends BaseProps {
   visible?: boolean;
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
+
+  theme?: PopoverTheme;
 
   /** Determine whether display an arrow */
   arrow?: boolean;
@@ -39,12 +42,18 @@ const Popover = ({
   defaultVisible = false,
   arrow = true,
   gap = 0,
+  theme = 'white',
   mouseEnterDelay = 100,
   mouseLeaveDelay = 100,
   ...restProps
 }: PopoverProps): React.ReactElement | null => {
   const { title, content, visible, onVisibleChange, className, children } = restProps;
-  const cls = classNames(className, prefixCls, `${prefixCls}_${placement}`);
+  const cls = classNames(
+    className,
+    prefixCls,
+    `${prefixCls}_${placement}`,
+    `${prefixCls}_${theme}`
+  );
   const [popupVisible, setPopupVisible] = useState(
     'visible' in restProps ? visible : defaultVisible
   );
