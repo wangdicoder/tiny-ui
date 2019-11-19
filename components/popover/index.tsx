@@ -151,7 +151,7 @@ const Popover = ({
         hidePopup();
       } else {
         displayPopup();
-        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('click', handleClickOutside, { capture: true });
         e.stopPropagation();
       }
     },
@@ -210,7 +210,7 @@ const Popover = ({
         })}
         <Popup
           target={target}
-          gap={arrow ? 10 + gap : gap}
+          gap={arrow ? 9 + gap : gap}
           show={popupVisible}
           placement={placement}
           onMouseOver={handlePopupMouseOver}
