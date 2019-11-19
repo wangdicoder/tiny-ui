@@ -11,7 +11,7 @@ import HomePage from './containers/home';
 import ComponentsLayoutPage from './containers/components-layout';
 import Test from './containers/test';
 
-const App = () => (
+const App = (): React.ReactElement => (
   <HashRouter>
     <div>
       <Header />

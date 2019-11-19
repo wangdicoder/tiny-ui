@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import Popup, { PlacementType } from '../popup';
 import warning from '../_utils/warning';
+import { getArrowPlacementStyle } from './arrow-placement';
 
 export type TriggerType = 'hover' | 'focus' | 'click' | 'context-menu';
 
@@ -10,6 +11,12 @@ export interface PopoverProps extends BaseProps {
   title?: React.ReactNode;
   content?: React.ReactNode;
   placement?: PlacementType;
+
+  /** Determine whether display an arrow */
+  arrow?: boolean;
+
+  /** The distance between popup window and trigger target */
+  gap?: number;
   trigger?: TriggerType;
   children: React.ReactElement;
 }
@@ -19,11 +26,14 @@ const Popover = ({
   prefixCls = 'ty-popover',
   placement = 'top-center',
   trigger = 'hover',
+  arrow = true,
+  gap = 0,
   ...restProps
 }: PopoverProps): React.ReactElement | null => {
   const { title, content, className, children } = restProps;
   const [popupVisible, setPopupVisible] = useState(false);
-  const cls = classNames(className, prefixCls);
+  const [arrowStyle, setArrowStyle] = useState<React.CSSProperties>({});
+  const cls = classNames(className, prefixCls, `${prefixCls}_${placement}`);
   const [target, setTarget] = useState<HTMLElement | undefined>(undefined);
   const popupRef = useRef<HTMLDivElement | null>(null);
 
@@ -76,7 +86,7 @@ const Popover = ({
   );
 
   useEffect(() => {
-    if (!target) return undefined;
+    if (!target) return;
 
     if (trigger === 'hover') {
       target.addEventListener('mouseenter', displayPopup);
@@ -100,6 +110,13 @@ const Popover = ({
     };
   }, [target, displayPopup, hidePopup, handleClick]);
 
+  useEffect(() => {
+    if (!target) return;
+
+    const style = getArrowPlacementStyle(target, placement);
+    setArrowStyle(style);
+  }, [target, placement]);
+
   if (children) {
     return (
       <>
@@ -108,11 +125,13 @@ const Popover = ({
         })}
         <Popup
           target={target}
+          gap={arrow ? 10 + gap : gap}
           show={popupVisible}
           placement={placement}
           onMouseOver={handlePopupMouseOver}
           onMouseOut={handlePopupMouseOut}>
           <div className={cls} ref={popupRef}>
+            {arrow && <div className={`${prefixCls}__arrow`} style={arrowStyle} />}
             {title && <div className={`${prefixCls}__title`}>{title}</div>}
             {content && <div className={`${prefixCls}__content`}>{content}</div>}
           </div>
