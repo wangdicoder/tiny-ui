@@ -22,8 +22,7 @@ export interface PopupProps extends BaseProps {
   target?: HTMLElement;
   placement?: PlacementType;
   show?: boolean;
-  topGap?: number;
-  leftGap?: number;
+  gap?: number;
   zIndex?: number;
   onMouseOver?: React.MouseEventHandler<HTMLDivElement>;
   onMouseOut?: React.MouseEventHandler<HTMLDivElement>;
@@ -36,14 +35,12 @@ type Offset = { width: number; top: number; left: number; placement: string };
 const getOffset = ({
   target,
   popup,
-  topGap,
-  leftGap,
+  gap,
   placement,
 }: {
   target: HTMLElement;
   popup: HTMLElement;
-  topGap: number;
-  leftGap: number;
+  gap: number;
   placement: PlacementType;
 }): Offset => {
   const targetRect = getRect(target);
@@ -53,63 +50,59 @@ const getOffset = ({
 
   switch (placement) {
     case 'top-left':
-      top = top - topGap - popupRect.height;
-      left = left + leftGap;
+      top = top - gap - popupRect.height;
       break;
 
     case 'top-center':
-      top = top - topGap - popupRect.height;
-      left = left + leftGap + targetRect.width / 2 - popupRect.width / 2;
+      top = top - gap - popupRect.height;
+      left = left + targetRect.width / 2 - popupRect.width / 2;
       break;
 
     case 'top-right':
-      top = top - topGap - popupRect.height;
-      left = left + leftGap + targetRect.width - popupRect.width;
+      top = top - gap - popupRect.height;
+      left = left + targetRect.width - popupRect.width;
       break;
 
     case 'bottom-left':
-      top = top + topGap + targetRect.height;
-      left = left + leftGap;
+      top = top + gap + targetRect.height;
       break;
 
     case 'bottom-center':
-      top = top + topGap + targetRect.height;
-      left = left + leftGap + targetRect.width / 2 - popupRect.width / 2;
+      top = top + gap + targetRect.height;
+      left = left + targetRect.width / 2 - popupRect.width / 2;
       break;
 
     case 'bottom-right':
-      top = top + topGap + targetRect.height;
-      left = left + leftGap + targetRect.width - popupRect.width;
+      top = top + gap + targetRect.height;
+      left = left + targetRect.width - popupRect.width;
       break;
 
     case 'left-top':
-      top = top + topGap;
-      left = left - leftGap - popupRect.width;
+      left = left - gap - popupRect.width;
       break;
 
     case 'left-center':
-      top = top + topGap + targetRect.height / 2 - popupRect.height / 2;
-      left = left - leftGap - popupRect.width;
+      top = top + targetRect.height / 2 - popupRect.height / 2;
+      left = left - gap - popupRect.width;
       break;
 
     case 'left-bottom':
-      top = top + topGap + targetRect.height - popupRect.height;
-      left = left - leftGap - popupRect.width;
+      top = top + targetRect.height - popupRect.height;
+      left = left - gap - popupRect.width;
       break;
 
     case 'right-top':
-      top = top + topGap;
-      left = left + leftGap + targetRect.width;
+      left = left + gap + targetRect.width;
       break;
 
     case 'right-center':
       top = top + targetRect.height / 2 - popupRect.height / 2;
-      left = left + leftGap + targetRect.width;
+      left = left + gap + targetRect.width;
       break;
 
     case 'right-bottom':
-      top = top + topGap + targetRect.height - popupRect.height;
-      left = left + leftGap + targetRect.width;
+      top = top + targetRect.height - popupRect.height;
+      left = left + gap + targetRect.width;
       break;
   }
 
@@ -125,8 +118,7 @@ const Popup = ({
   prefixCls = 'ty-popup',
   placement = 'top-center',
   show = false,
-  topGap = 2,
-  leftGap = 2,
+  gap = 0,
   zIndex = 999,
   ...restProps
 }: PopupProps): React.ReactElement | null => {
@@ -149,11 +141,11 @@ const Popup = ({
 
   useEffect(() => {
     if (target && popupRef.current) {
-      const offset = getOffset({ target, popup: popupRef.current!, topGap, leftGap, placement });
+      const offset = getOffset({ target, popup: popupRef.current!, gap, placement });
       setLeft(`${offset.left}px`);
       setTop(`${offset.top}px`);
     }
-  }, [show, top, left, topGap, leftGap, placement]);
+  }, [show, top, left, gap, placement]);
 
   return (
     <Portal>
