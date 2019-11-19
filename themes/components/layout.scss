@@ -30,15 +30,12 @@
 }
 
 .#{$prefix}layout-sidebar {
-  position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   transition: all 200ms;
-  overflow: hidden;
   background: $layout-sidebar-background;
   color: #fff;
-  overflow-y: auto;
 
   &:last-child {
     .#{$prefix}layout-sidebar__trigger-icon {
@@ -47,7 +44,7 @@
   }
 
   &__children {
-    flex: 1;
+    height: 100%;
   }
 
   &__trigger {

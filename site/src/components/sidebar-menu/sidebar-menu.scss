@@ -1,9 +1,14 @@
 @import "../../base";
 
 .sidebar-menu {
-  height: calc(100vh - 64px);
-  border-right: 1px solid #d5d5d5;
-  padding: 20px 0;
+  &__wrapper {
+    width: 250px;
+    height: calc(100% - #{$header-height});
+    position: fixed;
+    overflow-y: auto;
+    border-right: 1px solid #d5d5d5;
+    padding: 20px 0;
+  }
 
   &__title {
     margin: 0 30px;

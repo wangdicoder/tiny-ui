@@ -1,11 +1,11 @@
 @import "../../base";
 
 .component-page {
+  min-height: calc(100vh - #{$header-height});
+  padding-top: $header-height;
 
   &__layout {
     padding: 30px;
-    height: calc(100vh - #{$header-height});
-    overflow-y: auto;
   }
 
   &__divider {
