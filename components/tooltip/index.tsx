@@ -5,20 +5,22 @@ import Popover, { TriggerType } from '../popover';
 import { PlacementType } from '../popup';
 
 export interface TooltipProps extends BaseProps {
-  title?: string | React.ReactNode;
+  title: string | React.ReactNode;
   placement?: PlacementType;
   trigger?: TriggerType;
   visible?: boolean;
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
+  arrow?: boolean;
   children: React.ReactElement;
 }
 
 const Tooltip = ({
   defaultVisible = false,
-  placement = 'right-center',
+  placement = 'top-center',
   trigger = 'hover',
   prefixCls = 'ty-tooltip',
+  arrow = true,
   ...restProps
 }: TooltipProps) => {
   const { title, visible, onVisibleChange, className, style, children } = restProps;
@@ -34,10 +36,11 @@ const Tooltip = ({
   return (
     <Popover
       theme="dark"
-      gap={-2}
       onVisibleChange={onVisibleChange}
       visible={popupVisible}
       placement={placement}
+      arrow={arrow}
+      gap={-2}
       className={cls}
       style={style}
       trigger={trigger}

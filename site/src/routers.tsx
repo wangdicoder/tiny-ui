@@ -135,6 +135,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'timeline',
         component: lazy(() => import('../../components/timeline/index.md')),
       },
+      {
+        title: 'Tooltip',
+        route: 'tooltip',
+        component: lazy(() => import('../../components/tooltip/index.md')),
+      },
     ],
   },
   {

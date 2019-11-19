@@ -216,7 +216,9 @@ const Popover = ({
           onMouseOver={handlePopupMouseOver}
           onMouseOut={handlePopupMouseOut}>
           <div className={cls} ref={popupRef}>
-            {arrow && <div className={`${prefixCls}__arrow`} style={arrowStyle} />}
+            {(title || content) && arrow && (
+              <div className={`${prefixCls}__arrow`} style={arrowStyle} />
+            )}
             {title && <div className={`${prefixCls}__title`}>{title}</div>}
             {content && <div className={`${prefixCls}__content`}>{content}</div>}
           </div>
