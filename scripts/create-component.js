@@ -15,7 +15,7 @@ function createFolder(componentName) {
   fs.copyFileSync(`${root}/_template/index.tsx`, fileName);
 
   let content = fs.readFileSync(fileName, { encoding: 'utf-8' });
-  let replacement = componentName;
+  let replacement = componentName.charAt(0).toUpperCase() + componentName.slice(1);
   if (componentName.includes('-')) {
     const nameArray = componentName.split('-');
     replacement = nameArray.reduce((total, item) => {

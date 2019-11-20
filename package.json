@@ -30,10 +30,10 @@
     "dist-prod": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
     "dist": "rm -rf dist && npm run dist-dev && npm run dist-prod && npm run dist-style",
     "dev": "webpack-dev-server --config site/config/webpack.dev.js",
+    "eslint": "eslint components --ext .ts,.tsx",
     "site:build": "webpack --config site/config/webpack.prod.js",
     "site:deploy": "npm run site:build && gh-pages -d site/build",
-    "test": "jest",
-    "eslint": "eslint components --ext .ts,.tsx"
+    "test": "jest"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
