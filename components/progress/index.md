@@ -19,7 +19,7 @@ If it will take a long time to complete an operation, you can use Progress to sh
 
 ## Usage
 
-```js
+```jsx
 import { Progress } from 'tiny-ui';
 
 const { Bar, Circle } = Progress;
@@ -45,10 +45,10 @@ const { Bar, Circle } = Progress;
 
 ## API
 
-| Property  | Description                      | Type                          | Default |
-| --------- | -------------------------------- | ----------------------------- | ------- |
-| size      | selection size                   | enum: `sm` `md` `lg`          | `md`    |
-| disabled  | disable to select                | boolean                       | false   |
-| style	    | style object of container	object |                               | -       |
-| className	| className of container           | string                        | -       |
+| Property  | Description                      | Type                               | Default |
+| --------- | -------------------------------- | ---------------------------------- | ------- |
+| size      | selection size                   | enum: `sm` &#124; `md` &#124; `lg` | `md`    |
+| disabled  | disable to select                | boolean                            | false   |
+| style	    | style object of container	object | CSSProperties                      | -       |
+| className	| className of container           | string                             | -       |
 

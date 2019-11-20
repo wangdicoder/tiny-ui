@@ -30,9 +30,9 @@ const { Item } = Flip;
 
 ## API
 
-| Property  | Description             | Type                          | Default      |
-| --------- | ----------------------- | ----------------------------- | ------------ |
-| width     | the container's width   | number or string              |              |
-| height    | the container's height  | number or string              |              |
-| direction | flip direction          | enum: `horizontal` `vertical` | `horizontal` |
-| reverse   | reverse direction       | boolean                       | false        |
+| Property  | Description             | Type                                    | Default      |
+| --------- | ----------------------- | --------------------------------------- | ------------ |
+| width     | the container's width   | number &#124; string                    |              |
+| height    | the container's height  | number &#124; string                    |              |
+| direction | flip direction          | enum: `horizontal` &#124; `vertical`    | `horizontal` |
+| reverse   | reverse direction       | boolean                                 | false        |

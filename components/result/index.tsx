@@ -9,7 +9,7 @@ const StatusIcon = Object.freeze({
   success: 'check-fill',
   error: 'close-fill',
   info: 'info-fill',
-  warning: 'warning-fill',
+  warning: 'warn-fill',
   loading: 'sync',
 });
 

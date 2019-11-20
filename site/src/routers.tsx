@@ -234,6 +234,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'pop-confirm',
         component: lazy(() => import('../../components/pop-confirm/index.md')),
       },
+      {
+        title: 'Result',
+        route: 'result',
+        component: lazy(() => import('../../components/result/index.md')),
+      },
     ],
   },
   {

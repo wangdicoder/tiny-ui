@@ -42,9 +42,9 @@ const { Group } = Button;
 
 ## API
 
-| Property  | Description                      | Type                          | Default |
-| --------- | -------------------------------- | ----------------------------- | ------- |
-| size      | selection size                   | enum: `sm` `md` `lg`          | `md`    |
-| disabled  | disable to select                | boolean                       | false   |
-| style	    | style object of container	object |                               | -       |
-| className	| className of container           | string                        | -       |
+| Property  | Description                      | Type                               | Default |
+| --------- | -------------------------------- | ---------------------------------- | ------- |
+| size      | selection size                   | enum: `sm` &#124; `md` &#124; `lg` | `md`    |
+| disabled  | disable to select                | boolean                            | false   |
+| style	    | style object of container	object | CSSProperties                      | -       |
+| className	| className of container           | string                             | -       |

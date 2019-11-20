@@ -1,7 +1,6 @@
-@import "../../base";
+@import '../../base';
 
 .md {
-
   &__layout {
     display: flex;
     margin: 0 -8px;
@@ -13,6 +12,7 @@
   }
 
   &__demo {
+    flex-grow: 1;
     border: 1px solid #eaeefb;
     border-radius: 3px;
     margin-bottom: 16px;
@@ -35,7 +35,7 @@
           width: 20px;
           height: 2px;
           transform: translateY(-50%);
-          background-color: rgba($main-color, .8);
+          background-color: rgba($main-color, 0.8);
         }
       }
 
@@ -114,7 +114,7 @@
   }
 
   &__blockquote {
-    padding-left: .8em;
+    padding-left: 0.8em;
     color: #697b8c;
     font-size: 90%;
     border-left: 4px solid #ebedf0;
@@ -140,7 +140,7 @@
       color: #5c6b77;
       font-weight: 500;
       white-space: nowrap;
-      background: rgba(0, 0, 0, .02);
+      background: rgba(0, 0, 0, 0.02);
       border-bottom: 2px solid #ebedf0;
     }
 

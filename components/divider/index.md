@@ -31,10 +31,10 @@ import { Divider } from 'tiny-ui';
 
 ## API
 
-| Property  | Description                      | Type                          | Default      |
-| --------- | -------------------------------- | ----------------------------- | ------------ |
-| type      | direction type of divider        | enum: `horizontal` `vertical` | `horizontal` |
-| dashed    | whether line is dashed           | boolean                       | false        |
-| align     | position of title inside divider | enum: `left` `right` `center` | `center`     |
-| style	    | style object of container	object |                               | -            |
-| className	| className of container           | string                        | -            |
+| Property  | Description                      | Type                                           | Default      |
+| --------- | -------------------------------- | ---------------------------------------------- | ------------ |
+| type      | direction type of divider        | enum: `horizontal` &#124; `vertical`           | `horizontal` |
+| dashed    | whether line is dashed           | boolean                                        | false        |
+| align     | position of title inside divider | enum: `left` &#124; `right` &#124; `center`    | `center`     |
+| style	    | style object of container	object | CSSProperties                                  | -            |
+| className	| className of container           | string                                         | -            |
