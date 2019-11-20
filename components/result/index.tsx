@@ -13,7 +13,7 @@ const StatusIcon = Object.freeze({
   loading: 'sync',
 });
 
-export interface ResultProps extends BaseProps {
+export interface ResultProps extends React.PropsWithRef<BaseProps> {
   title?: ReactNode;
   subtitle?: ReactNode;
   status?: ResultStatus;
@@ -22,19 +22,25 @@ export interface ResultProps extends BaseProps {
   children?: ReactNode;
 }
 
-const Result = ({
-  prefixCls = 'ty-result',
-  status = 'info',
-  ...restProps
-}: ResultProps): React.ReactElement => {
-  const { title, subtitle, extra, className, style, children } = restProps;
+const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps, ref) => {
+  const {
+    prefixCls = 'ty-result',
+    status = 'info',
+    title,
+    subtitle,
+    icon,
+    extra,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${status}`);
 
   const renderIcon = (): React.ReactElement => {
     return (
       <div className={`${prefixCls}__icon-container`}>
-        {'icon' in restProps ? (
-          restProps.icon
+        {'icon' in props ? (
+          icon
         ) : (
           <Icon
             spin={status === 'loading'}
@@ -47,7 +53,7 @@ const Result = ({
   };
 
   return (
-    <div className={cls} style={style}>
+    <div ref={ref} className={cls} style={style}>
       {renderIcon()}
       {title && <div className={`${prefixCls}__title`}>{title}</div>}
       {subtitle && <div className={`${prefixCls}__subtitle`}>{subtitle}</div>}
@@ -55,6 +61,6 @@ const Result = ({
       {children && <div className={`${prefixCls}__content`}>{children}</div>}
     </div>
   );
-};
+});
 
 export default Result;
