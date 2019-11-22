@@ -20,7 +20,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> & { Item?: any } = ({
     <nav className={cls} style={style}>
       <ol className={`${prefixCls}__ol`}>
         {React.Children.map(children, (child: ReactElement<BreadcrumbItemProps>) => {
-          const childProps: BreadcrumbItemProps = {
+          const childProps = {
             ...child.props,
             separator,
           };

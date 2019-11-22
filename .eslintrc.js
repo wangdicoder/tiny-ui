@@ -5,7 +5,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['import', '@typescript-eslint', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react-hooks'],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',
@@ -22,21 +22,10 @@ module.exports = {
       pragma: 'React',
       version: 'detect',
     },
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-    'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-      },
-    },
   },
   rules: {
-    semi: ['error', 'always'],
-    'import/no-unresolved': 'error',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
+    semi: [2, 'always'],
+    'react-hooks/rules-of-hooks': 2,
+    'react-hooks/exhaustive-deps': 1,
   },
 }

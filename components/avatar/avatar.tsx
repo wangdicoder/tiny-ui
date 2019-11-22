@@ -34,20 +34,6 @@ const Avatar: React.FC<AvatarProps> & { Group?: any } = ({
     [`${prefixCls}_clickable`]: onClick,
   });
 
-  const renderItem = () => {
-    if (children) {
-      return renderChildren();
-    } else if (src) {
-      return <img src={src} alt={alt} className={`${prefixCls}__img`} />;
-    } else {
-      return <Icon type={icon!} className={`${prefixCls}__icon`} size={size! - 10} />;
-    }
-  };
-
-  const renderPresence = () => {
-    return <i className={`${prefixCls}__presence ${prefixCls}__presence_${presence}`} />;
-  };
-
   const renderChildren = () => {
     if (typeof children === 'string') {
       let textStyle: React.CSSProperties = {};
@@ -67,6 +53,20 @@ const Avatar: React.FC<AvatarProps> & { Group?: any } = ({
     } else {
       return children;
     }
+  };
+
+  const renderItem = (): React.ReactNode => {
+    if (children) {
+      return renderChildren();
+    } else if (src) {
+      return <img src={src} alt={alt} className={`${prefixCls}__img`} />;
+    } else {
+      return <Icon type={icon} className={`${prefixCls}__icon`} size={size - 10} />;
+    }
+  };
+
+  const renderPresence = (): React.ReactElement => {
+    return <i className={`${prefixCls}__presence ${prefixCls}__presence_${presence}`} />;
   };
 
   const styles: React.CSSProperties = {

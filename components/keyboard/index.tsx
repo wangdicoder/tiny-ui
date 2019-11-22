@@ -2,19 +2,20 @@ import React from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
-export interface KeyboardProps extends BaseProps {
+export interface KeyboardProps extends React.PropsWithRef<BaseProps> {
   children?: React.ReactNode;
 }
 
-const Keyboard = ({ prefixCls = 'ty-kbd', ...restProps }: KeyboardProps) => {
-  const { className, style, children } = restProps;
-  const cls = classNames(prefixCls, className);
+const Keyboard = React.forwardRef<HTMLElement, KeyboardProps>(
+  ({ prefixCls = 'ty-kbd', className, style, children }: KeyboardProps, ref) => {
+    const cls = classNames(prefixCls, className);
 
-  return (
-    <kbd className={cls} style={style}>
-      {children}
-    </kbd>
-  );
-};
+    return (
+      <kbd ref={ref} className={cls} style={style}>
+        {children}
+      </kbd>
+    );
+  }
+);
 
 export default Keyboard;

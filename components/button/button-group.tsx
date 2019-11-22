@@ -5,12 +5,12 @@ import { ButtonProps } from './button';
 
 export { Size, Color };
 
-export interface ButtonGroupProps extends React.ComponentPropsWithRef<'div'>, BaseProps {
-  children: React.ReactElement<ButtonProps>;
+export interface ButtonGroupProps extends React.PropsWithRef<BaseProps> {
   size?: Size;
   color?: Color;
   round?: boolean;
   disabled?: boolean;
+  children: React.ReactElement<ButtonProps>[];
 }
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
@@ -33,7 +33,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     });
     return (
       <div className={cls} style={style} ref={ref}>
-        {React.Children.map(children, child => {
+        {React.Children.map(children, (child: React.ReactElement<ButtonProps>) => {
           const btnProps = {
             ...child.props,
             size,
