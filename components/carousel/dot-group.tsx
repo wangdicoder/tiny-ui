@@ -1,16 +1,27 @@
 import React from 'react';
+import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
 export type DotPosition = 'top' | 'bottom' | 'left' | 'right';
 
 export interface DotGroupProps extends BaseProps {
+  activeIndex: number;
+  amount: number;
   position: DotPosition;
+  itemOnClick: (index: number) => void;
 }
 
-const DotGroup = ({ position }: DotGroupProps) => {
+const DotGroup = ({ activeIndex, position, amount, itemOnClick, prefixCls }: DotGroupProps) => {
   return (
-    <ul>
-      <li></li>
+    <ul className={`${prefixCls}__dots-container ${prefixCls}_dots-${position}`}>
+      {Array(amount)
+        .fill(0)
+        .map((_, idx) => {
+          const dotClassName = classNames(`${prefixCls}__dot`, {
+            [`${prefixCls}__dot_active`]: idx === activeIndex,
+          });
+          return <li key={idx} className={dotClassName} onClick={() => itemOnClick(idx)} />;
+        })}
     </ul>
   );
 };

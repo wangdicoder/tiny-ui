@@ -5,7 +5,7 @@ import { BaseProps } from '../_utils/props';
 import DotGroup, { DotPosition } from './dot-group';
 import ArrowGroup from './arrow-group';
 
-export type easingType = 'linear';
+export type EasingType = 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
 
 export interface CarouselProps extends BaseProps {
   dots?: boolean;
@@ -14,7 +14,7 @@ export interface CarouselProps extends BaseProps {
   interval?: number;
   animatedDuration?: number;
   dotPosition?: DotPosition;
-  easing?: easingType;
+  easing?: EasingType;
   beforeChange?: () => void;
   afterChange?: () => void;
   children: React.ReactElement<CarouselItemProps>[];
@@ -26,7 +26,7 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = ({
   arrows = true,
   interval = 3000,
   animatedDuration = 500,
-  autoplay = false,
+  autoplay = true,
   dotPosition = 'bottom',
   easing = 'linear',
   className,
@@ -74,6 +74,11 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = ({
     }
   };
 
+  const dotItemOnClick = (index: number): void => {
+    setCurrIndex(index);
+    animate(width * Math.abs(index - currIndex) * (index > currIndex ? -1 : 1));
+  };
+
   const getChildrenList = () => {
     const finalChildren = [];
     finalChildren.push(children[children.length - 1]);
@@ -90,16 +95,20 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = ({
       setWidth(outerWidth);
       (containerRef.current as HTMLUListElement).style.left = `${-outerWidth}px`;
     }
+  }, []);
 
+  useEffect(() => {
     if (autoplay) {
-      const intervalTimer = window.setInterval(() => {}, interval);
+      const intervalTimer = window.setInterval(() => {
+        moveNext();
+      }, interval);
       setIntervalTimer(intervalTimer);
     }
 
     return (): void => {
       window.clearInterval(intervalTimer);
     };
-  }, [interval, autoplay, intervalTimer, children]);
+  }, [autoplay]);
 
   return (
     <div ref={outerRef} className={cls} style={style}>
@@ -107,6 +116,7 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = ({
         ref={containerRef}
         className={`${cls}__container`}
         style={{
+          transitionTimingFunction: easing,
           width: width * (children.length + 2),
         }}>
         {getChildrenList().map((child: React.ReactElement<CarouselItemProps>, index) => {
@@ -129,7 +139,15 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = ({
           style={{ width }}
         />
       )}
-      {dots && <DotGroup position={dotPosition} />}
+      {dots && (
+        <DotGroup
+          activeIndex={currIndex}
+          position={dotPosition}
+          amount={children.length}
+          itemOnClick={dotItemOnClick}
+          prefixCls={prefixCls}
+        />
+      )}
     </div>
   );
 };

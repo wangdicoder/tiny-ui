@@ -25,6 +25,7 @@
   "homepage": "https://tiny-ui.dev/",
   "scripts": {
     "build": "rm -rf lib && tsc -p tsconfig.json && npm run dist",
+    "commit": "./node_modules/cz-customizable/standalone.js",
     "dist-style": "gulp --gulpfile scripts/gulpfile.js && node scripts/generate-style.js",
     "dist-dev": "NODE_ENV=development webpack --config webpack.config.js --progress --colors",
     "dist-prod": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
@@ -71,6 +72,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.5",
     "css-loader": "^3.2.0",
+    "cz-customizable": "^6.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.5.1",
@@ -96,6 +98,7 @@
     "react-live": "^2.2.1",
     "react-router-dom": "^5.1.2",
     "sass-loader": "^8.0.0",
+    "standard-version": "^7.0.1",
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^2.1.3",
     "ts-jest": "^24.1.0",
