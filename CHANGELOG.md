@@ -1,7 +1,10 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
+Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
+### Release Schedule
+- **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
+- **y version**: minor version at the end of every month for new features.
+- **x version**: release is not included in this schedule for breaking change and new features.
 ### 0.0.71 (2019-11-24)
 
 
