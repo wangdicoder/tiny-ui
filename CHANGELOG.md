@@ -5,6 +5,8 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 - **y version**: minor version at the end of every month for new features.
 - **x version**: release is not included in this schedule for breaking change and new features.
+### [0.0.72](https://github.com/wangdicoder/tiny-ui/compare/v0.0.71...v0.0.72) (2019-11-24)
+
 ### 0.0.71 (2019-11-24)
 
 
