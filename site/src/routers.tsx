@@ -29,9 +29,9 @@ export const GUIDE_MENU: RouterItem[] = [
     component: lazy(() => import('../../docs/use-react-app.md')),
   },
   {
-    title: 'Change Log',
-    route: 'change-log',
-    component: lazy(() => import('../../docs/change-log.md')),
+    title: 'Changelog',
+    route: 'changelog',
+    component: lazy(() => import('../../CHANGELOG.md')),
   },
   {
     title: 'FAQ',
