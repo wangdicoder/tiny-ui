@@ -1,4 +1,4 @@
-@import "../animation";
+@import "./animation";
 
 @mixin loader($size: 14px, $color: #fff) {
   box-sizing: border-box;

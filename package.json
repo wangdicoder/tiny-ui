@@ -3,7 +3,6 @@
   "version": "0.0.71",
   "description": "A friendly ui component set for react",
   "license": "MIT",
-  "main": "lib/index.js",
   "keywords": [
     "tiny",
     "tiny-ui",
@@ -23,10 +22,12 @@
   },
   "author": "Di Wang<wangdicoder@gmail.com>",
   "homepage": "https://tiny-ui.dev/",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf lib && tsc -p tsconfig.json && npm run dist",
-    "commit": "./node_modules/cz-customizable/standalone.js",
-    "dist-style": "gulp --gulpfile scripts/gulpfile.js && node scripts/generate-style.js",
+    "build": "rm -rf lib && tsc -p tsconfig.json",
+    "commit": "git add . && ./node_modules/cz-customizable/standalone.js",
+    "dist-style": "gulp --gulpfile scripts/gulpfile.js",
     "dist-dev": "NODE_ENV=development webpack --config webpack.config.js --progress --colors",
     "dist-prod": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
     "dist": "rm -rf dist && npm run dist-dev && npm run dist-prod && npm run dist-style",
@@ -118,5 +119,11 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  }
+  },
+  "browserslist": [
+    "last 2 version",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 11"
+  ]
 }

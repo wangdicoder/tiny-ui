@@ -1,3 +1,1 @@
-/**
- * @author Di Wang
- */
+import './index.scss';

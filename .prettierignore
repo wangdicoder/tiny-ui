@@ -1,8 +1,8 @@
 /site/src/containers/test
-/site/build/**/*
-/site/dist/**/*
-/dist/**/*
+/site/build
+/site/dist
+/dist
 /docs
-/lib/**/*
+/lib
 /themes
 /node_modules
