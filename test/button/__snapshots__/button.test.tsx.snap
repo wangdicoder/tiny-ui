@@ -4,7 +4,7 @@ exports[`<Button /> should match snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "ty-btn ty-btn_md",
+      "class": "ty-btn ty-btn_default ty-btn_md",
     },
     "children": Array [
       Object {
