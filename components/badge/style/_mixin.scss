@@ -1,0 +1,11 @@
+@import '../../style/variables';
+
+@mixin badge-base {
+  box-sizing: border-box;
+  display: inline-block;
+  z-index: 10;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: $badge-size;
+  box-shadow: 0 0 0 1.5px #fff;
+}

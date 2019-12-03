@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/react';
 import './index.scss';
-import '../../themes/index.scss';
+import '../../components/style/index.scss';
 
 import { components } from './components/markdown-tag';
 import Header from './components/header';
