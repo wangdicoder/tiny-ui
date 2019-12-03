@@ -34,7 +34,7 @@ function minCss() {
 }
 
 function copyFont(done) {
-	src(`${SOURCE_PATH}/fonts/*`).pipe(dest(`${DIST_PATH}/fonts`));
+	src(`${SOURCE_PATH}/style/fonts/*`).pipe(dest(`${DIST_PATH}/fonts`));
 	done();
 }
 

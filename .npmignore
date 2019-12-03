@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
+_template
 scripts
-template
 test
 docs
 jest.config.js
@@ -12,6 +12,11 @@ site
 .babelrc
 .prettierignore
 .prettierrc
+.commitlintrc.js
+.cz-config.js
+.eslintrc.js
+.versionrc.js
 postcss.config.js
+tsconfig.json
 .DS_Store
 *.iml

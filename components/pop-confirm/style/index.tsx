@@ -1,5 +1,5 @@
 import './index.scss';
 
-import '../../button/style';
-import '../../icon/style';
-import '../../popover/style';
+import '../../button/style/index.scss';
+import '../../icon/style/index.scss';
+import '../../popover/style/index.scss';
