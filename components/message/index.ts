@@ -5,7 +5,7 @@ import raf from 'raf';
 
 const className = '.ty-message-container';
 
-type Options = {
+export type Options = {
   top?: number;
   offset?: number;
   icon?: ReactNode;
@@ -50,7 +50,7 @@ const createComponent: CreateComponent = (
   content,
   duration = 3000,
   onClose,
-  options = {}
+  options: Options = {}
 ) => {
   const containers = document.querySelectorAll(className);
   const lastContainer =

@@ -26,12 +26,10 @@ const IconType: { [type: string]: { name: string; color: string } } = {
   error: { name: 'close-fill', color: '#f5222d' },
 };
 
-const Notification = ({
-  prefixCls = 'ty-notification',
-  duration = 4500,
-  ...restProps
-}: NotificationProps) => {
+const Notification = (props: NotificationProps) => {
   const {
+    prefixCls = 'ty-notification',
+    duration = 4500,
     title,
     description,
     footer,
@@ -43,7 +41,7 @@ const Notification = ({
     onClose,
     className,
     style,
-  } = restProps;
+  } = props;
   const cls = classNames(prefixCls, className);
   const ref = useRef<HTMLDivElement | null>(null);
   let timer: number | null = null;

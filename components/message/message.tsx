@@ -23,8 +23,18 @@ const IconType: any = {
   error: { name: 'close-fill', color: '#f5222d' },
 };
 
-const Message = ({ prefixCls = 'ty-message', ...restProps }: MessageProps) => {
-  const { type, icon, content, duration, willUnmount, extra, className, style } = restProps;
+const Message = (props: MessageProps) => {
+  const {
+    prefixCls = 'ty-message',
+    type,
+    icon,
+    content,
+    duration,
+    willUnmount,
+    extra,
+    className,
+    style,
+  } = props;
   const cls = classnNames(prefixCls, className);
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(true);

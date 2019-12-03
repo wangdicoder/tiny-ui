@@ -21,8 +21,17 @@ export interface RowProps extends BaseProps {
   children: React.ReactElement<ColProps>;
 }
 
-const Row = ({ prefixCls = 'ty-row', gutter = 0, gutterSide = false, ...restProps }: RowProps) => {
-  const { align, justify, className, style, children } = restProps;
+const Row = (props: RowProps) => {
+  const {
+    prefixCls = 'ty-row',
+    gutter = 0,
+    gutterSide = false,
+    align,
+    justify,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_align-${align}`]: align,
     [`${prefixCls}_justify-${justify}`]: justify,
@@ -30,7 +39,7 @@ const Row = ({ prefixCls = 'ty-row', gutter = 0, gutterSide = false, ...restProp
 
   return (
     <div className={cls} style={style}>
-      {React.Children.map(children, (child, index) => {
+      {React.Children.map(children, (child: React.ReactElement<ColProps>, index: number) => {
         const gutterStyle = gutter
           ? {
               paddingLeft: !gutterSide && index === 0 ? 0 : gutter / 2, // first child left padding

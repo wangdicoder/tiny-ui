@@ -10,15 +10,16 @@ export interface CheckableTagProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const CheckableTag = ({
-  prefixCls = 'ty-checkable-tag',
-  defaultChecked = true,
-  ...restProps
-}: CheckableTagProps) => {
-  const { onChange, className, style, children } = restProps;
-  const [checked, setChecked] = useState(
-    'checked' in restProps ? restProps.checked : defaultChecked
-  );
+const CheckableTag = (props: CheckableTagProps) => {
+  const {
+    prefixCls = 'ty-checkable-tag',
+    defaultChecked = true,
+    onChange,
+    className,
+    style,
+    children,
+  } = props;
+  const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_checked`]: checked,
   });
@@ -26,15 +27,15 @@ const CheckableTag = ({
   /**
    * Callback when the tag itself is clicked.
    */
-  const itemOnClick = (e: MouseEvent) => {
+  const itemOnClick = (e: MouseEvent): void => {
     const state = !checked;
-    !('checked' in restProps) && setChecked(state);
+    !('checked' in props) && setChecked(state);
     onChange && onChange(state, e);
   };
 
   useEffect(() => {
-    'checked' in restProps && setChecked(restProps.checked);
-  });
+    'checked' in props && setChecked(props.checked);
+  }, [props.checked]);
 
   return (
     <Tag className={cls} style={style} onClick={itemOnClick}>

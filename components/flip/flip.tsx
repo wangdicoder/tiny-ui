@@ -17,13 +17,17 @@ export interface FlipProps extends BaseProps {
   children: React.ReactElement<FlipItemProps>;
 }
 
-const Flip: React.FC<FlipProps> & { Item?: any } = ({
-  prefixCls = 'ty-flip',
-  direction = 'horizontal',
-  reverse = false,
-  ...restProps
-}: FlipProps) => {
-  const { width, height, className, children, style } = restProps;
+const Flip: React.FC<FlipProps> & { Item?: any } = (props: FlipProps) => {
+  const {
+    prefixCls = 'ty-flip',
+    direction = 'horizontal',
+    reverse = false,
+    width,
+    height,
+    className,
+    children,
+    style,
+  } = props;
   const cls = classNames(prefixCls, className);
 
   const innerCls = classNames(`${prefixCls}__inner`, {

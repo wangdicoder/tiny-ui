@@ -8,8 +8,8 @@ export interface SplitPaneProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const SplitPane = ({ prefixCls = 'ty-split-pane', ...restProps }: SplitPaneProps) => {
-  const { min, getMin, className, style, children } = restProps;
+const SplitPane = (props: SplitPaneProps): React.ReactElement => {
+  const { prefixCls = 'ty-split-pane', min, getMin, className, style, children } = props;
   const cls = classNames(prefixCls, className);
 
   useEffect(() => {

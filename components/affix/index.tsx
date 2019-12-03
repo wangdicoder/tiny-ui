@@ -26,8 +26,18 @@ const affixMode: AffixMode = {
 
 let lastAffixed: boolean | null = null;
 
-const Affix = ({ prefixCls = 'ty-affix', container = () => window, ...restProps }: AffixProps) => {
-  const { relative, offsetTop, offsetBottom, onChange, className, style, children } = restProps;
+const Affix = (props: AffixProps) => {
+  const {
+    prefixCls = 'ty-affix',
+    container = () => window,
+    relative,
+    offsetTop,
+    offsetBottom,
+    onChange,
+    className,
+    style,
+    children,
+  } = props;
   const [placeholderNodeStyle, setPlaceholderNodeStyle] = useState<React.CSSProperties>({});
   const [affixNodeStyle, setAffixNodeStyle] = useState<React.CSSProperties>({});
   const placeholderEl = useRef<HTMLDivElement | null>(null);

@@ -26,21 +26,23 @@ export interface ColProps extends BaseProps {
 
 const ScreenType = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-const Col = ({
-  prefixCls = 'ty-col',
-  span = 24,
-  offset = 0,
-  order = 0,
-  ...restProps
-}: ColProps) => {
-  const { className, style, children } = restProps;
+const Col = (props: ColProps) => {
+  const {
+    prefixCls = 'ty-col',
+    span = 24,
+    offset = 0,
+    order = 0,
+    className,
+    style,
+    children,
+  } = props;
   let sizeClassObj = {};
   ScreenType.forEach(size => {
     let sizeProps: ColSize = {};
-    if (typeof restProps[size] === 'number') {
-      sizeProps.span = restProps[size];
-    } else if (typeof restProps[size] === 'object') {
-      sizeProps = restProps[size] || {};
+    if (typeof props[size] === 'number') {
+      sizeProps.span = props[size];
+    } else if (typeof props[size] === 'object') {
+      sizeProps = props[size] || {};
     }
 
     sizeClassObj = {

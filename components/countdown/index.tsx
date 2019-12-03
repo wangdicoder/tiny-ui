@@ -19,12 +19,16 @@ export interface CountdownProps extends BaseProps {
 
 let intervalHandler: any = null;
 
-const Countdown = ({
-  prefixCls = 'ty-countdown',
-  millisec = false,
-  ...restProps
-}: CountdownProps) => {
-  const { value, onFinish, className, style, children } = restProps;
+const Countdown = (props: CountdownProps) => {
+  const {
+    prefixCls = 'ty-countdown',
+    millisec = false,
+    value,
+    onFinish,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
   const [date, setDate] = useState<DateType>({ day: 0, hour: 0, min: 0, sec: 0, millisec: 0 });
 

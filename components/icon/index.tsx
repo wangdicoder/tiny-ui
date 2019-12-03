@@ -11,8 +11,8 @@ export interface IconTypes {
   prefixCls?: string;
 }
 
-const Icon = ({ prefixCls = 'ty-icon', ...restProps }: IconTypes) => {
-  const { type, color, size, style, spin, className, ...otherProps } = restProps;
+const Icon = (props: IconTypes) => {
+  const { prefixCls = 'ty-icon', type, color, size, style, spin, className, ...otherProps } = props;
   const cls = classNames(prefixCls, className, `ty--${type}`, {
     [`${prefixCls}_spin`]: spin,
   });

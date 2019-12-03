@@ -29,15 +29,13 @@ export interface InputProps extends BaseProps {
 
 const DEFAULT_MARGIN = 16; // 8px * 2
 
-const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = ({
-  prefixCls = 'ty-input',
-  size = 'md',
-  disabled = false,
-  clearable = false,
-  defaultValue = '',
-  ...restProps
-}: InputProps) => {
+const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = (props: InputProps) => {
   const {
+    prefixCls = 'ty-input',
+    size = 'md',
+    disabled = false,
+    clearable = false,
+    defaultValue = '',
     prefix,
     suffix,
     onChange,
@@ -46,18 +44,18 @@ const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = ({
     className,
     style,
     ...otherProps
-  } = restProps;
+  } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_disabled`]: disabled,
   });
   const prefixRef = useRef<HTMLDivElement | null>(null);
   const suffixRef = useRef<HTMLDivElement | null>(null);
-  const [value, setValue] = useState('value' in restProps ? restProps.value : defaultValue);
+  const [value, setValue] = useState('value' in props ? props.value : defaultValue);
   const [inputPadding, setInputPadding] = useState({ paddingLeft: '7px', paddingRight: '7px' });
 
   const inputOnChange = (e: FormEvent<HTMLInputElement>) => {
     const val = e.currentTarget.value;
-    !('value' in restProps) && setValue(val);
+    !('value' in props) && setValue(val);
     onChange && onChange(e.currentTarget.value, e);
   };
 
@@ -96,8 +94,8 @@ const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = ({
     }
     setInputPadding(padding);
 
-    'value' in restProps && setValue(restProps.value);
-  }, [restProps.value]);
+    'value' in props && setValue(props.value);
+  }, [props.value]);
 
   return (
     <div className={cls} style={style}>

@@ -8,8 +8,8 @@ export interface TimelineItemProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const TimelineItem = ({ prefixCls = 'ty-timeline-item', ...restProps }: TimelineItemProps) => {
-  const { dot, dotStyle, className, style, children } = restProps;
+const TimelineItem = (props: TimelineItemProps): React.ReactElement => {
+  const { prefixCls = 'ty-timeline-item', dot, dotStyle, className, style, children } = props;
   const cls = classNames(prefixCls, className);
 
   return (

@@ -14,8 +14,8 @@ export interface ButtonGroupProps extends React.PropsWithRef<BaseProps> {
 }
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
-  (
-    {
+  (props: ButtonGroupProps, ref) => {
+    const {
       prefixCls = 'ty-btn-group',
       size = 'md',
       disabled = false,
@@ -24,9 +24,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
       className,
       style,
       children,
-    }: ButtonGroupProps,
-    ref
-  ) => {
+    } = props;
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_round`]: round,
       [`${prefixCls}_${color}`]: color,

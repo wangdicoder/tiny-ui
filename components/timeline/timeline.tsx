@@ -10,12 +10,8 @@ export interface TimelineProps extends BaseProps {
   children: React.ReactElement<TimelineItemProps>;
 }
 
-const Timeline: React.FC<TimelineProps> & { Item?: any } = ({
-  prefixCls = 'ty-timeline',
-  position = 'left',
-  ...restProps
-}: TimelineProps) => {
-  const { className, style, children } = restProps;
+const Timeline: React.FC<TimelineProps> & { Item?: any } = (props: TimelineProps) => {
+  const { prefixCls = 'ty-timeline', position = 'left', className, style, children } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${position}`]: position,
   });

@@ -27,16 +27,8 @@ type ItemProps = {
   onClick: React.MouseEventHandler;
 };
 
-const Item = ({
-  half,
-  color,
-  value,
-  character,
-  prefixCls,
-  index,
-  onMouseEnter,
-  onClick,
-}: ItemProps) => {
+const Item = (props: ItemProps): React.ReactElement => {
+  const { half, color, value, character, prefixCls, index, onMouseEnter, onClick } = props;
   const getColor = (curr: number, max: number) => {
     const val = half ? curr : Math.round(curr);
     return val <= max ? color : '#e8e8e8';

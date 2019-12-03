@@ -8,8 +8,8 @@ export interface SplitBarProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const SplitBar = ({ prefixCls = 'ty-split-bar', ...restProps }: SplitBarProps) => {
-  const { mode, className, style } = restProps;
+const SplitBar = (props: SplitBarProps) => {
+  const { prefixCls = 'ty-split-bar', mode, className, style } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${mode}`]: mode,
   });

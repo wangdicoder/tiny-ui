@@ -21,13 +21,16 @@ const easeInOutCubic = (t: number, b: number, c: number, d: number): number => {
   }
 };
 
-const BackTop = ({
-  prefixCls = 'ty-backtop',
-  visibilityHeight = 300,
-  target = () => window,
-  ...restProps
-}: BackTopProps) => {
-  const { onClick, className, style, children } = restProps;
+const BackTop = (props: BackTopProps) => {
+  const {
+    prefixCls = 'ty-backtop',
+    visibilityHeight = 300,
+    target = () => window,
+    onClick,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(true);
 

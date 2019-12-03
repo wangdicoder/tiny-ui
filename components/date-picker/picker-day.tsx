@@ -10,8 +10,8 @@ export type PickerDayProps = {
   prefixCls?: string;
 };
 
-const PickerDay = ({ prefixCls = 'ty-date-picker-day', ...restProps }: PickerDayProps) => {
-  const { date, onChange, panelDate, panelOnChange } = restProps;
+const PickerDay = (props: PickerDayProps) => {
+  const { prefixCls = 'ty-date-picker-day', date, onChange, panelDate, panelOnChange } = props;
   const tbodyEl = useRef<HTMLTableSectionElement | null>(null);
   const panelDays = getMonthDaysArray(panelDate);
 
@@ -27,10 +27,12 @@ const PickerDay = ({ prefixCls = 'ty-date-picker-day', ...restProps }: PickerDay
   };
 
   useEffect(() => {
-    tbodyEl.current && tbodyEl.current.addEventListener('click', _tbodyOnClick);
+    tbodyEl.current &&
+      (tbodyEl.current as HTMLTableSectionElement).addEventListener('click', _tbodyOnClick);
 
     return () => {
-      tbodyEl.current && tbodyEl.current.removeEventListener('click', _tbodyOnClick);
+      tbodyEl.current &&
+        (tbodyEl.current as HTMLTableSectionElement).removeEventListener('click', _tbodyOnClick);
     };
   });
 

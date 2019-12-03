@@ -19,20 +19,23 @@ export interface SidebarProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Sidebar = ({
-  prefixCls = 'ty-layout-sidebar',
-  defaultCollapsed = false,
-  width = 200,
-  collapsedWidth = 70,
-  theme = 'dark',
-  trigger = null,
-  collapsible = false,
-  ...restProps
-}: SidebarProps) => {
-  const { onCollapse, className, style, children } = restProps;
+const Sidebar = (props: SidebarProps) => {
+  const {
+    prefixCls = 'ty-layout-sidebar',
+    defaultCollapsed = false,
+    width = 200,
+    collapsedWidth = 70,
+    theme = 'dark',
+    trigger = null,
+    collapsible = false,
+    onCollapse,
+    className,
+    style,
+    children,
+  } = props;
   let collapsed;
-  if ('collapsed' in restProps) {
-    collapsed = restProps.collapsed;
+  if ('collapsed' in props) {
+    collapsed = props.collapsed;
   } else {
     collapsed = defaultCollapsed;
   }
@@ -53,7 +56,7 @@ const Sidebar = ({
 
   const _collapseBtnOnClick = () => {
     const collapsedVal = !sideCollapsed;
-    if (!('collapsed' in restProps)) {
+    if (!('collapsed' in props)) {
       setSideCollapsed(collapsedVal);
     }
     onCollapse && onCollapse(collapsedVal);
@@ -76,15 +79,15 @@ const Sidebar = ({
   };
 
   useEffect(() => {
-    if ('collapsed' in restProps) {
-      setSideCollapsed(restProps.collapsed);
+    if ('collapsed' in props) {
+      setSideCollapsed(props.collapsed);
     }
 
     sidebarHook.addSidebar();
     return () => {
       sidebarHook.removeSidebar();
     };
-  });
+  }, [props.collapsed]);
 
   return (
     <div className={cls} style={outerStyle}>

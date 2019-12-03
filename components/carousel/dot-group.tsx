@@ -11,7 +11,8 @@ export interface DotGroupProps extends BaseProps {
   itemOnClick: (index: number) => void;
 }
 
-const DotGroup = ({ activeIndex, position, amount, itemOnClick, prefixCls }: DotGroupProps) => {
+const DotGroup = (props: DotGroupProps) => {
+  const { activeIndex, position, amount, itemOnClick, prefixCls } = props;
   return (
     <ul className={`${prefixCls}__dots-container ${prefixCls}_dots-${position}`}>
       {Array(amount)

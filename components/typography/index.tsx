@@ -7,7 +7,7 @@ export interface TypographyProps extends BaseProps {
 }
 
 const generator = (type: string, defaultPrefixCls: string) => {
-  const Component = (props: TypographyProps) => {
+  const Component = (props: TypographyProps): React.ReactElement => {
     const { prefixCls, className, style, children } = props;
     const cls = classNames(prefixCls, className);
 

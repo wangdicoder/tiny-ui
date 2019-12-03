@@ -23,8 +23,8 @@ interface ButtonComponent
 }
 
 const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
+  (props: ButtonProps, ref) => {
+    const {
       prefixCls = 'ty-btn',
       size = 'md',
       color = 'default',
@@ -38,9 +38,7 @@ const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>
       className,
       style,
       ...otherProps
-    }: ButtonProps,
-    ref
-  ) => {
+    } = props;
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_${color}`]: color,
       [`${prefixCls}_${size}`]: size,

@@ -8,11 +8,20 @@ export interface TimePanelProps {
   prefixCls?: string;
 }
 
-const TimePanel = ({ prefixCls = 'ty-time-picker', ...restProps }: TimePanelProps) => {
-  const { value, count, onChange } = restProps;
+const TimePanel = (props: TimePanelProps): React.ReactElement => {
+  const { prefixCls = 'ty-time-picker', value, count, onChange } = props;
   const [selectedIdx, setSelectedIdx] = useState(-1);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const ulRef = useRef<HTMLUListElement | null>(null);
+
+  const scrollToTop = (idx: number, elHeight = 30) => {
+    setSelectedIdx(idx);
+    panelRef.current &&
+      (panelRef.current as HTMLDivElement).scrollTo({
+        top: idx * elHeight,
+        behavior: 'smooth',
+      });
+  };
 
   const ulOnClick = (e: MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -26,21 +35,12 @@ const TimePanel = ({ prefixCls = 'ty-time-picker', ...restProps }: TimePanelProp
     }
   };
 
-  const scrollToTop = (idx: number, elHeight: number = 30) => {
-    setSelectedIdx(idx);
-    panelRef.current &&
-      panelRef.current.scrollTo({
-        top: idx * elHeight,
-        behavior: 'smooth',
-      });
-  };
-
   useEffect(() => {
     scrollToTop(value);
-    ulRef.current && ulRef.current.addEventListener('click', ulOnClick);
+    ulRef.current && (ulRef.current as HTMLUListElement).addEventListener('click', ulOnClick);
 
     return () => {
-      ulRef.current && ulRef.current.removeEventListener('click', ulOnClick);
+      ulRef.current && (ulRef.current as HTMLUListElement).removeEventListener('click', ulOnClick);
     };
   }, []);
 

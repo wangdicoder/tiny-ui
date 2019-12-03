@@ -25,17 +25,21 @@ const toArray = (activeKey: string | string[]) => {
   return Array.isArray(activeKey) ? activeKey : [activeKey];
 };
 
-const Collapse: React.FC<CollapseProps> & { Panel?: any } = ({
-  prefixCls = 'ty-collapse',
-  showArrow = true,
-  bordered = true,
-  deletable = false,
-  accordion = false,
-  defaultActiveKey = [],
-  duration = 300,
-  ...restProps
-}: CollapseProps) => {
-  const { activeKey, onChange, className, style, children } = restProps;
+const Collapse: React.FC<CollapseProps> & { Panel?: any } = (props: CollapseProps) => {
+  const {
+    prefixCls = 'ty-collapse',
+    showArrow = true,
+    bordered = true,
+    deletable = false,
+    accordion = false,
+    defaultActiveKey = [],
+    duration = 300,
+    activeKey,
+    onChange,
+    className,
+    style,
+    children,
+  } = props;
   let currentActiveKey: string | string[] = defaultActiveKey;
   if (activeKey) {
     currentActiveKey = activeKey;
@@ -44,6 +48,14 @@ const Collapse: React.FC<CollapseProps> & { Panel?: any } = ({
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_borderless`]: !bordered,
   });
+
+  const _updateActiveItems = (items: string[]) => {
+    if (!('activeKey' in props)) {
+      // only for defaultKey
+      setActiveItems(items);
+    }
+    onChange && onChange(items);
+  };
 
   const _itemClickCallback = (itemKey: string) => {
     let items = activeItems;
@@ -61,14 +73,6 @@ const Collapse: React.FC<CollapseProps> & { Panel?: any } = ({
       }
     }
     _updateActiveItems(items);
-  };
-
-  const _updateActiveItems = (items: string[]) => {
-    if (!('activeKey' in restProps)) {
-      // only for defaultKey
-      setActiveItems(items);
-    }
-    onChange && onChange(items);
   };
 
   useEffect(() => {

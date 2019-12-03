@@ -13,16 +13,19 @@ export interface CheckboxProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Checkbox: React.FC<CheckboxProps> & { Group?: any } = ({
-  prefixCls = 'ty-checkbox',
-  defaultChecked = false,
-  indeterminate = false,
-  ...restProps
-}: CheckboxProps) => {
-  const { value, disabled, onChange, className, style, children } = restProps;
-  const [checked, setChecked] = useState(
-    'checked' in restProps ? restProps.checked : defaultChecked
-  );
+const Checkbox: React.FC<CheckboxProps> & { Group?: any } = (props: CheckboxProps) => {
+  const {
+    prefixCls = 'ty-checkbox',
+    defaultChecked = false,
+    indeterminate = false,
+    value,
+    disabled,
+    onChange,
+    className,
+    style,
+    children,
+  } = props;
+  const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_indeterminate`]: indeterminate && !checked,
     [`${prefixCls}_checked`]: checked && !indeterminate,
@@ -31,14 +34,14 @@ const Checkbox: React.FC<CheckboxProps> & { Group?: any } = ({
 
   const _onChange = (e: React.FormEvent<HTMLInputElement>) => {
     if (!disabled) {
-      !('checked' in restProps) && setChecked(e.currentTarget.checked);
+      !('checked' in props) && setChecked(e.currentTarget.checked);
       onChange && onChange(e.currentTarget.checked, e);
     }
   };
 
   useEffect(() => {
-    'checked' in restProps && setChecked(restProps.checked!);
-  }, [restProps.checked]);
+    'checked' in props && setChecked(props.checked!);
+  }, [props.checked]);
 
   return (
     <label className={cls} style={style}>

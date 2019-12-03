@@ -12,30 +12,34 @@ export interface RadioProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Radio: React.FC<RadioProps> & { Group?: any } = ({
-  prefixCls = 'ty-radio',
-  defaultChecked = false,
-  ...restProps
-}: RadioProps) => {
-  const { name, value, disabled, onChange, className, style, children } = restProps;
-  const [checked, setChecked] = useState(
-    'checked' in restProps ? restProps.checked : defaultChecked
-  );
+const Radio: React.FC<RadioProps> & { Group?: any } = (props: RadioProps) => {
+  const {
+    prefixCls = 'ty-radio',
+    defaultChecked = false,
+    name,
+    value,
+    disabled,
+    onChange,
+    className,
+    style,
+    children,
+  } = props;
+  const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_checked`]: checked,
     [`${prefixCls}_disabled`]: disabled,
   });
 
-  const _onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const _onChange = (e: React.FormEvent<HTMLInputElement>): void => {
     if (!disabled) {
-      !('checked' in restProps) && setChecked(e.currentTarget.checked);
+      !('checked' in props) && setChecked(e.currentTarget.checked);
       onChange && onChange(e.currentTarget.checked, e);
     }
   };
 
   useEffect(() => {
-    'checked' in restProps && setChecked(restProps.checked!);
-  }, [restProps.checked]);
+    'checked' in props && setChecked(props.checked!);
+  }, [props.checked]);
 
   return (
     <label className={cls} style={style}>

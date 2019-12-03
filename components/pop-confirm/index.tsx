@@ -18,15 +18,21 @@ export interface PopConfirmProps extends BaseProps {
   children: React.ReactElement;
 }
 
-const PopConfirm = ({
-  prefixCls = 'ty-popconfirm',
-  placement = 'top-center',
-  trigger = 'click',
-  confirmText = 'Yes',
-  cancelText = 'No',
-  ...restProps
-}: PopConfirmProps): React.ReactElement => {
-  const { title, icon, onConfirm, onCancel, className, style, children } = restProps;
+const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
+  const {
+    prefixCls = 'ty-popconfirm',
+    placement = 'top-center',
+    trigger = 'click',
+    confirmText = 'Yes',
+    cancelText = 'No',
+    title,
+    icon,
+    onConfirm,
+    onCancel,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(false);
 

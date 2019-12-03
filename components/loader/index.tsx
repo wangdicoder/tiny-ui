@@ -13,15 +13,19 @@ export interface LoaderProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Loader = ({
-  prefixCls = 'ty-loader',
-  size = 'default',
-  loading = true,
-  vertical = false,
-  blurred = true,
-  ...restProps
-}: LoaderProps) => {
-  const { indicator, tip, className, style, children } = restProps;
+const Loader = (props: LoaderProps) => {
+  const {
+    prefixCls = 'ty-loader',
+    size = 'default',
+    loading = true,
+    vertical = false,
+    blurred = true,
+    indicator,
+    tip,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_spinning`]: loading,
   });

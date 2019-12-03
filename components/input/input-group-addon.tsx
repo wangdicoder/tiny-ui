@@ -7,16 +7,19 @@ export interface InputGroupAddonProps extends BaseProps {
   noBorder: boolean;
   disabled?: boolean;
   size?: InputSizes;
-  children: React.ReactNode;
+  children: React.ReactElement;
 }
 
-const InputGroupAddon = ({
-  prefixCls = 'ty-input-group-addon',
-  disabled = false,
-  size = 'md',
-  ...restProps
-}: InputGroupAddonProps) => {
-  const { noBorder, className, style, children } = restProps;
+const InputGroupAddon = (props: InputGroupAddonProps) => {
+  const {
+    prefixCls = 'ty-input-group-addon',
+    disabled = false,
+    size = 'md',
+    noBorder,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_no-border`]: noBorder,
   });
@@ -24,7 +27,7 @@ const InputGroupAddon = ({
   if (React.isValidElement(children)) {
     return (
       <div className={cls} style={style}>
-        {React.Children.map(children, child => {
+        {React.Children.map(children, (child: React.ReactElement) => {
           const childProps = {
             ...child.props,
             size,

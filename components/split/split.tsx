@@ -10,12 +10,8 @@ export interface SplitProps extends BaseProps {
   children: React.ReactElement<SplitPaneProps | SplitBarProps>;
 }
 
-const Split: React.FC<SplitProps> & { Pane?: any } = ({
-  prefixCls = 'ty-split',
-  mode = 'horizontal',
-  ...restProps
-}: SplitProps) => {
-  const { className, style, children } = restProps;
+const Split: React.FC<SplitProps> & { Pane?: any } = (props: SplitProps) => {
+  const { prefixCls = 'ty-split', mode = 'horizontal', className, style, children } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${mode}`]: mode,
   });

@@ -15,23 +15,26 @@ export interface TooltipProps extends BaseProps {
   children: React.ReactElement;
 }
 
-const Tooltip = ({
-  defaultVisible = false,
-  placement = 'top-center',
-  trigger = 'hover',
-  prefixCls = 'ty-tooltip',
-  arrow = true,
-  ...restProps
-}: TooltipProps) => {
-  const { title, visible, onVisibleChange, className, style, children } = restProps;
+const Tooltip = (props: TooltipProps): React.ReactElement => {
+  const {
+    defaultVisible = false,
+    placement = 'top-center',
+    trigger = 'hover',
+    prefixCls = 'ty-tooltip',
+    arrow = true,
+    title,
+    visible,
+    onVisibleChange,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${placement}`);
-  const [popupVisible, setPopupVisible] = useState(
-    'visible' in restProps ? visible : defaultVisible
-  );
+  const [popupVisible, setPopupVisible] = useState('visible' in props ? visible : defaultVisible);
 
   useEffect(() => {
-    'visible' in restProps && setPopupVisible(restProps.visible);
-  }, [restProps.visible]);
+    'visible' in props && setPopupVisible(props.visible);
+  }, [props.visible]);
 
   return (
     <Popover

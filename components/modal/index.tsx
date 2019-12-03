@@ -35,25 +35,23 @@ export interface ModalProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Modal = ({
-  visible = false,
-  width = 520,
-  centered = false,
-  closable = true,
-  unmountOnClose = true,
-  maskType = 'default',
-  maskClosable = true,
-  prefixCls = 'ty-modal',
-  confirmText = 'OK',
-  cancelText = 'Cancel',
-  confirmLoading = false,
-  animation = 'slide',
-  zIndex = 1000,
-  onConfirm = () => {},
-  onCancel = () => {},
-  ...restProps
-}: ModalProps): React.ReactElement => {
+const Modal = (props: ModalProps): React.ReactElement => {
   const {
+    visible = false,
+    width = 520,
+    centered = false,
+    closable = true,
+    unmountOnClose = true,
+    maskType = 'default',
+    maskClosable = true,
+    prefixCls = 'ty-modal',
+    confirmText = 'OK',
+    cancelText = 'Cancel',
+    confirmLoading = false,
+    animation = 'slide',
+    zIndex = 1000,
+    onConfirm = () => {},
+    onCancel = () => {},
     top,
     header,
     footer,
@@ -67,7 +65,7 @@ const Modal = ({
     headerStyle,
     bodyStyle,
     footerStyle,
-  } = restProps;
+  } = props;
   // The visible attribute controls the overlay status,
   // modal visible is triggered by overlay's enter and exit statuses
   const [modalVisible, setModalVisible] = useState(visible);

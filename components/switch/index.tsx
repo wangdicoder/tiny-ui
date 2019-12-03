@@ -19,16 +19,20 @@ export interface SwitchProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Switch = ({
-  prefixCls = 'ty-switch',
-  size = 'md',
-  defaultChecked = true,
-  ...restProps
-}: SwitchProps) => {
-  const { disabled, loading, onChange, checkedText, uncheckedText, className, style } = restProps;
-  const [checked, setChecked] = useState(
-    'checked' in restProps ? restProps.checked : defaultChecked
-  );
+const Switch = (props: SwitchProps): React.ReactElement => {
+  const {
+    prefixCls = 'ty-switch',
+    size = 'md',
+    defaultChecked = true,
+    disabled,
+    loading,
+    onChange,
+    checkedText,
+    uncheckedText,
+    className,
+    style,
+  } = props;
+  const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_checked`]: checked,
     [`${prefixCls}_loading`]: loading,
@@ -38,12 +42,12 @@ const Switch = ({
   const onClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     if (!(disabled || loading)) {
       onChange && onChange(!checked, e);
-      !('checked' in restProps) && setChecked(!checked);
+      !('checked' in props) && setChecked(!checked);
     }
   };
 
   useEffect(() => {
-    'checked' in restProps && setChecked(restProps.checked);
+    'checked' in props && setChecked(props.checked);
   });
 
   return (

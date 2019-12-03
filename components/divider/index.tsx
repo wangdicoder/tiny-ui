@@ -12,14 +12,16 @@ export interface DividerProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Divider = ({
-  prefixCls = 'ty-divider',
-  type = 'horizontal',
-  dashed = false,
-  align = 'center',
-  ...restProps
-}: DividerProps) => {
-  const { className, style, children } = restProps;
+const Divider = (props: DividerProps) => {
+  const {
+    prefixCls = 'ty-divider',
+    type = 'horizontal',
+    dashed = false,
+    align = 'center',
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${type}`, `${prefixCls}_${align}`, {
     [`${prefixCls}_${type}-dashed`]: dashed,
     [`${prefixCls}_text`]: children,

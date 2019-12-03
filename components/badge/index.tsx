@@ -17,18 +17,22 @@ export interface BadgeProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Badge = ({
-  count = 0,
-  prefixCls = 'ty-badge',
-  color = '#f2453d',
-  max = 99,
-  dot = false,
-  processing = false,
-  showZero = false,
-  text = undefined,
-  ...restProps
-}: BadgeProps) => {
-  const { title, className, style, badgeStyle, children } = restProps;
+const Badge = (props: BadgeProps) => {
+  const {
+    count = 0,
+    prefixCls = 'ty-badge',
+    color = '#f2453d',
+    max = 99,
+    dot = false,
+    processing = false,
+    showZero = false,
+    text = undefined,
+    title,
+    className,
+    style,
+    badgeStyle,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className, { [`${prefixCls}_no-wrap`]: !children });
 
   const dotCls = classNames(`${prefixCls}__dot`, { [`${prefixCls}__dot_wave`]: processing });

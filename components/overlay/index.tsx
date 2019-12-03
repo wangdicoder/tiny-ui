@@ -19,15 +19,21 @@ export interface OverlayProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Overlay = ({
-  isShow = false,
-  unmountOnExit = true,
-  zIndex = 1000,
-  prefixCls = 'ty-overlay',
-  type = 'default',
-  ...restProps
-}: OverlayProps) => {
-  const { clickCallback, onEnter, onEntered, onExit, onExited, children, style } = restProps;
+const Overlay = (props: OverlayProps) => {
+  const {
+    isShow = false,
+    unmountOnExit = true,
+    zIndex = 1000,
+    prefixCls = 'ty-overlay',
+    type = 'default',
+    clickCallback,
+    onEnter,
+    onEntered,
+    onExit,
+    onExited,
+    children,
+    style,
+  } = props;
   const cls = classNames(prefixCls, `${prefixCls}_${type}`);
 
   useEffect(() => {

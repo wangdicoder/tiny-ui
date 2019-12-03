@@ -26,16 +26,19 @@ export interface TagProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Tag: React.FC<TagProps> & { CheckableTag?: any } = ({
-  prefixCls = 'ty-tag',
-  closable = false,
-  defaultVisible = true,
-  ...restProps
-}: TagProps) => {
-  const { color, onClose, onClick, className, style, children } = restProps;
-  const [visible, setVisible] = useState(
-    'visible' in restProps ? restProps.visible : defaultVisible
-  );
+const Tag: React.FC<TagProps> & { CheckableTag?: any } = (props: TagProps) => {
+  const {
+    prefixCls = 'ty-tag',
+    closable = false,
+    defaultVisible = true,
+    color,
+    onClose,
+    onClick,
+    className,
+    style,
+    children,
+  } = props;
+  const [visible, setVisible] = useState('visible' in props ? props.visible : defaultVisible);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${color}`]: color && PresetColors.includes(color),
     [`${prefixCls}_visible`]: visible,
@@ -51,7 +54,7 @@ const Tag: React.FC<TagProps> & { CheckableTag?: any } = ({
     if (e.defaultPrevented) {
       return;
     }
-    !('visible' in restProps) && setVisible(false);
+    !('visible' in props) && setVisible(false);
   };
 
   const tagStyle: React.CSSProperties = {
@@ -62,8 +65,8 @@ const Tag: React.FC<TagProps> & { CheckableTag?: any } = ({
   };
 
   useEffect(() => {
-    'visible' in restProps && setVisible(restProps.visible);
-  });
+    'visible' in props && setVisible(props.visible);
+  }, [props.visible]);
 
   return (
     <div className={cls} style={tagStyle} onClick={onClick}>

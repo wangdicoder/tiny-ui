@@ -38,13 +38,11 @@ const setClosedStyle = (node: HTMLElement) => {
   node.style.marginBottom = '0';
 };
 
-const Alert = ({
-  prefixCls = 'ty-alert',
-  type = 'info',
-  iconSize = 14,
-  ...restProps
-}: AlertProps) => {
+const Alert = (props: AlertProps) => {
   const {
+    prefixCls = 'ty-alert',
+    type = 'info',
+    iconSize = 14,
     title,
     icon,
     closeText,
@@ -54,7 +52,7 @@ const Alert = ({
     children,
     className,
     style,
-  } = restProps;
+  } = props;
   const [isShow, setShow] = useState(true);
   const ref = useRef<HTMLDivElement | null>(null);
   const cls = classNames(prefixCls, className, [`${prefixCls}_${type}`]);

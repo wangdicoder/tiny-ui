@@ -11,14 +11,18 @@ export interface CheckboxGroupProps extends BaseProps {
   children: React.ReactElement<CheckboxProps>;
 }
 
-const CheckboxGroup = ({
-  prefixCls = 'ty-checkbox-group',
-  defaultValue = [],
-  ...restProps
-}: CheckboxGroupProps) => {
-  const { onChange, disabled, className, style, children } = restProps;
+const CheckboxGroup = (props: CheckboxGroupProps) => {
+  const {
+    prefixCls = 'ty-checkbox-group',
+    defaultValue = [],
+    onChange,
+    disabled,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
-  const [value, setValue] = useState(restProps.value ? restProps.value : defaultValue);
+  const [value, setValue] = useState(props.value ? props.value : defaultValue);
 
   const _onChange = (checked: boolean, event: React.FormEvent<HTMLInputElement>) => {
     if (!disabled) {
@@ -30,14 +34,14 @@ const CheckboxGroup = ({
         value.push(name);
       }
       // Update state
-      !('value' in restProps) && setValue([...value]);
+      !('value' in props) && setValue([...value]);
       onChange && onChange(value);
     }
   };
 
   useEffect(() => {
-    'value' in restProps && setValue([...restProps.value!]);
-  }, [restProps.value]);
+    'value' in props && setValue([...props.value!]);
+  }, [props.value]);
 
   return (
     <div className={cls} style={style}>

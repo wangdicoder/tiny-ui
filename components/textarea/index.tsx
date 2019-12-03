@@ -12,8 +12,10 @@ export interface TextareaProps extends BaseProps {
   disabled?: boolean;
 }
 
-const Textarea = ({ prefixCls = 'ty-textarea', disabled = false, ...restProps }: TextareaProps) => {
+const Textarea = (props: TextareaProps) => {
   const {
+    prefixCls = 'ty-textarea',
+    disabled = false,
     limit,
     counter,
     defaultValue,
@@ -23,7 +25,7 @@ const Textarea = ({ prefixCls = 'ty-textarea', disabled = false, ...restProps }:
     className,
     style,
     ...otherProps
-  } = restProps;
+  } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_disabled`]: disabled,
   });
@@ -56,7 +58,7 @@ const Textarea = ({ prefixCls = 'ty-textarea', disabled = false, ...restProps }:
   } else {
     return (
       <textarea
-        {...restProps}
+        {...props}
         rows={rows}
         value={value}
         defaultValue={defaultValue}

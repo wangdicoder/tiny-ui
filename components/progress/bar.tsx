@@ -20,17 +20,20 @@ export interface BarProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Bar = ({
-  prefixCls = 'ty-progress-bar',
-  percent = 0,
-  showInfo = true,
-  strokeWidth = 8,
-  strokeLinecap = 'round',
-  strokeColor = 'primary',
-  innerText = false,
-  ...restProps
-}: BarProps) => {
-  const { format, backgroundType, className, style } = restProps;
+const Bar = (props: BarProps): React.ReactElement => {
+  const {
+    prefixCls = 'ty-progress-bar',
+    percent = 0,
+    showInfo = true,
+    strokeWidth = 8,
+    strokeLinecap = 'round',
+    strokeColor = 'primary',
+    innerText = false,
+    format,
+    backgroundType,
+    className,
+    style,
+  } = props;
   let percentage: number = percent > 100 ? 100 : percent;
   percentage = percentage < 0 ? 0 : percentage;
 

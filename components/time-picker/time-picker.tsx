@@ -10,14 +10,16 @@ export interface TimePickerProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const TimePicker = ({
-  prefixCls = 'ty-time-picker',
-  defaultValue = new Date(),
-  ...restProps
-}: TimePickerProps) => {
-  const { onChange, className, style } = restProps;
+const TimePicker = (props: TimePickerProps): React.ReactElement => {
+  const {
+    prefixCls = 'ty-time-picker',
+    defaultValue = new Date(),
+    onChange,
+    className,
+    style,
+  } = props;
   const cls = classNames(prefixCls, className);
-  const [date, setDate] = useState(restProps.value ? restProps.value : defaultValue);
+  const [date, setDate] = useState(props.value ? props.value : defaultValue);
 
   const updateTime = (type: string, num: number) => {
     if (type === 'h') {
@@ -29,12 +31,12 @@ const TimePicker = ({
     }
 
     setDate(date);
-    !restProps.value && onChange && onChange(date);
+    !props.value && onChange && onChange(date);
   };
 
   useEffect(() => {
-    restProps.value && setDate(restProps.value);
-  });
+    props.value && setDate(props.value);
+  }, [props.value]);
 
   return (
     <div className={cls} style={style}>

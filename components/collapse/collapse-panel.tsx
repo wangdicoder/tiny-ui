@@ -27,13 +27,11 @@ const richNode = (node: React.ReactNode, isActive: boolean) => {
   return typeof node === 'function' ? node(isActive) : node;
 };
 
-const CollapsePanel = ({
-  prefixCls = 'ty-collapse-item',
-  showArrow = true,
-  isActive = false,
-  ...restProps
-}: CollapsePanelProps) => {
+const CollapsePanel = (props: CollapsePanelProps) => {
   const {
+    prefixCls = 'ty-collapse-item',
+    showArrow = true,
+    isActive = false,
     itemKey,
     duration,
     header,
@@ -44,7 +42,7 @@ const CollapsePanel = ({
     className,
     style,
     children,
-  } = restProps;
+  } = props;
   const itemEl = useRef<HTMLDivElement | null>(null);
   const contentEl = useRef<HTMLDivElement | null>(null);
 

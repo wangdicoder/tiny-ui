@@ -114,15 +114,13 @@ const getOffset = ({
   };
 };
 
-const Popup = ({
-  prefixCls = 'ty-popup',
-  placement = 'top-center',
-  show = false,
-  gap = 0,
-  zIndex = 999,
-  ...restProps
-}: PopupProps): React.ReactElement | null => {
+const Popup = (props: PopupProps): React.ReactElement | null => {
   const {
+    prefixCls = 'ty-popup',
+    placement = 'top-center',
+    show = false,
+    gap = 0,
+    zIndex = 999,
     target,
     className,
     children,
@@ -130,7 +128,7 @@ const Popup = ({
     onMouseLeave,
     onMouseOut,
     onMouseOver,
-  } = restProps;
+  } = props;
   const containerCls = classNames(`${prefixCls}__container`, {
     [`${prefixCls}__container_hide`]: !show,
   });

@@ -17,15 +17,20 @@ export interface AvatarProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Avatar: React.FC<AvatarProps> & { Group?: any } = ({
-  prefixCls = 'ty-avatar',
-  size = 38,
-  shape = 'circle',
-  icon = 'user',
-  presence = undefined,
-  ...restProps
-}: AvatarProps) => {
-  const { src, alt, onClick, children, className, style } = restProps;
+const Avatar: React.FC<AvatarProps> & { Group?: any } = (props: AvatarProps) => {
+  const {
+    prefixCls = 'ty-avatar',
+    size = 38,
+    shape = 'circle',
+    icon = 'user',
+    presence = undefined,
+    src,
+    alt,
+    onClick,
+    children,
+    className,
+    style,
+  } = props;
   const outerEl = useRef<HTMLSpanElement | null>(null);
   const textEl = useRef<HTMLSpanElement | null>(null);
   const [scale, setScale] = useState(1);

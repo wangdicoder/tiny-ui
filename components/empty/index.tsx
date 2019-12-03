@@ -10,8 +10,17 @@ export interface EmptyProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Empty = ({ prefixCls = 'ty-empty', description = 'No Data', ...restProps }: EmptyProps) => {
-  const { image, imageStyle, descStyle, className, style, children } = restProps;
+const Empty = (props: EmptyProps) => {
+  const {
+    prefixCls = 'ty-empty',
+    description = 'No Data',
+    image,
+    imageStyle,
+    descStyle,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
 
   const renderImage = (): ReactNode => {

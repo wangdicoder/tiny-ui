@@ -11,14 +11,10 @@ export interface DatePickerProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const DatePicker = ({
-  prefixCls = 'ty-date-picker',
-  defaultValue = new Date(),
-  ...restProps
-}: DatePickerProps) => {
-  const { className, style } = restProps;
+const DatePicker = (props: DatePickerProps) => {
+  const { prefixCls = 'ty-date-picker', defaultValue = new Date(), className, style } = props;
   const cls = classNames(prefixCls, className);
-  const [date, setDate] = useState(restProps.value ? restProps.value : defaultValue);
+  const [date, setDate] = useState(props.value ? props.value : defaultValue);
   const [panelDate, setPanelDate] = useState(new Date());
 
   useEffect(() => {});

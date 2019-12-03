@@ -35,28 +35,31 @@ export interface PopoverProps extends BaseProps {
   children: React.ReactElement;
 }
 
-const Popover = ({
-  prefixCls = 'ty-popover',
-  placement = 'top-center',
-  trigger = 'hover',
-  defaultVisible = false,
-  arrow = true,
-  gap = 0,
-  theme = 'white',
-  mouseEnterDelay = 100,
-  mouseLeaveDelay = 100,
-  ...restProps
-}: PopoverProps): React.ReactElement | null => {
-  const { title, content, visible, onVisibleChange, className, children } = restProps;
+const Popover = (props: PopoverProps): React.ReactElement | null => {
+  const {
+    prefixCls = 'ty-popover',
+    placement = 'top-center',
+    trigger = 'hover',
+    defaultVisible = false,
+    arrow = true,
+    gap = 0,
+    theme = 'white',
+    mouseEnterDelay = 100,
+    mouseLeaveDelay = 100,
+    title,
+    content,
+    visible,
+    onVisibleChange,
+    className,
+    children,
+  } = props;
   const cls = classNames(
     className,
     prefixCls,
     `${prefixCls}_${placement}`,
     `${prefixCls}_${theme}`
   );
-  const [popupVisible, setPopupVisible] = useState(
-    'visible' in restProps ? visible : defaultVisible
-  );
+  const [popupVisible, setPopupVisible] = useState('visible' in props ? visible : defaultVisible);
   const [arrowStyle, setArrowStyle] = useState<React.CSSProperties>({});
   const [target, setTarget] = useState<HTMLElement | undefined>(undefined);
   const [eventTarget, setEventTarget] = useState<EventTarget | null>(null);
@@ -199,8 +202,8 @@ const Popover = ({
   }, [target, placement]);
 
   useEffect(() => {
-    'visible' in restProps && setPopupVisible(restProps.visible);
-  }, [restProps.visible]);
+    'visible' in props && setPopupVisible(props.visible);
+  }, [props.visible]);
 
   if (children) {
     return (

@@ -16,13 +16,19 @@ export interface FormItemProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const FormItem = ({
-  prefixCls = 'ty-form-item',
-  validateOnChange = true,
-  validateOnBlur = false,
-  ...restProps
-}: FormItemProps) => {
-  const { name, label, helper, notice, className, style, children } = restProps;
+const FormItem = (props: FormItemProps) => {
+  const {
+    prefixCls = 'ty-form-item',
+    validateOnChange = true,
+    validateOnBlur = false,
+    name,
+    label,
+    helper,
+    notice,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
   const store = React.useContext(FormStoreContext);
   const [value, setValue] = useState(name && store ? store.getFieldValue(name) : undefined);
@@ -38,6 +44,13 @@ const FormItem = ({
     [store]
   );
 
+  const validateAndUpdateError = useCallback(() => {
+    store!.validateField(name);
+    const err = store!.getFieldError(name);
+    setError(err);
+    setShowError(!!err);
+  }, [store]);
+
   // Delegate onBlur event
   const onBlur = (): void => {
     validateOnBlur && validateAndUpdateError();
@@ -49,14 +62,6 @@ const FormItem = ({
     setShowError(false);
   };
 
-  const validateAndUpdateError = useCallback(() => {
-    store!.validateField(name);
-    const err = store!.getFieldError(name);
-    setError(err);
-    setShowError(!!err);
-  }, [store]);
-
-  //@ts-ignore
   useEffect(() => {
     if (store) {
       store.setFieldValue(name, value);
@@ -69,6 +74,8 @@ const FormItem = ({
         (!isOnChange || validateOnChange) && validateAndUpdateError();
       });
     }
+
+    return () => {};
   }, []);
 
   return (

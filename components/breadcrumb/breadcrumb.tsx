@@ -8,12 +8,8 @@ export interface BreadcrumbProps extends BaseProps {
   children: ReactElement<BreadcrumbItemProps>;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> & { Item?: any } = ({
-  separator = '/',
-  prefixCls = 'ty-breadcrumb',
-  ...restProps
-}: BreadcrumbProps) => {
-  const { className, style, children } = restProps;
+const Breadcrumb: React.FC<BreadcrumbProps> & { Item?: any } = (props: BreadcrumbProps) => {
+  const { separator = '/', prefixCls = 'ty-breadcrumb', className, style, children } = props;
   const cls = classNames(prefixCls, className);
 
   return (

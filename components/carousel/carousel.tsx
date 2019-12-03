@@ -20,19 +20,20 @@ export interface CarouselProps extends BaseProps {
   children: React.ReactElement<CarouselItemProps>[];
 }
 
-const Carousel: React.FC<CarouselProps> & { Item?: any } = ({
-  prefixCls = 'ty-carousel',
-  dots = true,
-  arrows = true,
-  interval = 3000,
-  animatedDuration = 500,
-  autoplay = true,
-  dotPosition = 'bottom',
-  easing = 'linear',
-  className,
-  style,
-  children,
-}: CarouselProps) => {
+const Carousel: React.FC<CarouselProps> & { Item?: any } = (props: CarouselProps) => {
+  const {
+    prefixCls = 'ty-carousel',
+    dots = true,
+    arrows = true,
+    interval = 3000,
+    animatedDuration = 500,
+    autoplay = true,
+    dotPosition = 'bottom',
+    easing = 'linear',
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
   const outerRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLUListElement | null>(null);

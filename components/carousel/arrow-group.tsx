@@ -6,7 +6,8 @@ export interface ArrowGroup extends BaseProps {
   rightBtnOnClick: MouseEventHandler<HTMLLIElement>;
 }
 
-const ArrowGroup = ({ leftBtnOnClick, rightBtnOnClick, prefixCls, style }: ArrowGroup) => {
+const ArrowGroup = (props: ArrowGroup) => {
+  const { leftBtnOnClick, rightBtnOnClick, prefixCls, style } = props;
   return (
     <ul className={`${prefixCls}__arrow-group`} style={style}>
       <li onClick={leftBtnOnClick} className={`${prefixCls}__arrow-left`}>

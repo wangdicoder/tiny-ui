@@ -29,32 +29,32 @@ const isValid = (val: string | number) => {
   return !isNaN(+val);
 };
 
-const InputNumber = ({
-  prefixCls = 'ty-input-number',
-  size = 'md',
-  disabled = false,
-  defaultValue = 0,
-  step = 1,
-  controls = false,
-  min = Number.NEGATIVE_INFINITY,
-  max = Number.POSITIVE_INFINITY,
-  characterSet = '1234567890eE.+-',
-  ...restProps
-}: InputNumberProps) => {
-  const { onChange, className, style } = restProps;
+const InputNumber = (props: InputNumberProps) => {
+  const {
+    prefixCls = 'ty-input-number',
+    size = 'md',
+    disabled = false,
+    defaultValue = 0,
+    step = 1,
+    controls = false,
+    min = Number.NEGATIVE_INFINITY,
+    max = Number.POSITIVE_INFINITY,
+    characterSet = '1234567890eE.+-',
+    onChange,
+    className,
+    style,
+  } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_always-controls`]: controls,
   });
-  const [value, setValue] = useState(
-    'value' in restProps ? `${restProps.value}` : `${defaultValue}`
-  );
+  const [value, setValue] = useState('value' in props ? `${props.value}` : `${defaultValue}`);
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.trim();
     const isValidInput = val.split('').every((ch: string) => characterSet.includes(ch));
     if (isValidInput) {
-      !('value' in restProps) && setValue(val);
+      !('value' in props) && setValue(val);
       // Only the value is a valid number, onChange will be called and return the value.
       onChange && isValid(val) && onChange(Number(val), e);
     }
@@ -84,7 +84,7 @@ const InputNumber = ({
     e.stopPropagation();
     if (!disabled && isValid(step)) {
       const val = +value + +step;
-      !('value' in restProps) && setValue(`${val}`);
+      !('value' in props) && setValue(`${val}`);
       onChange && onChange(val, e);
     }
   };
@@ -93,14 +93,14 @@ const InputNumber = ({
     e.stopPropagation();
     if (!disabled && isValid(step)) {
       const val = +value - +step;
-      !('value' in restProps) && setValue(`${val}`);
+      !('value' in props) && setValue(`${val}`);
       onChange && onChange(val, e);
     }
   };
 
   useEffect(() => {
-    'value' in restProps && setValue(`${restProps.value}`);
-  }, [restProps.value]);
+    'value' in props && setValue(`${props.value}`);
+  }, [props.value]);
 
   return (
     <div className={cls} style={style}>

@@ -17,17 +17,20 @@ export interface CircleProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Circle = ({
-  prefixCls = 'ty-progress-circle',
-  percent = 0,
-  strokeWidth = 8,
-  width = 120,
-  strokeLinecap = 'round',
-  strokeColor = 'primary',
-  reverse = false,
-  ...restProps
-}: CircleProps) => {
-  const { format, className, style, textStyle } = restProps;
+const Circle = (props: CircleProps): React.ReactElement => {
+  const {
+    prefixCls = 'ty-progress-circle',
+    percent = 0,
+    strokeWidth = 8,
+    width = 120,
+    strokeLinecap = 'round',
+    strokeColor = 'primary',
+    reverse = false,
+    format,
+    className,
+    style,
+    textStyle,
+  } = props;
   const cls = classNames(prefixCls, className);
   let percentage: number = percent > 100 ? 100 : percent;
   percentage = percentage < 0 ? 0 : percentage;

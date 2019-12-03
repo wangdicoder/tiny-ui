@@ -12,13 +12,18 @@ export interface NativeSelectProps extends BaseProps {
   children: React.ReactElement<NativeSelectGroupProps | NativeSelectOptionProps>;
 }
 
-const NativeSelect: React.FC<NativeSelectProps> & { Group?: any; Option?: any } = ({
-  prefixCls = 'ty-select-native',
-  size = 'md',
-  disabled = false,
-  ...restProps
-}: NativeSelectProps) => {
-  const { className, style, children, ...otherProps } = restProps;
+const NativeSelect: React.FC<NativeSelectProps> & { Group?: any; Option?: any } = (
+  props: NativeSelectProps
+) => {
+  const {
+    prefixCls = 'ty-select-native',
+    size = 'md',
+    disabled = false,
+    className,
+    style,
+    children,
+    ...otherProps
+  } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${size}`]: size,
     [`${prefixCls}_disabled`]: disabled,

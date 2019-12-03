@@ -12,23 +12,29 @@ export interface RadioGroupProps extends BaseProps {
   children: React.ReactElement<RadioProps>;
 }
 
-const RadioGroup = ({ prefixCls = 'ty-radio-group', ...restProps }: RadioGroupProps) => {
-  const { name, onChange, disabled, className, style, children } = restProps;
+const RadioGroup = (props: RadioGroupProps): React.ReactElement => {
+  const {
+    prefixCls = 'ty-radio-group',
+    name,
+    onChange,
+    disabled,
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
-  const [value, setValue] = useState(
-    'value' in restProps ? restProps.value : restProps.defaultValue
-  );
+  const [value, setValue] = useState('value' in props ? props.value : props.defaultValue);
 
   const _onChange = (checked: boolean, e: React.FormEvent<HTMLInputElement>) => {
     if (!disabled) {
-      !('value' in restProps) && setValue(e.currentTarget.value);
+      !('value' in props) && setValue(e.currentTarget.value);
       onChange && onChange(e.currentTarget.value, e);
     }
   };
 
   useEffect(() => {
-    'value' in restProps && setValue(restProps.value!);
-  }, [restProps.value]);
+    'value' in props && setValue(props.value!);
+  }, [props.value]);
 
   return (
     <div className={cls} style={style}>

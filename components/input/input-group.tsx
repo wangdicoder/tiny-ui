@@ -9,13 +9,15 @@ export interface InputGroupProps extends BaseProps {
   children: React.ReactElement;
 }
 
-const InputGroup = ({
-  prefixCls = 'ty-input-group',
-  disabled = false,
-  size = 'md',
-  ...restProps
-}: InputGroupProps) => {
-  const { className, style, children } = restProps;
+const InputGroup = (props: InputGroupProps) => {
+  const {
+    prefixCls = 'ty-input-group',
+    disabled = false,
+    size = 'md',
+    className,
+    style,
+    children,
+  } = props;
   const cls = classNames(prefixCls, className);
 
   return (

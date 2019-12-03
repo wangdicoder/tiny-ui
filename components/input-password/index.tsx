@@ -10,13 +10,15 @@ export interface InputPasswordProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const InputPassword = ({
-  suffix = true,
-  visibleOnClick = () => {},
-  prefixCls = 'ty-input-pwd',
-  ...restProps
-}: InputPasswordProps) => {
-  const { className, style, ...otherProps } = restProps;
+const InputPassword = (props: InputPasswordProps) => {
+  const {
+    suffix = true,
+    visibleOnClick = () => {},
+    prefixCls = 'ty-input-pwd',
+    className,
+    style,
+    ...otherProps
+  } = props;
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(false);
 

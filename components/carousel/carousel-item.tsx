@@ -7,7 +7,8 @@ export interface CarouselItemProps extends React.PropsWithRef<BaseProps> {
 }
 
 const CarouselItem = React.forwardRef<HTMLLIElement, CarouselItemProps>(
-  ({ prefixCls = 'ty-carousel-item', className, style, children }: CarouselItemProps, ref) => {
+  (props: CarouselItemProps, ref) => {
+    const { prefixCls = 'ty-carousel-item', className, style, children } = props;
     const cls = classNames(prefixCls, className);
     return (
       <li ref={ref} className={cls} style={style}>
