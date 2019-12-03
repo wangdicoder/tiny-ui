@@ -64,14 +64,14 @@ const NEUTRALS = [
 const ColorPage = () => {
   return (
     <div className="color-page">
-      <h1 className="code-heading-1">Color</h1>
-      <p className="code-p">
+      <h1 className="md__heading-1">Color</h1>
+      <p className="md__p">
         Tiny UI uses a specific set of palettes to specify colors to provide a consistent look and
         feel for the products you build.
       </p>
 
-      <h2 className="code-heading-2">Primary colors</h2>
-      <p className="code-p">
+      <h2 className="md__heading-2">Primary colors</h2>
+      <p className="md__p">
         Primary palette is comprised of neutrals, white, and purple. These colors are present across
         most touch points from marketing to product.
       </p>
@@ -85,8 +85,8 @@ const ColorPage = () => {
         <ColorCard name="Warning" hex="#ff9800" />
       </div>
 
-      <h2 className="code-heading-2">Light neutrals</h2>
-      <p className="code-p">
+      <h2 className="md__heading-2">Light neutrals</h2>
+      <p className="md__p">
         Light neutrals are helpful for offsetting content in a primarily white layout without losing
         warmth and cleanliness, and are therefore often used as a background color for web
         components.

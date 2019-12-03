@@ -1,6 +1,6 @@
 import React from 'react';
 import './home.scss';
-import { History } from 'history';
+import { RouteComponentProps } from 'react-router-dom';
 import { Button, Icon } from '../../../../components';
 import FeatureBlock from '../../components/feature-block';
 import Footer from '../../components/footer';
@@ -11,27 +11,25 @@ const FEATURES = [
     img: require('../../assets/home/ic_concise.png'),
     title: 'Concise',
     desc: 'All components have easy and friendly api',
-  }, {
+  },
+  {
     img: require('../../assets/home/ic_direct.png'),
     title: 'Consistent',
     desc: 'All components have a consistent design style',
-  }, {
+  },
+  {
     img: require('../../assets/home/ic_elegant.png'),
     title: 'Elegant',
     desc: 'Thanks for React Hook, the source code is more light weight',
-  }, {
+  },
+  {
     img: require('../../assets/home/ic_adaptable.png'),
     title: 'Adaptable',
     desc: 'Completely customisable for all components',
   },
 ];
 
-type HomeProps = {
-  history: History,
-};
-
-export default class Home extends React.PureComponent<HomeProps, any> {
-
+export default class Home extends React.PureComponent<RouteComponentProps, any> {
   _navigateToComponentPage = () => {
     this.props.history.push('/components');
   };
@@ -45,8 +43,12 @@ export default class Home extends React.PureComponent<HomeProps, any> {
       <div className="home">
         <div className="home__slider">
           <div className="home__logo-container">
-            <img src={require('../../assets/logo/react-logo.svg')} alt="react" className="home__react-logo"/>
-            <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo"/>
+            <img
+              src={require('../../assets/logo/react-logo.svg')}
+              alt="react"
+              className="home__react-logo"
+            />
+            <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
           </div>
           <div style={{ position: 'relative' }}>
             <h1 className="home__title">Tiny UI</h1>
@@ -63,7 +65,7 @@ export default class Home extends React.PureComponent<HomeProps, any> {
               <Button
                 round
                 size="lg"
-                icon={<Icon type="github" color="#000"/>}
+                icon={<Icon type="github" color="#000" />}
                 onClick={this._openGithub}>
                 GitHub
               </Button>
@@ -74,19 +76,32 @@ export default class Home extends React.PureComponent<HomeProps, any> {
         <div className="home__main">
           <h1 className="home__feature-title">Design Principle</h1>
           <div className="home__features">
-            {FEATURES.map((feature) => (
-              <FeatureBlock key={feature.title} img={feature.img} title={feature.title} desc={feature.desc}/>
+            {FEATURES.map(feature => (
+              <FeatureBlock
+                key={feature.title}
+                img={feature.img}
+                title={feature.title}
+                desc={feature.desc}
+              />
             ))}
           </div>
 
           <h1 className="home__feature-title">Blueprint</h1>
-          <p className="home__p">This project is still under development. However, before release version 1, we
-            will implement these components listing in the diagram below.</p>
-          <p className="home__p">Disclaimer: this project is very much under development. The API is subject to
-            change without notice.</p>
-          <img src={require('../../assets/home/blueprint.png')} alt="blueprint" className="home__blueprint"/>
+          <p className="home__p">
+            This project is still under development. However, before release version 1, we will
+            implement these components listing in the diagram below.
+          </p>
+          <p className="home__p">
+            Disclaimer: this project is very much under development. The API is subject to change
+            without notice.
+          </p>
+          <img
+            src={require('../../assets/home/blueprint.png')}
+            alt="blueprint"
+            className="home__blueprint"
+          />
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
