@@ -1,0 +1,16 @@
+@import '../../style/variables';
+
+.#{$prefix}backtop {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 200ms linear 0s, visibility;
+}

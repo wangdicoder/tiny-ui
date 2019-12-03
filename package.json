@@ -25,9 +25,9 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf lib && tsc -p tsconfig.json",
+    "build": "rm -rf lib && tsc -p tsconfig.json && npm run dist",
     "commit": "git add . && ./node_modules/cz-customizable/standalone.js",
-    "dist-style": "gulp --gulpfile scripts/gulpfile.js",
+    "dist-style": "gulp --gulpfile scripts/gulpfile.js && node scripts/generate-style.js",
     "dist-dev": "NODE_ENV=development webpack --config webpack.config.js --progress --colors",
     "dist-prod": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
     "dist": "rm -rf dist && npm run dist-dev && npm run dist-prod && npm run dist-style",

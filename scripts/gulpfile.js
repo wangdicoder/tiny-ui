@@ -1,3 +1,4 @@
+const path = require('path');
 const { series, parallel, src, dest } = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
@@ -8,12 +9,12 @@ const cleanCss = require('gulp-clean-css');
 
 sass.compiler = require('node-sass');
 
-const SOURCE_PATH = '../themes';
-const DIST_PATH = '../dist/styles';
-const MODULARIZED_DIST_PATH = '../lib/styles';
+const SOURCE_PATH = path.resolve(__dirname, '../components');
+const DIST_PATH = path.resolve(__dirname, '../dist/styles');
+const MODULARIZED_DIST_PATH = path.resolve(__dirname, '../lib');
 
-function build_scss() {
-	return src(`${SOURCE_PATH}/index.scss`)
+function buildScss() {
+	return src(`${SOURCE_PATH}/style/index.scss`)
 	.pipe(sourcemaps.init())
 	.pipe(sass().on('error', sass.logError))
 	.pipe(postcss([autoPrefixer]))
@@ -21,7 +22,7 @@ function build_scss() {
 	.pipe(dest(DIST_PATH));
 }
 
-function min_css() {
+function minCss() {
 	return src(`${DIST_PATH}/index.css`)
 	.pipe(sourcemaps.init())
 	.pipe(cleanCss())
@@ -32,25 +33,28 @@ function min_css() {
 	.pipe(dest(`${DIST_PATH}`));
 }
 
-function copy_font(done) {
+function copyFont(done) {
 	src(`${SOURCE_PATH}/fonts/*`).pipe(dest(`${DIST_PATH}/fonts`));
 	done();
 }
 
-function generate_modularized_styles(done) {
-	// copy from themes to lib/styles folder
-	src(`${SOURCE_PATH}/**`)
+function generateModularizedStyles(done) {
+	// copy from components to lib/styles folder,
+	src(`${SOURCE_PATH}/*/style/*.scss`)
 	.pipe(dest(`${MODULARIZED_DIST_PATH}`));
-
-	// generate css file from scss
-	src(`${SOURCE_PATH}/components/**`)
+	
+	src(`${SOURCE_PATH}/style/**`)
+	.pipe(dest(`${MODULARIZED_DIST_PATH}/style`));
+	
+	//generate css file from scss
+	src(`${SOURCE_PATH}/**/*.scss`)
 	.pipe(sass().on('error', sass.logError))
 	.pipe(postcss([autoPrefixer]))
-	.pipe(dest(`${MODULARIZED_DIST_PATH}/components`));
+	.pipe(dest(`${MODULARIZED_DIST_PATH}`));
 	done();
 }
 
 exports.default = parallel(
-	series(build_scss, min_css, generate_modularized_styles),
-	copy_font,
+	series(buildScss, minCss, generateModularizedStyles),
+	copyFont,
 );

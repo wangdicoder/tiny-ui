@@ -1,6 +1,6 @@
-@import "../../style/variables";
-@import "../../style/mixins";
-@import "./mixin";
+@import '../../style/variables';
+@import '../../style/mixins';
+@import './mixin';
 
 $btn-prefix: #{$prefix}btn;
 
@@ -72,7 +72,11 @@ $btn-prefix: #{$prefix}btn;
     @include btn-color($red-color);
   }
 
-  &_primary, &_blue, &_green, &_yellow, &_red {
+  &_primary,
+  &_blue,
+  &_green,
+  &_yellow,
+  &_red {
     .#{$btn-prefix}__loader {
       @include loader-color(#fff);
     }
@@ -131,13 +135,13 @@ $btn-prefix: #{$prefix}btn;
   }
 
   &_loading {
-    opacity: .85;
+    opacity: 0.85;
     pointer-events: none;
     cursor: progress;
   }
 
   &_disabled {
-    opacity: .4;
+    opacity: 0.4;
     cursor: not-allowed;
     pointer-events: none;
   }
@@ -188,10 +192,14 @@ $btn-prefix: #{$prefix}btn;
     }
   }
 
-  &_primary, &_blue, &_green, &_yellow, &_red {
+  &_primary,
+  &_blue,
+  &_green,
+  &_yellow,
+  &_red {
     .#{$btn-prefix} {
       &:not(:first-child) {
-        border-left-color: rgba(255, 255, 255, .2);
+        border-left-color: rgba(255, 255, 255, 0.2);
       }
     }
   }

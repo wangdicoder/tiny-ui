@@ -5,48 +5,28 @@ const fs = require('fs');
 const path = require('path');
 
 const LIB_INPUT_DIR = path.resolve(__dirname, '../lib');
-const BLACK_LIST = ['countdown', 'styles', 'portal', 'intl-provider', '_utils'];
 
-function geFileList(path) {
-    const files = fs.readdirSync(path);
-    files.filter(function(file) {
-        return !BLACK_LIST.includes(file.toString());
-    }).forEach(function(file) {
-        const folderPath = path + '/' + file;
-        const states = fs.statSync(folderPath);
-        if (states.isDirectory()) {
-            mkdir(file, folderPath);
-        }
-    });
+function generateCssJs(filename, path) {
+  const content = fs.readFileSync(path + '/index.js', { encoding: 'utf-8' });
+  const cssContent = content.replace('.scss', '.css');
+  fs.writeFile(path + '/css.js', cssContent, (err, cb) => {
+    if (err) {
+      throw err;
+    }
+    console.log(`write ${filename} css successful`);
+  });
 }
 
-function mkdir(filename, path) {
-    const folderPath = path + '/style';
-    fs.mkdir(folderPath, (err, cb) => {
-        if (err) {
-            throw err;
-        }
-        writeFile(filename, folderPath);
-    });
-}
-
-function writeFile(filename, path) {
-    const jsContent = `import '../../styles/components/${filename}.scss'`;
-    const cssContent = `import '../../styles/components/${filename}.css'`;
-    fs.writeFile(path + '/index.js', jsContent, (err, cb) => {
-        if (err) {
-            throw err;
-        }
-        console.log(`write ${filename} scss successful`);
-    });
-    fs.writeFile(path + '/css.js', cssContent, (err, cb) => {
-        if (err) {
-            throw err;
-        }
-        console.log(`write ${filename} css successful`);
-    });
+function getFolderList(path) {
+  const files = fs.readdirSync(path);
+  files.forEach(function(file) {
+    const folderPath = path + '/' + file + '/style';
+    if (fs.existsSync(folderPath)) {
+      generateCssJs(file, folderPath);
+    }
+  });
 }
 
 (function main() {
-    geFileList(LIB_INPUT_DIR);
+  getFolderList(LIB_INPUT_DIR);
 })();

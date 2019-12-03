@@ -1,0 +1,61 @@
+@import '../../style/variables';
+
+.#{$prefix}flip {
+  display: inline-block;
+  background-color: transparent;
+  box-sizing: border-box;
+  perspective: 1000px;
+
+  &:hover .#{$prefix}flip__inner_hor {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover .#{$prefix}flip__inner_hor_reverse {
+    transform: rotateY(180deg);
+  }
+
+  &:hover .#{$prefix}flip__inner_ver {
+    transform: rotateX(-180deg);
+  }
+
+  &:hover .#{$prefix}flip__inner_ver_reverse {
+    transform: rotateX(180deg);
+  }
+
+  &__inner {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  &__item-front,
+  &__item-back {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  &__item-back {
+    &_hor {
+      transform: rotateY(-180deg);
+    }
+
+    &_hor_reverse {
+      transform: rotateY(180deg);
+    }
+
+    &_ver {
+      transform: rotateX(-180deg);
+    }
+
+    &_ver_reverse {
+      transform: rotateX(180deg);
+    }
+  }
+}

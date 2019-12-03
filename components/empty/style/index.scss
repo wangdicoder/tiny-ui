@@ -1,0 +1,27 @@
+@import '../../style/variables';
+
+.#{$prefix}empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__image-container {
+    margin-bottom: 8px;
+  }
+
+  &__image {
+    max-width: 120px;
+  }
+
+  &__desc {
+    color: rgba(0, 0, 0, 0.35);
+    font-size: $font-size;
+    font-family: $font-family;
+    margin: 0;
+  }
+
+  &__footer {
+    margin-top: 16px;
+  }
+}

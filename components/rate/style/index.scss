@@ -1,0 +1,31 @@
+@import '../../style/variables';
+
+.#{$prefix}rate {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &__item {
+    position: relative;
+  }
+
+  &__item-first,
+  &__item-second {
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &__item-first {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    //opacity: 0;
+  }
+
+  &__item-second {
+  }
+}

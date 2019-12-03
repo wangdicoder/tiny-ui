@@ -1,0 +1,16 @@
+@import '../../style/variables';
+@import '../../style/font';
+
+.#{$prefix}icon {
+  font-family: 'tiny' !important;
+  line-height: 1;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &_spin:before {
+    display: inline-block;
+    animation: ty-rotate 1s linear infinite;
+  }
+}

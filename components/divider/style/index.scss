@@ -1,0 +1,81 @@
+@import '../../style/variables';
+
+.#{$prefix}divider {
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+
+  &_vertical {
+    margin: 0 8px;
+    display: inline-block;
+    height: 0.9em;
+    width: 1px;
+    vertical-align: middle;
+    position: relative;
+    top: -0.1em;
+    background: $divider-line-color;
+
+    &-dashed {
+      background: none;
+      border-left: 1px dashed $divider-line-color;
+    }
+  }
+
+  &_horizontal {
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin: 16px 0;
+    background: $divider-line-color;
+
+    &-dashed:not(.#{$prefix}divider_text) {
+      background: none;
+      border-top: 1px dashed $divider-line-color;
+    }
+  }
+
+  &_text {
+    display: table;
+    white-space: nowrap;
+    text-align: center;
+    background: transparent;
+    font-weight: 500;
+    color: #333;
+
+    &:before,
+    &:after {
+      content: '';
+      display: table-cell;
+      position: relative;
+      top: 50%;
+      width: 50%;
+      border-top: 1px solid $divider-line-color;
+      transform: translateY(50%);
+    }
+  }
+
+  &_left:before,
+  &_right:after {
+    width: 5%;
+  }
+
+  &_left:after,
+  &_right:before {
+    width: 95%;
+  }
+
+  &_inner-text {
+    display: inline-block;
+    padding: 0 10px;
+  }
+
+  &_dashed {
+    &:before,
+    &:after {
+      border-top-style: dashed;
+    }
+  }
+}

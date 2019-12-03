@@ -1,0 +1,7 @@
+@import '../../style/variables';
+
+.#{$prefix}input-pwd {
+  &__suffix {
+    cursor: pointer;
+  }
+}

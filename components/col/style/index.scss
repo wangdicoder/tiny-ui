@@ -1,0 +1,42 @@
+@import '../../style/variables';
+
+.#{$prefix}col {
+  @mixin grid($size: '') {
+    @for $i from 1 through 24 {
+      &#{$size}-#{$i} {
+        width: 100% / (24 / $i);
+      }
+
+      &#{$size}-offset-#{$i} {
+        margin-left: 100% / (24 / $i);
+      }
+
+      &#{$size}-order-#{$i} {
+        order: $i;
+      }
+    }
+  }
+
+  box-sizing: border-box;
+  display: block;
+  @include grid();
+
+  @media screen and (max-width: $size-sm) {
+    @include grid('-sm');
+  }
+  @media screen and (max-width: $size-sm) {
+    @include grid('-sm');
+  }
+  @media screen and (max-width: $size-md) {
+    @include grid('-md');
+  }
+  @media screen and (max-width: $size-lg) {
+    @include grid('-lg');
+  }
+  @media screen and (max-width: $size-xl) {
+    @include grid('-xl');
+  }
+  @media screen and (max-width: $size-xxl) {
+    @include grid('-xxl');
+  }
+}

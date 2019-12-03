@@ -1,0 +1,23 @@
+@import '../../style/variables';
+
+.#{$prefix}kbd {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid #d8d8d8;
+  border-bottom-color: #ccc;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1;
+  vertical-align: middle;
+  background-color: #f6f6f6;
+  box-shadow: inset 0 -1px 0 #ccc;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+
+  &:active {
+    transform: translate3d(0, 1px, 0);
+    box-shadow: none;
+  }
+}
