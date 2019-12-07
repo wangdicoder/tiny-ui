@@ -36,7 +36,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
     maskClosable = true,
     onClose = () => {},
     afterClose,
-    zIndex,
+    zIndex = 1000,
     header,
     footer,
     className,
@@ -68,7 +68,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
           in={drawerVisible}
           timeout={0}
           classNames={`${prefixCls}__content_move`}>
-          <div className={`${prefixCls}__content`}>
+          <div className={`${prefixCls}__content`} onClick={e => e.stopPropagation()}>
             {closable && (
               <div className={`${prefixCls}__close-btn`} onClick={onClose}>
                 ✕
