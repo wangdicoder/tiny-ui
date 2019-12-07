@@ -1,5 +1,6 @@
 import Basic from './demo/basic.md'
 import Placement from './demo/placement.md'
+import Level from './demo/multi-level.md'
 
 # Drawer
 
@@ -24,6 +25,7 @@ import { Drawer } from 'tiny-ui';
 <layout>
   <column>
     <Basic/>
+    <Level/>
   </column>
   <column>
     <Placement/>
