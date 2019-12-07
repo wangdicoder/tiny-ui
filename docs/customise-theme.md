@@ -4,7 +4,7 @@ Tiny UI uses BEM-styled SCSS which allows you to customize some basic design asp
 
 ## Less variables
 We are using [SASS](https://sass-lang.com/) as the development language for styling. A set of less variables are defined for each design aspect that can be customized to your needs.
-There are some major variables below, all less variables could be found in [Default Variables]() (will be available soon).
+There are some major variables below, all less variables could be found in [Default Variables](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/_variables.scss).
 
 ```css
 //color
@@ -18,7 +18,7 @@ $red-color: #f44336                   !default;
 $border-radius: 3px                   !default;
 $font-size: 14px                      !default;
 $font-weight: 400                     !default;
-
+...
 ```
 
 Please report an issue if the existing list of variables is not enough for you.

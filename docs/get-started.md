@@ -3,6 +3,7 @@
 ## Install
 
 ### Using npm or yarn
+
 You first need to install and configure the `Node.js` environment properly locally.
 
 ```bash
@@ -16,6 +17,7 @@ $ yarn add tiny-ui
 ```
 
 ### Import in Browser
+
 Add script and link tags in your browser and use the global variable `tiny`. We provide `tiny.js` `index.css` and `tiny.min.js` `index.min.css` under **tiny-ui/dist** in tiny's npm package.
 
 - Development environment - It is recommended to use an uncompressed version for easy debugging
