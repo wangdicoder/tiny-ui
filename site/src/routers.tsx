@@ -200,6 +200,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/alert/index.md')),
       },
       {
+        title: 'Drawer',
+        route: 'drawer',
+        component: lazy(() => import('../../components/drawer/index.md')),
+      },
+      {
         title: 'Loader',
         route: 'loader',
         component: lazy(() => import('../../components/loader/index.md')),
