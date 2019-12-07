@@ -2,8 +2,13 @@
 
 .#{$prefix}drawer {
   position: fixed;
-  background-color: #fff;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+
+  &__content {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+    transition: all 300ms;
+  }
 
   &__close-btn {
     cursor: pointer;
@@ -31,25 +36,89 @@
 
   &_top {
     top: 0;
+
+    .#{$prefix}drawer__content_move {
+      &-enter {
+        transform: translateY(-100%);
+      }
+
+      &-enter-done {
+        transform: translateY(0);
+      }
+
+      &-exit {
+        transform: translateY(0);
+      }
+
+      &-exit-done {
+        transform: translateY(-100%);
+      }
+    }
   }
 
   &_bottom {
     bottom: 0;
+
+    .#{$prefix}drawer__content_move {
+      &-enter {
+        transform: translateY(100%);
+      }
+
+      &-enter-done {
+        transform: translateY(0);
+      }
+
+      &-exit {
+        transform: translateY(0);
+      }
+
+      &-exit-done {
+        transform: translateY(100%);
+      }
+    }
   }
 
   &_right {
     right: 0;
 
-    &-enter .#{$prefix}drawer__content {
-      transform: translateX(100%);
-    }
+    .#{$prefix}drawer__content_move {
+      &-enter {
+        transform: translateX(100%);
+      }
 
-    &-enter-active .#{$prefix}drawer__content {
-      transform: translateX(0);
+      &-enter-done {
+        transform: translateX(0);
+      }
+
+      &-exit {
+        transform: translateX(0);
+      }
+
+      &-exit-done {
+        transform: translateX(100%);
+      }
     }
   }
 
   &_left {
     left: 0;
+
+    .#{$prefix}drawer__content_move {
+      &-enter {
+        transform: translateX(-100%);
+      }
+
+      &-enter-done {
+        transform: translateX(0);
+      }
+
+      &-exit {
+        transform: translateX(0);
+      }
+
+      &-exit-done {
+        transform: translateX(-100%);
+      }
+    }
   }
 }

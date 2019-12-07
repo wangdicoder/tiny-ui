@@ -51,8 +51,8 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
 
   return (
     <Overlay
-      onEnter={() => setDrawerVisible(true)}
-      onExit={() => setDrawerVisible(false)}
+      onEnter={(): void => setDrawerVisible(true)}
+      onExit={(): void => setDrawerVisible(false)}
       zIndex={zIndex}
       type={maskType}
       unmountOnExit={unmountOnClose}
@@ -67,7 +67,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
           appear={true}
           in={drawerVisible}
           timeout={0}
-          classNames={`${prefixCls}__content`}>
+          classNames={`${prefixCls}__content_move`}>
           <div className={`${prefixCls}__content`}>
             {closable && (
               <div className={`${prefixCls}__close-btn`} onClick={onClose}>
