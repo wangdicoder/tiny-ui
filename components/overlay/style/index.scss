@@ -12,13 +12,15 @@
   opacity: 0;
 
   &_default {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+
+  &_blurred {
     backdrop-filter: blur(3px);
   }
 
   &_inverted {
     background-color: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(3px);
   }
 
   &_none {

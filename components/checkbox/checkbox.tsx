@@ -40,7 +40,7 @@ const Checkbox: React.FC<CheckboxProps> & { Group?: any } = (props: CheckboxProp
   };
 
   useEffect(() => {
-    'checked' in props && setChecked(props.checked!);
+    'checked' in props && setChecked(props.checked);
   }, [props.checked]);
 
   return (

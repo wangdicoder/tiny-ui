@@ -8,6 +8,7 @@ export type OverlayMaskType = 'default' | 'inverted' | 'none';
 
 export interface OverlayProps extends BaseProps {
   isShow?: boolean;
+  blurred?: boolean;
   unmountOnExit?: boolean;
   clickCallback?: (e: React.MouseEvent) => void;
   zIndex?: number;
@@ -22,6 +23,7 @@ export interface OverlayProps extends BaseProps {
 const Overlay = (props: OverlayProps) => {
   const {
     isShow = false,
+    blurred = false,
     unmountOnExit = true,
     zIndex = 1000,
     prefixCls = 'ty-overlay',
@@ -34,7 +36,7 @@ const Overlay = (props: OverlayProps) => {
     children,
     style,
   } = props;
-  const cls = classNames(prefixCls, `${prefixCls}_${type}`);
+  const cls = classNames(prefixCls, `${prefixCls}_${type}`, { [`${prefixCls}_blurred`]: blurred });
 
   useEffect(() => {
     if (isShow) {
@@ -58,6 +60,7 @@ const Overlay = (props: OverlayProps) => {
         classNames={`${prefixCls}_fade`}
         timeout={{ exit: 300, enter: 0 }}>
         <div
+          tabIndex={-1}
           className={cls}
           onClick={clickCallback ? clickCallback : undefined}
           style={{ zIndex, ...style }}>

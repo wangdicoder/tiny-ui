@@ -38,7 +38,7 @@ const Radio: React.FC<RadioProps> & { Group?: any } = (props: RadioProps) => {
   };
 
   useEffect(() => {
-    'checked' in props && setChecked(props.checked!);
+    'checked' in props && setChecked(props.checked);
   }, [props.checked]);
 
   return (

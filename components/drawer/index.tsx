@@ -1,35 +1,84 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
+import { CSSTransition } from 'react-transition-group';
 import { BaseProps } from '../_utils/props';
-import Overlay from '../overlay';
+import Overlay, { OverlayMaskType } from '../overlay';
 
 export type DrawerPlacement = 'top' | 'bottom' | 'left' | 'right';
 
 export interface DrawerProps extends BaseProps {
-  closable?: boolean;
-  onClose?: () => void;
+  onClose?: (e: React.MouseEvent) => void;
   placement?: DrawerPlacement;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
   zIndex?: number;
   size?: number | string;
+  closable?: boolean;
+  maskType?: OverlayMaskType;
+  maskClosable?: boolean;
+  unmountOnClose?: boolean;
+  afterClose?: () => void;
   visible?: boolean;
-  defaultVisible?: boolean;
   keyboard?: boolean;
+  maskStyle?: React.CSSProperties;
   children?: React.ReactNode;
 }
 
 const Drawer = (props: DrawerProps): React.ReactElement => {
-  const { defaultVisible = true, prefixCls = 'ty-drawer', className, style, children } = props;
-  const [visible, setVisible] = useState('visible' in props ? props.visible : defaultVisible);
-  const cls = classNames(prefixCls, className);
-
-  useEffect(() => {
-    console.log(setVisible);
-  }, []);
+  const {
+    visible,
+    prefixCls = 'ty-drawer',
+    placement = 'right',
+    size = 256,
+    closable = true,
+    unmountOnClose = true,
+    maskType = 'default',
+    maskClosable = true,
+    onClose = () => {},
+    afterClose,
+    zIndex,
+    header,
+    footer,
+    className,
+    maskStyle,
+    style,
+    children,
+  } = props;
+  const [drawerVisible, setDrawerVisible] = useState(visible);
+  const cls = classNames(prefixCls, className, `${prefixCls}_${placement}`);
+  const sty: React.CSSProperties =
+    placement === 'top' || placement === 'bottom' ? { height: size } : { width: size };
 
   return (
-    <Overlay isShow={visible}>
-      <div className={cls} style={style}>
-        {children}
+    <Overlay
+      onEnter={() => setDrawerVisible(true)}
+      onExit={() => setDrawerVisible(false)}
+      zIndex={zIndex}
+      type={maskType}
+      unmountOnExit={unmountOnClose}
+      isShow={visible}
+      onExited={afterClose}
+      clickCallback={(e: React.MouseEvent): void => {
+        maskClosable ? onClose(e) : undefined;
+      }}
+      style={maskStyle}>
+      <div className={cls} style={{ ...style, ...sty }}>
+        <CSSTransition
+          appear={true}
+          in={drawerVisible}
+          timeout={0}
+          classNames={`${prefixCls}__content`}>
+          <div className={`${prefixCls}__content`}>
+            {closable && (
+              <div className={`${prefixCls}__close-btn`} onClick={onClose}>
+                ✕
+              </div>
+            )}
+            {header && <div className={`${prefixCls}__header`}>{header}</div>}
+            <div className={`${prefixCls}__body`}>{children}</div>
+            {footer && <div className={`${prefixCls}__footer`}>{footer}</div>}
+          </div>
+        </CSSTransition>
       </div>
     </Overlay>
   );
