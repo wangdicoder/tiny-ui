@@ -2240,6 +2240,105 @@
   .ty-divider_dashed:before, .ty-divider_dashed:after {
     border-top-style: dashed; }
 
+.ty-drawer {
+  position: fixed; }
+  .ty-drawer__content {
+    height: 100%;
+    background-color: #fff;
+    -webkit-box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .ty-drawer__header, .ty-drawer__body, .ty-drawer__footer {
+    padding: 16px 24px; }
+  .ty-drawer__header {
+    border-bottom: 1px solid #e8e8e8; }
+  .ty-drawer__body {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1; }
+  .ty-drawer__footer {
+    border-top: 1px solid #e8e8e8; }
+  .ty-drawer__close-btn {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.45);
+    width: 56px;
+    height: 56px;
+    line-height: 56px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center; }
+  .ty-drawer_left, .ty-drawer_right {
+    bottom: 0;
+    top: 0; }
+  .ty-drawer_top, .ty-drawer_bottom {
+    left: 0;
+    right: 0; }
+  .ty-drawer_top {
+    top: 0; }
+    .ty-drawer_top .ty-drawer__content_move-enter {
+      -webkit-transform: translateY(-100%);
+              transform: translateY(-100%); }
+    .ty-drawer_top .ty-drawer__content_move-enter-done {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-drawer_top .ty-drawer__content_move-exit {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-drawer_top .ty-drawer__content_move-exit-done {
+      -webkit-transform: translateY(-100%);
+              transform: translateY(-100%); }
+  .ty-drawer_bottom {
+    bottom: 0; }
+    .ty-drawer_bottom .ty-drawer__content_move-enter {
+      -webkit-transform: translateY(100%);
+              transform: translateY(100%); }
+    .ty-drawer_bottom .ty-drawer__content_move-enter-done {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-drawer_bottom .ty-drawer__content_move-exit {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); }
+    .ty-drawer_bottom .ty-drawer__content_move-exit-done {
+      -webkit-transform: translateY(100%);
+              transform: translateY(100%); }
+  .ty-drawer_right {
+    right: 0; }
+    .ty-drawer_right .ty-drawer__content_move-enter {
+      -webkit-transform: translateX(100%);
+              transform: translateX(100%); }
+    .ty-drawer_right .ty-drawer__content_move-enter-done {
+      -webkit-transform: translateX(0);
+              transform: translateX(0); }
+    .ty-drawer_right .ty-drawer__content_move-exit {
+      -webkit-transform: translateX(0);
+              transform: translateX(0); }
+    .ty-drawer_right .ty-drawer__content_move-exit-done {
+      -webkit-transform: translateX(100%);
+              transform: translateX(100%); }
+  .ty-drawer_left {
+    left: 0; }
+    .ty-drawer_left .ty-drawer__content_move-enter {
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%); }
+    .ty-drawer_left .ty-drawer__content_move-enter-done {
+      -webkit-transform: translateX(0);
+              transform: translateX(0); }
+    .ty-drawer_left .ty-drawer__content_move-exit {
+      -webkit-transform: translateX(0);
+              transform: translateX(0); }
+    .ty-drawer_left .ty-drawer__content_move-exit-done {
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%); }
+
 .ty-empty {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4600,13 +4699,12 @@
   transition: opacity 300ms;
   opacity: 0; }
   .ty-overlay_default {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.55); }
+  .ty-overlay_blurred {
     -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px); }
   .ty-overlay_inverted {
-    background-color: rgba(255, 255, 255, 0.75);
-    -webkit-backdrop-filter: blur(3px);
-            backdrop-filter: blur(3px); }
+    background-color: rgba(255, 255, 255, 0.75); }
   .ty-overlay_fade-enter {
     opacity: 0; }
   .ty-overlay_fade-enter-done {
