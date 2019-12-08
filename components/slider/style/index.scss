@@ -9,9 +9,23 @@
   box-sizing: border-box;
 
   &__bar {
+    box-sizing: border-box;
     height: 4px;
     border-radius: 3px;
     background-color: $primary-color;
     position: absolute;
+  }
+
+  &__thumb {
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    border: 1px solid lighten($primary-color, 15);
+    background-color: rgb(245, 248, 250);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
   }
 }

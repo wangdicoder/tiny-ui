@@ -70,6 +70,9 @@ const Slider = (props: SliderProps): React.ReactElement => {
   return (
     <div className={cls} style={style}>
       <div className={`${prefixCls}__bar`} style={{ ...barStyle }} />
+      {val.map((item, idx) => (
+        <div key={idx} tabIndex={0} className={`${prefixCls}__thumb`} />
+      ))}
     </div>
   );
 };
