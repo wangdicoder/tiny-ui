@@ -41,6 +41,7 @@ export { default as Rate } from './rate';
 export { default as Result } from './result';
 // export { default as Split } from './split';
 // export { default as ScrollIndicator } from './scroll-indicator';
+export { default as Slider } from './slider';
 export { default as Switch } from './switch';
 export { default as Tag } from './tag';
 export { default as Textarea } from './textarea';
