@@ -1,6 +1,6 @@
 /site/src/containers/test
-/site/build
-/site/dist
+/site/build/
+/site/dist/
 /dist/**
 /docs
 /lib/**

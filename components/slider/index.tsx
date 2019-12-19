@@ -63,15 +63,22 @@ const Slider = (props: SliderProps): React.ReactElement => {
 
   const barStyle = getBarStyle(val);
 
+  const onThumbBtnDown = (idx: number, event: React.MouseEvent<HTMLElement>) => {};
+
   useEffect(() => {
-    console.log(setVal);
-  }, []);
+    'value' in props && setVal(Array.isArray(props.value) ? props.value : [props.value!]);
+  }, [props.value]);
 
   return (
     <div className={cls} style={style}>
       <div className={`${prefixCls}__bar`} style={{ ...barStyle }} />
       {val.map((item, idx) => (
-        <div key={idx} tabIndex={0} className={`${prefixCls}__thumb`} />
+        <div
+          key={idx}
+          onMouseDown={(e): void => onThumbBtnDown(idx, e)}
+          className={`${prefixCls}__thumb`}
+          style={{ left: `${getValueToPercent(item)}%` }}
+        />
       ))}
     </div>
   );
