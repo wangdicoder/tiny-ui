@@ -39,7 +39,6 @@ const InputNumber = (props: InputNumberProps) => {
     controls = false,
     min = Number.NEGATIVE_INFINITY,
     max = Number.POSITIVE_INFINITY,
-    characterSet = '1234567890eE.+-',
     onChange,
     className,
     style,
@@ -52,32 +51,8 @@ const InputNumber = (props: InputNumberProps) => {
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.trim();
-    const isValidInput = val.split('').every((ch: string) => characterSet.includes(ch));
-    if (isValidInput) {
-      !('value' in props) && setValue(val);
-      // Only the value is a valid number, onChange will be called and return the value.
-      onChange && isValid(val) && onChange(Number(val), e);
-    }
-  };
-
-  /**
-   * Correct the number when the input component is on the blur event
-   */
-  const inputOnBlur = () => {
-    if (value.trim().length === 0) {
-      return;
-    }
-
-    let val = +value;
-    if (isValid(val)) {
-      if (val > max) {
-        val = Number(max);
-      } else if (val < min) {
-        val = Number(min);
-      }
-
-      setValue(`${val}`);
-    }
+    !('value' in props) && setValue(val);
+    onChange && isValid(val) && onChange(Number(val), e);
   };
 
   const plusOnClick = (e: MouseEvent<HTMLSpanElement>) => {
@@ -107,12 +82,12 @@ const InputNumber = (props: InputNumberProps) => {
       <input
         disabled={disabled}
         value={value}
+        type="number"
         className={`${prefixCls}__input`}
         max={max}
         min={min}
         step={step}
         onChange={inputOnChange}
-        onBlur={inputOnBlur}
       />
       <div className={`${prefixCls}__controls`}>
         <span className={`${prefixCls}__up`} onClick={plusOnClick}>
