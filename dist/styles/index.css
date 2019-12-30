@@ -3401,6 +3401,8 @@
       color: #bfbfbf; }
     .ty-input-number__input::placeholder {
       color: #bfbfbf; }
+    .ty-input-number__input::-webkit-inner-spin-button, .ty-input-number__input::-webkit-outer-spin-button {
+      -webkit-appearance: none; }
   .ty-input-number__controls {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -5164,6 +5166,37 @@
   .ty-select-native_lg {
     padding: 9px 25px 9px 12px;
     font-size: 16px; }
+
+.ty-slider {
+  height: 4px;
+  margin: 13px 7px;
+  background-color: #e4e8f1;
+  border-radius: 3px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+  .ty-slider__bar {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    height: 4px;
+    border-radius: 3px;
+    background-color: #6E41BF;
+    position: absolute; }
+  .ty-slider__thumb {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    border: 1px solid #9a7ad2;
+    background-color: #f5f8fa;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
 
 .ty-split {
   display: -webkit-box;
