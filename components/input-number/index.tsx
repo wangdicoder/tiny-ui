@@ -59,8 +59,10 @@ const InputNumber = (props: InputNumberProps) => {
     e.stopPropagation();
     if (!disabled && isValid(step)) {
       const val = +value + +step;
-      !('value' in props) && setValue(`${val}`);
-      onChange && onChange(val, e);
+      if (val <= max) {
+        !('value' in props) && setValue(`${val}`);
+        onChange && onChange(val, e);
+      }
     }
   };
 
@@ -68,8 +70,10 @@ const InputNumber = (props: InputNumberProps) => {
     e.stopPropagation();
     if (!disabled && isValid(step)) {
       const val = +value - +step;
-      !('value' in props) && setValue(`${val}`);
-      onChange && onChange(val, e);
+      if (val >= min) {
+        !('value' in props) && setValue(`${val}`);
+        onChange && onChange(val, e);
+      }
     }
   };
 

@@ -10,7 +10,7 @@ Click the button to toggle between available and disabled states.
 
   return (
     <div style={{ width: 400 }}>
-      <InputNumber disabled={disabled} min={1} max={10} defaultValue={5} />
+      <InputNumber disabled={disabled} min={0} max={10} defaultValue={5} />
       <br/>
       <Button 
         onClick={() => setDisabled(!disabled)} color="primary">
