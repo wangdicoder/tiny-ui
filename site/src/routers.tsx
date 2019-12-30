@@ -160,6 +160,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/input/index.md')),
       },
       {
+        title: 'Input Number',
+        route: 'input-number',
+        component: lazy(() => import('../../components/input-number/index.md')),
+      },
+      {
         title: 'Input Password',
         route: 'input-password',
         component: lazy(() => import('../../components/input-password/index.md')),
