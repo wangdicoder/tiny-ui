@@ -1,4 +1,5 @@
 import { withLocale } from './intl-provider/with-locale';
+import { version } from '../package.json';
 
 export { default as Affix } from './affix';
 export { default as Alert } from './alert';
@@ -50,3 +51,4 @@ export { default as Timeline } from './timeline';
 export { default as Tooltip } from './tooltip';
 export { default as Typography } from './typography';
 export { withLocale };
+export { version };
