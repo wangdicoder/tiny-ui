@@ -8,24 +8,27 @@ import { repository } from '../../../../package.json';
 
 const FEATURES = [
   {
-    img: require('../../assets/home/ic_concise.png'),
-    title: 'Concise',
-    desc: 'All components have easy and friendly api',
+    icon: 'colorlens',
+    title: 'Themeable',
+    desc:
+      'Quickly and easily reference values from your theme throughout your entire application with any components.',
   },
   {
-    img: require('../../assets/home/ic_direct.png'),
-    title: 'Consistent',
-    desc: 'All components have a consistent design style',
-  },
-  {
-    img: require('../../assets/home/ic_elegant.png'),
+    icon: 'org-unit',
     title: 'Elegant',
-    desc: 'Thanks for React Hook, the source code is more light weight',
+    desc: 'Thanks for React Hook, the source code is more light weight.',
   },
   {
-    img: require('../../assets/home/ic_adaptable.png'),
-    title: 'Adaptable',
-    desc: 'Completely customisable for all components',
+    icon: 'puzzle',
+    title: 'Composable',
+    desc:
+      'Completely customisable for all components. You can leverage any component to create new things.',
+  },
+  {
+    icon: 'accessible',
+    title: 'Accessible',
+    desc:
+      'Strictly follows WAI-ARIA standards. All components come with proper attributes and keyboard interactions.',
   },
 ];
 
@@ -77,7 +80,7 @@ export default class Home extends React.PureComponent<RouteComponentProps, any> 
             {FEATURES.map(feature => (
               <FeatureBlock
                 key={feature.title}
-                img={feature.img}
+                icon={feature.icon}
                 title={feature.title}
                 desc={feature.desc}
               />
