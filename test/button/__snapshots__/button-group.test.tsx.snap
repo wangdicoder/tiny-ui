@@ -10,6 +10,7 @@ initialize {
       Object {
         "attribs": Object {
           "class": "ty-btn ty-btn_default ty-btn_md",
+          "role": "button",
         },
         "children": Array [
           Object {
@@ -83,9 +84,11 @@ initialize {
         "type": "tag",
         "x-attribsNamespace": Object {
           "class": undefined,
+          "role": undefined,
         },
         "x-attribsPrefix": Object {
           "class": undefined,
+          "role": undefined,
         },
       },
     ],
