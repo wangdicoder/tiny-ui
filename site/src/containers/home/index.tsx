@@ -34,46 +34,44 @@ export default class Home extends React.PureComponent<RouteComponentProps, any> 
     this.props.history.push('/components');
   };
 
-  _openGithub = () => {
+  _openGithub = (): void => {
     window.open(repository.url);
   };
 
-  render() {
+  render(): React.ReactElement {
     return (
       <div className="home">
+        <div className="home__react-login-container">
+          <img
+            src={require('../../assets/logo/react-logo.svg')}
+            alt="react"
+            className="home__react-logo"
+          />
+        </div>
         <div className="home__slider">
-          <div className="home__logo-container">
-            <img
-              src={require('../../assets/logo/react-logo.svg')}
-              alt="react"
-              className="home__react-logo"
-            />
-            <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
-          </div>
-          <div style={{ position: 'relative' }}>
-            <h1 className="home__title">Tiny UI</h1>
-            <h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
-            <div className="home__btn-group">
-              <Button
-                round
-                color="primary"
-                size="lg"
-                style={{ width: '140px' }}
-                onClick={this._navigateToComponentPage}>
-                Start
-              </Button>
-              <Button
-                round
-                size="lg"
-                icon={<Icon type="github" color="#000" />}
-                onClick={this._openGithub}>
-                GitHub
-              </Button>
-            </div>
+          <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
+          <h1 className="home__title">Tiny UI</h1>
+          <h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
+          <div className="home__btn-group">
+            <Button
+              className="home__btn"
+              color="primary"
+              size="lg"
+              style={{ width: '140px' }}
+              onClick={this._navigateToComponentPage}>
+              Get Started
+            </Button>
+            <Button
+              className="home__btn"
+              size="lg"
+              icon={<Icon type="github" color="#000" />}
+              onClick={this._openGithub}>
+              GitHub
+            </Button>
           </div>
         </div>
 
-        <div className="home__main">
+        <div className="home__section">
           <h1 className="home__feature-title">Design Principle</h1>
           <div className="home__features">
             {FEATURES.map(feature => (
@@ -85,7 +83,9 @@ export default class Home extends React.PureComponent<RouteComponentProps, any> 
               />
             ))}
           </div>
+        </div>
 
+        <div className="home__section">
           <h1 className="home__feature-title">Blueprint</h1>
           <p className="home__p">
             This project is still under development. However, before release version 1, we will

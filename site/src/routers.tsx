@@ -61,6 +61,7 @@ export const COMPONENT_MENU: RouterItem[] = [
       {
         title: 'Typography',
         route: 'typography',
+        component: lazy(() => import('../../components/typography/index.md')),
       },
     ],
   },
