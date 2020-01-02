@@ -60,6 +60,7 @@ const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>
     return (
       <button
         ref={ref}
+        role="button"
         className={cls}
         disabled={disabled || loading}
         style={style}

@@ -25,7 +25,7 @@ const RadioGroup = (props: RadioGroupProps): React.ReactElement => {
   const cls = classNames(prefixCls, className);
   const [value, setValue] = useState('value' in props ? props.value : props.defaultValue);
 
-  const _onChange = (checked: boolean, e: React.FormEvent<HTMLInputElement>) => {
+  const _onChange = (checked: boolean, e: React.FormEvent<HTMLInputElement>): void => {
     if (!disabled) {
       !('value' in props) && setValue(e.currentTarget.value);
       onChange && onChange(e.currentTarget.value, e);
