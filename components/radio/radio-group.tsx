@@ -37,7 +37,7 @@ const RadioGroup = (props: RadioGroupProps): React.ReactElement => {
   }, [props.value]);
 
   return (
-    <div className={cls} style={style}>
+    <div role="radiogroup" className={cls} style={style}>
       {React.Children.map(children, child => {
         const childProps = {
           ...child.props,

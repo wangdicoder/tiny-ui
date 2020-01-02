@@ -44,6 +44,8 @@ const Radio: React.FC<RadioProps> & { Group?: any } = (props: RadioProps) => {
   return (
     <label className={cls} style={style}>
       <input
+        role="radio"
+        aria-checked={checked}
         name={name}
         disabled={disabled}
         value={value}

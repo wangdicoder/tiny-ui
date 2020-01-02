@@ -38,6 +38,7 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
 
   return (
     <Popover
+      role="tooltip"
       theme="dark"
       onVisibleChange={onVisibleChange}
       visible={popupVisible}

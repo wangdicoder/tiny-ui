@@ -46,6 +46,8 @@ const Checkbox: React.FC<CheckboxProps> & { Group?: any } = (props: CheckboxProp
   return (
     <label className={cls} style={style}>
       <input
+        role="checkbox"
+        aria-checked={checked}
         name={value}
         disabled={disabled}
         className={`${prefixCls}__native`}

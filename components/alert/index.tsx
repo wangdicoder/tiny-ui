@@ -85,7 +85,7 @@ const Alert = (props: AlertProps) => {
       in={isShow}
       onExited={afterClose}
       classNames={`${prefixCls}_slide-up`}>
-      <div className={cls} style={style} ref={ref}>
+      <div role="alert" className={cls} style={style} ref={ref}>
         {icon && renderIcon()}
         <div>
           {title && <p className={`${prefixCls}__title`}>{title}</p>}

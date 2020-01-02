@@ -9,6 +9,9 @@ export type TriggerType = 'hover' | 'focus' | 'click' | 'context-menu';
 export type PopoverTheme = 'white' | 'dark';
 
 export interface PopoverProps extends BaseProps {
+  /** Aria type  **/
+  role?: string;
+
   title?: React.ReactNode;
   content?: React.ReactNode;
   placement?: PlacementType;
@@ -50,6 +53,7 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
     content,
     visible,
     onVisibleChange,
+    role,
     className,
     children,
   } = props;
@@ -218,7 +222,7 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
           placement={placement}
           onMouseOver={handlePopupMouseOver}
           onMouseOut={handlePopupMouseOut}>
-          <div className={cls} ref={popupRef}>
+          <div role={role} className={cls} ref={popupRef}>
             {(title || content) && arrow && (
               <div className={`${prefixCls}__arrow`} style={arrowStyle} />
             )}

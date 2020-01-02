@@ -67,6 +67,7 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
 
   return (
     <Popover
+      role="alertdialog"
       visible={visible}
       onVisibleChange={(val: boolean): void => {
         setVisible(val);

@@ -67,7 +67,7 @@ const Message = (props: MessageProps) => {
 
   return (
     <CSSTransition in={visible} appear={true} timeout={0} classNames={`${prefixCls}_fade-slide`}>
-      <div className={cls} style={style} ref={ref}>
+      <div role="alert" className={cls} style={style} ref={ref}>
         {renderIcon()}
         <span className={`${prefixCls}__content`}>{content}</span>
         {extra && <div className={`${prefixCls}__extra`}>{extra}</div>}

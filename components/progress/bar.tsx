@@ -80,7 +80,7 @@ const Bar = (props: BarProps): React.ReactElement => {
   };
 
   return (
-    <div className={cls} style={style}>
+    <div role="progressbar" className={cls} style={style}>
       <div className={`${prefixCls}__inner`} style={{ height: strokeWidth }}>
         <div
           className={strokeBgCls}

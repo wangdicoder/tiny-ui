@@ -44,7 +44,7 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
   }, [props.value]);
 
   return (
-    <div className={cls} style={style}>
+    <div role="group" className={cls} style={style}>
       {React.Children.map(children, child => {
         const childProps = {
           ...child.props,

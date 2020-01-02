@@ -38,7 +38,7 @@ const Row = (props: RowProps) => {
   });
 
   return (
-    <div className={cls} style={style}>
+    <div role="row" className={cls} style={style}>
       {React.Children.map(children, (child: React.ReactElement<ColProps>, index: number) => {
         const gutterStyle = gutter
           ? {
