@@ -2707,7 +2707,7 @@
 .ty--inspection:before {
   content: "\e60f"; }
 
-.ty--Info:before {
+.ty--info:before {
   content: "\e610"; }
 
 .ty--Invite:before {
@@ -2722,7 +2722,7 @@
 .ty--idea:before {
   content: "\e615"; }
 
-.ty--Image-File:before {
+.ty--image-file:before {
   content: "\e616"; }
 
 .ty--home:before {
@@ -2755,7 +2755,7 @@
 .ty--Faq:before {
   content: "\e626"; }
 
-.ty--High-Priority:before {
+.ty--warning:before {
   content: "\e628"; }
 
 .ty--External:before {
@@ -2773,7 +2773,7 @@
 .ty--Edit-File:before {
   content: "\e62f"; }
 
-.ty--Download1:before {
+.ty--cloud-download:before {
   content: "\e630"; }
 
 .ty--trash:before {
@@ -2803,10 +2803,10 @@
 .ty--Disclaimer:before {
   content: "\e639"; }
 
-.ty--Document:before {
+.ty--document:before {
   content: "\e63a"; }
 
-.ty--DOC:before {
+.ty--doc:before {
   content: "\e63b"; }
 
 .ty--Delete-Archive:before {
@@ -2823,9 +2823,6 @@
 
 .ty--Department:before {
   content: "\e642"; }
-
-.ty--Debt:before {
-  content: "\e643"; }
 
 .ty--Customer-Support:before {
   content: "\e644"; }
@@ -2851,7 +2848,7 @@
 .ty--Comments:before {
   content: "\e64c"; }
 
-.ty--Collect:before {
+.ty--collect:before {
   content: "\e64d"; }
 
 .ty--Conference-Call:before {
@@ -2890,7 +2887,7 @@
 .ty--forbid:before {
   content: "\e65b"; }
 
-.ty--Calculator:before {
+.ty--calculator:before {
   content: "\e65c"; }
 
 .ty--briefcase:before {
@@ -2901,9 +2898,6 @@
 
 .ty--Bullish:before {
   content: "\e65f"; }
-
-.ty--Binoculars:before {
-  content: "\e660"; }
 
 .ty--audio-File:before {
   content: "\e662"; }
@@ -2917,13 +2911,10 @@
 .ty--archive:before {
   content: "\e665"; }
 
-.ty--Answers:before {
-  content: "\e667"; }
-
 .ty--address-book:before {
   content: "\e668"; }
 
-.ty--Add-List:before {
+.ty--add-list:before {
   content: "\e669"; }
 
 .ty--approval:before {
@@ -2934,9 +2925,6 @@
 
 .ty--Add-File:before {
   content: "\e66c"; }
-
-.ty--About:before {
-  content: "\e66d"; }
 
 .ty--xls:before {
   content: "\e670"; }
@@ -2980,7 +2968,7 @@
 .ty--Up-Right-Arrow:before {
   content: "\e67f"; }
 
-.ty--Upload1:before {
+.ty--cloud-upload:before {
   content: "\e680"; }
 
 .ty--Tree-Structure:before {
@@ -3109,7 +3097,7 @@
 .ty--organization:before {
   content: "\e6b9"; }
 
-.ty--org-Unit:before {
+.ty--org-unit:before {
   content: "\e6ba"; }
 
 .ty--opened-folder:before {
@@ -3201,6 +3189,18 @@
 
 .ty--eye-close:before {
   content: "\e8ff"; }
+
+.ty--brush:before {
+  content: "\e902"; }
+
+.ty--brush-fill:before {
+  content: "\e903"; }
+
+.ty--accessible:before {
+  content: "\e7dc"; }
+
+.ty--colorlens:before {
+  content: "\e60a"; }
 
 .ty-icon {
   font-family: 'tiny' !important;
@@ -3982,7 +3982,7 @@
 .ty--inspection:before {
   content: "\e60f"; }
 
-.ty--Info:before {
+.ty--info:before {
   content: "\e610"; }
 
 .ty--Invite:before {
@@ -3997,7 +3997,7 @@
 .ty--idea:before {
   content: "\e615"; }
 
-.ty--Image-File:before {
+.ty--image-file:before {
   content: "\e616"; }
 
 .ty--home:before {
@@ -4030,7 +4030,7 @@
 .ty--Faq:before {
   content: "\e626"; }
 
-.ty--High-Priority:before {
+.ty--warning:before {
   content: "\e628"; }
 
 .ty--External:before {
@@ -4048,7 +4048,7 @@
 .ty--Edit-File:before {
   content: "\e62f"; }
 
-.ty--Download1:before {
+.ty--cloud-download:before {
   content: "\e630"; }
 
 .ty--trash:before {
@@ -4078,10 +4078,10 @@
 .ty--Disclaimer:before {
   content: "\e639"; }
 
-.ty--Document:before {
+.ty--document:before {
   content: "\e63a"; }
 
-.ty--DOC:before {
+.ty--doc:before {
   content: "\e63b"; }
 
 .ty--Delete-Archive:before {
@@ -4098,9 +4098,6 @@
 
 .ty--Department:before {
   content: "\e642"; }
-
-.ty--Debt:before {
-  content: "\e643"; }
 
 .ty--Customer-Support:before {
   content: "\e644"; }
@@ -4126,7 +4123,7 @@
 .ty--Comments:before {
   content: "\e64c"; }
 
-.ty--Collect:before {
+.ty--collect:before {
   content: "\e64d"; }
 
 .ty--Conference-Call:before {
@@ -4165,7 +4162,7 @@
 .ty--forbid:before {
   content: "\e65b"; }
 
-.ty--Calculator:before {
+.ty--calculator:before {
   content: "\e65c"; }
 
 .ty--briefcase:before {
@@ -4176,9 +4173,6 @@
 
 .ty--Bullish:before {
   content: "\e65f"; }
-
-.ty--Binoculars:before {
-  content: "\e660"; }
 
 .ty--audio-File:before {
   content: "\e662"; }
@@ -4192,13 +4186,10 @@
 .ty--archive:before {
   content: "\e665"; }
 
-.ty--Answers:before {
-  content: "\e667"; }
-
 .ty--address-book:before {
   content: "\e668"; }
 
-.ty--Add-List:before {
+.ty--add-list:before {
   content: "\e669"; }
 
 .ty--approval:before {
@@ -4209,9 +4200,6 @@
 
 .ty--Add-File:before {
   content: "\e66c"; }
-
-.ty--About:before {
-  content: "\e66d"; }
 
 .ty--xls:before {
   content: "\e670"; }
@@ -4255,7 +4243,7 @@
 .ty--Up-Right-Arrow:before {
   content: "\e67f"; }
 
-.ty--Upload1:before {
+.ty--cloud-upload:before {
   content: "\e680"; }
 
 .ty--Tree-Structure:before {
@@ -4384,7 +4372,7 @@
 .ty--organization:before {
   content: "\e6b9"; }
 
-.ty--org-Unit:before {
+.ty--org-unit:before {
   content: "\e6ba"; }
 
 .ty--opened-folder:before {
@@ -4476,6 +4464,18 @@
 
 .ty--eye-close:before {
   content: "\e8ff"; }
+
+.ty--brush:before {
+  content: "\e902"; }
+
+.ty--brush-fill:before {
+  content: "\e903"; }
+
+.ty--accessible:before {
+  content: "\e7dc"; }
+
+.ty--colorlens:before {
+  content: "\e60a"; }
 
 .ty-icon {
   font-family: 'tiny' !important;

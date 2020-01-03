@@ -20,7 +20,7 @@ describe('<Button />', () => {
   });
 
   it('should render icon rather than loading icon', () => {
-    const wrapper = shallow(<Button icon={<Icon type="plus-circle" />}>Default</Button>);
+    const wrapper = shallow(<Button icon={<Icon name="plus-circle" />}>Default</Button>);
     expect(wrapper.find('.ty-btn__loader').length).toBe(0);
   });
 

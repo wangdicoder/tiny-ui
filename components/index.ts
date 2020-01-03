@@ -1,5 +1,6 @@
 import { withLocale } from './intl-provider/with-locale';
-import { version } from '../package.json';
+
+const version = '0.0.76';
 
 export { default as Affix } from './affix';
 export { default as Alert } from './alert';
