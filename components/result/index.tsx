@@ -44,7 +44,7 @@ const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps
         ) : (
           <Icon
             spin={status === 'loading'}
-            type={StatusIcon[status]}
+            name={StatusIcon[status]}
             className={`${prefixCls}__icon ${prefixCls}__icon_${status}`}
           />
         )}

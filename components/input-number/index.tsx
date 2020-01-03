@@ -95,10 +95,10 @@ const InputNumber = (props: InputNumberProps) => {
       />
       <div className={`${prefixCls}__controls`}>
         <span className={`${prefixCls}__up`} onClick={plusOnClick}>
-          <Icon type="up" size={8} color="#999" />
+          <Icon name="up" size={8} color="#999" />
         </span>
         <span className={`${prefixCls}__down`} onClick={minusOnClick}>
-          <Icon type="down" size={8} color="#999" />
+          <Icon name="down" size={8} color="#999" />
         </span>
       </div>
     </div>

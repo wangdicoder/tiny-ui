@@ -66,7 +66,7 @@ const Avatar: React.FC<AvatarProps> & { Group?: any } = (props: AvatarProps) => 
     } else if (src) {
       return <img src={src} alt={alt} className={`${prefixCls}__img`} />;
     } else {
-      return <Icon type={icon} className={`${prefixCls}__icon`} size={size - 10} />;
+      return <Icon name={icon} className={`${prefixCls}__icon`} size={size - 10} />;
     }
   };
 

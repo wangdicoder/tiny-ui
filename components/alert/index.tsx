@@ -65,14 +65,14 @@ const Alert = (props: AlertProps) => {
 
   // Setting close text attribute also allows to be closable
   const closeIcon = (closable || closeText) && (
-    <span className={`${prefixCls}__close-btn`} onClick={closeBtnOnClick}>
+    <span role="button" className={`${prefixCls}__close-btn`} onClick={closeBtnOnClick}>
       {closeText || '✕'}
     </span>
   );
 
   const renderIcon = (): React.ReactNode => {
     if (typeof icon === 'boolean') {
-      return <Icon type={IconType[type]} size={iconSize} className={`${prefixCls}__icon`} />;
+      return <Icon name={IconType[type]} size={iconSize} className={`${prefixCls}__icon`} />;
     }
 
     return icon;

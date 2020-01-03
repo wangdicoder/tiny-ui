@@ -75,7 +75,7 @@ const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = (props: Input
     if (clearable && value && value.length > 0) {
       return (
         <span className={`${prefixCls}__clear-btn`} onClick={clearBtnOnClick}>
-          <Icon type="close-fill" />
+          <Icon name="close-fill" />
         </span>
       );
     }

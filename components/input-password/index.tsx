@@ -29,7 +29,7 @@ const InputPassword = (props: InputPasswordProps) => {
         setVisible(!visible);
         visibleOnClick();
       }}>
-      {visible ? <Icon type="eye" /> : <Icon type="eye-close" />}
+      {visible ? <Icon name="eye" /> : <Icon name="eye-close" />}
     </div>
   );
 

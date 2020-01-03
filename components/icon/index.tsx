@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 export interface IconTypes {
-  type: string;
+  name: string;
   color?: string;
   size?: string | number;
   style?: React.CSSProperties;
@@ -12,8 +12,8 @@ export interface IconTypes {
 }
 
 const Icon = (props: IconTypes) => {
-  const { prefixCls = 'ty-icon', type, color, size, style, spin, className, ...otherProps } = props;
-  const cls = classNames(prefixCls, className, `ty--${type}`, {
+  const { prefixCls = 'ty-icon', name, color, size, style, spin, className, ...otherProps } = props;
+  const cls = classNames(prefixCls, className, `ty--${name}`, {
     [`${prefixCls}_spin`]: spin,
   });
   return <i className={cls} style={{ color, fontSize: size, ...style }} {...otherProps} />;

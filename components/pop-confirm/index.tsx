@@ -50,7 +50,7 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
     return (
       <div className={cls} style={style}>
         <div className={`${prefixCls}__messages`}>
-          {icon ? icon : <Icon type="warn-fill" color="#f29000" />}
+          {icon ? icon : <Icon name="warn-fill" color="#f29000" />}
           <span className={`${prefixCls}__title`}>{title}</span>
         </div>
         <div className={`${prefixCls}__buttons`}>

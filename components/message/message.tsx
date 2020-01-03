@@ -45,7 +45,7 @@ const Message = (props: MessageProps) => {
     } else if (typeof type === 'string') {
       return (
         <Icon
-          type={IconType[type].name}
+          name={IconType[type].name}
           color={IconType[type].color}
           size={16}
           spin={type === 'loading'}

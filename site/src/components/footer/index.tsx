@@ -12,7 +12,7 @@ const Footer = () => (
     </div>
     <a href={repository.url} target="_blank" className="footer__link" rel="noreferrer noopener">
       <div className="footer__github">
-        <Icon type="github" size={25} color="#fff" className="footer__icon" />
+        <Icon name="github" size={25} color="#fff" className="footer__icon" />
         <span>GitHub</span>
       </div>
     </a>

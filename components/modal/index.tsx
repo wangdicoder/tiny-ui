@@ -50,8 +50,8 @@ const Modal = (props: ModalProps): React.ReactElement => {
     confirmLoading = false,
     animation = 'slide',
     zIndex = 1000,
-    onConfirm = () => {},
-    onCancel = () => {},
+    onConfirm = (): void => {},
+    onCancel = (): void => {},
     top,
     header,
     footer,
@@ -117,7 +117,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
             timeout={0}>
             <div className={`${prefixCls}__content`} onClick={e => e.stopPropagation()}>
               {closable && (
-                <div className={`${prefixCls}__close-btn`} onClick={onCancel}>
+                <div role="button" className={`${prefixCls}__close-btn`} onClick={onCancel}>
                   ✕
                 </div>
               )}

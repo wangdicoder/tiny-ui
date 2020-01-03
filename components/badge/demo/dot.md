@@ -13,10 +13,10 @@ Display a red badge without a specific count.
   return (
     <>
       <Badge dot style={badgeStyle}>
-        <Icon type="broadcast" />
+        <Icon name="broadcast" />
       </Badge>
       <Badge dot={false} style={badgeStyle}>
-        <Icon type="broadcast" />
+        <Icon name="broadcast" />
       </Badge>
       <Badge dot>
         <span>Something</span>

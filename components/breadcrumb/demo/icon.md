@@ -10,7 +10,7 @@ Using an icon replaces a text or combination.
     <Icon type="home" />
   </Breadcrumb.Item>
   <Breadcrumb.Item>
-    <a href="#/components/breadcrumb"><Icon type="inspection" />Project List</a>
+    <a href="#/components/breadcrumb"><Icon name="inspection" />Project List</a>
   </Breadcrumb.Item>
   <Breadcrumb.Item>A Project</Breadcrumb.Item>
 </Breadcrumb>

@@ -67,7 +67,7 @@ export default class Home extends React.PureComponent<RouteComponentProps, any> 
             <Button
               className="home__btn"
               size="lg"
-              icon={<Icon type="github" color="#000" />}
+              icon={<Icon name="github" color="#000" />}
               onClick={this._openGithub}>
               GitHub
             </Button>

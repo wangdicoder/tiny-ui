@@ -59,7 +59,7 @@ const Notification = (props: NotificationProps) => {
     } else if (typeof type === 'string') {
       return (
         <Icon
-          type={IconType[type].name}
+          name={IconType[type].name}
           color={IconType[type].color}
           size={25}
           className={`${prefixCls}__icon`}
@@ -88,7 +88,7 @@ const Notification = (props: NotificationProps) => {
         <div className={`${prefixCls}__title`}>{title}</div>
         {description}
         {footer}
-        <div className={`${prefixCls}__close`} onClick={closeBtnOnClick}>
+        <div role="button" className={`${prefixCls}__close`} onClick={closeBtnOnClick}>
           ✕
         </div>
       </div>

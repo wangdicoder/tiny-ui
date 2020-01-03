@@ -78,7 +78,7 @@ const CollapsePanel = (props: CollapsePanelProps) => {
 
     return (
       <div className={headerCls} onClick={_headerOnClick}>
-        {showArrow && <Icon type="right" className={arrowCls} />}
+        {showArrow && <Icon name="right" className={arrowCls} />}
         <div className={`${prefixCls}__title`}>{richNode(header, isActive)}</div>
         <div className={`${prefixCls}__extra`}>
           {deletable ? <span onClick={_removeItem}>✕</span> : richNode(extra, isActive)}

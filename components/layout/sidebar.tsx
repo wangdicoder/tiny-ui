@@ -73,7 +73,7 @@ const Sidebar = (props: SidebarProps) => {
 
     return (
       <div className={`${prefixCls}__trigger`} onClick={_collapseBtnOnClick}>
-        <Icon type="left" className={`${prefixCls}__trigger-icon`} />
+        <Icon name="left" className={`${prefixCls}__trigger-icon`} />
       </div>
     );
   };

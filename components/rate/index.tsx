@@ -55,7 +55,7 @@ const Item = (props: ItemProps): React.ReactElement => {
 const Rate = ({
   color = '#FADB14',
   prefixCls = 'ty-rate',
-  character = <Icon type="star-fill" size={20} />,
+  character = <Icon name="star-fill" size={20} />,
   clearable = true,
   half = false,
   count = 5,
