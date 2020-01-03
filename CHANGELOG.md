@@ -8,6 +8,14 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.76](https://github.com/wangdicoder/tiny-ui/compare/v0.0.75...v0.0.76) (2020-01-03)
+
+
+### Features
+
+* **lib:** add wai-aria ([e5e6a08](https://github.com/wangdicoder/tiny-ui/commit/e5e6a08d14e919d232ea42cdc07471d79cf95b66))
+* add version info ([d70c3d5](https://github.com/wangdicoder/tiny-ui/commit/d70c3d5a63f664359a6d564b74794134b011b4e1))
+
 ### 0.0.75 (2019-12-30)
 
 
