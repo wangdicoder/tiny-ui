@@ -41,15 +41,14 @@ const Bar = (props: BarProps): React.ReactElement => {
 
   const strokeBgCls = classNames(`${prefixCls}__bg`, {
     [`${prefixCls}__bg_${strokeColor}`]:
-      typeof strokeColor === 'string' && strokePresetColors.includes(strokeColor),
+      !Array.isArray(strokeColor) && strokePresetColors.includes(strokeColor),
   });
 
-  const background =
-    typeof strokeColor === 'string'
-      ? strokePresetColors.includes(strokeColor)
-        ? ''
-        : strokeColor
-      : `linear-gradient(to right, ${strokeColor.join(',')})`;
+  const background = Array.isArray(strokeColor)
+    ? `linear-gradient(to right, ${strokeColor.join(',')})`
+    : strokePresetColors.includes(strokeColor)
+    ? ''
+    : strokeColor;
 
   const effectCls = classNames(`${prefixCls}__effect`, {
     [`${prefixCls}__effect_${backgroundType}`]: backgroundType,
@@ -80,7 +79,13 @@ const Bar = (props: BarProps): React.ReactElement => {
   };
 
   return (
-    <div role="progressbar" className={cls} style={style}>
+    <div
+      role="progressbar"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={percentage}
+      className={cls}
+      style={style}>
       <div className={`${prefixCls}__inner`} style={{ height: strokeWidth }}>
         <div
           className={strokeBgCls}
