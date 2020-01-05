@@ -18,7 +18,11 @@ const SplitBar = (props: SplitBarProps) => {
     console.log(e);
   };
 
-  return <div className={cls} style={style} onMouseMove={onMouseMove}></div>;
+  return (
+    <div className={cls} style={style} onMouseMove={onMouseMove}>
+      <div className={`${prefixCls}__icon`} />
+    </div>
+  );
 };
 
 export default SplitBar;

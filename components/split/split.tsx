@@ -7,7 +7,7 @@ import { SplitMode } from './shared-props';
 
 export interface SplitProps extends BaseProps {
   mode?: SplitMode;
-  children: React.ReactElement<SplitPaneProps | SplitBarProps>;
+  children: React.ReactElement<SplitPaneProps | SplitBarProps>[];
 }
 
 const Split: React.FC<SplitProps> & { Pane?: any } = (props: SplitProps) => {

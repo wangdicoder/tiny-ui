@@ -1,7 +1,5 @@
 import { withLocale } from './intl-provider/with-locale';
 
-const version = '0.0.76';
-
 export { default as Affix } from './affix';
 export { default as Alert } from './alert';
 export { default as Avatar } from './avatar';
@@ -41,7 +39,7 @@ export { default as Progress } from './progress';
 export { default as Radio } from './radio';
 export { default as Rate } from './rate';
 export { default as Result } from './result';
-// export { default as Split } from './split';
+export { default as Split } from './split';
 // export { default as ScrollIndicator } from './scroll-indicator';
 export { default as Slider } from './slider';
 export { default as Switch } from './switch';
@@ -52,4 +50,3 @@ export { default as Timeline } from './timeline';
 export { default as Tooltip } from './tooltip';
 export { default as Typography } from './typography';
 export { withLocale };
-export { version };
