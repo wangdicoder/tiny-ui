@@ -12,7 +12,7 @@ Set a target, which is listen to scroll event of target element (default is `win
     <>
       <ScrollIndicator fixed={false} target={() => targerRef && targerRef.current}/>
       <div ref={targerRef} style={{overflowY: 'scroll', height: 200}}>
-        <p><b>Scroll up to detect the change of indicator.</b></p>
+        <p><b>Scroll up to detect the change of the indicator.</b></p>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non. Malesuada proin libero nunc consequat interdum varius sit amet mattis. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. Erat nam at lectus urna duis convallis convallis tellus id. Ornare quam viverra orci sagittis eu volutpat odio facilisis. Ornare arcu dui vivamus arcu. Convallis aenean et tortor at. Tempus iaculis urna id volutpat lacus. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Lectus sit amet est placerat in egestas erat imperdiet sed. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Non nisi est sit amet facilisis magna etiam tempor orci. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Gravida arcu ac tortor dignissim. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh. Etiam tempor orci eu lobortis elementum nibh tellus. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Varius sit amet mattis vulputate enim nulla aliquet porttitor lacus.</p>
 

@@ -5167,6 +5167,19 @@
     padding: 9px 25px 9px 12px;
     font-size: 16px; }
 
+.ty-scroll-indicator {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 3px;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  background: #6E41BF; }
+  .ty-scroll-indicator_fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999; }
+
 .ty-slider {
   height: 4px;
   margin: 13px 7px;
@@ -5216,19 +5229,60 @@
             flex-direction: column; }
 
 .ty-split-bar {
-  background-color: #f8f8f9; }
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f8f8f9;
+  border: 1px solid #dcdee2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .ty-split-bar:before, .ty-split-bar:after {
+    content: '';
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: block;
+    border: 1px solid #d5d5d5; }
   .ty-split-bar_horizontal {
     height: 100%;
     width: 6px;
-    cursor: ew-resize; }
+    cursor: col-resize;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
     .ty-split-bar_horizontal:active {
-      cursor: col-resize; }
+      cursor: ew-resize; }
+    .ty-split-bar_horizontal:before, .ty-split-bar_horizontal:after {
+      height: 4px;
+      width: 100%;
+      border-left: 0;
+      border-right: 0; }
+    .ty-split-bar_horizontal:before {
+      margin-bottom: 1px; }
+    .ty-split-bar_horizontal:after {
+      margin-top: 1px; }
   .ty-split-bar_vertical {
     height: 6px;
     width: 100%;
-    cursor: nw-resize; }
+    cursor: row-resize; }
     .ty-split-bar_vertical:active {
-      cursor: col-resize; }
+      cursor: ns-resize; }
+    .ty-split-bar_vertical:before, .ty-split-bar_vertical:after {
+      height: 100%;
+      width: 4px;
+      border-top: 0;
+      border-bottom: 0; }
+    .ty-split-bar_vertical:before {
+      margin-right: 1px; }
+    .ty-split-bar_vertical:after {
+      margin-left: 1px; }
 
 @keyframes ty-rotate {
   0% {
