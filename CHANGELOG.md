@@ -8,6 +8,13 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.77](https://github.com/wangdicoder/tiny-ui/compare/v0.0.76...v0.0.77) (2020-01-08)
+
+
+### Features
+
+* add scroll indicator component ([f67ad75](https://github.com/wangdicoder/tiny-ui/commit/f67ad75a949f0f98f84e333c83330671681f2ce7))
+
 ### [0.0.76](https://github.com/wangdicoder/tiny-ui/compare/v0.0.75...v0.0.76) (2020-01-03)
 
 
