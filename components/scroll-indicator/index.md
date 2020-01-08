@@ -3,11 +3,11 @@ import Target from './demo/target.md'
 
 # Scroll Indicator
 
-Used to feed back the results of a series of operational tasks.
+A "progress bar" to show how far a page has been scrolled.
 
 ## Scenario
 
-Use when important operations need to inform the user to process the results and the feedback is more complicated.
+Used when the length of content is too long.
 
 ## Examples
 

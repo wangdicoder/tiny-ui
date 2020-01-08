@@ -92,6 +92,11 @@ export const COMPONENT_MENU: RouterItem[] = [
     title: 'Data Display',
     children: [
       {
+        title: 'Aspect Ratio',
+        route: 'aspect-ratio',
+        component: lazy(() => import('../../components/aspect-ratio/index.md')),
+      },
+      {
         title: 'Avatar',
         route: 'avatar',
         component: lazy(() => import('../../components/avatar/index.md')),
