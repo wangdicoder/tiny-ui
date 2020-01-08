@@ -5,11 +5,11 @@ import { Target, getScroll, getNodeScrollHeight, getNodeHeight } from '../_utils
 
 export interface ScrollIndicatorProps extends BaseProps {
   fixed?: boolean;
-  container?: () => Target;
+  target?: () => Target;
 }
 
 const ScrollIndicator = (props: ScrollIndicatorProps): React.ReactElement => {
-  const { prefixCls = 'ty-scroll-indicator', fixed = true, container, className, style } = props;
+  const { prefixCls = 'ty-scroll-indicator', fixed = true, target, className, style } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_fixed`]: fixed,
   });
@@ -17,31 +17,31 @@ const ScrollIndicator = (props: ScrollIndicatorProps): React.ReactElement => {
 
   const handleScroll = useCallback(
     (e: Event) => {
-      let { target } = e;
+      let container = e.target;
       // If the container is not provided, the target will be the root element. So set it as Window
       // if the container is not determined.
-      if (target !== (container && container())) {
-        target = window;
+      if (container !== (target && target())) {
+        container = window;
       }
-      if (target) {
-        const el = target as Target;
+      if (container) {
+        const el = container as Target;
         const scrollTop = getScroll(el, true);
         const height = getNodeScrollHeight(el) - getNodeHeight(el);
         const scrolled = (scrollTop / height) * 100;
         setWidth(`${scrolled}%`);
       }
     },
-    [container]
+    [target]
   );
 
   useEffect(() => {
-    const target = container ? (container() ? container() : window) : window;
-    target.addEventListener('scroll', handleScroll);
+    const element = target ? (target() ? target() : window) : window;
+    element.addEventListener('scroll', handleScroll);
 
     return (): void => {
-      target.removeEventListener('scroll', handleScroll);
+      element.removeEventListener('scroll', handleScroll);
     };
-  }, [container, handleScroll]);
+  }, [target, handleScroll]);
 
   return <div className={cls} style={{ ...style, width }} />;
 };

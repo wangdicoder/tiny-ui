@@ -206,6 +206,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/alert/index.md')),
       },
       {
+        title: 'Scroll Indicator',
+        route: 'scroll-indicator',
+        component: lazy(() => import('../../components/scroll-indicator/index.md')),
+      },
+      {
         title: 'Drawer',
         route: 'drawer',
         component: lazy(() => import('../../components/drawer/index.md')),
