@@ -1,0 +1,14 @@
+@import '../../style/variables';
+
+.#{$prefix}scroll-indicator {
+  box-sizing: border-box;
+  height: 3px;
+  transform: translateZ(0);
+  background: $primary-color;
+
+  &_fixed {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
+}

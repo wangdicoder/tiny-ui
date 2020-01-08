@@ -7,7 +7,7 @@ Using an icon replaces a text or combination.
 ```jsx live
 <Breadcrumb>
   <Breadcrumb.Item>
-    <Icon type="home" />
+    <Icon name="home" />
   </Breadcrumb.Item>
   <Breadcrumb.Item>
     <a href="#/components/breadcrumb"><Icon name="inspection" />Project List</a>

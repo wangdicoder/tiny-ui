@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import raf from 'raf';
-import { Container } from '../_utils/dom';
+import { Target } from '../_utils/dom';
 import { BaseProps } from '../_utils/props';
 
 export interface BackTopProps extends BaseProps {
-  target: () => Container;
+  target: () => Target;
   onClick: (e: React.MouseEvent) => void;
   visibilityHeight: number;
   children?: React.ReactNode;

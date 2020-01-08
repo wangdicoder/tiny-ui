@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { Container, getNodeHeight, getRect, getScroll } from '../_utils/dom';
+import { Target, getNodeHeight, getRect, getScroll } from '../_utils/dom';
 import { BaseProps } from '../_utils/props';
 
 export interface AffixProps extends BaseProps {
-  container?: () => Container;
+  container?: () => Target;
   offsetBottom?: number;
   offsetTop?: number;
   relative?: boolean;
@@ -59,7 +59,7 @@ const Affix = (props: AffixProps) => {
     }
   };
 
-  const getOffset = (affixNode: HTMLElement, affixContainer: Container) => {
+  const getOffset = (affixNode: HTMLElement, affixContainer: Target) => {
     const affixRect = affixNode.getBoundingClientRect(); // affix 元素 相对浏览器窗口的位置
     const containerRect = getRect(affixContainer); // affix 容器 相对浏览器窗口的位置
     const containerScrollTop = getScroll(affixContainer, true);

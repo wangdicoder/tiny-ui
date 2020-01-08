@@ -1,6 +1,6 @@
-export type Container = HTMLElement | Window;
+export type Target = HTMLElement | Window;
 
-export const getScroll = (node: Container, isVertical = true): number => {
+export const getScroll = (node: Target, isVertical = true): number => {
   if (typeof window === 'undefined') {
     return 0;
   }
@@ -9,7 +9,7 @@ export const getScroll = (node: Container, isVertical = true): number => {
   return node === window ? (node as Window)[windowProp] : (node as HTMLElement)[elementProp];
 };
 
-export const getRect = (node: Container = window): ClientRect => {
+export const getRect = (node: Target = window): ClientRect => {
   return node !== window
     ? (node as HTMLElement).getBoundingClientRect()
     : {
@@ -26,7 +26,7 @@ export const getRect = (node: Container = window): ClientRect => {
  * Get element absolute position relative to the root
  * @param node
  */
-export const getAbsolutePosition = (node: Container = window): { x: number; y: number } => {
+export const getAbsolutePosition = (node: Target = window): { x: number; y: number } => {
   if (node === window) {
     return { x: 0, y: 0 };
   }
@@ -36,7 +36,7 @@ export const getAbsolutePosition = (node: Container = window): { x: number; y: n
   return { x, y };
 };
 
-export const getNodeHeight = (node: Container): number => {
+export const getNodeHeight = (node: Target): number => {
   if (!node) {
     return 0;
   }
@@ -44,4 +44,15 @@ export const getNodeHeight = (node: Container): number => {
     return window.innerHeight;
   }
   return (node as HTMLElement).clientHeight;
+};
+
+export const getNodeScrollHeight = (node: Target): number => {
+  if (!node) {
+    return 0;
+  }
+
+  if (node === window) {
+    return window.document.documentElement.scrollHeight;
+  }
+  return (node as HTMLElement).scrollHeight;
 };
