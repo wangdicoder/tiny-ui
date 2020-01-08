@@ -2,6 +2,7 @@ import { withLocale } from './intl-provider/with-locale';
 
 export { default as Affix } from './affix';
 export { default as Alert } from './alert';
+export { default as AspectRatio } from './aspect-ratio';
 export { default as Avatar } from './avatar';
 export { default as BackTop } from './backtop';
 export { default as Badge } from './badge';

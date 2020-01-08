@@ -1,0 +1,8 @@
+@import '../../style/variables';
+
+.#{$prefix}aspect-ratio {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  background-color: #2f54eb;
+}
