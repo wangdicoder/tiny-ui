@@ -10,6 +10,12 @@ An element describes the proportional relationship between its width and its hei
 
 Used to embed responsive images, videos and maps, etc. It uses a very common [padding hack](https://css-tricks.com/aspect-ratio-boxes/) to achieve this.
 
+## Usage
+
+```jsx
+import { AspectRatio } from 'tiny-ui';
+```
+
 ## Examples
 
 <layout>

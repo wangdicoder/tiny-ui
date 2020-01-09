@@ -9,7 +9,7 @@ export type RouterItem = {
 
 export const GUIDE_MENU: RouterItem[] = [
   {
-    title: 'Tiny UI Introduction',
+    title: 'Introduction',
     route: 'introduction',
     component: lazy(() => import('../../docs/introduction.md')),
   },
@@ -57,6 +57,11 @@ export const COMPONENT_MENU: RouterItem[] = [
       {
         title: 'Icon',
         route: 'icon',
+      },
+      {
+        title: 'Image',
+        route: 'image',
+        component: lazy(() => import('../../components/image/index.md')),
       },
       {
         title: 'Typography',

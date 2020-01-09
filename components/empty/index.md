@@ -6,7 +6,7 @@ import NoDesc from './demo/no-desc.md'
 
 Empty state placeholder.
 
-## When To Use
+## Scenario
 
 - When there is no data provided, display for friendly tips.
 - User tutorial to create something in fresh new situation.

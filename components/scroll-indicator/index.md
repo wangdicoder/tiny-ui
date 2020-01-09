@@ -9,6 +9,12 @@ A "progress bar" to show how far a page has been scrolled.
 
 Used when the length of content is too long.
 
+## Usage
+
+```jsx
+import { ScrollIndicator } from 'tiny-ui';
+```
+
 ## Examples
 
 <Basic/>
