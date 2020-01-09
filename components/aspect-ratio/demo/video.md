@@ -2,6 +2,8 @@
 
 ### Embed Video
 
+A `4:3` video.
+
 ```jsx live
 <AspectRatio ratio={4 / 3}>
   <iframe
