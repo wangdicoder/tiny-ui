@@ -8,6 +8,14 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.78](https://github.com/wangdicoder/tiny-ui/compare/v0.0.77...v0.0.78) (2020-01-09)
+
+
+### Features
+
+* add aspect ratio component ([52e3183](https://github.com/wangdicoder/tiny-ui/commit/52e3183e27547c776146901bc252f9bd3002997b))
+* add image component ([7d4e4a8](https://github.com/wangdicoder/tiny-ui/commit/7d4e4a85f5f0719a96b882335f705cada6591848))
+
 ### [0.0.77](https://github.com/wangdicoder/tiny-ui/compare/v0.0.76...v0.0.77) (2020-01-08)
 
 
