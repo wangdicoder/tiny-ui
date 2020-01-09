@@ -1,0 +1,9 @@
+@import '../../style/variables';
+
+.#{$prefix}image {
+  box-sizing: border-box;
+
+  &_round {
+    border-radius: 50%;
+  }
+}
