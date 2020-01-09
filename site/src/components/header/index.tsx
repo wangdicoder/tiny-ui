@@ -19,8 +19,8 @@ const Header = () => (
           </NavLink>
         </li>
         <li className="header__nav-item">
-          <NavLink to="/components" className="header__link">
-            Components
+          <NavLink to="/docs" className="header__link">
+            Documentation
           </NavLink>
         </li>
         <li className="header__nav-item">

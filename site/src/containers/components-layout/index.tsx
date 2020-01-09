@@ -30,19 +30,11 @@ const ComponentLayout = (props: Props) => {
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               {GUIDE_MENU.map(menu => (
-                <Route
-                  key={menu.title}
-                  path={`/components/${menu.route}`}
-                  component={menu.component}
-                />
+                <Route key={menu.title} path={`/docs/${menu.route}`} component={menu.component} />
               ))}
               {COMPONENT_MENU.map(group =>
                 group.children!.map(menu => (
-                  <Route
-                    key={menu.title}
-                    path={`/components/${menu.route}`}
-                    component={menu.component}
-                  />
+                  <Route key={menu.title} path={`/docs/${menu.route}`} component={menu.component} />
                 ))
               )}
             </Switch>

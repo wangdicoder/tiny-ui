@@ -17,9 +17,9 @@ const App = (): React.ReactElement => (
       <Header />
       <Switch>
         <Route exact path="/home" component={HomePage} />
-        <Route path="/components/:page" component={ComponentsLayoutPage} />
+        <Route path="/docs/:page" component={ComponentsLayoutPage} />
         <Route path="/test" component={Test} />
-        <Redirect from="/components" to="/components/introduction" />
+        <Redirect from="/docs" to="/docs/introduction" />
         <Redirect from="/" to="/home" />
       </Switch>
     </div>

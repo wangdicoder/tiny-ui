@@ -22,7 +22,7 @@ const SidebarMenu = (): React.ReactElement => {
             <li key={idx} className="sidebar-menu__menu-item">
               <NavLink
                 to={{
-                  pathname: `/components/${menu.route}`,
+                  pathname: `/docs/${menu.route}`,
                   state: { name: menu.title },
                 }}
                 activeClassName="sidebar-menu__menu-item_active">
@@ -44,7 +44,7 @@ const SidebarMenu = (): React.ReactElement => {
                   <li key={idx} className="sidebar-menu__menu-item">
                     <NavLink
                       to={{
-                        pathname: `/components/${menu.route}`,
+                        pathname: `/docs/${menu.route}`,
                         state: { name: menu.title },
                       }}
                       activeClassName="sidebar-menu__menu-item_active">
