@@ -64,6 +64,23 @@
     background-color: #e6f7ff;
     color: #0b8aff; }
 
+.ty-aspect-ratio {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  display: inline-block; }
+  .ty-aspect-ratio__padding {
+    display: block;
+    height: 0; }
+  .ty-aspect-ratio__inside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; }
+
 .ty-avatar {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -3213,6 +3230,12 @@
     display: inline-block;
     -webkit-animation: ty-rotate 1s linear infinite;
             animation: ty-rotate 1s linear infinite; }
+
+.ty-image {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+  .ty-image_round {
+    border-radius: 50%; }
 
 .ty-input {
   position: relative;

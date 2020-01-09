@@ -34,7 +34,7 @@ const FEATURES = [
 
 export default class Home extends React.PureComponent<RouteComponentProps, any> {
   _navigateToComponentPage = () => {
-    this.props.history.push('/components');
+    this.props.history.push('/docs');
   };
 
   _openGithub = (): void => {
