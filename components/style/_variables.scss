@@ -63,18 +63,6 @@ $layout-footer-background: #fff       !default;
 $layout-footer-padding: 24px 50px     !default;
 $layout-sidebar-background: #12131a     !default;
 
-//button
-$btn-border-radius: $border-radius    !default;
-$btn-lg-font-size: $font-size-lg      !default;
-$btn-lg-padding: 0 28px               !default;
-$btn-lg-height: $height-lg            !default;
-$btn-md-font-size: $font-size         !default;
-$btn-md-padding: 0 15px               !default;
-$btn-md-height: $height-md            !default;
-$btn-sm-font-size: $font-size-sm      !default;
-$btn-sm-padding: 0 10px               !default;
-$btn-sm-height: $height-sm            !default;
-
 //alert
 $alert-border-radius: 3px             !default;
 
@@ -90,6 +78,24 @@ $collapse-border-radius: 4px          !default;
 $badge-font-size: 12px                !default;
 $badge-size: 18px                     !default;
 $badge-dot-size: 6px                  !default;
+
+//button
+$btn-border-radius: $border-radius    !default;
+$btn-lg-font-size: $font-size-lg      !default;
+$btn-lg-padding: 0 28px               !default;
+$btn-lg-height: $height-lg            !default;
+$btn-md-font-size: $font-size         !default;
+$btn-md-padding: 0 15px               !default;
+$btn-md-height: $height-md            !default;
+$btn-sm-font-size: $font-size-sm      !default;
+$btn-sm-padding: 0 10px               !default;
+$btn-sm-height: $height-sm            !default;
+
+//card
+$card-border-radius: $border-radius   !default;
+$card-header-padding: 15px 20px       !default;
+$card-body-padding: 20px              !default;
+$card-footer-padding: 15px 20px       !default;
 
 //divider
 $divider-line-color: #e4e4e4          !default;
