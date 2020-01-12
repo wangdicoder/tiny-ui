@@ -1,11 +1,11 @@
 <demo>
 
-### Basic card
+### Hoverable
 
-A basic card containing a title, content and an extra corner content. 
+Set `hoverable` to allow the card having a hover effect.
 
 ```jsx live
-<Card title="Basic Card" extra={<a href="#">More</a>}>
+<Card hoverable title="Basic Card" extra={<a href="#">More</a>}>
   <Card.Content>
     <div>This is a content.</div>
     <div>This is a content.</div>

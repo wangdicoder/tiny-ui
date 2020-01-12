@@ -13,6 +13,10 @@
     margin-top: 15px;
   }
 
+  & > img:first-child {
+    border-radius: $card-border-radius $card-border-radius 0 0;
+  }
+
   &_bordered {
     border: 1px solid #e8e8e8;
   }
@@ -44,5 +48,10 @@
   &__body {
     box-sizing: border-box;
     padding: $card-body-padding;
+  }
+
+  &__footer {
+    box-sizing: border-box;
+    padding: $card-footer-padding;
   }
 }

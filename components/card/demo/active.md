@@ -1,11 +1,11 @@
 <demo>
 
-### Basic card
+### Active
 
-A basic card containing a title, content and an extra corner content. 
+Set `active` to allow the card always in elevation.
 
 ```jsx live
-<Card title="Basic Card" extra={<a href="#">More</a>}>
+<Card active title="Basic Card" extra={<a href="#">More</a>}>
   <Card.Content>
     <div>This is a content.</div>
     <div>This is a content.</div>
