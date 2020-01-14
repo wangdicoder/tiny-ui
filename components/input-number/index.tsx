@@ -7,6 +7,7 @@ export interface InputNumberProps extends BaseProps {
   min?: number;
   max?: number;
   step?: number;
+  precision?: number;
   defaultValue?: number;
   value?: number;
   onChange?: (
@@ -24,11 +25,11 @@ export interface InputNumberProps extends BaseProps {
  * Valid the string is a number
  * @param val
  */
-const isValid = (val: string | number) => {
+const isValid = (val: string | number): boolean => {
   return !isNaN(+val);
 };
 
-const InputNumber = (props: InputNumberProps) => {
+const InputNumber = (props: InputNumberProps): React.ReactElement => {
   const {
     prefixCls = 'ty-input-number',
     size = 'md',
@@ -46,12 +47,12 @@ const InputNumber = (props: InputNumberProps) => {
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_always-controls`]: controls,
   });
-  const [value, setValue] = useState('value' in props ? `${props.value}` : `${defaultValue}`);
+  const [value, setValue] = useState<number>('value' in props ? props.value! : defaultValue);
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const val = e.target.value.trim();
+    const val = Number(e.target.value.trim());
     !('value' in props) && setValue(val);
-    onChange && isValid(val) && onChange(Number(val), e);
+    onChange && isValid(val) && onChange(val, e);
   };
 
   const plusOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
@@ -59,7 +60,7 @@ const InputNumber = (props: InputNumberProps) => {
     if (!disabled && isValid(step)) {
       const val = +value + +step;
       if (val <= max) {
-        !('value' in props) && setValue(`${val}`);
+        !('value' in props) && setValue(val);
         onChange && onChange(val, e);
       }
     }
@@ -70,19 +71,20 @@ const InputNumber = (props: InputNumberProps) => {
     if (!disabled && isValid(step)) {
       const val = +value - +step;
       if (val >= min) {
-        !('value' in props) && setValue(`${val}`);
+        !('value' in props) && setValue(val);
         onChange && onChange(val, e);
       }
     }
   };
 
   useEffect(() => {
-    'value' in props && setValue(`${props.value}`);
+    'value' in props && setValue(props.value!);
   }, [props.value]);
 
   return (
     <div className={cls} style={style}>
       <input
+        autoComplete="off"
         disabled={disabled}
         value={value}
         type="number"
@@ -91,6 +93,10 @@ const InputNumber = (props: InputNumberProps) => {
         min={min}
         step={step}
         onChange={inputOnChange}
+        aria-valuenow={value}
+        aria-valuemax={max}
+        aria-valuemin={min}
+        aria-disabled={disabled}
       />
       <div className={`${prefixCls}__controls`}>
         <span className={`${prefixCls}__up`} onClick={plusOnClick}>

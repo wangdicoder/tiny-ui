@@ -72,7 +72,12 @@ const Circle = (props: CircleProps): React.ReactElement => {
   };
 
   return (
-    <div className={cls} style={{ width, height: width, ...style }}>
+    <div
+      className={cls}
+      style={{ width, height: width, ...style }}
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={percentage}>
       <svg viewBox="0 0 100 100" width={width} height={width}>
         <path className={`${prefixCls}__bg`} d={trackPath()} strokeWidth={relativeStrokeWidth()} />
         <path
