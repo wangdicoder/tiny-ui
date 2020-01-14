@@ -30,10 +30,17 @@ import { InputNumber } from 'tiny-ui';
 
 ## API
 
-| Property       | Description                               | Type       | Default |
-| -------------- | ----------------------------------------- | ---------- | ------- |
-| suffix         | whether display visible button            | boolean    | true    |
-| visibleOnClick | callback when clicking the visible button | () => void | -       |
-| style	         | style object of container object          |            | -       |
-| className	     | className of container                    | string     | -       |
+| Property      | Description                                           | Type                                  | Default                   |
+| ------------- | ----------------------------------------------------- | ------------------------------------- | ------------------------- |
+| min           | Min value                                             | number                                | Number.NEGATIVE_INFINITY  |
+| max           | Max value                                             | number                                | Number.POSITIVE_INFINITY  |
+| step          | Increased or decreased, it can be decimal or integer  | number                                | 1                         |
+| defaultValue  | Initial value                                         | number                                | 0                         |
+| value         | Current value                                         | number                                | -                         |
+| onChange      | The callback when the value is changed.               | (value, e) => void                    | -                         |
+| size          | Input box size                                        | enum: `sm` &#124; `md` &#124; `lg`    | `md`                      |
+| disabled      | Disable the input                                     | boolean                               | false                     |
+| controls      | Always display the controller                         | boolean                               | false                     |
+| style	        | Style object of container object                      |                                       | -                         |
+| className	    | ClassName of container                                | string                                | -                         |
 

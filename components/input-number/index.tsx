@@ -15,7 +15,6 @@ export interface InputNumberProps extends BaseProps {
   ) => void;
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
-  characterSet?: string;
   /** Determine whether always display the control button  */
   controls?: boolean;
   children?: React.ReactNode;
@@ -49,13 +48,13 @@ const InputNumber = (props: InputNumberProps) => {
   });
   const [value, setValue] = useState('value' in props ? `${props.value}` : `${defaultValue}`);
 
-  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const val = e.target.value.trim();
     !('value' in props) && setValue(val);
     onChange && isValid(val) && onChange(Number(val), e);
   };
 
-  const plusOnClick = (e: MouseEvent<HTMLSpanElement>) => {
+  const plusOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
     e.stopPropagation();
     if (!disabled && isValid(step)) {
       const val = +value + +step;
@@ -66,7 +65,7 @@ const InputNumber = (props: InputNumberProps) => {
     }
   };
 
-  const minusOnClick = (e: MouseEvent<HTMLSpanElement>) => {
+  const minusOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
     e.stopPropagation();
     if (!disabled && isValid(step)) {
       const val = +value - +step;

@@ -44,7 +44,7 @@ const { Group } = Button;
 
 | Property  | Description                      | Type                               | Default |
 | --------- | -------------------------------- | ---------------------------------- | ------- |
-| size      | selection size                   | enum: `sm` &#124; `md` &#124; `lg` | `md`    |
+| size      | Button size                      | enum: `sm` &#124; `md` &#124; `lg` | `md`    |
 | disabled  | disable to select                | boolean                            | false   |
 | style	    | style object of container	object | CSSProperties                      | -       |
 | className	| className of container           | string                             | -       |
