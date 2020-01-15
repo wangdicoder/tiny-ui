@@ -30,3 +30,9 @@ import { AspectRatio } from 'tiny-ui';
 
 ## API
 
+| Property  | Description                       | Type                  | Default   |
+| --------- | --------------------------------- | --------------------- | --------- |
+| width     | The box width                     | number &#124; string  | -         |
+| ratio     | The aspect ratio of the content   | number                | 1         |
+| style	    | Style object of container	object  | CSSProperties         | -         |
+| className	| ClassName of container            | string                | -         |
