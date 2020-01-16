@@ -9,7 +9,7 @@ export interface InputGroupProps extends BaseProps {
   children: React.ReactElement;
 }
 
-const InputGroup = (props: InputGroupProps) => {
+const InputGroup = (props: InputGroupProps): React.ReactElement => {
   const {
     prefixCls = 'ty-input-group',
     disabled = false,

@@ -38,7 +38,7 @@ const setClosedStyle = (node: HTMLElement) => {
   node.style.marginBottom = '0';
 };
 
-const Alert = (props: AlertProps) => {
+const Alert = (props: AlertProps): React.ReactElement => {
   const {
     prefixCls = 'ty-alert',
     type = 'info',

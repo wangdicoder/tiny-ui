@@ -8,11 +8,11 @@ export interface TextareaProps extends BaseProps {
   counter?: (count?: number) => React.ReactNode;
   defaultValue?: string;
   value?: string;
-  onChange?: (value: any, event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange?: (value: string, event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   disabled?: boolean;
 }
 
-const Textarea = (props: TextareaProps) => {
+const Textarea = (props: TextareaProps): React.ReactElement => {
   const {
     prefixCls = 'ty-textarea',
     disabled = false,

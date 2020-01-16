@@ -6,6 +6,7 @@ export { InputProps, InputSizes } from './input';
 export { InputGroupProps } from './input-group';
 export { InputGroupAddonProps } from './input-group-addon';
 
+Input.displayName = 'Input';
 Input.Group = InputGroup;
 Input.Addon = InputGroupAddon;
 export default Input;

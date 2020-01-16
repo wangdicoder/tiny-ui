@@ -17,4 +17,5 @@ const Keyboard = React.forwardRef<HTMLElement, KeyboardProps>((props: KeyboardPr
   );
 });
 
+Keyboard.displayName = 'Keyboard';
 export default Keyboard;
