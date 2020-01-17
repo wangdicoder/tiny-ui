@@ -276,6 +276,11 @@ export const COMPONENT_MENU: RouterItem[] = [
     title: 'Miscellany',
     children: [
       {
+        title: 'BackTop',
+        route: 'back-top',
+        component: lazy(() => import('../../components/backtop/index.md')),
+      },
+      {
         title: 'Divider',
         route: 'divider',
         component: lazy(() => import('../../components/divider/index.md')),
