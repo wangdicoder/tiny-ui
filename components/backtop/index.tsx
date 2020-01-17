@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import raf from 'raf';
 import { Target } from '../_utils/dom';
 import { BaseProps } from '../_utils/props';
 
 export interface BackTopProps extends BaseProps {
-  target: () => Target;
-  onClick: (e: React.MouseEvent) => void;
-  visibilityHeight: number;
+  target?: () => Target;
+  onClick?: (e: React.MouseEvent) => void;
+  visibilityHeight?: number;
   children?: React.ReactNode;
 }
 
@@ -21,11 +21,11 @@ const easeInOutCubic = (t: number, b: number, c: number, d: number): number => {
   }
 };
 
-const BackTop = (props: BackTopProps) => {
+const BackTop = (props: BackTopProps): React.ReactElement | null => {
   const {
     prefixCls = 'ty-backtop',
     visibilityHeight = 300,
-    target = () => window,
+    target = (): Target => window,
     onClick,
     className,
     style,
@@ -34,13 +34,13 @@ const BackTop = (props: BackTopProps) => {
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(true);
 
-  const getDistanceFromTop = (): number => {
+  const getDistanceFromTop = useCallback((): number => {
     const targetNode = target();
     if (targetNode === window) {
       return window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
     }
     return (targetNode as HTMLElement).scrollTop;
-  };
+  }, [target]);
 
   const setScrollToTop = (distance: number): void => {
     const targetNode = target();
@@ -52,10 +52,10 @@ const BackTop = (props: BackTopProps) => {
     }
   };
 
-  const scrollToTop = (e: React.MouseEvent<HTMLDivElement>) => {
+  const scrollToTop = (e: React.MouseEvent<HTMLDivElement>): void => {
     const scrollTop = getDistanceFromTop();
     const startTime = Date.now();
-    const step = () => {
+    const step = (): void => {
       const timestamp = Date.now();
       const time = timestamp - startTime;
       setScrollToTop(easeInOutCubic(time, scrollTop, 0, 450));
@@ -69,23 +69,23 @@ const BackTop = (props: BackTopProps) => {
     onClick && onClick(e);
   };
 
-  const onScroll = (): void => {
+  const handleOnScroll = useCallback(() => {
     if (getDistanceFromTop() > visibilityHeight) {
       !visible && setVisible(true);
     } else if (visible) {
       setVisible(false);
     }
-  };
+  }, [getDistanceFromTop, visible, visibilityHeight]);
 
   useEffect(() => {
     const targetNode = target();
-    targetNode.addEventListener('scroll', onScroll);
-    onScroll();
+    targetNode.addEventListener('scroll', handleOnScroll);
+    handleOnScroll();
 
-    return () => {
-      targetNode.removeEventListener('scroll', onScroll);
+    return (): void => {
+      targetNode.removeEventListener('scroll', handleOnScroll);
     };
-  }, []);
+  }, [target, handleOnScroll]);
 
   if (visible) {
     return (
