@@ -21,6 +21,7 @@ const Waterfall = (props: WaterfallProps): React.ReactElement => {
     const arr: number[] = [];
     for (let i = 0; i < items.length; i++) {
       const item = items[i] as HTMLElement;
+      (item.children[0] as HTMLElement).style.width = `${itemWidth}px`;
       if (i < columns) {
         item.style.top = '0';
         item.style.left = (itemWidth + gap) * i + 'px';
@@ -42,6 +43,7 @@ const Waterfall = (props: WaterfallProps): React.ReactElement => {
   }, [columns, gap]);
 
   useEffect(() => {
+    handleLayout();
     window.addEventListener('resize', handleLayout);
 
     return (): void => {
@@ -51,7 +53,9 @@ const Waterfall = (props: WaterfallProps): React.ReactElement => {
 
   return (
     <div ref={containerRef} className={cls} style={style}>
-      {children}
+      {React.Children.map(children, child =>
+        React.createElement('div', { className: `${prefixCls}__item` }, child)
+      )}
     </div>
   );
 };

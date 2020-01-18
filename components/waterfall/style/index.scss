@@ -1,0 +1,8 @@
+@import '../../style/variables';
+
+.#{$prefix}waterfall {
+  position: relative;
+  &__item {
+    position: absolute;
+  }
+}
