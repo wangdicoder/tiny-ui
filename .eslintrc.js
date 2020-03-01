@@ -5,7 +5,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'jest'],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',
@@ -15,6 +15,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es6: true,
+    'jest/globals': true,
   },
   globals: {},
   settings: {

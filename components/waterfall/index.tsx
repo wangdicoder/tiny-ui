@@ -43,10 +43,11 @@ const Waterfall = (props: WaterfallProps): React.ReactElement => {
   }, [columns, gap]);
 
   useEffect(() => {
-    handleLayout();
+    window.addEventListener('load', handleLayout);
     window.addEventListener('resize', handleLayout);
 
     return (): void => {
+      window.removeEventListener('load', handleLayout);
       window.removeEventListener('resize', handleLayout);
     };
   }, [handleLayout]);
