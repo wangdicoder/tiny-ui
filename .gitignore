@@ -7,5 +7,6 @@
 /site/build
 /site/dist
 /lib
+/coverage
 
 /site/src/containers/test/index.tsx

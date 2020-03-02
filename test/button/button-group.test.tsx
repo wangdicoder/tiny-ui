@@ -4,8 +4,8 @@ import Button from '../../components/button';
 
 const { Group } = Button;
 
-describe('<Button />', () => {
-  it('should match snapshot', () => {
+describe('<ButtonGroup />', () => {
+  it('should match the snapshot', () => {
     const wrapper = render(
       <Group>
         <Button>Default</Button>

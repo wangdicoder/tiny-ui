@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { ReactNode, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Icon from '../icon';
@@ -7,18 +7,18 @@ import { BaseProps } from '../_utils/props';
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
 export interface AlertProps extends BaseProps {
-  title?: string;
+  title?: string | ReactNode;
   type?: AlertType;
-  icon?: boolean | React.ReactNode;
+  icon?: boolean | ReactNode;
   iconSize?: number;
   /** Whether Alert can be closed */
   closable?: boolean;
   /** Close text to show */
-  closeText?: React.ReactNode;
+  closeText?: ReactNode;
   /** Trigger when animation ending of Alert */
   afterClose?: () => void;
   onClose?: React.MouseEventHandler<HTMLSpanElement>;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const IconType = Object.freeze({

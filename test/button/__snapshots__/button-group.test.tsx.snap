@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> should match snapshot 1`] = `
+exports[`<ButtonGroup /> should match the snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {

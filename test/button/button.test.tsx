@@ -4,7 +4,7 @@ import Button from '../../components/button';
 import Icon from '../../components/icon';
 
 describe('<Button />', () => {
-  it('should match snapshot', () => {
+  it('should match the snapshot', () => {
     const wrapper = render(<Button>Default</Button>);
     expect(wrapper).toMatchSnapshot();
   });
