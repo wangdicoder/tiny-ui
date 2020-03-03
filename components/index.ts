@@ -36,6 +36,7 @@ export { default as Modal } from './modal';
 export { default as Notification } from './notification';
 export { default as Overlay } from './overlay';
 export { default as Popover } from './popover';
+export { default as Pagination } from './pagination';
 export { default as PopConfirm } from './pop-confirm';
 export { default as Progress } from './progress';
 export { default as Radio } from './radio';

@@ -1,0 +1,81 @@
+@import '../../style/variables';
+
+.#{$prefix}pagination {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  list-style: none;
+
+  &_left {
+    text-align: left;
+  }
+
+  &_center {
+    text-align: center;
+  }
+
+  &_right {
+    text-align: right;
+  }
+
+  &__item {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid;
+    outline: 0;
+    cursor: pointer;
+    user-select: none;
+    transition: all 300ms;
+
+    &_disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &_md {
+    .#{$prefix}pagination__item {
+      min-width: 32px;
+      height: 32px;
+      margin-left: 4px;
+      margin-right: 4px;
+      line-height: 30px;
+      border-color: #d9d9d9;
+
+      &_active {
+        color: $primary-color;
+        border-color: $primary-color;
+      }
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &_sm {
+    .#{$prefix}pagination__item {
+      min-width: 24px;
+      height: 24px;
+      margin-left: 0.5px;
+      margin-right: 0.5px;
+      line-height: 22px;
+      border-color: transparent;
+
+      &_active {
+        color: $primary-color;
+        border-color: $primary-color;
+      }
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
