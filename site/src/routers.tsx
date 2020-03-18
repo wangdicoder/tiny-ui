@@ -63,11 +63,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'image',
         component: lazy(() => import('../../components/image/index.md')),
       },
-      {
-        title: 'Typography',
-        route: 'typography',
-        component: lazy(() => import('../../components/typography/index.md')),
-      },
+      // {
+      //   title: 'Typography',
+      //   route: 'typography',
+      //   component: lazy(() => import('../../components/typography/index.md')),
+      // },
     ],
   },
   {
@@ -90,6 +90,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Breadcrumb',
         route: 'breadcrumb',
         component: lazy(() => import('../../components/breadcrumb/index.md')),
+      },
+      {
+        title: 'Pagination',
+        route: 'pagination',
+        component: lazy(() => import('../../components/pagination/index.md')),
       },
     ],
   },
@@ -161,10 +166,10 @@ export const COMPONENT_MENU: RouterItem[] = [
   {
     title: 'Form Item',
     children: [
-      {
-        title: 'Form',
-        route: 'form',
-      },
+      // {
+      //   title: 'Form',
+      //   route: 'form',
+      // },
       {
         title: 'Checkbox',
         route: 'checkbox',
