@@ -8,6 +8,20 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.79](https://github.com/wangdicoder/tiny-ui/compare/v0.0.78...v0.0.79) (2020-03-18)
+
+
+### Features
+
+* add card component ([e933d30](https://github.com/wangdicoder/tiny-ui/commit/e933d309aa34c7d276054adef4d5b50eea5fba7b))
+* back top component ([63d9c1a](https://github.com/wangdicoder/tiny-ui/commit/63d9c1abdc01835d01c1935027e74b12877ae19d))
+
+
+### Bug Fixes
+
+* input number value type ([3c07ea6](https://github.com/wangdicoder/tiny-ui/commit/3c07ea692302f9dc2f59d729f2e58d943517a0ef))
+* no display name warning ([14e160b](https://github.com/wangdicoder/tiny-ui/commit/14e160bbb61a3b57f127a5f6c81ac61d36e1ebb5))
+
 ### [0.0.78](https://github.com/wangdicoder/tiny-ui/compare/v0.0.77...v0.0.78) (2020-01-09)
 
 
