@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { BaseProps, Size } from '../_utils/props';
+import { ButtonGroupProps } from './button-group';
 
 export { Size };
 export type ButtonColor = 'primary' | 'default' | 'blue' | 'red' | 'yellow' | 'green';
@@ -19,7 +20,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'>, B
 
 interface ButtonComponent
   extends React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>> {
-  Group?: any;
+  Group?: React.FC<ButtonGroupProps>;
 }
 
 const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
