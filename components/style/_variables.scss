@@ -1,9 +1,22 @@
 $prefix: 'ty-'                        !default;
 
 //color
-$default-color: #34495e               !default;
-$primary-color: #6E41BF               !default;
+$primary-color: #5A46F9               !default;
 $link-color: $primary-color           !default;
+$white-color: #fff                    !default;
+$default-color: #34495e               !default;
+
+//grey
+$gray-color: #bcc3ce                  !default;
+$gray-100: #f6f9fc                    !default;
+$gray-200: #e9ecef                    !default;
+$gray-300: #dee2e6                    !default;
+$gray-400: #ced4da                    !default;
+$gray-500: #adb5bd                    !default;
+$gray-600: #8898aa                    !default;
+$gray-700: #525f7f                    !default;
+$gray-800: #32325d                    !default;
+$gray-900: #212529                    !default;
 
 //info
 $blue-color: #1890ff                  !default;
@@ -24,10 +37,6 @@ $yellow-lighter-color: #fffbe6        !default;
 $red-color: #f44336                   !default;
 $red-light-color: #ffa39e             !default;
 $red-lighter-color: #fff1f0           !default;
-$white-color: #fff                    !default;
-
-//grey
-$gray-color: #bcc3ce                  !default;
 
 //common
 $border-radius: 3px                   !default;
@@ -39,8 +48,10 @@ $font-size: 14px                      !default;
 $font-size-sm: 13px                   !default;
 $font-size-lg: 16px                   !default;
 $font-weight: 400                     !default;
-$font-family: 'Open Sans', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif !default;
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family: $font-family-sans-serif !default;
 
 $height-sm: 24px                      !default;
 $height-md: 32px                      !default;
@@ -61,7 +72,7 @@ $layout-header-padding: 0 50px        !default;
 $layout-header-height: 60px           !default;
 $layout-footer-background: #fff       !default;
 $layout-footer-padding: 24px 50px     !default;
-$layout-sidebar-background: #12131a     !default;
+$layout-sidebar-background: #12131a   !default;
 
 //alert
 $alert-border-radius: 3px             !default;
@@ -145,4 +156,4 @@ $tag-border-radius: 3px               !default;
 $popover-arrow-size: 8px              !default;
 
 //tooltip
-$tooltip-arrow-size: 6px              !default;;
+$tooltip-arrow-size: 6px              !default;

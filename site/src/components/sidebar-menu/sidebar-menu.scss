@@ -1,4 +1,4 @@
-@import "../../base";
+@import '../../variables';
 
 .sidebar-menu {
   &__wrapper {
@@ -19,7 +19,8 @@
     font-weight: 500;
   }
 
-  &__menu, &__menu-item {
+  &__menu,
+  &__menu-item {
     list-style-type: none;
   }
 
@@ -41,7 +42,7 @@
 
       &:hover {
         color: $main-color;
-        text-shadow: 1px 1px 4px rgba($main-color, .2);
+        text-shadow: 1px 1px 4px rgba($main-color, 0.2);
       }
 
       &:before {
@@ -52,7 +53,7 @@
         top: 50%;
         left: 45px;
         transform: translateY(-50%);
-        background-color: rgba($main-color, .8);
+        background-color: rgba($main-color, 0.8);
         transition: height 300ms;
       }
 
@@ -90,5 +91,4 @@
     margin: 10px 0;
     padding: 0;
   }
-
 }

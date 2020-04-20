@@ -1,4 +1,4 @@
-@import "../../base";
+@import '../../variables';
 
 .component-page {
   min-height: calc(100vh - #{$header-height});
@@ -37,7 +37,8 @@
       margin: 0 10px;
     }
 
-    &-icon-left, &-icon-right {
+    &-icon-left,
+    &-icon-right {
       position: relative;
       left: 0;
       transition: all 400ms;

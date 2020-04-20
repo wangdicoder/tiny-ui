@@ -1,11 +1,10 @@
 import Button, { ButtonProps, ButtonColor } from './button';
 import ButtonGroup, { ButtonGroupProps } from './button-group';
+import { SizeType as ButtonSize } from '../_utils/props';
 
-export { ButtonProps, ButtonColor };
+export { ButtonProps, ButtonColor, ButtonSize };
 export { ButtonGroupProps };
 
-ButtonGroup.displayName = 'ButtonGroup';
-Button.displayName = 'Button';
 Button.Group = ButtonGroup;
 
 export default Button;

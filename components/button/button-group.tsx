@@ -1,13 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { BaseProps, Size, Color } from '../_utils/props';
-import { ButtonProps } from './button';
-
-export { Size, Color };
+import { BaseProps, SizeType } from '../_utils/props';
+import { ButtonProps, ButtonType, ButtonColor } from './button';
 
 export interface ButtonGroupProps extends React.PropsWithRef<BaseProps> {
-  size?: Size;
-  color?: Color;
+  btnType?: ButtonType;
+  size?: SizeType;
+  color?: ButtonColor;
   round?: boolean;
   disabled?: boolean;
   children: React.ReactElement<ButtonProps>[];
@@ -18,6 +17,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     const {
       prefixCls = 'ty-btn-group',
       size = 'md',
+      btnType = 'solid',
       disabled = false,
       round = false,
       color,
@@ -35,6 +35,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
           const btnProps = {
             ...child.props,
             size,
+            btnType,
             color,
             disabled: 'disabled' in child.props ? child.props.disabled : disabled,
           };
@@ -44,5 +45,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     );
   }
 );
+
+ButtonGroup.displayName = 'ButtonGroup';
 
 export default ButtonGroup;

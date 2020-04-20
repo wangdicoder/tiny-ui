@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { BaseProps, Size } from '../_utils/props';
+import { BaseProps } from '../_utils/props';
 
-export { Size };
+export type SwitchSize = 'sm' | 'md' | 'lg';
 
 export interface SwitchProps extends BaseProps {
   defaultChecked?: boolean;
   checked?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  size?: Size;
+  size?: SwitchSize;
   onChange?: (checked: boolean, event: React.MouseEvent) => void;
   checkedText?: React.ReactNode;
   uncheckedText?: React.ReactNode;

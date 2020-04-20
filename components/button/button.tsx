@@ -1,19 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
-import { BaseProps, Size } from '../_utils/props';
+import { BaseProps, SizeType } from '../_utils/props';
 
-export { Size };
-export type ButtonColor = 'primary' | 'default' | 'blue' | 'red' | 'yellow' | 'green';
+export type ButtonColor = 'primary' | 'default' | 'info' | 'error' | 'warning' | 'success';
+export type ButtonType = 'solid' | 'outline' | 'ghost' | 'link';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'>, BaseProps {
   color?: ButtonColor;
+  btnType?: ButtonType;
   loading?: boolean;
   disabled?: boolean;
   block?: boolean;
-  size?: Size;
+  size?: SizeType;
   round?: boolean;
   icon?: React.ReactNode;
-  link?: boolean;
   children?: React.ReactNode;
 }
 
@@ -28,11 +28,11 @@ const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>
       prefixCls = 'ty-btn',
       size = 'md',
       color = 'default',
+      btnType = 'solid',
       loading = false,
       disabled = false,
       block = false,
       icon,
-      link,
       round,
       children,
       className,
@@ -41,8 +41,8 @@ const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>
     } = props;
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_${color}`]: color,
+      [`${prefixCls}_${btnType}`]: btnType,
       [`${prefixCls}_${size}`]: size,
-      [`${prefixCls}_link`]: link,
       [`${prefixCls}_block`]: block,
       [`${prefixCls}_round`]: round,
       [`${prefixCls}_disabled`]: disabled,
@@ -66,10 +66,12 @@ const Button: ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>
         style={style}
         {...otherProps}>
         {renderIcon()}
-        <span>{children}</span>
+        {children}
       </button>
     );
   }
 );
+
+Button.displayName = 'Button';
 
 export default Button;

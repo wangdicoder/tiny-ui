@@ -6,6 +6,4 @@ export type BaseProps = {
   prefixCls?: string;
 };
 
-export type Size = 'sm' | 'md' | 'lg';
-
-export type Color = 'primary' | 'blue' | 'red' | 'yellow' | 'green';
+export type SizeType = 'sm' | 'md' | 'lg';
