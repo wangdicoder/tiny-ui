@@ -4,7 +4,7 @@ exports[`<Button /> should match the snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "ty-btn ty-btn_default ty-btn_md",
+      "class": "ty-btn ty-btn_default ty-btn_solid ty-btn_md",
       "role": "button",
     },
     "children": Array [
@@ -14,24 +14,11 @@ initialize {
         "name": "span",
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
-          "attribs": Object {},
-          "children": Array [
-            Object {
-              "data": "Default",
-              "next": null,
-              "parent": [Circular],
-              "prev": null,
-              "type": "text",
-            },
-          ],
-          "name": "span",
-          "namespace": "http://www.w3.org/1999/xhtml",
+          "data": "Default",
           "next": null,
           "parent": [Circular],
           "prev": [Circular],
-          "type": "tag",
-          "x-attribsNamespace": Object {},
-          "x-attribsPrefix": Object {},
+          "type": "text",
         },
         "parent": [Circular],
         "prev": null,
@@ -40,18 +27,7 @@ initialize {
         "x-attribsPrefix": Object {},
       },
       Object {
-        "attribs": Object {},
-        "children": Array [
-          Object {
-            "data": "Default",
-            "next": null,
-            "parent": [Circular],
-            "prev": null,
-            "type": "text",
-          },
-        ],
-        "name": "span",
-        "namespace": "http://www.w3.org/1999/xhtml",
+        "data": "Default",
         "next": null,
         "parent": [Circular],
         "prev": Object {
@@ -66,9 +42,7 @@ initialize {
           "x-attribsNamespace": Object {},
           "x-attribsPrefix": Object {},
         },
-        "type": "tag",
-        "x-attribsNamespace": Object {},
-        "x-attribsPrefix": Object {},
+        "type": "text",
       },
     ],
     "name": "button",

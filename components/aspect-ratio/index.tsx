@@ -2,7 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
-export interface AspectRatioProps extends BaseProps {
+export interface AspectRatioProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   width?: number | string;
   ratio?: number;
   children?: React.ReactNode;

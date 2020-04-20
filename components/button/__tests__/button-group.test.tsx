@@ -1,24 +1,23 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import Button from '../button';
-
-const { Group } = Button;
+import ButtonGroup from '../button-group';
 
 describe('<ButtonGroup />', () => {
   it('should match the snapshot', () => {
     const wrapper = render(
-      <Group>
+      <ButtonGroup>
         <Button>Default</Button>
-      </Group>
+      </ButtonGroup>
     );
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render child button correctly', () => {
     const wrapper = mount(
-      <Group color="primary">
+      <ButtonGroup color="primary">
         <Button>Default</Button>
-      </Group>
+      </ButtonGroup>
     );
     expect(wrapper.childAt(0).find('.ty-btn_primary').length).toBe(1);
   });

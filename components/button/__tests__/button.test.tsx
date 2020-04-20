@@ -28,9 +28,4 @@ describe('<Button />', () => {
     const wrapper = shallow(<Button disabled>Disabled</Button>);
     expect(wrapper.find('.ty-btn_disabled').length).toBe(1);
   });
-
-  it('should render link', () => {
-    const wrapper = shallow(<Button link>Default</Button>);
-    expect(wrapper.find('.ty-btn_link').length).toBe(1);
-  });
 });

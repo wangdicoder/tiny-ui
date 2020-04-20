@@ -6,7 +6,9 @@ import { BaseProps } from '../_utils/props';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
-export interface AlertProps extends BaseProps {
+export interface AlertProps
+  extends BaseProps,
+    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'title'> {
   title?: string | ReactNode;
   type?: AlertType;
   icon?: boolean | ReactNode;
@@ -52,6 +54,7 @@ const Alert = (props: AlertProps): React.ReactElement => {
     children,
     className,
     style,
+    ...otherProps
   } = props;
   const [isShow, setShow] = useState(true);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -85,7 +88,7 @@ const Alert = (props: AlertProps): React.ReactElement => {
       in={isShow}
       onExited={afterClose}
       classNames={`${prefixCls}_slide-up`}>
-      <div role="alert" className={cls} style={style} ref={ref}>
+      <div {...otherProps} role="alert" className={cls} style={style} ref={ref}>
         {icon && renderIcon()}
         <div>
           {title && <p className={`${prefixCls}__title`}>{title}</p>}
