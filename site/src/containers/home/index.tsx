@@ -32,7 +32,7 @@ const FEATURES = [
   },
 ];
 
-export default class Home extends React.PureComponent<RouteComponentProps, any> {
+export default class Home extends React.PureComponent<RouteComponentProps> {
   _navigateToComponentPage = () => {
     this.props.history.push('/docs');
   };

@@ -1,24 +1,18 @@
 import React, { Suspense, useEffect } from 'react';
 import './component-page.scss';
-import { Location } from 'history';
 import { Layout, Divider } from '../../../../components';
 import { COMPONENT_MENU, GUIDE_MENU } from '../../routers';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import SidebarMenu from '../../components/sidebar-menu';
 import ComponentFooter from './footer';
 
 const { Content } = Layout;
 
-type Props = {
-  location: Location;
-  match: any;
-};
-
-const ComponentLayout = (props: Props) => {
+const ComponentLayout = (props: RouteComponentProps) => {
   useEffect(() => {
     const { state } = props.location;
     if (state && 'name' in state) {
-      document.title = `${state.name} | Tiny UI `;
+      document.title = `${state['name']} | Tiny UI `;
     }
   });
 
@@ -41,7 +35,9 @@ const ComponentLayout = (props: Props) => {
           </Suspense>
 
           <Divider className="component-page__divider" />
-          <ComponentFooter routeName={props.match.params.page} />
+          <ComponentFooter
+            routeName={'page' in props.match.params ? props.match.params['page'] : ''}
+          />
         </Content>
       </Layout>
     </Layout>

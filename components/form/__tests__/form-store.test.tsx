@@ -1,4 +1,4 @@
-import FormStore from '../../components/form/form-store';
+import FormStore from '../form-store';
 
 describe('FormStore', () => {
   it('set', () => {

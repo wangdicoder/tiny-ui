@@ -5,7 +5,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react-hooks', 'jest'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jest'],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',

@@ -35,5 +35,8 @@
   },
   "include": [
     "components/"
+  ],
+  "exclude": [
+    "components/**/*.test.tsx"
   ]
 }

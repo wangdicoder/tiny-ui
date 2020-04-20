@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, render } from 'enzyme';
-import Button from '../../components/button';
-import Icon from '../../components/icon';
+import Button from '../button';
+import Icon from '../../icon';
 
 describe('<Button />', () => {
   it('should match the snapshot', () => {

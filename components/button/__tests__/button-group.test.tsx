@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
-import Button from '../../components/button';
+import Button from '../button';
 
 const { Group } = Button;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, render } from 'enzyme';
-import AspectRatio from '../../components/aspect-ratio';
+import AspectRatio from '../index';
 
 describe('<AspectRatio />', () => {
   it('should match the snapshot', () => {
