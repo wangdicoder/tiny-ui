@@ -1,5 +1,3 @@
-import { withLocale } from './intl-provider/with-locale';
-
 export { default as Alert } from './alert';
 export { default as AspectRatio } from './aspect-ratio';
 export { default as Avatar } from './avatar';
@@ -10,6 +8,7 @@ export { default as Button } from './button';
 export { default as Card } from './card';
 export { default as Carousel } from './carousel';
 export { default as Checkbox } from './checkbox';
+export { default as CopyToClipboard } from './copy-to-clipboard';
 export { default as Col } from './col';
 export { default as Collapse } from './collapse';
 export { default as Countdown } from './countdown';
@@ -29,6 +28,7 @@ export { default as Keyboard } from './keyboard';
 export { default as Layout } from './layout';
 export { default as Loader } from './loader';
 export { default as LoadingBar } from './loading-bar';
+export { default as Menu } from './menu';
 export { default as Message } from './message';
 export { default as NativeSelect } from './native-select';
 export { default as Row } from './row';
@@ -54,4 +54,4 @@ export { default as Timeline } from './timeline';
 export { default as Tooltip } from './tooltip';
 export { default as Typography } from './typography';
 // export { default as Waterfall } from './waterfall';
-export { withLocale };
+export { withLocale } from './intl-provider/with-locale';

@@ -5,15 +5,12 @@
     "outDir": "../dist/",
     "resolveJsonModule": true,
     "typeRoots": [
-      "../types/",
-      "../../node_modules/@types/"
+      "../types/"
     ]
   },
   "include": [
     "../src/",
     "../types/",
-    "../../components/",
-    "../../node_modules/@types/node/globals.d.ts",
-    "../../node_modules/@types/node/globals.d.ts"
+    "../../components/"
   ]
 }
