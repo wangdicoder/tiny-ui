@@ -6,7 +6,7 @@ type ColorCardProps = {
   hex: string;
 };
 
-const ColorCard = ({ name, hex }: ColorCardProps) => (
+const ColorCard = ({ name, hex }: ColorCardProps): React.ReactElement => (
   <div className="color-card">
     <div className="color-card__header" style={{ backgroundColor: hex }} />
     <div className="color-card__footer">
@@ -61,7 +61,7 @@ const NEUTRALS = [
   },
 ];
 
-const ColorPage = () => {
+const ColorPage = (): React.ReactElement => {
   return (
     <div className="color-page">
       <h1 className="md__heading-1">Color</h1>

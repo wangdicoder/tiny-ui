@@ -1,12 +1,12 @@
 import React from 'react';
 import './footer.scss';
-import { version, repository } from '../../../../package.json';
-import { Icon } from '../../../../components';
+import { version, repository } from '../../../../../package.json';
+import { Icon } from '../../../../../components';
 
-const Footer = () => (
+export const Footer = (): React.ReactElement => (
   <footer className="footer">
     <div className="footer__main">
-      <img src={require('../../assets/logo/logo.svg')} alt="logo" width={40} />
+      <img src={require('../../../assets/logo/logo.svg')} alt="logo" width={40} />
       <h3 className="footer__title">Tiny UI</h3>
       <p className="footer__version">- v{version} -</p>
     </div>
@@ -18,5 +18,3 @@ const Footer = () => (
     </a>
   </footer>
 );
-
-export default Footer;

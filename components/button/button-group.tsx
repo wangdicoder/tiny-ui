@@ -3,13 +3,15 @@ import classNames from 'classnames';
 import { BaseProps, SizeType } from '../_utils/props';
 import { ButtonProps, ButtonType, ButtonColor } from './button';
 
-export interface ButtonGroupProps extends React.PropsWithRef<BaseProps> {
+export interface ButtonGroupProps
+  extends BaseProps,
+    React.PropsWithRef<JSX.IntrinsicElements['div']> {
   btnType?: ButtonType;
   size?: SizeType;
   color?: ButtonColor;
   round?: boolean;
   disabled?: boolean;
-  children: React.ReactElement<ButtonProps>[];
+  children: React.ReactNode;
 }
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
@@ -31,15 +33,21 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     });
     return (
       <div className={cls} style={style} ref={ref}>
-        {React.Children.map(children, (child: React.ReactElement<ButtonProps>) => {
-          const btnProps = {
-            ...child.props,
-            size,
-            btnType,
-            color,
-            disabled: 'disabled' in child.props ? child.props.disabled : disabled,
-          };
-          return React.cloneElement(child, btnProps);
+        {React.Children.map(children, child => {
+          const childElement = child as React.FunctionComponentElement<ButtonProps>;
+          const { displayName } = childElement.type;
+          if (displayName === 'Button') {
+            const childProps = {
+              ...childElement.props,
+              size,
+              btnType,
+              color,
+              disabled: 'disabled' in childElement.props ? childElement.props.disabled : disabled,
+            };
+            return React.cloneElement(childElement, childProps);
+          } else {
+            return child;
+          }
         })}
       </div>
     );

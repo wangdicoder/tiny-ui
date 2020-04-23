@@ -3,9 +3,9 @@ import './header.scss';
 import { NavLink } from 'react-router-dom';
 import { version, repository } from '../../../../package.json';
 
-const Header = () => (
+export const Header = (): React.ReactElement => (
   <header className="header">
-    <NavLink to="/home" className="header__link">
+    <NavLink to="/" className="header__link">
       <div className="header__logo">
         <img src={require('../../assets/logo/logo.svg')} alt="logo" width={35} />
         <span className="header__title">Tiny UI</span>
@@ -14,13 +14,18 @@ const Header = () => (
     <nav className="header__nav">
       <ul className="header__nav-list">
         <li className="header__nav-item">
-          <NavLink to="/home" className="header__link">
+          <NavLink exact to="/" className="header__link">
             Home
           </NavLink>
         </li>
         <li className="header__nav-item">
-          <NavLink to="/docs" className="header__link">
-            Documentation
+          <NavLink to="/guide" className="header__link">
+            Guide
+          </NavLink>
+        </li>
+        <li className="header__nav-item">
+          <NavLink to="/components" className="header__link">
+            Components
           </NavLink>
         </li>
         <li className="header__nav-item">
@@ -36,5 +41,3 @@ const Header = () => (
     </nav>
   </header>
 );
-
-export default Header;

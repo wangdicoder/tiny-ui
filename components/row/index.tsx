@@ -18,10 +18,10 @@ export interface RowProps extends BaseProps {
   gutterSide?: boolean;
   align?: RowAlign;
   justify?: RowJustify;
-  children: React.ReactElement<ColProps>;
+  children: React.ReactElement<ColProps>[];
 }
 
-const Row = (props: RowProps) => {
+const Row = (props: RowProps): React.ReactElement => {
   const {
     prefixCls = 'ty-row',
     gutter = 0,
@@ -39,7 +39,8 @@ const Row = (props: RowProps) => {
 
   return (
     <div role="row" className={cls} style={style}>
-      {React.Children.map(children, (child: React.ReactElement<ColProps>, index: number) => {
+      {React.Children.map(children, (child, index: number) => {
+        const childElement = child as React.FunctionComponentElement<ColProps>;
         const gutterStyle = gutter
           ? {
               paddingLeft: !gutterSide && index === 0 ? 0 : gutter / 2, // first child left padding
@@ -47,13 +48,14 @@ const Row = (props: RowProps) => {
                 !gutterSide && index === React.Children.count(children) - 1 ? 0 : gutter / 2,
             }
           : {};
-        return React.cloneElement(child, {
+        const childProps = {
           ...child.props,
           style: {
             ...child.props.style,
             ...gutterStyle,
           },
-        });
+        };
+        return React.cloneElement(childElement, childProps);
       })}
     </div>
   );

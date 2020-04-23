@@ -3,16 +3,16 @@ import './code-block.scss';
 import Highlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer';
 import MarkdownTheme from 'prism-react-renderer/themes/github';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import EditorTheme from './editor-theme';
+import { theme } from './editor-theme';
 import * as Components from '../../../../components';
 
-export type CodeBlockProps = {
+type Props = {
   children: string;
   className: string;
   live?: boolean;
 };
 
-const CodeBlock = ({ children, className, live }: CodeBlockProps) => {
+export const CodeBlock = ({ children, className, live }: Props) => {
   const [showCode, setShowCode] = useState(false);
   const [editorContainerHeight, setEditorContainerHeight] = useState(0);
   const language: Language = className.replace(/language-/, '') as Language;
@@ -25,7 +25,7 @@ const CodeBlock = ({ children, className, live }: CodeBlockProps) => {
   if (live) {
     return (
       <div className="code-block__container">
-        <LiveProvider code={children.trim()} theme={EditorTheme as PrismTheme} scope={Components}>
+        <LiveProvider code={children.trim()} theme={theme as PrismTheme} scope={Components}>
           <LivePreview className="code-block__previewer" />
           <LiveError />
           {showCode && (
@@ -62,5 +62,3 @@ const CodeBlock = ({ children, className, live }: CodeBlockProps) => {
     </Highlight>
   );
 };
-
-export default CodeBlock;

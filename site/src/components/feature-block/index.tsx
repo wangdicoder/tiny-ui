@@ -2,13 +2,13 @@ import React from 'react';
 import './feature-block.scss';
 import { Icon } from '../../../../components';
 
-export type FeatureBlockProps = {
+type Props = {
   icon: string;
   title: string;
   desc: string;
 };
 
-const FeatureBlock = ({ icon, title, desc }: FeatureBlockProps): React.ReactElement => (
+export const FeatureBlock = ({ icon, title, desc }: Props): React.ReactElement => (
   <div className="feature-block">
     <div className="feature-block__icon-container">
       <Icon name={icon} className="feature-block__icon" size={24} />
@@ -17,5 +17,3 @@ const FeatureBlock = ({ icon, title, desc }: FeatureBlockProps): React.ReactElem
     <p className="feature-block__desc">{desc}</p>
   </div>
 );
-
-export default FeatureBlock;

@@ -1,26 +1,26 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/react';
 import './index.scss';
 import '../../components/style/index.scss';
 
 import { components } from './components/markdown-tag';
-import Header from './components/header';
+import { Header } from './components/header';
 import HomePage from './containers/home';
-import ComponentsLayoutPage from './containers/components-layout';
 import Test from './containers/test';
+import GuidePage from './containers/guide';
+import ComponentsPage from './containers/components';
 
 const App = (): React.ReactElement => (
   <HashRouter>
     <div>
       <Header />
       <Switch>
-        <Route exact path="/home" component={HomePage} />
-        <Route path="/docs/:page" component={ComponentsLayoutPage} />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/guide" component={GuidePage} />
+        <Route path="/components" component={ComponentsPage} />
         <Route path="/test" component={Test} />
-        <Redirect from="/docs" to="/docs/introduction" />
-        <Redirect from="/" to="/home" />
       </Switch>
     </div>
   </HashRouter>

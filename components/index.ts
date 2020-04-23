@@ -26,6 +26,7 @@ export { default as InputPassword } from './input-password';
 export { default as IntlProvider } from './intl-provider';
 export { default as Keyboard } from './keyboard';
 export { default as Layout } from './layout';
+export { default as Link } from './link';
 export { default as Loader } from './loader';
 export { default as LoadingBar } from './loading-bar';
 export { default as Menu } from './menu';

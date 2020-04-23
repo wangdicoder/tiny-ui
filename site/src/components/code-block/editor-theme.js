@@ -15,7 +15,7 @@ const colors = {
   operator: '#24292e',
 };
 
-const theme /*: PrismTheme */ = {
+export const theme /*: PrismTheme */ = {
   plain: {
     color: '#484848',
   },
@@ -118,5 +118,3 @@ const theme /*: PrismTheme */ = {
     },
   ],
 };
-
-export default theme;

@@ -38,7 +38,10 @@
     "release": "standard-version",
     "site:build": "webpack --config site/config/webpack.prod.js",
     "site:deploy": "npm run site:build && gh-pages -d site/build",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:update": "jest --updateSnapshot"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -46,6 +49,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "copy-to-clipboard": "^3.3.1",
     "lodash": "^4.17.15",
     "raf": "^3.4.1",
     "react-transition-group": "^4.3.0"

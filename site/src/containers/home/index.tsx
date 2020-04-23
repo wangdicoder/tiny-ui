@@ -2,8 +2,8 @@ import React from 'react';
 import './home.scss';
 import { RouteComponentProps } from 'react-router-dom';
 import { Button, Icon } from '../../../../components';
-import FeatureBlock from '../../components/feature-block';
-import Footer from '../../components/footer';
+import { FeatureBlock } from '../../components/feature-block';
+import { Footer } from './footer';
 import { repository } from '../../../../package.json';
 
 const FEATURES = [
@@ -32,16 +32,16 @@ const FEATURES = [
   },
 ];
 
-export default class Home extends React.PureComponent<RouteComponentProps> {
+export default class HomePage extends React.PureComponent<RouteComponentProps> {
   _navigateToComponentPage = () => {
-    this.props.history.push('/docs');
+    this.props.history.push('/guide');
   };
 
   _openGithub = (): void => {
     window.open(repository.url);
   };
 
-  render(): React.ReactElement {
+  render(): React.ReactNode {
     return (
       <div className="home">
         <div className="home__react-login-container">

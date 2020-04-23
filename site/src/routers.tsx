@@ -1,11 +1,11 @@
 import { lazy } from 'react';
 
-export type RouterItem = {
+export interface RouterItem {
   title: string;
   route?: string;
   component?: any;
   children?: RouterItem[];
-};
+}
 
 export const GUIDE_MENU: RouterItem[] = [
   {
@@ -53,6 +53,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Color',
         route: 'color',
         component: lazy(() => import('./containers/color')),
+      },
+      {
+        title: 'Link',
+        route: 'link',
+        component: lazy(() => import('../../components/link/index.md')),
       },
       {
         title: 'Icon',
@@ -284,6 +289,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'BackTop',
         route: 'back-top',
         component: lazy(() => import('../../components/backtop/index.md')),
+      },
+      {
+        title: 'CopyToClipboard',
+        route: 'copy-to-clipboard',
+        component: lazy(() => import('../../components/copy-to-clipboard/index.md')),
       },
       {
         title: 'Divider',

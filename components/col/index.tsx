@@ -26,7 +26,7 @@ export interface ColProps extends BaseProps {
 
 const ScreenType = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-const Col = (props: ColProps) => {
+const Col = (props: ColProps): React.ReactElement => {
   const {
     prefixCls = 'ty-col',
     span = 24,
