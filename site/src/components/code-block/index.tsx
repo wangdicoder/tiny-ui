@@ -1,21 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './code-block.scss';
 import Highlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer';
-import MarkdownTheme from 'prism-react-renderer/themes/github';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import { theme } from './editor-theme';
+import { CodeTheme } from './code-theme';
 import * as Components from '../../../../components';
 
 type Props = {
   children: string;
-  className: string;
+  className?: string;
   live?: boolean;
 };
 
-export const CodeBlock = ({ children, className, live }: Props) => {
+export const CodeBlock = ({ children, className, live }: Props): React.ReactElement => {
   const [showCode, setShowCode] = useState(false);
   const [editorContainerHeight, setEditorContainerHeight] = useState(0);
-  const language: Language = className.replace(/language-/, '') as Language;
+  let language: Language = 'markup';
+  if (className != null) {
+    language = className.replace(/language-/, '') as Language;
+  }
   const el = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export const CodeBlock = ({ children, className, live }: Props) => {
   if (live) {
     return (
       <div className="code-block__container">
-        <LiveProvider code={children.trim()} theme={theme as PrismTheme} scope={Components}>
+        <LiveProvider code={children.trim()} theme={CodeTheme as PrismTheme} scope={Components}>
           <LivePreview className="code-block__previewer" />
           <LiveError />
           {showCode && (
@@ -47,16 +49,18 @@ export const CodeBlock = ({ children, className, live }: Props) => {
       {...defaultProps}
       code={children.trim()}
       language={language}
-      theme={MarkdownTheme as PrismTheme}>
+      theme={CodeTheme as PrismTheme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style, padding: '10px 12px' }}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })} style={{ lineHeight: 1.3 }}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
+          <code>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </code>
         </pre>
       )}
     </Highlight>

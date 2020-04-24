@@ -2,11 +2,11 @@ declare module "*.md";
 
 declare module '*.mdx' {
   let MDXComponent: (props: any) => JSX.Element;
-  export default MDXComponent
+  export default MDXComponent;
 }
 
 declare module '@mdx-js/react' {
-  import * as React from 'react'
+  import * as React from 'react';
   type ComponentType =
     | 'p'
     | 'h1'
@@ -39,8 +39,8 @@ declare module '@mdx-js/react' {
     [key in ComponentType]?: React.ComponentType<{ children: React.ReactNode }>
   }
   export interface MDXProviderProps {
-    children: React.ReactNode
-    components: Components
+    children: React.ReactNode;
+    components: Components;
   }
   export class MDXProvider extends React.Component<MDXProviderProps> {}
 }

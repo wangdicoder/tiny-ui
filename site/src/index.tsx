@@ -14,7 +14,7 @@ import ComponentsPage from './containers/components';
 
 const App = (): React.ReactElement => (
   <HashRouter>
-    <div>
+    <>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -22,7 +22,7 @@ const App = (): React.ReactElement => (
         <Route path="/components" component={ComponentsPage} />
         <Route path="/test" component={Test} />
       </Switch>
-    </div>
+    </>
   </HashRouter>
 );
 
