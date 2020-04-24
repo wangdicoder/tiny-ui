@@ -1,6 +1,7 @@
 import Basic from './demo/basic.md'
 import Disabled from './demo/disabled.md'
 import Underline from './demo/underline.md'
+import External from './demo/external.md'
 
 # Link
 
@@ -19,9 +20,10 @@ import { Link } from 'tiny-ui';
 <layout>
   <column>
     <Basic/>
-    <Disabled/>
+    <Underline/>
   </column>
   <column>
-    <Underline/>
+    <Disabled/>
+    <External/>
   </column>
 </layout>
