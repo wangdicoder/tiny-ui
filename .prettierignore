@@ -5,3 +5,4 @@
 /docs
 /lib/**
 /node_modules
+/components/style/_variables.scss

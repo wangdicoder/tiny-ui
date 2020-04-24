@@ -1,159 +1,201 @@
-$prefix: 'ty-'                        !default;
+$prefix: 'ty-'                                !default;
 
-//color
-$primary-color: #6E41BF               !default;
-$link-color: $primary-color           !default;
-$white-color: #fff                    !default;
-$default-color: #34495e               !default;
+// Color
+$primary-color: #6E41BF                       !default;
+$link-color: $primary-color                   !default;
 
-//grey
-$gray-color: #bcc3ce                  !default;
-$gray-100: #f6f9fc                    !default;
-$gray-200: #e9ecef                    !default;
-$gray-300: #dee2e6                    !default;
-$gray-400: #ced4da                    !default;
-$gray-500: #adb5bd                    !default;
-$gray-600: #8898aa                    !default;
-$gray-700: #525f7f                    !default;
-$gray-800: #32325d                    !default;
-$gray-900: #212529                    !default;
+$default-color: #34495e                       !default;
 
-//info
-$blue-color: #1890ff                  !default;
-$blue-light-color: #91d5ff            !default;
-$blue-lighter-color: #e6f7ff          !default;
+$white-color: #fff                            !default;
+$gray-color: #bcc3ce                          !default;
+$gray-100: #f6f9fc                            !default;
+$gray-200: #e9ecef                            !default;
+$gray-300: #dee2e6                            !default;
+$gray-400: #ced4da                            !default;
+$gray-500: #adb5bd                            !default;
+$gray-600: #8898aa                            !default;
+$gray-700: #525f7f                            !default;
+$gray-800: #32325d                            !default;
+$gray-900: #212529                            !default;
+$black: #000                                  !default;
 
-//success
-$green-color: #52c41a                 !default;
-$green-light-color: #b7eb8f           !default;
-$green-lighter-color: #f6ffed         !default;
+// Info
+$blue-color: #1890ff                          !default;
+$blue-light-color: #91d5ff                    !default;
+$blue-lighter-color: #e6f7ff                  !default;
 
-//warn
-$yellow-color: #ff9800                !default;
-$yellow-light-color: #ffe58f          !default;
-$yellow-lighter-color: #fffbe6        !default;
+// Success
+$green-color: #52c41a                         !default;
+$green-light-color: #b7eb8f                   !default;
+$green-lighter-color: #f6ffed                 !default;
 
-//error
-$red-color: #f44336                   !default;
-$red-light-color: #ffa39e             !default;
-$red-lighter-color: #fff1f0           !default;
+// Warn
+$yellow-color: #ff9800                        !default;
+$yellow-light-color: #ffe58f                  !default;
+$yellow-lighter-color: #fffbe6                !default;
 
-//common
-$border-radius: 3px                   !default;
+// Error
+$red-color: #f44336                           !default;
+$red-light-color: #ffa39e                     !default;
+$red-lighter-color: #fff1f0                   !default;
 
-//font
-$font-color: rgba(0, 0, 0, .65)       !default;
-$font-path: 'fonts'                   !default;
-$font-size: 14px                      !default;
-$font-size-sm: 13px                   !default;
-$font-size-lg: 16px                   !default;
-$font-weight: 400                     !default;
+// Font & Font family
+$font-color: rgba(0, 0, 0, .65)               !default;
+$font-path: 'fonts'                           !default;
+$font-size-base: 1rem                         !default;
+$font-size-lg: $font-size-base * 1.25         !default;
+$font-size-sm: $font-size-base * .875         !default;
+$font-weight: 400                             !default;
 
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family: $font-family-sans-serif !default;
+$font-family: $font-family-sans-serif         !default;
 
-$height-sm: 24px                      !default;
-$height-md: 32px                      !default;
-$height-lg: 42px                      !default;
+$height-sm: 24px                              !default;
+$height-md: 32px                              !default;
+$height-lg: 42px                              !default;
 
-//responsive breakpoints
-$size-xs: 480px                       !default;
-$size-sm: 600px                       !default;
-$size-md: 840px                       !default;
-$size-lg: 960px                       !default;
-$size-xl: 1280px                      !default;
-$size-xxl: 1440px                     !default;
+// Responsive breakpoints
+$size-xs: 480px                               !default;
+$size-sm: 600px                               !default;
+$size-md: 840px                               !default;
+$size-lg: 960px                               !default;
+$size-xl: 1280px                              !default;
+$size-xxl: 1440px                             !default;
 
-//layout
-$layout-body-background: #fff         !default;
-$layout-header-background: #fff       !default;
-$layout-header-padding: 0 50px        !default;
-$layout-header-height: 60px           !default;
-$layout-footer-background: #fff       !default;
-$layout-footer-padding: 24px 50px     !default;
-$layout-sidebar-background: #12131a   !default;
+// Layout
+$layout-body-background: #fff                 !default;
+$layout-header-background: #fff               !default;
+$layout-header-padding: 0 50px                !default;
+$layout-header-height: 60px                   !default;
+$layout-footer-background: #fff               !default;
+$layout-footer-padding: 24px 50px             !default;
+$layout-sidebar-background: #12131a           !default;
 
-//alert
-$alert-border-radius: 3px             !default;
+// Spacing
+$spacer: 1rem !default;
 
-//avatar
-$avatar-bg: #ccc                      !default;
-$avatar-color: #fff                   !default;
-$avatar-border-radius: 2px            !default;
+// Typography
+$h1-font-size: $font-size-base * 2.5          !default;
+$h2-font-size: $font-size-base * 2            !default;
+$h3-font-size: $font-size-base * 1.75         !default;
+$h4-font-size: $font-size-base * 1.5          !default;
+$h5-font-size: $font-size-base * 1.25         !default;
+$h6-font-size: $font-size-base                !default;
 
-//collapse
-$collapse-border-radius: 4px          !default;
+$headings-margin-bottom: $spacer / 2          !default;
+$headings-font-family: null                   !default;
+$headings-font-style: null                    !default;
+$headings-font-weight: 500                    !default;
+$headings-line-height: 1.2                    !default;
+$headings-color: null                         !default;
 
-//badge
-$badge-font-size: 12px                !default;
-$badge-size: 18px                     !default;
-$badge-dot-size: 6px                  !default;
+// Border & Border Radius
+$border-radius: 3px                           !default;
+$border-width: 1px !default;
+$border-color: $gray-300 !default;
 
-//button
-$btn-border-radius: $border-radius    !default;
-$btn-lg-font-size: $font-size-lg      !default;
-$btn-lg-padding: 0 28px               !default;
-$btn-lg-height: $height-lg            !default;
-$btn-md-font-size: $font-size         !default;
-$btn-md-padding: 0 15px               !default;
-$btn-md-height: $height-md            !default;
-$btn-sm-font-size: $font-size-sm      !default;
-$btn-sm-padding: 0 10px               !default;
-$btn-sm-height: $height-sm            !default;
+$border-radius: .25rem !default;
+$border-radius-lg: .3rem !default;
+$border-radius-sm: .2rem !default;
 
-//card
-$card-border-radius: $border-radius   !default;
-$card-header-padding: 13px 16px       !default;
-$card-body-padding: 16px              !default;
-$card-footer-padding: 5px 16px 16px   !default;
+// Box shadow
+$box-shadow-sm: 0 .125rem .25rem rgba($black, .075)     !default;
+$box-shadow: 0 .5rem 1rem rgba($black, .15)             !default;
+$box-shadow-lg: 0 1rem 3rem rgba($black, .175)          !default;
+$box-shadow-inset: inset 0 1px 2px rgba($black, .075)   !default;
 
-//divider
-$divider-line-color: #e4e4e4          !default;
+// Code
+$code-font-size: .875em                       !default;
+$code-color: $gray-800                        !default;
+$pre-color: null                              !default;
 
-//input
-$input-font-color: $font-color        !default;
-$input-border-radius: $border-radius  !default;
-$input-sm-padding: 0 4px              !default;
-$input-sm-height: $height-sm          !default;
-$input-sm-font-size: $font-size-sm    !default;
-$input-md-padding: 0 6px              !default;
-$input-md-font-size: $font-size       !default;
-$input-md-height: $height-md          !default;
-$input-lg-padding: 0 8px              !default;
-$input-lg-font-size: $font-size-lg    !default;
-$input-lg-height: $height-lg          !default;
+// Link
+$link-color: $primary-color                   !default;
+$link-decoration: none                        !default;
+$link-hover-color: darken($link-color, 15%)   !default;
+$link-hover-decoration: underline             !default;
+
+// Alert
+$alert-border-radius: 3px                     !default;
+
+// Avatar
+$avatar-bg: #ccc                              !default;
+$avatar-color: #fff                           !default;
+$avatar-border-radius: 2px                    !default;
+
+// Collapse
+$collapse-border-radius: 4px                  !default;
+
+// Badge
+$badge-font-size: 12px                        !default;
+$badge-size: 18px                             !default;
+$badge-dot-size: 6px                          !default;
+
+// Button
+$btn-border-radius: $border-radius            !default;
+$btn-lg-font-size: $font-size-lg              !default;
+$btn-lg-padding: 0 28px                       !default;
+$btn-lg-height: $height-lg                    !default;
+$btn-md-font-size: $font-size-base            !default;
+$btn-md-padding: 0 15px                       !default;
+$btn-md-height: $height-md                    !default;
+$btn-sm-font-size: $font-size-sm              !default;
+$btn-sm-padding: 0 10px                       !default;
+$btn-sm-height: $height-sm                    !default;
+
+// Card
+$card-border-radius: $border-radius           !default;
+$card-header-padding: 13px 16px               !default;
+$card-body-padding: 16px                      !default;
+$card-footer-padding: 5px 16px 16px           !default;
+
+// Divider
+$divider-line-color: #e4e4e4                  !default;
+
+// Input
+$input-font-color: $font-color                !default;
+$input-border-radius: $border-radius          !default;
+$input-sm-padding: 0 4px                      !default;
+$input-sm-height: $height-sm                  !default;
+$input-sm-font-size: $font-size-sm            !default;
+$input-md-padding: 0 6px                      !default;
+$input-md-font-size: $font-size-base          !default;
+$input-md-height: $height-md                  !default;
+$input-lg-padding: 0 8px                      !default;
+$input-lg-font-size: $font-size-lg            !default;
+$input-lg-height: $height-lg                  !default;
 
 //textarea
-$textarea-font-size: $font-size       !default;
-$textarea-padding: 5px                !default;
+$textarea-font-size: $font-size-base          !default;
+$textarea-padding: 5px                        !default;
 
 //select
-$select-sm-padding: 3px 25px 3px 7px  !default;
-$select-sm-font-size: $font-size-sm   !default;
-$select-md-padding: 6px 25px 6px 10px !default;
-$select-md-font-size: $font-size      !default;
-$select-lg-padding: 9px 25px 9px 12px !default;
-$select-lg-font-size: $font-size-lg   !default;
-$select-border-radius: $border-radius !default;
+$select-sm-padding: 3px 25px 3px 7px          !default;
+$select-sm-font-size: $font-size-sm           !default;
+$select-md-padding: 6px 25px 6px 10px         !default;
+$select-md-font-size: $font-size-base         !default;
+$select-lg-padding: 9px 25px 9px 12px         !default;
+$select-lg-font-size: $font-size-lg           !default;
+$select-border-radius: $border-radius         !default;
 
 //switch
-$switch-md-font-size: 12px            !default;
-$switch-sm-font-size: 9px             !default;
-$switch-lg-font-size: 14px            !default;
+$switch-md-font-size: 12px                    !default;
+$switch-sm-font-size: 9px                     !default;
+$switch-lg-font-size: 14px                    !default;
 
 //notification
-$notification-width: 380px            !default;
-$notification-margin: 20px            !default;
+$notification-width: 380px                    !default;
+$notification-margin: 20px                    !default;
 
 //breadcrumb
-$breadcrumb-font-size: $font-size     !default;
+$breadcrumb-font-size: $font-size-base        !default;
 
 //tag
-$tag-border-radius: 3px               !default;
+$tag-border-radius: 3px                       !default;
 
 //popover
-$popover-arrow-size: 8px              !default;
+$popover-arrow-size: 8px                      !default;
 
 //tooltip
-$tooltip-arrow-size: 6px              !default;
+$tooltip-arrow-size: 6px                      !default;

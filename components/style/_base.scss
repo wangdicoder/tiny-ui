@@ -1,3 +1,4 @@
+@import "./variables";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 // Reboot
@@ -13,6 +14,7 @@
  */
 
 html {
+  font-size: 14px;
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -36,14 +38,50 @@ main {
   display: block;
 }
 
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
+// Typography
+//
+// 1. Remove top margins from headings
+//    By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
+//    margin for easier control within type scales as it avoids margin collapsing.
+
+%heading {
+  margin-top: 0; // 1
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-style: $headings-font-style;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
 
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  @extend %heading;
+  font-size: $h1-font-size;
+}
+
+h2 {
+  @extend %heading;
+  font-size: $h2-font-size;
+}
+
+h3 {
+  @extend %heading;
+  font-size: $h3-font-size;
+}
+
+h4 {
+  @extend %heading;
+  font-size: $h4-font-size;
+}
+
+h5 {
+  @extend %heading;
+  font-size: $h5-font-size;
+}
+
+h6 {
+  @extend %heading;
+  font-size: $h6-font-size;
 }
 
 /* Grouping content

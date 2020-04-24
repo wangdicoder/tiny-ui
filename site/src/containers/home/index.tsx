@@ -60,7 +60,6 @@ export default class HomePage extends React.PureComponent<RouteComponentProps> {
               className="home__btn"
               color="primary"
               size="lg"
-              style={{ width: '140px' }}
               onClick={this._navigateToComponentPage}>
               Get Started
             </Button>
