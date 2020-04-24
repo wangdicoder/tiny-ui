@@ -1,0 +1,17 @@
+@import "../../style/variables";
+
+.#{$prefix}link {
+  color: $primary-color;
+  text-decoration-line: none;
+
+  &_disabled {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+
+  &_no-underline{
+    &:hover {
+      text-decoration-line: none;
+    }
+  }
+}

@@ -55,11 +55,6 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('./containers/color')),
       },
       {
-        title: 'Link',
-        route: 'link',
-        component: lazy(() => import('../../components/link/index.md')),
-      },
-      {
         title: 'Icon',
         route: 'icon',
       },
@@ -67,6 +62,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Image',
         route: 'image',
         component: lazy(() => import('../../components/image/index.md')),
+      },
+      {
+        title: 'Link',
+        route: 'link',
+        component: lazy(() => import('../../components/link/index.md')),
       },
       // {
       //   title: 'Typography',
