@@ -27,3 +27,15 @@ import { Link } from 'tiny-ui';
     <External/>
   </column>
 </layout>
+
+## API
+
+`Link` component inherit all `<a>` properties. There are extra properties.
+
+| Property          | Description                                                               | Type          | Default |
+| ----------------- | ------------------------------------------------------------------------- | ------------- | ------- |
+| disabled          | disable the hyperlink action                                              | boolean       | false   |
+| underline         | determine whether display a underline style when hovering on the label    | boolean       | true    |
+| external          | determine whether open a new window or not after clicking                 | boolean       | true    |
+| style	            | style object of container object                                          |               | -       |
+| className	        | className of container                                                    | string        | -       |
