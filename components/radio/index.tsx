@@ -8,7 +8,7 @@ type IRadio = React.FC<RadioProps> & {
   Group: typeof RadioGroup;
 };
 
-const defaultRadio = Radio as IRadio;
-defaultRadio.Group = RadioGroup;
+const DefaultRadio = Radio as IRadio;
+DefaultRadio.Group = RadioGroup;
 
-export default defaultRadio;
+export default DefaultRadio;

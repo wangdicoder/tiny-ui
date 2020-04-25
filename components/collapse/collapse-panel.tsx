@@ -27,7 +27,7 @@ const richNode = (node: React.ReactNode, isActive: boolean) => {
   return typeof node === 'function' ? node(isActive) : node;
 };
 
-const CollapsePanel = (props: CollapsePanelProps) => {
+const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
   const {
     prefixCls = 'ty-collapse-item',
     showArrow = true,
@@ -98,5 +98,7 @@ const CollapsePanel = (props: CollapsePanelProps) => {
     </div>
   );
 };
+
+CollapsePanel.displayName = 'CollapsePanel';
 
 export default CollapsePanel;

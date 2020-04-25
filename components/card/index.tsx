@@ -8,7 +8,7 @@ type ICard = React.FC<CardProps> & {
   Content: typeof CardContent;
 };
 
-const defaultCard = Card as ICard;
-defaultCard.Content = CardContent;
+const DefaultCard = Card as ICard;
+DefaultCard.Content = CardContent;
 
-export default defaultCard;
+export default DefaultCard;

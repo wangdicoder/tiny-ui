@@ -5,19 +5,28 @@ import { BaseProps } from '../_utils/props';
 
 export type TimelinePosition = 'left' | 'center';
 
-export interface TimelineProps extends BaseProps {
+export interface TimelineProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['ul']> {
   position?: TimelinePosition;
   children: React.ReactElement<TimelineItemProps>;
 }
 
-const Timeline: React.FC<TimelineProps> & { Item?: any } = (props: TimelineProps) => {
-  const { prefixCls = 'ty-timeline', position = 'left', className, style, children } = props;
+const Timeline = (props: TimelineProps): React.ReactElement => {
+  const {
+    prefixCls = 'ty-timeline',
+    position = 'left',
+    className,
+    style,
+    children,
+    ...otherProps
+  } = props;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${position}`]: position,
   });
 
   return (
-    <ul className={cls} style={style}>
+    <ul {...otherProps} className={cls} style={style}>
       {React.Children.map(children, (child, idx) => {
         const childProps: TimelineItemProps = {
           ...child.props,
@@ -33,5 +42,7 @@ const Timeline: React.FC<TimelineProps> & { Item?: any } = (props: TimelineProps
     </ul>
   );
 };
+
+Timeline.displayName = 'Timeline';
 
 export default Timeline;

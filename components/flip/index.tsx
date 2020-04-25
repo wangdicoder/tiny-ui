@@ -8,7 +8,7 @@ type IFlip = React.FC<FlipProps> & {
   Item: typeof FlipItem;
 };
 
-const defaultFlip = Flip as IFlip;
-defaultFlip.Item = FlipItem;
+const DefaultFlip = Flip as IFlip;
+DefaultFlip.Item = FlipItem;
 
-export default defaultFlip;
+export default DefaultFlip;

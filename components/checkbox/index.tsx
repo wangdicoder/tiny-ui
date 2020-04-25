@@ -8,7 +8,7 @@ type ICheckbox = React.FC<CheckboxProps> & {
   Group: typeof CheckboxGroup;
 };
 
-const defaultCheckbox = Checkbox as ICheckbox;
-defaultCheckbox.Group = CheckboxGroup;
+const DefaultCheckbox = Checkbox as ICheckbox;
+DefaultCheckbox.Group = CheckboxGroup;
 
-export default defaultCheckbox;
+export default DefaultCheckbox;

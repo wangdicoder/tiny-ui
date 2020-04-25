@@ -1,8 +1,14 @@
-import Collapse from './collapse';
-import CollapsePanel from './collapse-panel';
+import React from 'react';
+import Collapse, { CollapseProps } from './collapse';
+import CollapsePanel, { CollapsePanelProps } from './collapse-panel';
 
-export { CollapseProps } from './collapse';
-export { CollapsePanelProps } from './collapse-panel';
+export { CollapseProps, CollapsePanelProps };
 
-Collapse.Panel = CollapsePanel;
-export default Collapse;
+type ICollapse = React.FC<CollapseProps> & {
+  Panel: typeof CollapsePanel;
+};
+
+const DefaultCollapse = Collapse as ICollapse;
+DefaultCollapse.Panel = CollapsePanel;
+
+export default DefaultCollapse;

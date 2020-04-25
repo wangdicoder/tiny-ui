@@ -25,7 +25,7 @@ const toArray = (activeKey: string | string[]) => {
   return Array.isArray(activeKey) ? activeKey : [activeKey];
 };
 
-const Collapse: React.FC<CollapseProps> & { Panel?: any } = (props: CollapseProps) => {
+const Collapse = (props: CollapseProps): React.ReactElement => {
   const {
     prefixCls = 'ty-collapse',
     showArrow = true,
@@ -96,5 +96,7 @@ const Collapse: React.FC<CollapseProps> & { Panel?: any } = (props: CollapseProp
     </div>
   );
 };
+
+Collapse.displayName = 'Collapse';
 
 export default Collapse;

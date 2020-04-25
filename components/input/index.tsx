@@ -10,8 +10,8 @@ type IInput = React.FC<InputProps> & {
   Addon: typeof InputGroupAddon;
 };
 
-const defaultInput = Input as IInput;
-defaultInput.Group = InputGroup;
-defaultInput.Addon = InputGroupAddon;
+const DefaultInput = Input as IInput;
+DefaultInput.Group = InputGroup;
+DefaultInput.Addon = InputGroupAddon;
 
-export default defaultInput;
+export default DefaultInput;

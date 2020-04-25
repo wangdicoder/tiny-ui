@@ -8,7 +8,7 @@ type IBreadcrumb = React.FC<BreadcrumbProps> & {
   Item: typeof BreadcrumbItem;
 };
 
-const defaultBreadcrumb = Breadcrumb as IBreadcrumb;
-defaultBreadcrumb.Item = BreadcrumbItem;
+const DefaultBreadcrumb = Breadcrumb as IBreadcrumb;
+DefaultBreadcrumb.Item = BreadcrumbItem;
 
-export default defaultBreadcrumb;
+export default DefaultBreadcrumb;

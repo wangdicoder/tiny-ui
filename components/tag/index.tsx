@@ -8,7 +8,7 @@ type ITag = React.FC<TagProps> & {
   CheckableTag: typeof CheckableTag;
 };
 
-const defaultTag = Tag as ITag;
-defaultTag.CheckableTag = CheckableTag;
+const DefaultTag = Tag as ITag;
+DefaultTag.CheckableTag = CheckableTag;
 
-export default defaultTag;
+export default DefaultTag;

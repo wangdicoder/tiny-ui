@@ -9,7 +9,7 @@ type IAvatar = React.FC<AvatarProps> & {
   Group: typeof AvatarGroup;
 };
 
-const defaultAvatar = Avatar as IAvatar;
-defaultAvatar.Group = AvatarGroup;
+const DefaultAvatar = Avatar as IAvatar;
+DefaultAvatar.Group = AvatarGroup;
 
-export default defaultAvatar;
+export default DefaultAvatar;
