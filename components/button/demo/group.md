@@ -11,7 +11,7 @@ Buttons can be grouped by placing multiple `Button` components into a Button.Gro
   return (
     <>
       <div>
-        <h4>Basic</h4>
+        <h5>Basic</h5>
         <Group>
           <Button>Go Left</Button>
           <Button>Go Right</Button>
@@ -23,9 +23,9 @@ Buttons can be grouped by placing multiple `Button` components into a Button.Gro
           <Button>Normal Button</Button>
         </Group>
       </div>
-
+      <br/>
       <div>
-        <h4>Group props</h4>
+        <h5>Group props</h5>
         <Group size="lg">
           <Button>Go Left</Button>
           <Button>Go Right</Button>

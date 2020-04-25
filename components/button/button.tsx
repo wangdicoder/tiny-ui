@@ -50,11 +50,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
     [`${prefixCls}_loading`]: loading,
   });
 
-  const renderIcon = (): React.ReactElement => {
+  const renderIcon = (): React.ReactElement | null => {
     if (loading) {
       return <span className={`${prefixCls}__loader`} />;
+    } else if (icon) {
+      return <span className={`${prefixCls}__icon-container`}>{icon}</span>;
     } else {
-      return <span>{icon}</span>;
+      return null;
     }
   };
 
@@ -67,7 +69,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
       disabled={disabled || loading}
       style={style}>
       {renderIcon()}
-      {children}
+      {children && <span className={`${prefixCls}__children`}>{children}</span>}
     </button>
   );
 });

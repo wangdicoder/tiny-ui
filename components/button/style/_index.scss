@@ -11,7 +11,9 @@ $btn-prefix: #{$prefix}btn;
   letter-spacing: 0;
   text-align: center;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   min-width: 50px;
   vertical-align: middle;
   text-decoration: none;
@@ -22,22 +24,22 @@ $btn-prefix: #{$prefix}btn;
   font-family: $font-family;
   line-height: $btn-line-height;
 
-  & > span {
-    display: inline-block;
-    pointer-events: none;
-    line-height: $btn-line-height;
-    vertical-align: middle;
-  }
-
   & + .#{$btn-prefix} {
     margin-left: 10px;
   }
 
   &__loader {
-    @include loader(14px, #888);
+    @include loader();
+  }
 
-    & + span {
-      margin-left: 5px;
+  &__icon-container, &__loader  {
+    display: inline-block;
+    pointer-events: none;
+    line-height: $btn-line-height;
+    vertical-align: middle;
+
+    & + span{
+      margin-left: .5em;
     }
   }
 
@@ -79,21 +81,12 @@ $btn-prefix: #{$prefix}btn;
   // Sizes
   &_sm {
     @include btn-size($btn-padding-sm, $btn-font-size-sm, $btn-height-sm);
-
-    .#{$btn-prefix}__loader {
-      @include loader-size(12px);
-    }
   }
   &_md {
     @include btn-size($btn-padding-md, $btn-font-size-md, $btn-height-md);
-
   }
   &_lg {
     @include btn-size($btn-padding-lg, $btn-font-size-lg, $btn-height-lg);
-
-    .#{$btn-prefix}__loader {
-      @include loader-size(18px);
-    }
   }
 
   &_block {

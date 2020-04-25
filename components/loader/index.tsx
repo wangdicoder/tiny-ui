@@ -13,7 +13,7 @@ export interface LoaderProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Loader = (props: LoaderProps) => {
+const Loader = (props: LoaderProps): React.ReactElement => {
   const {
     prefixCls = 'ty-loader',
     size = 'default',
