@@ -4,45 +4,35 @@ exports[`<Button /> should match the snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "ty-btn ty-btn_default ty-btn_solid ty-btn_md",
+      "class": "ty-btn ty-btn_default ty-btn_md",
       "role": "button",
     },
     "children": Array [
       Object {
-        "attribs": Object {},
-        "children": Array [],
+        "attribs": Object {
+          "class": "ty-btn__children",
+        },
+        "children": Array [
+          Object {
+            "data": "Default",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
         "name": "span",
         "namespace": "http://www.w3.org/1999/xhtml",
-        "next": Object {
-          "data": "Default",
-          "next": null,
-          "parent": [Circular],
-          "prev": [Circular],
-          "type": "text",
-        },
+        "next": null,
         "parent": [Circular],
         "prev": null,
         "type": "tag",
-        "x-attribsNamespace": Object {},
-        "x-attribsPrefix": Object {},
-      },
-      Object {
-        "data": "Default",
-        "next": null,
-        "parent": [Circular],
-        "prev": Object {
-          "attribs": Object {},
-          "children": Array [],
-          "name": "span",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": [Circular],
-          "parent": [Circular],
-          "prev": null,
-          "type": "tag",
-          "x-attribsNamespace": Object {},
-          "x-attribsPrefix": Object {},
+        "x-attribsNamespace": Object {
+          "class": undefined,
         },
-        "type": "text",
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
       },
     ],
     "name": "button",

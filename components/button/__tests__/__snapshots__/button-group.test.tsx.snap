@@ -4,7 +4,7 @@ exports[`<ButtonGroup /> should match the snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "ty-btn-group",
+      "class": "ty-btn-group ty-btn-group_default",
     },
     "children": Array [
       Object {
@@ -14,38 +14,9 @@ initialize {
         },
         "children": Array [
           Object {
-            "attribs": Object {},
-            "children": Array [],
-            "name": "span",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": Object {
-              "attribs": Object {},
-              "children": Array [
-                Object {
-                  "data": "Default",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": [Circular],
-              "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+            "attribs": Object {
+              "class": "ty-btn__children",
             },
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
-          },
-          Object {
-            "attribs": Object {},
             "children": Array [
               Object {
                 "data": "Default",
@@ -59,21 +30,14 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": null,
             "parent": [Circular],
-            "prev": Object {
-              "attribs": Object {},
-              "children": Array [],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": [Circular],
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
-            },
+            "prev": null,
             "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
           },
         ],
         "name": "button",

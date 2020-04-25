@@ -10,7 +10,7 @@ describe('<Button />', () => {
   });
 
   it('should render primary correctly', () => {
-    const wrapper = shallow(<Button color="primary">Primary Button</Button>);
+    const wrapper = shallow(<Button btnType="primary">Primary Button</Button>);
     expect(wrapper.find('.ty-btn_primary').length).toBe(1);
   });
 

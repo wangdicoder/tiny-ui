@@ -15,7 +15,7 @@ describe('<ButtonGroup />', () => {
 
   it('should render child button correctly', () => {
     const wrapper = mount(
-      <ButtonGroup color="primary">
+      <ButtonGroup btnType="primary">
         <Button>Default</Button>
       </ButtonGroup>
     );
