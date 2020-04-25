@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
-export interface ImageProps extends React.ComponentPropsWithoutRef<'img'>, BaseProps {
+export interface ImageProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['img']> {
   src?: string;
   placeholder?: string;
   alt?: string;
@@ -49,12 +49,12 @@ const Image = (props: ImageProps): React.ReactElement => {
 
   return (
     <img
+      {...otherProps}
       ref={ref}
       className={cls}
       style={{ ...style, objectFit }}
       src={lazy ? placeholder : src ? src : fallback}
       alt={alt}
-      {...otherProps}
     />
   );
 };

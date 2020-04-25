@@ -12,7 +12,7 @@ export interface RadioProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Radio: React.FC<RadioProps> & { Group?: any } = (props: RadioProps) => {
+const Radio = (props: RadioProps): React.ReactElement => {
   const {
     prefixCls = 'ty-radio',
     defaultChecked = false,
@@ -59,5 +59,7 @@ const Radio: React.FC<RadioProps> & { Group?: any } = (props: RadioProps) => {
     </label>
   );
 };
+
+Radio.displayName = 'Radio';
 
 export default Radio;

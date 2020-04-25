@@ -2,7 +2,7 @@
 
 ### Button Group
 
-Buttons can be grouped by placing multiple `Button` components into a Button.Group.
+Buttons can be grouped by placing multiple `Button` components into a `Button.Group`.
 
 ```jsx live
 () => {

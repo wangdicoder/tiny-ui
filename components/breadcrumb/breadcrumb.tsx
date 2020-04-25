@@ -3,12 +3,14 @@ import classNames from 'classnames';
 import { BreadcrumbItemProps } from './breadcrumb-item';
 import { BaseProps } from '../_utils/props';
 
-export interface BreadcrumbProps extends BaseProps {
+export interface BreadcrumbProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['nav']> {
   separator?: React.ReactNode;
   children: ReactElement<BreadcrumbItemProps>;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> & { Item?: any } = (props: BreadcrumbProps) => {
+const Breadcrumb = (props: BreadcrumbProps): React.ReactElement => {
   const { separator = '/', prefixCls = 'ty-breadcrumb', className, style, children } = props;
   const cls = classNames(prefixCls, className);
 
@@ -26,5 +28,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> & { Item?: any } = (props: Breadcrum
     </nav>
   );
 };
+
+Breadcrumb.displayName = 'Breadcrumb';
 
 export default Breadcrumb;

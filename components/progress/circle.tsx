@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import { strokeLineCaps, strokePresetColors } from './shared-props';
 import { BaseProps } from '../_utils/props';
 
-export interface CircleProps extends BaseProps {
+export interface CircleProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   percent?: number;
   /** Customise label style for both outer and inner label */
   format?: (percent: number) => React.ReactNode;
@@ -30,6 +32,7 @@ const Circle = (props: CircleProps): React.ReactElement => {
     className,
     style,
     textStyle,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className);
   let percentage: number = percent > 100 ? 100 : percent;
@@ -73,6 +76,7 @@ const Circle = (props: CircleProps): React.ReactElement => {
 
   return (
     <div
+      {...otherProps}
       className={cls}
       style={{ width, height: width, ...style }}
       aria-valuemax={100}
@@ -92,5 +96,7 @@ const Circle = (props: CircleProps): React.ReactElement => {
     </div>
   );
 };
+
+Circle.displayName = 'Circle';
 
 export default Circle;

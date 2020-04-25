@@ -1,8 +1,14 @@
-import Flip from './flip';
-import FlipItem from './flip-item';
+import React from 'react';
+import Flip, { FlipProps, FlipDirection } from './flip';
+import FlipItem, { FlipItemProps } from './flip-item';
 
-export { FlipProps, FlipDirection } from './flip';
-export { FlipItemProps } from './flip-item';
+export { FlipProps, FlipDirection, FlipItemProps };
 
-Flip.Item = FlipItem;
-export default Flip;
+type IFlip = React.FC<FlipProps> & {
+  Item: typeof FlipItem;
+};
+
+const defaultFlip = Flip as IFlip;
+defaultFlip.Item = FlipItem;
+
+export default defaultFlip;

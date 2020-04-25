@@ -1,8 +1,14 @@
-import Checkbox from './checkbox';
-import CheckboxGroup from './checkbox-group';
+import React from 'react';
+import Checkbox, { CheckboxProps } from './checkbox';
+import CheckboxGroup, { CheckboxGroupProps } from './checkbox-group';
 
-export { CheckboxProps } from './checkbox';
-export { CheckboxGroupProps } from './checkbox-group';
+export { CheckboxProps, CheckboxGroupProps };
 
-Checkbox.Group = CheckboxGroup;
-export default Checkbox;
+type ICheckbox = React.FC<CheckboxProps> & {
+  Group: typeof CheckboxGroup;
+};
+
+const defaultCheckbox = Checkbox as ICheckbox;
+defaultCheckbox.Group = CheckboxGroup;
+
+export default defaultCheckbox;

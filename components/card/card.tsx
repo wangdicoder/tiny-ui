@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import CardContent, { CardContentProps } from './card-content';
 
-export interface CardProps extends BaseProps {
+export interface CardProps
+  extends BaseProps,
+    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'title'> {
   title?: ReactNode;
   extra?: ReactNode;
   hoverable?: boolean;
@@ -18,7 +20,7 @@ export interface CardProps extends BaseProps {
   children?: ReactNode | React.ReactElement<CardContentProps>;
 }
 
-const Card: React.FC<CardProps> & { Content?: any } = (props: CardProps) => {
+const Card = (props: CardProps): React.ReactElement => {
   const {
     prefixCls = 'ty-card',
     bordered = true,
@@ -96,5 +98,7 @@ const Card: React.FC<CardProps> & { Content?: any } = (props: CardProps) => {
     </div>
   );
 };
+
+Card.displayName = 'Card';
 
 export default Card;

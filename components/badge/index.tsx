@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import warning from '../_utils/warning';
 import { BaseProps } from '../_utils/props';
 
-export interface BadgeProps extends BaseProps {
+export interface BadgeProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
   count?: React.ReactNode | number;
   color?: string;
   max?: number;
@@ -17,7 +19,7 @@ export interface BadgeProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Badge = (props: BadgeProps) => {
+const Badge = (props: BadgeProps): React.ReactElement => {
   const {
     count = 0,
     prefixCls = 'ty-badge',
@@ -32,6 +34,7 @@ const Badge = (props: BadgeProps) => {
     style,
     badgeStyle,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className, { [`${prefixCls}_no-wrap`]: !children });
 
@@ -39,7 +42,7 @@ const Badge = (props: BadgeProps) => {
 
   warning(!dot && processing, 'only dot badge has the processing effect');
 
-  const _renderCount = () => {
+  const renderCount = () => {
     const isZero = typeof count === 'number' && count === 0;
     if (isZero && !showZero) {
       return null;
@@ -60,15 +63,17 @@ const Badge = (props: BadgeProps) => {
   };
 
   return (
-    <span className={cls} style={style}>
+    <span {...otherProps} className={cls} style={style}>
       {children}
       {dot ? (
         <sup title={title} className={dotCls} style={{ backgroundColor: color, ...badgeStyle }} />
       ) : (
-        _renderCount()
+        renderCount()
       )}
     </span>
   );
 };
+
+Badge.displayName = 'Badge';
 
 export default Badge;

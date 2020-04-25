@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import { InputSizes } from './index';
 import { BaseProps } from '../_utils/props';
 
-export interface InputGroupProps extends BaseProps {
+export interface InputGroupProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   size?: InputSizes;
   disabled?: boolean;
   children: React.ReactElement;
@@ -17,11 +19,12 @@ const InputGroup = (props: InputGroupProps): React.ReactElement => {
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className);
 
   return (
-    <div className={cls} style={style}>
+    <div {...otherProps} className={cls} style={style}>
       {React.Children.map(children, (child: React.ReactElement) => {
         const childProps = {
           ...child.props,
@@ -33,5 +36,7 @@ const InputGroup = (props: InputGroupProps): React.ReactElement => {
     </div>
   );
 };
+
+InputGroup.displayName = 'InputGroup';
 
 export default InputGroup;

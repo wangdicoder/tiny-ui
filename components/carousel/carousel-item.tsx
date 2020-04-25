@@ -18,4 +18,6 @@ const CarouselItem = React.forwardRef<HTMLLIElement, CarouselItemProps>(
   }
 );
 
+CarouselItem.displayName = 'CarouselItem';
+
 export default CarouselItem;

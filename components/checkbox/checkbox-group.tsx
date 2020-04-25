@@ -11,7 +11,7 @@ export interface CheckboxGroupProps extends BaseProps {
   children: React.ReactElement<CheckboxProps>;
 }
 
-const CheckboxGroup = (props: CheckboxGroupProps) => {
+const CheckboxGroup = (props: CheckboxGroupProps): React.ReactElement => {
   const {
     prefixCls = 'ty-checkbox-group',
     defaultValue = [],
@@ -57,5 +57,7 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
     </div>
   );
 };
+
+CheckboxGroup.displayName = 'CheckboxGroup';
 
 export default CheckboxGroup;

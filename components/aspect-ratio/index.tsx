@@ -18,11 +18,12 @@ const AspectRatio = (props: AspectRatioProps): React.ReactElement => {
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className);
 
   return (
-    <div className={cls} style={{ ...style, width }}>
+    <div {...otherProps} className={cls} style={{ ...style, width }}>
       <div className={`${prefixCls}__padding`} style={{ paddingTop: `${(1 / ratio) * 100}%` }} />
       <div className={`${prefixCls}__inside`}>{children}</div>
     </div>

@@ -6,7 +6,9 @@ import { BaseProps } from '../_utils/props';
 export type AvatarShape = 'circle' | 'square';
 export type AvatarPresence = 'online' | 'busy' | 'away' | 'offline';
 
-export interface AvatarProps extends BaseProps {
+export interface AvatarProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
   icon?: string;
   shape?: AvatarShape;
   size?: number;
@@ -17,7 +19,7 @@ export interface AvatarProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Avatar: React.FC<AvatarProps> & { Group?: any } = (props: AvatarProps) => {
+const Avatar = (props: AvatarProps): React.ReactElement => {
   const {
     prefixCls = 'ty-avatar',
     size = 38,
@@ -30,6 +32,7 @@ const Avatar: React.FC<AvatarProps> & { Group?: any } = (props: AvatarProps) => 
     children,
     className,
     style,
+    ...otherProps
   } = props;
   const outerEl = useRef<HTMLSpanElement | null>(null);
   const textEl = useRef<HTMLSpanElement | null>(null);
@@ -96,11 +99,13 @@ const Avatar: React.FC<AvatarProps> & { Group?: any } = (props: AvatarProps) => 
   });
 
   return (
-    <span ref={outerEl} className={cls} style={styles} onClick={onClick}>
+    <span {...otherProps} ref={outerEl} className={cls} style={styles} onClick={onClick}>
       {renderItem()}
       {presence && renderPresence()}
     </span>
   );
 };
+
+Avatar.displayName = 'Avatar';
 
 export default Avatar;

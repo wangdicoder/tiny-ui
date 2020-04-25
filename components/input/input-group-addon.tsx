@@ -3,14 +3,16 @@ import classNames from 'classnames';
 import { InputSizes } from './index';
 import { BaseProps } from '../_utils/props';
 
-export interface InputGroupAddonProps extends BaseProps {
+export interface InputGroupAddonProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   noBorder: boolean;
   disabled?: boolean;
   size?: InputSizes;
   children: React.ReactElement;
 }
 
-const InputGroupAddon = (props: InputGroupAddonProps) => {
+const InputGroupAddon = (props: InputGroupAddonProps): React.ReactElement => {
   const {
     prefixCls = 'ty-input-group-addon',
     disabled = false,
@@ -19,6 +21,7 @@ const InputGroupAddon = (props: InputGroupAddonProps) => {
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_no-border`]: noBorder,
@@ -39,10 +42,12 @@ const InputGroupAddon = (props: InputGroupAddonProps) => {
     );
   }
   return (
-    <div className={cls} style={style}>
+    <div {...otherProps} className={cls} style={style}>
       {children}
     </div>
   );
 };
+
+InputGroupAddon.displayName = 'InputGroupAddon';
 
 export default InputGroupAddon;

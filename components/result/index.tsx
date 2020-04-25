@@ -13,7 +13,9 @@ const StatusIcon = Object.freeze({
   loading: 'sync',
 });
 
-export interface ResultProps extends React.PropsWithRef<BaseProps> {
+export interface ResultProps
+  extends BaseProps,
+    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'title'> {
   title?: ReactNode;
   subtitle?: ReactNode;
   status?: ResultStatus;
@@ -33,6 +35,7 @@ const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${status}`);
 
@@ -53,7 +56,7 @@ const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps
   };
 
   return (
-    <div ref={ref} className={cls} style={style}>
+    <div {...otherProps} ref={ref} className={cls} style={style}>
       {renderIcon()}
       {title && <div className={`${prefixCls}__title`}>{title}</div>}
       {subtitle && <div className={`${prefixCls}__subtitle`}>{subtitle}</div>}
@@ -62,5 +65,7 @@ const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps
     </div>
   );
 });
+
+Result.displayName = 'Result';
 
 export default Result;

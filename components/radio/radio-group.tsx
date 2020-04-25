@@ -52,4 +52,6 @@ const RadioGroup = (props: RadioGroupProps): React.ReactElement => {
   );
 };
 
+RadioGroup.displayName = 'RadioGroup';
+
 export default RadioGroup;

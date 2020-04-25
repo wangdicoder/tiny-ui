@@ -5,7 +5,7 @@ import { BaseProps } from '../_utils/props';
 
 export type BarBackgroundType = 'impulse' | 'striped';
 
-export interface BarProps extends BaseProps {
+export interface BarProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   percent?: number;
   /** Customise label style for both outer and inner label */
   format?: (percent: number) => React.ReactNode;
@@ -33,6 +33,7 @@ const Bar = (props: BarProps): React.ReactElement => {
     backgroundType,
     className,
     style,
+    ...otherProps
   } = props;
   let percentage: number = percent > 100 ? 100 : percent;
   percentage = percentage < 0 ? 0 : percentage;
@@ -80,6 +81,7 @@ const Bar = (props: BarProps): React.ReactElement => {
 
   return (
     <div
+      {...otherProps}
       role="progressbar"
       aria-valuemax={100}
       aria-valuemin={0}
@@ -101,5 +103,7 @@ const Bar = (props: BarProps): React.ReactElement => {
     </div>
   );
 };
+
+Bar.displayName = 'Bar';
 
 export default Bar;

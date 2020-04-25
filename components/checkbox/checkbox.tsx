@@ -13,7 +13,7 @@ export interface CheckboxProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Checkbox: React.FC<CheckboxProps> & { Group?: any } = (props: CheckboxProps) => {
+const Checkbox = (props: CheckboxProps): React.ReactElement => {
   const {
     prefixCls = 'ty-checkbox',
     defaultChecked = false,
@@ -32,7 +32,7 @@ const Checkbox: React.FC<CheckboxProps> & { Group?: any } = (props: CheckboxProp
     [`${prefixCls}_disabled`]: disabled,
   });
 
-  const _onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const _onChange = (e: React.FormEvent<HTMLInputElement>): void => {
     if (!disabled) {
       !('checked' in props) && setChecked(e.currentTarget.checked);
       onChange && onChange(e.currentTarget.checked, e);
@@ -60,5 +60,7 @@ const Checkbox: React.FC<CheckboxProps> & { Group?: any } = (props: CheckboxProp
     </label>
   );
 };
+
+Checkbox.displayName = 'Checkbox';
 
 export default Checkbox;

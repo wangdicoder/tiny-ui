@@ -6,7 +6,7 @@ import { FlipItemProps } from './flip-item';
 
 export type FlipDirection = 'horizontal' | 'vertical';
 
-export interface FlipProps extends BaseProps {
+export interface FlipProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   /** A certain parent width and height to prevent the hover empty issue */
   width: string | number;
   height: string | number;
@@ -17,7 +17,7 @@ export interface FlipProps extends BaseProps {
   children: React.ReactElement<FlipItemProps>;
 }
 
-const Flip: React.FC<FlipProps> & { Item?: any } = (props: FlipProps) => {
+const Flip = (props: FlipProps): React.ReactElement => {
   const {
     prefixCls = 'ty-flip',
     direction = 'horizontal',
@@ -27,6 +27,7 @@ const Flip: React.FC<FlipProps> & { Item?: any } = (props: FlipProps) => {
     className,
     children,
     style,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className);
 
@@ -44,31 +45,39 @@ const Flip: React.FC<FlipProps> & { Item?: any } = (props: FlipProps) => {
   );
 
   return (
-    <div className={cls} style={{ width, height, ...style }}>
+    <div {...otherProps} className={cls} style={{ width, height, ...style }}>
       <div className={innerCls}>
-        {React.Children.map(children, (child, index: number) =>
-          React.cloneElement(child, {
-            ...child.props,
-            className: classNames(
-              {
-                [`${prefixCls}__item-front`]: index === 0,
-                [`${prefixCls}__item-back`]: index === 1,
-                [`${prefixCls}__item-back_hor`]:
-                  index === 1 && direction === 'horizontal' && !reverse,
-                [`${prefixCls}__item-back_hor_reverse`]:
-                  index === 1 && direction === 'horizontal' && reverse,
-                [`${prefixCls}__item-back_ver`]:
-                  index === 1 && direction === 'vertical' && !reverse,
-                [`${prefixCls}__item-back_ver_reverse`]:
-                  index === 1 && direction === 'vertical' && reverse,
-              },
-              child.props.className
-            ),
-          })
-        )}
+        {React.Children.map(children, (child, index: number) => {
+          const childElement = child as React.FunctionComponentElement<FlipItemProps>;
+          if (childElement.type.displayName === 'FlipItem') {
+            const childProps = {
+              ...child.props,
+              className: classNames(
+                {
+                  [`${prefixCls}__item-front`]: index === 0,
+                  [`${prefixCls}__item-back`]: index === 1,
+                  [`${prefixCls}__item-back_hor`]:
+                    index === 1 && direction === 'horizontal' && !reverse,
+                  [`${prefixCls}__item-back_hor_reverse`]:
+                    index === 1 && direction === 'horizontal' && reverse,
+                  [`${prefixCls}__item-back_ver`]:
+                    index === 1 && direction === 'vertical' && !reverse,
+                  [`${prefixCls}__item-back_ver_reverse`]:
+                    index === 1 && direction === 'vertical' && reverse,
+                },
+                child.props.className
+              ),
+            };
+            return React.cloneElement(childElement, childProps);
+          } else {
+            return null;
+          }
+        })}
       </div>
     </div>
   );
 };
+
+Flip.displayName = 'Flip';
 
 export default Flip;

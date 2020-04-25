@@ -13,7 +13,9 @@ import { BaseProps } from '../_utils/props';
 
 export type InputSizes = 'sm' | 'md' | 'lg';
 
-export interface InputProps extends BaseProps {
+export interface InputProps
+  extends BaseProps,
+    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['input']>, 'size' | 'onChange' | 'prefix'> {
   clearable?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
@@ -24,12 +26,11 @@ export interface InputProps extends BaseProps {
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>; // prevent covering keydown event by enter press
   size?: InputSizes;
   disabled?: boolean;
-  [prop: string]: any;
 }
 
 const DEFAULT_MARGIN = 16; // 8px * 2
 
-const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = (props: InputProps) => {
+const Input = (props: InputProps): React.ReactElement => {
   const {
     prefixCls = 'ty-input',
     size = 'md',
@@ -53,7 +54,7 @@ const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = (props: Input
   const [value, setValue] = useState('value' in props ? props.value : defaultValue);
   const [inputPadding, setInputPadding] = useState({ paddingLeft: '7px', paddingRight: '7px' });
 
-  const inputOnChange = (e: FormEvent<HTMLInputElement>) => {
+  const inputOnChange = (e: FormEvent<HTMLInputElement>): void => {
     const val = e.currentTarget.value;
     !('value' in props) && setValue(val);
     onChange && onChange(e.currentTarget.value, e);
@@ -122,5 +123,7 @@ const Input: React.FC<InputProps> & { Group?: any; Addon?: any } = (props: Input
     </div>
   );
 };
+
+Input.displayName = 'Input';
 
 export default Input;

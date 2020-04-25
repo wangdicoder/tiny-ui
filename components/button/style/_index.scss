@@ -45,14 +45,14 @@ $btn-prefix: #{$prefix}btn;
 
   // Types
   &_default {
-    @include button-style($body-color, $white, $gray-400, $white, $primary-color, $primary-color,
-        darken($white, 7.5%), $primary-color, $primary-color);
+    @include button-style($body-color, $white-color, $gray-400, $white-color, $primary-color, $primary-color,
+        darken($white-color, 7.5%), $primary-color, $primary-color);
   }
   &_primary {
-    @include button-style($white, $primary-color, $primary-color);
+    @include button-style($white-color, $primary-color, $primary-color);
   }
   &_outline {
-    @include button-style($primary-color, $white, $primary-color, lighten($primary-color, 40%), lighten($primary-color, 10%), $primary-color,
+    @include button-style($primary-color, $white-color, $primary-color, lighten($primary-color, 40%), lighten($primary-color, 10%), $primary-color,
         lighten($primary-color, 30%));
   }
   &_ghost {
@@ -66,16 +66,16 @@ $btn-prefix: #{$prefix}btn;
     }
   }
   &_info {
-    @include button-style($white, $info-color, $info-color);
+    @include button-style($white-color, $info-color, $info-color);
   }
   &_success {
-    @include button-style($white, $success-color, $success-color);
+    @include button-style($white-color, $success-color, $success-color);
   }
   &_warning {
-    @include button-style($white, $warning-color, $warning-color);
+    @include button-style($white-color, $warning-color, $warning-color);
   }
   &_danger {
-    @include button-style($white, $danger-color, $danger-color);
+    @include button-style($white-color, $danger-color, $danger-color);
   }
 
   // Sizes

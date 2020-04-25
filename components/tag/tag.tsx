@@ -16,17 +16,17 @@ export const PresetColors = [
   'purple',
 ];
 
-export interface TagProps extends BaseProps {
+export interface TagProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   color?: string;
   closable?: boolean;
-  onClose?: (e: MouseEvent) => void;
-  onClick?: (e: MouseEvent) => void;
+  onClose?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler;
   defaultVisible?: boolean;
   visible?: boolean;
   children?: React.ReactNode;
 }
 
-const Tag = (props: TagProps) => {
+const Tag = (props: TagProps): React.ReactElement => {
   const {
     prefixCls = 'ty-tag',
     closable = false,
@@ -37,6 +37,7 @@ const Tag = (props: TagProps) => {
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const [visible, setVisible] = useState('visible' in props ? props.visible : defaultVisible);
   const cls = classNames(prefixCls, className, {
@@ -49,7 +50,7 @@ const Tag = (props: TagProps) => {
    * Callback when the close button is clicked.
    * @param e
    */
-  const closeBtnOnClick = (e: MouseEvent<HTMLSpanElement>) => {
+  const closeBtnOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
     onClose && onClose(e);
     if (e.defaultPrevented) {
       return;
@@ -69,7 +70,7 @@ const Tag = (props: TagProps) => {
   }, [props.visible]);
 
   return (
-    <div className={cls} style={tagStyle} onClick={onClick}>
+    <div {...otherProps} className={cls} style={tagStyle} onClick={onClick}>
       {children}
       {closable && (
         <span className={`${prefixCls}__close-btn`} onClick={closeBtnOnClick}>

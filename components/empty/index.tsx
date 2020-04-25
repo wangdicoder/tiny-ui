@@ -2,7 +2,7 @@ import React, { ReactNode, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
-export interface EmptyProps extends BaseProps {
+export interface EmptyProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   image?: string | ReactNode;
   imageStyle?: CSSProperties;
   description?: boolean | string | React.ReactNode;
@@ -10,7 +10,7 @@ export interface EmptyProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Empty = (props: EmptyProps) => {
+const Empty = (props: EmptyProps): React.ReactElement => {
   const {
     prefixCls = 'ty-empty',
     description = 'No Data',
@@ -20,6 +20,7 @@ const Empty = (props: EmptyProps) => {
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className);
 
@@ -43,7 +44,7 @@ const Empty = (props: EmptyProps) => {
   };
 
   return (
-    <div className={cls} style={style}>
+    <div {...otherProps} className={cls} style={style}>
       <div className={`${prefixCls}__image-container`}>{renderImage()}</div>
       {typeof description === 'boolean' && !description ? null : (
         <p className={`${prefixCls}__desc`} style={descStyle}>
@@ -54,5 +55,7 @@ const Empty = (props: EmptyProps) => {
     </div>
   );
 };
+
+Empty.displayName = 'Empty';
 
 export default Empty;
