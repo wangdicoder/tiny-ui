@@ -41,19 +41,19 @@
     width: 0.4em;
 
     &_online {
-      background-color: $green-color;
+      background-color: $success-color;
     }
 
     &_busy {
-      background-color: $red-color;
+      background-color: $danger-color;
     }
 
     &_away {
-      background-color: $yellow-color;
+      background-color: $warning-color;
     }
 
     &_offline {
-      background-color: $gray-color;
+      background-color: $gray-400;
     }
   }
 

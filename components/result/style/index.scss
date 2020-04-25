@@ -14,23 +14,23 @@
     font-size: 80px;
 
     &_success {
-      color: $green-color;
+      color: $success-color;
     }
 
     &_warning {
-      color: $yellow-color;
+      color: $warning-color;
     }
 
     &_error {
-      color: $red-color;
+      color: $danger-color;
     }
 
     &_info {
-      color: $blue-color;
+      color: $info-color;
     }
 
     &_loading {
-      color: $blue-color;
+      color: $info-color;
     }
   }
 

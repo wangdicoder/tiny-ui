@@ -50,18 +50,18 @@
   }
 
   &_error {
-    @include alert-mixin($red-color, $red-light-color, $red-lighter-color);
+    @include alert-mixin($danger-color, $danger-light-color, $danger-lighter-color);
   }
 
   &_warning {
-    @include alert-mixin($yellow-color, $yellow-light-color, $yellow-lighter-color);
+    @include alert-mixin($warning-color, $warning-light-color, $warning-lighter-color);
   }
 
   &_success {
-    @include alert-mixin($green-color, $green-light-color, $green-lighter-color);
+    @include alert-mixin($success-color, $success-light-color, $success-lighter-color);
   }
 
   &_info {
-    @include alert-mixin($blue-color, $blue-light-color, $blue-lighter-color);
+    @include alert-mixin($info-color, $info-light-color, $info-lighter-color);
   }
 }

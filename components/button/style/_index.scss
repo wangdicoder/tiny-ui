@@ -8,40 +8,29 @@ $btn-prefix: #{$prefix}btn;
   box-sizing: border-box;
   border: 1px solid #d0d0d5;
   outline: none;
-  border-radius: $btn-border-radius;
   letter-spacing: 0;
   text-align: center;
   cursor: pointer;
-  transition: all 400ms;
-  font-family: $font-family;
   display: inline-block;
   min-width: 50px;
-  background-color: #fff;
-  color: #4c5161;
+  vertical-align: middle;
   text-decoration: none;
   white-space: nowrap;
   user-select: none;
+  border-radius: $btn-border-radius;
+  transition: $btn-transition;
+  font-family: $font-family;
+  line-height: $btn-line-height;
 
   & > span {
     display: inline-block;
     pointer-events: none;
-    line-height: 1.5;
+    line-height: $btn-line-height;
     vertical-align: middle;
   }
 
   & + .#{$btn-prefix} {
     margin-left: 10px;
-  }
-
-  &:hover {
-    color: $primary-color;
-    border-color: $primary-color;
-  }
-
-  &:active {
-    background-color: #f7f9fa;
-    color: darken($primary-color, 10%);
-    border-color: darken($primary-color, 10%);
   }
 
   &__loader {
@@ -52,59 +41,58 @@ $btn-prefix: #{$prefix}btn;
     }
   }
 
+  // Types
+  &_default {
+    @include button-style($body-color, $white, $gray-400, $white, $primary-color, $primary-color,
+        darken($white, 7.5%), $primary-color, $primary-color);
+  }
   &_primary {
-    @include btn-color($primary-color);
+    @include button-style($white, $primary-color, $primary-color);
   }
-
-  &_blue {
-    @include btn-color($blue-color);
+  &_outline {
+    @include button-style($primary-color, $white, $primary-color, lighten($primary-color, 40%), lighten($primary-color, 10%), $primary-color,
+        lighten($primary-color, 30%));
   }
-
-  &_green {
-    @include btn-color($green-color);
+  &_ghost {
+    @include button-style($primary-color, transparent, transparent, lighten($primary-color, 40%), transparent, $primary-color,
+        lighten($primary-color, 30%), transparent, $primary-color);
   }
-
-  &_yellow {
-    @include btn-color($yellow-color);
-  }
-
-  &_red {
-    @include btn-color($red-color);
-  }
-
-  &_primary,
-  &_blue,
-  &_green,
-  &_yellow,
-  &_red {
-    .#{$btn-prefix}__loader {
-      @include loader-color(#fff);
+  &_link {
+    @include button-style($primary-color, transparent, transparent);
+    &:hover{
+      text-decoration-line: underline;
     }
   }
-
-  &_lg {
-    height: $btn-lg-height;
-    font-size: $btn-lg-font-size;
-    padding: $btn-lg-padding;
-
-    .#{$btn-prefix}__loader {
-      @include loader-size(18px);
-    }
+  &_info {
+    @include button-style($white, $info-color, $info-color);
+  }
+  &_success {
+    @include button-style($white, $success-color, $success-color);
+  }
+  &_warning {
+    @include button-style($white, $warning-color, $warning-color);
+  }
+  &_danger {
+    @include button-style($white, $danger-color, $danger-color);
   }
 
-  &_md {
-    height: $btn-md-height;
-    font-size: $btn-md-font-size;
-    padding: $btn-md-padding;
-  }
-
+  // Sizes
   &_sm {
-    height: $btn-sm-height;
-    font-size: $btn-sm-font-size;
-    padding: $btn-sm-padding;
+    @include btn-size($btn-padding-sm, $btn-font-size-sm, $btn-height-sm);
 
     .#{$btn-prefix}__loader {
       @include loader-size(12px);
+    }
+  }
+  &_md {
+    @include btn-size($btn-padding-md, $btn-font-size-md, $btn-height-md);
+
+  }
+  &_lg {
+    @include btn-size($btn-padding-lg, $btn-font-size-lg, $btn-height-lg);
+
+    .#{$btn-prefix}__loader {
+      @include loader-size(18px);
     }
   }
 
@@ -117,33 +105,20 @@ $btn-prefix: #{$prefix}btn;
   }
 
   &_round {
-    border-radius: 30px;
+    border-radius: $btn-height-lg;
   }
 
-  &_link {
-    color: $primary-color;
-    background-color: transparent;
-    border: 0;
-
-    &:active {
-      background-color: transparent;
-    }
-
-    .#{$btn-prefix}__loader {
-      @include loader-color($primary-color);
-    }
-  }
-
-  &_loading {
-    opacity: 0.85;
+  &_loading, &_disabled {
+    opacity: $btn-disabled-opacity;
     pointer-events: none;
+  }
+
+  &_loading{
     cursor: progress;
   }
 
   &_disabled {
-    opacity: 0.4;
     cursor: not-allowed;
-    pointer-events: none;
   }
 }
 

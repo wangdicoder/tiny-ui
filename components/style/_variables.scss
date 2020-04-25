@@ -2,12 +2,8 @@ $prefix: 'ty-'                                !default;
 
 // Color
 $primary-color: #6E41BF                       !default;
-$link-color: $primary-color                   !default;
 
-$default-color: #34495e                       !default;
-
-$white-color: #fff                            !default;
-$gray-color: #bcc3ce                          !default;
+$white: #fff                                  !default;
 $gray-100: #f6f9fc                            !default;
 $gray-200: #e9ecef                            !default;
 $gray-300: #dee2e6                            !default;
@@ -19,25 +15,36 @@ $gray-800: #32325d                            !default;
 $gray-900: #212529                            !default;
 $black: #000                                  !default;
 
+$red:     #dc3545                             !default;
+$orange:  #fd7e14                             !default;
+$yellow:  #fadb14                             !default;
+$green:   #52c41a                             !default;
+$teal:    #20c997                             !default;
+$cyan:    #17a2b8                             !default;
+$blue:    #0d6efd                             !default;
+$indigo:  #6610f2                             !default;
+$purple:  #6f42c1                             !default;
+$pink:    #d63384                             !default;
+
 // Info
-$blue-color: #1890ff                          !default;
-$blue-light-color: #91d5ff                    !default;
-$blue-lighter-color: #e6f7ff                  !default;
+$info-color: #1890ff                          !default;
+$info-light-color: #91d5ff                    !default;
+$info-lighter-color: #e6f7ff                  !default;
 
 // Success
-$green-color: #52c41a                         !default;
-$green-light-color: #b7eb8f                   !default;
-$green-lighter-color: #f6ffed                 !default;
+$success-color: #52c41a                         !default;
+$success-light-color: #b7eb8f                   !default;
+$success-lighter-color: #f6ffed                 !default;
 
 // Warn
-$yellow-color: #ff9800                        !default;
-$yellow-light-color: #ffe58f                  !default;
-$yellow-lighter-color: #fffbe6                !default;
+$warning-color: #ff9800                        !default;
+$warning-light-color: #ffe58f                  !default;
+$warning-lighter-color: #fffbe6                !default;
 
 // Error
-$red-color: #f44336                           !default;
-$red-light-color: #ffa39e                     !default;
-$red-lighter-color: #fff1f0                   !default;
+$danger-color: #f44336                           !default;
+$danger-light-color: #ffa39e                     !default;
+$danger-lighter-color: #fff1f0                   !default;
 
 // Font & Font family
 $font-color: rgba(0, 0, 0, .65)               !default;
@@ -54,6 +61,10 @@ $font-family: $font-family-sans-serif         !default;
 $height-sm: 24px                              !default;
 $height-md: 32px                              !default;
 $height-lg: 42px                              !default;
+
+$line-height-base: 1.5                        !default;
+$line-height-lg: 2                            !default;
+$line-height-sm: 1.25                         !default;
 
 // Responsive breakpoints
 $size-xs: 480px                               !default;
@@ -74,6 +85,10 @@ $layout-sidebar-background: #12131a           !default;
 
 // Spacing
 $spacer: 1rem !default;
+
+// Body
+$body-bg-color: $white                        !default;
+$body-color: $gray-800                        !default;
 
 // Typography
 $h1-font-size: $font-size-base * 2.5          !default;
@@ -133,16 +148,23 @@ $badge-size: 18px                             !default;
 $badge-dot-size: 6px                          !default;
 
 // Button
+$btn-font-size-sm: $font-size-sm              !default;
+$btn-font-size-md: $font-size-base            !default;
+$btn-font-size-lg: $font-size-lg              !default;
+$btn-padding-sm: 0 10px                       !default;
+$btn-padding-md: 0 15px                       !default;
+$btn-padding-lg: 0 28px                       !default;
+$btn-height-sm: $height-sm                    !default;
+$btn-height-md: $height-md                    !default;
+$btn-height-lg: $height-lg                    !default;
+$btn-line-height: $line-height-base           !default;
 $btn-border-radius: $border-radius            !default;
-$btn-lg-font-size: $font-size-lg              !default;
-$btn-lg-padding: 0 28px                       !default;
-$btn-lg-height: $height-lg                    !default;
-$btn-md-font-size: $font-size-base            !default;
-$btn-md-padding: 0 15px                       !default;
-$btn-md-height: $height-md                    !default;
-$btn-sm-font-size: $font-size-sm              !default;
-$btn-sm-padding: 0 10px                       !default;
-$btn-sm-height: $height-sm                    !default;
+$btn-border-width: $border-width              !default;
+$btn-font-weight: 400                         !default;
+$btn-font-family: $font-family                !default;
+$btn-box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
+$btn-disabled-opacity: .65                    !default;
+$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 // Card
 $card-border-radius: $border-radius           !default;

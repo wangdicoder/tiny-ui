@@ -1,5 +1,5 @@
 import Block from './demo/block.md'
-import Color from './demo/color.md'
+import MoreTypes from './demo/more-types.md'
 import Disabled from './demo/disabled.md'
 import ButtonGroup from './demo/group.md'
 import Icon from './demo/icon.md'
@@ -28,7 +28,7 @@ const { Group } = Button;
 <layout>
   <column>
     <Type/>
-    <Color/>
+    <MoreTypes/>
     <Size/>
     <ButtonGroup/>
   </column>

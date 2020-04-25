@@ -1,14 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import { BaseProps, SizeType } from '../_utils/props';
-import { ButtonProps, ButtonType, ButtonColor } from './button';
+import { ButtonProps, ButtonType } from './button';
 
 export interface ButtonGroupProps
   extends BaseProps,
     React.PropsWithRef<JSX.IntrinsicElements['div']> {
   btnType?: ButtonType;
   size?: SizeType;
-  color?: ButtonColor;
   round?: boolean;
   disabled?: boolean;
   children: React.ReactNode;
@@ -19,17 +18,16 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     const {
       prefixCls = 'ty-btn-group',
       size = 'md',
-      btnType = 'solid',
+      btnType = 'default',
       disabled = false,
       round = false,
-      color,
       className,
       style,
       children,
     } = props;
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_round`]: round,
-      [`${prefixCls}_${color}`]: color,
+      [`${prefixCls}_${btnType}`]: btnType,
     });
     return (
       <div className={cls} style={style} ref={ref}>
@@ -41,7 +39,6 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
               ...childElement.props,
               size,
               btnType,
-              color,
               disabled: 'disabled' in childElement.props ? childElement.props.disabled : disabled,
             };
             return React.cloneElement(childElement, childProps);

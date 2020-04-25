@@ -24,19 +24,19 @@
     }
 
     &_yellow {
-      background-color: $yellow-color;
+      background-color: $warning-color;
     }
 
     &_blue {
-      background-color: $blue-color;
+      background-color: $info-color;
     }
 
     &_red {
-      background-color: $red-color;
+      background-color: $danger-color;
     }
 
     &_green {
-      background-color: $green-color;
+      background-color: $success-color;
     }
   }
 
@@ -120,19 +120,19 @@
     }
 
     &_yellow {
-      stroke: $yellow-color;
+      stroke: $warning-color;
     }
 
     &_blue {
-      stroke: $blue-color;
+      stroke: $info-color;
     }
 
     &_red {
-      stroke: $red-color;
+      stroke: $danger-color;
     }
 
     &_green {
-      stroke: $green-color;
+      stroke: $success-color;
     }
   }
 

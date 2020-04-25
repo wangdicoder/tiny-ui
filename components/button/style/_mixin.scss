@@ -1,17 +1,47 @@
-@mixin btn-color($color) {
-  border-color: $color;
-  background-color: $color;
-  color: #fff;
-
+@mixin button-style(
+  $color,
+  $background,
+  $border,
+  $hover-background: lighten($background, 7.5%),
+  $hover-border: lighten($border, 10%),
+  $hover-color: $color,
+  $active-background: darken($background, 7.5%),
+  $active-border: darken($border, 10%),
+  $active-color: $color,
+) {
+  color: $color;
+  background: $background;
+  border-color: $border;
   &:hover {
-    opacity: 0.85;
-    color: #fff;
-    border-color: $color;
+    color: $hover-color;
+    background: $hover-background;
+    border-color: $hover-border;
   }
 
-  &:active {
-    opacity: 1;
-    border-color: darken($color, 10%);
-    background-color: darken($color, 10%);
+  &:focus,
+  &.focus {
+    color: $hover-color;
+    background: $hover-background;
+    border-color: $hover-border;
   }
+
+  &:active,
+  &.active{
+    color: $active-color;
+    background: $active-background;
+    border-color: $active-border;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background: $background;
+    border-color: $border;
+  }
+}
+
+@mixin btn-size($padding, $font-size, $height) {
+  padding: $padding;
+  font-size: $font-size;
+  height: $height;
 }

@@ -14,8 +14,10 @@ block property will make the button fit to its parent width.
   return (
     <>
       <Button block style={marginBottomStyle}>Default Button</Button>
-      <Button block color="primary" style={marginBottomStyle}>Primary Button</Button>
-      <Button block link style={marginBottomStyle}>Link</Button>
+      <Button block btnType="primary" style={marginBottomStyle}>Primary Button</Button>
+      <Button block btnType="outline" style={marginBottomStyle}>Outline Button</Button>
+      <Button block btnType="ghost" style={marginBottomStyle}>Ghost Button</Button>
+      <Button block btnType="link" style={marginBottomStyle}>Link Button</Button>
     </>
   );
 };

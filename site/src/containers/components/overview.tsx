@@ -12,17 +12,19 @@ const ComponentOverview = () => {
   }, 0);
   return (
     <div>
-      <h1 className="md__heading-1">Component Overview</h1>
-      <p className="md__p">
+      <h1 className="markdown__heading-1">Component Overview</h1>
+      <p className="markdown__p">
         There is an overview of all components. Currently Tiny-UI provides <b>{numOfComps}</b>{' '}
         components.
       </p>
       {COMPONENT_MENU.map(router => (
         <div key={router.title}>
-          <h2 className="md__heading-2">{router.title}</h2>
+          <h2 className="markdown__heading-2">{router.title}</h2>
           <Row gutter={24} gutterSide>
             {router.children!.map(item => (
-              <Button onClick={() => history.push(`${url}/${item.route!}`)}>{item.title}</Button>
+              <Button key={item.title} onClick={() => history.push(`${url}/${item.route!}`)}>
+                {item.title}
+              </Button>
             ))}
           </Row>
         </div>

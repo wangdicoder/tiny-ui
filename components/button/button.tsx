@@ -2,13 +2,20 @@ import React from 'react';
 import classNames from 'classnames';
 import { BaseProps, SizeType } from '../_utils/props';
 
-export type ButtonColor = 'primary' | 'default' | 'info' | 'error' | 'warning' | 'success';
-export type ButtonType = 'solid' | 'outline' | 'ghost' | 'link';
+export type ButtonType =
+  | 'default'
+  | 'primary'
+  | 'outline'
+  | 'ghost'
+  | 'link'
+  | 'info'
+  | 'error'
+  | 'warning'
+  | 'success';
 
 export interface ButtonProps
   extends BaseProps,
     React.PropsWithRef<JSX.IntrinsicElements['button']> {
-  color?: ButtonColor;
   btnType?: ButtonType;
   loading?: boolean;
   disabled?: boolean;
@@ -23,8 +30,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
   const {
     prefixCls = 'ty-btn',
     size = 'md',
-    color = 'default',
-    btnType = 'solid',
+    btnType = 'default',
     loading = false,
     disabled = false,
     block = false,
@@ -36,7 +42,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
     ...otherProps
   } = props;
   const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_${color}`]: color,
     [`${prefixCls}_${btnType}`]: btnType,
     [`${prefixCls}_${size}`]: size,
     [`${prefixCls}_block`]: block,
