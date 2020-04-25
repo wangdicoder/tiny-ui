@@ -97,6 +97,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/breadcrumb/index.md')),
       },
       {
+        title: 'Menu',
+        route: 'menu',
+        component: lazy(() => import('../../components/menu/index.md')),
+      },
+      {
         title: 'Pagination',
         route: 'pagination',
         component: lazy(() => import('../../components/pagination/index.md')),
