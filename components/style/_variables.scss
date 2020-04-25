@@ -192,7 +192,7 @@ $input-lg-height: $height-lg                  !default;
 $textarea-font-size: $font-size-base          !default;
 $textarea-padding: 5px                        !default;
 
-//select
+// Select
 $select-sm-padding: 3px 25px 3px 7px          !default;
 $select-sm-font-size: $font-size-sm           !default;
 $select-md-padding: 6px 25px 6px 10px         !default;
@@ -201,23 +201,26 @@ $select-lg-padding: 9px 25px 9px 12px         !default;
 $select-lg-font-size: $font-size-lg           !default;
 $select-border-radius: $border-radius         !default;
 
-//switch
+// Switch
 $switch-md-font-size: 12px                    !default;
 $switch-sm-font-size: 9px                     !default;
 $switch-lg-font-size: 14px                    !default;
 
-//notification
+// Notification
 $notification-width: 380px                    !default;
 $notification-margin: 20px                    !default;
 
-//breadcrumb
+// Breadcrumb
 $breadcrumb-font-size: $font-size-base        !default;
 
-//tag
+// Tag
 $tag-border-radius: 3px                       !default;
 
-//popover
+// Popover
 $popover-arrow-size: 8px                      !default;
 
-//tooltip
+// Tooltip
 $tooltip-arrow-size: 6px                      !default;
+
+// Menu
+$menu-sub-border-radius: $border-radius       !default;

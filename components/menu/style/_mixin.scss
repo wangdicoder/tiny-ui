@@ -1,0 +1,4 @@
+@mixin horizontal-item-active($color){
+  background-color: lighten($color, 40%);
+  color: $color;
+}
