@@ -23,6 +23,9 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
   const subMenuCls = classNames(`${prefixCls}__list`, {
     [`${prefixCls}__list_open`]: menuOpen,
   });
+  const arrowCls = classNames(`${prefixCls}__arrow`, {
+    [`${prefixCls}__arrow_reverse`]: menuOpen,
+  });
 
   const handleOnClick = (e: React.MouseEvent): void => {
     e.preventDefault();
@@ -54,7 +57,8 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
       onMouseEnter={handleOnMouseEnter}
       onMouseLeave={handleOnMouseLeave}>
       <div className={`${prefixCls}__title`} onClick={handleOnClick}>
-        {title}
+        <span>{title}</span>
+        <span className={arrowCls} />
       </div>
       <ul className={subMenuCls}>
         {React.Children.map(children, (child, idx) => {

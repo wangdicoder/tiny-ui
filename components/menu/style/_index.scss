@@ -82,7 +82,7 @@
       padding: 0;
       margin: 0;
 
-      &_active{
+      &_active {
         .#{$prefix}menu-sub__title {
           color: $primary-color;
         }
@@ -121,7 +121,7 @@
         > .#{$prefix}menu-item {
           padding: 0 48px;
 
-          &_active{
+          &_active {
             @include menu-item-active($primary-color, true);
           }
         }
@@ -159,6 +159,48 @@
 
       &:hover {
         color: $primary-color;
+      }
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__arrow {
+    display: inline-block;
+    width: 10px;
+    margin-left: 10px;
+    transform: translateY(-1px);
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 2px;
+      border-radius: 1px;
+      background: rgba(0, 0, 0, .7);
+      transform-origin: center;
+      transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    }
+
+    &:before {
+      transform: rotate(-45deg) translateX(2px);
+    }
+
+    &:after {
+      transform: rotate(45deg) translateX(-2px);
+    }
+
+    &_reverse{
+      &:before {
+        transform: rotate(45deg) translateX(2px);
+      }
+
+      &:after {
+        transform: rotate(-45deg) translateX(-2px);
       }
     }
   }
