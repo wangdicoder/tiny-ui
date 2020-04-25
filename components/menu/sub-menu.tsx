@@ -35,7 +35,7 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
     clearTimeout(timer);
     timer = setTimeout(() => {
       setMenuOpen(toggle);
-    }, 300);
+    }, 200);
   };
 
   const handleOnMouseEnter = (e: React.MouseEvent): void => {
@@ -51,10 +51,11 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
       role="menuitem"
       key={index}
       className={cls}
-      onClick={handleOnClick}
       onMouseEnter={handleOnMouseEnter}
       onMouseLeave={handleOnMouseLeave}>
-      <div className={`${prefixCls}__title`}>{title}</div>
+      <div className={`${prefixCls}__title`} onClick={handleOnClick}>
+        {title}
+      </div>
       <ul className={subMenuCls}>
         {React.Children.map(children, (child, idx) => {
           const childElement = child as React.FunctionComponentElement<MenuItemProps>;

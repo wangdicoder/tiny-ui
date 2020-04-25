@@ -29,33 +29,35 @@
     }
 
     .#{$prefix}menu-sub {
+
+      &_active {
+        color: $primary-color;
+        border-bottom-color: $primary-color;
+      }
+
       &__list {
         position: absolute;
-        background: #fff;
         z-index: 1;
         top: calc(100% + 2px);
         left: 0;
         color: $body-color;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+        border-radius: $menu-sub-border-radius;
 
         &_open {
           display: block;
         }
 
         > .#{$prefix}menu-item_active {
-          @include horizontal-item-active($primary-color);
+          @include menu-item-active($primary-color);
         }
-      }
-
-      &_active {
-        color: $primary-color;
-        border-bottom-color: $primary-color;
       }
     }
 
     .#{$prefix}menu-item-group {
       &__list {
         > .#{$prefix}menu-item_active {
-          @include horizontal-item-active($primary-color);
+          @include menu-item-active($primary-color);
         }
       }
     }
@@ -63,16 +65,66 @@
 
   &_vertical {
     flex-direction: column;
-    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
 
-    .#{$prefix}menu-item {
-      padding: 10px 15px;
+    > .#{$prefix}menu-item {
+      padding: $menu-item-padding-vertical;
       margin: 5px 0;
-      border-left: 2px solid transparent;
+      position: relative;
+      right: -1px;
 
       &_active {
-        color: $primary-color;
-        border-left-color: $primary-color;
+        @include menu-item-active($primary-color, true);
+      }
+    }
+
+    .#{$prefix}menu-sub {
+      padding: 0;
+      margin: 0;
+
+      &_active{
+        .#{$prefix}menu-sub__title {
+          color: $primary-color;
+        }
+      }
+
+      &__title {
+        padding: $menu-item-padding-vertical;
+        margin: 5px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &__list {
+        color: $body-color;
+
+        > .#{$prefix}menu-item {
+          padding: 0 48px;
+        }
+
+        &_open {
+          display: block;
+        }
+
+        > .#{$prefix}menu-item_active {
+          @include menu-item-active($primary-color, true);
+        }
+      }
+    }
+
+    .#{$prefix}menu-item-group {
+      &__title {
+        padding: 10px 30px;
+      }
+
+      &__list {
+        > .#{$prefix}menu-item {
+          padding: 0 48px;
+
+          &_active{
+            @include menu-item-active($primary-color, true);
+          }
+        }
       }
     }
   }
@@ -82,7 +134,7 @@
   box-sizing: border-box;
   white-space: nowrap;
   cursor: pointer;
-  transition: all 300ms;
+  transition: background-color 300ms;
 
   &_disabled {
     opacity: .5;
@@ -100,18 +152,10 @@
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
-    border-radius: $menu-sub-border-radius;
 
     > .#{$prefix}menu-item {
-      height: 40px;
-      margin-top: 4px;
-      margin-bottom: 4px;
       padding: 0 20px;
-      overflow: hidden;
-      font-size: 14px;
-      line-height: 40px;
-      text-overflow: ellipsis;
+      @include menu-sub-item-style();
 
       &:hover {
         color: $primary-color;
@@ -140,14 +184,8 @@
     white-space: nowrap;
 
     .#{$prefix}menu-item {
-      height: 40px;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      padding: 0 30px 0 30px;
-      overflow: hidden;
-      font-size: 14px;
-      line-height: 40px;
-      text-overflow: ellipsis;
+      padding: 0 30px;
+      @include menu-sub-item-style();
 
       &:hover {
         color: $primary-color;

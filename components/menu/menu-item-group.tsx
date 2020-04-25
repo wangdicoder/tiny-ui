@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { MenuItemProps } from './menu-item';
-import { MenuContext } from './menu-context';
 
 export interface MenuItemGroupProps
   extends BaseProps,
@@ -22,13 +21,10 @@ const MenuItemGroup = (props: MenuItemGroupProps): React.ReactElement => {
     children,
     ...otherProps
   } = props;
-  const context = useContext(MenuContext);
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_active`]: context.index === index,
-  });
+  const cls = classNames(prefixCls, className);
 
   return (
-    <li {...otherProps} key={title} title={title} className={cls} style={style}>
+    <li {...otherProps} key={title} className={cls} style={style}>
       <div className={`${prefixCls}__title`}>{title}</div>
       <ul className={`${prefixCls}__list`}>
         {React.Children.map(children, (child, idx) => {

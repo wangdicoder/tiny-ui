@@ -1,4 +1,17 @@
-@mixin horizontal-item-active($color){
+@mixin menu-sub-item-style(){
+  height: 40px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 40px;
+  text-overflow: ellipsis;
+}
+
+@mixin menu-item-active($color, $display-right-border: false){
   background-color: lighten($color, 40%);
   color: $color;
+  @if $display-right-border {
+    border-right: 3px solid $color;
+  }
 }
