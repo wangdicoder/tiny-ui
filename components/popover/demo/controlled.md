@@ -24,7 +24,7 @@ Use `visible` prop to control the display of the card.
       trigger="click"
       title="Popover Title"
       content={content}>
-      <Button color="primary">
+      <Button btnType="primary">
         Click Me
       </Button>
     </Popover>

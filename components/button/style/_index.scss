@@ -110,7 +110,6 @@ $btn-prefix: #{$prefix}btn;
 
   &_loading, &_disabled {
     opacity: $btn-disabled-opacity;
-    pointer-events: none;
   }
 
   &_loading{

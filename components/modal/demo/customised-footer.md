@@ -23,7 +23,7 @@ Set `footer={null}` if you don't need default footer buttons.
   
     return (
       <>
-        <Button color="primary" onClick={() => setVisible(true)}>Open Modal</Button>
+        <Button btnType="primary" onClick={() => setVisible(true)}>Open Modal</Button>
         <Modal
           header="Custom Footer"
           visible={visible}
@@ -32,9 +32,9 @@ Set `footer={null}` if you don't need default footer buttons.
           confirmText="Submit"
           cancelText="Reture"
           confirmLoading={loading}>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
         </Modal>
       </>
     );

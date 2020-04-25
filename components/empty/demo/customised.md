@@ -12,10 +12,10 @@ Customize image source, image size, description and extra content.
     }}
     description={
       <span>
-        Customize <a href="#API">Description</a>
+        Customize <Link href="#API">Description</Link>
       </span>
     }>
-    <Button color="primary">Create Now</Button>
+    <Button btnType="primary">Create Now</Button>
   </Empty>
 ```
 

@@ -10,7 +10,7 @@
   <div>
     <Input onChange={value => setText(value)} placeholder="Inout something and then click button"/>
     <CopyToClipboard text={text} onClick={() => Message.success('Copy successfully')}>
-      <Button color="primary" style={{ marginTop: 5 }}>Copy</Button>
+      <Button btnType="primary" style={{ marginTop: 5 }}>Copy</Button>
     </CopyToClipboard>
     <br/>
     <br/>

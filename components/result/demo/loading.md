@@ -9,7 +9,7 @@ The result is in a loading status.
   status="loading"
   title="Your order is in processing."
   extra={[
-    <Button color="primary">
+    <Button btnType="primary">
       Go Console
     </Button>
   ]}

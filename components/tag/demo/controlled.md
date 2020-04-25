@@ -19,7 +19,7 @@ By using the `visible` prop, you can control the close state of Tag.
         </Tag>
         <br />
         <br />
-        <Button color="primary" size="sm" onClick={() => setVisible(!visible)}>
+        <Button btnType="primary" size="sm" onClick={() => setVisible(!visible)}>
           Toggle
         </Button>
       </>

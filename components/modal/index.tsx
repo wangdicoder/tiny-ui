@@ -85,7 +85,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
           <Button
             loading={confirmLoading}
             onClick={onConfirm}
-            color="primary"
+            btnType="primary"
             className={`${prefixCls}__footer-btn`}
             {...confirmButtonProps}>
             {confirmText}

@@ -57,7 +57,7 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
           <Button size="sm" onClick={cancelOnClick}>
             {cancelText}
           </Button>
-          <Button size="sm" color="primary" onClick={confirmOnClick}>
+          <Button size="sm" btnType="primary" onClick={confirmOnClick}>
             {confirmText}
           </Button>
         </div>

@@ -13,15 +13,15 @@ Basic modal.
   
     return (
       <>
-        <Button color="primary" onClick={() => setVisible(true)}>Open Modal</Button>
+        <Button btnType="primary" onClick={() => setVisible(true)}>Open Modal</Button>
         <Modal
           header="Basic Modal"
           visible={visible}
           onOk={() => {}}
           onCancel={() => setVisible(false)}>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
         </Modal>
       </>
     );

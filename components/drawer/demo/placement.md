@@ -23,7 +23,7 @@ const { Group } = Radio;
         <br/>
         <br/>
 
-        <Button color="primary" onClick={() => setVisible(true)}>
+        <Button btnType="primary" onClick={() => setVisible(true)}>
           Open
         </Button>
 

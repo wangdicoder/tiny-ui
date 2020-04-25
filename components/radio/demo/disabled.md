@@ -14,15 +14,15 @@ Disabled state of Radio.
     
     return(
       <>
-      <Group value={value} onChange={(val) => setValue(val)} disabled={disabled}>
-        <Radio value="a">A</Radio>
-        <Radio value="b">B</Radio>
-        <Radio value="c" disabled>C</Radio>
-        <Radio value="d">D</Radio>
-      </Group>
-      <br/>
-      <br/>
-      <Button color="primary" onClick={() => setDisabled(!disabled)}>Toggle disabled</Button>
+        <Group value={value} onChange={(val) => setValue(val)} disabled={disabled}>
+          <Radio value="a">A</Radio>
+          <Radio value="b">B</Radio>
+          <Radio value="c" disabled>C</Radio>
+          <Radio value="d">D</Radio>
+        </Group>
+        <br/>
+        <br/>
+        <Button btnType="primary" onClick={() => setDisabled(!disabled)}>Toggle disabled</Button>
       </>
     );
   };

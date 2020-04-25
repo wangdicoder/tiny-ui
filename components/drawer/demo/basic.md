@@ -10,7 +10,7 @@ Basic drawer.
 
   return (
     <div>
-      <Button color="primary" onClick={() => setVisible(true)}>
+      <Button btnType="primary" onClick={() => setVisible(true)}>
         Open
       </Button>
       <Drawer

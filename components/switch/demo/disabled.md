@@ -13,7 +13,7 @@ Disabled state of Switch.
       <>
         <Switch disabled={disabled} />
         <br/><br/>
-        <Button color="primary" onClick={() => setDisabled(!disabled)}>
+        <Button btnType="primary" onClick={() => setDisabled(!disabled)}>
           Toggle Disabled
         </Button>
       </>

@@ -12,10 +12,12 @@ Use `centered` or `top` or other styles to set position of modal dialog.
   
     return (
       <>
-        <Button color="primary" onClick={() => setVisible1(true)}>
+        <Button btnType="primary" onClick={() => setVisible1(true)}>
           Display a modal dialog at 20px to the top
         </Button>
-        <Button color="primary" onClick={() => setVisible2(true)}>
+        <br/>
+        <br/>
+        <Button btnType="primary" onClick={() => setVisible2(true)}>
           Vertically centered modal dialog
         </Button>
         <Modal
@@ -24,9 +26,9 @@ Use `centered` or `top` or other styles to set position of modal dialog.
           visible={visible1}
           onOk={() => {}}
           onCancel={() => setVisible1(false)}>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
         </Modal>
         <Modal
           centered
@@ -34,9 +36,9 @@ Use `centered` or `top` or other styles to set position of modal dialog.
           visible={visible2}
           onOk={() => {}}
           onCancel={() => setVisible2(false)}>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
         </Modal>      
       </>
     );

@@ -54,10 +54,10 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'color',
         component: lazy(() => import('./containers/color')),
       },
-      {
-        title: 'Icon',
-        route: 'icon',
-      },
+      // {
+      //   title: 'Icon',
+      //   route: 'icon',
+      // },
       {
         title: 'Image',
         route: 'image',

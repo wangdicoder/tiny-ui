@@ -26,7 +26,7 @@ export interface TagProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Tag: React.FC<TagProps> & { CheckableTag?: any } = (props: TagProps) => {
+const Tag = (props: TagProps) => {
   const {
     prefixCls = 'ty-tag',
     closable = false,
@@ -79,5 +79,7 @@ const Tag: React.FC<TagProps> & { CheckableTag?: any } = (props: TagProps) => {
     </div>
   );
 };
+
+Tag.displayName = 'Tag';
 
 export default Tag;

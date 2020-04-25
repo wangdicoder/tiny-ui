@@ -42,9 +42,14 @@ const { Group } = Button;
 
 ## API
 
-| Property  | Description                      | Type                               | Default |
-| --------- | -------------------------------- | ---------------------------------- | ------- |
-| size      | Button size                      | enum: `sm` &#124; `md` &#124; `lg` | `md`    |
-| disabled  | disable to select                | boolean                            | false   |
-| style	    | style object of container	object | CSSProperties                      | -       |
-| className	| className of container           | string                             | -       |
+| Property  | Description                               | Type                                  | Default |
+| --------- | ----------------------------------------- | ------------------------------------- | ------- |
+| btnType   | button type                               | enum: `default` &#124; `primary` &#124; `outline` &#124; `ghost` &#124; `link` &#124; `info` &#124; `successs` &#124; `warning` &#124; `danger` | `default`    |
+| loading   | set the loading status of button          | boolean                               | `md`    |
+| block     | fit button width to its parent width      | boolean                               | `md`    |
+| size      | button size                               | enum: `sm` &#124; `md` &#124; `lg`    | `md`    |
+| disabled  | disabled state of button                  | boolean                               | false   |
+| round     | rounded button                            | boolean                               | false   |
+| icon      | render an icon on the left of the text    | React.ReactNode                       | false   |
+| style	    | style object of container	object          | CSSProperties                         | -       |
+| className	| className of container                    | string                                | -       |

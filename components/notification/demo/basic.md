@@ -16,7 +16,7 @@ The simplest usage that close the notification box after 4.5s.
     });
   };
   
-  return <Button color="primary" onClick={btnOnClick}>Open the notification box</Button>;
+  return <Button btnType="primary" onClick={btnOnClick}>Open the notification box</Button>;
 }
 ```
 

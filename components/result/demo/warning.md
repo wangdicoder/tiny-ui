@@ -9,7 +9,7 @@ The result of the warning.
   status="warning"
   title="There are some problems with your operation."
   extra={[
-    <Button color="primary" key="console">
+    <Button btnType="primary" key="console">
       Go Console
     </Button>
   ]}

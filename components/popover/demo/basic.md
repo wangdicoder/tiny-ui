@@ -15,7 +15,7 @@ The simplest usage.
 
   return (
     <Popover title="Title" content={content}>
-      <Button color="primary">Hover me</Button>
+      <Button btnType="primary">Hover me</Button>
     </Popover> 
   );
 }

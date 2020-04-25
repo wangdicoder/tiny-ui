@@ -19,7 +19,7 @@ Add an extra content to allow more action.
   };
   
   return (
-    <Button color="red" onClick={onClick}>Delete</Button>
+    <Button btnType="danger" onClick={onClick}>Delete</Button>
   );
 }
 ```

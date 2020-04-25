@@ -18,10 +18,10 @@ A notification box with a icon at the left side.
   
   return (
     <>
-      <Button color="blue" onClick={() => btnOnClick('info')}>Info</Button>
-      <Button color="green" onClick={() => btnOnClick('success')}>Success</Button>
-      <Button color="yellow" onClick={() => btnOnClick('warning')}>Warning</Button>
-      <Button color="red" onClick={() => btnOnClick('error')}>Error</Button>
+      <Button btnType="info" onClick={() => btnOnClick('info')}>Info</Button>
+      <Button btnType="success" onClick={() => btnOnClick('success')}>Success</Button>
+      <Button btnType="warning" onClick={() => btnOnClick('warning')}>Warning</Button>
+      <Button btnType="danger" onClick={() => btnOnClick('error')}>Error</Button>
     </>
   );
 }

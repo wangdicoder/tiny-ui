@@ -10,7 +10,7 @@ A complicated error feedback.
   title="Submission Failed"
   subtitle="Please check and modify the following information before resubmitting."
   extra={[
-    <Button color="primary" key="console">
+    <Button btnType="primary" key="console">
       Go Console
     </Button>
   ]}

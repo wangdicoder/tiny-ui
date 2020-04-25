@@ -9,7 +9,7 @@ Show processing results.
   status="info"
   title="Your operation has been executed."
   extra={[
-    <Button color="primary" key="console">
+    <Button btnType="primary" key="console">
       Go Console
     </Button>
   ]}

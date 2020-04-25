@@ -10,7 +10,7 @@ Pass `icon` attribute to set the icon.
   title="You order has been delivered!"
   icon={<Icon name="delivered" color="#52c41a" size={80}/>}
   extra={[
-    <Button color="primary" key="console">
+    <Button btnType="primary" key="console">
       Go Console
     </Button>
   ]}

@@ -44,4 +44,6 @@ const CheckableTag = (props: CheckableTagProps) => {
   );
 };
 
+CheckableTag.displayName = 'CheckableTag';
+
 export default CheckableTag;

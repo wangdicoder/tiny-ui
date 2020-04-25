@@ -11,7 +11,7 @@ Normal message for information.
   };
   
   return (
-    <Button color="primary" onClick={onClick}>Normal message</Button>
+    <Button btnType="primary" onClick={onClick}>Normal message</Button>
   );
 }
 ```

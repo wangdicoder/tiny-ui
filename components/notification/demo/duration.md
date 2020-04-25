@@ -15,7 +15,7 @@ If set the `duration` value to 0, the notification will never close automaticall
   };
   
   return (
-    <Button color="primary" onClick={btnOnClick}>Open the notification box</Button>
+    <Button btnType="primary" onClick={btnOnClick}>Open the notification box</Button>
   );
 }
 ```

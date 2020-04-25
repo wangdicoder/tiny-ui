@@ -11,7 +11,7 @@ Open a new drawer on top of an existing drawer to handle multi branch tasks.
 
   return (
     <>
-      <Button color="primary" onClick={() => setVisible(true)}>
+      <Button btnType="primary" onClick={() => setVisible(true)}>
         Open drawer
       </Button>
       <Drawer
@@ -20,7 +20,7 @@ Open a new drawer on top of an existing drawer to handle multi branch tasks.
         closable={false}
         onClose={() => setVisible(false)}
         visible={visible}>
-        <Button color="primary" onClick={() => setChildVisible(true)}>
+        <Button btnType="primary" onClick={() => setChildVisible(true)}>
           Two-level drawer
         </Button>
         <Drawer
@@ -47,7 +47,7 @@ Open a new drawer on top of an existing drawer to handle multi branch tasks.
             onClick={() => setVisible(false)}>
             Cancel
           </Button>
-          <Button onClick={() => setVisible(false)} color="primary">
+          <Button onClick={() => setVisible(false)} btnType="primary">
             Submit
           </Button>
         </div>
