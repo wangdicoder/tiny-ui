@@ -8,6 +8,14 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.80](https://github.com/wangdicoder/tiny-ui/compare/v0.0.79...v0.0.80) (2020-04-25)
+
+
+### Features
+
+* **lib:** add link component ([01bebbb](https://github.com/wangdicoder/tiny-ui/commit/01bebbb68e518321c5112bc133469dcd5aa915c2))
+* copy to clipboard component ([442b3eb](https://github.com/wangdicoder/tiny-ui/commit/442b3eb0d3740ac92699b7c1e0f608bbdb932e5b))
+
 ### [0.0.79](https://github.com/wangdicoder/tiny-ui/compare/v0.0.78...v0.0.79) (2020-03-18)
 
 
