@@ -39,7 +39,7 @@ $btn-prefix: #{$prefix}btn;
     vertical-align: middle;
 
     & + span{
-      margin-left: .5em;
+      margin-left: .3em;
     }
   }
 
@@ -103,6 +103,9 @@ $btn-prefix: #{$prefix}btn;
 
   &_loading, &_disabled {
     opacity: $btn-disabled-opacity;
+    &:hover{
+      text-decoration-line: none;
+    }
   }
 
   &_loading{
