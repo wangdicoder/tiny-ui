@@ -13,7 +13,7 @@ Click the button to toggle between available and disabled states.
       <InputNumber disabled={disabled} min={0} max={10} defaultValue={5} />
       <br/>
       <Button 
-        onClick={() => setDisabled(!disabled)} color="primary">
+        onClick={() => setDisabled(!disabled)} btnType="primary">
         Toggle disabled
       </Button>
     </div>

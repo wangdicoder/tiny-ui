@@ -4,8 +4,8 @@ import React, {
   useState,
   ReactNode,
   MouseEvent,
-  FormEvent,
   KeyboardEvent,
+  ChangeEvent,
 } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
@@ -15,14 +15,14 @@ export type InputSizes = 'sm' | 'md' | 'lg';
 
 export interface InputProps
   extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['input']>, 'size' | 'onChange' | 'prefix'> {
+    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['input']>, 'size' | 'prefix'> {
   clearable?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
   value?: string;
   defaultValue?: string;
-  onChange?: (value: any, event: FormEvent | MouseEvent) => void;
-  onEnterPress?: (event: KeyboardEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onEnterPress?: (e: KeyboardEvent<HTMLInputElement>) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>; // prevent covering keydown event by enter press
   size?: InputSizes;
   disabled?: boolean;
@@ -54,25 +54,24 @@ const Input = (props: InputProps): React.ReactElement => {
   const [value, setValue] = useState('value' in props ? props.value : defaultValue);
   const [inputPadding, setInputPadding] = useState({ paddingLeft: '7px', paddingRight: '7px' });
 
-  const inputOnChange = (e: FormEvent<HTMLInputElement>): void => {
+  const inputOnChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const val = e.currentTarget.value;
     !('value' in props) && setValue(val);
-    onChange && onChange(e.currentTarget.value, e);
+    onChange && onChange(e);
   };
 
-  const inputOnKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const inputOnKeydown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.keyCode === 13) {
       onEnterPress && onEnterPress(e);
     }
     onKeyDown && onKeyDown(e);
   };
 
-  const clearBtnOnClick = (e: MouseEvent<HTMLSpanElement>) => {
+  const clearBtnOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
     setValue('');
-    onChange && onChange('', e);
   };
 
-  const renderClearButton = (): React.ReactNode => {
+  const renderClearButton = (): React.ReactElement | null => {
     if (clearable && value && value.length > 0) {
       return (
         <span className={`${prefixCls}__clear-btn`} onClick={clearBtnOnClick}>
