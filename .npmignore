@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 _template
+coverage
 scripts
 test
 docs

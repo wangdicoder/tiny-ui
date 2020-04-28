@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { MenuContext } from './menu-context';
 import { MenuItemProps } from './menu-item';
+import Transition from '../transition';
 
 export interface SubMenuProps
   extends BaseProps,
@@ -60,24 +61,26 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
         <span>{title}</span>
         <span className={arrowCls} />
       </div>
-      <ul className={subMenuCls}>
-        {React.Children.map(children, (child, idx) => {
-          const childElement = child as React.FunctionComponentElement<MenuItemProps>;
-          if (
-            childElement.type.displayName === 'MenuItem' ||
-            childElement.type.displayName === 'MenuItemGroup'
-          ) {
-            const childProps = {
-              ...childElement.props,
-              index: `${index}-${idx}`,
-            };
-            return React.cloneElement(childElement, childProps);
-          } else {
-            console.warn('Menu has a child that is not a MenuItem component.');
-            return null;
-          }
-        })}
-      </ul>
+      <Transition timeout={mode === 'horizontal' ? 250 : 0} animation="zoom-in-top" in={menuOpen}>
+        <ul className={subMenuCls}>
+          {React.Children.map(children, (child, idx) => {
+            const childElement = child as React.FunctionComponentElement<MenuItemProps>;
+            if (
+              childElement.type.displayName === 'MenuItem' ||
+              childElement.type.displayName === 'MenuItemGroup'
+            ) {
+              const childProps = {
+                ...childElement.props,
+                index: `${index}-${idx}`,
+              };
+              return React.cloneElement(childElement, childProps);
+            } else {
+              console.warn('Menu has a child that is not a MenuItem component.');
+              return null;
+            }
+          })}
+        </ul>
+      </Transition>
     </li>
   );
 };

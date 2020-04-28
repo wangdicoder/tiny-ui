@@ -1,0 +1,28 @@
+@import "../../style/variables";
+
+@mixin zoom-animation(
+  $direction: 'top',
+  $scaleStart: scaleY(0),
+  $scaleEnd: scaleY(1),
+  $origin: center top,
+) {
+  .#{$prefix}zoom-in-#{$direction}-enter {
+    opacity: 0;
+    transform: $scaleStart;
+  }
+  .#{$prefix}zoom-in-#{$direction}-enter-active {
+    opacity: 1;
+    transform: $scaleEnd;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin
+  }
+  .#{$prefix}zoom-in-#{$direction}-exit {
+    opacity: 1;
+  }
+  .#{$prefix}zoom-in-#{$direction}-exit-active {
+    opacity: 0;
+    transform: $scaleStart;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+  }
+}

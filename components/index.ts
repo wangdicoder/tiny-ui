@@ -53,6 +53,7 @@ export { default as Textarea } from './textarea';
 export { default as Timeline } from './timeline';
 // export { default as TimePicker } from './time-picker';
 export { default as Tooltip } from './tooltip';
+export { default as Transition } from './transition';
 export { default as Typography } from './typography';
 // export { default as Waterfall } from './waterfall';
 export { withLocale } from './intl-provider/with-locale';
