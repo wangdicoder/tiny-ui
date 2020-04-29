@@ -1,0 +1,74 @@
+@import "../../style/variables";
+
+.#{$prefix}select {
+  position: relative;
+
+  &__dropdown {
+    position: absolute;
+    width: 100%;
+    top: calc(100% + 3px);
+    margin: 0;
+    padding: 4px 0;
+    list-style-type: none;
+    background-color: #fff;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: $select-dropdown-shadow;
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+  }
+
+  &__arrow {
+    display: inline-block;
+    transition: transform 300ms;
+
+    &_reverse {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.#{$prefix}select-option {
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+  color: $font-color;
+  transition: all 300ms;
+
+  &_active {
+    background-color: #f5f5f5;
+  }
+
+  &_selected {
+    background-color: lighten($primary-color, 40%);
+    font-weight: $select-selected-font-weight;
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+    background-color: #fff;
+    opacity: .5;
+  }
+}
+
+.#{$prefix}select-group {
+
+  &__title {
+    font-size: $font-size-sm;
+    cursor: default;
+    color: $gray-600;
+    padding: 7px 12px;
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    > .#{$prefix}select-option {
+      padding-left: 24px;
+    }
+  }
+}
