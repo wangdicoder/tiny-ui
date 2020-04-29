@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { Target, getScroll, getNodeScrollHeight, getNodeHeight } from '../_utils/dom';
+import { useEventListener } from '../_utils/hooks';
 
 export interface ScrollIndicatorProps extends BaseProps {
   fixed?: boolean;
@@ -34,14 +35,8 @@ const ScrollIndicator = (props: ScrollIndicatorProps): React.ReactElement => {
     [target]
   );
 
-  useEffect(() => {
-    const element = target ? (target() ? target() : window) : window;
-    element.addEventListener('scroll', handleScroll);
-
-    return (): void => {
-      element.removeEventListener('scroll', handleScroll);
-    };
-  }, [target, handleScroll]);
+  const element = target ? (target() ? target() : window) : window;
+  useEventListener('scroll', handleScroll, element);
 
   return <div className={cls} style={{ ...style, width }} />;
 };

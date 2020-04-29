@@ -1,5 +1,20 @@
 import { RefObject, useEffect, useState } from 'react';
 
+export const useEventListener = (
+  event: keyof HTMLElementEventMap,
+  handler: EventListener,
+  target?: HTMLElement | Window
+): void => {
+  const el = target ? target : window;
+  useEffect(() => {
+    el.addEventListener(event, handler);
+
+    return (): void => {
+      el.removeEventListener(event, handler);
+    };
+  }, [el, event, handler]);
+};
+
 export const useClickOutside = (ref: RefObject<HTMLElement>, handler: Function): void => {
   useEffect(() => {
     const listener = (event: MouseEvent): void => {
@@ -9,7 +24,7 @@ export const useClickOutside = (ref: RefObject<HTMLElement>, handler: Function):
       handler(event);
     };
     document.addEventListener('click', listener);
-    return () => {
+    return (): void => {
       document.removeEventListener('click', listener);
     };
   }, [ref, handler]);

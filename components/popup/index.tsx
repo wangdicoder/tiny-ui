@@ -139,11 +139,16 @@ const Popup = (props: PopupProps): React.ReactElement | null => {
 
   useEffect(() => {
     if (target && popupRef.current) {
-      const offset = getOffset({ target, popup: popupRef.current!, gap, placement });
+      const offset = getOffset({
+        gap,
+        target,
+        popup: popupRef.current!,
+        placement: placement as PlacementType,
+      });
       setLeft(`${offset.left}px`);
       setTop(`${offset.top}px`);
     }
-  }, [show, top, left, gap, placement]);
+  }, [target, show, top, left, gap, placement]);
 
   return (
     <Portal>

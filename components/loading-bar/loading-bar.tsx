@@ -7,7 +7,7 @@ export interface LoadingBarProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const LoadingBar = (props: LoadingBarProps) => {
+const LoadingBar = (props: LoadingBarProps): React.ReactElement => {
   const { prefixCls = 'ty-loading-bar', didMount, className, style } = props;
   const cls = classNames(prefixCls, className);
 
