@@ -14,7 +14,7 @@ $select-arrow: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm
   vertical-align: middle;
   box-sizing: border-box;
   border: 1px solid #d9d9d9;
-  border-radius: $select-border-radius;
+  border-radius: $native-select-border-radius;
   background-color: #fff;
   background-image: url($select-arrow);
   background-repeat: no-repeat, repeat;
@@ -52,14 +52,14 @@ $select-arrow: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm
   }
 
   &_sm {
-    @include native-size($select-sm-padding, $select-sm-font-size);
+    @include native-size($native-select-sm-padding, $native-select-sm-font-size);
   }
 
   &_md {
-    @include native-size($select-md-padding, $select-md-font-size);
+    @include native-size($native-select-md-padding, $native-select-md-font-size);
   }
 
   &_lg {
-    @include native-size($select-lg-padding, $select-lg-font-size);
+    @include native-size($native-select-lg-padding, $native-select-lg-font-size);
   }
 }

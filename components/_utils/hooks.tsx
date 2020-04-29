@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
 export const useClickOutside = (ref: RefObject<HTMLElement>, handler: Function): void => {
   useEffect(() => {
@@ -14,3 +14,19 @@ export const useClickOutside = (ref: RefObject<HTMLElement>, handler: Function):
     };
   }, [ref, handler]);
 };
+
+export function useDebounce<T>(value: T, delay = 300): [T] {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = window.setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return (): void => {
+      window.clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return [debouncedValue];
+}

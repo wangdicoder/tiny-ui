@@ -107,12 +107,8 @@ $headings-color: null                         !default;
 
 // Border & Border Radius
 $border-radius: 3px                           !default;
-$border-width: 1px !default;
-$border-color: $gray-300 !default;
-
-$border-radius: .25rem !default;
-$border-radius-lg: .3rem !default;
-$border-radius-sm: .2rem !default;
+$border-width: 1px                            !default;
+$border-color: $gray-300                      !default;
 
 // Box shadow
 $box-shadow-sm: 0 .125rem .25rem rgba($black-color, .075)     !default;
@@ -192,19 +188,22 @@ $input-lg-height: $height-lg                  !default;
 $textarea-font-size: $font-size-base          !default;
 $textarea-padding: 5px                        !default;
 
-// Select
-$select-sm-padding: 3px 25px 3px 7px          !default;
-$select-sm-font-size: $font-size-sm           !default;
-$select-md-padding: 6px 25px 6px 7px          !default;
-$select-md-font-size: $font-size-base         !default;
-$select-lg-padding: 9px 25px 9px 7px          !default;
-$select-lg-font-size: $font-size-lg           !default;
-$select-border-radius: $border-radius         !default;
+// Native Select
+$native-select-sm-padding: 3px 25px 3px 7px   !default;
+$native-select-sm-font-size: $font-size-sm    !default;
+$native-select-md-padding: 6px 25px 6px 7px   !default;
+$native-select-md-font-size: $font-size-base  !default;
+$native-select-lg-padding: 9px 25px 9px 7px   !default;
+$native-select-lg-font-size: $font-size-lg    !default;
+$native-select-border-radius: $border-radius  !default;
 
 // Switch
 $switch-md-font-size: 12px                    !default;
 $switch-sm-font-size: 9px                     !default;
 $switch-lg-font-size: 14px                    !default;
+
+// Select
+$select-dropdown-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05) !default;
 
 // Notification
 $notification-width: 380px                    !default;

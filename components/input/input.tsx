@@ -10,6 +10,7 @@ import React, {
 import classNames from 'classnames';
 import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
+import { KeyCode } from '../_utils/enum';
 
 export type InputSizes = 'sm' | 'md' | 'lg';
 
@@ -61,7 +62,7 @@ const Input = (props: InputProps): React.ReactElement => {
   };
 
   const inputOnKeydown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.keyCode === 13) {
+    if (e.keyCode === KeyCode.ENTER) {
       onEnterPress && onEnterPress(e);
     }
     onKeyDown && onKeyDown(e);

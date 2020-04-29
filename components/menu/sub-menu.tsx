@@ -4,6 +4,7 @@ import { BaseProps } from '../_utils/props';
 import { MenuContext } from './menu-context';
 import { MenuItemProps } from './menu-item';
 import Transition from '../transition';
+import { ArrowDown } from '../_utils/components';
 
 export interface SubMenuProps
   extends BaseProps,
@@ -59,7 +60,9 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
       onMouseLeave={handleOnMouseLeave}>
       <div className={`${prefixCls}__title`} onClick={handleOnClick}>
         <span>{title}</span>
-        <span className={arrowCls} />
+        <span className={arrowCls}>
+          <ArrowDown size={10} />
+        </span>
       </div>
       <Transition timeout={mode === 'horizontal' ? 250 : 0} animation="zoom-in-top" in={menuOpen}>
         <ul className={subMenuCls}>

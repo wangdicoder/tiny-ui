@@ -27,7 +27,7 @@ export const camelCaseToDash = (str: string) => {
  * @param color: hex color
  * @param opacity: max 1
  */
-export const convertHexToRGBA = (color: string, opacity: number = 1): string => {
+export const convertHexToRGBA = (color: string, opacity = 1): string => {
     if (/^#[0-9A-F]{6}$/i.test(color)) {
         const hex = color.replace('#', '');
         const r = parseInt(hex.substring(0, 2), 16);
