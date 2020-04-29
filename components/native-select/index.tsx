@@ -1,11 +1,17 @@
-import NativeSelect from './native-select';
-import Option from './option';
-import Group from './group';
+import React from 'react';
+import NativeSelect, { NativeSelectProps, NativeSelectSize } from './native-select';
+import NativeOption from './native-option';
+import NativeOptGroup from './native-opt-group';
 
-export { NativeSelectProps, NativeSelectSize } from './native-select';
-export { NativeSelectGroupProps } from './group';
-export { NativeSelectOptionProps } from './option';
+export { NativeSelectSize };
 
-NativeSelect.Option = Option;
-NativeSelect.Group = Group;
-export default NativeSelect;
+type ISelect = React.ForwardRefExoticComponent<NativeSelectProps> & {
+  Option: typeof NativeOption;
+  OptGroup: typeof NativeOptGroup;
+};
+
+const DefaultSelect = NativeSelect as ISelect;
+DefaultSelect.Option = NativeOption;
+DefaultSelect.OptGroup = NativeOptGroup;
+
+export default DefaultSelect;

@@ -46,8 +46,12 @@ $danger-color: #f44336                        !default;
 $danger-light-color: #ffa39e                  !default;
 $danger-lighter-color: #fff1f0                !default;
 
+// Body
+$body-bg-color: $white-color                  !default;
+$body-color: $gray-800                        !default;
+
 // Font & Font family
-$font-color: rgba(0, 0, 0, .65)               !default;
+$font-color: $body-color                      !default;
 $font-path: 'fonts'                           !default;
 $font-size-base: 1rem                         !default;
 $font-size-lg: $font-size-base * 1.25         !default;
@@ -85,10 +89,6 @@ $layout-sidebar-background: #12131a           !default;
 
 // Spacing
 $spacer: 1rem !default;
-
-// Body
-$body-bg-color: $white-color                  !default;
-$body-color: $gray-800                        !default;
 
 // Typography
 $h1-font-size: $font-size-base * 2.5          !default;
@@ -195,9 +195,9 @@ $textarea-padding: 5px                        !default;
 // Select
 $select-sm-padding: 3px 25px 3px 7px          !default;
 $select-sm-font-size: $font-size-sm           !default;
-$select-md-padding: 6px 25px 6px 10px         !default;
+$select-md-padding: 6px 25px 6px 7px          !default;
 $select-md-font-size: $font-size-base         !default;
-$select-lg-padding: 9px 25px 9px 12px         !default;
+$select-lg-padding: 9px 25px 9px 7px          !default;
 $select-lg-font-size: $font-size-lg           !default;
 $select-border-radius: $border-radius         !default;
 

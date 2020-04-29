@@ -4,19 +4,19 @@
 
 ```jsx live
 () => {
-  const { Option, Group } = NativeSelect;
+  const { Option, OptGroup } = NativeSelect;
   
   return (
     <NativeSelect>
-      <Group label="China">
+      <OptGroup label="China">
         <Option>Beijing</Option>
         <Option>Shanghai</Option>
-      </Group>
-      <Group label="Australia">
+      </OptGroup>
+      <OptGroup label="Australia">
         <Option>Melbourne</Option>
         <Option>Sydney</Option>
         <Option>Perth</Option>
-      </Group>
+      </OptGroup>
     </NativeSelect>
   );
 }
