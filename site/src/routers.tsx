@@ -293,7 +293,7 @@ export const COMPONENT_MENU: RouterItem[] = [
       {
         title: 'BackTop',
         route: 'back-top',
-        component: lazy(() => import('../../components/backtop/index.md')),
+        component: lazy(() => import('../../components/back-top/index.md')),
       },
       {
         title: 'CopyToClipboard',
