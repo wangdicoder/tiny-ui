@@ -37,11 +37,16 @@ const SelectOption = (props: SelectOptionsProps): React.ReactElement => {
     setActive(false);
   };
 
+  const onClick = (): void => {
+    !disabled && context.onSelect(value);
+  };
+
   return (
     <li
       key={value}
       className={cls}
       style={style}
+      onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       aria-selected={isSelect}

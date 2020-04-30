@@ -12,11 +12,13 @@
     list-style-type: none;
     background-color: #fff;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     z-index: 10;
     box-shadow: $select-dropdown-shadow;
     border-radius: $border-radius;
     font-size: $font-size-base;
+    max-height: $select-dropdown-max-height;
   }
 
   &__arrow {
@@ -30,7 +32,7 @@
 }
 
 .#{$prefix}select-option {
-  padding: 8px 12px;
+  padding: 7px 12px;
   font-size: 14px;
   line-height: 22px;
   cursor: pointer;

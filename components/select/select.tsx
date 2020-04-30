@@ -8,11 +8,14 @@ import { useClickOutside } from '../_utils/hooks';
 import { ArrowDown } from '../_utils/components';
 import { SelectContext } from './select-context';
 
+type SelectValue = string | string[];
+
 export interface SelectProps
   extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  value?: string | string[];
-  defaultValue?: string | string[];
+    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'onSelect'> {
+  value?: SelectValue;
+  defaultValue?: SelectValue;
+  onSelect?: (value: SelectValue) => void;
   placeholder?: string;
   disabled?: boolean;
   defaultOpen?: boolean;
@@ -35,10 +38,11 @@ const Select = (props: SelectProps): React.ReactElement => {
     style,
     children,
     dropdownStyle,
+    onSelect,
     ...otherProps
   } = props;
   const [isOpenDropdown, setIsOpenDropdown] = useState('open' in props ? props.open : defaultOpen);
-  const [selectVal] = useState('value' in props ? value : defaultValue);
+  const [selectVal, setSelectVal] = useState('value' in props ? value : defaultValue);
   const ref = useRef<HTMLDivElement | null>(null);
   const cls = classNames(prefixCls, className);
   const arrowCls = classNames(`${prefixCls}__arrow`, {
@@ -59,6 +63,15 @@ const Select = (props: SelectProps): React.ReactElement => {
     }
   };
 
+  const contextValue = {
+    value: selectVal,
+    onSelect: (value: SelectValue): void => {
+      setSelectVal(value);
+      setIsOpenDropdown(false);
+      onSelect && onSelect(value);
+    },
+  };
+
   useEffect(() => {
     'open' in props && setIsOpenDropdown(props.open);
   }, [props]);
@@ -66,6 +79,7 @@ const Select = (props: SelectProps): React.ReactElement => {
   return (
     <div {...otherProps} ref={ref} className={cls} style={style}>
       <Input
+        value={Array.isArray(selectVal) ? selectVal[0] : selectVal}
         disabled={disabled}
         placeholder={placeholder}
         onClick={inputOnClick}
@@ -75,7 +89,7 @@ const Select = (props: SelectProps): React.ReactElement => {
           </span>
         }
       />
-      <SelectContext.Provider value={{ value: selectVal }}>
+      <SelectContext.Provider value={contextValue}>
         <Transition in={isOpenDropdown} animation="zoom-in-top">
           <ul className={`${prefixCls}__dropdown`} style={dropdownStyle}>
             {React.Children.map(children, child => {
