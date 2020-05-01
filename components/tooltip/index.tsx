@@ -1,52 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
-import Popover, { TriggerType, Placement } from '../popover';
+import Popover, { PopoverProps } from '../popover';
 
-export interface TooltipProps extends BaseProps {
-  title: string | React.ReactNode;
-  placement?: Placement;
-  trigger?: TriggerType;
-  visible?: boolean;
-  defaultVisible?: boolean;
-  onVisibleChange?: (visible: boolean) => void;
-  arrow?: boolean;
-  children: React.ReactElement;
-}
+type TooltipProps = Omit<PopoverProps, 'content'>;
 
 const Tooltip = (props: TooltipProps): React.ReactElement => {
   const {
-    defaultVisible = false,
     placement = 'top',
-    trigger = 'hover',
     prefixCls = 'ty-tooltip',
-    arrow = true,
+    trigger = 'hover',
     title,
-    visible,
-    onVisibleChange,
     className,
-    style,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className, `${prefixCls}_${placement}`);
-  const [popupVisible, setPopupVisible] = useState('visible' in props ? visible : defaultVisible);
-
-  useEffect(() => {
-    'visible' in props && setPopupVisible(props.visible);
-  }, [props]);
 
   return (
     <Popover
+      {...otherProps}
       role="tooltip"
       theme="dark"
-      onVisibleChange={onVisibleChange}
-      visible={popupVisible}
-      placement={placement}
-      arrow={arrow}
-      offset={-2}
-      className={cls}
-      style={style}
       trigger={trigger}
+      className={cls}
+      placement={placement}
       content={title}>
       {children}
     </Popover>

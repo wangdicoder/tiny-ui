@@ -163,7 +163,7 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
         {
           name: 'offset',
           options: {
-            offset: [0, arrow ? 13 + offset : 3 + offset],
+            offset: [0, arrow ? 10 + offset : 3 + offset],
           },
         },
       ],
