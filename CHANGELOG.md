@@ -8,6 +8,13 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.82](https://github.com/wangdicoder/tiny-ui/compare/v0.0.81...v0.0.82) (2020-05-01)
+
+
+### Bug Fixes
+
+* popover - click again to hide ([75d4e8e](https://github.com/wangdicoder/tiny-ui/commit/75d4e8eadd3eeaff3157282883412d11cbe2a9f2))
+
 ### [0.0.81](https://github.com/wangdicoder/tiny-ui/compare/v0.0.80...v0.0.81) (2020-04-25)
 
 
