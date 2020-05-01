@@ -106,7 +106,7 @@ $headings-line-height: 1.2                    !default;
 $headings-color: null                         !default;
 
 // Border & Border Radius
-$border-radius: 3px                           !default;
+$border-radius: 2px                           !default;
 $border-width: 1px                            !default;
 $border-color: $gray-300                      !default;
 
@@ -215,10 +215,12 @@ $notification-margin: 20px                    !default;
 $breadcrumb-font-size: $font-size-base        !default;
 
 // Tag
-$tag-border-radius: 3px                       !default;
+$tag-border-radius: $border-radius            !default;
 
 // Popover
 $popover-arrow-size: 8px                      !default;
+$popover-border-radius: $border-radius        !default;
+$popover-box-shadow: 0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05) !default;
 
 // Tooltip
 $tooltip-arrow-size: 6px                      !default;

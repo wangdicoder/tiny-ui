@@ -43,7 +43,7 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
       visible={popupVisible}
       placement={placement}
       arrow={arrow}
-      gap={-2}
+      offset={-2}
       className={cls}
       style={style}
       trigger={trigger}

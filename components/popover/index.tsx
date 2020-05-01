@@ -40,7 +40,7 @@ export interface PopoverProps extends BaseProps {
   arrow?: boolean;
 
   /** The distance between popup window and trigger target */
-  gap?: number;
+  offset?: number;
 
   /** Delay in seconds, before tooltip is shown on mouse enter */
   mouseEnterDelay?: number;
@@ -61,8 +61,9 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
     defaultVisible = false,
     arrow = true,
     flip = true,
-    // gap = 0,
+    offset = 0,
     theme = 'white',
+    mouseEnterDelay = 100,
     mouseLeaveDelay = 100,
     title,
     content,
@@ -81,26 +82,54 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
   const [popupVisible, setPopupVisible] = useState('visible' in props ? visible : defaultVisible);
   const [target, setTarget] = useState<HTMLElement | undefined>(undefined);
   const popupRef = useRef<HTMLDivElement | null>(null);
+  const delayDisplayPopupTimer = useRef<number | undefined>(undefined);
+  const delayHidePopupTimer = useRef<number | undefined>(undefined);
 
-  const updateVisible = useCallback(
-    (isVisible: boolean): void => {
-      setPopupVisible(isVisible);
-      onVisibleChange && onVisibleChange(isVisible);
-    },
-    [onVisibleChange]
-  );
+  const displayPopup = useCallback(() => {
+    setPopupVisible(true);
+    onVisibleChange && onVisibleChange(true);
+  }, [onVisibleChange]);
 
-  let timer = -1;
-  const onMouseEnter = useCallback((): void => {
-    clearTimeout(timer);
-    updateVisible(true);
-  }, [timer, updateVisible]);
+  const hidePopup = useCallback(() => {
+    setPopupVisible(false);
+    onVisibleChange && onVisibleChange(false);
+  }, [onVisibleChange]);
 
-  const onMouseLeave = useCallback((): void => {
-    timer = setTimeout(() => {
-      updateVisible(false);
+  const delayDisplayPopup = useCallback((): void => {
+    delayDisplayPopupTimer.current = window.setTimeout(() => {
+      displayPopup();
+    }, mouseEnterDelay);
+  }, [mouseEnterDelay, displayPopup]);
+
+  const delayHidePopup = useCallback((): void => {
+    delayHidePopupTimer.current = window.setTimeout(() => {
+      hidePopup();
     }, mouseLeaveDelay);
-  }, []);
+  }, [mouseLeaveDelay, hidePopup]);
+
+  const handlePopupOnMouseEnter = (): void => {
+    if (trigger === 'hover') {
+      displayPopup();
+      window.clearTimeout(delayHidePopupTimer.current);
+    }
+  };
+
+  const handlePopupOnMouseLeave = (): void => {
+    if (trigger === 'hover') {
+      delayHidePopup();
+      window.clearTimeout(delayDisplayPopupTimer.current);
+    }
+  };
+
+  const handleTargetOnMouseEnter = useCallback((): void => {
+    delayDisplayPopup();
+    window.clearTimeout(delayHidePopupTimer.current);
+  }, [delayDisplayPopup]);
+
+  const handleTargetOnMouseLeave = useCallback((): void => {
+    delayHidePopup();
+    window.clearTimeout(delayDisplayPopupTimer.current);
+  }, [delayHidePopup]);
 
   const documentOnClick = useCallback(
     (e: Event): void => {
@@ -112,23 +141,15 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
       )
         return;
 
-      updateVisible(false);
+      hidePopup();
     },
-    [target, updateVisible]
+    [target, hidePopup]
   );
 
-  const onMouseClick = useCallback((): void => {
-    updateVisible(true);
+  const handleTargetOnMouseClick = useCallback((): void => {
+    displayPopup();
     document.addEventListener('click', documentOnClick);
-  }, [documentOnClick, updateVisible]);
-
-  const onMouseDown = useCallback((): void => {
-    updateVisible(true);
-  }, [updateVisible]);
-
-  const onMouseUp = useCallback((): void => {
-    updateVisible(false);
-  }, [updateVisible]);
+  }, [displayPopup, documentOnClick]);
 
   let popperInstance: Instance | null = null;
   const transitionOnEnter = (): void => {
@@ -136,70 +157,82 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
       placement: placement as Placement,
       modifiers: [
         {
-          name: 'preventOverflow',
+          name: 'flip',
+          enabled: flip,
+        },
+        {
+          name: 'offset',
           options: {
-            mainAxis: flip,
+            offset: [0, arrow ? 13 + offset : 3 + offset],
           },
         },
       ],
     });
     if (trigger === 'hover') {
-      popperInstance.state.elements.popper.addEventListener('mouseenter', onMouseEnter);
-      popperInstance.state.elements.popper.addEventListener('mouseleave', onMouseLeave);
+      popperInstance.state.elements.popper.addEventListener('mouseenter', handlePopupOnMouseEnter);
+      popperInstance.state.elements.popper.addEventListener('mouseleave', handlePopupOnMouseLeave);
     }
   };
 
   const transitionOnExited = (): void => {
     if (popperInstance) {
       if (trigger === 'hover') {
-        popperInstance.state.elements.popper.removeEventListener('mouseenter', onMouseEnter);
-        popperInstance.state.elements.popper.removeEventListener('mouseleave', onMouseLeave);
+        popperInstance.state.elements.popper.removeEventListener(
+          'mouseenter',
+          handlePopupOnMouseEnter
+        );
+        popperInstance.state.elements.popper.removeEventListener(
+          'mouseleave',
+          handlePopupOnMouseLeave
+        );
       }
       popperInstance.destroy();
     }
   };
 
   useEffect(() => {
-    if (target) {
-      if (trigger === 'hover') {
-        target.addEventListener('mouseenter', onMouseEnter);
-        target.addEventListener('mouseleave', onMouseLeave);
-      } else if (trigger === 'click') {
-        target.addEventListener('click', onMouseClick);
-      } else if (trigger === 'focus') {
-        if (target.nodeName === 'INPUT' || target.nodeName === 'TEXTAREA') {
-          target.addEventListener('focus', onMouseDown);
-          target.addEventListener('blur', onMouseUp);
-        } else {
-          target.addEventListener('mousedown', onMouseDown);
-          target.addEventListener('mouseup', onMouseUp);
-        }
-      } else if (trigger === 'contextmenu') {
-        target.addEventListener('contextmenu', onMouseClick);
+    if (!target) return;
+
+    if (trigger === 'hover') {
+      target.addEventListener('mouseenter', handleTargetOnMouseEnter);
+      target.addEventListener('mouseleave', handleTargetOnMouseLeave);
+    } else if (trigger === 'click') {
+      target.addEventListener('click', handleTargetOnMouseClick);
+    } else if (trigger === 'focus') {
+      if (target.nodeName === 'INPUT' || target.nodeName === 'TEXTAREA') {
+        target.addEventListener('focus', displayPopup);
+        target.addEventListener('blur', hidePopup);
+      } else {
+        target.addEventListener('mousedown', displayPopup);
+        target.addEventListener('mouseup', hidePopup);
       }
+    } else if (trigger === 'contextmenu') {
+      target.addEventListener('contextmenu', handleTargetOnMouseClick);
     }
 
     return (): void => {
-      if (target) {
-        if (trigger === 'hover') {
-          target.removeEventListener('mouseenter', onMouseEnter);
-          target.removeEventListener('mouseleave', onMouseLeave);
-        } else if (trigger === 'click') {
-          target.removeEventListener('click', onMouseClick);
-        } else if (trigger === 'focus') {
-          if (target.nodeName === 'INPUT' || target.nodeName === 'TEXTAREA') {
-            target.removeEventListener('focus', onMouseDown);
-            target.removeEventListener('blur', onMouseUp);
-          } else {
-            target.removeEventListener('mousedown', onMouseDown);
-            target.removeEventListener('mouseup', onMouseUp);
-          }
-        } else if (trigger === 'contextmenu') {
-          target.removeEventListener('contextmenu', onMouseClick);
-        }
-      }
+      target.removeEventListener('mouseenter', handleTargetOnMouseEnter);
+      target.removeEventListener('mouseleave', handleTargetOnMouseLeave);
+      target.removeEventListener('click', handleTargetOnMouseClick);
+      target.removeEventListener('focus', displayPopup);
+      target.removeEventListener('blur', hidePopup);
+      target.removeEventListener('mousedown', displayPopup);
+      target.removeEventListener('mouseup', hidePopup);
+      target.removeEventListener('contextmenu', handleTargetOnMouseClick);
     };
-  }, [target, trigger, onMouseClick, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp]);
+  }, [
+    target,
+    trigger,
+    handleTargetOnMouseClick,
+    handleTargetOnMouseEnter,
+    handleTargetOnMouseLeave,
+    displayPopup,
+    hidePopup,
+  ]);
+
+  useEffect(() => {
+    'visible' in props && setPopupVisible(props.visible);
+  }, [props]);
 
   const childProps = {
     ref: (el: HTMLElement): void => setTarget(el),
@@ -214,7 +247,9 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
           onExited={transitionOnExited}
           animation="zoom-in-left">
           <div role={role} className={cls} ref={popupRef}>
-            {(title || content) && arrow && <div className={`${prefixCls}__arrow`} />}
+            {(title || content) && arrow && (
+              <div data-popper-arrow className={`${prefixCls}__arrow`} />
+            )}
             {title && <div className={`${prefixCls}__title`}>{title}</div>}
             {content && <div className={`${prefixCls}__content`}>{content}</div>}
           </div>

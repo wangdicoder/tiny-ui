@@ -10,7 +10,7 @@ Use `visible` prop to control the display of the card.
 
   const content = (
     <Button 
-      link 
+      btnType="ghost" 
       onClick={() => setVisible(false)}>
       Close
     </Button>
@@ -27,9 +27,6 @@ Use `visible` prop to control the display of the card.
         Click Me
       </Button>
     </Popover>
-    <br/>
-    <br/>
-    <Switch checked={visible} onChange={(visible) => setVisible(visible)}/>
   </>
   );
 };
