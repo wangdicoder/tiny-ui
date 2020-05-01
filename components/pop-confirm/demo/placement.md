@@ -10,6 +10,10 @@ There are 12 placement options available.
     width: 80,
   };
 
+  const confirm = () => {
+    Message.info('Clicked on Yes.');
+  }
+
   const content = (
     <div>
       <div>This is the content</div>
@@ -23,40 +27,40 @@ There are 12 placement options available.
         <tr>
           <td></td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="top-left">
-              <Button style={btnStyle}>TL</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="top-start" onConfirm={confirm}>
+              <Button style={btnStyle}>TS</Button>
             </PopConfirm>
           </td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="top-center">
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="top" onConfirm={confirm}>
               <Button style={btnStyle}>Top</Button>
             </PopConfirm>
           </td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="top-right">
-              <Button style={btnStyle}>TR</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="top-end" onConfirm={confirm}>
+              <Button style={btnStyle}>TE</Button>
             </PopConfirm>
           </td>
           <td></td>
         </tr>
         <tr>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="left-top">
-              <Button style={btnStyle}>LT</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="left-start" onConfirm={confirm}>
+              <Button style={btnStyle}>LS</Button>
             </PopConfirm>
           </td>
           <td></td>
           <td></td>
           <td></td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="right-top">
-              <Button style={btnStyle}>RT</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="right-start" onConfirm={confirm}>
+              <Button style={btnStyle}>RS</Button>
             </PopConfirm>
           </td>
         </tr>
         <tr>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="left-center">
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="left" onConfirm={confirm}>
               <Button style={btnStyle}>Left</Button>
             </PopConfirm>
           </td>
@@ -64,41 +68,41 @@ There are 12 placement options available.
           <td></td>
           <td></td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="right-center">
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="right" onConfirm={confirm}>
               <Button style={btnStyle}>Right</Button>
             </PopConfirm>
           </td>
         </tr>
         <tr>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="left-bottom">
-              <Button style={btnStyle}>LB</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="left-end" onConfirm={confirm}>
+              <Button style={btnStyle}>LE</Button>
             </PopConfirm>
           </td>
           <td></td>
           <td></td>
           <td></td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="right-bottom">
-              <Button style={btnStyle}>RB</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="right-end" onConfirm={confirm}>
+              <Button style={btnStyle}>RE</Button>
             </PopConfirm>
           </td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="bottom-left">
-              <Button style={btnStyle}>BL</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="bottom-start" onConfirm={confirm}>
+              <Button style={btnStyle}>BS</Button>
             </PopConfirm>
           </td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="bottom-center">
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="bottom" onConfirm={confirm}>
               <Button style={btnStyle}>Bottom</Button>
             </PopConfirm>
           </td>
           <td>
-            <PopConfirm title="Are you sure to delete this?" content={content} placement="bottom-right">
-              <Button style={btnStyle}>BR</Button>
+            <PopConfirm title="Are you sure to delete this?" content={content} placement="bottom-end" onConfirm={confirm}>
+              <Button style={btnStyle}>BE</Button>
             </PopConfirm>
           </td>
           <td></td>

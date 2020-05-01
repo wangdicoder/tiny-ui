@@ -1,36 +1,32 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import Popover, { TriggerType, Placement } from '../popover';
+import Popover, { PopoverProps } from '../popover';
 import Icon from '../icon';
 import Button from '../button';
-import { BaseProps } from '../_utils/props';
 
-export interface PopConfirmProps extends BaseProps {
-  title?: string;
+export interface PopConfirmProps extends PopoverProps {
   confirmText?: string;
   cancelText?: string;
   onConfirm?: (e: React.MouseEvent) => void;
   onCancel?: (e: React.MouseEvent) => void;
   icon?: React.ReactNode;
-  placement?: Placement;
-  trigger?: TriggerType;
-  children: React.ReactElement;
 }
 
 const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
   const {
     prefixCls = 'ty-popconfirm',
     placement = 'top',
-    trigger = 'click',
     confirmText = 'Yes',
     cancelText = 'No',
     title,
     icon,
     onConfirm,
     onCancel,
+    onVisibleChange,
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(false);
@@ -66,14 +62,15 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
 
   return (
     <Popover
+      {...otherProps}
       role="alertdialog"
       visible={visible}
       onVisibleChange={(val: boolean): void => {
         setVisible(val);
+        onVisibleChange && onVisibleChange(val);
       }}
       content={overlay()}
-      placement={placement}
-      trigger={trigger}>
+      placement={placement}>
       {children}
     </Popover>
   );

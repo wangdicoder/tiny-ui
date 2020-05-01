@@ -84,6 +84,7 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
   const popupRef = useRef<HTMLDivElement | null>(null);
   const delayDisplayPopupTimer = useRef<number | undefined>(undefined);
   const delayHidePopupTimer = useRef<number | undefined>(undefined);
+  const popperInstance = useRef<Instance | undefined>(undefined);
 
   const displayPopup = useCallback(() => {
     setPopupVisible(true);
@@ -146,14 +147,21 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
     [target, hidePopup]
   );
 
-  const handleTargetOnMouseClick = useCallback((): void => {
-    displayPopup();
-    document.addEventListener('click', documentOnClick);
-  }, [displayPopup, documentOnClick]);
+  const handleTargetOnMouseClick = useCallback(
+    (e: MouseEvent): void => {
+      e.preventDefault();
+      if (popupVisible) {
+        hidePopup();
+      } else {
+        displayPopup();
+        document.addEventListener('click', documentOnClick, { capture: true });
+      }
+    },
+    [popupVisible, hidePopup, displayPopup, documentOnClick]
+  );
 
-  let popperInstance: Instance | null = null;
   const transitionOnEnter = (): void => {
-    popperInstance = createPopper(target as HTMLElement, popupRef.current as HTMLElement, {
+    const instance = createPopper(target as HTMLElement, popupRef.current as HTMLElement, {
       placement: placement as Placement,
       modifiers: [
         {
@@ -169,24 +177,25 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
       ],
     });
     if (trigger === 'hover') {
-      popperInstance.state.elements.popper.addEventListener('mouseenter', handlePopupOnMouseEnter);
-      popperInstance.state.elements.popper.addEventListener('mouseleave', handlePopupOnMouseLeave);
+      instance.state.elements.popper.addEventListener('mouseenter', handlePopupOnMouseEnter);
+      instance.state.elements.popper.addEventListener('mouseleave', handlePopupOnMouseLeave);
     }
+    popperInstance.current = instance;
   };
 
   const transitionOnExited = (): void => {
-    if (popperInstance) {
+    if (popperInstance.current) {
       if (trigger === 'hover') {
-        popperInstance.state.elements.popper.removeEventListener(
+        popperInstance.current.state.elements.popper.removeEventListener(
           'mouseenter',
           handlePopupOnMouseEnter
         );
-        popperInstance.state.elements.popper.removeEventListener(
+        popperInstance.current.state.elements.popper.removeEventListener(
           'mouseleave',
           handlePopupOnMouseLeave
         );
       }
-      popperInstance.destroy();
+      popperInstance.current.destroy();
     }
   };
 
