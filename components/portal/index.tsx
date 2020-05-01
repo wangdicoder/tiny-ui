@@ -6,7 +6,7 @@ export interface PortalProps {
   children?: React.ReactNode;
 }
 
-const Portal = (props: PortalProps) => {
+const Portal = (props: PortalProps): React.ReactPortal => {
   const { container = document.body, children } = props;
   return ReactDOM.createPortal(children, container);
 };

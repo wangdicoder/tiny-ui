@@ -21,7 +21,6 @@ Use `visible` prop to control the display of the card.
     <Popover
       visible={visible}
       onVisibleChange={(visible) => setVisible(visible)}
-      trigger="click"
       title="Popover Title"
       content={content}>
       <Button btnType="primary">

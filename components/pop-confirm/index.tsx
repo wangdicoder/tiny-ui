@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import Popover, { TriggerType } from '../popover';
-import { PlacementType } from '../popup';
+import Popover, { TriggerType, Placement } from '../popover';
 import Icon from '../icon';
 import Button from '../button';
 import { BaseProps } from '../_utils/props';
@@ -13,7 +12,7 @@ export interface PopConfirmProps extends BaseProps {
   onConfirm?: (e: React.MouseEvent) => void;
   onCancel?: (e: React.MouseEvent) => void;
   icon?: React.ReactNode;
-  placement?: PlacementType;
+  placement?: Placement;
   trigger?: TriggerType;
   children: React.ReactElement;
 }
@@ -21,7 +20,7 @@ export interface PopConfirmProps extends BaseProps {
 const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
   const {
     prefixCls = 'ty-popconfirm',
-    placement = 'top-center',
+    placement = 'top',
     trigger = 'click',
     confirmText = 'Yes',
     cancelText = 'No',

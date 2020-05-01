@@ -1,24 +1,34 @@
-import { RefObject, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Target } from './dom';
 
 export const useEventListener = (
-  event: keyof HTMLElementEventMap,
+  eventName: keyof HTMLElementEventMap,
   handler: EventListener,
-  target?: HTMLElement | Window
+  target: Target = window
 ): void => {
-  const el = target ? target : window;
-  useEffect(() => {
-    el.addEventListener(event, handler);
+  const savedHandler = useRef<EventListener>();
 
+  useEffect(() => {
+    savedHandler.current = handler;
+  }, [handler]);
+
+  useEffect(() => {
+    const isSupported = target && target.addEventListener;
+    if (!isSupported) return;
+
+    const eventListener = (event: Event): void =>
+      savedHandler.current && savedHandler.current(event);
+    target.addEventListener(eventName, eventListener);
     return (): void => {
-      el.removeEventListener(event, handler);
+      target.removeEventListener(eventName, eventListener);
     };
-  }, [el, event, handler]);
+  }, [eventName, target]);
 };
 
-export const useClickOutside = (ref: RefObject<HTMLElement>, handler: Function): void => {
+export const useClickOutside = (target: HTMLElement, handler: Function): void => {
   useEffect(() => {
     const listener = (event: MouseEvent): void => {
-      if (!ref.current || ref.current.contains(event.target as HTMLElement)) {
+      if (!target || target.contains(event.target as HTMLElement)) {
         return;
       }
       handler(event);
@@ -27,7 +37,7 @@ export const useClickOutside = (ref: RefObject<HTMLElement>, handler: Function):
     return (): void => {
       document.removeEventListener('click', listener);
     };
-  }, [ref, handler]);
+  }, [target, handler]);
 };
 
 export function useDebounce<T>(value: T, delay = 300): [T] {

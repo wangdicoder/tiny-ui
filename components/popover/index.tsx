@@ -1,12 +1,25 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
-import Popup, { PlacementType } from '../popup';
-import warning from '../_utils/warning';
-import { getArrowPlacementStyle } from './arrow-placement';
+import { createPopper, Instance } from '@popperjs/core';
+import Transition from '../transition';
+import Portal from '../portal';
 
-export type TriggerType = 'hover' | 'focus' | 'click' | 'context-menu';
+export type TriggerType = 'hover' | 'focus' | 'click' | 'contextmenu';
 export type PopoverTheme = 'white' | 'dark';
+export type Placement =
+  | 'top-start'
+  | 'top'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom'
+  | 'bottom-end'
+  | 'left-start'
+  | 'left'
+  | 'left-end'
+  | 'right-start'
+  | 'right'
+  | 'right-end';
 
 export interface PopoverProps extends BaseProps {
   /** Aria type  **/
@@ -14,12 +27,14 @@ export interface PopoverProps extends BaseProps {
 
   title?: React.ReactNode;
   content?: React.ReactNode;
-  placement?: PlacementType;
+  placement?: Placement;
   visible?: boolean;
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
 
   theme?: PopoverTheme;
+
+  flip?: boolean;
 
   /** Determine whether display an arrow */
   arrow?: boolean;
@@ -41,13 +56,13 @@ export interface PopoverProps extends BaseProps {
 const Popover = (props: PopoverProps): React.ReactElement | null => {
   const {
     prefixCls = 'ty-popover',
-    placement = 'top-center',
-    trigger = 'hover',
+    trigger = 'click',
+    placement = 'top',
     defaultVisible = false,
     arrow = true,
-    gap = 0,
+    flip = true,
+    // gap = 0,
     theme = 'white',
-    mouseEnterDelay = 100,
     mouseLeaveDelay = 100,
     title,
     content,
@@ -64,177 +79,149 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
     `${prefixCls}_${theme}`
   );
   const [popupVisible, setPopupVisible] = useState('visible' in props ? visible : defaultVisible);
-  const [arrowStyle, setArrowStyle] = useState<React.CSSProperties>({});
   const [target, setTarget] = useState<HTMLElement | undefined>(undefined);
-  const [eventTarget, setEventTarget] = useState<EventTarget | null>(null);
-  const [delayHidePopupTimer, setDelayHidePopupTimer] = useState<number | undefined>(undefined);
-  const [delayDisplayPopupTimer, setDelayDisplayPopupTimer] = useState<number | undefined>(
-    undefined
-  );
   const popupRef = useRef<HTMLDivElement | null>(null);
 
-  const isInPopup = (): boolean => {
-    const eventEl = eventTarget as HTMLElement;
-    const flag: boolean = (popupRef.current as HTMLDivElement).contains(eventEl);
-    setEventTarget(null);
-    return flag;
-  };
+  const updateVisible = useCallback(
+    (isVisible: boolean): void => {
+      setPopupVisible(isVisible);
+      onVisibleChange && onVisibleChange(isVisible);
+    },
+    [onVisibleChange]
+  );
 
-  const displayPopup = useCallback(() => {
-    setPopupVisible(true);
-    onVisibleChange && onVisibleChange(true);
-  }, [onVisibleChange]);
+  let timer = -1;
+  const onMouseEnter = useCallback((): void => {
+    clearTimeout(timer);
+    updateVisible(true);
+  }, [timer, updateVisible]);
 
-  const hidePopup = useCallback(() => {
-    setPopupVisible(false);
-    onVisibleChange && onVisibleChange(false);
-  }, [onVisibleChange]);
-
-  const delayDisplayPopup = useCallback((): void => {
-    const delayDisplayPopupTimer = window.setTimeout(() => {
-      displayPopup();
-    }, mouseEnterDelay);
-    setDelayDisplayPopupTimer(delayDisplayPopupTimer);
-  }, [displayPopup, mouseEnterDelay]);
-
-  const delayHidePopup = useCallback((): void => {
-    const delayHidePopupTimer = window.setTimeout(() => {
-      hidePopup();
+  const onMouseLeave = useCallback((): void => {
+    timer = setTimeout(() => {
+      updateVisible(false);
     }, mouseLeaveDelay);
-    setDelayHidePopupTimer(delayHidePopupTimer);
-  }, [hidePopup, mouseLeaveDelay]);
+  }, []);
 
-  /**
-   * Popup window - mouse enter callback
-   */
-  const handlePopupMouseOver = (): void => {
-    if (trigger === 'hover') {
-      displayPopup();
-      clearTimeout(delayHidePopupTimer);
-    }
-  };
-
-  /**
-   * Popup window - mouse leave callback
-   */
-  const handlePopupMouseOut = (): void => {
-    if (trigger === 'hover') {
-      delayHidePopup();
-      clearTimeout(delayDisplayPopupTimer);
-    }
-  };
-
-  /**
-   * Target(props.children) mouse enter callback
-   */
-  const handleTargetMouseEnter = useCallback((): void => {
-    delayDisplayPopup();
-    clearTimeout(delayHidePopupTimer);
-  }, [delayHidePopupTimer, delayDisplayPopup]);
-
-  /**
-   * Target(props.children) mouse leave callback
-   */
-  const handleTargetMouseLeave = useCallback((): void => {
-    delayHidePopup();
-    clearTimeout(delayDisplayPopupTimer);
-  }, [delayDisplayPopupTimer, delayHidePopup]);
-
-  const handleClickOutside = useCallback(
+  const documentOnClick = useCallback(
     (e: Event): void => {
-      setEventTarget(e.target);
-      if (isInPopup()) return;
+      if (
+        !target ||
+        target.contains(e.target as HTMLElement) ||
+        !popupRef.current ||
+        (popupRef.current as HTMLDivElement).contains(e.target as HTMLElement)
+      )
+        return;
 
-      hidePopup();
-      document.removeEventListener('click', handleClickOutside);
+      updateVisible(false);
     },
-    [hidePopup]
+    [target, updateVisible]
   );
 
-  const handleClick = useCallback(
-    (e: Event): void => {
-      e.preventDefault();
-      if (popupVisible) {
-        hidePopup();
-      } else {
-        displayPopup();
-        document.addEventListener('click', handleClickOutside, { capture: true });
-        e.stopPropagation();
+  const onMouseClick = useCallback((): void => {
+    updateVisible(true);
+    document.addEventListener('click', documentOnClick);
+  }, [documentOnClick, updateVisible]);
+
+  const onMouseDown = useCallback((): void => {
+    updateVisible(true);
+  }, [updateVisible]);
+
+  const onMouseUp = useCallback((): void => {
+    updateVisible(false);
+  }, [updateVisible]);
+
+  let popperInstance: Instance | null = null;
+  const transitionOnEnter = (): void => {
+    popperInstance = createPopper(target as HTMLElement, popupRef.current as HTMLElement, {
+      placement: placement as Placement,
+      modifiers: [
+        {
+          name: 'preventOverflow',
+          options: {
+            mainAxis: flip,
+          },
+        },
+      ],
+    });
+    if (trigger === 'hover') {
+      popperInstance.state.elements.popper.addEventListener('mouseenter', onMouseEnter);
+      popperInstance.state.elements.popper.addEventListener('mouseleave', onMouseLeave);
+    }
+  };
+
+  const transitionOnExited = (): void => {
+    if (popperInstance) {
+      if (trigger === 'hover') {
+        popperInstance.state.elements.popper.removeEventListener('mouseenter', onMouseEnter);
+        popperInstance.state.elements.popper.removeEventListener('mouseleave', onMouseLeave);
       }
-    },
-    [popupVisible, handleClickOutside, displayPopup, hidePopup]
-  );
+      popperInstance.destroy();
+    }
+  };
 
   useEffect(() => {
-    if (!target) return;
-
-    if (trigger === 'hover') {
-      target.addEventListener('mouseenter', handleTargetMouseEnter);
-      target.addEventListener('mouseleave', handleTargetMouseLeave);
-    } else if (trigger === 'click') {
-      target.addEventListener('click', handleClick);
-    } else if (trigger === 'context-menu') {
-      target.addEventListener('contextmenu', handleClick);
-    } else {
-      target.addEventListener('focus', displayPopup);
-      target.addEventListener('blur', hidePopup);
+    if (target) {
+      if (trigger === 'hover') {
+        target.addEventListener('mouseenter', onMouseEnter);
+        target.addEventListener('mouseleave', onMouseLeave);
+      } else if (trigger === 'click') {
+        target.addEventListener('click', onMouseClick);
+      } else if (trigger === 'focus') {
+        if (target.nodeName === 'INPUT' || target.nodeName === 'TEXTAREA') {
+          target.addEventListener('focus', onMouseDown);
+          target.addEventListener('blur', onMouseUp);
+        } else {
+          target.addEventListener('mousedown', onMouseDown);
+          target.addEventListener('mouseup', onMouseUp);
+        }
+      } else if (trigger === 'contextmenu') {
+        target.addEventListener('contextmenu', onMouseClick);
+      }
     }
 
-    return () => {
-      target.removeEventListener('mouseenter', handleTargetMouseEnter);
-      target.removeEventListener('mouseleave', handleTargetMouseLeave);
-      target.removeEventListener('click', handleClick);
-      target.removeEventListener('contextmenu', handleClick);
-      target.removeEventListener('focus', displayPopup);
-      target.removeEventListener('blur', hidePopup);
+    return (): void => {
+      if (target) {
+        if (trigger === 'hover') {
+          target.removeEventListener('mouseenter', onMouseEnter);
+          target.removeEventListener('mouseleave', onMouseLeave);
+        } else if (trigger === 'click') {
+          target.removeEventListener('click', onMouseClick);
+        } else if (trigger === 'focus') {
+          if (target.nodeName === 'INPUT' || target.nodeName === 'TEXTAREA') {
+            target.removeEventListener('focus', onMouseDown);
+            target.removeEventListener('blur', onMouseUp);
+          } else {
+            target.removeEventListener('mousedown', onMouseDown);
+            target.removeEventListener('mouseup', onMouseUp);
+          }
+        } else if (trigger === 'contextmenu') {
+          target.removeEventListener('contextmenu', onMouseClick);
+        }
+      }
     };
-  }, [
-    target,
-    trigger,
-    handleTargetMouseEnter,
-    handleTargetMouseLeave,
-    displayPopup,
-    hidePopup,
-    handleClick,
-  ]);
+  }, [target, trigger, onMouseClick, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp]);
 
-  useEffect(() => {
-    if (!target) return;
-
-    const style = getArrowPlacementStyle(target, placement);
-    setArrowStyle(style);
-  }, [target, placement]);
-
-  useEffect(() => {
-    'visible' in props && setPopupVisible(props.visible);
-  }, [props.visible]);
-
-  if (children) {
-    return (
-      <>
-        {React.cloneElement(React.Children.only(children), {
-          ref: (el: HTMLElement) => setTarget(el),
-        })}
-        <Popup
-          target={target}
-          gap={arrow ? 9 + gap : gap}
-          show={popupVisible}
-          placement={placement}
-          onMouseOver={handlePopupMouseOver}
-          onMouseOut={handlePopupMouseOut}>
+  const childProps = {
+    ref: (el: HTMLElement): void => setTarget(el),
+  };
+  return (
+    <>
+      {React.cloneElement(React.Children.only(children), childProps)}
+      <Portal>
+        <Transition
+          in={popupVisible}
+          onEnter={transitionOnEnter}
+          onExited={transitionOnExited}
+          animation="zoom-in-left">
           <div role={role} className={cls} ref={popupRef}>
-            {(title || content) && arrow && (
-              <div className={`${prefixCls}__arrow`} style={arrowStyle} />
-            )}
+            {(title || content) && arrow && <div className={`${prefixCls}__arrow`} />}
             {title && <div className={`${prefixCls}__title`}>{title}</div>}
             {content && <div className={`${prefixCls}__content`}>{content}</div>}
           </div>
-        </Popup>
-      </>
-    );
-  }
-  warning(false, 'Children is required.', true);
-  return null;
+        </Transition>
+      </Portal>
+    </>
+  );
 };
 
 export default Popover;

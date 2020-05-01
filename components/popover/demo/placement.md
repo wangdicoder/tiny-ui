@@ -23,17 +23,17 @@ There are 12 placement options available.
         <tr>
           <td></td>
           <td>
-            <Popover title="Title" content={content} placement="top-left">
+            <Popover title="Title" content={content} placement="top-start">
               <Button style={btnStyle}>TL</Button>
             </Popover>
           </td>
           <td>
-            <Popover title="Title" content={content} placement="top-center">
+            <Popover title="Title" content={content} placement="top">
               <Button style={btnStyle}>Top</Button>
             </Popover>
           </td>
           <td>
-            <Popover title="Title" content={content} placement="top-right">
+            <Popover title="Title" content={content} placement="top-end">
               <Button style={btnStyle}>TR</Button>
             </Popover>
           </td>
@@ -41,7 +41,7 @@ There are 12 placement options available.
         </tr>
         <tr>
           <td>
-            <Popover title="Title" content={content} placement="left-top">
+            <Popover title="Title" content={content} placement="left-start">
               <Button style={btnStyle}>LT</Button>
             </Popover>
           </td>
@@ -49,14 +49,14 @@ There are 12 placement options available.
           <td></td>
           <td></td>
           <td>
-            <Popover title="Title" content={content} placement="right-top">
+            <Popover title="Title" content={content} placement="right-start">
               <Button style={btnStyle}>RT</Button>
             </Popover>
           </td>
         </tr>
         <tr>
           <td>
-            <Popover title="Title" content={content} placement="left-center">
+            <Popover title="Title" content={content} placement="left">
               <Button style={btnStyle}>Left</Button>
             </Popover>
           </td>
@@ -64,14 +64,14 @@ There are 12 placement options available.
           <td></td>
           <td></td>
           <td>
-            <Popover title="Title" content={content} placement="right-center">
+            <Popover title="Title" content={content} placement="right">
               <Button style={btnStyle}>Right</Button>
             </Popover>
           </td>
         </tr>
         <tr>
           <td>
-            <Popover title="Title" content={content} placement="left-bottom">
+            <Popover title="Title" content={content} placement="left-end">
               <Button style={btnStyle}>LB</Button>
             </Popover>
           </td>
@@ -79,7 +79,7 @@ There are 12 placement options available.
           <td></td>
           <td></td>
           <td>
-            <Popover title="Title" content={content} placement="right-bottom">
+            <Popover title="Title" content={content} placement="right-end">
               <Button style={btnStyle}>RB</Button>
             </Popover>
           </td>
@@ -87,17 +87,17 @@ There are 12 placement options available.
         <tr>
           <td></td>
           <td>
-            <Popover title="Title" content={content} placement="bottom-left">
+            <Popover title="Title" content={content} placement="bottom-start">
               <Button style={btnStyle}>BL</Button>
             </Popover>
           </td>
           <td>
-            <Popover title="Title" content={content} placement="bottom-center">
+            <Popover title="Title" content={content} placement="bottom">
               <Button style={btnStyle}>Bottom</Button>
             </Popover>
           </td>
           <td>
-            <Popover title="Title" content={content} placement="bottom-right">
+            <Popover title="Title" content={content} placement="bottom-end">
               <Button style={btnStyle}>BR</Button>
             </Popover>
           </td>
