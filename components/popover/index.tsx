@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { createPopper, Instance } from '@popperjs/core';
+import { BaseProps } from '../_utils/props';
 import Transition from '../transition';
 import Portal from '../portal';
 
