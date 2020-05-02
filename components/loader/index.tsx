@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import Indicator from './indicator';
 
 export interface LoaderProps extends BaseProps {
   indicator?: React.ReactNode;
-  size?: 'sm' | 'default' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   /** loading status */
   loading?: boolean;
   tip?: string;
@@ -16,7 +17,7 @@ export interface LoaderProps extends BaseProps {
 const Loader = (props: LoaderProps): React.ReactElement => {
   const {
     prefixCls = 'ty-loader',
-    size = 'default',
+    size = 'md',
     loading = true,
     vertical = false,
     blurred = true,
@@ -42,7 +43,7 @@ const Loader = (props: LoaderProps): React.ReactElement => {
     <div className={cls} style={style}>
       {loading && (
         <div className={indicatorCls}>
-          {indicator ? indicator : <div className={`${prefixCls}__indicator`} />}
+          {indicator ? indicator : <Indicator className={`${prefixCls}__indicator`} size={size} />}
           {tip && <span className={`${prefixCls}__label`}>{tip}</span>}
         </div>
       )}

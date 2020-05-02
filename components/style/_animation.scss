@@ -7,6 +7,15 @@
   }
 }
 
+@keyframes ty-rotate-reverse {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 @keyframes ty-processing {
   0% {
     transform: scale(0.8);

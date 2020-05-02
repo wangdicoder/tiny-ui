@@ -9,14 +9,5 @@
   border-color: currentcolor currentcolor transparent transparent;
   border-style: solid;
   border-radius: 50%;
-  animation: spin 600ms infinite linear;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
+  animation: ty-rotate-reverse 600ms infinite linear;
 }
