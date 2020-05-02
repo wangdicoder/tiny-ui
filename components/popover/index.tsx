@@ -6,7 +6,7 @@ import Transition from '../transition';
 import Portal from '../portal';
 
 export type TriggerType = 'hover' | 'focus' | 'click' | 'contextmenu';
-export type PopoverTheme = 'white' | 'dark';
+export type PopoverTheme = 'light' | 'dark';
 export type Placement =
   | 'top-start'
   | 'top'
@@ -62,7 +62,7 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
     arrow = true,
     flip = true,
     offset = 0,
-    theme = 'white',
+    theme = 'light',
     mouseEnterDelay = 100,
     mouseLeaveDelay = 100,
     title,

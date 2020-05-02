@@ -48,7 +48,7 @@ const Select = (props: SelectProps): React.ReactElement => {
   const arrowCls = classNames(`${prefixCls}__arrow`, {
     [`${prefixCls}__arrow_reverse`]: isOpenDropdown,
   });
-  useClickOutside(ref, () => {
+  useClickOutside(ref.current as HTMLDivElement, () => {
     if (!('open' in props)) {
       setIsOpenDropdown(false);
       onDropdownVisibleChange && onDropdownVisibleChange(false);

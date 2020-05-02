@@ -9,6 +9,7 @@ export { default as Button } from './button';
 export { default as Card } from './card';
 export { default as Carousel } from './carousel';
 export { default as Checkbox } from './checkbox';
+export { default as ConfigProvider } from './config-provider';
 export { default as CopyToClipboard } from './copy-to-clipboard';
 export { default as Col } from './col';
 export { default as Collapse } from './collapse';

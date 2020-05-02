@@ -6,7 +6,7 @@ export interface IntlProviderProps {
   children: React.ReactNode;
 }
 
-const IntlProvider = (props: IntlProviderProps) => {
+const IntlProvider = (props: IntlProviderProps): React.ReactElement => {
   const { locale, children } = props;
   return <IntlContext.Provider value={locale}>{children}</IntlContext.Provider>;
 };

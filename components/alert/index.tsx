@@ -30,7 +30,7 @@ const IconType = Object.freeze({
   error: 'close-fill',
 });
 
-const setClosedStyle = (node: HTMLElement) => {
+const setClosedStyle = (node: HTMLElement): void => {
   node.style.borderTopWidth = '0';
   node.style.paddingTop = '0';
   node.style.marginTop = '0';
@@ -60,8 +60,8 @@ const Alert = (props: AlertProps): React.ReactElement => {
   const ref = useRef<HTMLDivElement | null>(null);
   const cls = classNames(prefixCls, className, [`${prefixCls}_${type}`]);
 
-  const closeBtnOnClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    ref.current && setClosedStyle(ref.current!);
+  const closeBtnOnClick = (e: React.MouseEvent<HTMLSpanElement>): void => {
+    ref.current && setClosedStyle(ref.current as HTMLDivElement);
     setShow(false);
     onClose && onClose(e);
   };
