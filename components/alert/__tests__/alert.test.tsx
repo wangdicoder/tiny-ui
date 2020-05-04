@@ -1,42 +1,65 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import Alert from '../index';
 
 describe('<Alert />', () => {
   it('should match the snapshot', () => {
-    const wrapper = render(<Alert>Alert</Alert>);
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(<Alert>Alert</Alert>);
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render correct title', () => {
-    const title = 'This is title';
-    const wrapper = shallow(<Alert title={title}>Body</Alert>);
-    expect(wrapper.find('.ty-alert__title').text()).toBe(title);
+  it('should render correct', () => {
+    const wrapper = render(<Alert>Alert</Alert>);
+    const element = wrapper.getByRole('alert');
+    expect(element).toBeInTheDocument();
+    expect(element).toHaveClass('ty-alert');
   });
 
   it('should render correct types', () => {
-    expect(shallow(<Alert type="success" />).find('.ty-alert_success').length).toBe(1);
-    expect(shallow(<Alert type="info" />).find('.ty-alert_info').length).toBe(1);
-    expect(shallow(<Alert type="warning" />).find('.ty-alert_warning').length).toBe(1);
-    expect(shallow(<Alert type="error" />).find('.ty-alert_error').length).toBe(1);
+    expect(
+      render(
+        <Alert type="success" data-testid="success">
+          Alert
+        </Alert>
+      ).getByTestId('success')
+    ).toHaveClass('ty-alert_success');
+    expect(
+      render(
+        <Alert type="info" data-testid="info">
+          Alert
+        </Alert>
+      ).getByTestId('info')
+    ).toHaveClass('ty-alert_info');
+    expect(
+      render(
+        <Alert type="warning" data-testid="warning">
+          Alert
+        </Alert>
+      ).getByTestId('warning')
+    ).toHaveClass('ty-alert_warning');
+    expect(
+      render(
+        <Alert type="error" data-testid="error">
+          Alert
+        </Alert>
+      ).getByTestId('error')
+    ).toHaveClass('ty-alert_error');
   });
 
   it('should render cross icon', () => {
-    const wrapper = shallow(<Alert closable>This is closable.</Alert>);
-    expect(wrapper.find('.ty-alert__close-btn').length).toBe(1);
+    const wrapper = render(<Alert closable>This is closable.</Alert>);
+    expect(wrapper.getByText('✕')).toBeInTheDocument();
   });
 
   it('should trigger onClose event', () => {
     const mockCallback = jest.fn();
-    const wrapper = shallow(
+    const wrapper = render(
       <Alert closable onClose={mockCallback}>
         This is a alert
       </Alert>
     );
-    wrapper
-      .find('.ty-alert__close-btn')
-      .first()
-      .simulate('click');
-    expect(mockCallback.mock.calls.length).toBe(1);
+    const closeBtn = wrapper.getByText('✕');
+    fireEvent.click(closeBtn);
+    expect(mockCallback).toHaveBeenCalled();
   });
 });

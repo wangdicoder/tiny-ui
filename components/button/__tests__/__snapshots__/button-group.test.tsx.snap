@@ -1,95 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonGroup /> should match the snapshot 1`] = `
-initialize {
-  "0": Object {
-    "attribs": Object {
-      "class": "ty-btn-group ty-btn-group_default",
-    },
-    "children": Array [
-      Object {
-        "attribs": Object {
-          "class": "ty-btn ty-btn_default ty-btn_md",
-          "role": "button",
-        },
-        "children": Array [
-          Object {
-            "attribs": Object {
-              "class": "ty-btn__children",
-            },
-            "children": Array [
-              Object {
-                "data": "Default",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "text",
-              },
-            ],
-            "name": "span",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-            },
-          },
-        ],
-        "name": "button",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": null,
-        "parent": [Circular],
-        "prev": null,
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-          "role": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-          "role": undefined,
-        },
-      },
-    ],
-    "name": "div",
-    "namespace": "http://www.w3.org/1999/xhtml",
-    "next": null,
-    "parent": null,
-    "prev": null,
-    "root": Object {
-      "attribs": Object {},
-      "children": Array [
-        [Circular],
-      ],
-      "name": "root",
-      "namespace": "http://www.w3.org/1999/xhtml",
-      "next": null,
-      "parent": null,
-      "prev": null,
-      "type": "root",
-      "x-attribsNamespace": Object {},
-      "x-attribsPrefix": Object {},
-    },
-    "type": "tag",
-    "x-attribsNamespace": Object {
-      "class": undefined,
-    },
-    "x-attribsPrefix": Object {
-      "class": undefined,
-    },
-  },
-  "_root": [Circular],
-  "length": 1,
-  "options": Object {
-    "decodeEntities": true,
-    "normalizeWhitespace": false,
-    "withDomLvl1": true,
-    "xml": false,
-  },
-}
+<DocumentFragment>
+  <div
+    class="ty-btn-group ty-btn-group_default"
+  >
+    <button
+      class="ty-btn ty-btn_default ty-btn_md"
+      role="button"
+    >
+      <span
+        class="ty-btn__children"
+      >
+        Default
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
 `;

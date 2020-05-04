@@ -254,7 +254,7 @@ const Popover = (props: PopoverProps): React.ReactElement | null => {
           in={popupVisible}
           onEnter={transitionOnEnter}
           onExited={transitionOnExited}
-          animation="zoom-in-left">
+          animation="zoom-in-top">
           <div role={role} className={cls} ref={popupRef}>
             {(title || content) && arrow && (
               <div data-popper-arrow className={`${prefixCls}__arrow`} />

@@ -1,126 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AspectRatio /> should match the snapshot 1`] = `
-initialize {
-  "0": Object {
-    "attribs": Object {
-      "class": "ty-aspect-ratio",
-      "style": "width:100%",
-    },
-    "children": Array [
-      Object {
-        "attribs": Object {
-          "class": "ty-aspect-ratio__padding",
-          "style": "padding-top:100%",
-        },
-        "children": Array [],
-        "name": "div",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": Object {
-          "attribs": Object {
-            "class": "ty-aspect-ratio__inside",
-          },
-          "children": Array [],
-          "name": "div",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": null,
-          "parent": [Circular],
-          "prev": [Circular],
-          "type": "tag",
-          "x-attribsNamespace": Object {
-            "class": undefined,
-          },
-          "x-attribsPrefix": Object {
-            "class": undefined,
-          },
-        },
-        "parent": [Circular],
-        "prev": null,
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-          "style": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-          "style": undefined,
-        },
-      },
-      Object {
-        "attribs": Object {
-          "class": "ty-aspect-ratio__inside",
-        },
-        "children": Array [],
-        "name": "div",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": null,
-        "parent": [Circular],
-        "prev": Object {
-          "attribs": Object {
-            "class": "ty-aspect-ratio__padding",
-            "style": "padding-top:100%",
-          },
-          "children": Array [],
-          "name": "div",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": [Circular],
-          "parent": [Circular],
-          "prev": null,
-          "type": "tag",
-          "x-attribsNamespace": Object {
-            "class": undefined,
-            "style": undefined,
-          },
-          "x-attribsPrefix": Object {
-            "class": undefined,
-            "style": undefined,
-          },
-        },
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-        },
-      },
-    ],
-    "name": "div",
-    "namespace": "http://www.w3.org/1999/xhtml",
-    "next": null,
-    "parent": null,
-    "prev": null,
-    "root": Object {
-      "attribs": Object {},
-      "children": Array [
-        [Circular],
-      ],
-      "name": "root",
-      "namespace": "http://www.w3.org/1999/xhtml",
-      "next": null,
-      "parent": null,
-      "prev": null,
-      "type": "root",
-      "x-attribsNamespace": Object {},
-      "x-attribsPrefix": Object {},
-    },
-    "type": "tag",
-    "x-attribsNamespace": Object {
-      "class": undefined,
-      "style": undefined,
-    },
-    "x-attribsPrefix": Object {
-      "class": undefined,
-      "style": undefined,
-    },
-  },
-  "_root": [Circular],
-  "length": 1,
-  "options": Object {
-    "decodeEntities": true,
-    "normalizeWhitespace": false,
-    "withDomLvl1": true,
-    "xml": false,
-  },
-}
+<DocumentFragment>
+  <div
+    class="ty-aspect-ratio"
+    style="width: 100%;"
+  >
+    <div
+      class="ty-aspect-ratio__padding"
+      style="padding-top: 100%;"
+    />
+    <div
+      class="ty-aspect-ratio__inside"
+    />
+  </div>
+</DocumentFragment>
 `;

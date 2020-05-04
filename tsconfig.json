@@ -29,7 +29,8 @@
     "strict": true,
     "types": [
       "node",
-      "jest"
+      "jest",
+      "@testing-library/jest-dom"
     ],
     "target": "es5"
   },

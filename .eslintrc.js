@@ -1,11 +1,12 @@
 module.exports = {
   extends: [
     'eslint:recommended',
+    'plugin:jest-dom/recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jest'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jest', 'jest-dom'],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',
@@ -29,4 +30,4 @@ module.exports = {
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 1,
   },
-}
+};
