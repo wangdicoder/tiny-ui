@@ -1,4 +1,4 @@
 import './index.scss';
 
 // style dependency
-import '../../popover/style/index.scss';
+import '../../popup/style/index.scss';

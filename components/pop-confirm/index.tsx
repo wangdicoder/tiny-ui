@@ -14,7 +14,7 @@ export interface PopConfirmProps extends PopoverProps {
 
 const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-popconfirm',
+    prefixCls = 'ty-pop-confirm',
     placement = 'top',
     confirmText = 'Yes',
     cancelText = 'No',
@@ -43,7 +43,7 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
 
   const overlay = (): React.ReactElement => {
     return (
-      <div className={cls} style={style}>
+      <div className={`${prefixCls}__overlay`}>
         <div className={`${prefixCls}__messages`}>
           {icon ? icon : <Icon name="warn-fill" color="#f29000" />}
           <span className={`${prefixCls}__title`}>{title}</span>
@@ -63,6 +63,7 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
   return (
     <Popover
       {...otherProps}
+      className={cls}
       role="alertdialog"
       visible={visible}
       onVisibleChange={(val: boolean): void => {
