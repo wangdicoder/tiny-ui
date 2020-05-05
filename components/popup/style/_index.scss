@@ -17,7 +17,6 @@
     height: $popover-arrow-size;
     box-sizing: border-box;
     position: absolute;
-    z-index: -1;
   }
 
   &__arrow:before {
@@ -27,9 +26,8 @@
 
   &_light {
     background-color: #fff;
-
+    color: rgba(0, 0, 0, 0.65);
     .#{$prefix}popup {
-
       &__arrow:before {
         background: #fff;
       }
@@ -38,9 +36,8 @@
 
   &_dark {
     background-color: #262626;
-
+    color: #fff;
     .#{$prefix}popup {
-
       &__arrow:before {
         background: #262626;
       }

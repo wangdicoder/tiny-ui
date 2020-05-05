@@ -6,20 +6,20 @@
   $scaleEnd: scaleY(1),
   $origin: center top,
 ) {
-  .#{$prefix}zoom-in-#{$direction}-enter {
+  .#{$prefix}zoom-#{$direction}-enter {
     opacity: 0;
     transform: $scaleStart;
   }
-  .#{$prefix}zoom-in-#{$direction}-enter-active {
+  .#{$prefix}zoom-#{$direction}-enter-active {
     opacity: 1;
     transform: $scaleEnd;
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
     transform-origin: $origin
   }
-  .#{$prefix}zoom-in-#{$direction}-exit {
+  .#{$prefix}zoom-#{$direction}-exit {
     opacity: 1;
   }
-  .#{$prefix}zoom-in-#{$direction}-exit-active {
+  .#{$prefix}zoom-#{$direction}-exit-active {
     opacity: 0;
     transform: $scaleStart;
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;

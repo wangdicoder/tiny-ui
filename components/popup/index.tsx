@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { createPopper, Instance } from '@popperjs/core';
 import { BaseProps } from '../_utils/props';
-import Transition from '../transition';
+import Transition, { AnimationName } from '../transition';
 import Portal from '../portal';
 
 export type TriggerType = 'hover' | 'focus' | 'click' | 'contextmenu' | 'manual';
@@ -61,6 +61,7 @@ const Popup = (props: PopupProps): JSX.Element => {
     theme = 'light',
     mouseEnterDelay = 100,
     mouseLeaveDelay = 100,
+    role,
     content,
     visible,
     onVisibleChange,
@@ -172,6 +173,13 @@ const Popup = (props: PopupProps): JSX.Element => {
               offset: [0, arrow ? 10 + offset : 3 + offset],
             },
           },
+          {
+            name: 'computeStyles',
+            options: {
+              gpuAcceleration: false,
+              adaptive: false,
+            },
+          },
         ],
       }
     );
@@ -255,7 +263,7 @@ const Popup = (props: PopupProps): JSX.Element => {
           in={popupVisible}
           onEnter={transitionOnEnter}
           onExited={transitionOnExited}
-          animation="zoom-in-top">
+          animation={`zoom-${placement}` as AnimationName}>
           <div {...otherProps} className={cls} ref={popupRef}>
             {content && arrow && <div data-popper-arrow className={`${prefixCls}__arrow`} />}
             {content}

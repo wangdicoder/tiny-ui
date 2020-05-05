@@ -4,18 +4,13 @@
 
 There are 12 placement options available.
 
+> The tooltip's arrow is always pointing to the center of the trigger.
+
 ```jsx live
 () => {
   const btnStyle = {
     width: 80,
   };
-
-  const content = (
-    <div>
-      <div>This is the content</div>
-      <div>This is the content</div>
-    </div>
-  );
 
   return (
     <table>
@@ -49,7 +44,7 @@ There are 12 placement options available.
           <td></td>
           <td></td>
           <td>
-            <Tooltip title="popup text" placement="right-start">
+            <Tooltip flip={false} title="popup text" placement="right-start">
               <Button style={btnStyle}>RS</Button>
             </Tooltip>
           </td>
@@ -64,7 +59,7 @@ There are 12 placement options available.
           <td></td>
           <td></td>
           <td>
-            <Tooltip title="popup text" placement="right">
+            <Tooltip flip={false} title="popup text" placement="right">
               <Button style={btnStyle}>Right</Button>
             </Tooltip>
           </td>
@@ -79,7 +74,7 @@ There are 12 placement options available.
           <td></td>
           <td></td>
           <td>
-            <Tooltip title="popup text" placement="right-end">
+            <Tooltip flip={false} title="popup text" placement="right-end">
               <Button style={btnStyle}>RE</Button>
             </Tooltip>
           </td>

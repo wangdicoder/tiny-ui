@@ -152,6 +152,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/flip/index.md')),
       },
       {
+        title: 'Popover',
+        route: 'popover',
+        component: lazy(() => import('../../components/popover/index.md')),
+      },
+      {
         title: 'Progress',
         route: 'progress',
         component: lazy(() => import('../../components/progress/index.md')),
@@ -269,11 +274,6 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Notification',
         route: 'notification',
         component: lazy(() => import('../../components/notification/index.md')),
-      },
-      {
-        title: 'Popover',
-        route: 'popover',
-        component: lazy(() => import('../../components/popover/index.md')),
       },
       {
         title: 'PopConfirm',

@@ -64,7 +64,10 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
           <ArrowDown size={10} />
         </span>
       </div>
-      <Transition timeout={mode === 'horizontal' ? 250 : 0} animation="zoom-in-top" in={menuOpen}>
+      <Transition
+        timeout={mode === 'horizontal' ? 250 : 0}
+        animation="zoom-center-top"
+        in={menuOpen}>
         <ul className={subMenuCls}>
           {React.Children.map(children, (child, idx) => {
             const childElement = child as React.FunctionComponentElement<MenuItemProps>;

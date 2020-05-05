@@ -2,7 +2,23 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 
-export type AnimationName = 'zoom-in-top' | 'zoom-in-left' | 'zoom-in-bottom' | 'zoom-in-right';
+export type AnimationName =
+  | 'zoom-center-top'
+  | 'zoom-center-bottom'
+  | 'zoom-center-left'
+  | 'zoom-center-right'
+  | 'zoom-top-start'
+  | 'zoom-top'
+  | 'zoom-top-end'
+  | 'zoom-bottom-start'
+  | 'zoom-bottom'
+  | 'zoom-bottom-end'
+  | 'zoom-left-start'
+  | 'zoom-left'
+  | 'zoom-left-end'
+  | 'zoom-right-start'
+  | 'zoom-right'
+  | 'zoom-right-end';
 
 export interface TransitionProps extends Partial<CSSTransitionProps> {
   /** Animation prefix */

@@ -1,12 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
-import Popover, { PopoverProps } from '../popover';
+import Popup, { PopupProps } from '../popup';
 
-type TooltipProps = Omit<PopoverProps, 'content'>;
+export interface TooltipProps extends Omit<PopupProps, 'title' | 'content'> {
+  title?: React.ReactNode;
+}
 
 const Tooltip = (props: TooltipProps): React.ReactElement => {
   const {
-    placement = 'top',
     prefixCls = 'ty-tooltip',
     trigger = 'hover',
     title,
@@ -14,19 +15,18 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
     children,
     ...otherProps
   } = props;
-  const cls = classNames(prefixCls, className, `${prefixCls}_${placement}`);
+  const cls = classNames(prefixCls, className);
+
+  const renderContent = (): React.ReactElement => (
+    <div role="tooltip" className={`${prefixCls}__inner`}>
+      {title}
+    </div>
+  );
 
   return (
-    <Popover
-      {...otherProps}
-      role="tooltip"
-      theme="dark"
-      trigger={trigger}
-      className={cls}
-      placement={placement}
-      content={title}>
+    <Popup {...otherProps} className={cls} theme="dark" trigger={trigger} content={renderContent()}>
       {children}
-    </Popover>
+    </Popup>
   );
 };
 
