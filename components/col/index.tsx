@@ -2,29 +2,26 @@ import React from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
-type ColSpanType = number | string;
-
 export type ColSize = {
-  span?: ColSpanType;
-  offset?: ColSpanType;
-  order?: ColSpanType;
+  span?: number;
+  offset?: number;
+  order?: number;
 };
 
-export interface ColProps extends BaseProps {
-  span?: ColSpanType;
-  offset?: ColSpanType;
-  order?: ColSpanType;
-  xs?: ColSpanType | ColSize;
-  sm?: ColSpanType | ColSize;
-  md?: ColSpanType | ColSize;
-  lg?: ColSpanType | ColSize;
-  xl?: ColSpanType | ColSize;
-  xxl?: ColSpanType | ColSize;
+export interface ColProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
+  span?: number;
+  offset?: number;
+  order?: number;
+  xs?: number | ColSize;
+  sm?: number | ColSize;
+  md?: number | ColSize;
+  lg?: number | ColSize;
+  xl?: number | ColSize;
+  xxl?: number | ColSize;
   children?: React.ReactNode;
-  [size: string]: any; // solve index signature
 }
 
-const ScreenType = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const ScreenTypes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const Col = (props: ColProps): React.ReactElement => {
   const {
@@ -35,14 +32,17 @@ const Col = (props: ColProps): React.ReactElement => {
     className,
     style,
     children,
+    ...otherProps
   } = props;
   let sizeClassObj = {};
-  ScreenType.forEach(size => {
+  ScreenTypes.forEach((size) => {
     let sizeProps: ColSize = {};
-    if (typeof props[size] === 'number') {
-      sizeProps.span = props[size];
-    } else if (typeof props[size] === 'object') {
-      sizeProps = props[size] || {};
+    // Prevent the error that expression of type 'string' can't be used to index type 'ColProps'.
+    const propSize = (props as any)[size];
+    if (typeof propSize === 'number') {
+      sizeProps.span = propSize;
+    } else if (typeof propSize === 'object') {
+      sizeProps = propSize || {};
     }
 
     sizeClassObj = {
@@ -66,10 +66,12 @@ const Col = (props: ColProps): React.ReactElement => {
   );
 
   return (
-    <div className={cls} style={style}>
+    <div {...otherProps} className={cls} style={style}>
       {children}
     </div>
   );
 };
+
+Col.displayName = 'Col';
 
 export default Col;
