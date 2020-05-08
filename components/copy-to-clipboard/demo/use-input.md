@@ -8,7 +8,7 @@
   
   return (
   <div>
-    <Input onChange={value => setText(value)} placeholder="Inout something and then click button"/>
+    <Input onChange={e => setText(e.currentTarget.value)} placeholder="Inout something and then click button"/>
     <CopyToClipboard text={text} onClick={() => Message.success('Copy successfully')}>
       <Button btnType="primary" style={{ marginTop: 5 }}>Copy</Button>
     </CopyToClipboard>

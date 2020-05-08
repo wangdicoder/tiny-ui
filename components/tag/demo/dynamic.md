@@ -18,8 +18,8 @@ Adding or removing a set of tags dynamically.
       setInputVisible(true);
     };
     
-    const handleInputChange = (val) => {
-      setInputValue(val);
+    const handleInputChange = (e) => {
+      setInputValue(e.currentTarget.value);
     };
     
     const handleInputConfirm = () => {
