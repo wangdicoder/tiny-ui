@@ -4,11 +4,11 @@
  * @param array
  */
 export const isOneOf = (target: string, array: string | string[]) => {
-    if (Array.isArray(array)) {
-        return array.includes(target);
-    }
+  if (Array.isArray(array)) {
+    return array.includes(target);
+  }
 
-    return array === target;
+  return array === target;
 };
 
 /**
@@ -16,10 +16,10 @@ export const isOneOf = (target: string, array: string | string[]) => {
  * @param str
  */
 export const camelCaseToDash = (str: string) => {
-    const regex = /[A-Z]/g;
-    return str.replace(regex, (word: string) => {
-        return '-' + word.toLowerCase();
-    });
+  const regex = /[A-Z]/g;
+  return str.replace(regex, (word: string) => {
+    return '-' + word.toLowerCase();
+  });
 };
 
 /**
@@ -28,13 +28,26 @@ export const camelCaseToDash = (str: string) => {
  * @param opacity: max 1
  */
 export const convertHexToRGBA = (color: string, opacity = 1): string => {
-    if (/^#[0-9A-F]{6}$/i.test(color)) {
-        const hex = color.replace('#', '');
-        const r = parseInt(hex.substring(0, 2), 16);
-        const g = parseInt(hex.substring(2, 4), 16);
-        const b = parseInt(hex.substring(4, 6), 16);
+  if (/^#[0-9A-F]{6}$/i.test(color)) {
+    const hex = color.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
 
-        return `rgba(${r},${g},${b},${opacity})`;
-    }
-    return color;
+    return `rgba(${r},${g},${b},${opacity})`;
+  }
+  return color;
+};
+
+/**
+ * Get class name from combining context prefix and customised class
+ * @param suffixCls
+ * @param contextPrefix
+ * @param customisedCls
+ */
+export const getPrefixCls = (suffixCls: string, contextPrefix?: string, customisedCls?: string): string => {
+  if (customisedCls) {
+    return customisedCls;
+  }
+  return contextPrefix ? `${contextPrefix}-${suffixCls}` : `ty-${suffixCls}`;
 };

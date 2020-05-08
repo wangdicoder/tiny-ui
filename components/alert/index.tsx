@@ -1,8 +1,10 @@
-import React, { ReactNode, useState, useRef } from 'react';
+import React, { ReactNode, useState, useRef, useContext } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
+import { ConfigContext } from '../config-provider/config-context';
 import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
+import { getPrefixCls } from '../_utils/general';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
@@ -42,7 +44,7 @@ const setClosedStyle = (node: HTMLElement): void => {
 
 const Alert = (props: AlertProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-alert',
+    prefixCls: customisedCls,
     type = 'info',
     iconSize = 14,
     title,
@@ -56,8 +58,10 @@ const Alert = (props: AlertProps): React.ReactElement => {
     style,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
   const [isShow, setShow] = useState(true);
   const ref = useRef<HTMLDivElement | null>(null);
+  const prefixCls = getPrefixCls('alert', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, [`${prefixCls}_${type}`]);
 
   const closeBtnOnClick = (e: React.MouseEvent<HTMLSpanElement>): void => {

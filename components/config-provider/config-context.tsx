@@ -6,7 +6,7 @@ export interface ConfigContextProps {
   componentSize?: SizeType;
 }
 
-export default React.createContext<ConfigContextProps>({
+export const ConfigContext = React.createContext<ConfigContextProps>({
   prefixCls: 'ty',
   componentSize: 'md',
 });

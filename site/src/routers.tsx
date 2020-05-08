@@ -81,6 +81,7 @@ export const COMPONENT_MENU: RouterItem[] = [
       {
         title: 'Grid',
         route: 'grid',
+        component: lazy(() => import('../../components/row/index.md')),
       },
       {
         title: 'Layout',
@@ -294,6 +295,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'BackTop',
         route: 'back-top',
         component: lazy(() => import('../../components/back-top/index.md')),
+      },
+      {
+        title: 'ConfigProvider',
+        route: 'config-provider',
+        component: lazy(() => import('../../components/config-provider/index.md')),
       },
       {
         title: 'CopyToClipboard',
