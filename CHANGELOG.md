@@ -8,6 +8,13 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.83](https://github.com/wangdicoder/tiny-ui/compare/v0.0.82...v0.0.83) (2020-05-09)
+
+
+### Features
+
+* ConfigProvider component ([116d3bd](https://github.com/wangdicoder/tiny-ui/commit/116d3bdcdbdf58a6e3e30fc9b92f821a8a27307a))
+
 ### [0.0.82](https://github.com/wangdicoder/tiny-ui/compare/v0.0.81...v0.0.82) (2020-05-01)
 
 
