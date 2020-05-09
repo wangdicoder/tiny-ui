@@ -6,7 +6,7 @@ exports[`<ButtonGroup /> should match the snapshot 1`] = `
     class="ty-btn-group ty-btn-group_default"
   >
     <button
-      class="ty-btn ty-btn_default ty-btn_md"
+      class="ty-btn ty-btn_md ty-btn_default"
       role="button"
     >
       <span

@@ -2,6 +2,7 @@ import React from 'react';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
 import { version, repository } from '../../../../package.json';
+import { Icon, Link } from '../../../../components';
 
 export const Header = (): React.ReactElement => (
   <header className="header">
@@ -36,6 +37,11 @@ export const Header = (): React.ReactElement => (
             rel="noreferrer noopener">
             <span className="header__version">v{version}</span>
           </a>
+        </li>
+        <li className="header__nav-item">
+          <Link href={repository.url} underline={false} rel="noreferrer noopener">
+            <Icon name="github" color="#222" size={19} />
+          </Link>
         </li>
       </ul>
     </nav>
