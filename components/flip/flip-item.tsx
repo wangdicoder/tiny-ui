@@ -2,15 +2,15 @@ import React from 'react';
 import { BaseProps } from '../_utils/props';
 
 export interface FlipItemProps
-  extends BaseProps,
+  extends Omit<BaseProps, 'prefixCls'>,
     React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   children?: React.ReactNode;
 }
 
-const FlipItem = (props: FlipItemProps): React.ReactElement => {
-  const { className, children, style, ...otherProps } = props;
+const FlipItem = (props: FlipItemProps): JSX.Element => {
+  const { className, children, ...otherProps } = props;
   return (
-    <div {...otherProps} className={className} style={style}>
+    <div {...otherProps} className={className}>
       {children}
     </div>
   );

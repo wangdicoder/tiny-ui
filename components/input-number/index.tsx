@@ -1,7 +1,9 @@
-import React, { useEffect, useState, MouseEvent } from 'react';
+import React, { useEffect, useState, MouseEvent, useContext } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface InputNumberProps extends BaseProps {
   min?: number;
@@ -31,7 +33,6 @@ const isValid = (val: string | number): boolean => {
 
 const InputNumber = (props: InputNumberProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-input-number',
     size = 'md',
     disabled = false,
     defaultValue = 0,
@@ -41,8 +42,11 @@ const InputNumber = (props: InputNumberProps): React.ReactElement => {
     max = Number.POSITIVE_INFINITY,
     onChange,
     className,
+    prefixCls: customisedCls,
     style,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('input-number', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_always-controls`]: controls,

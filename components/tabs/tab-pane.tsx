@@ -1,15 +1,13 @@
 import React from 'react';
-import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
-export interface TabPaneProps extends BaseProps, React.ComponentProps<'div'> {}
+export interface TabPaneProps extends Omit<BaseProps, 'prefixCls'>, React.ComponentProps<'div'> {}
 
 const TabPane = (props: TabPaneProps): React.ReactElement => {
-  const { prefixCls, className, children, ...restProps } = props;
-  const cls = classNames(prefixCls, className);
+  const { className, children, ...restProps } = props;
 
   return (
-    <div className={cls} {...restProps}>
+    <div className={className} {...restProps}>
       {children}
     </div>
   );

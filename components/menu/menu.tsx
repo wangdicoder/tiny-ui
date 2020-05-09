@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { MenuContext } from './menu-context';
 import { MenuItemProps } from './menu-item';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type MenuMode = 'horizontal' | 'vertical';
 
@@ -18,14 +20,16 @@ export interface MenuProps
 const Menu = (props: MenuProps): React.ReactElement => {
   const {
     defaultIndex = '0',
-    prefixCls = 'ty-menu',
     mode = 'horizontal',
     onSelect,
     className,
     style,
     children,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('menu', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${mode}`]: mode,
   });

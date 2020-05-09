@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import React, { useEffect, useRef, useState, ReactNode, useContext } from 'react';
 import classnNames from 'classnames';
 import Icon from '../icon';
 import { CSSTransition } from 'react-transition-group';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading' | undefined;
 
@@ -23,9 +25,8 @@ const IconType: any = {
   error: { name: 'close-fill', color: '#f5222d' },
 };
 
-const Message = (props: MessageProps) => {
+const Message = (props: MessageProps): JSX.Element => {
   const {
-    prefixCls = 'ty-message',
     type,
     icon,
     content,
@@ -34,7 +35,10 @@ const Message = (props: MessageProps) => {
     extra,
     className,
     style,
+    prefixCls: customisedCls,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('message', configContext.prefixCls, customisedCls);
   const cls = classnNames(prefixCls, className);
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(true);
@@ -75,5 +79,7 @@ const Message = (props: MessageProps) => {
     </CSSTransition>
   );
 };
+
+Message.displayName = 'Message';
 
 export default Message;

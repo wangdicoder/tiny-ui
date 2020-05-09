@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import Popover, { PopoverProps } from '../popover';
 import Icon from '../icon';
 import Button from '../button';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface PopConfirmProps extends PopoverProps {
   confirmText?: string;
@@ -14,7 +16,6 @@ export interface PopConfirmProps extends PopoverProps {
 
 const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-pop-confirm',
     placement = 'top',
     confirmText = 'Yes',
     cancelText = 'No',
@@ -24,10 +25,12 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
     onCancel,
     onVisibleChange,
     className,
-    style,
     children,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('pop-confirm', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(false);
 

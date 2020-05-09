@@ -1,37 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type DivideType = 'horizontal' | 'vertical';
 export type DivideAlign = 'left' | 'right' | 'center';
 
-export interface DividerProps extends BaseProps {
+export interface DividerProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   type?: DivideType;
   dashed?: boolean;
   align?: DivideAlign;
   children?: React.ReactNode;
 }
 
-const Divider = (props: DividerProps) => {
+const Divider = (props: DividerProps): JSX.Element => {
   const {
-    prefixCls = 'ty-divider',
     type = 'horizontal',
     dashed = false,
     align = 'center',
+    prefixCls: customisedCls,
     className,
-    style,
     children,
+    ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('divider', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${type}`, `${prefixCls}_${align}`, {
     [`${prefixCls}_${type}-dashed`]: dashed,
     [`${prefixCls}_text`]: children,
   });
 
   return (
-    <div className={cls} style={style}>
+    <div {...otherProps} className={cls}>
       {children && <span className={`${prefixCls}_inner-text`}>{children}</span>}
     </div>
   );
 };
+
+Divider.displayName = 'Divider';
 
 export default Divider;

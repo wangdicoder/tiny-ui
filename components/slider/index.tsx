@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface SliderProps extends BaseProps {
   value?: number | number[];
@@ -29,7 +31,6 @@ export interface SliderProps extends BaseProps {
 
 const Slider = (props: SliderProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-slider',
     value = 0,
     min = 0,
     max = 100,
@@ -39,8 +40,11 @@ const Slider = (props: SliderProps): React.ReactElement => {
     // progress = true,
     // tooltip = false,
     className,
+    prefixCls: customisedCls,
     style,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('slider', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const [val, setVal] = useState(Array.isArray(value) ? value : [value]);
 

@@ -5,6 +5,8 @@ import { MenuContext } from './menu-context';
 import { MenuItemProps } from './menu-item';
 import Transition from '../transition';
 import { ArrowDown } from '../_utils/components';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface SubMenuProps
   extends BaseProps,
@@ -15,10 +17,12 @@ export interface SubMenuProps
 }
 
 const SubMenu = (props: SubMenuProps): React.ReactElement => {
-  const { prefixCls = 'ty-menu-sub', index, title, className, children } = props;
+  const { index, title, className, children, prefixCls: customisedCls, ...otherProps } = props;
   const context = useContext(MenuContext);
   const { mode } = context;
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('menu-sub', configContext.prefixCls, customisedCls);
   const cls = classNames('ty-menu-item', prefixCls, className, {
     [`${prefixCls}_active`]: index ? context.index.startsWith(index) : false,
   });
@@ -53,6 +57,7 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
 
   return (
     <li
+      {...otherProps}
       role="menuitem"
       key={index}
       className={cls}

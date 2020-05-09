@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import Portal from '../portal';
 import { CSSTransition } from 'react-transition-group';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type OverlayMaskType = 'default' | 'inverted' | 'none';
 
@@ -26,7 +28,6 @@ const Overlay = (props: OverlayProps) => {
     blurred = false,
     unmountOnExit = true,
     zIndex = 1000,
-    prefixCls = 'ty-overlay',
     type = 'default',
     clickCallback,
     onEnter,
@@ -35,7 +36,10 @@ const Overlay = (props: OverlayProps) => {
     onExited,
     children,
     style,
+    prefixCls: customisedCls,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('overlay', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, `${prefixCls}_${type}`, { [`${prefixCls}_blurred`]: blurred });
 
   useEffect(() => {
@@ -70,5 +74,7 @@ const Overlay = (props: OverlayProps) => {
     </Portal>
   );
 };
+
+Overlay.displayName = 'Overlay';
 
 export default Overlay;

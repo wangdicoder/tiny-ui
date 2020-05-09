@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { SelectContext } from './select-context';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface SelectOptionsProps
   extends BaseProps,
@@ -13,16 +15,18 @@ export interface SelectOptionsProps
 
 const SelectOption = (props: SelectOptionsProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-select-option',
     disabled = false,
+    prefixCls: customisedCls,
     value,
     className,
-    style,
     children,
+    ...otherProps
   } = props;
   const context = useContext(SelectContext);
   const isSelect = context.value === value;
   const [active, setActive] = useState(false);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('select-option', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_selected`]: isSelect,
     [`${prefixCls}_active`]: active,
@@ -43,9 +47,9 @@ const SelectOption = (props: SelectOptionsProps): React.ReactElement => {
 
   return (
     <li
+      {...otherProps}
       key={value}
       className={cls}
-      style={style}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps, SizeType } from '../_utils/props';
 import { ButtonProps, ButtonType } from './button';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface ButtonGroupProps
   extends BaseProps,
@@ -16,22 +18,24 @@ export interface ButtonGroupProps
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props: ButtonGroupProps, ref) => {
     const {
-      prefixCls = 'ty-btn-group',
       size = 'md',
       btnType = 'default',
       disabled = false,
       round = false,
+      prefixCls: customisedCls,
       className,
-      style,
       children,
+      ...otherProps
     } = props;
+    const configContext = useContext(ConfigContext);
+    const prefixCls = getPrefixCls('btn-group', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_round`]: round,
       [`${prefixCls}_${btnType}`]: btnType,
     });
     return (
-      <div className={cls} style={style} ref={ref}>
-        {React.Children.map(children, child => {
+      <div {...otherProps} className={cls} ref={ref}>
+        {React.Children.map(children, (child) => {
           const childElement = child as React.FunctionComponentElement<ButtonProps>;
           const { displayName } = childElement.type;
           if (displayName === 'Button') {

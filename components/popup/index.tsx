@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { createPopper, Instance } from '@popperjs/core';
 import { BaseProps } from '../_utils/props';
 import Transition, { AnimationName } from '../transition';
 import Portal from '../portal';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type TriggerType = 'hover' | 'focus' | 'click' | 'contextmenu' | 'manual';
 export type PopoverTheme = 'light' | 'dark';
@@ -51,7 +53,6 @@ export interface PopupProps extends BaseProps, React.PropsWithoutRef<JSX.Intrins
 
 const Popup = (props: PopupProps): JSX.Element => {
   const {
-    prefixCls = 'ty-popup',
     trigger = 'click',
     placement = 'top',
     defaultVisible = false,
@@ -61,7 +62,7 @@ const Popup = (props: PopupProps): JSX.Element => {
     theme = 'light',
     mouseEnterDelay = 100,
     mouseLeaveDelay = 100,
-    role,
+    prefixCls: customisedCls,
     content,
     visible,
     onVisibleChange,
@@ -69,6 +70,8 @@ const Popup = (props: PopupProps): JSX.Element => {
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('popup', configContext.prefixCls, customisedCls);
   const cls = classNames(
     className,
     prefixCls,
@@ -240,6 +243,7 @@ const Popup = (props: PopupProps): JSX.Element => {
       target.removeEventListener('contextmenu', handleTargetOnMouseClick);
     };
   }, [
+    props.visible,
     targetRef,
     trigger,
     handleTargetOnMouseClick,

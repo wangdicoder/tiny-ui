@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import Indicator from './indicator';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
-export interface LoaderProps extends BaseProps {
+export interface LoaderProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   indicator?: React.ReactNode;
   size?: 'sm' | 'md' | 'lg';
   /** loading status */
@@ -14,9 +18,8 @@ export interface LoaderProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Loader = (props: LoaderProps): React.ReactElement => {
+const Loader = (props: LoaderProps): JSX.Element => {
   const {
-    prefixCls = 'ty-loader',
     size = 'md',
     loading = true,
     vertical = false,
@@ -24,9 +27,12 @@ const Loader = (props: LoaderProps): React.ReactElement => {
     indicator,
     tip,
     className,
-    style,
     children,
+    prefixCls: customisedCls,
+    ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('loader', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_spinning`]: loading,
   });
@@ -40,7 +46,7 @@ const Loader = (props: LoaderProps): React.ReactElement => {
   });
 
   return (
-    <div className={cls} style={style}>
+    <div {...otherProps} className={cls}>
       {loading && (
         <div className={indicatorCls}>
           {indicator ? indicator : <Indicator className={`${prefixCls}__indicator`} size={size} />}

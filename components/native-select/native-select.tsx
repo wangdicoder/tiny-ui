@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { NativeSelectGroupProps } from './native-opt-group';
 import { NativeSelectOptionProps } from './native-option';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type NativeSelectSize = 'sm' | 'md' | 'lg';
 
@@ -16,13 +18,15 @@ export interface NativeSelectProps
 const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
   (props: NativeSelectProps, ref) => {
     const {
-      prefixCls = 'ty-select-native',
       size = 'md',
       disabled = false,
       className,
       children,
+      prefixCls: customisedCls,
       ...otherProps
     } = props;
+    const configContext = useContext(ConfigContext);
+    const prefixCls = getPrefixCls('select-native', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_${size}`]: size,
       [`${prefixCls}_disabled`]: disabled,

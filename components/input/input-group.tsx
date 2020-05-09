@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { InputSizes } from './index';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface InputGroupProps
   extends BaseProps,
@@ -13,14 +15,16 @@ export interface InputGroupProps
 
 const InputGroup = (props: InputGroupProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-input-group',
     disabled = false,
     size = 'md',
     className,
     style,
     children,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('input-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (

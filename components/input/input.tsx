@@ -6,11 +6,14 @@ import React, {
   MouseEvent,
   KeyboardEvent,
   ChangeEvent,
+  useContext,
 } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
 import { KeyCode } from '../_utils/enum';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type InputSizes = 'sm' | 'md' | 'lg';
 
@@ -33,7 +36,6 @@ const DEFAULT_MARGIN = 16; // 8px * 2
 
 const Input = (props: InputProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-input',
     size = 'md',
     disabled = false,
     clearable = false,
@@ -45,8 +47,11 @@ const Input = (props: InputProps): React.ReactElement => {
     onKeyDown,
     className,
     style,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('input', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_disabled`]: disabled,
   });

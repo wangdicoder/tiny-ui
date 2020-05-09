@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { MenuItemProps } from './menu-item';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface MenuItemGroupProps
   extends BaseProps,
@@ -13,14 +15,16 @@ export interface MenuItemGroupProps
 
 const MenuItemGroup = (props: MenuItemGroupProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-menu-item-group',
     index,
     title,
     className,
     style,
     children,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('menu-item-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (

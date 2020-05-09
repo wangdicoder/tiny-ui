@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import { CollapsePanelProps } from './collapse-panel';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface CollapseProps extends BaseProps {
   defaultActiveKey?: string | string[];
@@ -21,19 +23,19 @@ export interface CollapseProps extends BaseProps {
  * Format active key to array
  * @param activeKey
  */
-const toArray = (activeKey: string | string[]) => {
+const toArray = (activeKey: string | string[]): string[] => {
   return Array.isArray(activeKey) ? activeKey : [activeKey];
 };
 
 const Collapse = (props: CollapseProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-collapse',
     showArrow = true,
     bordered = true,
     deletable = false,
     accordion = false,
     defaultActiveKey = [],
     duration = 300,
+    prefixCls: customisedCls,
     activeKey,
     onChange,
     className,
@@ -45,11 +47,13 @@ const Collapse = (props: CollapseProps): React.ReactElement => {
     currentActiveKey = activeKey;
   }
   const [activeItems, setActiveItems] = useState<string[]>(toArray(currentActiveKey));
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('collapse', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_borderless`]: !bordered,
   });
 
-  const _updateActiveItems = (items: string[]) => {
+  const updateActiveItems = (items: string[]) => {
     if (!('activeKey' in props)) {
       // only for defaultKey
       setActiveItems(items);
@@ -57,7 +61,7 @@ const Collapse = (props: CollapseProps): React.ReactElement => {
     onChange && onChange(items);
   };
 
-  const _itemClickCallback = (itemKey: string) => {
+  const itemClickCallback = (itemKey: string) => {
     let items = activeItems;
     if (accordion) {
       items = items[0] === itemKey ? [] : [itemKey];
@@ -72,24 +76,24 @@ const Collapse = (props: CollapseProps): React.ReactElement => {
         items.push(itemKey);
       }
     }
-    _updateActiveItems(items);
+    updateActiveItems(items);
   };
 
   useEffect(() => {
     // Update state from updated props
     activeKey && setActiveItems(toArray(activeKey));
-  });
+  }, [activeKey]);
 
   return (
     <div className={cls} style={style}>
-      {React.Children.map(children, child => {
+      {React.Children.map(children, (child) => {
         const itemProps: CollapsePanelProps = {
           ...child.props,
           duration,
           deletable,
           showArrow,
           isActive: activeItems.includes(child.props.itemKey),
-          onItemClick: _itemClickCallback,
+          onItemClick: itemClickCallback,
         };
         return React.cloneElement(child, itemProps);
       })}

@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface SplitPaneProps extends BaseProps {
   min?: number;
@@ -9,7 +11,9 @@ export interface SplitPaneProps extends BaseProps {
 }
 
 const SplitPane = (props: SplitPaneProps): React.ReactElement => {
-  const { prefixCls = 'ty-split-pane', min, getMin, className, style, children } = props;
+  const { prefixCls: customisedCls, min, getMin, className, style, children } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('split-pane', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   useEffect(() => {

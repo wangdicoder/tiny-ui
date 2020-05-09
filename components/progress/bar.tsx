@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { strokeLineCaps, strokePresetColors } from './shared-props';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type BarBackgroundType = 'impulse' | 'striped';
 
@@ -22,13 +24,13 @@ export interface BarProps extends BaseProps, React.PropsWithoutRef<JSX.Intrinsic
 
 const Bar = (props: BarProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-progress-bar',
     percent = 0,
     showInfo = true,
     strokeWidth = 8,
     strokeLinecap = 'round',
     strokeColor = 'primary',
     innerText = false,
+    prefixCls: customisedCls,
     format,
     backgroundType,
     className,
@@ -37,7 +39,8 @@ const Bar = (props: BarProps): React.ReactElement => {
   } = props;
   let percentage: number = percent > 100 ? 100 : percent;
   percentage = percentage < 0 ? 0 : percentage;
-
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('progress-bar', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${strokeLinecap}`);
 
   const strokeBgCls = classNames(`${prefixCls}__bg`, {

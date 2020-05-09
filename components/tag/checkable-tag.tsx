@@ -1,7 +1,9 @@
-import React, { MouseEvent, useState, useEffect } from 'react';
+import React, { MouseEvent, useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import Tag from './index';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface CheckableTagProps extends BaseProps {
   defaultChecked?: boolean;
@@ -12,14 +14,16 @@ export interface CheckableTagProps extends BaseProps {
 
 const CheckableTag = (props: CheckableTagProps) => {
   const {
-    prefixCls = 'ty-checkable-tag',
     defaultChecked = true,
+    prefixCls: customisedCls,
     onChange,
     className,
     style,
     children,
   } = props;
   const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('checkable-tag', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_checked`]: checked,
   });

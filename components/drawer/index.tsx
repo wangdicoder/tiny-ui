@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import { BaseProps } from '../_utils/props';
 import Overlay, { OverlayMaskType } from '../overlay';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type DrawerPlacement = 'top' | 'bottom' | 'left' | 'right';
 
@@ -27,14 +29,14 @@ export interface DrawerProps extends BaseProps {
 const Drawer = (props: DrawerProps): React.ReactElement => {
   const {
     visible,
-    prefixCls = 'ty-drawer',
     placement = 'right',
     size = 256,
     closable = true,
     unmountOnClose = true,
     maskType = 'default',
     maskClosable = true,
-    onClose = () => {},
+    onClose = (): void => {},
+    prefixCls: customisedCls,
     afterClose,
     zIndex = 1000,
     header,
@@ -45,6 +47,8 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
     children,
   } = props;
   const [drawerVisible, setDrawerVisible] = useState(visible);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('drawer', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${placement}`);
   const sty: React.CSSProperties =
     placement === 'top' || placement === 'bottom' ? { height: size } : { width: size };
@@ -68,7 +72,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
           in={drawerVisible}
           timeout={0}
           classNames={`${prefixCls}__content_move`}>
-          <div className={`${prefixCls}__content`} onClick={e => e.stopPropagation()}>
+          <div className={`${prefixCls}__content`} onClick={(e) => e.stopPropagation()}>
             {closable && (
               <div className={`${prefixCls}__close-btn`} onClick={onClose}>
                 ✕
@@ -83,5 +87,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
     </Overlay>
   );
 };
+
+Drawer.displayName = 'Drawer';
 
 export default Drawer;

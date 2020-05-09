@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface ImageProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['img']> {
   src?: string;
@@ -16,11 +18,11 @@ export interface ImageProps extends BaseProps, React.PropsWithoutRef<JSX.Intrins
 
 const Image = (props: ImageProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-image',
     alt = 'image',
     objectFit = 'cover',
     round = false,
     lazy = false,
+    prefixCls: customisedCls,
     src,
     placeholder,
     fallback,
@@ -28,13 +30,15 @@ const Image = (props: ImageProps): React.ReactElement => {
     style,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('image', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, { [`${prefixCls}_round`]: round });
   const ref = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     if (lazy && 'IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(function(entry) {
+        entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             const lazyImage = entry.target as HTMLImageElement;
             lazyImage.src = src || fallback || '';
@@ -45,7 +49,7 @@ const Image = (props: ImageProps): React.ReactElement => {
 
       ref.current && observer.observe(ref.current);
     }
-  }, []);
+  }, [fallback, lazy, src]);
 
   return (
     <img
@@ -58,5 +62,7 @@ const Image = (props: ImageProps): React.ReactElement => {
     />
   );
 };
+
+Image.displayName = 'Image';
 
 export default Image;

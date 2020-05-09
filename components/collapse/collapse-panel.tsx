@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import CollapseTransition from './collapse-transition';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface CollapsePanelProps extends BaseProps {
   itemKey: string;
@@ -29,9 +31,9 @@ const richNode = (node: React.ReactNode, isActive: boolean) => {
 
 const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-collapse-item',
     showArrow = true,
     isActive = false,
+    prefixCls: customisedCls,
     itemKey,
     duration,
     header,
@@ -45,7 +47,8 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
   } = props;
   const itemEl = useRef<HTMLDivElement | null>(null);
   const contentEl = useRef<HTMLDivElement | null>(null);
-
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('collapse-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_active`]: isActive,
   });

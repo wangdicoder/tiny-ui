@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { TimelineItemProps } from './timeline-item';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type TimelinePosition = 'left' | 'center';
 
@@ -14,13 +16,15 @@ export interface TimelineProps
 
 const Timeline = (props: TimelineProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-timeline',
     position = 'left',
+    prefixCls: customisedCls,
     className,
     style,
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('timeline', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${position}`]: position,
   });

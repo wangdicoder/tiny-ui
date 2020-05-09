@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface BreadcrumbItemProps
   extends BaseProps,
@@ -10,11 +12,13 @@ export interface BreadcrumbItemProps
 }
 
 const BreadcrumbItem = (props: BreadcrumbItemProps): React.ReactElement => {
-  const { prefixCls = 'ty-breadcrumb-item', separator, className, style, children } = props;
+  const { separator, className, style, children, prefixCls: customisedCls, ...otherProps } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('breadcrumb-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (
-    <li className={cls} style={style}>
+    <li {...otherProps} className={cls} style={style}>
       {children}
       <span className={`${prefixCls}__separator`}>{separator}</span>
     </li>

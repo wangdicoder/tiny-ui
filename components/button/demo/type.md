@@ -4,7 +4,7 @@
 
 There are `default`, `primary`, `outline`, `ghost` and `link` button.
 
-> The link type button only changes the style. It is still a `<button>` tag. Considering to use `<Link />` component to represent a hyperlink with `href` property. 
+> The link type button only changes the style. It is still a `<button>` tag. Considering using a `<Link />` component to represent a hyperlink with the `href` property. 
 
 
 ```jsx live

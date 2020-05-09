@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps, SizeType } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type ButtonType =
   | 'default'
@@ -28,12 +30,12 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonProps, ref) => {
   const {
-    prefixCls = 'ty-btn',
     size = 'md',
     btnType = 'default',
     loading = false,
     disabled = false,
     block = false,
+    prefixCls: customisedCls,
     icon,
     round,
     children,
@@ -41,6 +43,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
     style,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('btn', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${btnType}`]: btnType,
     [`${prefixCls}_${size}`]: size,

@@ -6,8 +6,12 @@ export interface CardContentProps extends React.PropsWithoutRef<JSX.IntrinsicEle
 }
 
 const CardContent = (props: CardContentProps): React.ReactElement => {
-  const { prefixCls, children } = props;
-  return <div className={`${prefixCls}__body`}>{children}</div>;
+  const { prefixCls, children, ...otherProps } = props;
+  return (
+    <div {...otherProps} className={`${prefixCls}__body`}>
+      {children}
+    </div>
+  );
 };
 
 CardContent.displayName = 'CardContent';

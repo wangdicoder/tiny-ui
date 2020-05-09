@@ -1,16 +1,30 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { getRect } from '../_utils/dom';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
-export interface WaterfallProps extends BaseProps {
+export interface WaterfallProps
+  extends BaseProps,
+    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   columns?: number;
   gap?: number;
   children?: React.ReactNode;
 }
 
 const Waterfall = (props: WaterfallProps): React.ReactElement => {
-  const { prefixCls = 'ty-waterfall', columns = 5, gap = 0, className, style, children } = props;
+  const {
+    columns = 5,
+    gap = 0,
+    prefixCls: customisedCls,
+    className,
+    style,
+    children,
+    ...otherProps
+  } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('waterfall', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -53,8 +67,8 @@ const Waterfall = (props: WaterfallProps): React.ReactElement => {
   }, [handleLayout]);
 
   return (
-    <div ref={containerRef} className={cls} style={style}>
-      {React.Children.map(children, child =>
+    <div {...otherProps} ref={containerRef} className={cls} style={style}>
+      {React.Children.map(children, (child) =>
         React.createElement('div', { className: `${prefixCls}__item` }, child)
       )}
     </div>

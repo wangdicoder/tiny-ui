@@ -1,7 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import Icon from '../icon';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type ResultStatus = 'success' | 'error' | 'info' | 'warning' | 'loading';
 
@@ -26,17 +28,18 @@ export interface ResultProps
 
 const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps, ref) => {
   const {
-    prefixCls = 'ty-result',
     status = 'info',
+    prefixCls: customisedCls,
     title,
     subtitle,
     icon,
     extra,
     className,
-    style,
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('result', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${status}`);
 
   const renderIcon = (): React.ReactElement => {
@@ -56,7 +59,7 @@ const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps
   };
 
   return (
-    <div {...otherProps} ref={ref} className={cls} style={style}>
+    <div {...otherProps} ref={ref} className={cls}>
       {renderIcon()}
       {title && <div className={`${prefixCls}__title`}>{title}</div>}
       {subtitle && <div className={`${prefixCls}__subtitle`}>{subtitle}</div>}

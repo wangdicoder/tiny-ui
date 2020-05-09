@@ -1,6 +1,8 @@
-import React, { ReactNode, CSSProperties } from 'react';
+import React, { ReactNode, CSSProperties, useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface EmptyProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   image?: string | ReactNode;
@@ -12,8 +14,8 @@ export interface EmptyProps extends BaseProps, React.PropsWithoutRef<JSX.Intrins
 
 const Empty = (props: EmptyProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-empty',
     description = 'No Data',
+    prefixCls: customisedCls,
     image,
     imageStyle,
     descStyle,
@@ -22,6 +24,8 @@ const Empty = (props: EmptyProps): React.ReactElement => {
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('empty', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   const renderImage = (): ReactNode => {

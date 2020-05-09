@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { strokeLineCaps, strokePresetColors } from './shared-props';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface CircleProps
   extends BaseProps,
@@ -21,19 +23,21 @@ export interface CircleProps
 
 const Circle = (props: CircleProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-progress-circle',
     percent = 0,
     strokeWidth = 8,
     width = 120,
     strokeLinecap = 'round',
     strokeColor = 'primary',
     reverse = false,
+    prefixCls: customisedCls,
     format,
     className,
     style,
     textStyle,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('progress-circle', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   let percentage: number = percent > 100 ? 100 : percent;
   percentage = percentage < 0 ? 0 : percentage;

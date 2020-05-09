@@ -1,6 +1,8 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface TimelineItemProps
   extends BaseProps,
@@ -12,14 +14,16 @@ export interface TimelineItemProps
 
 const TimelineItem = (props: TimelineItemProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-timeline-item',
     dot,
     dotStyle,
     className,
     style,
     children,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('timeline-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (

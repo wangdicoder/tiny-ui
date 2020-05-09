@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface AspectRatioProps
   extends BaseProps,
@@ -12,14 +14,16 @@ export interface AspectRatioProps
 
 const AspectRatio = (props: AspectRatioProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-aspect-ratio',
     ratio = 1,
     width = '100%',
+    prefixCls: customisedCls,
     className,
     style,
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('aspect-ratio', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (

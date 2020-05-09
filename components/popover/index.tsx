@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Popup, { PopupProps } from '../popup';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface PopoverProps extends Omit<PopupProps, 'title'> {
   role?: string;
@@ -10,15 +12,17 @@ export interface PopoverProps extends Omit<PopupProps, 'title'> {
 
 const Popover = (props: PopoverProps): JSX.Element => {
   const {
-    prefixCls = 'ty-popover',
     theme = 'light',
     role = 'tooltip',
+    prefixCls: customisedCls,
     title,
     content,
     className,
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('popover', configContext.prefixCls, customisedCls);
   const cls = classNames(className, prefixCls, `${prefixCls}_${theme}`);
 
   const renderContent = (): React.ReactElement => (

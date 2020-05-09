@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import warning from '../_utils/warning';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface BadgeProps
   extends BaseProps,
@@ -19,23 +21,24 @@ export interface BadgeProps
   children?: React.ReactNode;
 }
 
-const Badge = (props: BadgeProps): React.ReactElement => {
+const Badge = (props: BadgeProps): JSX.Element => {
   const {
     count = 0,
-    prefixCls = 'ty-badge',
     color = '#f2453d',
     max = 99,
     dot = false,
     processing = false,
     showZero = false,
     text = undefined,
+    prefixCls: customisedCls,
     title,
     className,
-    style,
     badgeStyle,
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('badge', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, { [`${prefixCls}_no-wrap`]: !children });
 
   const dotCls = classNames(`${prefixCls}__dot`, { [`${prefixCls}__dot_wave`]: processing });
@@ -63,7 +66,7 @@ const Badge = (props: BadgeProps): React.ReactElement => {
   };
 
   return (
-    <span {...otherProps} className={cls} style={style}>
+    <span {...otherProps} className={cls}>
       {children}
       {dot ? (
         <sup title={title} className={dotCls} style={{ backgroundColor: color, ...badgeStyle }} />

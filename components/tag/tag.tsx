@@ -1,6 +1,8 @@
-import React, { useState, useEffect, MouseEvent } from 'react';
+import React, { useState, useEffect, MouseEvent, useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export const PresetColors = [
   'magenta',
@@ -28,9 +30,9 @@ export interface TagProps extends BaseProps, React.PropsWithoutRef<JSX.Intrinsic
 
 const Tag = (props: TagProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-tag',
     closable = false,
     defaultVisible = true,
+    prefixCls: customisedCls,
     color,
     onClose,
     onClick,
@@ -40,6 +42,8 @@ const Tag = (props: TagProps): React.ReactElement => {
     ...otherProps
   } = props;
   const [visible, setVisible] = useState('visible' in props ? props.visible : defaultVisible);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('tag', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${color}`]: color && PresetColors.includes(color),
     [`${prefixCls}_visible`]: visible,

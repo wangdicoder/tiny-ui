@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import warning from '../_utils/warning';
 import { BaseProps } from '../_utils/props';
 import { FlipItemProps } from './flip-item';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type FlipDirection = 'horizontal' | 'vertical';
 
@@ -19,9 +21,9 @@ export interface FlipProps extends BaseProps, React.PropsWithoutRef<JSX.Intrinsi
 
 const Flip = (props: FlipProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-flip',
     direction = 'horizontal',
     reverse = false,
+    prefixCls: customisedCls,
     width,
     height,
     className,
@@ -29,6 +31,8 @@ const Flip = (props: FlipProps): React.ReactElement => {
     style,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('flip', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   const innerCls = classNames(`${prefixCls}__inner`, {

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { SelectOptionsProps } from './option';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface SelectOptGroupProps
   extends BaseProps,
@@ -11,14 +13,16 @@ export interface SelectOptGroupProps
 }
 
 const SelectOptGroup = (props: SelectOptGroupProps): React.ReactElement => {
-  const { prefixCls = 'ty-select-group', label, className, style, children } = props;
+  const { prefixCls: customisedCls, label, className, children, ...otherProps } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('select-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (
-    <li key={label} className={cls} style={style}>
+    <li {...otherProps} key={label} className={cls}>
       <div className={`${prefixCls}__title`}>{label}</div>
       <ul className={`${prefixCls}__list`}>
-        {React.Children.map(children, child => {
+        {React.Children.map(children, (child) => {
           const childElement = child as React.FunctionComponentElement<SelectOptionsProps>;
           if (childElement.type.displayName === 'SelectOption') {
             const childProps = {

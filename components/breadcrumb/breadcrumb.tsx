@@ -1,7 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useContext } from 'react';
 import classNames from 'classnames';
 import { BreadcrumbItemProps } from './breadcrumb-item';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface BreadcrumbProps
   extends BaseProps,
@@ -11,7 +13,9 @@ export interface BreadcrumbProps
 }
 
 const Breadcrumb = (props: BreadcrumbProps): React.ReactElement => {
-  const { separator = '/', prefixCls = 'ty-breadcrumb', className, style, children } = props;
+  const { separator = '/', prefixCls: customisedCls, className, style, children } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('breadcrumb', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (

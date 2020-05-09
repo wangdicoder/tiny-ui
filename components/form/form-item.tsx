@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import FormStoreContext from './form-store-context';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface FormItemProps extends BaseProps {
   name: string;
@@ -18,9 +20,9 @@ export interface FormItemProps extends BaseProps {
 
 const FormItem = (props: FormItemProps) => {
   const {
-    prefixCls = 'ty-form-item',
     validateOnChange = true,
     validateOnBlur = false,
+    prefixCls: customisedCls,
     name,
     label,
     helper,
@@ -29,6 +31,8 @@ const FormItem = (props: FormItemProps) => {
     style,
     children,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('form-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const store = React.useContext(FormStoreContext);
   const [value, setValue] = useState(name && store ? store.getFieldValue(name) : undefined);

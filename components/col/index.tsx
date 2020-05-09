@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type ColSize = {
   span?: number;
@@ -25,15 +27,18 @@ const ScreenTypes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const Col = (props: ColProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-col',
     span = 24,
     offset = 0,
     order = 0,
+    prefixCls: customisedCls,
     className,
     style,
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('col', configContext.prefixCls, customisedCls);
+
   let sizeClassObj = {};
   ScreenTypes.forEach((size) => {
     let sizeProps: ColSize = {};
@@ -44,7 +49,6 @@ const Col = (props: ColProps): React.ReactElement => {
     } else if (typeof propSize === 'object') {
       sizeProps = propSize || {};
     }
-
     sizeClassObj = {
       ...sizeClassObj,
       [`${prefixCls}-${size}-${sizeProps.span}`]: sizeProps.span !== undefined,
@@ -53,7 +57,6 @@ const Col = (props: ColProps): React.ReactElement => {
         sizeProps.offset || sizeProps.offset === 0,
     };
   });
-
   const cls = classNames(
     prefixCls,
     className,

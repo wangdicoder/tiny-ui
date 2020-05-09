@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ColProps } from '../col';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type RowAlign = 'top' | 'center' | 'bottom' | 'baseline';
 export type RowJustify =
@@ -24,9 +26,9 @@ export interface RowProps extends BaseProps, React.PropsWithoutRef<JSX.Intrinsic
 
 const Row = (props: RowProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-row',
     gutter = 0,
     gutterSide = false,
+    prefixCls: customisedCls,
     align,
     justify,
     className,
@@ -34,6 +36,8 @@ const Row = (props: RowProps): React.ReactElement => {
     children,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('row', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_align-${align}`]: align,
     [`${prefixCls}_justify-${justify}`]: justify,

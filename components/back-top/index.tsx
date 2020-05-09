@@ -1,8 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import raf from 'raf';
 import { Target } from '../_utils/dom';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface BackTopProps extends BaseProps {
   target?: () => Target;
@@ -21,16 +23,18 @@ const easeInOutCubic = (t: number, b: number, c: number, d: number): number => {
   }
 };
 
-const BackTop = (props: BackTopProps): React.ReactElement | null => {
+const BackTop = (props: BackTopProps): JSX.Element | null => {
   const {
-    prefixCls = 'ty-backtop',
     visibilityHeight = 300,
     target = (): Target => window,
+    prefixCls: customisedCls,
     onClick,
     className,
     style,
     children,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('backtop', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(true);
 

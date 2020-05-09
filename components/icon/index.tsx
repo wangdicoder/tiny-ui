@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface IconTypes extends React.PropsWithoutRef<JSX.IntrinsicElements['i']> {
   name: string;
@@ -12,7 +14,18 @@ export interface IconTypes extends React.PropsWithoutRef<JSX.IntrinsicElements['
 }
 
 const Icon = (props: IconTypes): JSX.Element => {
-  const { prefixCls = 'ty-icon', name, color, size, style, spin, className, ...otherProps } = props;
+  const {
+    name,
+    color,
+    size,
+    style,
+    spin,
+    className,
+    prefixCls: customisedCls,
+    ...otherProps
+  } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('icon', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `ty--${name}`, {
     [`${prefixCls}_spin`]: spin,
   });

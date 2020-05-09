@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type PaginationAlign = 'left' | 'center' | 'right';
 
-export interface PaginationProps extends BaseProps {
+export interface PaginationProps
+  extends BaseProps,
+    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['ul']>, 'onChange'> {
   current?: number;
   total?: number;
   defaultCurrent?: number;
@@ -25,7 +29,6 @@ type ItemSourceData = {
 
 const Pagination = (props: PaginationProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-pagination',
     align = 'center',
     size = 'md',
     defaultCurrent = 1,
@@ -34,8 +37,11 @@ const Pagination = (props: PaginationProps): React.ReactElement => {
     disabled = false,
     onChange,
     className,
-    style,
+    prefixCls: customisedCls,
+    ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('pagination', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${align}`]: align,
     [`${prefixCls}_${size}`]: size,
@@ -156,10 +162,10 @@ const Pagination = (props: PaginationProps): React.ReactElement => {
   useEffect(() => {
     'current' in props && setCurrent(props.current!);
     'pageSize' in props && setPageSize(props.pageSize!);
-  }, [props.current]);
+  }, [props]);
 
   return (
-    <ul unselectable="off" className={cls} style={style}>
+    <ul {...otherProps} unselectable="off" className={cls}>
       {getItems().map((item, idx) => {
         const { active, disabled, type } = item;
         const cls = classNames(`${prefixCls}__item`, {

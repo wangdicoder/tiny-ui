@@ -42,11 +42,11 @@ const setClosedStyle = (node: HTMLElement): void => {
   node.style.marginBottom = '0';
 };
 
-const Alert = (props: AlertProps): React.ReactElement => {
+const Alert = (props: AlertProps): JSX.Element => {
   const {
-    prefixCls: customisedCls,
     type = 'info',
     iconSize = 14,
+    prefixCls: customisedCls,
     title,
     icon,
     closeText,
@@ -58,9 +58,9 @@ const Alert = (props: AlertProps): React.ReactElement => {
     style,
     ...otherProps
   } = props;
-  const configContext = useContext(ConfigContext);
   const [isShow, setShow] = useState(true);
   const ref = useRef<HTMLDivElement | null>(null);
+  const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('alert', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, [`${prefixCls}_${type}`]);
 

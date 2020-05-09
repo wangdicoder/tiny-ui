@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import { CheckboxProps } from '.';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface CheckboxGroupProps extends BaseProps {
   defaultValue?: string[];
@@ -13,18 +15,20 @@ export interface CheckboxGroupProps extends BaseProps {
 
 const CheckboxGroup = (props: CheckboxGroupProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-checkbox-group',
     defaultValue = [],
+    prefixCls: customisedCls,
     onChange,
     disabled,
     className,
     style,
     children,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('checkbox-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const [value, setValue] = useState(props.value ? props.value : defaultValue);
 
-  const _onChange = (checked: boolean, event: React.FormEvent<HTMLInputElement>) => {
+  const itemOnChange = (checked: boolean, event: React.FormEvent<HTMLInputElement>): void => {
     if (!disabled) {
       const name = event.currentTarget.name;
       const idx = value.indexOf(name);
@@ -41,16 +45,16 @@ const CheckboxGroup = (props: CheckboxGroupProps): React.ReactElement => {
 
   useEffect(() => {
     'value' in props && setValue([...props.value!]);
-  }, [props.value]);
+  }, [props]);
 
   return (
     <div role="group" className={cls} style={style}>
-      {React.Children.map(children, child => {
+      {React.Children.map(children, (child) => {
         const childProps = {
           ...child.props,
           disabled: child.props.disabled || disabled,
           checked: child.props.value ? value.includes(child.props.value) : false,
-          onChange: _onChange,
+          onChange: itemOnChange,
         };
         return React.cloneElement(child, childProps);
       })}

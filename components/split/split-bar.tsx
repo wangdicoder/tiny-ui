@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { SplitMode } from './shared-props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface SplitBarProps extends BaseProps {
   mode: SplitMode;
   children?: React.ReactNode;
 }
 
-const SplitBar = (props: SplitBarProps) => {
-  const { prefixCls = 'ty-split-bar', mode, className, style } = props;
+const SplitBar = (props: SplitBarProps): JSX.Element => {
+  const { prefixCls: customisedCls, mode, className, style } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('split-bar', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${mode}`]: mode,
   });

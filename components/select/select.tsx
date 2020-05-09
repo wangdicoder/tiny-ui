@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import Input from '../input/input';
@@ -7,6 +7,8 @@ import { useClickOutside } from '../_utils/hooks';
 import { ArrowDown } from '../_utils/components';
 import { SelectContext } from './select-context';
 import Popup from '../popup';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 type SelectValue = string | string[];
 
@@ -27,15 +29,14 @@ export interface SelectProps
 
 const Select = (props: SelectProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-select',
     defaultOpen = false,
     disabled = false,
-    value,
     defaultValue = '',
+    prefixCls: customisedCls,
+    value,
     onDropdownVisibleChange,
     placeholder,
     className,
-    style,
     children,
     dropdownStyle,
     onSelect,
@@ -44,6 +45,8 @@ const Select = (props: SelectProps): React.ReactElement => {
   const [isOpenDropdown, setIsOpenDropdown] = useState('open' in props ? props.open : defaultOpen);
   const [selectVal, setSelectVal] = useState('value' in props ? value : defaultValue);
   const ref = useRef<HTMLDivElement | null>(null);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('select', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const arrowCls = classNames(`${prefixCls}__arrow`, {
     [`${prefixCls}__arrow_reverse`]: isOpenDropdown,
@@ -96,7 +99,7 @@ const Select = (props: SelectProps): React.ReactElement => {
   );
 
   return (
-    <div {...otherProps} ref={ref} className={cls} style={style}>
+    <div {...otherProps} ref={ref} className={cls}>
       <Popup
         trigger="manual"
         placement="bottom"

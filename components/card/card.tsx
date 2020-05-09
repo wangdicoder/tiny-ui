@@ -1,7 +1,9 @@
-import React, { ReactNode, CSSProperties } from 'react';
+import React, { ReactNode, CSSProperties, useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
-import CardContent, { CardContentProps } from './card-content';
+import { CardContentProps } from './card-content';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface CardProps
   extends BaseProps,
@@ -20,12 +22,12 @@ export interface CardProps
   children?: ReactNode | React.ReactElement<CardContentProps>;
 }
 
-const Card = (props: CardProps): React.ReactElement => {
+const Card = (props: CardProps): JSX.Element => {
   const {
-    prefixCls = 'ty-card',
     bordered = true,
     active = false,
     hoverable = false,
+    prefixCls: customisedCls,
     title,
     extra,
     header,
@@ -37,6 +39,8 @@ const Card = (props: CardProps): React.ReactElement => {
     style,
     children,
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('card', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_bordered`]: bordered,
     [`${prefixCls}_active`]: active,
@@ -74,14 +78,19 @@ const Card = (props: CardProps): React.ReactElement => {
 
   const renderChildren = (): ReactNode => {
     if (children) {
-      return React.Children.map(children, child => {
+      return React.Children.map(children, (child) => {
         if (!React.isValidElement(child)) {
           return child;
         }
 
         // Pass prefixCls attribute to child if it is a CardContent instance
-        if (child.type === CardContent) {
-          return React.cloneElement(child, { prefixCls });
+        const childElement = child as React.FunctionComponentElement<CardContentProps>;
+        if (childElement.type.displayName === 'CardContent') {
+          const childProps = {
+            ...childElement.props,
+            prefixCls,
+          };
+          return React.cloneElement(childElement, childProps);
         } else {
           return child;
         }

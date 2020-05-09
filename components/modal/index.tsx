@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay, { OverlayMaskType } from '../overlay';
 import Button, { ButtonProps } from '../button';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type ModalAnimation = 'slide' | 'scale';
 
@@ -44,7 +46,6 @@ const Modal = (props: ModalProps): React.ReactElement => {
     unmountOnClose = true,
     maskType = 'default',
     maskClosable = true,
-    prefixCls = 'ty-modal',
     confirmText = 'OK',
     cancelText = 'Cancel',
     confirmLoading = false,
@@ -65,10 +66,13 @@ const Modal = (props: ModalProps): React.ReactElement => {
     headerStyle,
     bodyStyle,
     footerStyle,
+    prefixCls: customisedCls,
   } = props;
   // The visible attribute controls the overlay status,
   // modal visible is triggered by overlay's enter and exit statuses
   const [modalVisible, setModalVisible] = useState(visible);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('modal', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, { [`${prefixCls}_centered`]: centered });
 
   const _renderFooter = (): React.ReactNode => {
@@ -97,8 +101,8 @@ const Modal = (props: ModalProps): React.ReactElement => {
 
   return (
     <Overlay
-      onEnter={() => setModalVisible(true)}
-      onExit={() => setModalVisible(false)}
+      onEnter={(): void => setModalVisible(true)}
+      onExit={(): void => setModalVisible(false)}
       zIndex={zIndex}
       type={maskType}
       unmountOnExit={unmountOnClose}
@@ -115,7 +119,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
             in={modalVisible}
             classNames={`${prefixCls}__content_${animation}`}
             timeout={0}>
-            <div className={`${prefixCls}__content`} onClick={e => e.stopPropagation()}>
+            <div className={`${prefixCls}__content`} onClick={(e): void => e.stopPropagation()}>
               {closable && (
                 <div role="button" className={`${prefixCls}__close-btn`} onClick={onCancel}>
                   ✕

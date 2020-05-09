@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import Input from '../input';
 import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface InputPasswordProps extends BaseProps {
   suffix?: boolean;
@@ -10,19 +12,20 @@ export interface InputPasswordProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const InputPassword = (props: InputPasswordProps) => {
+const InputPassword = (props: InputPasswordProps): JSX.Element => {
   const {
     suffix = true,
-    visibleOnClick = () => {},
-    prefixCls = 'ty-input-pwd',
+    visibleOnClick = (): void => {},
     className,
-    style,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('input-pwd', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(false);
 
-  const renderSuffix = () => (
+  const renderSuffix = (): React.ReactElement => (
     <div
       className={`${prefixCls}__suffix`}
       onClick={() => {
@@ -35,11 +38,10 @@ const InputPassword = (props: InputPasswordProps) => {
 
   return (
     <Input
+      {...otherProps}
       className={cls}
-      style={style}
       type={visible ? 'text' : 'password'}
       suffix={suffix ? renderSuffix() : null}
-      {...otherProps}
     />
   );
 };

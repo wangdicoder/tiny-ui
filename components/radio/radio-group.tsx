@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { RadioProps } from './index';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface RadioGroupProps extends BaseProps {
   name?: string;
@@ -12,16 +14,10 @@ export interface RadioGroupProps extends BaseProps {
   children: React.ReactElement<RadioProps>;
 }
 
-const RadioGroup = (props: RadioGroupProps): React.ReactElement => {
-  const {
-    prefixCls = 'ty-radio-group',
-    name,
-    onChange,
-    disabled,
-    className,
-    style,
-    children,
-  } = props;
+const RadioGroup = (props: RadioGroupProps): JSX.Element => {
+  const { name, onChange, disabled, className, style, children, prefixCls: customisedCls } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('radio-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const [value, setValue] = useState('value' in props ? props.value : props.defaultValue);
 
@@ -34,11 +30,11 @@ const RadioGroup = (props: RadioGroupProps): React.ReactElement => {
 
   useEffect(() => {
     'value' in props && setValue(props.value!);
-  }, [props.value]);
+  }, [props]);
 
   return (
     <div role="radiogroup" className={cls} style={style}>
-      {React.Children.map(children, child => {
+      {React.Children.map(children, (child) => {
         const childProps = {
           ...child.props,
           name,

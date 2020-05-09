@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface TextareaProps extends BaseProps {
   rows?: number;
@@ -14,8 +16,8 @@ export interface TextareaProps extends BaseProps {
 
 const Textarea = (props: TextareaProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-textarea',
     disabled = false,
+    prefixCls: customisedCls,
     limit,
     counter,
     defaultValue,
@@ -26,6 +28,8 @@ const Textarea = (props: TextareaProps): React.ReactElement => {
     style,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('textarea', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_disabled`]: disabled,
   });

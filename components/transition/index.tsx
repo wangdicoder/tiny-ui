@@ -37,7 +37,7 @@ const Transition = (props: TransitionProps): React.ReactElement => {
     timeout = 250,
     unmountOnExit = true,
     appear = true,
-    prefix = 'ty-',
+    prefix = 'ty',
     animation,
     classNames,
     children,
@@ -51,7 +51,7 @@ const Transition = (props: TransitionProps): React.ReactElement => {
       timeout={timeout}
       appear={appear}
       unmountOnExit={unmountOnExit}
-      classNames={classNames ? classNames : `${prefix}${animation}`}>
+      classNames={classNames ? classNames : `${prefix}-${animation}`}>
       {wrapper ? <div>{children}</div> : children}
     </CSSTransition>
   );

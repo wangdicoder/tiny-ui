@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface LinkProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['a']> {
   external?: boolean;
@@ -11,7 +13,6 @@ export interface LinkProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicEl
 
 const Link = (props: LinkProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-link',
     disabled = false,
     external = true,
     underline = true,
@@ -19,8 +20,11 @@ const Link = (props: LinkProps): React.ReactElement => {
     style,
     children,
     target,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('link', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_no-underline`]: !underline,

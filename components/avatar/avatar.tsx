@@ -1,7 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export type AvatarShape = 'circle' | 'square';
 export type AvatarPresence = 'online' | 'busy' | 'away' | 'offline';
@@ -19,14 +21,14 @@ export interface AvatarProps
   children?: React.ReactNode;
 }
 
-const Avatar = (props: AvatarProps): React.ReactElement => {
+const Avatar = (props: AvatarProps): JSX.Element => {
   const {
-    prefixCls = 'ty-avatar',
     size = 38,
     shape = 'circle',
     icon = 'user',
     presence = undefined,
     alt = 'avatar',
+    prefixCls: customisedCls,
     src,
     onClick,
     children,
@@ -37,6 +39,8 @@ const Avatar = (props: AvatarProps): React.ReactElement => {
   const outerEl = useRef<HTMLSpanElement | null>(null);
   const textEl = useRef<HTMLSpanElement | null>(null);
   const [scale, setScale] = useState(1);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('avatar', configContext.prefixCls, customisedCls);
 
   const cls = classNames(prefixCls, className, `${prefixCls}_${shape}`, {
     [`${prefixCls}_clickable`]: onClick,
@@ -78,10 +82,10 @@ const Avatar = (props: AvatarProps): React.ReactElement => {
   };
 
   const styles: React.CSSProperties = {
-    width: size!,
-    height: size!,
-    fontSize: size! / 2,
-    lineHeight: `${size! - 4}px`,
+    width: size,
+    height: size,
+    fontSize: size / 2,
+    lineHeight: `${size - 4}px`,
     ...style,
   };
 

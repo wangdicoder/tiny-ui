@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { MenuContext } from './menu-context';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
 
 export interface MenuItemProps
   extends BaseProps,
@@ -12,15 +14,17 @@ export interface MenuItemProps
 
 const MenuItem = (props: MenuItemProps): React.ReactElement => {
   const {
-    prefixCls = 'ty-menu-item',
     disabled = false,
     index,
     className,
     style,
     children,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
   const context = useContext(MenuContext);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('menu-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_active`]: context.index === index,
