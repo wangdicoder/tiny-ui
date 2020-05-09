@@ -87,7 +87,7 @@ const FormItem = (props: FormItemProps) => {
           <label className={`${prefixCls}__label`}>{label}</label>
         ))}
       <div className={`${prefixCls}__controls`}>
-        {React.Children.map(children, child => {
+        {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             const childProps = {
               ...child.props,
@@ -111,5 +111,7 @@ const FormItem = (props: FormItemProps) => {
     </div>
   );
 };
+
+FormItem.displayName = 'FormItem';
 
 export default FormItem;

@@ -10,7 +10,7 @@ export interface FormProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Form: React.FC<FormProps> & { Item?: any; FormStore?: any } = (props: FormProps) => {
+const Form = (props: FormProps): JSX.Element => {
   const { prefixCls = 'ty-form', store, onSubmit, className, style, children } = props;
   const cls = classNames(prefixCls, className);
 
@@ -22,5 +22,7 @@ const Form: React.FC<FormProps> & { Item?: any; FormStore?: any } = (props: Form
     </FormStoreContext.Provider>
   );
 };
+
+Form.displayName = 'Form';
 
 export default Form;

@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import Input from '../input/input';
 import { SelectOptionsProps } from './option';
-import Transition from '../transition';
 import { useClickOutside } from '../_utils/hooks';
 import { ArrowDown } from '../_utils/components';
 import { SelectContext } from './select-context';
+import Popup from '../popup';
 
 type SelectValue = string | string[];
 
@@ -76,37 +76,45 @@ const Select = (props: SelectProps): React.ReactElement => {
     'open' in props && setIsOpenDropdown(props.open);
   }, [props]);
 
+  const renderOverlay = (): React.ReactElement => (
+    <SelectContext.Provider value={contextValue}>
+      <ul className={`${prefixCls}__dropdown`} style={dropdownStyle}>
+        {React.Children.map(children, (child) => {
+          const childElement = child as React.FunctionComponentElement<SelectOptionsProps>;
+          const { displayName } = childElement.type;
+          if (displayName === 'SelectOption' || displayName === 'SelectOptGroup') {
+            return React.cloneElement(childElement, childElement.props);
+          } else {
+            console.warn(
+              'Select has a child that is not neither SelectOption nor SelectOptGroup component.'
+            );
+            return null;
+          }
+        })}
+      </ul>
+    </SelectContext.Provider>
+  );
+
   return (
     <div {...otherProps} ref={ref} className={cls} style={style}>
-      <Input
-        value={Array.isArray(selectVal) ? selectVal[0] : selectVal}
-        disabled={disabled}
-        placeholder={placeholder}
-        onClick={inputOnClick}
-        suffix={
-          <span className={arrowCls}>
-            <ArrowDown size={10} />
-          </span>
-        }
-      />
-      <SelectContext.Provider value={contextValue}>
-        <Transition in={isOpenDropdown} animation="zoom-in-top">
-          <ul className={`${prefixCls}__dropdown`} style={dropdownStyle}>
-            {React.Children.map(children, child => {
-              const childElement = child as React.FunctionComponentElement<SelectOptionsProps>;
-              const { displayName } = childElement.type;
-              if (displayName === 'SelectOption' || displayName === 'SelectOptGroup') {
-                return React.cloneElement(childElement, childElement.props);
-              } else {
-                console.warn(
-                  'Select has a child that is not neither SelectOption nor SelectOptGroup component.'
-                );
-                return null;
-              }
-            })}
-          </ul>
-        </Transition>
-      </SelectContext.Provider>
+      <Popup
+        trigger="manual"
+        placement="bottom"
+        arrow={false}
+        visible={isOpenDropdown}
+        content={renderOverlay()}>
+        <Input
+          value={Array.isArray(selectVal) ? selectVal[0] : selectVal}
+          disabled={disabled}
+          placeholder={placeholder}
+          onClick={inputOnClick}
+          suffix={
+            <span className={arrowCls}>
+              <ArrowDown size={10} />
+            </span>
+          }
+        />
+      </Popup>
     </div>
   );
 };

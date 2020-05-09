@@ -107,7 +107,7 @@ To avoid the problem of packaging files too large in a production environment, l
       const { Button } = tiny;
 
       ReactDOM.render(
-      	<Button color="primary">Click me</Button>,
+      	<Button btnType="primary">Click me</Button>,
       	document.getElementById('root')
       );
     </script>

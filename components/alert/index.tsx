@@ -1,10 +1,10 @@
 import React, { ReactNode, useState, useRef, useContext } from 'react';
 import classNames from 'classnames';
-import { CSSTransition } from 'react-transition-group';
 import { ConfigContext } from '../config-provider/config-context';
 import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
 import { getPrefixCls } from '../_utils/general';
+import Transition from '../transition';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
@@ -86,12 +86,7 @@ const Alert = (props: AlertProps): React.ReactElement => {
   };
 
   return (
-    <CSSTransition
-      unmountOnExit={true}
-      timeout={300}
-      in={isShow}
-      onExited={afterClose}
-      classNames={`${prefixCls}_slide-up`}>
+    <Transition timeout={300} in={isShow} onExited={afterClose}>
       <div {...otherProps} role="alert" className={cls} style={style} ref={ref}>
         {icon && renderIcon()}
         <div>
@@ -100,7 +95,7 @@ const Alert = (props: AlertProps): React.ReactElement => {
         </div>
         {closeIcon}
       </div>
-    </CSSTransition>
+    </Transition>
   );
 };
 

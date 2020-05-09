@@ -67,7 +67,6 @@ const Row = (props: RowProps): React.ReactElement => {
           };
           return React.cloneElement(childElement, childProps);
         }
-        console.warn('The row has children which are not Col components.');
         return childElement;
       })}
     </div>

@@ -1,10 +1,8 @@
 @import "../../style/variables";
 
 .#{$prefix}select {
-  position: relative;
 
   &__dropdown {
-    position: absolute;
     width: 100%;
     top: calc(100% + 3px);
     margin: 0;

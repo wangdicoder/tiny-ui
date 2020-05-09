@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Button color="primary">Button</Button>
+        <Button btnType="primary">Button</Button>
       </div>
     );
   }
@@ -134,7 +134,7 @@ Remove the `@import '~tiny-ui/dist/index.css';` statement added before because `
     render() {
       return (
         <div className="App">
-          <Button color="primary">Button</Button>
+          <Button btnType="primary">Button</Button>
         </div>
       );
     }

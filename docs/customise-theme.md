@@ -8,16 +8,16 @@ There are some major variables below, all less variables could be found in [Defa
 
 ```css
 //color
-$default-color: #34495e               !default;
-$primary-color: #6E41BF               !default;
-$link-color: $primary-color           !default;
-$blue-color: #00bcd4                  !default;
-$green-color: #4caf50                 !default;
-$yellow-color: #ff9800                !default;
-$red-color: #f44336                   !default;
-$border-radius: 3px                   !default;
-$font-size: 14px                      !default;
-$font-weight: 400                     !default;
+$primary-color: #6E41BF                       !default;
+$font-color: $body-color                      !default;
+$font-path: 'fonts'                           !default;
+$font-size-base: 1rem                         !default;
+$font-size-lg: $font-size-base * 1.25         !default;
+$font-size-sm: $font-size-base * .875         !default;
+$font-weight: 400                             !default;
+$border-radius: 2px                           !default;
+$border-width: 1px                            !default;
+$border-color: $gray-300                      !default;
 ...
 ```
 
