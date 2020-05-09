@@ -5,7 +5,7 @@ export interface ConfigProviderProps extends ConfigContextProps {
   children: React.ReactNode;
 }
 
-const ConfigProvider = (props: ConfigProviderProps): React.ReactElement => {
+const ConfigProvider = (props: ConfigProviderProps): JSX.Element => {
   const { children, ...otherProps } = props;
   return <ConfigContext.Provider value={{ ...otherProps }}>{children}</ConfigContext.Provider>;
 };
