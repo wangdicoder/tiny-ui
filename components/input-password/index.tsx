@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import Input from '../input';
+import Input, { InputProps } from '../input';
 import Icon from '../icon';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 
-export interface InputPasswordProps extends BaseProps {
+export interface InputPasswordProps extends InputProps {
   suffix?: boolean;
   visibleOnClick?: () => void;
   children?: React.ReactNode;
@@ -28,7 +27,7 @@ const InputPassword = (props: InputPasswordProps): JSX.Element => {
   const renderSuffix = (): React.ReactElement => (
     <div
       className={`${prefixCls}__suffix`}
-      onClick={() => {
+      onClick={(): void => {
         setVisible(!visible);
         visibleOnClick();
       }}>

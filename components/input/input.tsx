@@ -52,7 +52,8 @@ const Input = (props: InputProps): React.ReactElement => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('input', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
+  const inputSize = props.size || configContext.componentSize || size;
+  const cls = classNames(prefixCls, className, `${prefixCls}_${inputSize}`, {
     [`${prefixCls}_disabled`]: disabled,
   });
   const prefixRef = useRef<HTMLDivElement | null>(null);

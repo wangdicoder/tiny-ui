@@ -29,6 +29,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     } = props;
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('btn-group', configContext.prefixCls, customisedCls);
+    const btnSize = props.size || configContext.componentSize || size;
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_round`]: round,
       [`${prefixCls}_${btnType}`]: btnType,
@@ -41,8 +42,8 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
           if (displayName === 'Button') {
             const childProps = {
               ...childElement.props,
-              size,
               btnType,
+              size: btnSize,
               disabled: 'disabled' in childElement.props ? childElement.props.disabled : disabled,
             };
             return React.cloneElement(childElement, childProps);

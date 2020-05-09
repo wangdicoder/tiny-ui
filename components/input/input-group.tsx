@@ -18,7 +18,6 @@ const InputGroup = (props: InputGroupProps): React.ReactElement => {
     disabled = false,
     size = 'md',
     className,
-    style,
     children,
     prefixCls: customisedCls,
     ...otherProps
@@ -26,14 +25,15 @@ const InputGroup = (props: InputGroupProps): React.ReactElement => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('input-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
+  const inputSize = props.size || configContext.componentSize || size;
 
   return (
-    <div {...otherProps} className={cls} style={style}>
+    <div {...otherProps} className={cls}>
       {React.Children.map(children, (child: React.ReactElement) => {
         const childProps = {
           ...child.props,
           disabled,
-          size,
+          size: inputSize,
         };
         return React.cloneElement(child, childProps);
       })}

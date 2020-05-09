@@ -2,7 +2,7 @@
 
 ### Three sizes of Input
 
-There are three sizes of an Input box: `lg` (40px), `md` (32px) and `sm` (24px). The default size is **md**.
+There are three sizes of an Input box: `lg`, `md` and `sm`.
 
 ```jsx live
 <div style={{ width: 400 }}>

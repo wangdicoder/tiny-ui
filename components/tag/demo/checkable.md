@@ -4,7 +4,7 @@
 
 `CheckableTag` works like Checkbox, click it to toggle checked state. 
 
-> It obviously also has controlled & uncontrolled mode.
+> It also has controlled & uncontrolled mode.
 
 ```jsx live
 () => {

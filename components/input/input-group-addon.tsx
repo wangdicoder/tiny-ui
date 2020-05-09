@@ -27,7 +27,8 @@ const InputGroupAddon = (props: InputGroupAddonProps): React.ReactElement => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('input-group-addon', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
+  const inputSize = props.size || configContext.componentSize || size;
+  const cls = classNames(prefixCls, className, `${prefixCls}_${inputSize}`, {
     [`${prefixCls}_no-border`]: noBorder,
   });
 
@@ -37,8 +38,8 @@ const InputGroupAddon = (props: InputGroupAddonProps): React.ReactElement => {
         {React.Children.map(children, (child: React.ReactElement) => {
           const childProps = {
             ...child.props,
-            size,
             disabled,
+            size: inputSize,
           };
           return React.cloneElement(child, childProps);
         })}

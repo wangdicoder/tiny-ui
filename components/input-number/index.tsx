@@ -1,7 +1,7 @@
 import React, { useEffect, useState, MouseEvent, useContext } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 
@@ -16,7 +16,7 @@ export interface InputNumberProps extends BaseProps {
     value: number,
     e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLSpanElement>
   ) => void;
-  size?: 'sm' | 'md' | 'lg';
+  size?: SizeType;
   disabled?: boolean;
   /** Determine whether always display the control button  */
   controls?: boolean;
@@ -47,7 +47,8 @@ const InputNumber = (props: InputNumberProps): React.ReactElement => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('input-number', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
+  const inputSize = props.size || configContext.componentSize || size;
+  const cls = classNames(prefixCls, className, `${prefixCls}_${inputSize}`, {
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_always-controls`]: controls,
   });

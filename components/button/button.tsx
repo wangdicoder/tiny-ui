@@ -45,9 +45,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('btn', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className, {
+  const btnSize = props.size || configContext.componentSize || size;
+  const cls = classNames(prefixCls, className, `${prefixCls}_${btnSize}`, {
     [`${prefixCls}_${btnType}`]: btnType,
-    [`${prefixCls}_${size}`]: size,
     [`${prefixCls}_block`]: block,
     [`${prefixCls}_round`]: round,
     [`${prefixCls}_disabled`]: disabled,

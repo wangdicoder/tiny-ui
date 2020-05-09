@@ -10,7 +10,7 @@
   
   const preventDefault = (e) => {
     e.preventDefault();
-    console.log('Clicked! But prevent default.');
+    Message('Clicked! But prevent default.');
   }
   
   return (

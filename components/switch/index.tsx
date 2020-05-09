@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type SwitchSize = 'sm' | 'md' | 'lg';
 
 export interface SwitchProps extends BaseProps {
   defaultChecked?: boolean;
   checked?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  size?: SwitchSize;
+  size?: SizeType;
   onChange?: (checked: boolean, event: React.MouseEvent) => void;
   checkedText?: React.ReactNode;
   uncheckedText?: React.ReactNode;
@@ -37,7 +35,8 @@ const Switch = (props: SwitchProps): JSX.Element => {
   const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('switch', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
+  const switchSize = props.size || configContext.componentSize || size;
+  const cls = classNames(prefixCls, className, `${prefixCls}_${switchSize}`, {
     [`${prefixCls}_checked`]: checked,
     [`${prefixCls}_loading`]: loading,
     [`${prefixCls}_disabled`]: loading || disabled,

@@ -8,12 +8,9 @@ This component provides a universal configuration for components.
 import { ConfigProvider } from 'tiny-ui';
 
 // ...
-const config = {
-  // your configuration
-};
 
 return (
-  <ConfigProvider {config}>
+  <ConfigProvider componentSize="lg" {...otherYourConfig}>
     <App />
   </ConfigProvider>
 );
