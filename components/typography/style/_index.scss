@@ -12,6 +12,63 @@ $tp-prefix: #{$prefix}-typography;
   & + h4.#{$tp-prefix} {
     margin-top: 1.2em;
   }
+
+  & + h5.#{$tp-prefix},
+  & + h6.#{$tp-prefix} {
+    margin-top: 1.1em;
+  }
+
+  ul {
+    list-style-type: circle;
+  }
+
+  ul, ol {
+    margin: 0 0 1em;
+    padding: 0;
+
+    li {
+      margin: 0 0 0 20px;
+      padding: 0 0 0 4px;
+    }
+  }
+
+  code {
+    margin: 0 .1em;
+    padding: .2em .4em .1em;
+    font-size: 85%;
+    background: rgba(0, 0, 0, .06);
+    border: 1px solid rgba(0, 0, 0, .06);
+    border-radius: $border-radius;
+  }
+
+  mark {
+    padding: 0;
+    background-color: #ffe58f;
+  }
+
+  u {
+    text-decoration: underline;
+  }
+
+  del {
+    text-decoration: line-through;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  i {
+    font-style: italic;
+  }
+
+  sup {
+    vertical-align: super;
+  }
+
+  sub {
+    vertical-align: baseline;
+  }
 }
 
 h1.#{$tp-prefix},
@@ -56,10 +113,14 @@ h6.#{$tp-prefix} {
   line-height: 1.2;
 }
 
-p.#{$tp-prefix} {
+p.#{$tp-prefix}, div.#{$tp-prefix} {
   margin-top: 0;
   margin-bottom: 1em;
   color: rgba(0, 0, 0, 0.65);
   font-size: $font-size-base;
   line-height: 1.5;
+}
+
+span.#{$tp-prefix} {
+  color: rgba(0, 0, 0, 0.65);
 }
