@@ -1,7 +1,7 @@
 @import '../../style/variables';
 @import './mixin';
 
-.#{$prefix}input {
+.#{$prefix}-input {
   position: relative;
   font-family: $font-family;
   box-sizing: border-box;
@@ -39,7 +39,7 @@
   }
 
   &_sm {
-    .#{$prefix}input {
+    .#{$prefix}-input {
       &__input {
         font-size: $input-sm-font-size;
         height: $input-sm-height;
@@ -53,7 +53,7 @@
   }
 
   &_md {
-    .#{$prefix}input {
+    .#{$prefix}-input {
       &__input {
         font-size: $input-md-font-size;
         height: $input-md-height;
@@ -67,7 +67,7 @@
   }
 
   &_lg {
-    .#{$prefix}input {
+    .#{$prefix}-input {
       &__input {
         font-size: $input-lg-font-size;
         height: $input-lg-height;
@@ -77,19 +77,19 @@
   }
 
   &_disabled {
-    .#{$prefix}input__input {
+    .#{$prefix}-input__input {
       @include input-default-disabled();
     }
   }
 }
 
-.#{$prefix}input-group {
+.#{$prefix}-input-group {
   width: 100%;
   display: flex;
   box-sizing: border-box;
   position: relative;
 
-  & > .#{$prefix}input-group-addon {
+  & > .#{$prefix}-input-group-addon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,33 +107,33 @@
     height: $input-lg-height;
   }
 
-  .#{$prefix}input {
+  .#{$prefix}-input {
     z-index: 1;
     flex: 1;
 
     &:first-child {
-      .#{$prefix}input__input {
+      .#{$prefix}-input__input {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
 
     &:last-child {
-      .#{$prefix}input__input {
+      .#{$prefix}-input__input {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
     }
 
     &:not(:first-child):not(:last-child) {
-      .#{$prefix}input__input {
+      .#{$prefix}-input__input {
         border-radius: 0;
       }
     }
   }
 }
 
-.#{$prefix}input-group-addon {
+.#{$prefix}-input-group-addon {
   background-color: #fafafa;
   border: 1px solid #d9d9d9;
   box-sizing: border-box;

@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}pagination {
+.#{$prefix}-pagination {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -21,7 +21,7 @@
   }
 
   &_disabled {
-    .#{$prefix}pagination__item_active {
+    .#{$prefix}-pagination__item_active {
       background: #dbdbdb !important;
       border-color: transparent !important;
       color: #fff !important;
@@ -57,7 +57,7 @@
   }
 
   &_md {
-    .#{$prefix}pagination__item {
+    .#{$prefix}-pagination__item {
       min-width: 32px;
       height: 32px;
       margin-left: 4px;
@@ -91,7 +91,7 @@
   }
 
   &_sm {
-    .#{$prefix}pagination__item {
+    .#{$prefix}-pagination__item {
       min-width: 24px;
       height: 24px;
       margin-left: 0.5px;

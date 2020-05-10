@@ -1,7 +1,7 @@
 @import "../../style/variables";
 @import "./mixin";
 
-.#{$prefix}menu {
+.#{$prefix}-menu {
   display: flex;
   flex-wrap: nowrap;
   box-sizing: border-box;
@@ -15,7 +15,7 @@
   &_horizontal {
     border-bottom: 1px solid #f0f0f0;
 
-    > .#{$prefix}menu-item {
+    > .#{$prefix}-menu-item {
       padding: 15px;
       margin: 0 5px;
       border-bottom: 2px solid transparent;
@@ -28,7 +28,7 @@
       }
     }
 
-    .#{$prefix}menu-sub {
+    .#{$prefix}-menu-sub {
 
       &_active {
         color: $primary-color;
@@ -49,15 +49,15 @@
           display: block;
         }
 
-        > .#{$prefix}menu-item_active {
+        > .#{$prefix}-menu-item_active {
           @include menu-item-active($primary-color);
         }
       }
     }
 
-    .#{$prefix}menu-item-group {
+    .#{$prefix}-menu-item-group {
       &__list {
-        > .#{$prefix}menu-item_active {
+        > .#{$prefix}-menu-item_active {
           @include menu-item-active($primary-color);
         }
       }
@@ -68,7 +68,7 @@
     flex-direction: column;
     border-right: 1px solid #f0f0f0;
 
-    > .#{$prefix}menu-item {
+    > .#{$prefix}-menu-item {
       padding: $menu-item-padding-vertical;
       margin: 5px 0;
       position: relative;
@@ -79,12 +79,12 @@
       }
     }
 
-    .#{$prefix}menu-sub {
+    .#{$prefix}-menu-sub {
       padding: 0;
       margin: 0;
 
       &_active {
-        .#{$prefix}menu-sub__title {
+        .#{$prefix}-menu-sub__title {
           color: $primary-color;
         }
       }
@@ -99,7 +99,7 @@
       &__list {
         color: $body-color;
 
-        > .#{$prefix}menu-item {
+        > .#{$prefix}-menu-item {
           padding: 0 48px;
         }
 
@@ -107,19 +107,19 @@
           display: block;
         }
 
-        > .#{$prefix}menu-item_active {
+        > .#{$prefix}-menu-item_active {
           @include menu-item-active($primary-color, true);
         }
       }
     }
 
-    .#{$prefix}menu-item-group {
+    .#{$prefix}-menu-item-group {
       &__title {
         padding: 10px 30px;
       }
 
       &__list {
-        > .#{$prefix}menu-item {
+        > .#{$prefix}-menu-item {
           padding: 0 48px;
 
           &_active {
@@ -131,7 +131,7 @@
   }
 }
 
-.#{$prefix}menu-item {
+.#{$prefix}-menu-item {
   box-sizing: border-box;
   white-space: nowrap;
   cursor: pointer;
@@ -148,7 +148,7 @@
   }
 }
 
-.#{$prefix}menu-sub {
+.#{$prefix}-menu-sub {
   box-sizing: border-box;
   position: relative;
 
@@ -159,7 +159,7 @@
     padding-left: 0;
     white-space: nowrap;
 
-    > .#{$prefix}menu-item {
+    > .#{$prefix}-menu-item {
       padding: 0 20px;
       @include menu-sub-item-style();
     }
@@ -182,7 +182,7 @@
   }
 }
 
-.#{$prefix}menu-item-group {
+.#{$prefix}-menu-item-group {
   box-sizing: border-box;
 
   &__title {
@@ -201,7 +201,7 @@
     padding-left: 0;
     white-space: nowrap;
 
-    .#{$prefix}menu-item {
+    .#{$prefix}-menu-item {
       padding: 0 30px;
       @include menu-sub-item-style();
     }

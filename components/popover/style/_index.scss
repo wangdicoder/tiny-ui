@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}popover {
+.#{$prefix}-popover {
 
   &__title {
     margin: 0;
@@ -15,7 +15,7 @@
   }
 
   &_light {
-    .#{$prefix}popover {
+    .#{$prefix}-popover {
       &__title {
         color: rgba(0, 0, 0, 0.85);
         border-bottom: 1px solid #e8e8e8;
@@ -28,7 +28,7 @@
   }
 
   &_dark {
-    .#{$prefix}popover {
+    .#{$prefix}-popover {
       &__title {
         color: #fff;
         border-bottom: 1px solid #4a4a4a;

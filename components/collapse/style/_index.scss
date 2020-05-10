@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}collapse {
+.#{$prefix}-collapse {
   box-sizing: border-box;
   border-radius: $collapse-border-radius;
   color: $font-color;
@@ -17,7 +17,7 @@
     &:last-child {
       border-radius: 0 0 $collapse-border-radius $collapse-border-radius;
 
-      .#{$prefix}collapse-item__content {
+      .#{$prefix}-collapse-item__content {
         border-radius: 0 0 $collapse-border-radius $collapse-border-radius;
       }
     }
@@ -82,13 +82,13 @@
     background-color: #fff;
   }
 
-  &_borderless > .#{$prefix}collapse-item {
+  &_borderless > .#{$prefix}-collapse-item {
     &:last-child {
       border-radius: 0;
     }
   }
 
-  &_borderless > .#{$prefix}collapse-item > .#{$prefix}collapse-item__content {
+  &_borderless > .#{$prefix}-collapse-item > .#{$prefix}-collapse-item__content {
     border-radius: 0;
     border-top: 0;
     padding-top: 4px;
@@ -96,5 +96,5 @@
 }
 
 .collapse-transition {
-  transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
+  transition: 250ms height ease-in-out, 250ms padding-top ease-in-out, 250ms padding-bottom ease-in-out;
 }

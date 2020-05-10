@@ -1,7 +1,7 @@
 @import '../../style/variables';
 @import '../../style/mixins';
 
-.#{$prefix}loader {
+.#{$prefix}-loader {
   font-family: $font-family;
   position: relative;
   display: inline-block;
@@ -60,7 +60,7 @@
   }
 
   &_md {
-    .#{$prefix}loader{
+    .#{$prefix}-loader{
       &__indicator{
         font-size: 20px;
       }
@@ -73,7 +73,7 @@
   }
 
   &_lg {
-    .#{$prefix}loader{
+    .#{$prefix}-loader{
       &__indicator{
         font-size: 32px;
       }
@@ -86,7 +86,7 @@
   }
 
   &_sm {
-    .#{$prefix}loader{
+    .#{$prefix}-loader{
       &__indicator{
         font-size: 14px;
       }

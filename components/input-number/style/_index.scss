@@ -1,12 +1,12 @@
 @import '../../style/variables';
 @import '../../input/style/mixin';
 
-.#{$prefix}input-number {
+.#{$prefix}-input-number {
   position: relative;
   box-sizing: border-box;
 
   &:hover {
-    .#{$prefix}input-number__controls {
+    .#{$prefix}-input-number__controls {
       opacity: 1;
     }
   }
@@ -70,7 +70,7 @@
   }
 
   &_sm {
-    .#{$prefix}input-number {
+    .#{$prefix}-input-number {
       &__input {
         font-size: $input-sm-font-size;
         height: $input-sm-height;
@@ -80,7 +80,7 @@
   }
 
   &_md {
-    .#{$prefix}input-number {
+    .#{$prefix}-input-number {
       &__input {
         font-size: $input-md-font-size;
         height: $input-md-height;
@@ -90,7 +90,7 @@
   }
 
   &_lg {
-    .#{$prefix}input-number {
+    .#{$prefix}-input-number {
       &__input {
         font-size: $input-lg-font-size;
         height: $input-lg-height;
@@ -100,7 +100,7 @@
   }
 
   &_disabled {
-    .#{$prefix}input-number {
+    .#{$prefix}-input-number {
       &__input {
         @include input-default-disabled();
       }
@@ -125,7 +125,7 @@
   }
 
   &_always-controls {
-    .#{$prefix}input-number__controls {
+    .#{$prefix}-input-number__controls {
       opacity: 1;
     }
   }

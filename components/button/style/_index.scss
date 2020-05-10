@@ -2,7 +2,7 @@
 @import '../../style/mixins';
 @import './mixin';
 
-$btn-prefix: #{$prefix}btn;
+$btn-prefix: #{$prefix}-btn;
 
 .#{$btn-prefix} {
   box-sizing: border-box;

@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}radio {
+.#{$prefix}-radio {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -54,7 +54,7 @@
   }
 
   &_checked {
-    .#{$prefix}radio {
+    .#{$prefix}-radio {
       &__inner:after {
         transform: scale(1);
       }
@@ -62,7 +62,7 @@
   }
 
   &_disabled {
-    .#{$prefix}radio {
+    .#{$prefix}-radio {
       &__native {
         cursor: not-allowed;
       }

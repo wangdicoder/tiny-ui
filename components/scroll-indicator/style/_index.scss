@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}scroll-indicator {
+.#{$prefix}-scroll-indicator {
   box-sizing: border-box;
   height: 3px;
   transform: translateZ(0);

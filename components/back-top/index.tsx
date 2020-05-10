@@ -34,7 +34,7 @@ const BackTop = (props: BackTopProps): JSX.Element | null => {
     children,
   } = props;
   const configContext = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('backtop', configContext.prefixCls, customisedCls);
+  const prefixCls = getPrefixCls('back-top', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const [visible, setVisible] = useState(true);
 

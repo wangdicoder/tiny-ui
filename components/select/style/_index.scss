@@ -1,6 +1,6 @@
 @import "../../style/variables";
 
-.#{$prefix}select {
+.#{$prefix}-select {
 
   &__dropdown {
     width: 100%;
@@ -29,7 +29,7 @@
   }
 }
 
-.#{$prefix}select-option {
+.#{$prefix}-select-option {
   padding: 7px 12px;
   font-size: 14px;
   line-height: 22px;
@@ -53,7 +53,7 @@
   }
 }
 
-.#{$prefix}select-group {
+.#{$prefix}-select-group {
 
   &__title {
     font-size: $font-size-sm;
@@ -67,7 +67,7 @@
     margin: 0;
     padding: 0;
 
-    > .#{$prefix}select-option {
+    > .#{$prefix}-select-option {
       padding-left: 24px;
     }
   }

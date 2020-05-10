@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}row {
+.#{$prefix}-row {
   box-sizing: border-box;
   display: flex;
   flex-flow: row wrap;

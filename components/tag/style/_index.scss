@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}tag {
+.#{$prefix}-tag {
   user-select: none;
   display: none;
   margin-right: 8px;
@@ -99,7 +99,7 @@
   }
 }
 
-.#{$prefix}checkable-tag {
+.#{$prefix}-checkable-tag {
   background-color: #fff;
   color: $primary-color;
   border-color: #fff;

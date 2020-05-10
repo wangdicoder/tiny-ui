@@ -1,24 +1,24 @@
 @import '../../style/variables';
 
-.#{$prefix}flip {
+.#{$prefix}-flip {
   display: inline-block;
   background-color: transparent;
   box-sizing: border-box;
   perspective: 1000px;
 
-  &:hover .#{$prefix}flip__inner_hor {
+  &:hover .#{$prefix}-flip__inner_hor {
     transform: rotateY(-180deg);
   }
 
-  &:hover .#{$prefix}flip__inner_hor_reverse {
+  &:hover .#{$prefix}-flip__inner_hor_reverse {
     transform: rotateY(180deg);
   }
 
-  &:hover .#{$prefix}flip__inner_ver {
+  &:hover .#{$prefix}-flip__inner_ver {
     transform: rotateX(-180deg);
   }
 
-  &:hover .#{$prefix}flip__inner_ver_reverse {
+  &:hover .#{$prefix}-flip__inner_ver_reverse {
     transform: rotateX(180deg);
   }
 

@@ -1,7 +1,7 @@
 @import '../../style/variables';
 @import './mixin';
 
-.#{$prefix}switch {
+.#{$prefix}-switch {
   display: inline-block;
   box-sizing: border-box;
   position: relative;
@@ -50,7 +50,7 @@
   }
 
   &_checked {
-    .#{$prefix}switch {
+    .#{$prefix}-switch {
       &__bg {
         background-color: $primary-color;
       }
@@ -75,7 +75,7 @@
 
   //TODO: optimise
   &_loading {
-    .#{$prefix}switch__thumb:before {
+    .#{$prefix}-switch__thumb:before {
       display: inline-block !important;
     }
   }
@@ -86,7 +86,7 @@
     width: 29px;
     height: 14px;
 
-    .#{$prefix}switch {
+    .#{$prefix}-switch {
       &__bg {
         border-radius: 18px;
       }
@@ -107,7 +107,7 @@
     width: 36px;
     height: 16px;
 
-    .#{$prefix}switch {
+    .#{$prefix}-switch {
       &__bg {
         border-radius: 22px;
       }
@@ -128,7 +128,7 @@
     width: 42px;
     height: 20px;
 
-    .#{$prefix}switch {
+    .#{$prefix}-switch {
       &__bg {
         border-radius: 26px;
       }

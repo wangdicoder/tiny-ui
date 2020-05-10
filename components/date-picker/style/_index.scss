@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}date-picker {
+.#{$prefix}-date-picker {
   display: inline-block;
   width: 280px;
   box-sizing: border-box;
@@ -9,7 +9,7 @@
   font-size: $font-size-base;
 }
 
-.#{$prefix}date-picker-header {
+.#{$prefix}-date-picker-header {
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@
   }
 }
 
-.#{$prefix}date-picker-day {
+.#{$prefix}-date-picker-day {
   padding: 15px 10px;
 
   &__table {

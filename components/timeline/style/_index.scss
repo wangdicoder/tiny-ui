@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}timeline {
+.#{$prefix}-timeline {
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.65);
   font-size: $font-size-base;
@@ -10,7 +10,7 @@
   list-style: none;
 }
 
-.#{$prefix}timeline-item {
+.#{$prefix}-timeline-item {
   position: relative;
   box-sizing: border-box;
   margin: 0;
@@ -19,7 +19,7 @@
   list-style: none;
 
   &:last-child {
-    .#{$prefix}timeline-item__head {
+    .#{$prefix}-timeline-item__head {
       &:before {
         display: none;
       }
@@ -67,20 +67,20 @@
 
   &_left,
   &_right {
-    .#{$prefix}timeline-item__head {
+    .#{$prefix}-timeline-item__head {
       left: 50%;
     }
   }
 
   &_left {
-    .#{$prefix}timeline-item__content {
+    .#{$prefix}-timeline-item__content {
       left: 50%;
       width: 50%;
     }
   }
 
   &_right {
-    .#{$prefix}timeline-item__content {
+    .#{$prefix}-timeline-item__content {
       width: 50%;
       text-align: right;
       padding-left: 0;

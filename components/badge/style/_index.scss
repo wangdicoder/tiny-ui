@@ -2,7 +2,7 @@
 @import '../../style/animation';
 @import './mixin';
 
-.#{$prefix}badge {
+.#{$prefix}-badge {
   font-family: $font-family;
   position: relative;
   display: inline-block;
@@ -37,6 +37,7 @@
 
     &_wave {
       &:after {
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -44,15 +45,14 @@
         height: 100%;
         border-radius: 50%;
         background-color: inherit;
-        content: '';
         animation: ty-processing 1.2s infinite ease-in-out;
       }
     }
   }
 
   &_no-wrap {
-    .#{$prefix}badge__count,
-    .#{$prefix}badge__dot {
+    .#{$prefix}-badge__count,
+    .#{$prefix}-badge__dot {
       display: block;
       transform: none;
       position: relative;

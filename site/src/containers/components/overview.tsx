@@ -1,4 +1,5 @@
 import React from 'react';
+import './component-overview.scss';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import { Row, Button } from '../../../../components';
 import { COMPONENT_MENU } from '../../routers';
@@ -11,18 +12,21 @@ const ComponentOverview = () => {
     return res;
   }, 0);
   return (
-    <div>
+    <div className="component-overview">
       <h1 className="markdown__heading-1">Component Overview</h1>
       <p className="markdown__p">
         There is an overview of all components. Currently Tiny-UI provides <b>{numOfComps}</b>{' '}
         components.
       </p>
-      {COMPONENT_MENU.map(router => (
+      {COMPONENT_MENU.map((router) => (
         <div key={router.title}>
           <h2 className="markdown__heading-2">{router.title}</h2>
           <Row gutter={24} gutterSide>
-            {router.children!.map(item => (
-              <Button key={item.title} onClick={() => history.push(`${url}/${item.route!}`)}>
+            {router.children!.map((item) => (
+              <Button
+                className="component-overview__btn"
+                key={item.title}
+                onClick={() => history.push(`${url}/${item.route!}`)}>
                 {item.title}
               </Button>
             ))}

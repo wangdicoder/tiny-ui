@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}checkbox {
+.#{$prefix}-checkbox {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -11,7 +11,7 @@
   box-sizing: border-box;
 
   &:hover {
-    .#{$prefix}checkbox__inner {
+    .#{$prefix}-checkbox__inner {
       border-color: $primary-color;
     }
   }
@@ -80,7 +80,7 @@
   }
 
   &_checked {
-    .#{$prefix}checkbox {
+    .#{$prefix}-checkbox {
       &__inner {
         background-color: $primary-color;
         border-color: $primary-color;
@@ -97,7 +97,7 @@
   }
 
   &_indeterminate {
-    .#{$prefix}checkbox {
+    .#{$prefix}-checkbox {
       &__inner {
         background-color: $primary-color;
         border-color: $primary-color;
@@ -114,7 +114,7 @@
   }
 
   &_disabled {
-    .#{$prefix}checkbox {
+    .#{$prefix}-checkbox {
       &__native {
         cursor: not-allowed;
       }

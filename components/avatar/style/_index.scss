@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}avatar {
+.#{$prefix}-avatar {
   box-sizing: border-box;
   font-family: $font-family;
   display: inline-flex;
@@ -60,7 +60,7 @@
   &_circle {
     border-radius: 50%;
 
-    .#{$prefix}avatar__img {
+    .#{$prefix}-avatar__img {
       border-radius: 50%;
     }
   }
@@ -74,10 +74,10 @@
   }
 
   &-group {
-    .#{$prefix}avatar {
+    .#{$prefix}-avatar {
       z-index: 1;
 
-      & + .#{$prefix}avatar {
+      & + .#{$prefix}-avatar {
         margin-left: -0.7em;
       }
 

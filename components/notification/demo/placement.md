@@ -18,6 +18,8 @@ A notification box can appear from the `topRight`, `bottomRight`, `bottomLeft` o
     <>
       <Button btnType="primary" onClick={() => btnOnClick('topLeft')}>Top Left</Button>
       <Button btnType="primary" onClick={() => btnOnClick('topRight')}>Top Right</Button>
+      <br />
+      <br />
       <Button btnType="primary" onClick={() => btnOnClick('bottomLeft')}>Bottom Left</Button>
       <Button btnType="primary" onClick={() => btnOnClick('bottomRight')}>Bottom Right</Button>
     </>

@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}breadcrumb {
+.#{$prefix}-breadcrumb {
   &__ol {
     margin: 0;
     padding: 0;
@@ -28,7 +28,7 @@
     &:last-child {
       color: rgba(0, 0, 0, 0.75);
 
-      .#{$prefix}breadcrumb-item {
+      .#{$prefix}-breadcrumb-item {
         &__separator {
           display: none;
         }

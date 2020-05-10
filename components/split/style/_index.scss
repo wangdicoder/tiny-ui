@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}split {
+.#{$prefix}-split {
   display: flex;
   height: 30px;
   width: 100%;
@@ -14,10 +14,10 @@
   }
 }
 
-.#{$prefix}split-pane {
+.#{$prefix}-split-pane {
 }
 
-.#{$prefix}split-bar {
+.#{$prefix}-split-bar {
   position: relative;
   box-sizing: border-box;
   background-color: #f8f8f9;

@@ -1,7 +1,7 @@
 @import '../../style/variables';
 @import './mixin';
 
-.#{$prefix}alert {
+.#{$prefix}-alert {
   border: 1px solid;
   font-family: $font-family;
   border-radius: $alert-border-radius;

@@ -7,14 +7,18 @@ We are using [SASS](https://sass-lang.com/) as the development language for styl
 There are some major variables below, all less variables could be found in [Default Variables](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/_variables.scss).
 
 ```css
-//color
+// Color
 $primary-color: #6E41BF                       !default;
+
+// Font
 $font-color: $body-color                      !default;
 $font-path: 'fonts'                           !default;
 $font-size-base: 1rem                         !default;
 $font-size-lg: $font-size-base * 1.25         !default;
 $font-size-sm: $font-size-base * .875         !default;
 $font-weight: 400                             !default;
+
+// Border
 $border-radius: 2px                           !default;
 $border-width: 1px                            !default;
 $border-color: $gray-300                      !default;

@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}col {
+.#{$prefix}-col {
   @mixin grid($size: '') {
     @for $i from 1 through 24 {
       &#{$size}-#{$i} {

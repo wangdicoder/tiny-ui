@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}layout {
+.#{$prefix}-layout {
   box-sizing: border-box;
   display: flex;
   flex: 1;
@@ -11,25 +11,25 @@
   }
 }
 
-.#{$prefix}layout-header {
+.#{$prefix}-layout-header {
   box-sizing: border-box;
   height: $layout-header-height;
   background-color: $layout-header-background;
 }
 
-.#{$prefix}layout-footer {
+.#{$prefix}-layout-footer {
   box-sizing: border-box;
   padding: $layout-footer-padding;
   background-color: $layout-footer-background;
 }
 
-.#{$prefix}layout-content {
+.#{$prefix}-layout-content {
   flex: 1;
   box-sizing: border-box;
   background-color: $layout-body-background;
 }
 
-.#{$prefix}layout-sidebar {
+.#{$prefix}-layout-sidebar {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@
   color: #fff;
 
   &:last-child {
-    .#{$prefix}layout-sidebar__trigger-icon {
+    .#{$prefix}-layout-sidebar__trigger-icon {
       transform: rotateY(180deg);
     }
   }
@@ -64,7 +64,7 @@
     background-color: #fff;
     color: #333;
 
-    .#{$prefix}layout-sidebar {
+    .#{$prefix}-layout-sidebar {
       &__trigger {
         background-color: #efefef;
       }

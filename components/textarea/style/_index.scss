@@ -1,7 +1,7 @@
 @import '../../style/variables';
 @import '../../input/style/mixin';
 
-.#{$prefix}textarea {
+.#{$prefix}-textarea {
   @include input-default();
   padding: $textarea-padding;
   overflow: hidden;
@@ -13,7 +13,7 @@
   &-container {
     position: relative;
 
-    .#{$prefix}textarea {
+    .#{$prefix}-textarea {
       padding-bottom: 20px;
 
       &__counter {

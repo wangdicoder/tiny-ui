@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}progress-bar {
+.#{$prefix}-progress-bar {
   font-family: $font-family;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
   }
 
   &_round {
-    .#{$prefix}progress-bar {
+    .#{$prefix}-progress-bar {
       &__inner,
       &__bg {
         border-radius: 100px;
@@ -93,7 +93,7 @@
   }
 
   &_square {
-    .#{$prefix}progress-bar {
+    .#{$prefix}-progress-bar {
       &__inner,
       &__bg {
         border-radius: 0;
@@ -102,7 +102,7 @@
   }
 }
 
-.#{$prefix}progress-circle {
+.#{$prefix}-progress-circle {
   font-family: $font-family;
   display: inline-block;
   position: relative;
