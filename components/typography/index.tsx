@@ -1,6 +1,7 @@
-import Basic from './basic';
-import Text from './text';
+import Heading, { HeadingProps } from './heading';
+import Paragraph, { ParagraphProps } from './paragraph';
+import Text, { TextProps } from './text';
 
-const { H1, H2, H3, H4, H5, H6, P } = Basic;
+export { HeadingProps, ParagraphProps, TextProps };
 
-export default { H1, H2, H3, H4, H5, H6, P, Text };
+export default { Heading, Paragraph, Text };

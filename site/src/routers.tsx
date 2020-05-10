@@ -68,11 +68,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'link',
         component: lazy(() => import('../../components/link/index.md')),
       },
-      // {
-      //   title: 'Typography',
-      //   route: 'typography',
-      //   component: lazy(() => import('../../components/typography/index.md')),
-      // },
+      {
+        title: 'Typography',
+        route: 'typography',
+        component: lazy(() => import('../../components/typography/index.md')),
+      },
     ],
   },
   {

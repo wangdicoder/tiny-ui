@@ -1,63 +1,65 @@
 @import '../../style/variables';
 
-.#{$prefix} {
-  &-h1,
-  &-h2,
-  &-h3,
-  &-h4,
-  &-h5,
-  &-h6,
-  &-p {
-    box-sizing: border-box;
-    font-family: $font-family;
-  }
+$tp-prefix: #{$prefix}-typography;
 
-  &-h1,
-  &-h2,
-  &-h3,
-  &-h4,
-  &-h5,
-  &-h6 {
-    margin-top: 0;
-    margin-bottom: 0.5em;
-    color: rgba(0, 0, 0, 0.85);
-    font-weight: 600;
-  }
+.#{$tp-prefix} {
+  box-sizing: border-box;
+  font-family: $font-family;
 
-  &-h1 {
-    font-size: $h1-font-size;
-    line-height: 1.23;
+  & + h1.#{$tp-prefix},
+  & + h2.#{$tp-prefix},
+  & + h3.#{$tp-prefix},
+  & + h4.#{$tp-prefix} {
+    margin-top: 1.2em;
   }
+}
 
-  &-h2 {
-    font-size: $h2-font-size;
-    line-height: 1.35;
-  }
+h1.#{$tp-prefix},
+h2.#{$tp-prefix},
+h3.#{$tp-prefix},
+h4.#{$tp-prefix},
+h5.#{$tp-prefix},
+h6.#{$tp-prefix} {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+}
 
-  &-h3 {
-    font-size: $h3-font-size;
-    line-height: 1.35;
-  }
+h1.#{$tp-prefix} {
+  font-size: $h1-font-size;
+  line-height: 1.23;
+}
 
-  &-h4 {
-    font-size: $h4-font-size;
-    line-height: 1.4;
-  }
+h2.#{$tp-prefix} {
+  font-size: $h2-font-size;
+  line-height: 1.35;
+}
 
-  &-h5 {
-    font-size: $h5-font-size;
-    line-height: 1.2;
-  }
+h3.#{$tp-prefix} {
+  font-size: $h3-font-size;
+  line-height: 1.35;
+}
 
-  &-h6 {
-    font-size: $h6-font-size;
-    line-height: 1.2;
-  }
+h4.#{$tp-prefix} {
+  font-size: $h4-font-size;
+  line-height: 1.4;
+}
 
-  &-p {
-    margin-top: 0;
-    margin-bottom: 0.2em;
-    color: rgba(0, 0, 0, 0.65);
-    font-size: $font-size-base;
-  }
+h5.#{$tp-prefix} {
+  font-size: $h5-font-size;
+  line-height: 1.2;
+}
+
+h6.#{$tp-prefix} {
+  font-size: $h6-font-size;
+  line-height: 1.2;
+}
+
+p.#{$tp-prefix} {
+  margin-top: 0;
+  margin-bottom: 1em;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: $font-size-base;
+  line-height: 1.5;
 }
