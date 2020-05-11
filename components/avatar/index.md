@@ -36,4 +36,21 @@ const { Group } = Avatar;
 
 ## API
 
+### Avatar
 
+| Property  | Description                               | Type                                                          | Default   |
+| --------- | ----------------------------------------- | ------------------------------------------------------------- | --------- |
+| size      | avatar size                               | number                                                        | 38        |
+| presence  | status indicator                          | enum: `online` &#124; `busy` &#124; `away` &#124; `offline`   | undefined |
+| shape     | avatar shape                              | enum: `circle` &#124; `square`                                | `circle`  |
+| icon      | pass an icon component to display         | ReactNode                                                     | -         |
+| src	    | image source                              | string                                                        | -         |
+| alt	    | image alt name                            | string                                                        | -         |
+| style	    | style object of container	object          | CSSProperties                                                 | -         |
+| className	| className of container                    | string                                                        | -         |
+
+### Avatar.Group
+
+| Property  | Description                               | Type                                                          | Default   |
+| --------- | ----------------------------------------- | ------------------------------------------------------------- | --------- |
+| gap       | the distance between two avatars          | number &#124; string                                          | -15       |

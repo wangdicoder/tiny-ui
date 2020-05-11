@@ -20,10 +20,6 @@
     height: 100%;
   }
 
-  &__icon {
-    color: $avatar-color;
-  }
-
   &__text {
     position: absolute;
     left: 50%;
@@ -76,10 +72,6 @@
   &-group {
     .#{$prefix}-avatar {
       z-index: 1;
-
-      & + .#{$prefix}-avatar {
-        margin-left: -0.7em;
-      }
 
       &:hover {
         z-index: 2;

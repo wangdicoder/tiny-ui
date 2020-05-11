@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -11,13 +10,12 @@ export type AvatarPresence = 'online' | 'busy' | 'away' | 'offline';
 export interface AvatarProps
   extends BaseProps,
     React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
-  icon?: string;
+  icon?: React.ReactNode;
   shape?: AvatarShape;
   size?: number;
   src?: string;
   presence?: AvatarPresence;
   alt?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   children?: React.ReactNode;
 }
 
@@ -25,15 +23,15 @@ const Avatar = (props: AvatarProps): JSX.Element => {
   const {
     size = 38,
     shape = 'circle',
-    icon = 'user',
     presence = undefined,
     alt = 'avatar',
-    prefixCls: customisedCls,
+    icon,
     src,
-    onClick,
     children,
     className,
     style,
+    onClick,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
   const outerEl = useRef<HTMLSpanElement | null>(null);
@@ -73,7 +71,7 @@ const Avatar = (props: AvatarProps): JSX.Element => {
     } else if (src) {
       return <img src={src} alt={alt} className={`${prefixCls}__img`} />;
     } else {
-      return <Icon name={icon} className={`${prefixCls}__icon`} size={size - 10} />;
+      return icon;
     }
   };
 
@@ -103,7 +101,7 @@ const Avatar = (props: AvatarProps): JSX.Element => {
   });
 
   return (
-    <span {...otherProps} ref={outerEl} className={cls} style={styles} onClick={onClick}>
+    <span {...otherProps} ref={outerEl} className={cls} style={styles}>
       {renderItem()}
       {presence && renderPresence()}
     </span>

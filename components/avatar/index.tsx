@@ -1,11 +1,9 @@
-import React from 'react';
-import Avatar, { AvatarProps } from './avatar';
-import AvatarGroup from './avatar-group';
+import Avatar, { AvatarProps, AvatarPresence, AvatarShape } from './avatar';
+import AvatarGroup, { AvatarGroupProps } from './avatar-group';
 
-export { AvatarProps, AvatarPresence, AvatarShape } from './avatar';
-export { AvatarGroupProps } from './avatar-group';
+export { AvatarProps, AvatarPresence, AvatarShape, AvatarGroupProps };
 
-type IAvatar = React.FC<AvatarProps> & {
+type IAvatar = typeof Avatar & {
   Group: typeof AvatarGroup;
 };
 
