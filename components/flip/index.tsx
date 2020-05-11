@@ -1,10 +1,9 @@
-import React from 'react';
 import Flip, { FlipProps, FlipDirection } from './flip';
 import FlipItem, { FlipItemProps } from './flip-item';
 
 export { FlipProps, FlipDirection, FlipItemProps };
 
-type IFlip = React.FC<FlipProps> & {
+type IFlip = typeof Flip & {
   Item: typeof FlipItem;
 };
 

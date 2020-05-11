@@ -1,10 +1,9 @@
-import React from 'react';
 import Checkbox, { CheckboxProps } from './checkbox';
 import CheckboxGroup, { CheckboxGroupProps } from './checkbox-group';
 
 export { CheckboxProps, CheckboxGroupProps };
 
-type ICheckbox = React.FC<CheckboxProps> & {
+type ICheckbox = typeof Checkbox & {
   Group: typeof CheckboxGroup;
 };
 

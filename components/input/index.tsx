@@ -1,11 +1,10 @@
-import React from 'react';
 import Input, { InputProps, InputSizes } from './input';
 import InputGroup, { InputGroupProps } from './input-group';
 import InputGroupAddon, { InputGroupAddonProps } from './input-group-addon';
 
 export { InputProps, InputSizes, InputGroupProps, InputGroupAddonProps };
 
-type IInput = React.FC<InputProps> & {
+type IInput = typeof Input & {
   Group: typeof InputGroup;
   Addon: typeof InputGroupAddon;
 };

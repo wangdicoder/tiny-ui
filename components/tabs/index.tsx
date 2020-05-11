@@ -1,11 +1,9 @@
-import React from 'react';
 import Tabs, { TabsProps } from './tabs';
-import TabPane from './tab-pane';
+import TabPane, { TabPaneProps } from './tab-pane';
 
-export { TabsProps } from './tabs';
-export { TabPaneProps } from './tab-pane';
+export { TabsProps, TabPaneProps };
 
-type ITabs = React.FC<TabsProps> & {
+type ITabs = typeof Tabs & {
   Pane: typeof TabPane;
 };
 

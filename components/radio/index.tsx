@@ -1,10 +1,9 @@
-import React from 'react';
 import Radio, { RadioProps } from './radio';
 import RadioGroup, { RadioGroupProps } from './radio-group';
 
 export { RadioProps, RadioGroupProps };
 
-type IRadio = React.FC<RadioProps> & {
+type IRadio = typeof Radio & {
   Group: typeof RadioGroup;
 };
 

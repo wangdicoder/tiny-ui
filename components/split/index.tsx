@@ -1,12 +1,10 @@
-import React from 'react';
 import Split, { SplitProps } from './split';
-import SplitPane from './split-pane';
+import SplitPane, { SplitPaneProps } from './split-pane';
+import { SplitMode } from './shared-props';
 
-export { SplitProps } from './split';
-export { SplitPaneProps } from './split-pane';
-export { SplitMode } from './shared-props';
+export { SplitProps, SplitPaneProps, SplitMode };
 
-type ISplit = React.FC<SplitProps> & {
+type ISplit = typeof Split & {
   Pane?: typeof SplitPane;
 };
 

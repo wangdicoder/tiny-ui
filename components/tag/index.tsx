@@ -1,10 +1,9 @@
-import React from 'react';
 import Tag, { TagProps, PresetColors } from './tag';
 import CheckableTag, { CheckableTagProps } from './checkable-tag';
 
 export { TagProps, PresetColors, CheckableTagProps };
 
-type ITag = React.FC<TagProps> & {
+type ITag = typeof Tag & {
   CheckableTag: typeof CheckableTag;
 };
 

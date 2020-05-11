@@ -1,12 +1,10 @@
-import React from 'react';
 import Form, { FormProps } from './form';
-import FormItem from './form-item';
+import FormItem, { FormItemProps } from './form-item';
 import FormStore from './form-store';
 
-export { FormProps } from './form';
-export { FormItemProps } from './form-item';
+export { FormProps, FormItemProps };
 
-type IForm = React.FC<FormProps> & {
+type IForm = typeof Form & {
   Item: typeof FormItem;
   FormStore: typeof FormStore;
 };

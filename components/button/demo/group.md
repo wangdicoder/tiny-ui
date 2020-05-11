@@ -11,7 +11,7 @@ Buttons can be grouped by placing multiple `Button` components into a `Button.Gr
   return (
     <>
       <div>
-        <h5>Basic</h5>
+        <Typography.Heading level={6}>Basic</Typography.Heading>
         <Group>
           <Button>Go Left</Button>
           <Button>Go Right</Button>
@@ -25,7 +25,7 @@ Buttons can be grouped by placing multiple `Button` components into a `Button.Gr
       </div>
       <br/>
       <div>
-        <h5>Group props</h5>
+        <Typography.Heading level={6}>Group props</Typography.Heading>
         <Group size="lg">
           <Button>Go Left</Button>
           <Button>Go Right</Button>

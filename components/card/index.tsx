@@ -1,10 +1,9 @@
-import React from 'react';
 import Card, { CardProps } from './card';
 import CardContent, { CardContentProps } from './card-content';
 
 export { CardProps, CardContentProps };
 
-type ICard = React.FC<CardProps> & {
+type ICard = typeof Card & {
   Content: typeof CardContent;
 };
 

@@ -6,7 +6,7 @@ We preset a series of colorful tag styles for use in different situations. You c
 
 ```jsx live
 <>
-  <h5 style={{ marginBottom: 16 }}>Presets:</h5>
+  <Typography.Heading level={6} style={{ marginBottom: 16 }}>Presets:</Typography.Heading>
   <div>
     <Tag color="magenta">magenta</Tag>
     <Tag color="red">red</Tag>
@@ -21,7 +21,7 @@ We preset a series of colorful tag styles for use in different situations. You c
     <Tag color="purple">purple</Tag>
   </div>
   
-  <h5 style={{ margin: '16px 0' }}>Custom:</h5>
+  <Typography.Heading level={6} style={{ margin: '16px 0' }}>Custom:</Typography.Heading>
   <div>
     <Tag color="#f50">#f50</Tag>
     <Tag color="#2db7f5">#2db7f5</Tag>
