@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
@@ -27,6 +27,7 @@ export interface SliderProps
   tooltip?: boolean;
   renderMarks?: (value: number) => void;
   onChange?: (value: number | number[]) => void;
+  onAfterChange?: (value: number | number[]) => void;
   children?: React.ReactNode;
 }
 
@@ -43,6 +44,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       tooltip = false,
       onChange,
       onClick,
+      onAfterChange,
       className,
       prefixCls: customisedCls,
       ...otherProps
@@ -57,7 +59,6 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
           : [props.value]
         : [defaultValue]) as number[]
     );
-    const [trackStyle, setTrackStyle] = useState<React.CSSProperties>({ left: '0', right: '100%' });
     const railRef = useRef<HTMLDivElement | null>(null);
     const trackRef = useRef<HTMLDivElement | null>(null);
     const indexBar = useRef(0);
@@ -67,70 +68,63 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const trackOffsetLeft = useRef(0);
     const currVal = useRef(0);
 
-    const getValueToPercent = useCallback(
-      (value: number): number => {
-        return ((value - min) * 100) / (max - min);
-      },
-      [max, min]
-    );
+    const getValueToPercent = (value: number): number => {
+      return ((value - min) * 100) / (max - min);
+    };
 
-    const calculateTrackStyle = useCallback(
-      (value?: number[]): React.CSSProperties => {
-        const _values = value || sliderValues;
-        const barStyl: React.CSSProperties = { left: '0%', right: '100%' };
-        if (sliderValues.length === 1) {
-          barStyl.right = `${100 - getValueToPercent(_values[0])}%`;
-        } else {
-          const leftValue = _values[0] > _values[1] ? _values[1] : _values[0];
-          const rightValue = _values[0] > _values[1] ? _values[0] : _values[1];
-          barStyl.left = `${getValueToPercent(leftValue)}%`;
-          barStyl.right = `${100 - getValueToPercent(rightValue)}%`;
-        }
-        return barStyl;
-      },
-      [getValueToPercent, sliderValues]
-    );
+    const calculateTrackStyle = (value?: number[]): React.CSSProperties => {
+      const values = value || sliderValues;
+      const barStyl: React.CSSProperties = { left: '0%', right: '100%' };
+      if (sliderValues.length === 1) {
+        barStyl.right = `${100 - getValueToPercent(values[0])}%`;
+      } else {
+        const leftValue = values[0] > values[1] ? values[1] : values[0];
+        const rightValue = values[0] > values[1] ? values[0] : values[1];
+        barStyl.left = `${getValueToPercent(leftValue)}%`;
+        barStyl.right = `${100 - getValueToPercent(rightValue)}%`;
+      }
+      return barStyl;
+    };
 
     const getRangeValue = (val: number): number[] => {
       if (sliderValues.length === 1) {
         return [val];
       }
 
-      const vals = sliderValues;
-      const val1 = vals[0];
-      const val2 = vals[1];
+      const values = sliderValues;
+      const val1 = values[0];
+      const val2 = values[1];
       if ((val1 < val2 && val1 > val) || (val1 > val2 && val1 < val)) {
-        vals[0] = val as number;
+        values[0] = val as number;
       }
       if ((val1 < val2 && val2 < val) || (val1 > val2 && val2 > val)) {
-        vals[1] = val as number;
+        values[1] = val as number;
       }
 
       if (val1 > val && val2 < val) {
         const half = val2 + (val1 - val2) / 2;
         if (half >= val) {
-          vals[1] = val as number;
+          values[1] = val as number;
         }
         if (half < val) {
-          vals[0] = val as number;
+          values[0] = val as number;
         }
       }
       if (val2 > val && val1 < val) {
         const half = val1 + (val2 - val1) / 2;
         if (half >= val) {
-          vals[0] = val as number;
+          values[0] = val as number;
         }
         if (half < val) {
-          vals[1] = val as number;
+          values[1] = val as number;
         }
       }
-      console.log(vals);
-      return vals;
+      return values;
     };
 
     const handleOnChange = (value: number[]): void => {
-      console.log(value);
-      setSliderValues(value);
+      calculateTrackStyle(value);
+      setSliderValues([...value]);
       onChange && onChange(sliderValues.length === 1 ? value[0] : value);
     };
 
@@ -176,10 +170,10 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       const val = sliderValues;
       if (widthVal !== currVal.current) {
         val[indexBar.current] = widthVal;
-        const barStyl = calculateTrackStyle(val);
-        setTrackStyle(barStyl);
+        // const barStyl = calculateTrackStyle(val);
+        // setTrackStyle(barStyl);
 
-        handleOnChange(sliderValues);
+        handleOnChange(val);
         currVal.current = widthVal;
       }
     };
@@ -188,6 +182,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       move.current = false;
       window.removeEventListener('mousemove', handleThumbOnDragging);
       window.removeEventListener('mouseup', handleThumbOnDragEnd);
+      onAfterChange && onAfterChange(sliderValues);
     };
 
     /**
@@ -243,11 +238,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       }
     };
 
-    useEffect(() => {
-      const style = calculateTrackStyle();
-      setTrackStyle(style);
-    }, [calculateTrackStyle]);
-
+    const trackStyle = calculateTrackStyle();
     return (
       <div ref={ref} {...otherProps} className={cls} onClick={sliderOnClick}>
         <div ref={railRef} className={`${prefixCls}__rail`} />
