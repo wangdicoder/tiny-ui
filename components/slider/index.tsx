@@ -59,10 +59,11 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
           : [props.value]
         : [defaultValue]) as number[]
     );
+    const [isHovering, setHovering] = useState(false);
     const railRef = useRef<HTMLDivElement | null>(null);
     const trackRef = useRef<HTMLDivElement | null>(null);
     const indexBar = useRef(0);
-    const move = useRef(false);
+    const isDragging = useRef(false);
     const startX = useRef(0);
     const trackWidth = useRef(0);
     const trackOffsetLeft = useRef(0);
@@ -74,16 +75,16 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
 
     const calculateTrackStyle = (value?: number[]): React.CSSProperties => {
       const values = value || sliderValues;
-      const barStyl: React.CSSProperties = { left: '0%', right: '100%' };
+      const trackStyle: React.CSSProperties = { left: '0%', right: '100%' };
       if (sliderValues.length === 1) {
-        barStyl.right = `${100 - getValueToPercent(values[0])}%`;
+        trackStyle.right = `${100 - getValueToPercent(values[0])}%`;
       } else {
         const leftValue = values[0] > values[1] ? values[1] : values[0];
         const rightValue = values[0] > values[1] ? values[0] : values[1];
-        barStyl.left = `${getValueToPercent(leftValue)}%`;
-        barStyl.right = `${100 - getValueToPercent(rightValue)}%`;
+        trackStyle.left = `${getValueToPercent(leftValue)}%`;
+        trackStyle.right = `${100 - getValueToPercent(rightValue)}%`;
       }
-      return barStyl;
+      return trackStyle;
     };
 
     const getRangeValue = (val: number): number[] => {
@@ -148,7 +149,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
 
     const sliderOnClick = (e: React.MouseEvent<HTMLDivElement>): void => {
       onClick && onClick(e);
-      if (move.current) {
+      if (isDragging.current) {
         return;
       }
       if (railRef.current) {
@@ -161,7 +162,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     };
 
     const handleThumbOnDragging = (e: MouseEvent): void => {
-      if (!move.current) {
+      if (!isDragging.current) {
         return;
       }
       const widthVal = getWidthToValue(
@@ -179,7 +180,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     };
 
     const handleThumbOnDragEnd = (): void => {
-      move.current = false;
+      isDragging.current = false;
       window.removeEventListener('mousemove', handleThumbOnDragging);
       window.removeEventListener('mouseup', handleThumbOnDragEnd);
       onAfterChange && onAfterChange(sliderValues);
@@ -194,7 +195,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       }
 
       indexBar.current = idx;
-      move.current = true;
+      isDragging.current = true;
       startX.current = e[vertical ? 'clientY' : 'clientX'];
       if (trackRef.current) {
         trackWidth.current = trackRef.current![vertical ? 'clientHeight' : 'clientWidth'];
@@ -234,8 +235,21 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       if (sliderValues.length === 1) {
         return dotVal < sliderValues[0];
       } else {
-        return dotVal < sliderValues[1] && dotVal > sliderValues[0];
+        const [left, right] =
+          sliderValues[0] < sliderValues[1]
+            ? [sliderValues[0], sliderValues[1]]
+            : [sliderValues[1], sliderValues[0]];
+        return dotVal < right && dotVal > left;
       }
+    };
+
+    const handleThumbOnMouseEnter = (idx: number): void => {
+      indexBar.current = idx;
+      setHovering(true);
+    };
+
+    const handleThumbOnMouseLeave = (): void => {
+      setHovering(false);
     };
 
     const trackStyle = calculateTrackStyle();
@@ -261,8 +275,14 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
               aria-valuemin={min}
               aria-valuenow={value}
               aria-disabled={disabled}
-              className={`${prefixCls}__thumb-container`}
+              className={classNames(`${prefixCls}__thumb-container`, {
+                [`${prefixCls}__thumb-container_hovering`]: idx === indexBar.current && isHovering,
+                [`${prefixCls}__thumb-container_dragging`]:
+                  idx === indexBar.current && isDragging.current,
+              })}
               style={{ [vertical ? 'top' : 'left']: `${left}%` }}
+              onMouseEnter={(): void => handleThumbOnMouseEnter(idx)}
+              onMouseLeave={handleThumbOnMouseLeave}
               onMouseDown={(e): void => handleThumbOnMouseDown(idx, e)}>
               <Tooltip placement="top" title={value}>
                 <div className={`${prefixCls}__thumb`} />

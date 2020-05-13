@@ -28,11 +28,26 @@
   &__thumb-container {
     position: absolute;
     z-index: 1;
-    width: 14px;
-    height: 14px;
-    top: -5px;
-    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    transform: translate(-50%, -50%);
     outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_hovering {
+      cursor: grab;
+
+      .#{$prefix}-slider__thumb {
+        transform: scale(1.2);
+      }
+    }
+
+    &_dragging {
+      cursor: grabbing;
+    }
   }
 
   &__thumb {
@@ -43,14 +58,14 @@
     background-color: rgb(245, 248, 250);
     background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
     border-radius: 50%;
-    cursor: pointer;
+    transition: transform 250ms;
   }
 
-  &__dots{
+  &__dots {
 
   }
 
-  &__dot{
+  &__dot {
     box-sizing: border-box;
     position: absolute;
     width: 8px;
@@ -61,7 +76,7 @@
     top: -2px;
     transform: translateX(-50%);
 
-    &_active{
+    &_active {
       border-color: lighten($primary-color, 10%);
     }
   }
