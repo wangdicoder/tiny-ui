@@ -30,6 +30,10 @@ export interface PopupProps extends BaseProps, React.PropsWithoutRef<JSX.Intrins
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
 
+  /** Determine whether using a portal to wrap the content */
+  usePortal?: boolean;
+
+  /** Provide white and black backgrounds */
   theme?: PopoverTheme;
 
   flip?: boolean;
@@ -60,6 +64,7 @@ const Popup = (props: PopupProps): JSX.Element => {
     flip = true,
     offset = 0,
     theme = 'light',
+    usePortal = true,
     mouseEnterDelay = 100,
     mouseLeaveDelay = 100,
     prefixCls: customisedCls,
@@ -257,23 +262,25 @@ const Popup = (props: PopupProps): JSX.Element => {
     'visible' in props && setPopupVisible(props.visible);
   }, [props]);
 
+  const renderContent = () => (
+    <Transition
+      in={popupVisible}
+      onEnter={transitionOnEnter}
+      onExited={transitionOnExited}
+      animation={`zoom-${placement}` as AnimationName}>
+      <div {...otherProps} className={cls} ref={popupRef}>
+        {content && arrow && <div data-popper-arrow className={`${prefixCls}__arrow`} />}
+        {content}
+      </div>
+    </Transition>
+  );
+
   return (
     <>
       <div ref={targetRef} className={`${prefixCls}__wrapper`}>
         {children}
       </div>
-      <Portal>
-        <Transition
-          in={popupVisible}
-          onEnter={transitionOnEnter}
-          onExited={transitionOnExited}
-          animation={`zoom-${placement}` as AnimationName}>
-          <div {...otherProps} className={cls} ref={popupRef}>
-            {content && arrow && <div data-popper-arrow className={`${prefixCls}__arrow`} />}
-            {content}
-          </div>
-        </Transition>
-      </Portal>
+      {usePortal ? <Portal>{renderContent()}</Portal> : renderContent()}
     </>
   );
 };
