@@ -5,6 +5,8 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import Tooltip, { Placement } from '../tooltip';
 
+export type StepDirection = 'horizontal' | 'vertical';
+
 export interface SliderProps
   extends BaseProps,
     Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange' | 'defaultValue'> {
@@ -23,7 +25,7 @@ export interface SliderProps
           | ReactNode;
       };
   dots?: boolean;
-  vertical?: boolean;
+  direction?: StepDirection;
   step?: number;
   disabled?: boolean;
   tooltipVisible?: boolean;
@@ -41,7 +43,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       defaultValue = 0,
       min = 0,
       max = 100,
-      vertical = false,
+      direction = 'horizontal',
       dots = false,
       step = 1,
       disabled = false,
@@ -59,7 +61,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     } = props;
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('slider', configContext.prefixCls, customisedCls);
-    const cls = classNames(prefixCls, className, {
+    const cls = classNames(prefixCls, className, `${prefixCls}_${direction}`, {
       [`${prefixCls}-with-marks`]: marks,
       [`${prefixCls}_disabled`]: disabled,
     });
@@ -81,6 +83,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const trackWidth = useRef(0);
     const trackOffsetLeft = useRef(0);
     const currVal = useRef(0);
+    const vertical = direction === 'vertical';
 
     const getValueToPercent = (value: number): number => {
       return ((value - min) * 100) / (max - min);
@@ -334,7 +337,14 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
                   className={classNames(`${prefixCls}__dot`, {
                     [`${prefixCls}__dot_active`]: isDotActive(stepVal),
                   })}>
-                  {marks && <div className={`${prefixCls}__mark`}>{renderLabelValue(stepVal)}</div>}
+                  {marks && (
+                    <div
+                      className={classNames(`${prefixCls}__mark`, {
+                        [`${prefixCls}__mark_active`]: sliderValues.includes(stepVal),
+                      })}>
+                      {renderLabelValue(stepVal)}
+                    </div>
+                  )}
                 </div>
               );
             })}

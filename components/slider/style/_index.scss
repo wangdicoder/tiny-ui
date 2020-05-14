@@ -1,30 +1,85 @@
 @import '../../style/variables';
 
 .#{$prefix}-slider {
-  min-height: $slider-height;
-  margin: 13px 7px;
   position: relative;
   box-sizing: border-box;
   cursor: pointer;
-  padding: 4px 0;
 
-  &-with-marks {
+  &_horizontal.#{$prefix}-slider {
     margin-bottom: $slider-margin-bottom-with-marks;
+  }
+
+  &_vertical.#{$prefix}-slider {
+    margin-right: $slider-margin-bottom-with-marks;
+  }
+
+  &_horizontal {
+    min-height: $slider-size;
+    margin: 13px 7px;
+    padding: 4px 0;
+
+    .#{$prefix}-slider {
+
+      &__rail {
+        width: 100%;
+        height: $slider-track-size;
+        left: 0;
+      }
+
+      &__track {
+        height: $slider-track-size;
+      }
+
+      &__thumb-container, &__dot {
+        top: 50%;
+      }
+
+      &__mark {
+        left: 50%;
+        top: 12px;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  &_vertical {
+    width: 12px;
+    height: 100%;
+    margin: 6px 10px;
+    padding: 0 4px;
+
+    .#{$prefix}-slider {
+      &__rail {
+        width: $slider-track-size;
+        height: 100%;
+        top: 0;
+      }
+
+      &__track {
+        width: $slider-track-size;
+      }
+
+      &__thumb-container, &__dot {
+        left: 50%;
+      }
+
+      &__mark {
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
   }
 
   &__rail {
     position: absolute;
-    width: 100%;
-    height: $slider-track-height;
     border-radius: 3px;
     box-sizing: border-box;
     background-color: #e4e8f1;
-    left: 0;
   }
 
   &__track {
     box-sizing: border-box;
-    height: $slider-track-height;
     border-radius: 3px;
     background-color: $primary-color;
     position: absolute;
@@ -35,7 +90,6 @@
     z-index: 1;
     width: 36px;
     height: 36px;
-    top: 50%;
     transform: translate(-50%, -50%);
     outline: none;
     display: flex;
@@ -75,7 +129,6 @@
     border-radius: 50%;
     background-color: #fff;
     border: 2px solid #f0f0f0;
-    top: 50%;
     transform: translate(-50%, -50%);
 
     &_active {
@@ -85,14 +138,15 @@
 
   &__mark {
     position: absolute;
-    left: 50%;
-    top: 12px;
-    transform: translateX(-50%);
-    color: rgba(0,0,0,.45);
+    color: rgba(0, 0, 0, .4);
     text-align: center;
     word-break: keep-all;
     cursor: pointer;
     font-size: 0.9em;
+
+    &_active {
+      color: rgba(0, 0, 0, .7);
+    }
   }
 
   &_disabled {
