@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import Popup, { PopupProps } from '../popup';
+import Popup, { PopupProps, Placement } from '../popup';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 
@@ -34,4 +34,7 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
   );
 };
 
+Tooltip.displayName = 'Tooltip';
+
+export { Placement };
 export default Tooltip;

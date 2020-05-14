@@ -45,4 +45,6 @@ const Link = (props: LinkProps): React.ReactElement => {
   );
 };
 
+Link.displayName = 'Link';
+
 export default Link;

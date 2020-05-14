@@ -142,4 +142,6 @@ const Modal = (props: ModalProps): React.ReactElement => {
   );
 };
 
+Modal.displayName = 'Modal';
+
 export default Modal;

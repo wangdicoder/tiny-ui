@@ -28,4 +28,6 @@ const LoadingBar = (props: LoadingBarProps): React.ReactElement => {
   );
 };
 
+LoadingBar.displayName = 'LoadingBar';
+
 export default LoadingBar;

@@ -10,4 +10,6 @@ const ConfigProvider = (props: ConfigProviderProps): JSX.Element => {
   return <ConfigContext.Provider value={{ ...otherProps }}>{children}</ConfigContext.Provider>;
 };
 
+ConfigProvider.displayName = 'ConfigProvider';
+
 export default ConfigProvider;

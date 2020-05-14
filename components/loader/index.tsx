@@ -58,4 +58,6 @@ const Loader = (props: LoaderProps): JSX.Element => {
   );
 };
 
+Loader.displayName = 'Loader';
+
 export default Loader;

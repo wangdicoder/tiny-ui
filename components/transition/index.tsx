@@ -57,4 +57,6 @@ const Transition = (props: TransitionProps): React.ReactElement => {
   );
 };
 
+Transition.displayName = 'Transition';
+
 export default Transition;
