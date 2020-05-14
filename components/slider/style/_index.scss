@@ -1,16 +1,21 @@
 @import '../../style/variables';
 
 .#{$prefix}-slider {
-  height: $slider-height;
+  min-height: $slider-height;
   margin: 13px 7px;
   position: relative;
   box-sizing: border-box;
   cursor: pointer;
+  padding: 4px 0;
+
+  &-with-marks {
+    margin-bottom: $slider-margin-bottom-with-marks;
+  }
 
   &__rail {
     position: absolute;
     width: 100%;
-    height: $slider-height;
+    height: $slider-track-height;
     border-radius: 3px;
     box-sizing: border-box;
     background-color: #e4e8f1;
@@ -19,7 +24,7 @@
 
   &__track {
     box-sizing: border-box;
-    height: $slider-height;
+    height: $slider-track-height;
     border-radius: 3px;
     background-color: $primary-color;
     position: absolute;
@@ -61,9 +66,6 @@
     transition: transform 250ms;
   }
 
-  &__dots {
-
-  }
 
   &__dot {
     box-sizing: border-box;
@@ -73,11 +75,48 @@
     border-radius: 50%;
     background-color: #fff;
     border: 2px solid #f0f0f0;
-    top: -2px;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
 
     &_active {
       border-color: lighten($primary-color, 10%);
+    }
+  }
+
+  &__mark {
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%);
+    color: rgba(0,0,0,.45);
+    text-align: center;
+    word-break: keep-all;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+
+    .#{$prefix}-slider {
+      &__track {
+        background-color: rgba(0, 0, 0, .25);
+      }
+
+      &__thumb {
+        border-color: rgba(0, 0, 0, .25);
+        transform: scale(1);
+      }
+
+      &__thumb-container {
+        &_hovering, &_dragging {
+          cursor: not-allowed;
+        }
+      }
+
+      &__mark {
+        cursor: not-allowed;
+      }
     }
   }
 }

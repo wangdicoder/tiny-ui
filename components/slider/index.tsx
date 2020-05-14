@@ -1,9 +1,9 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState, ReactNode } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import Tooltip from '../tooltip';
+import Tooltip, { Placement } from '../tooltip';
 
 export interface SliderProps
   extends BaseProps,
@@ -15,24 +15,28 @@ export interface SliderProps
   marks?:
     | boolean
     | {
-        [key: number]: {
-          style?: React.CSSProperties;
-          label?: React.ReactNode;
-        };
+        [num: string]:
+          | {
+              style?: React.CSSProperties;
+              label?: ReactNode;
+            }
+          | ReactNode;
       };
   dots?: boolean;
   vertical?: boolean;
   step?: number;
   disabled?: boolean;
-  tooltip?: boolean;
-  renderMarks?: (value: number) => void;
+  tooltipVisible?: boolean;
+  tooltipPlacement?: Placement;
+  tipFormatter?: (value: number) => ReactNode;
+  renderMarks?: (value: number) => ReactNode;
   onChange?: (value: number | number[]) => void;
   onAfterChange?: (value: number | number[]) => void;
   children?: React.ReactNode;
 }
 
 const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
-  (props: SliderProps, ref): React.ReactElement => {
+  (props: SliderProps, ref): JSX.Element => {
     const {
       defaultValue = 0,
       min = 0,
@@ -41,22 +45,31 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       dots = false,
       step = 1,
       disabled = false,
-      tooltip = false,
+      tooltipVisible = true,
+      tooltipPlacement = 'top',
+      tipFormatter,
+      marks,
       onChange,
       onClick,
       onAfterChange,
       className,
+      renderMarks,
       prefixCls: customisedCls,
       ...otherProps
     } = props;
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('slider', configContext.prefixCls, customisedCls);
-    const cls = classNames(prefixCls, className);
+    const cls = classNames(prefixCls, className, {
+      [`${prefixCls}-with-marks`]: marks,
+      [`${prefixCls}_disabled`]: disabled,
+    });
     const [sliderValues, setSliderValues] = useState(
       ('value' in props
         ? Array.isArray(props.value)
           ? props.value
           : [props.value]
+        : Array.isArray(defaultValue)
+        ? defaultValue
         : [defaultValue]) as number[]
     );
     const [isHovering, setHovering] = useState(false);
@@ -148,8 +161,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     };
 
     const sliderOnClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-      onClick && onClick(e);
-      if (isDragging.current) {
+      if (isDragging.current || disabled) {
         return;
       }
       if (railRef.current) {
@@ -159,6 +171,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
         );
         handleOnChange(getRangeValue(value));
       }
+      onClick && onClick(e);
     };
 
     const handleThumbOnDragging = (e: MouseEvent): void => {
@@ -171,8 +184,6 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       const val = sliderValues;
       if (widthVal !== currVal.current) {
         val[indexBar.current] = widthVal;
-        // const barStyl = calculateTrackStyle(val);
-        // setTrackStyle(barStyl);
 
         handleOnChange(val);
         currVal.current = widthVal;
@@ -252,6 +263,19 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       setHovering(false);
     };
 
+    const renderLabelValue = (value: number): ReactNode => {
+      const key = `${value}`;
+      if (renderMarks && renderMarks(value)) {
+        return renderMarks(value);
+      } else if (marks && typeof marks !== 'boolean' && 'label' in (marks as any)[key]) {
+        return <div style={(marks as any)[key].style}>{(marks as any)[key].label}</div>;
+      } else if (marks && typeof marks !== 'boolean' && (marks as any)[key]) {
+        return (marks as any)[key];
+      } else {
+        return value;
+      }
+    };
+
     const trackStyle = calculateTrackStyle();
     return (
       <div ref={ref} {...otherProps} className={cls} onClick={sliderOnClick}>
@@ -284,7 +308,14 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
               onMouseEnter={(): void => handleThumbOnMouseEnter(idx)}
               onMouseLeave={handleThumbOnMouseLeave}
               onMouseDown={(e): void => handleThumbOnMouseDown(idx, e)}>
-              <Tooltip placement="top" title={value}>
+              <Tooltip
+                trigger="manual"
+                visible={
+                  tooltipVisible && idx === indexBar.current && (isDragging.current || isHovering)
+                }
+                usePortal={false}
+                placement={tooltipPlacement}
+                title={tipFormatter ? tipFormatter(value) : value}>
                 <div className={`${prefixCls}__thumb`} />
               </Tooltip>
             </div>
@@ -302,8 +333,9 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
                   }}
                   className={classNames(`${prefixCls}__dot`, {
                     [`${prefixCls}__dot_active`]: isDotActive(stepVal),
-                  })}
-                />
+                  })}>
+                  {marks && <div className={`${prefixCls}__mark`}>{renderLabelValue(stepVal)}</div>}
+                </div>
               );
             })}
           </div>

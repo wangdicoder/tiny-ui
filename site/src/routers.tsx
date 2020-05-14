@@ -222,6 +222,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/rate/index.md')),
       },
       {
+        title: 'Slider',
+        route: 'slider',
+        component: lazy(() => import('../../components/slider/index.md')),
+      },
+      {
         title: 'Switch',
         route: 'switch',
         component: lazy(() => import('../../components/switch/index.md')),
