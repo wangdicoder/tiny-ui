@@ -79,9 +79,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const trackRef = useRef<HTMLDivElement | null>(null);
     const thumbIdx = useRef(0);
     const isDragging = useRef(false);
-    const startX = useRef(0);
-    const trackWidth = useRef(0);
-    const trackOffsetLeft = useRef(0);
+    const mouseStartPos = useRef(0);
+    const trackStartPos = useRef(0);
     const currVal = useRef(0);
     const isVertical = direction === 'vertical';
 
@@ -158,6 +157,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
         percent = 100;
       }
 
+      // add 0.5 for step movement
       const num = numOfSteps * (percent / 100) + 0.5;
       const val = Math.floor(num) * step + min;
       return isVertical ? 100 - val : val;
@@ -181,15 +181,15 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       if (!isDragging.current) {
         return;
       }
-      const moveVal = getWidthToValue(
-        e[isVertical ? 'clientY' : 'clientX'] - startX.current + trackWidth.current
+      const sliderVal = getWidthToValue(
+        e[isVertical ? 'clientY' : 'clientX'] - mouseStartPos.current + trackStartPos.current
       );
       const val = sliderValues;
-      if (moveVal !== currVal.current) {
-        val[thumbIdx.current] = moveVal;
+      if (sliderVal !== currVal.current) {
+        val[thumbIdx.current] = sliderVal;
 
         handleOnChange(val);
-        currVal.current = moveVal;
+        currVal.current = sliderVal;
       }
     };
 
@@ -213,18 +213,25 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
 
       thumbIdx.current = idx;
       isDragging.current = true;
-      startX.current = e[isVertical ? 'clientY' : 'clientX'];
-      if (trackRef.current) {
-        trackWidth.current = trackRef.current![isVertical ? 'clientHeight' : 'clientWidth'];
-        trackOffsetLeft.current = trackRef.current![isVertical ? 'offsetTop' : 'offsetLeft'];
-      }
-      // handle when it is a dual slider
-      if (sliderValues.length > 1) {
-        trackWidth.current =
-          (idx === 1 && sliderValues[1] > sliderValues[0]) ||
-          (idx !== 1 && sliderValues[0] > sliderValues[1])
-            ? trackWidth.current + trackOffsetLeft.current
-            : trackOffsetLeft.current;
+      mouseStartPos.current = e[isVertical ? 'clientY' : 'clientX'];
+      if (trackRef.current && railRef.current) {
+        trackStartPos.current = isVertical
+          ? trackRef.current!.offsetTop
+          : trackRef.current!.clientWidth;
+
+        // handle when it is a dual slider
+        if (sliderValues.length > 1) {
+          const trackOffset = trackRef.current![isVertical ? 'offsetTop' : 'offsetLeft'];
+          trackStartPos.current =
+            (idx === 1 && sliderValues[1] > sliderValues[0]) ||
+            (idx !== 1 && sliderValues[0] > sliderValues[1])
+              ? isVertical
+                ? trackOffset
+                : trackStartPos.current + trackOffset
+              : isVertical
+              ? trackRef.current!.clientHeight + trackOffset
+              : trackOffset;
+        }
       }
 
       window.addEventListener('mousemove', handleThumbOnDragging, { capture: true });
@@ -309,7 +316,11 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
                 [`${prefixCls}__thumb-container_dragging`]:
                   idx === thumbIdx.current && isDragging.current,
               })}
-              style={{ [isVertical ? 'top' : 'left']: `${isVertical ? 100 - percent : percent}%` }}
+              style={{
+                zIndex: idx === thumbIdx.current && (isDragging.current || isHovering) ? 2 : 1,
+                transform: isVertical ? 'translate(-50%, 50%)' : 'translate(-50%, -50%)',
+                [isVertical ? 'bottom' : 'left']: `${percent}%`,
+              }}
               onMouseEnter={(): void => handleThumbOnMouseEnter(idx)}
               onMouseLeave={handleThumbOnMouseLeave}
               onMouseDown={(e): void => handleThumbOnMouseDown(idx, e)}>
