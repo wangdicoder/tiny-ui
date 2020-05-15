@@ -1,7 +1,11 @@
 import Basic from './demo/basic.md'
 import Dual from './demo/dual.md'
+import Vertical from './demo/vertical.md'
+import Dots from './demo/dots.md'
+import Marker from './demo/marker.md'
 import CustomisedTooltip from './demo/customised-tooltip.md'
 import Disabled from './demo/disabled.md'
+import TooltipVisible from './demo/tooltip-visible.md'
 
 # Slider
 
@@ -23,10 +27,14 @@ import { Slider } from 'tiny-ui';
   <column>
     <Basic/>
     <Dual/>
+    <Dots/>
+    <Marker/>
+    <Disabled/>
   </column>
   <column>
-    <Disabled/>
+    <Vertical/>
     <CustomisedTooltip/>
+    <TooltipVisible/>
   </column>
 </layout>
 

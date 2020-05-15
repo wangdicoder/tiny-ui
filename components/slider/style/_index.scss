@@ -35,8 +35,7 @@
       }
 
       &__mark {
-        left: 50%;
-        top: 12px;
+        top: 15px;
         transform: translateX(-50%);
       }
     }
@@ -64,9 +63,8 @@
       }
 
       &__mark {
-        left: 14px;
-        top: 50%;
-        transform: translateY(-50%);
+        left: 15px;
+        transform: translateY(50%);
       }
     }
   }
@@ -143,6 +141,7 @@
     word-break: keep-all;
     cursor: pointer;
     font-size: 0.9em;
+    user-select: none;
 
     &_active {
       color: rgba(0, 0, 0, .7);

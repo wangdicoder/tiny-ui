@@ -6,35 +6,35 @@ import { getPrefixCls } from '../_utils/general';
 import Tooltip, { Placement } from '../tooltip';
 
 export type StepDirection = 'horizontal' | 'vertical';
+export type SliderValue = number | [number, number];
+export type SliderMarks = {
+  [key: string]:
+    | React.ReactNode
+    | {
+        style: React.CSSProperties;
+        label: ReactNode;
+      };
+};
 
 export interface SliderProps
   extends BaseProps,
     Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange' | 'defaultValue'> {
-  value?: number | number[];
-  defaultValue?: number | number[];
+  value?: SliderValue;
+  defaultValue?: SliderValue;
   min?: number;
   max?: number;
-  marks?:
-    | boolean
-    | {
-        [num: string]:
-          | {
-              style?: React.CSSProperties;
-              label?: ReactNode;
-            }
-          | ReactNode;
-      };
+  marks?: SliderMarks;
   dots?: boolean;
   direction?: StepDirection;
   step?: number;
   disabled?: boolean;
+  track?: boolean;
   tooltipVisible?: boolean;
   tooltipPlacement?: Placement;
   tipFormatter?: (value: number) => ReactNode;
-  renderMarks?: (value: number) => ReactNode;
-  onChange?: (value: number | number[]) => void;
-  onAfterChange?: (value: number | number[]) => void;
-  children?: React.ReactNode;
+  onChange?: (value: SliderValue) => void;
+  onAfterChange?: (value: SliderValue) => void;
+  children?: ReactNode;
 }
 
 const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
@@ -47,15 +47,15 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       dots = false,
       step = 1,
       disabled = false,
-      tooltipVisible = true,
+      track = true,
       tooltipPlacement = 'top',
+      tooltipVisible,
       tipFormatter,
       marks,
       onChange,
       onClick,
       onAfterChange,
       className,
-      renderMarks,
       prefixCls: customisedCls,
       ...otherProps
     } = props;
@@ -77,26 +77,25 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const [isHovering, setHovering] = useState(false);
     const railRef = useRef<HTMLDivElement | null>(null);
     const trackRef = useRef<HTMLDivElement | null>(null);
-    const indexBar = useRef(0);
+    const thumbIdx = useRef(0);
     const isDragging = useRef(false);
     const startX = useRef(0);
     const trackWidth = useRef(0);
     const trackOffsetLeft = useRef(0);
     const currVal = useRef(0);
-    const vertical = direction === 'vertical';
+    const isVertical = direction === 'vertical';
 
     const getValueToPercent = (value: number): number => {
       return ((value - min) * 100) / (max - min);
     };
 
-    const calculateTrackStyle = (value?: number[]): React.CSSProperties => {
-      const values = value || sliderValues;
+    const calculateTrackStyle = (): React.CSSProperties => {
       const trackStyle: React.CSSProperties = { left: '0%', right: '100%' };
       if (sliderValues.length === 1) {
-        trackStyle.right = `${100 - getValueToPercent(values[0])}%`;
+        trackStyle.right = `${100 - getValueToPercent(sliderValues[0])}%`;
       } else {
-        const leftValue = values[0] > values[1] ? values[1] : values[0];
-        const rightValue = values[0] > values[1] ? values[0] : values[1];
+        const leftValue = sliderValues[0] > sliderValues[1] ? sliderValues[1] : sliderValues[0];
+        const rightValue = sliderValues[0] > sliderValues[1] ? sliderValues[0] : sliderValues[1];
         trackStyle.left = `${getValueToPercent(leftValue)}%`;
         trackStyle.right = `${100 - getValueToPercent(rightValue)}%`;
       }
@@ -140,16 +139,16 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     };
 
     const handleOnChange = (value: number[]): void => {
-      calculateTrackStyle(value);
       setSliderValues([...value]);
-      onChange && onChange(sliderValues.length === 1 ? value[0] : value);
+      onChange &&
+        onChange(sliderValues.length === 1 ? sliderValues[0] : [sliderValues[0], sliderValues[1]]);
     };
 
     const getWidthToValue = (width: number): number => {
       const numOfSteps = (max - min) / step;
       let percent = 0;
       if (railRef.current) {
-        percent = (width / railRef.current![vertical ? 'clientHeight' : 'clientWidth']) * 100;
+        percent = (width / railRef.current![isVertical ? 'clientHeight' : 'clientWidth']) * 100;
       }
 
       if (percent <= 0) {
@@ -160,7 +159,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       }
 
       const num = numOfSteps * (percent / 100) + 0.5;
-      return Math.floor(num) * step + min;
+      const val = Math.floor(num) * step + min;
+      return isVertical ? 100 - val : val;
     };
 
     const sliderOnClick = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -170,7 +170,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       if (railRef.current) {
         const markOffset = railRef.current!.getBoundingClientRect();
         const value = getWidthToValue(
-          e[vertical ? 'clientY' : 'clientX'] - markOffset[vertical ? 'y' : 'x']
+          e[isVertical ? 'clientY' : 'clientX'] - markOffset[isVertical ? 'y' : 'x']
         );
         handleOnChange(getRangeValue(value));
       }
@@ -181,15 +181,15 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       if (!isDragging.current) {
         return;
       }
-      const widthVal = getWidthToValue(
-        e[vertical ? 'clientY' : 'clientX'] - startX.current + trackWidth.current
+      const moveVal = getWidthToValue(
+        e[isVertical ? 'clientY' : 'clientX'] - startX.current + trackWidth.current
       );
       const val = sliderValues;
-      if (widthVal !== currVal.current) {
-        val[indexBar.current] = widthVal;
+      if (moveVal !== currVal.current) {
+        val[thumbIdx.current] = moveVal;
 
         handleOnChange(val);
-        currVal.current = widthVal;
+        currVal.current = moveVal;
       }
     };
 
@@ -197,7 +197,10 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       isDragging.current = false;
       window.removeEventListener('mousemove', handleThumbOnDragging);
       window.removeEventListener('mouseup', handleThumbOnDragEnd);
-      onAfterChange && onAfterChange(sliderValues);
+      onAfterChange &&
+        onAfterChange(
+          sliderValues.length === 1 ? sliderValues[0] : [sliderValues[0], sliderValues[1]]
+        );
     };
 
     /**
@@ -208,17 +211,18 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
         return;
       }
 
-      indexBar.current = idx;
+      thumbIdx.current = idx;
       isDragging.current = true;
-      startX.current = e[vertical ? 'clientY' : 'clientX'];
+      startX.current = e[isVertical ? 'clientY' : 'clientX'];
       if (trackRef.current) {
-        trackWidth.current = trackRef.current![vertical ? 'clientHeight' : 'clientWidth'];
-        trackOffsetLeft.current = trackRef.current![vertical ? 'offsetTop' : 'offsetLeft'];
+        trackWidth.current = trackRef.current![isVertical ? 'clientHeight' : 'clientWidth'];
+        trackOffsetLeft.current = trackRef.current![isVertical ? 'offsetTop' : 'offsetLeft'];
       }
-      const val = sliderValues;
-      if (Array.isArray(props.value)) {
+      // handle when it is a dual slider
+      if (sliderValues.length > 1) {
         trackWidth.current =
-          (idx === 1 && val[1] > val[0]) || (idx !== 1 && val[0] > val[1])
+          (idx === 1 && sliderValues[1] > sliderValues[0]) ||
+          (idx !== 1 && sliderValues[0] > sliderValues[1])
             ? trackWidth.current + trackOffsetLeft.current
             : trackOffsetLeft.current;
       }
@@ -258,7 +262,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     };
 
     const handleThumbOnMouseEnter = (idx: number): void => {
-      indexBar.current = idx;
+      thumbIdx.current = idx;
       setHovering(true);
     };
 
@@ -266,16 +270,12 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       setHovering(false);
     };
 
-    const renderLabelValue = (value: number): ReactNode => {
-      const key = `${value}`;
-      if (renderMarks && renderMarks(value)) {
-        return renderMarks(value);
-      } else if (marks && typeof marks !== 'boolean' && 'label' in (marks as any)[key]) {
-        return <div style={(marks as any)[key].style}>{(marks as any)[key].label}</div>;
-      } else if (marks && typeof marks !== 'boolean' && (marks as any)[key]) {
-        return (marks as any)[key];
+    const renderMark = (mark: string): ReactNode => {
+      if (marks && marks[mark] && (marks[mark] as any).label) {
+        const { label, style } = marks[mark] as any;
+        return <div style={style}>{label}</div>;
       } else {
-        return value;
+        return mark;
       }
     };
 
@@ -283,16 +283,18 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     return (
       <div ref={ref} {...otherProps} className={cls} onClick={sliderOnClick}>
         <div ref={railRef} className={`${prefixCls}__rail`} />
-        <div
-          ref={trackRef}
-          className={`${prefixCls}__track`}
-          style={{
-            [vertical ? 'top' : 'left']: trackStyle.left,
-            [vertical ? 'bottom' : 'right']: trackStyle.right,
-          }}
-        />
+        {track && (
+          <div
+            ref={trackRef}
+            className={`${prefixCls}__track`}
+            style={{
+              [isVertical ? 'bottom' : 'left']: trackStyle.left,
+              [isVertical ? 'top' : 'right']: trackStyle.right,
+            }}
+          />
+        )}
         {sliderValues.map((value, idx) => {
-          const left = getValueToPercent(value);
+          const percent = getValueToPercent(value);
           return (
             <div
               key={idx}
@@ -303,18 +305,20 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
               aria-valuenow={value}
               aria-disabled={disabled}
               className={classNames(`${prefixCls}__thumb-container`, {
-                [`${prefixCls}__thumb-container_hovering`]: idx === indexBar.current && isHovering,
+                [`${prefixCls}__thumb-container_hovering`]: idx === thumbIdx.current && isHovering,
                 [`${prefixCls}__thumb-container_dragging`]:
-                  idx === indexBar.current && isDragging.current,
+                  idx === thumbIdx.current && isDragging.current,
               })}
-              style={{ [vertical ? 'top' : 'left']: `${left}%` }}
+              style={{ [isVertical ? 'top' : 'left']: `${isVertical ? 100 - percent : percent}%` }}
               onMouseEnter={(): void => handleThumbOnMouseEnter(idx)}
               onMouseLeave={handleThumbOnMouseLeave}
               onMouseDown={(e): void => handleThumbOnMouseDown(idx, e)}>
               <Tooltip
                 trigger="manual"
                 visible={
-                  tooltipVisible && idx === indexBar.current && (isDragging.current || isHovering)
+                  'tooltipVisible' in props
+                    ? tooltipVisible
+                    : idx === thumbIdx.current && (isDragging.current || isHovering)
                 }
                 usePortal={false}
                 placement={tooltipPlacement}
@@ -332,19 +336,28 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
                 <div
                   key={idx}
                   style={{
-                    [vertical ? 'top' : 'left']: `${val}%`,
+                    [isVertical ? 'bottom' : 'left']: `${val}%`,
                   }}
                   className={classNames(`${prefixCls}__dot`, {
                     [`${prefixCls}__dot_active`]: isDotActive(stepVal),
-                  })}>
-                  {marks && (
-                    <div
-                      className={classNames(`${prefixCls}__mark`, {
-                        [`${prefixCls}__mark_active`]: sliderValues.includes(stepVal),
-                      })}>
-                      {renderLabelValue(stepVal)}
-                    </div>
-                  )}
+                  })}
+                />
+              );
+            })}
+          </div>
+        )}
+        {marks && (
+          <div className={`${prefixCls}__marks`}>
+            {Object.keys(marks).map((mark: string, idx) => {
+              const percent = getValueToPercent(parseFloat(mark));
+              return (
+                <div
+                  key={idx}
+                  style={{
+                    [isVertical ? 'bottom' : 'left']: `${percent}%`,
+                  }}
+                  className={`${prefixCls}__mark`}>
+                  {renderMark(mark)}
                 </div>
               );
             })}
