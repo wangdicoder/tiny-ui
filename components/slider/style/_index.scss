@@ -81,6 +81,10 @@
     border-radius: 3px;
     background-color: $primary-color;
     position: absolute;
+
+    &_invisible{
+      background-color: transparent;
+    }
   }
 
   &__thumb-container {

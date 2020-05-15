@@ -281,6 +281,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       if (marks && marks[mark] && (marks[mark] as any).label) {
         const { label, style } = marks[mark] as any;
         return <div style={style}>{label}</div>;
+      } else if (marks && marks[mark]) {
+        return marks[mark];
       } else {
         return mark;
       }
@@ -290,16 +292,16 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     return (
       <div ref={ref} {...otherProps} className={cls} onClick={sliderOnClick}>
         <div ref={railRef} className={`${prefixCls}__rail`} />
-        {track && (
-          <div
-            ref={trackRef}
-            className={`${prefixCls}__track`}
-            style={{
-              [isVertical ? 'bottom' : 'left']: trackStyle.left,
-              [isVertical ? 'top' : 'right']: trackStyle.right,
-            }}
-          />
-        )}
+        <div
+          ref={trackRef}
+          className={classNames(`${prefixCls}__track`, {
+            [`${prefixCls}__track_invisible`]: !track,
+          })}
+          style={{
+            [isVertical ? 'bottom' : 'left']: trackStyle.left,
+            [isVertical ? 'top' : 'right']: trackStyle.right,
+          }}
+        />
         {sliderValues.map((value, idx) => {
           const percent = getValueToPercent(value);
           return (

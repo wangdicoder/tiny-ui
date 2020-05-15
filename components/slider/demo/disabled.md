@@ -7,8 +7,6 @@ Disabled Sliders.
 ```jsx live
 <>
   <Slider disabled defaultValue={50}/>
-  <br/>
-  <br/>
   <Slider disabled defaultValue={[20, 45]}/>
 </>
 ```
