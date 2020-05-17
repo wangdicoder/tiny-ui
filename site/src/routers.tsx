@@ -79,6 +79,11 @@ export const COMPONENT_MENU: RouterItem[] = [
     title: 'Layout',
     children: [
       {
+        title: 'Aspect Ratio',
+        route: 'aspect-ratio',
+        component: lazy(() => import('../../components/aspect-ratio/index.md')),
+      },
+      {
         title: 'Grid',
         route: 'grid',
         component: lazy(() => import('../../components/row/index.md')),
@@ -112,11 +117,6 @@ export const COMPONENT_MENU: RouterItem[] = [
   {
     title: 'Data Display',
     children: [
-      {
-        title: 'Aspect Ratio',
-        route: 'aspect-ratio',
-        component: lazy(() => import('../../components/aspect-ratio/index.md')),
-      },
       {
         title: 'Avatar',
         route: 'avatar',
@@ -235,6 +235,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Textarea',
         route: 'textarea',
         component: lazy(() => import('../../components/textarea/index.md')),
+      },
+      {
+        title: 'Upload',
+        route: 'upload',
+        component: lazy(() => import('../../components/upload/index.md')),
       },
     ],
   },
