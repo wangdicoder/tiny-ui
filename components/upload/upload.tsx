@@ -22,7 +22,6 @@ export interface UploadProps extends BaseProps {
   accept?: string;
   method?: string;
   name?: string;
-  limit?: number;
   disabled?: boolean;
   data?: { [key: string]: string };
   headers?: { [key: string]: string };
@@ -30,6 +29,7 @@ export interface UploadProps extends BaseProps {
   drag?: boolean;
   tip?: React.ReactNode;
   withCredentials?: boolean;
+  limit?: number;
   fileList?: UploadFile[];
   defaultFileList?: UploadFile[];
   beforeUpload?: (file: File) => boolean | Promise<File>;
@@ -38,6 +38,7 @@ export interface UploadProps extends BaseProps {
   onError?: (e: ProgressEvent, file: UploadFile, fileList: UploadFile[]) => void;
   onChange?: (file: UploadFile, fileList: UploadFile[]) => void;
   onRemove?: (file: UploadFile) => void;
+  onExceed?: (files: FileList, fileList: UploadFile[]) => void;
   httpRequest?: Function;
   children?: React.ReactNode;
 }
@@ -47,6 +48,7 @@ const Upload = (props: UploadProps): JSX.Element => {
     defaultFileList = [],
     httpRequest = ajax,
     disabled = false,
+    method = 'post',
     headers,
     withCredentials,
     accept,
@@ -56,6 +58,8 @@ const Upload = (props: UploadProps): JSX.Element => {
     data,
     drag,
     beforeUpload,
+    limit,
+    onExceed,
     onProgress,
     onSuccess,
     onError,
@@ -127,6 +131,7 @@ const Upload = (props: UploadProps): JSX.Element => {
       file,
       data,
       filename: name || file.name,
+      method,
       action,
       onProgress: (percent: number) => xhrOnProgress(percent, uploadFile),
       onSuccess: (e: ProgressEvent) => xhrOnComplete(e, uploadFile),
@@ -135,6 +140,11 @@ const Upload = (props: UploadProps): JSX.Element => {
   };
 
   const uploadFiles = (files: FileList): void => {
+    if (limit && fileList.length + files.length > limit) {
+      onExceed && onExceed(files, fileList);
+      return;
+    }
+
     const postFiles = Array.from(files);
     postFiles.forEach((file) => {
       if (!beforeUpload) {

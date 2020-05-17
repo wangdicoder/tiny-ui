@@ -2,6 +2,7 @@ type AjaxOption = {
   action: string;
   file: File;
   filename: string;
+  method: string;
   onProgress: (percent: number) => void;
   onSuccess: (e: ProgressEvent) => void;
   onError: (e: ProgressEvent) => void;
@@ -11,9 +12,9 @@ type AjaxOption = {
 };
 
 export default function ajax(option: AjaxOption): XMLHttpRequest {
-  const { action, file, filename, onProgress, onSuccess, onError, headers, withCredentials, data } = option;
+  const { action, file, filename, method, onProgress, onSuccess, onError, headers, withCredentials, data } = option;
   const xhr = new XMLHttpRequest();
-  xhr.open('post', action, true);
+  xhr.open(method, action, true);
   xhr.onerror = onError;
   xhr.onload = onSuccess;
   if (xhr.upload) {
