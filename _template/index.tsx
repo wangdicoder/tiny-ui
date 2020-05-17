@@ -8,7 +8,7 @@ export interface XProps {
   children?: React.ReactNode;
 }
 
-const X = (props: XProps): JSX.Element => {
+const X = (props: XProps): React.ReactElement => {
   const { prefixCls, className, style, children } = props;
   const cls = classNames(prefixCls, className);
 
@@ -18,5 +18,7 @@ const X = (props: XProps): JSX.Element => {
     </div>
   );
 };
+
+X.displayName = 'X';
 
 export default X;
