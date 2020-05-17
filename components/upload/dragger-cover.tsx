@@ -3,26 +3,32 @@ import classNames from 'classnames';
 
 export interface DraggerCoverProps {
   onFile: (files: FileList) => void;
+  disabled: boolean;
   prefixCls?: string;
   children?: React.ReactNode;
 }
 
 const DraggerCover = (props: DraggerCoverProps): JSX.Element => {
-  const { onFile, prefixCls, children } = props;
+  const { onFile, disabled, prefixCls, children } = props;
   const [dragOver, setDragOver] = useState(false);
   const cls = classNames(`${prefixCls}__dragger-cover`, {
     [`${prefixCls}__dragger-cover_dragover`]: dragOver,
+    [`${prefixCls}__dragger-cover_disabled`]: disabled,
   });
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>, isOver: boolean): void => {
     e.preventDefault();
-    setDragOver(isOver);
+    if (!disabled) {
+      setDragOver(isOver);
+    }
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>): void => {
     e.preventDefault();
-    setDragOver(false);
-    onFile(e.dataTransfer.files);
+    if (!disabled) {
+      setDragOver(false);
+      onFile(e.dataTransfer.files);
+    }
   };
 
   return (

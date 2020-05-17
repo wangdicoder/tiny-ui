@@ -1,5 +1,5 @@
 import React from 'react';
-import { UploadFile } from './types';
+import { UploadFile } from './upload';
 import { CheckCircle, CloseCircle, LoadingCircle, PaperClip } from '../_utils/components';
 import Progress from '../progress';
 
