@@ -47,6 +47,7 @@ export { default as Rate } from './rate';
 export { default as Result } from './result';
 export { default as ScrollIndicator } from './scroll-indicator';
 export { default as Select } from './select';
+export { default as Skeleton } from './skeleton';
 export { default as Slider } from './slider';
 export { default as Split } from './split';
 // export { default as Sticky } from './sticky';

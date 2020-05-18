@@ -296,6 +296,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'result',
         component: lazy(() => import('../../components/result/index.md')),
       },
+      {
+        title: 'Skeleton',
+        route: 'skeleton',
+        component: lazy(() => import('../../components/skeleton/index.md')),
+      },
     ],
   },
   {
