@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
 import { COMPONENT_MENU, RouterItem } from '../../routers';
 import { SidebarMenu } from '../../components/sidebar-menu';
-import { Layout } from '../../../../components';
+import { Layout, Loader } from '../../../../components';
 // import { DocFooter } from '../../components/doc-footer';
 import ComponentOverview from './overview';
 
@@ -10,7 +10,7 @@ const { Content } = Layout;
 
 const flattenRouters = (routers: RouterItem[]): RouterItem[] => {
   return routers.reduce((res: RouterItem[], router) => {
-    router.children!.forEach(child => {
+    router.children!.forEach((child) => {
       res.push(child);
     });
     return res;
@@ -26,10 +26,16 @@ export default class ComponentsPage extends React.PureComponent<RouteComponentPr
         <SidebarMenu routers={COMPONENT_MENU} url={url} />
         <Layout className="doc-container__layout">
           <Content>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense
+              fallback={
+                <div className="doc-container__fallback">
+                  <Loader />
+                  <div style={{ marginLeft: 8 }}>Loading...</div>
+                </div>
+              }>
               <Switch>
                 <Route exact path={`${url}`} component={ComponentOverview} />
-                {flattenedRouters.map(menu => (
+                {flattenedRouters.map((menu) => (
                   <Route
                     key={menu.title}
                     path={`${url}/${menu.route}`}

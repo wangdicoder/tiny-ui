@@ -17,6 +17,12 @@ body {
   min-height: calc(100vh - #{$header-height});
   padding-top: $header-height;
 
+  &__fallback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__layout {
     padding: 30px 30px 30px 280px;
   }
@@ -40,6 +46,7 @@ body {
         .component-page__footer-icon-left {
           left: -5px;
         }
+
         .component-page__footer-icon-right {
           left: 5px;
         }
