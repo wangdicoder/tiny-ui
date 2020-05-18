@@ -1,14 +1,15 @@
 import React from 'react';
 
 type IconProps = {
+  className?: string;
   style?: React.CSSProperties;
   size?: number | string;
   color?: string;
 };
 export const ArrowDown = (props: IconProps): React.ReactElement => {
-  const { size = 20, color = 'currentcolor' } = props;
+  const { size = 20, color = 'currentcolor', ...otherProps } = props;
   return (
-    <svg width={size} height={size} viewBox="0 0 1024 1024">
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
       <path
         fill={color}
         d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
@@ -18,9 +19,9 @@ export const ArrowDown = (props: IconProps): React.ReactElement => {
 };
 
 export const PaperClip = (props: IconProps): React.ReactElement => {
-  const { size = 20, color = 'currentcolor' } = props;
+  const { size = 20, color = 'currentcolor', ...otherProps } = props;
   return (
-    <svg width={size} height={size} viewBox="0 0 1024 1024">
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
       <path
         fill={color}
         d="M596.600738 77.483387C707.652076-15.699749 863.952233-17.103951 945.87122 80.523296 1025.33565 175.225316 1000.817463 322.788809 897.886159 416.55918L500.872884 750.033876C428.941403 810.391556 330.343483 819.035113 279.34144 758.253245 228.350653 697.484792 254.004524 601.845857 325.904469 541.51464L549.255103 354.101205C568.4844 337.965909 597.16161 340.484261 613.234234 359.638868L613.234234 359.638868C629.339635 378.832538 626.827441 407.455341 607.577908 423.607617L384.227274 611.021052C346.503334 642.675196 335.433548 683.943896 348.847852 699.93044 362.276678 715.934291 404.796072 712.206837 442.550079 680.527464L829.892107 355.508911C905.161842 292.350105 923.282829 194.760822 876.364807 138.846101 829.422073 82.901929 730.238566 83.792991 654.923543 146.9898L207.957862 522.038537C112.028875 602.532515 99.523634 745.608046 180.046565 841.571538 260.588409 937.557569 403.622296 950.081865 499.571887 869.570599L901.909406 531.969334C921.04904 515.909275 949.653556 518.488625 965.72618 537.643231L965.72618 537.643231C981.831581 556.836901 979.334768 585.446798 960.232211 601.475747L557.894692 939.077011C423.555518 1051.800962 223.290899 1034.265449 110.540153 899.894342 0.612214 768.887326 14.525852 575.161364 139.830689 461.101188L596.600738 77.483387Z"
@@ -30,9 +31,9 @@ export const PaperClip = (props: IconProps): React.ReactElement => {
 };
 
 export const CheckCircle = (props: IconProps): React.ReactElement => {
-  const { size = 20, color = 'currentcolor' } = props;
+  const { size = 20, color = '#52c41a', ...otherProps } = props;
   return (
-    <svg width={size} height={size} viewBox="0 0 1024 1024">
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
       <path
         fill={color}
         d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m193.5 301.7l-210.6 292c-12.7 17.7-39 17.7-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"
@@ -42,9 +43,9 @@ export const CheckCircle = (props: IconProps): React.ReactElement => {
 };
 
 export const CloseCircle = (props: IconProps): React.ReactElement => {
-  const { size = 20, color = 'currentcolor' } = props;
+  const { size = 20, color = '#f44336', ...otherProps } = props;
   return (
-    <svg width={size} height={size} viewBox="0 0 1024 1024">
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
       <path
         fill={color}
         d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m165.4 618.2l-66-0.3L512 563.4l-99.3 118.4-66.1 0.3c-4.4 0-8-3.5-8-8 0-1.9 0.7-3.7 1.9-5.2l130.1-155L340.5 359c-1.2-1.5-1.9-3.3-1.9-5.2 0-4.4 3.6-8 8-8l66.1 0.3L512 464.6l99.3-118.4 66-0.3c4.4 0 8 3.5 8 8 0 1.9-0.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
@@ -53,13 +54,49 @@ export const CloseCircle = (props: IconProps): React.ReactElement => {
   );
 };
 
-export const LoadingCircle = (props: IconProps): React.ReactElement => {
-  const { size = 20, color = 'currentcolor', style } = props;
+export const WarningCircle = (props: IconProps): React.ReactElement => {
+  const { size = 20, color = '#ff9800', ...otherProps } = props;
   return (
-    <svg width={size} height={size} viewBox="0 0 1024 1024" style={style}>
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
+      <path
+        fill={color}
+        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296z m32 440c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z"
+      />
+    </svg>
+  );
+};
+
+export const InfoCircle = (props: IconProps): React.ReactElement => {
+  const { size = 20, color = '#1890ff', ...otherProps } = props;
+  return (
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
+      <path
+        fill={color}
+        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m32 664c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V456c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272z m-32-344c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z"
+      />
+    </svg>
+  );
+};
+
+export const LoadingCircle = (props: IconProps): React.ReactElement => {
+  const { size = 20, color = '#1890ff', ...otherProps } = props;
+  return (
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
       <path
         fill={color}
         d="M512.064 963.296c-96.16 0-189.344-30.816-267.68-89.472-95.744-71.712-157.856-176.48-174.848-294.912C52.544 460.448 82.688 342.464 154.4 246.688c148.096-197.76 429.44-238.08 627.136-90.08 82.88 62.08 142.016 151.584 166.56 252 4.192 17.184-6.336 34.496-23.488 38.688-17.152 4.064-34.496-6.304-38.688-23.488-20.992-86.048-71.68-162.752-142.752-215.968-169.376-126.88-410.56-92.288-537.536 77.216-61.472 82.08-87.296 183.2-72.704 284.736 14.56 101.536 67.808 191.296 149.888 252.736 169.536 127.04 410.688 92.384 537.6-77.12 33.216-44.384 56-94.112 67.648-147.84 3.776-17.28 20.896-28.256 38.048-24.512 17.28 3.744 28.256 20.8 24.512 38.048-13.664 62.784-40.224 120.832-78.976 172.672-71.712 95.744-176.48 157.888-294.976 174.848a449.402 449.402 0 0 1-64.608 4.672z"
+      />
+    </svg>
+  );
+};
+
+export const QuestionCircle = (props: IconProps): React.ReactElement => {
+  const { size = 20, color = '#ff9800', ...otherProps } = props;
+  return (
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
+      <path
+        fill={color}
+        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 708c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40z m62.9-219.5c-18.5 7.1-30.9 25.1-30.9 44.8V620c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8v-21.5c0-23.1 6.7-45.9 19.9-64.9 12.9-18.6 30.9-32.8 52.1-40.9 34-13.1 56-41.6 56-72.7 0-44.1-43.1-80-96-80s-96 35.9-96 80v7.6c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V420c0-39.3 17.2-76 48.4-103.3C430.4 290.4 470 276 512 276s81.6 14.5 111.6 40.7C654.8 344 672 380.7 672 420c0 57.8-38.1 109.8-97.1 132.5z"
       />
     </svg>
   );

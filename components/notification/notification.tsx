@@ -1,9 +1,9 @@
 import React, { ReactNode, useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { CheckCircle, CloseCircle, InfoCircle, WarningCircle } from '../_utils/components';
 
 export type NotificationType = 'success' | 'error' | 'warning' | 'info' | undefined;
 
@@ -22,13 +22,6 @@ export interface NotificationProps
   duration?: number;
   children?: React.ReactNode;
 }
-
-const IconType: { [type: string]: { name: string; color: string } } = {
-  success: { name: 'check-fill', color: '#52c41a' },
-  info: { name: 'info-fill', color: '#1890ff' },
-  warning: { name: 'warn-fill', color: '#faad14' },
-  error: { name: 'close-fill', color: '#f5222d' },
-};
 
 const Notification = (props: NotificationProps): JSX.Element => {
   const {
@@ -63,14 +56,17 @@ const Notification = (props: NotificationProps): JSX.Element => {
     if (React.isValidElement(icon)) {
       return icon;
     } else if (typeof type === 'string') {
-      return (
-        <Icon
-          name={IconType[type].name}
-          color={IconType[type].color}
-          size={25}
-          className={`${prefixCls}__icon`}
-        />
-      );
+      const iconSize = 40;
+      switch (type) {
+        case 'success':
+          return <CheckCircle size={iconSize} className={`${prefixCls}__icon`} />;
+        case 'info':
+          return <InfoCircle size={iconSize} className={`${prefixCls}__icon`} />;
+        case 'warning':
+          return <WarningCircle size={iconSize} className={`${prefixCls}__icon`} />;
+        case 'error':
+          return <CloseCircle size={iconSize} className={`${prefixCls}__icon`} />;
+      }
     }
 
     return null;

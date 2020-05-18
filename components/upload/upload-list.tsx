@@ -22,8 +22,8 @@ const UploadList = (props: UploadListProps): JSX.Element => {
               <PaperClip size={11} color="rgba(0, 0, 0, 0.45)" />
               <span className={`${prefixCls}__upload-list-item-name`}>{name}</span>
               <span className={`${prefixCls}__upload-list-item-status`}>
-                {status === 'done' && <CheckCircle color="#52c41a" size={16} />}
-                {status === 'error' && <CloseCircle color="#f44336" size={16} />}
+                {status === 'done' && <CheckCircle size={16} />}
+                {status === 'error' && <CloseCircle size={16} />}
                 {status === 'uploading' && (
                   <LoadingCircle
                     style={{ animation: 'ty-rotate 1s linear infinite' }}

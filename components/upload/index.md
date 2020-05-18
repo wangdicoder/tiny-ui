@@ -43,7 +43,7 @@ import { Upload } from 'tiny-ui';
 | headers           | request headers                                   | object                        | -         |
 | multiple          | whether uploading multiple files is permitted     | boolean                       | -         |
 | drag              | whether to activate drag and drop mode            | boolean                       | -         |
-| tip               | render an icon on the left of the text            | React.ReactNode               | -         |
+| tip               | a tip content displaying under the trigger        | React.ReactNode               | -         |
 | withCredentials   | whether cookies are sent                          | boolean                       | -         |
 | fileList          | uploaded files                                    | object[]                      | -         |
 | defaultFileList   | default uploaded files                            | object[]                      | -         |

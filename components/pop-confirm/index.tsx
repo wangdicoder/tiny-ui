@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import Popover, { PopoverProps } from '../popover';
-import Icon from '../icon';
 import Button from '../button';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { WarningCircle } from '../_utils/components';
 
 export interface PopConfirmProps extends PopoverProps {
   confirmText?: string;
@@ -48,7 +48,7 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
     return (
       <div className={`${prefixCls}__overlay`}>
         <div className={`${prefixCls}__messages`}>
-          {icon ? icon : <Icon name="warn-fill" color="#f29000" />}
+          {icon ? icon : <WarningCircle size={14} />}
           <span className={`${prefixCls}__title`}>{title}</span>
         </div>
         <div className={`${prefixCls}__buttons`}>

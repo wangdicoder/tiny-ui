@@ -1,10 +1,10 @@
 import React, { ReactNode, useState, useRef, useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
-import Icon from '../icon';
 import { BaseProps } from '../_utils/props';
 import { getPrefixCls } from '../_utils/general';
 import Transition from '../transition';
+import { CheckCircle, CloseCircle, InfoCircle, WarningCircle } from '../_utils/components';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
@@ -24,13 +24,6 @@ export interface AlertProps
   onClose?: React.MouseEventHandler<HTMLSpanElement>;
   children?: ReactNode;
 }
-
-const IconType = Object.freeze({
-  success: 'check-fill',
-  info: 'info-fill',
-  warning: 'warn-fill',
-  error: 'close-fill',
-});
 
 const setClosedStyle = (node: HTMLElement): void => {
   node.style.borderTopWidth = '0';
@@ -79,7 +72,16 @@ const Alert = (props: AlertProps): JSX.Element => {
 
   const renderIcon = (): React.ReactNode => {
     if (typeof icon === 'boolean') {
-      return <Icon name={IconType[type]} size={iconSize} className={`${prefixCls}__icon`} />;
+      switch (type) {
+        case 'success':
+          return <CheckCircle size={iconSize} className={`${prefixCls}__icon`} />;
+        case 'info':
+          return <InfoCircle size={iconSize} className={`${prefixCls}__icon`} />;
+        case 'warning':
+          return <WarningCircle size={iconSize} className={`${prefixCls}__icon`} />;
+        case 'error':
+          return <CloseCircle size={iconSize} className={`${prefixCls}__icon`} />;
+      }
     }
 
     return icon;

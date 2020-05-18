@@ -1,19 +1,17 @@
 import React, { ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
-import Icon from '../icon';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import {
+  CheckCircle,
+  CloseCircle,
+  InfoCircle,
+  LoadingCircle,
+  WarningCircle,
+} from '../_utils/components';
 
 export type ResultStatus = 'success' | 'error' | 'info' | 'warning' | 'loading';
-
-const StatusIcon = Object.freeze({
-  success: 'check-fill',
-  error: 'close-fill',
-  info: 'info-fill',
-  warning: 'warn-fill',
-  loading: 'sync',
-});
 
 export interface ResultProps
   extends BaseProps,
@@ -42,25 +40,31 @@ const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps
   const prefixCls = getPrefixCls('result', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${status}`);
 
-  const renderIcon = (): React.ReactElement => {
-    return (
-      <div className={`${prefixCls}__icon-container`}>
-        {'icon' in props ? (
-          icon
-        ) : (
-          <Icon
-            spin={status === 'loading'}
-            name={StatusIcon[status]}
-            className={`${prefixCls}__icon ${prefixCls}__icon_${status}`}
-          />
-        )}
-      </div>
-    );
+  const renderIcon = (): React.ReactNode => {
+    if (React.isValidElement(icon)) {
+      return icon;
+    } else {
+      const iconSize = 80;
+      switch (status) {
+        case 'success':
+          return <CheckCircle size={iconSize} />;
+        case 'info':
+          return <InfoCircle size={iconSize} />;
+        case 'warning':
+          return <WarningCircle size={iconSize} />;
+        case 'error':
+          return <CloseCircle size={iconSize} />;
+        case 'loading':
+          return <LoadingCircle size={iconSize} className={`${prefixCls}__icon`} />;
+      }
+    }
+
+    return null;
   };
 
   return (
     <div {...otherProps} ref={ref} className={cls}>
-      {renderIcon()}
+      <div className={`${prefixCls}__icon-container`}>{renderIcon()}</div>
       {title && <div className={`${prefixCls}__title`}>{title}</div>}
       {subtitle && <div className={`${prefixCls}__subtitle`}>{subtitle}</div>}
       {extra && <div className={`${prefixCls}__extra`}>{extra}</div>}

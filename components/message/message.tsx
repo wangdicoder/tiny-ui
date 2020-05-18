@@ -1,10 +1,16 @@
 import React, { useEffect, useRef, useState, ReactNode, useContext } from 'react';
-import classnNames from 'classnames';
-import Icon from '../icon';
+import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import {
+  CheckCircle,
+  CloseCircle,
+  InfoCircle,
+  LoadingCircle,
+  WarningCircle,
+} from '../_utils/components';
 
 export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading' | undefined;
 
@@ -16,14 +22,6 @@ export interface MessageProps extends BaseProps {
   extra?: ReactNode;
   willUnmount: (height: number) => void;
 }
-
-const IconType: any = {
-  success: { name: 'check-fill', color: '#52c41a' },
-  info: { name: 'info-fill', color: '#1890ff' },
-  loading: { name: 'sync', color: '#1890ff' },
-  warning: { name: 'warn-fill', color: '#faad14' },
-  error: { name: 'close-fill', color: '#f5222d' },
-};
 
 const Message = (props: MessageProps): JSX.Element => {
   const {
@@ -39,23 +37,33 @@ const Message = (props: MessageProps): JSX.Element => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('message', configContext.prefixCls, customisedCls);
-  const cls = classnNames(prefixCls, className);
+  const cls = classNames(prefixCls, className);
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(true);
 
-  const renderIcon = () => {
+  const renderIcon = (): React.ReactNode => {
     if (React.isValidElement(icon)) {
       return icon;
     } else if (typeof type === 'string') {
-      return (
-        <Icon
-          name={IconType[type].name}
-          color={IconType[type].color}
-          size={16}
-          spin={type === 'loading'}
-          className={`${prefixCls}__icon`}
-        />
-      );
+      switch (type) {
+        case 'success':
+          return <CheckCircle size={16} className={`${prefixCls}__icon`} />;
+        case 'info':
+          return <InfoCircle size={16} className={`${prefixCls}__icon`} />;
+        case 'warning':
+          return <WarningCircle size={16} className={`${prefixCls}__icon`} />;
+        case 'error':
+          return <CloseCircle size={16} className={`${prefixCls}__icon`} />;
+        case 'loading':
+          return (
+            <LoadingCircle
+              size={16}
+              className={classNames(`${prefixCls}__icon`, {
+                [`${prefixCls}__icon_loading`]: type === 'loading',
+              })}
+            />
+          );
+      }
     }
 
     return null;
@@ -63,10 +71,14 @@ const Message = (props: MessageProps): JSX.Element => {
 
   useEffect(() => {
     const height = (ref.current && ref.current!.offsetHeight) || 0;
-    setTimeout(() => {
+    const timer = window.setTimeout(() => {
       setVisible(false);
       willUnmount(height);
     }, duration);
+
+    return (): void => {
+      window.clearTimeout(timer);
+    };
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 @import '../../style/variables';
+@import '../../style/animation';
 
 .#{$prefix}-result {
   padding: 48px 32px;
@@ -11,27 +12,7 @@
   }
 
   &__icon {
-    font-size: 80px;
-
-    &_success {
-      color: $success-color;
-    }
-
-    &_warning {
-      color: $warning-color;
-    }
-
-    &_error {
-      color: $danger-color;
-    }
-
-    &_info {
-      color: $info-color;
-    }
-
-    &_loading {
-      color: $info-color;
-    }
+    animation: ty-rotate 1s linear infinite;
   }
 
   &__title {

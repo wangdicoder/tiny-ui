@@ -5,10 +5,11 @@
   padding: 16px 24px;
   border-radius: 3px;
   color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
+  font-size: $font-size-base;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   display: flex;
+  align-items: flex-start;
 
   &-container {
     width: $notification-width;
@@ -55,5 +56,6 @@
 
   &__icon {
     margin-right: 15px;
+    height: 30px;
   }
 }

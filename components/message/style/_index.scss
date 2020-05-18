@@ -1,5 +1,5 @@
 @import '../../style/variables';
-@import '../../icon/style/index';
+@import '../../style/animation';
 
 .#{$prefix}-message {
   position: relative;
@@ -47,6 +47,10 @@
 
   &__icon {
     margin-right: 5px;
+
+    &_loading{
+      animation: ty-rotate 1s linear infinite;
+    }
   }
 
   &__extra {
