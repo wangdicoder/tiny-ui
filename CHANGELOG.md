@@ -8,6 +8,20 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.85](https://github.com/wangdicoder/tiny-ui/compare/v0.0.84...v0.0.85) (2020-05-18)
+
+
+### Features
+
+* <Slider /> component ([a5d4f65](https://github.com/wangdicoder/tiny-ui/commit/a5d4f6544494e9bd89bc8ca0de728fbc471b8fca))
+* Avatar.Group adds a gap prop ([1fa246a](https://github.com/wangdicoder/tiny-ui/commit/1fa246aa2129dc65de97feb8abaec523956c8973))
+* provide a portal option to render the popup content ([3c73c28](https://github.com/wangdicoder/tiny-ui/commit/3c73c28142188008d4e8d87fa27a0b81b8f29845))
+
+
+### Bug Fixes
+
+* slider issue in vertical mode ([3e5341f](https://github.com/wangdicoder/tiny-ui/commit/3e5341f19655d00650a73f5ac0caf8273b3ee389))
+
 ### [0.0.84](https://github.com/wangdicoder/tiny-ui/compare/v0.0.83...v0.0.84) (2020-05-10)
 
 
