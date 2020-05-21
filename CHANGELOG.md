@@ -8,6 +8,13 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.86](https://github.com/wangdicoder/tiny-ui/compare/v0.0.85...v0.0.86) (2020-05-21)
+
+
+### Features
+
+* `<Split />` component ([2eb08c6](https://github.com/wangdicoder/tiny-ui/commit/2eb08c663e5a8b5eb7d82224d85042ab66ac2ef9))
+
 ### [0.0.85](https://github.com/wangdicoder/tiny-ui/compare/v0.0.84...v0.0.85) (2020-05-18)
 
 
