@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
+import { ConfigContext } from '../components/config-provider/config-context';
+import { getPrefixCls } from '../components/_utils/general';
 
 export interface XProps {
   prefixCls?: string;
@@ -9,7 +11,9 @@ export interface XProps {
 }
 
 const X = (props: XProps): React.ReactElement => {
-  const { prefixCls, className, style, children } = props;
+  const { className, style, children, prefixCls: customisedCls } = props;
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('X', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Route, RouteComponentProps, Switch, Redirect } from 'react-router-dom';
 import { GUIDE_MENU } from '../../routers';
 import { SidebarMenu } from '../../components/sidebar-menu';
-import { Layout } from '../../../../components';
+import { Layout, Loader } from '../../../../components';
 // import { DocFooter } from '../../components/doc-footer';
 
 const { Content } = Layout;
@@ -15,9 +15,15 @@ export default class GuidePage extends React.PureComponent<RouteComponentProps> 
         <SidebarMenu routers={GUIDE_MENU} url={url} />
         <Layout className="doc-container__layout">
           <Content>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense
+              fallback={
+                <div className="doc-container__fallback">
+                  <Loader />
+                  <div style={{ marginLeft: 8 }}>Loading...</div>
+                </div>
+              }>
               <Switch>
-                {GUIDE_MENU.map(menu => (
+                {GUIDE_MENU.map((menu) => (
                   <Route
                     key={menu.title}
                     path={`${url}/${menu.route}`}
