@@ -13,9 +13,6 @@ export type SplitMode = 'horizontal' | 'vertical';
 export interface SplitProps
   extends BaseProps,
     Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'onChange'> {
-  /** Determine which pane is the target to calculate the size */
-  primary?: 1 | 2;
-
   /** Split mode */
   mode?: SplitMode;
 
@@ -49,7 +46,6 @@ export interface SplitProps
 
 const Split = (props: SplitProps): JSX.Element => {
   const {
-    primary = 1,
     mode = 'vertical',
     disabled = false,
     min = 50,
@@ -73,10 +69,8 @@ const Split = (props: SplitProps): JSX.Element => {
     [`${prefixCls}_disabled`]: disabled,
   });
   const [pane1Size, setPane1Size] = useState<number | undefined>(undefined);
-  const [pane2Size, setPane2Size] = useState<number | undefined>(undefined);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
-  const pane1Ref = useRef<HTMLDivElement | null>(null);
-  const pane2Ref = useRef<HTMLDivElement | null>(null);
+  const paneRef = useRef<HTMLDivElement | null>(null);
   const isActiveMove = useRef(false);
   const lastPosition = useRef(0);
   const wrapper = wrapperRef.current;
@@ -111,26 +105,23 @@ const Split = (props: SplitProps): JSX.Element => {
   const onMouseMove = useCallback(
     (e: MouseEvent): void => {
       if (!disabled && isActiveMove.current) {
-        const isFirstPrimary = primary === 1;
-        const node = isFirstPrimary ? pane1Ref.current : pane2Ref.current;
-        // const node2 = isFirstPrimary ? pane2Ref.current : pane1Ref.current;
-        if (node) {
-          if (node.getBoundingClientRect) {
-            const width = node.getBoundingClientRect().width;
-            const height = node.getBoundingClientRect().height;
+        const pane = paneRef.current;
+        if (pane) {
+          if (pane.getBoundingClientRect) {
+            const width = pane.getBoundingClientRect().width;
+            const height = pane.getBoundingClientRect().height;
             const current = e[mode === 'vertical' ? 'clientX' : 'clientY'];
             const size = mode === 'vertical' ? width : height;
-            let positionDelta = lastPosition.current - current;
+            let offset = lastPosition.current - current;
             if (step) {
-              if (Math.abs(positionDelta) < step) {
+              if (Math.abs(offset) < step) {
                 return;
               }
-              positionDelta = Math.round((positionDelta / step) * step);
+              offset = Math.round((offset / step) * step);
             }
-            const sizeDelta = isFirstPrimary ? positionDelta : -positionDelta;
 
-            let newSize = size - sizeDelta;
-            const newPosition = lastPosition.current - positionDelta;
+            let newSize = size - offset;
+            const newPosition = lastPosition.current - offset;
 
             if (newSize < minSize) {
               newSize = minSize;
@@ -140,15 +131,13 @@ const Split = (props: SplitProps): JSX.Element => {
               lastPosition.current = newPosition;
             }
 
-            console.log(newSize);
-
             onChange && onChange(newSize);
-            isFirstPrimary ? setPane1Size(newSize) : setPane2Size(newSize);
+            setPane1Size(newSize);
           }
         }
       }
     },
-    [disabled, maxSize, minSize, mode, onChange, primary, step]
+    [disabled, maxSize, minSize, mode, onChange, step]
   );
 
   const onMouseUp = (e: MouseEvent): void => {
@@ -181,8 +170,8 @@ const Split = (props: SplitProps): JSX.Element => {
 
   useEffect(() => {
     const initialSize = getSizeNumber(props.size || props.defaultSize || minSize);
-    primary === 1 ? setPane1Size(initialSize) : setPane2Size(initialSize);
-  }, [getSizeNumber, props.size, props.defaultSize, minSize, primary]);
+    setPane1Size(initialSize);
+  }, [getSizeNumber, props.size, props.defaultSize, minSize]);
 
   warning(React.Children.count(children) > 2, 'There are more than 2 children inside Split.');
   const childrenList = React.Children.toArray(children).filter((child) => child);
@@ -190,7 +179,7 @@ const Split = (props: SplitProps): JSX.Element => {
   return (
     <SplitContext.Provider value={{ mode }}>
       <div ref={wrapperRef} {...otherProps} className={cls} style={style}>
-        <Pane ref={pane1Ref} size={pane1Size} style={{ flex: '0 0 auto' }}>
+        <Pane ref={paneRef} size={pane1Size} style={{ flex: '0 0 auto' }}>
           {childrenList[0]}
         </Pane>
         <Resizer
@@ -199,9 +188,7 @@ const Split = (props: SplitProps): JSX.Element => {
           mode={mode}
           onMouseDown={resizerOnMouseDown}
         />
-        <Pane ref={pane2Ref} size={pane2Size} style={{ flex: '1 1 0%' }}>
-          {childrenList[1]}
-        </Pane>
+        <Pane style={{ flex: '1 1 0%' }}>{childrenList[1]}</Pane>
       </div>
     </SplitContext.Provider>
   );
