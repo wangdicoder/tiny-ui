@@ -8,7 +8,7 @@ import { SplitContext } from './split-context';
 export interface SplitPaneProps
   extends BaseProps,
     React.PropsWithRef<JSX.IntrinsicElements['div']> {
-  size?: number | string;
+  size?: number;
 }
 
 const SplitPane = React.forwardRef<HTMLDivElement, SplitPaneProps>(

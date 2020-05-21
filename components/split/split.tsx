@@ -23,23 +23,28 @@ export interface SplitProps
   disabled?: boolean;
 
   /** Minimum width / height of the target pane */
-  minSize?: number;
+  min?: number | string;
 
   /** Maximum width / height of the target pane */
-  maxSize?: number;
+  max?: number | string;
 
   /** Control the size of target pane */
-  size?: number;
+  size?: number | string;
 
   /** Default size of target pane */
-  defaultSize?: number;
+  defaultSize?: number | string;
 
   /** Resizer's other props */
   resizerProps?: object;
 
+  /** Drag step */
   step?: number;
 
-  onChange?: (size: number) => void;
+  resizerSize?: number;
+
+  onChange?: (size: number | string) => void;
+  onDragStarted?: () => void;
+  onDragFinished?: () => void;
 }
 
 const Split = (props: SplitProps): JSX.Element => {
@@ -47,14 +52,17 @@ const Split = (props: SplitProps): JSX.Element => {
     primary = 1,
     mode = 'vertical',
     disabled = false,
+    min = 50,
+    max = 50,
+    resizerSize = 6,
     step,
-    maxSize,
-    minSize = 50,
-    className,
     onChange,
+    onDragStarted,
+    onDragFinished,
     prefixCls: customisedCls,
     style: defaultStyle,
     resizerProps,
+    className,
     children,
     ...otherProps
   } = props;
@@ -64,17 +72,40 @@ const Split = (props: SplitProps): JSX.Element => {
     [`${prefixCls}_${mode}`]: mode,
     [`${prefixCls}_disabled`]: disabled,
   });
-  const [pane1Size, setPane1Size] = useState(props.size || props.defaultSize || minSize);
-  const [pane2Size, setPane2Size] = useState(props.size || props.defaultSize || minSize);
+  const [pane1Size, setPane1Size] = useState<number | undefined>(undefined);
+  const [pane2Size, setPane2Size] = useState<number | undefined>(undefined);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const pane1Ref = useRef<HTMLDivElement | null>(null);
   const pane2Ref = useRef<HTMLDivElement | null>(null);
   const isActiveMove = useRef(false);
   const lastPosition = useRef(0);
+  const wrapper = wrapperRef.current;
+
+  const getSizeNumber = useCallback(
+    (size: number | string): number => {
+      if (typeof size === 'string') {
+        if (wrapper) {
+          const { width, height } = wrapper.getBoundingClientRect();
+          return ((mode === 'vertical' ? width : height) * parseFloat(size)) / 100;
+        }
+      } else {
+        return size;
+      }
+      return 0;
+    },
+    [mode, wrapper]
+  );
+  const minSize = getSizeNumber(min);
+  let maxSize = getSizeNumber(max);
+  if (wrapper) {
+    const { width, height } = wrapper.getBoundingClientRect();
+    maxSize = (mode === 'vertical' ? width : height) - maxSize - resizerSize;
+  }
 
   const resizerOnMouseDown = (e: React.MouseEvent<HTMLElement>): void => {
     isActiveMove.current = true;
     lastPosition.current = e[mode === 'vertical' ? 'clientX' : 'clientY'];
+    onDragStarted && onDragStarted();
   };
 
   const onMouseMove = useCallback(
@@ -98,38 +129,13 @@ const Split = (props: SplitProps): JSX.Element => {
             }
             const sizeDelta = isFirstPrimary ? positionDelta : -positionDelta;
 
-            let newMaxSize = 0;
-            if (maxSize && typeof maxSize === 'number') {
-              newMaxSize = maxSize;
-            } else if (maxSize && typeof maxSize === 'string') {
-              const splitPane = wrapperRef.current;
-              if (splitPane) {
-                if (mode === 'vertical') {
-                  newMaxSize =
-                    (splitPane.getBoundingClientRect().width * parseFloat(maxSize)) / 100;
-                } else {
-                  newMaxSize =
-                    (splitPane.getBoundingClientRect().height * parseFloat(maxSize)) / 100;
-                }
-              }
-            } else {
-              const splitPane = wrapperRef.current;
-              if (splitPane) {
-                if (mode === 'vertical') {
-                  newMaxSize = splitPane.getBoundingClientRect().width;
-                } else {
-                  newMaxSize = splitPane.getBoundingClientRect().height;
-                }
-              }
-            }
-
             let newSize = size - sizeDelta;
             const newPosition = lastPosition.current - positionDelta;
 
             if (newSize < minSize) {
               newSize = minSize;
-            } else if (maxSize && newSize > newMaxSize) {
-              newSize = newMaxSize;
+            } else if (newSize > maxSize) {
+              newSize = maxSize;
             } else {
               lastPosition.current = newPosition;
             }
@@ -147,6 +153,7 @@ const Split = (props: SplitProps): JSX.Element => {
 
   const onMouseUp = (e: MouseEvent): void => {
     isActiveMove.current = false;
+    onDragFinished && onDragFinished();
   };
 
   let style: React.CSSProperties;
@@ -172,7 +179,10 @@ const Split = (props: SplitProps): JSX.Element => {
     };
   }, [onMouseMove]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const initialSize = getSizeNumber(props.size || props.defaultSize || minSize);
+    primary === 1 ? setPane1Size(initialSize) : setPane2Size(initialSize);
+  }, [getSizeNumber, props.size, props.defaultSize, minSize, primary]);
 
   warning(React.Children.count(children) > 2, 'There are more than 2 children inside Split.');
   const childrenList = React.Children.toArray(children).filter((child) => child);
@@ -183,7 +193,12 @@ const Split = (props: SplitProps): JSX.Element => {
         <Pane ref={pane1Ref} size={pane1Size} style={{ flex: '0 0 auto' }}>
           {childrenList[0]}
         </Pane>
-        <Resizer {...resizerProps} mode={mode} onMouseDown={resizerOnMouseDown} />
+        <Resizer
+          {...resizerProps}
+          size={resizerSize}
+          mode={mode}
+          onMouseDown={resizerOnMouseDown}
+        />
         <Pane ref={pane2Ref} size={pane2Size} style={{ flex: '1 1 0%' }}>
           {childrenList[1]}
         </Pane>
