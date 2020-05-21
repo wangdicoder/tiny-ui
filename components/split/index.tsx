@@ -1,14 +1,5 @@
-import Split, { SplitProps } from './split';
-import SplitPane, { SplitPaneProps } from './split-pane';
-import { SplitMode } from './shared-props';
+import Split, { SplitProps, SplitMode } from './split';
 
-export { SplitProps, SplitPaneProps, SplitMode };
+export { SplitProps, SplitMode };
 
-type ISplit = typeof Split & {
-  Pane?: typeof SplitPane;
-};
-
-const DefaultSplit = Split as ISplit;
-DefaultSplit.Pane = SplitPane;
-
-export default DefaultSplit;
+export default Split;
