@@ -9,16 +9,14 @@ Can be used nested.
   <div>
     Left
   </div>
-  <div>
-    <Split mode="horizontal">
-      <div>
-        Top
-      </div>
-      <div>
-        Bottom
-      </div>
-    </Split>
-  </div>
+  <Split mode="horizontal">
+    <div>
+      Top
+    </div>
+    <div>
+      Bottom
+    </div>
+  </Split>
 </Split>
 ```
 
