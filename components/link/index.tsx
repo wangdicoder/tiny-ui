@@ -39,6 +39,7 @@ const Link = (props: LinkProps): React.ReactElement => {
       target={target ? target : external ? '_blank' : '_self'}
       className={cls}
       style={style}
+      role="link"
       aria-disabled={disabled}>
       <span>{children}</span>
     </a>
