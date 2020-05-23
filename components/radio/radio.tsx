@@ -1,68 +1,81 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, RefObject } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { RadioGroupContext } from './radio-group-context';
 
-export interface RadioProps extends BaseProps {
+export interface RadioProps
+  extends BaseProps,
+    Omit<React.PropsWithRef<JSX.IntrinsicElements['label']>, 'onChange'> {
+  radioRef?: RefObject<HTMLInputElement>;
+  value?: string | number;
   name?: string;
   defaultChecked?: boolean;
   checked?: boolean;
-  value?: string;
-  onChange?: (checked: boolean, event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
-  children?: React.ReactNode;
 }
 
-const Radio = (props: RadioProps): React.ReactElement => {
-  const {
-    defaultChecked = false,
-    prefixCls: customisedCls,
-    name,
-    value,
-    disabled,
-    onChange,
-    className,
-    style,
-    children,
-  } = props;
-  const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
-  const configContext = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('radio', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_checked`]: checked,
-    [`${prefixCls}_disabled`]: disabled,
-  });
+const Radio = React.forwardRef<HTMLLabelElement, RadioProps>(
+  (props: RadioProps, ref): React.ReactElement => {
+    const {
+      defaultChecked = false,
+      radioRef,
+      name,
+      value,
+      onChange,
+      className,
+      children,
+      prefixCls: customisedCls,
+      ...otherProps
+    } = props;
+    const configContext = useContext(ConfigContext);
+    const radioGroupContext = useContext(RadioGroupContext);
+    const initialChecked = 'checked' in props ? (props.checked as boolean) : defaultChecked;
+    const [checked, setChecked] = useState<boolean>(
+      'value' in radioGroupContext ? radioGroupContext.value === value : initialChecked
+    );
+    const prefixCls = getPrefixCls('radio', configContext.prefixCls, customisedCls);
+    const disabled = 'disabled' in props ? props.disabled : radioGroupContext.disabled;
+    const cls = classNames(prefixCls, className, {
+      [`${prefixCls}_checked`]: checked,
+      [`${prefixCls}_disabled`]: disabled,
+    });
 
-  const _onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-    if (!disabled) {
-      !('checked' in props) && setChecked(e.currentTarget.checked);
-      onChange && onChange(e.currentTarget.checked, e);
-    }
-  };
+    const radioOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+      if (!disabled) {
+        !('checked' in props) && setChecked(e.currentTarget.checked);
+        onChange && onChange(e);
+        radioGroupContext.onChange && radioGroupContext.onChange(e);
+      }
+    };
 
-  useEffect(() => {
-    'checked' in props && setChecked(props.checked);
-  }, [props.checked]);
+    useEffect(() => {
+      'value' in radioGroupContext && setChecked(value === radioGroupContext.value);
+      'checked' in props && setChecked(props.checked as boolean);
+    }, [props, radioGroupContext, value]);
 
-  return (
-    <label className={cls} style={style}>
-      <input
-        role="radio"
-        aria-checked={checked}
-        name={name}
-        disabled={disabled}
-        value={value}
-        className={`${prefixCls}__native`}
-        type="radio"
-        checked={checked}
-        onChange={_onChange}
-      />
-      <span className={`${prefixCls}__inner`} />
-      <span>{children}</span>
-    </label>
-  );
-};
+    return (
+      <label {...otherProps} ref={ref} className={cls}>
+        <input
+          ref={radioRef}
+          role="radio"
+          aria-checked={checked}
+          name={radioGroupContext.name || name}
+          disabled={disabled}
+          value={value}
+          className={`${prefixCls}__native`}
+          type="radio"
+          checked={checked}
+          onChange={radioOnChange}
+        />
+        <span className={`${prefixCls}__inner`} />
+        <span>{children}</span>
+      </label>
+    );
+  }
+);
 
 Radio.displayName = 'Radio';
 

@@ -14,7 +14,7 @@ A group of radio components.
     return(
       <>
         <p>Controlled</p>
-        <Group value={value} onChange={(val) => setValue(val)}>
+        <Group name="abc" value={value} onChange={(val) => setValue(val)}>
           <Radio value="a">A</Radio>
           <Radio value="b">B</Radio>
           <Radio value="c">C</Radio>

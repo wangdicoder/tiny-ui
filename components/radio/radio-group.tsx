@@ -1,52 +1,67 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { RadioProps } from './index';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { RadioGroupContext } from './radio-group-context';
 
-export interface RadioGroupProps extends BaseProps {
+export interface RadioGroupProps
+  extends BaseProps,
+    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
   name?: string;
-  defaultValue?: string;
-  value?: string;
-  onChange?: (value: string, event: React.FormEvent<HTMLInputElement>) => void;
+  defaultValue?: number | string;
+  value?: number | string;
+  onChange?: (value: number | string) => void;
   disabled?: boolean;
-  children: React.ReactElement<RadioProps>;
+  children: React.ReactNode;
 }
 
-const RadioGroup = (props: RadioGroupProps): JSX.Element => {
-  const { name, onChange, disabled, className, style, children, prefixCls: customisedCls } = props;
-  const configContext = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('radio-group', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className);
-  const [value, setValue] = useState('value' in props ? props.value : props.defaultValue);
+const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
+  (props: RadioGroupProps, ref): JSX.Element => {
+    const {
+      defaultValue = '',
+      disabled = false,
+      name,
+      onChange,
+      className,
+      children,
+      prefixCls: customisedCls,
+      ...otherProps
+    } = props;
+    const configContext = useContext(ConfigContext);
+    const prefixCls = getPrefixCls('radio-group', configContext.prefixCls, customisedCls);
+    const cls = classNames(prefixCls, className);
+    const [value, setValue] = useState<number | string>(
+      'value' in props ? (props.value as number | string) : defaultValue
+    );
 
-  const _onChange = (checked: boolean, e: React.FormEvent<HTMLInputElement>): void => {
-    if (!disabled) {
-      !('value' in props) && setValue(e.currentTarget.value);
-      onChange && onChange(e.currentTarget.value, e);
-    }
-  };
+    const radioOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+      if (!disabled) {
+        const val = e.currentTarget.value;
+        !('value' in props) && setValue(val);
+        onChange && onChange(val);
+      }
+    };
 
-  useEffect(() => {
-    'value' in props && setValue(props.value!);
-  }, [props]);
+    useEffect(() => {
+      'value' in props && setValue(props.value as number | string);
+    }, [props]);
 
-  return (
-    <div role="radiogroup" className={cls} style={style}>
-      {React.Children.map(children, (child) => {
-        const childProps = {
-          ...child.props,
+    return (
+      <RadioGroupContext.Provider
+        value={{
           name,
-          disabled: child.props.disabled || disabled,
-          checked: value === child.props.value,
-          onChange: _onChange,
-        };
-        return React.cloneElement(child, childProps);
-      })}
-    </div>
-  );
-};
+          disabled,
+          value,
+          onChange: radioOnChange,
+        }}>
+        <div {...otherProps} ref={ref} role="radiogroup" className={cls}>
+          {children}
+        </div>
+      </RadioGroupContext.Provider>
+    );
+  }
+);
 
 RadioGroup.displayName = 'RadioGroup';
 

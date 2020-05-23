@@ -14,7 +14,9 @@ Disabled state of Radio.
     
     return(
       <>
-        <Group value={value} onChange={(val) => setValue(val)} disabled={disabled}>
+        <Group value={value} onChange={(val) => {
+          setValue(val)
+        }} disabled={disabled}>
           <Radio value="a">A</Radio>
           <Radio value="b">B</Radio>
           <Radio value="c" disabled>C</Radio>
