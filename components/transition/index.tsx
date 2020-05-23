@@ -20,7 +20,7 @@ export type AnimationName =
   | 'zoom-right'
   | 'zoom-right-end';
 
-export interface TransitionProps extends Partial<CSSTransitionProps> {
+export type TransitionProps = {
   /** Animation prefix */
   prefix?: string;
 
@@ -30,7 +30,7 @@ export interface TransitionProps extends Partial<CSSTransitionProps> {
   /** Prevent the transition conflict with the inner component */
   wrapper?: boolean;
   children?: React.ReactNode;
-}
+} & Partial<CSSTransitionProps>;
 
 const Transition = (props: TransitionProps): React.ReactElement => {
   const {
