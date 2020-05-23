@@ -21,7 +21,7 @@
   </a>
   <br>
   <a href="" target="_blank">
-    <img src="https://img.shields.io/static/v1?label=react&message=%3E=16.8&color=61dafb&style=flat-square">
+    <img src="https://img.shields.io/static/v1?label=react&message=%3E=16.9&color=61dafb&style=flat-square">
   </a>
   <a href="https://github.com/wangdicoder/tiny-ui/issues" target="_blank">
     <img src="https://img.shields.io/github/issues/wangdicoder/tiny-ui-react.svg?style=flat-square">
