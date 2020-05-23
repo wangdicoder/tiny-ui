@@ -32,14 +32,14 @@ export interface SplitProps
   defaultSize?: number | string;
 
   /** Resizer's other props */
-  resizerProps?: object;
+  resizerProps?: Record<string, unknown>;
 
   /** Drag step */
   step?: number;
 
   resizerSize?: number;
 
-  onChange?: (size: number | string) => void;
+  onChange?: (size: number) => void;
   onDragStarted?: () => void;
   onDragFinished?: () => void;
 }
@@ -51,6 +51,7 @@ const Split = (props: SplitProps): JSX.Element => {
     min = 50,
     max = 50,
     resizerSize = 6,
+    defaultSize,
     step,
     onChange,
     onDragStarted,
@@ -131,19 +132,19 @@ const Split = (props: SplitProps): JSX.Element => {
               lastPosition.current = newPosition;
             }
 
+            !('size' in props) && setPane1Size(newSize);
             onChange && onChange(newSize);
-            setPane1Size(newSize);
           }
         }
       }
     },
-    [disabled, maxSize, minSize, mode, onChange, step]
+    [props, disabled, maxSize, minSize, mode, onChange, step]
   );
 
-  const onMouseUp = (e: MouseEvent): void => {
+  const onMouseUp = useCallback((): void => {
     isActiveMove.current = false;
     onDragFinished && onDragFinished();
-  };
+  }, [onDragFinished]);
 
   let style: React.CSSProperties;
   if (mode === 'vertical') {
@@ -166,12 +167,19 @@ const Split = (props: SplitProps): JSX.Element => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
     };
-  }, [onMouseMove]);
+  }, [onMouseMove, onMouseUp]);
 
   useEffect(() => {
-    const initialSize = getSizeNumber(props.size || props.defaultSize || minSize);
+    const initialSize = getSizeNumber(props.size || defaultSize || minSize);
     setPane1Size(initialSize);
-  }, [getSizeNumber, props.size, props.defaultSize, minSize]);
+  }, [getSizeNumber, props.size, defaultSize, minSize]);
+
+  useEffect(() => {
+    if ('size' in props) {
+      const size = getSizeNumber(props.size as number | string);
+      setPane1Size(size);
+    }
+  }, [props, getSizeNumber]);
 
   warning(React.Children.count(children) > 2, 'There are more than 2 children inside Split.');
   const childrenList = React.Children.toArray(children).filter((child) => child);
