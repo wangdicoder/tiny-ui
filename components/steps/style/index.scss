@@ -1,0 +1,67 @@
+@import '../../style/variables';
+
+.#{$prefix}-steps {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: $font-color;
+  display: flex;
+  width: 100%;
+}
+
+.#{$prefix}-steps-item {
+  box-sizing: border-box;
+  flex: 1;
+  overflow: hidden;
+  vertical-align: top;
+
+  &__head {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $primary-color;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__tail {
+    margin: 0 12px;
+    flex: 1;
+    height: 1px;
+    width: 100%;
+    background-color: $primary-color;
+  }
+
+  &__content {
+    margin-top: 8px;
+  }
+
+  &__title {
+    line-height: 32px;
+    font-size: $steps-title-font-size;
+    color: $steps-title-normal-color;
+  }
+
+  &__desc {
+    color: $steps-desc-normal-color;
+  }
+
+  &_active {
+    .#{$prefix}-steps-item {
+      &__title {
+        color: $steps-title-active-color;
+      }
+
+      &__desc {
+        color: $steps-desc-active-color;
+      }
+    }
+  }
+}
