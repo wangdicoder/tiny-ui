@@ -37,7 +37,12 @@ const Radio = React.forwardRef<HTMLLabelElement, RadioProps>(
       'value' in radioGroupContext ? radioGroupContext.value === value : initialChecked
     );
     const prefixCls = getPrefixCls('radio', configContext.prefixCls, customisedCls);
-    const disabled = 'disabled' in props ? props.disabled : radioGroupContext.disabled;
+    const disabled =
+      'disabled' in props
+        ? props.disabled
+        : 'disabled' in radioGroupContext
+        ? radioGroupContext.disabled
+        : false;
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_checked`]: checked,
       [`${prefixCls}_disabled`]: disabled,

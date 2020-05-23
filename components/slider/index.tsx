@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, ReactNode } from 'react';
+import React, { useContext, useRef, useState, ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
@@ -65,7 +65,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       [`${prefixCls}-with-marks`]: marks,
       [`${prefixCls}_disabled`]: disabled,
     });
-    const [sliderValues, setSliderValues] = useState(
+    const [sliderValues, setSliderValues] = useState<number[]>(
       ('value' in props
         ? Array.isArray(props.value)
           ? props.value
@@ -83,6 +83,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const trackStartPos = useRef(0);
     const currVal = useRef(0);
     const isVertical = direction === 'vertical';
+    const railNode = railRef.current;
+    const trackNode = trackRef.current;
 
     const getValueToPercent = (value: number): number => {
       return ((value - min) * 100) / (max - min);
@@ -138,7 +140,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     };
 
     const handleOnChange = (value: number[]): void => {
-      setSliderValues([...value]);
+      !('value' in props) && setSliderValues([...value]);
       onChange &&
         onChange(sliderValues.length === 1 ? sliderValues[0] : [sliderValues[0], sliderValues[1]]);
     };
@@ -146,8 +148,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const getWidthToValue = (width: number): number => {
       const numOfSteps = (max - min) / step;
       let percent = 0;
-      if (railRef.current) {
-        percent = (width / railRef.current![isVertical ? 'clientHeight' : 'clientWidth']) * 100;
+      if (railNode) {
+        percent = (width / railNode[isVertical ? 'clientHeight' : 'clientWidth']) * 100;
       }
 
       if (percent <= 0) {
@@ -167,8 +169,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       if (isDragging.current || disabled) {
         return;
       }
-      if (railRef.current) {
-        const markOffset = railRef.current!.getBoundingClientRect();
+      if (railNode) {
+        const markOffset = railNode.getBoundingClientRect();
         const value = getWidthToValue(
           e[isVertical ? 'clientY' : 'clientX'] - markOffset[isVertical ? 'y' : 'x']
         );
@@ -214,14 +216,12 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       thumbIdx.current = idx;
       isDragging.current = true;
       mouseStartPos.current = e[isVertical ? 'clientY' : 'clientX'];
-      if (trackRef.current && railRef.current) {
-        trackStartPos.current = isVertical
-          ? trackRef.current!.offsetTop
-          : trackRef.current!.clientWidth;
+      if (trackNode) {
+        trackStartPos.current = isVertical ? trackNode.offsetTop : trackNode.clientWidth;
 
         // handle when it is a dual slider
         if (sliderValues.length > 1) {
-          const trackOffset = trackRef.current![isVertical ? 'offsetTop' : 'offsetLeft'];
+          const trackOffset = trackNode[isVertical ? 'offsetTop' : 'offsetLeft'];
           trackStartPos.current =
             (idx === 1 && sliderValues[1] > sliderValues[0]) ||
             (idx !== 1 && sliderValues[0] > sliderValues[1])
@@ -229,7 +229,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
                 ? trackOffset
                 : trackStartPos.current + trackOffset
               : isVertical
-              ? trackRef.current!.clientHeight + trackOffset
+              ? trackNode.clientHeight + trackOffset
               : trackOffset;
         }
       }
@@ -287,6 +287,10 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
         return mark;
       }
     };
+
+    useEffect(() => {
+      'value' in props && setSliderValues(sliderValues);
+    }, [props, sliderValues]);
 
     const trackStyle = calculateTrackStyle();
     return (

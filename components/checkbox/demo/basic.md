@@ -6,8 +6,8 @@ The simplest use.
 
 ```jsx live
 () => {
-  const onChange = (val, e) => {
-    console.log(val);
+  const onChange = (e) => {
+    console.log(e.currentTarget.value);
   };
   
   return (
