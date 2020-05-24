@@ -13,21 +13,13 @@ export interface TimelineItemProps
 }
 
 const TimelineItem = (props: TimelineItemProps): React.ReactElement => {
-  const {
-    dot,
-    dotStyle,
-    className,
-    style,
-    children,
-    prefixCls: customisedCls,
-    ...otherProps
-  } = props;
+  const { dot, dotStyle, className, children, prefixCls: customisedCls, ...otherProps } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('timeline-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (
-    <li {...otherProps} className={cls} style={style}>
+    <li {...otherProps} className={cls}>
       <div className={`${prefixCls}__head`}>
         <div className={`${prefixCls}__dot-container`}>
           {dot || <span className={`${prefixCls}__dot`} style={dotStyle} />}

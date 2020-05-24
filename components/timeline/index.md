@@ -36,7 +36,7 @@ const { Item } = Timeline;
 
 ## API
 
-### **Timeline**
+### Timeline
 
 | Property  | Description                      | Type                           | Default      |
 | --------- | -------------------------------- | ------------------------------ | ------------ |
@@ -44,7 +44,7 @@ const { Item } = Timeline;
 | style	    | style object of container	object |                                | -            |
 | className	| className of container           | string                         | -            |
 
-### **Timeline.Item**
+### Timeline.Item
 
 | Property  | Description                      | Type                           | Default      |
 | --------- | -------------------------------- | ------------------------------ | ------------ |

@@ -11,18 +11,11 @@ export interface TimelineProps
   extends BaseProps,
     React.PropsWithoutRef<JSX.IntrinsicElements['ul']> {
   position?: TimelinePosition;
-  children: React.ReactElement<TimelineItemProps>;
+  children: React.ReactNode;
 }
 
 const Timeline = (props: TimelineProps): React.ReactElement => {
-  const {
-    position = 'left',
-    prefixCls: customisedCls,
-    className,
-    style,
-    children,
-    ...otherProps
-  } = props;
+  const { position = 'left', prefixCls: customisedCls, className, children, ...otherProps } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('timeline', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
@@ -30,18 +23,23 @@ const Timeline = (props: TimelineProps): React.ReactElement => {
   });
 
   return (
-    <ul {...otherProps} className={cls} style={style}>
+    <ul {...otherProps} className={cls}>
       {React.Children.map(children, (child, idx) => {
-        const childProps: TimelineItemProps = {
-          ...child.props,
-          className:
-            position === 'center'
-              ? idx % 2 === 0
-                ? `${child.props.prefixCls}_left`
-                : `${child.props.prefixCls}_right`
-              : child.props.className,
-        };
-        return React.cloneElement(child, childProps);
+        const childElement = child as React.FunctionComponentElement<TimelineItemProps>;
+        if (childElement.type.displayName === 'TimelineItem') {
+          const childProps: TimelineItemProps = {
+            ...childElement.props,
+            className:
+              position === 'center'
+                ? idx % 2 === 0
+                  ? `${prefixCls}-item_left`
+                  : `${prefixCls}-item_right`
+                : childElement.props.className,
+          };
+          return React.cloneElement(childElement, childProps);
+        } else {
+          return null;
+        }
       })}
     </ul>
   );
