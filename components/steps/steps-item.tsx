@@ -22,39 +22,48 @@ const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
   (props: StepsItemProps, ref): React.ReactElement => {
     const {
       stepIndex = 0,
+      disabled = false,
       status,
       title,
       description,
       icon,
+      onClick,
       className,
       prefixCls: customisedCls,
       ...otherProps
     } = props;
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('steps-item', configContext.prefixCls, customisedCls);
-    const { current, labelPlacement } = useContext(StepsContext);
+    const stepsContext = useContext(StepsContext);
     const getStatus = () => {
+      const { current } = stepsContext;
       if (status === 'error') {
         return 'error';
       } else if (current > stepIndex) {
         return 'finish';
       } else if (current === stepIndex) {
-        return 'process';
+        return stepsContext.status;
       } else {
         return 'wait';
       }
     };
     const stepStatus = 'status' in props ? props.status : getStatus();
-    console.log(stepStatus);
     const cls = classNames(
       prefixCls,
       className,
       `${prefixCls}_${stepStatus}`,
-      `${prefixCls}_label-${labelPlacement}`,
+      `${prefixCls}_label-${stepsContext.labelPlacement}`,
       {
-        [`${prefixCls}_active`]: stepIndex === current,
+        [`${prefixCls}_disabled`]: disabled,
       }
     );
+
+    const stepItemOnClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!disabled && stepsContext.clickable) {
+        onClick && onClick(e);
+        stepsContext.onClick && stepsContext.onClick(stepIndex);
+      }
+    };
 
     const renderIcon = (): React.ReactNode => {
       if (icon) {
@@ -62,10 +71,9 @@ const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
       }
 
       let iconNode: ReactNode = stepIndex + 1;
-      if (current > stepIndex || status === 'finish') {
+      if (stepStatus === 'finish') {
         iconNode = <Check />;
-      }
-      if (status === 'error') {
+      } else if (stepStatus === 'error') {
         iconNode = <Close />;
       }
 
@@ -73,7 +81,12 @@ const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
     };
 
     return (
-      <div {...otherProps} ref={ref} className={cls}>
+      <div
+        {...otherProps}
+        role={stepsContext.clickable ? 'button' : undefined}
+        ref={ref}
+        className={cls}
+        onClick={stepItemOnClick}>
         <div className={`${prefixCls}__head`}>
           <div className={`${prefixCls}__icon`}>{renderIcon()}</div>
           <div className={`${prefixCls}__tail`} />

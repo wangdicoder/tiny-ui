@@ -238,7 +238,11 @@ $slider-margin-bottom-with-marks: 30px        !default;
 
 // Steps
 $steps-title-font-size: 16px                  !default;
-$steps-title-active-color: rgba(0,0,0,.85)    !default;
+$steps-title-active-color: $primary-color     !default;
 $steps-title-normal-color: rgba(0,0,0,.65)    !default;
-$steps-desc-active-color: rgba(0,0,0,.65)     !default;
+$steps-title-wait-color: rgba(0,0,0,.25)      !default;
+$steps-title-error-color: #ff4d4f             !default;
+$steps-desc-active-color: $primary-color      !default;
 $steps-desc-normal-color: rgba(0,0,0,.45)     !default;
+$steps-desc-wait-color: rgba(0,0,0,.25)       !default;
+$steps-desc-error-color: #ff4d4f              !default;

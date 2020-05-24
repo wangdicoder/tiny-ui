@@ -36,15 +36,23 @@ const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('steps', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className, `${prefixCls}_${direction}`);
-    const [current] = useState<number>(
+    const [current, setCurrent] = useState<number>(
       'current' in props ? (props.current as number) : defaultCurrent
     );
+
+    const itemOnClick = (curr: number) => {
+      setCurrent(curr);
+      onChange && onChange(curr);
+    };
 
     return (
       <StepsContext.Provider
         value={{
           current,
           labelPlacement,
+          status,
+          clickable: 'onChange' in props,
+          onClick: itemOnClick,
         }}>
         <div {...otherProps} ref={ref} className={cls}>
           {React.Children.map(children, (child, idx) => {
