@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -26,7 +26,7 @@ const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
       defaultCurrent = 0,
       status = 'process',
       direction = 'horizontal',
-      labelPlacement = 'horizontal',
+      labelPlacement = 'vertical',
       onChange,
       className,
       children,
@@ -41,9 +41,13 @@ const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
     );
 
     const itemOnClick = (curr: number) => {
-      setCurrent(curr);
+      !('current' in props) && setCurrent(curr);
       onChange && onChange(curr);
     };
+
+    useEffect(() => {
+      'current' in props && setCurrent(props.current as number);
+    }, [props]);
 
     return (
       <StepsContext.Provider

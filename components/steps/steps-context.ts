@@ -11,7 +11,7 @@ type Props = {
 
 export const StepsContext = React.createContext<Props>({
   current: 0,
-  labelPlacement: 'horizontal',
+  labelPlacement: 'vertical',
   status: 'process',
   clickable: false,
 });

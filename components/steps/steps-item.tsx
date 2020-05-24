@@ -88,7 +88,10 @@ const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
         className={cls}
         onClick={stepItemOnClick}>
         <div className={`${prefixCls}__head`}>
-          <div className={`${prefixCls}__icon`}>{renderIcon()}</div>
+          <div
+            className={classNames(`${prefixCls}__icon`, { [`${prefixCls}__icon_has-icon`]: icon })}>
+            {renderIcon()}
+          </div>
           <div className={`${prefixCls}__tail`} />
         </div>
         <div className={`${prefixCls}__content`}>
