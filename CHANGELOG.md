@@ -8,6 +8,20 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.87](https://github.com/wangdicoder/tiny-ui/compare/v0.0.86...v0.0.87) (2020-05-24)
+
+
+### Features
+
+* `<Steps />` component ([a3cf1da](https://github.com/wangdicoder/tiny-ui/commit/a3cf1daddf0e51b67d41b7f9514eaf23075adea9))
+
+
+### Bug Fixes
+
+* `<Switch />` onClick event ([b9bf106](https://github.com/wangdicoder/tiny-ui/commit/b9bf10623ed512ac5c42cb1a0e9e4646015fcadf))
+* `<Timeline/>` - centered timeline ([98ed541](https://github.com/wangdicoder/tiny-ui/commit/98ed5410945f5b543b54ac6d247455da7f1246a1))
+* `<Transition />` props - union types issue ([bd5a809](https://github.com/wangdicoder/tiny-ui/commit/bd5a8095cd9c09f21181bdb506309d6349f7580b))
+
 ### [0.0.86](https://github.com/wangdicoder/tiny-ui/compare/v0.0.85...v0.0.86) (2020-05-21)
 
 
