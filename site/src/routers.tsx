@@ -117,6 +117,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'pagination',
         component: lazy(() => import('../../components/pagination/index.md')),
       },
+      {
+        title: 'Steps',
+        route: 'steps',
+        component: lazy(() => import('../../components/steps/index.md')),
+      },
     ],
   },
   {
