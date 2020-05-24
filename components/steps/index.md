@@ -29,3 +29,30 @@ const { Step } = Steps;
 <Vertical />
 <Switch />
 <Clickable />
+
+## API
+
+### Steps
+
+The whole of the step bar.
+
+| Property          | Description                                                               | Type                                                              | Default       |
+| ----------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------- |
+| current           | set the current step.                                                     | number                                                            | -             |
+| defaultCurrent    | display a circle skeleton.                                                | number                                                            | 0             |
+| direction         | determine the direction of the step bar.                                  | enum: `horizontal` &#124; `vertical`                              | `horizontal`  |
+| status            | current step's status.                                                    | enum: `wait` &#124; `process`  &#124; `finish`  &#124; `error`    | `process`     |
+| labelPlacement    | place title and description with `horizontal` or `vertical` direction.    | enum: `horizontal` &#124; `vertical`                              | `vertical`    |
+| onChange          | trigger when Step is changed.                                             | (current: number) => void                                         | -             |
+
+### Steps.Step
+
+A single step in the step bar.
+
+| Property          | Description                                       | Type                          | Default   |
+| ----------------- | ------------------------------------------------- | ----------------------------- | --------- |
+| title             | title of the step.                                | ReactNode                     | -         |
+| description       | description of the step.                          | ReactNode                     | -         |
+| icon              | customise the step's icon.                        | ReactNode                     | -         |
+| status            | replace `Steps`'s status.                         | enum: `wait` &#124; `process`  &#124; `finish`  &#124; `error`    | -     |
+| disabled          | disable the click event.                          | boolean                       | -         |
