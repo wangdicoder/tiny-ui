@@ -1,6 +1,6 @@
 # Tiny UI
 
-Tiny UI is a set of UI components and widgets built on React.js **16.8+**, which mainly serves some middle and back end products.
+Tiny UI is a set of UI components and widgets built on React.js **16.9+**, which mainly serves some middle and back end products.
 
 ## Features
 
