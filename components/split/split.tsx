@@ -1,20 +1,18 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import Resizer from './resizer';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, DirectionType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import Pane from './split-pane';
 import warning from '../_utils/warning';
 import { SplitContext } from './split-context';
 
-export type SplitMode = 'horizontal' | 'vertical';
-
 export interface SplitProps
   extends BaseProps,
     Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'onChange'> {
   /** Split mode */
-  mode?: SplitMode;
+  mode?: DirectionType;
 
   /** Disabled flag */
   disabled?: boolean;

@@ -1,9 +1,10 @@
 import React from 'react';
-import { StepsDirection, StepsStatus } from './steps';
+import { StepsStatus } from './steps';
+import { DirectionType } from '../_utils/props';
 
 type Props = {
   current: number;
-  labelPlacement: StepsDirection;
+  labelPlacement: DirectionType;
   status: StepsStatus;
   clickable: boolean;
   onClick?: (current: number) => void;

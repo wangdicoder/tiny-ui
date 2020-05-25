@@ -1,0 +1,76 @@
+@import '../../style/variables';
+
+.#{$prefix}-tabs {
+  position: relative;
+  overflow: hidden;
+
+  &__header {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  &__header-line {
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &__body {
+    position: relative;
+  }
+
+  &_horizontal {
+    .#{$prefix}-tabs {
+      &__header-scroll {
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-bottom: -1px;
+      }
+
+      &__header-nav {
+        display: inline-block;
+      }
+
+      &__header-nav-item {
+        display: inline-block;
+        padding: 0 16px;
+        margin-right: 16px;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+      }
+
+      &__header-line {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        border-bottom: 2px solid $primary-color;
+      }
+
+      &__body {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+
+      &-panel-item {
+        width: 100%;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &_vertical {
+  }
+
+  &-panel-item {
+    line-height: normal;
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
+    font-size: 14px;
+    &_active {
+      opacity: 1;
+      height: auto;
+    }
+  }
+}

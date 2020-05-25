@@ -1,19 +1,17 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import warning from '../_utils/warning';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, DirectionType } from '../_utils/props';
 import { FlipItemProps } from './flip-item';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type FlipDirection = 'horizontal' | 'vertical';
 
 export interface FlipProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   /** A certain parent width and height to prevent the hover empty issue */
   width: string | number;
   height: string | number;
   /** Flip direction */
-  direction?: FlipDirection;
+  direction?: DirectionType;
   /** Flip from left to right or reverse */
   reverse?: boolean;
   children: React.ReactElement<FlipItemProps>;

@@ -1,7 +1,6 @@
 import React, { useContext, MouseEventHandler } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
-import { SplitMode } from './split';
+import { BaseProps, DirectionType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 
@@ -9,7 +8,7 @@ export interface ResizerProps
   extends BaseProps,
     React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   size: number;
-  mode: SplitMode;
+  mode: DirectionType;
   onMouseDown: MouseEventHandler<HTMLDivElement>;
 }
 

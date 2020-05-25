@@ -2,11 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, DirectionType } from '../_utils/props';
 import { StepsItemProps } from './steps-item';
 import { StepsContext } from './steps-context';
 
-export type StepsDirection = 'horizontal' | 'vertical';
 export type StepsStatus = 'wait' | 'process' | 'finish' | 'error';
 
 export interface StepsProps
@@ -14,9 +13,9 @@ export interface StepsProps
     Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
   current?: number;
   defaultCurrent?: number;
-  direction?: StepsDirection;
+  direction?: DirectionType;
   status?: StepsStatus;
-  labelPlacement?: StepsDirection;
+  labelPlacement?: DirectionType;
   onChange?: (current: number) => void;
 }
 

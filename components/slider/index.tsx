@@ -1,11 +1,10 @@
 import React, { useContext, useRef, useState, ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, DirectionType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import Tooltip, { Placement } from '../tooltip';
 
-export type StepDirection = 'horizontal' | 'vertical';
 export type SliderValue = number | [number, number];
 export type SliderMarks = {
   [key: string]:
@@ -25,7 +24,7 @@ export interface SliderProps
   max?: number;
   marks?: SliderMarks;
   dots?: boolean;
-  direction?: StepDirection;
+  direction?: DirectionType;
   step?: number;
   disabled?: boolean;
   track?: boolean;

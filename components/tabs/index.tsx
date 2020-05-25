@@ -1,13 +1,13 @@
 import Tabs, { TabsProps } from './tabs';
-import TabPane, { TabPaneProps } from './tab-pane';
+import TabPanel, { TabPanelProps } from './tab-panel';
 
-export { TabsProps, TabPaneProps };
+export { TabsProps, TabPanelProps };
 
 type ITabs = typeof Tabs & {
-  Pane: typeof TabPane;
+  Panel: typeof TabPanel;
 };
 
 const DefaultTabs = Tabs as ITabs;
 
-DefaultTabs.Pane = TabPane;
+DefaultTabs.Panel = TabPanel;
 export default DefaultTabs;

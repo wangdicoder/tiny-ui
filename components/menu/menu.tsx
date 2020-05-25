@@ -1,18 +1,16 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, DirectionType } from '../_utils/props';
 import { MenuContext } from './menu-context';
 import { MenuItemProps } from './menu-item';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 
-export type MenuMode = 'horizontal' | 'vertical';
-
 export interface MenuProps
   extends BaseProps,
     Omit<React.PropsWithoutRef<JSX.IntrinsicElements['ul']>, 'onSelect'> {
   defaultIndex?: string;
-  mode?: MenuMode;
+  mode?: DirectionType;
   onSelect?: (selectedIndex: string) => void;
   children?: React.ReactNode;
 }

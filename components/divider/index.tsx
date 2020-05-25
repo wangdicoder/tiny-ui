@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, DirectionType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 
-export type DivideType = 'horizontal' | 'vertical';
 export type DivideAlign = 'left' | 'right' | 'center';
 
 export interface DividerProps
   extends BaseProps,
     React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  type?: DivideType;
+  type?: DirectionType;
   dashed?: boolean;
   align?: DivideAlign;
   children?: React.ReactNode;

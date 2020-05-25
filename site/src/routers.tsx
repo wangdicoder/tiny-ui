@@ -99,6 +99,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/layout/index.md')),
       },
       {
+        title: 'Space',
+        route: 'space',
+        component: lazy(() => import('../../components/space/index.md')),
+      },
+      {
         title: 'Split',
         route: 'split',
         component: lazy(() => import('../../components/split/index.md')),
