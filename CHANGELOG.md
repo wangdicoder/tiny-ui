@@ -8,6 +8,14 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.88](https://github.com/wangdicoder/tiny-ui/compare/v0.0.87...v0.0.88) (2020-05-25)
+
+
+### Features
+
+* `<ConfigProvider/>` - add `space` setting ([6e101ae](https://github.com/wangdicoder/tiny-ui/commit/6e101aecf75441c1377d48a4fd61b23eac606e39))
+* `<Space/>` component ([47e3239](https://github.com/wangdicoder/tiny-ui/commit/47e3239d1f6679277f957f73aa30743a7c0a5186))
+
 ### [0.0.87](https://github.com/wangdicoder/tiny-ui/compare/v0.0.86...v0.0.87) (2020-05-24)
 
 
