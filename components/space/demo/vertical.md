@@ -1,11 +1,11 @@
 <demo>
 
-### Basic Usage
+### Vertical Space
 
-Distribute components in a horizontal space.
+Distribute components in a vertical space.
 
 ```jsx live
-<Space>
+<Space direction="vertical" align="start">
   Space
   <Button btnType="primary">Button</Button>
   <Button>Another Button</Button>
