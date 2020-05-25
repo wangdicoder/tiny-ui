@@ -23,7 +23,6 @@ const Space = React.forwardRef<HTMLDivElement, SpaceProps>(
   (props: SpaceProps, ref): JSX.Element => {
     const {
       direction = 'horizontal',
-      size = 'sm',
       align = 'center',
       className,
       children,
@@ -32,6 +31,7 @@ const Space = React.forwardRef<HTMLDivElement, SpaceProps>(
     } = props;
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('space', configContext.prefixCls, customisedCls);
+    const size = props.size || configContext.space || 'sm';
     const cls = classNames(
       prefixCls,
       className,
