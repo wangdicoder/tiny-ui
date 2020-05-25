@@ -50,6 +50,7 @@ export { default as Select } from './select';
 export { default as Skeleton } from './skeleton';
 export { default as Slider } from './slider';
 export { default as Split } from './split';
+export { default as Space } from './space';
 export { default as Steps } from './steps';
 // export { default as Sticky } from './sticky';
 export { default as Switch } from './switch';

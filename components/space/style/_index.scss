@@ -1,0 +1,25 @@
+@import '../../style/variables';
+
+.#{$prefix}-space {
+  display: inline-flex;
+
+  &_vertical {
+    flex-direction: column;
+  }
+
+  &_start {
+    align-items: flex-start;
+  }
+
+  &_end {
+    align-items: flex-end;
+  }
+
+  &_center {
+    align-items: center;
+  }
+
+  &_baseline {
+    align-items: baseline;
+  }
+}
