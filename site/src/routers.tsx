@@ -84,6 +84,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/aspect-ratio/index.md')),
       },
       {
+        title: 'Divider',
+        route: 'divider',
+        component: lazy(() => import('../../components/divider/index.md')),
+      },
+      {
         title: 'Grid',
         route: 'grid',
         component: lazy(() => import('../../components/grid/index.md')),
@@ -331,11 +336,6 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'CopyToClipboard',
         route: 'copy-to-clipboard',
         component: lazy(() => import('../../components/copy-to-clipboard/index.md')),
-      },
-      {
-        title: 'Divider',
-        route: 'divider',
-        component: lazy(() => import('../../components/divider/index.md')),
       },
       {
         title: 'Keyboard',

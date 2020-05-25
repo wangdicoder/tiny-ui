@@ -62,17 +62,17 @@ function generator(_props: generatorProps) {
 }
 
 const Header = generator({
-  prefixCls: 'header',
+  prefixCls: 'layout-header',
   tagName: 'header',
   displayName: 'Header',
 });
 const Footer = generator({
-  prefixCls: 'footer',
+  prefixCls: 'layout-footer',
   tagName: 'footer',
   displayName: 'Footer',
 });
 const Content = generator({
-  prefixCls: 'content',
+  prefixCls: 'layout-content',
   tagName: 'main',
   displayName: 'Content',
 });

@@ -1,5 +1,7 @@
-import Layout, { Header, Content, Footer } from './layout';
-import Sidebar from './sidebar';
+import Layout, { Header, Content, Footer, LayoutProps } from './layout';
+import Sidebar, { SidebarProps, SidebarTheme } from './sidebar';
+
+export { LayoutProps, SidebarProps, SidebarTheme };
 
 type ILayout = typeof Layout & {
   Header: typeof Header;
