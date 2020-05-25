@@ -1,8 +1,11 @@
 import React from 'react';
 
-const SidebarContext = React.createContext({
+type Props = {
+  addSidebar: () => void;
+  removeSidebar: () => void;
+};
+
+export const SidebarContext = React.createContext<Props>({
   addSidebar: () => {},
   removeSidebar: () => {},
 });
-
-export default SidebarContext;

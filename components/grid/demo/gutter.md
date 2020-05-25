@@ -2,7 +2,7 @@
 
 ### Gutter
 
-Use the `gutter` property of `Row` as grid spacing. It is recommended to set it to `(16 + 8n)` px. (`n` stands for natural number.)
+Use the `gutter` property of `Row` as grid spacing. It is recommended to set it to `8n` px. (`n` stands for natural number.)
 
 ```jsx live
 () => {
@@ -19,10 +19,30 @@ Use the `gutter` property of `Row` as grid spacing. It is recommended to set it 
   const darkerBox = {
     backgroundColor: '#6E41BFFA',
   };
+  
+  const [gutter, setGutter] = React.useState(8);
 
   return (
     <>
-      <Row gutter={16} gutterSide>
+      <p>Gutter Size: </p>
+      <Slider 
+        defaultValue={8} 
+        min={8} 
+        max={48} 
+        step={8} 
+        dots
+        marks={{
+          8: '8',
+          16: '16',
+          24: '24',
+          32: '32',
+          40: '40',
+          48: '48',
+        }}
+        onChange={(val) => setGutter(val)}
+        style={{ width: 300 }} 
+      />
+      <Row gutter={gutter} gutterSide>
         <Col span={6}><div style={{...box, ...darkerBox}}>col-6</div></Col>
         <Col span={6}><div style={{...box, ...lighterBox}}>col-6</div></Col>
         <Col span={6}><div style={{...box, ...darkerBox}}>col-6</div></Col>

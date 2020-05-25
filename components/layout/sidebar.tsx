@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
-import SidebarContext from './sidebar-context';
+import { SidebarContext } from './sidebar-context';
 import { BaseProps } from '../_utils/props';
 
 export type SidebarTheme = 'light' | 'dark';
@@ -19,7 +19,7 @@ export interface SidebarProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const Sidebar = (props: SidebarProps) => {
+const Sidebar = (props: SidebarProps): JSX.Element => {
   const {
     prefixCls = 'ty-layout-sidebar',
     defaultCollapsed = false,
@@ -33,14 +33,11 @@ const Sidebar = (props: SidebarProps) => {
     style,
     children,
   } = props;
-  let collapsed;
-  if ('collapsed' in props) {
-    collapsed = props.collapsed;
-  } else {
-    collapsed = defaultCollapsed;
-  }
-  const [sideCollapsed, setSideCollapsed] = useState(collapsed);
-  const sidebarHook = useContext(SidebarContext);
+
+  const [sideCollapsed, setSideCollapsed] = useState(
+    'collapsed' in props ? props.collapsed : defaultCollapsed
+  );
+  const sidebarContext = useContext(SidebarContext);
   const sidebarWidth = sideCollapsed ? collapsedWidth : width;
 
   const outerStyle = {
@@ -62,7 +59,7 @@ const Sidebar = (props: SidebarProps) => {
     onCollapse && onCollapse(collapsedVal);
   };
 
-  const _renderTrigger = () => {
+  const renderTrigger = () => {
     if (!collapsible) {
       return null;
     }
@@ -79,20 +76,18 @@ const Sidebar = (props: SidebarProps) => {
   };
 
   useEffect(() => {
-    if ('collapsed' in props) {
-      setSideCollapsed(props.collapsed);
-    }
+    'collapsed' in props && setSideCollapsed(props.collapsed);
+    sidebarContext.addSidebar();
 
-    sidebarHook.addSidebar();
     return () => {
-      sidebarHook.removeSidebar();
+      sidebarContext.removeSidebar();
     };
-  }, [props.collapsed]);
+  }, [props, sidebarContext]);
 
   return (
     <div className={cls} style={outerStyle}>
       <div className={`${prefixCls}__children`}>{children}</div>
-      {_renderTrigger()}
+      {renderTrigger()}
     </div>
   );
 };

@@ -1,86 +1,81 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import SidebarContext from './sidebar-context';
+import { SidebarContext } from './sidebar-context';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
+import { BaseProps } from '../_utils/props';
 
-export type BasicProps = {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-};
-
-export type BasicPropsWithTagName = {
-  tagName: 'header' | 'footer' | 'main' | 'section';
-} & BasicProps;
-
-const defaultProps = {
-  prefixCls: 'ty-layout',
-};
-
-/**
- * Template layout for generating header, footer and content
- * @param props
- * @constructor
- */
-const Basic = (props: BasicPropsWithTagName) => {
-  const { prefixCls, className, style, children, tagName, ...restProps } = props;
-  const classString = classNames(className, prefixCls);
-  return React.createElement(tagName, { className: classString, style, ...restProps }, children);
-};
+export interface LayoutProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['div']> {}
 
 /**
  * Layout component
- * @param props
- * @constructor
  */
-const Layout = (props: BasicProps) => {
-  const { prefixCls, className, style, children, ...restProps } = props;
-  const [hasSidebar, setHasSidebar] = useState(false);
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_has-sidebar`]: hasSidebar,
-  });
+const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
+  (props: LayoutProps, ref): JSX.Element => {
+    const { className, children, prefixCls: customisedCls, ...otherProps } = props;
+    const [hasSidebar, setHasSidebar] = useState(false);
+    const configContext = useContext(ConfigContext);
+    const prefixCls = getPrefixCls('layout', configContext.prefixCls, customisedCls);
+    const cls = classNames(prefixCls, className, {
+      [`${prefixCls}_has-sidebar`]: hasSidebar,
+    });
 
-  return (
-    <SidebarContext.Provider
-      value={{ addSidebar: () => setHasSidebar(true), removeSidebar: () => setHasSidebar(false) }}>
-      <section className={cls} style={style} {...restProps}>
-        {children}
-      </section>
-    </SidebarContext.Provider>
-  );
-};
+    return (
+      <SidebarContext.Provider
+        value={{
+          addSidebar: () => setHasSidebar(true),
+          removeSidebar: () => setHasSidebar(false),
+        }}>
+        <section {...otherProps} ref={ref} className={cls}>
+          {children}
+        </section>
+      </SidebarContext.Provider>
+    );
+  }
+);
+Layout.displayName = 'Layout';
 
-type GeneratorProps = {
+type generatorProps = {
   prefixCls: string;
-  tagName: 'header' | 'footer' | 'main' | 'section';
+  displayName: string;
+  tagName: 'header' | 'footer' | 'main';
 };
 
 /**
  * Generator
- * @param props
  */
-function generator({ prefixCls, tagName }: GeneratorProps) {
-  return (BasicComponent: any) => {
-    return class extends React.Component<BasicProps, any> {
-      static Header: any;
-      static Footer: any;
-      static Content: any;
-      static Sidebar: any;
+function generator(_props: generatorProps) {
+  const { tagName, displayName, prefixCls: defaultCls } = _props;
+  const SubComponent = React.forwardRef<HTMLDivElement, LayoutProps>(
+    (props: LayoutProps, ref): JSX.Element => {
+      const { className, children, prefixCls: customisedCls, ...otherProps } = props;
+      const configContext = useContext(ConfigContext);
+      const prefixCls = getPrefixCls(defaultCls, configContext.prefixCls, customisedCls);
+      const cls = classNames(prefixCls, className);
 
-      render() {
-        return <BasicComponent prefixCls={prefixCls} tagName={tagName} {...this.props} />;
-      }
-    };
-  };
+      return React.createElement(tagName, { ref, className: cls, ...otherProps }, children);
+    }
+  );
+  SubComponent.displayName = displayName;
+
+  return SubComponent;
 }
 
-const Header = generator({ prefixCls: 'ty-layout-header', tagName: 'header' })(Basic);
-const Footer = generator({ prefixCls: 'ty-layout-footer', tagName: 'footer' })(Basic);
-const Content = generator({ prefixCls: 'ty-layout-content', tagName: 'main' })(Basic);
-
-Layout.defaultProps = defaultProps;
+const Header = generator({
+  prefixCls: 'header',
+  tagName: 'header',
+  displayName: 'Header',
+});
+const Footer = generator({
+  prefixCls: 'footer',
+  tagName: 'footer',
+  displayName: 'Footer',
+});
+const Content = generator({
+  prefixCls: 'content',
+  tagName: 'main',
+  displayName: 'Content',
+});
 
 export { Header, Footer, Content };
-
 export default Layout;
