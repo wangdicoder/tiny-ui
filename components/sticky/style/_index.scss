@@ -1,0 +1,5 @@
+@import '../../style/variables';
+
+.#{$prefix}-sticky {
+  transform: translateZ(0);
+}
