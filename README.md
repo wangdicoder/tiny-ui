@@ -56,7 +56,7 @@ yarn add tiny-ui
 ## 🔨 Quick Start
 
 ```js
-import { Button, DatePicker } from 'tiny-ui';
+import { Button, Switch } from 'tiny-ui';
 
 const App = () => (
   <>
