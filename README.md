@@ -5,6 +5,7 @@
 </p>
 
 <h1 align="center">Tiny UI</h1>
+<p align="center">A Friendly UI Component Set for React</p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/tiny-ui" target="_blank">
@@ -37,4 +38,49 @@
   </a>
 </p>
 
-This project is under development.
+
+## 📦 Install
+
+Use npm
+
+```bash
+npm install tiny-ui --save
+```
+
+Use yarn
+
+```bash
+yarn add tiny-ui
+```
+
+## 🔨 Quick Start
+
+```js
+import { Button, DatePicker } from 'tiny-ui';
+
+const App = () => (
+  <>
+    <Button btnType="primary">Click Me</Button>
+    <Switch checked/>
+  </>
+);
+```
+
+And import style manually:
+
+```js
+import 'tiny-ui/dist/styles/index.css';
+```
+
+## 🖥  Browser Support
+
+Supports all major modern browsers.
+
+| <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" /></br>IE | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" /></br>Edge | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /></br>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /> </br>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /></br>Safari |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| >=11                                                                                                                                                 | >= 14                                                                                                                                                  | last 2 versions                                                                                                                                               | last 2 versions                                                                                                                                            | last 2 versions                                                                                                                                           |
+
+
+## 🔗 Links
+
+- [Home page](https://tiny-ui.dev)

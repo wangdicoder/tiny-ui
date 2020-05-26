@@ -14,7 +14,7 @@ export interface StickyProps
   onChange?: (stuck: boolean) => void;
 }
 
-const Sticky = (props: StickyProps): React.ReactElement => {
+const Sticky = (props: StickyProps): JSX.Element => {
   const {
     offsetTop,
     offsetBottom,
