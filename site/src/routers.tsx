@@ -347,6 +347,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'keyboard',
         component: lazy(() => import('../../components/keyboard/index.md')),
       },
+      {
+        title: 'Sticky',
+        route: 'sticky',
+        component: lazy(() => import('../../components/sticky/index.md')),
+      },
     ],
   },
 ];

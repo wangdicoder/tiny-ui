@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/travis/wangdicoder/tiny-ui/master?style=flat-square">
   </a>
   <a href="https://www.npmjs.com/package/tiny-ui" target="_blank">
-    <img src="https://img.shields.io/npm/dw/tiny-ui.svg?style=flat-square">
+    <img src="https://img.shields.io/npm/dm/tiny-ui.svg?style=flat-square">
   </a>
   <a href="" target="_blank">
     <img src="https://img.shields.io/bundlephobia/minzip/tiny-ui.svg?style=flat-square">
