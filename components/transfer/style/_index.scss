@@ -1,0 +1,16 @@
+@import '../../style/variables';
+
+.#{$prefix}-transfer{
+
+  &__left-arrow{
+    transform: rotate(90deg);
+  }
+
+  &__right-arrow{
+    transform: rotate(-90deg);
+  }
+}
+
+.#{$prefix}-transfer-panel{
+
+}

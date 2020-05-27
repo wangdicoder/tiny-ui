@@ -43,6 +43,12 @@ $btn-prefix: #{$prefix}-btn;
     }
   }
 
+  &__children{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   // Types
   &_default {
     @include button-style($body-color, $white-color, $gray-400, $white-color, $primary-color, $primary-color,
