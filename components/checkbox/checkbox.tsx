@@ -14,7 +14,7 @@ export interface CheckboxProps
   checked?: boolean;
   indeterminate?: boolean;
   disabled?: boolean;
-  onChange?: (checked: boolean, event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   checkboxRef?: React.RefObject<HTMLInputElement>;
 }
 
@@ -38,11 +38,11 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
       'value' in checkboxGroupContext ? checkboxGroupContext.value === value : initialChecked
     );
     const prefixCls = getPrefixCls('checkbox', configContext.prefixCls, customisedCls);
-    const disabled =
+    const disabled: boolean =
       'disabled' in props
-        ? props.disabled
+        ? (props.disabled as boolean)
         : 'disabled' in checkboxGroupContext
-        ? checkboxGroupContext.disabled
+        ? (checkboxGroupContext.disabled as boolean)
         : false;
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}_indeterminate`]: indeterminate && !checked,
@@ -52,8 +52,8 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
 
     const checkboxOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
       if (!disabled) {
-        !props.checked && setChecked(e.currentTarget.checked);
-        onChange && onChange(e.currentTarget.checked, e);
+        !('checked' in props) && setChecked(e.currentTarget.checked);
+        onChange && onChange(e);
         checkboxGroupContext.onChange && checkboxGroupContext.onChange(e);
       }
     };

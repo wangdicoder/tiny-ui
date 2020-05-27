@@ -7,7 +7,7 @@ The simplest use.
 ```jsx live
 () => {
   const onChange = (e) => {
-    console.log(e.currentTarget.value);
+    console.log(e.currentTarget.checked);
   };
   
   return (

@@ -10,7 +10,7 @@ export interface CheckboxGroupProps
     Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
   defaultValue?: string[];
   value?: string[];
-  onChange?: (value: string[]) => void;
+  onChange?: (checkedValues: string[]) => void;
   disabled?: boolean;
 }
 
