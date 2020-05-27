@@ -19,14 +19,19 @@ export const GUIDE_MENU: RouterItem[] = [
     component: lazy(() => import('../../docs/get-started.md')),
   },
   {
+    title: 'Use in create-react-app',
+    route: 'use-with-create-react-app',
+    component: lazy(() => import('../../docs/use-react-app.md')),
+  },
+  {
     title: 'Customise Theme',
     route: 'customise-theme',
     component: lazy(() => import('../../docs/customise-theme.md')),
   },
   {
-    title: 'Use in create-react-app',
-    route: 'use-with-create-react-app',
-    component: lazy(() => import('../../docs/use-react-app.md')),
+    title: 'Colors',
+    route: 'colors',
+    component: lazy(() => import('./containers/color')),
   },
   {
     title: 'Changelog',
@@ -50,14 +55,10 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/button/index.md')),
       },
       {
-        title: 'Color',
-        route: 'color',
-        component: lazy(() => import('./containers/color')),
+        title: 'Icon',
+        route: 'icon',
+        component: lazy(() => import('../../components/icon/index.md')),
       },
-      // {
-      //   title: 'Icon',
-      //   route: 'icon',
-      // },
       {
         title: 'Image',
         route: 'image',

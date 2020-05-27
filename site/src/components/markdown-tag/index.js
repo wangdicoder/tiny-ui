@@ -15,6 +15,7 @@ export const components = {
   h6: (props) => <h6 {...props} className="markdown__heading-6" />,
   table: (props) => <table {...props} className="markdown__table" />,
   p: (props) => <p {...props} className="markdown__p" />,
+  ul: (props) => <ul {...props} className="markdown__list" />,
   li: (props) => <li {...props} className="markdown__list-item" />,
   blockquote: (props) => <blockquote {...props} className="markdown__blockquote" />,
   inlineCode: (props) => <code {...props} className="markdown__inline-code" />,

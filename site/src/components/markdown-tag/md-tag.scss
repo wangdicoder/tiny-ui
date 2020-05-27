@@ -104,11 +104,14 @@
     line-height: 2;
   }
 
+  &__list {
+    list-style-type: circle;
+  }
+
   &__list-item {
     font-size: 14px;
     color: #45454d;
     margin: 1em 0;
-    list-style-type: circle;
   }
 
   &__blockquote {
