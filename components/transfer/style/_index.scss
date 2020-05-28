@@ -1,16 +1,77 @@
 @import '../../style/variables';
 
-.#{$prefix}-transfer{
+.#{$prefix}-transfer {
+  box-sizing: border-box;
+  font-size: $font-size-base;
+  color: $font-color;
 
-  &__left-arrow{
+  &__left-arrow {
+    transform: rotate(-90deg);
+  }
+
+  &__right-arrow {
     transform: rotate(90deg);
   }
 
-  &__right-arrow{
-    transform: rotate(-90deg);
+  &__buttons {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 8px;
+    vertical-align: middle;
+
+    .#{$prefix}-btn {
+      display: block;
+      margin: 3px 0;
+      padding: 3px;
+      min-width: 30px;
+    }
   }
 }
 
-.#{$prefix}-transfer-panel{
+.#{$prefix}-transfer-panel {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  width: 180px;
+  border: 1px solid #d9d9d9;
+  border-radius: $border-radius;
 
+  &__body{
+    position: relative;
+    height: 200px;
+  }
+
+  &__container{
+    display: block;
+    height: 100%;
+    position: relative;
+  }
+
+  &__list-content {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    list-style: none;
+  }
+
+  &__list-item {
+    padding: 6px 12px;
+    overflow: hidden;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__not-found {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  &__footer {
+    padding: 8px 12px 9px;
+    border-top: 1px solid #f0f0f0;
+  }
 }
