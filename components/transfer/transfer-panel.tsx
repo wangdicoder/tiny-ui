@@ -7,6 +7,7 @@ import { TransferItem } from './transfer';
 import Checkbox from '../checkbox/checkbox';
 import CheckboxGroup from '../checkbox/checkbox-group';
 import Empty from '../empty';
+import Input from '../input/input';
 
 export interface TransferPanelProps
   extends BaseProps,
@@ -17,6 +18,8 @@ export interface TransferPanelProps
   disabled: boolean;
   title?: ReactNode;
   footer?: ReactNode;
+  placeholder?: string;
+  showSearch?: boolean;
 }
 
 const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
@@ -25,7 +28,9 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
       dataSource,
       checkedKeys,
       title,
+      placeholder,
       footer,
+      showSearch,
       className,
       onChange,
       prefixCls: customisedCls,
@@ -36,6 +41,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
     const cls = classNames(prefixCls, className);
     const checkableData = dataSource.filter((item) => !item.disabled);
     const isAllChecked = checkableData.length > 0 && checkedKeys.length === checkableData.length;
+    const isIndeterminate = checkedKeys.length > 0 && checkedKeys.length < checkableData.length;
 
     /**
      * Footer checkbox onChange event
@@ -46,12 +52,10 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
       onChange(checkedKeys);
     };
 
-    const isIndeterminate = (): boolean => {
-      const { length } = checkedKeys;
-      return length > 0 && length < checkableData.length;
-    };
-
     const checkedSummary = (): string => {
+      if (isIndeterminate || isAllChecked) {
+        return `${checkedKeys.length} / ${dataSource.length} checked`;
+      }
       return `${dataSource.length} items`;
     };
 
@@ -59,22 +63,25 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
       <div {...otherProps} className={cls} ref={ref}>
         {title && <div className={`${prefixCls}__header`}>{title}</div>}
         <div className={`${prefixCls}__body`}>
+          {showSearch && (
+            <div className={`${prefixCls}__input-container`}>
+              <Input clearable size="sm" placeholder={placeholder} />
+            </div>
+          )}
           {dataSource.length > 0 ? (
             <CheckboxGroup
               value={checkedKeys}
               onChange={(values) => onChange(values)}
-              className={`${prefixCls}__container`}>
-              <ul className={`${prefixCls}__list-content`}>
-                {dataSource.map(({ key, label, disabled }) => {
-                  return (
-                    <li key={key} className={`${prefixCls}__list-item`}>
-                      <Checkbox value={key} disabled={disabled}>
-                        {label}
-                      </Checkbox>
-                    </li>
-                  );
-                })}
-              </ul>
+              className={`${prefixCls}__list`}>
+              {dataSource.map(({ key, label, disabled }) => (
+                <Checkbox
+                  key={key}
+                  value={key}
+                  disabled={disabled}
+                  className={`${prefixCls}__list-item`}>
+                  {label}
+                </Checkbox>
+              ))}
             </CheckboxGroup>
           ) : (
             <Empty className={`${prefixCls}__not-found`} />
@@ -84,7 +91,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
           <Checkbox
             checked={isAllChecked}
             onChange={handleAllCheckedChange}
-            indeterminate={isIndeterminate()}>
+            indeterminate={isIndeterminate}>
             {checkedSummary()}
           </Checkbox>
           {footer}

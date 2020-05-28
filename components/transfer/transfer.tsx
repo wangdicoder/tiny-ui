@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -20,7 +20,9 @@ export interface TransferProps
   value?: string[];
   defaultValue?: string[];
   disabled?: boolean;
+  showSearch?: boolean;
   titles?: [ReactNode, ReactNode];
+  placeholders?: [string, string];
   buttonTexts?: [ReactNode, ReactNode];
   onChange?: (targetKeys: string[], direction: string, moveKeys: string[]) => void;
   leftDefaultChecked?: string[];
@@ -33,10 +35,13 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
       dataSource = [],
       defaultValue = [],
       buttonTexts = [],
-      titles = [],
       leftDefaultChecked = [],
       rightDefaultChecked = [],
+      placeholder = 'search',
+      showSearch = false,
       disabled = false,
+      titles,
+      placeholders,
       className,
       onChange,
       prefixCls: customisedCls,
@@ -46,17 +51,18 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
     const prefixCls = getPrefixCls('transfer', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className);
 
-    const getDataKeys = (): [TransferItem[], TransferItem[]] => {
+    const getDataKeys = useCallback((): [TransferItem[], TransferItem[]] => {
       const rightKeys: string[] = 'value' in props ? (props.value as string[]) : defaultValue;
       const rightData: TransferItem[] = dataSource.filter((item) => rightKeys.includes(item.key));
       const leftData: TransferItem[] = dataSource.filter((item) => !rightKeys.includes(item.key));
       return [leftData, rightData];
-    };
+    }, [props, dataSource, defaultValue]);
+
     const [leftData, rightData] = getDataKeys();
-    const [sourceData, setSourceData] = useState(leftData);
-    const [targetData, setTargetData] = useState(rightData);
-    const [leftCheckedKeys, setLeftCheckedKeys] = useState(leftDefaultChecked);
-    const [rightCheckedKeys, setRightCheckedKeys] = useState(rightDefaultChecked);
+    const [sourceData, setSourceData] = useState<TransferItem[]>(leftData);
+    const [targetData, setTargetData] = useState<TransferItem[]>(rightData);
+    const [leftCheckedKeys, setLeftCheckedKeys] = useState<string[]>(leftDefaultChecked);
+    const [rightCheckedKeys, setRightCheckedKeys] = useState<string[]>(rightDefaultChecked);
 
     const addToLeft = () => {
       const leftKeys = sourceData.map((item) => item.key);
@@ -66,10 +72,15 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
           currKeys.push(key);
         }
       });
-      setRightCheckedKeys([]);
-      setSourceData([...dataSource.filter((item) => currKeys.includes(item.key))]);
-      setTargetData([...dataSource.filter((item) => !currKeys.includes(item.key))]);
-      onChange && onChange(currKeys, 'left', rightCheckedKeys);
+
+      const targetData = dataSource.filter((item) => !currKeys.includes(item.key));
+      if (!('value' in props)) {
+        setRightCheckedKeys([]);
+        setSourceData([...dataSource.filter((item) => currKeys.includes(item.key))]);
+        setTargetData([...targetData]);
+      }
+      const targetKey = targetData.map((item) => item.key);
+      onChange && onChange(targetKey, 'left', rightCheckedKeys);
     };
 
     const addToRight = () => {
@@ -80,18 +91,33 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
           currKeys.push(key);
         }
       });
-      setLeftCheckedKeys([]);
-      setSourceData([...dataSource.filter((item) => !currKeys.includes(item.key))]);
-      setTargetData([...dataSource.filter((item) => currKeys.includes(item.key))]);
+
+      if (!('value' in props)) {
+        setLeftCheckedKeys([]);
+        setSourceData([...dataSource.filter((item) => !currKeys.includes(item.key))]);
+        setTargetData([...dataSource.filter((item) => currKeys.includes(item.key))]);
+      }
       onChange && onChange(currKeys, 'right', leftCheckedKeys);
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+      if ('value' in props) {
+        const rightKeys = props.value as string[];
+        const rightData: TransferItem[] = dataSource.filter((item) => rightKeys.includes(item.key));
+        const leftData: TransferItem[] = dataSource.filter((item) => !rightKeys.includes(item.key));
+        setSourceData(leftData);
+        setTargetData(rightData);
+        setLeftCheckedKeys([]);
+        setRightCheckedKeys([]);
+      }
+    }, [props, dataSource]);
 
     return (
       <div {...otherProps} className={cls} ref={ref}>
         <TransferPanel
           title={titles && titles[0]}
+          placeholder={(placeholders && placeholders[0]) || placeholder}
+          showSearch={showSearch}
           dataSource={sourceData}
           checkedKeys={leftCheckedKeys}
           disabled={disabled}
@@ -117,6 +143,8 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
         </div>
         <TransferPanel
           title={titles && titles[1]}
+          placeholder={(placeholders && placeholders[1]) || placeholder}
+          showSearch={showSearch}
           dataSource={targetData}
           checkedKeys={rightCheckedKeys}
           disabled={disabled}

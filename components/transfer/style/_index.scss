@@ -46,29 +46,36 @@
 
   &__body {
     position: relative;
-    height: 200px;
-  }
-
-  &__container {
-    display: block;
-    height: 100%;
-    position: relative;
-  }
-
-  &__list-content {
-    height: 100%;
-    margin: 0;
-    overflow: auto;
-    list-style: none;
     padding: 6px 0;
   }
 
+  &__input-container{
+    padding: 6px 12px 12px;
+  }
+
+  &__list {
+    display: block;
+    position: relative;
+    height: 192px;
+    overflow-y: auto;
+    margin: 0;
+    list-style: none;
+  }
+
   &__list-item {
-    padding: 6px 12px;
+    box-sizing: border-box;
+    padding: 0 12px;
     overflow: hidden;
-    line-height: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    min-height: 32px;
+    display: flex;
+    margin-right: 0;
+    transition: background-color 250ms;
+
+    &:not(.#{$prefix}-checkbox_disabled):hover{
+      background-color: #f5f5f5;;
+    }
   }
 
   &__not-found {
