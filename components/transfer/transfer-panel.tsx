@@ -35,10 +35,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
     const prefixCls = getPrefixCls('transfer-panel', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className);
     const checkableData = dataSource.filter((item) => !item.disabled);
-
-    const allChecked = (): boolean => {
-      return checkedKeys.length === checkableData.length;
-    };
+    const isAllChecked = checkableData.length > 0 && checkedKeys.length === checkableData.length;
 
     /**
      * Footer checkbox onChange event
@@ -60,7 +57,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
 
     return (
       <div {...otherProps} className={cls} ref={ref}>
-        <div className={`${prefixCls}__header`}>{title}</div>
+        {title && <div className={`${prefixCls}__header`}>{title}</div>}
         <div className={`${prefixCls}__body`}>
           {dataSource.length > 0 ? (
             <CheckboxGroup
@@ -85,7 +82,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
         </div>
         <div className={`${prefixCls}__footer`}>
           <Checkbox
-            checked={allChecked()}
+            checked={isAllChecked}
             onChange={handleAllCheckedChange}
             indeterminate={isIndeterminate()}>
             {checkedSummary()}

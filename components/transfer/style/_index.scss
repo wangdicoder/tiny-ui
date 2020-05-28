@@ -36,12 +36,20 @@
   border: 1px solid #d9d9d9;
   border-radius: $border-radius;
 
-  &__body{
+  &__header {
+    padding: 8px 12px 9px;
+    color: $font-color;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &__body {
     position: relative;
     height: 200px;
   }
 
-  &__container{
+  &__container {
     display: block;
     height: 100%;
     position: relative;
@@ -50,9 +58,9 @@
   &__list-content {
     height: 100%;
     margin: 0;
-    padding: 0;
     overflow: auto;
     list-style: none;
+    padding: 6px 0;
   }
 
   &__list-item {
@@ -73,5 +81,7 @@
   &__footer {
     padding: 8px 12px 9px;
     border-top: 1px solid #f0f0f0;
+    background-color: #fff;
+    border-radius: 0 0 $border-radius $border-radius;
   }
 }
