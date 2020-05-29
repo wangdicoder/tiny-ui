@@ -1,22 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { ColProps } from './col';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type RowAlign = 'top' | 'center' | 'bottom';
-export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
-
-export interface RowProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  gutter?: number | [number, number];
-  // | { xs: number; sm: number; md: number; lg: number; xl: number; xxl: number };
-  /** gutter padding includes first and end child  */
-  gutterSide?: boolean;
-  align?: RowAlign;
-  justify?: RowJustify;
-  children: React.ReactElement<ColProps>[];
-}
+import { ColProps, RowProps } from './types';
 
 const Row = (props: RowProps): React.ReactElement => {
   const {

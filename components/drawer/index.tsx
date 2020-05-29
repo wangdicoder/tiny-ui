@@ -1,30 +1,10 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
-import { BaseProps } from '../_utils/props';
-import Overlay, { OverlayMaskType } from '../overlay';
+import Overlay from '../overlay';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type DrawerPlacement = 'top' | 'bottom' | 'left' | 'right';
-
-export interface DrawerProps extends BaseProps {
-  onClose?: (e: React.MouseEvent) => void;
-  placement?: DrawerPlacement;
-  header?: React.ReactNode;
-  footer?: React.ReactNode;
-  zIndex?: number;
-  size?: number | string;
-  closable?: boolean;
-  maskType?: OverlayMaskType;
-  maskClosable?: boolean;
-  unmountOnClose?: boolean;
-  afterClose?: () => void;
-  visible?: boolean;
-  keyboard?: boolean;
-  maskStyle?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+import { DrawerProps } from './types';
 
 const Drawer = (props: DrawerProps): React.ReactElement => {
   const {

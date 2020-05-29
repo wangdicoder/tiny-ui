@@ -1,41 +1,11 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
-import Overlay, { OverlayMaskType } from '../overlay';
-import Button, { ButtonProps } from '../button';
-import { BaseProps } from '../_utils/props';
+import Overlay from '../overlay';
+import Button from '../button/button';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type ModalAnimation = 'slide' | 'scale';
-
-export interface ModalProps extends BaseProps {
-  visible?: boolean;
-  header?: string | React.ReactNode;
-  footer?: null | React.ReactNode;
-  width?: number | string;
-  centered?: boolean;
-  closable?: boolean;
-  unmountOnClose?: boolean;
-  afterClose?: () => void;
-  maskType?: OverlayMaskType;
-  maskClosable?: boolean;
-  confirmLoading?: boolean;
-  onConfirm?: (e: React.MouseEvent) => void;
-  onCancel?: (e: React.MouseEvent) => void;
-  confirmText?: string;
-  cancelText?: string;
-  confirmButtonProps?: ButtonProps;
-  cancelButtonProps?: ButtonProps;
-  animation?: ModalAnimation;
-  top?: number;
-  zIndex?: number;
-  headerStyle?: React.CSSProperties;
-  bodyStyle?: React.CSSProperties;
-  footerStyle?: React.CSSProperties;
-  maskStyle?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+import { ModalProps } from './types';
 
 const Modal = (props: ModalProps): React.ReactElement => {
   const {
@@ -51,8 +21,8 @@ const Modal = (props: ModalProps): React.ReactElement => {
     confirmLoading = false,
     animation = 'slide',
     zIndex = 1000,
-    onConfirm = (): void => {},
-    onCancel = (): void => {},
+    onConfirm,
+    onCancel,
     top,
     header,
     footer,
@@ -109,7 +79,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
       isShow={visible}
       onExited={afterClose}
       clickCallback={(e: React.MouseEvent): void => {
-        maskClosable ? onCancel(e) : undefined;
+        maskClosable && onCancel ? onCancel(e) : undefined;
       }}
       style={maskStyle}>
       <div className={cls} style={{ top }}>

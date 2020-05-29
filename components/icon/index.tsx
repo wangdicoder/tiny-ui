@@ -2,18 +2,9 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { IconProps } from './types';
 
-export interface IconTypes extends React.PropsWithoutRef<JSX.IntrinsicElements['i']> {
-  name: string;
-  color?: string;
-  size?: string | number;
-  style?: React.CSSProperties;
-  spin?: boolean;
-  className?: string;
-  prefixCls?: string;
-}
-
-const Icon = (props: IconTypes): JSX.Element => {
+const Icon = (props: IconProps): JSX.Element => {
   const {
     name,
     color,

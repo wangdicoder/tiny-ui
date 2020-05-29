@@ -2,16 +2,9 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import raf from 'raf';
 import { Target } from '../_utils/dom';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface BackTopProps extends BaseProps {
-  target?: () => Target;
-  onClick?: (e: React.MouseEvent) => void;
-  visibilityHeight?: number;
-  children?: React.ReactNode;
-}
+import { BackTopProps } from './types';
 
 const easeInOutCubic = (t: number, b: number, c: number, d: number): number => {
   const cc = c - b;

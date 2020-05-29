@@ -1,33 +1,21 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { ImageProps } from './types';
 
-export interface ImageProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['img']> {
-  src?: string;
-  placeholder?: string;
-  alt?: string;
-  width?: number | string;
-  height?: number | string;
-  round?: boolean;
-  lazy?: boolean;
-  fallback?: string;
-  objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
-}
-
-const Image = (props: ImageProps): React.ReactElement => {
+const Image = (props: ImageProps): JSX.Element => {
   const {
     alt = 'image',
     objectFit = 'cover',
     round = false,
     lazy = false,
-    prefixCls: customisedCls,
     src,
     placeholder,
     fallback,
     className,
     style,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
   const configContext = useContext(ConfigContext);
@@ -47,7 +35,8 @@ const Image = (props: ImageProps): React.ReactElement => {
         });
       });
 
-      ref.current && observer.observe(ref.current);
+      const imgNode = ref.current;
+      imgNode && observer.observe(imgNode);
     }
   }, [fallback, lazy, src]);
 

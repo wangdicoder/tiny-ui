@@ -1,27 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type ColSize = {
-  span?: number;
-  offset?: number;
-  order?: number;
-};
-
-export interface ColProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  span?: number;
-  offset?: number;
-  order?: number;
-  xs?: number | ColSize;
-  sm?: number | ColSize;
-  md?: number | ColSize;
-  lg?: number | ColSize;
-  xl?: number | ColSize;
-  xxl?: number | ColSize;
-  children?: React.ReactNode;
-}
+import { ColProps, ColSize } from './types';
 
 const ScreenTypes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 

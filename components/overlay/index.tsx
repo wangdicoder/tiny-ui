@@ -2,27 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import Portal from '../portal';
 import { CSSTransition } from 'react-transition-group';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { OverlayProps } from './types';
 
-export type OverlayMaskType = 'default' | 'inverted' | 'none';
-
-export interface OverlayProps extends BaseProps {
-  isShow?: boolean;
-  blurred?: boolean;
-  unmountOnExit?: boolean;
-  clickCallback?: (e: React.MouseEvent) => void;
-  zIndex?: number;
-  onEnter?: () => void;
-  onExit?: () => void;
-  onEntered?: () => void;
-  onExited?: () => void;
-  type?: OverlayMaskType;
-  children?: React.ReactNode;
-}
-
-const Overlay = (props: OverlayProps) => {
+const Overlay = (props: OverlayProps): JSX.Element => {
   const {
     isShow = false,
     blurred = false,
@@ -63,11 +47,7 @@ const Overlay = (props: OverlayProps) => {
         unmountOnExit={unmountOnExit}
         classNames={`${prefixCls}_fade`}
         timeout={{ exit: 300, enter: 0 }}>
-        <div
-          tabIndex={-1}
-          className={cls}
-          onClick={clickCallback ? clickCallback : undefined}
-          style={{ zIndex, ...style }}>
+        <div tabIndex={-1} className={cls} onClick={clickCallback} style={{ zIndex, ...style }}>
           {children}
         </div>
       </CSSTransition>
