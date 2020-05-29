@@ -33,6 +33,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
       showSearch,
       className,
       onChange,
+      disabled: allDisabled,
       prefixCls: customisedCls,
       ...otherProps
     } = props;
@@ -77,7 +78,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
                 <Checkbox
                   key={key}
                   value={key}
-                  disabled={disabled}
+                  disabled={allDisabled || disabled}
                   className={`${prefixCls}__list-item`}>
                   {label}
                 </Checkbox>
@@ -89,6 +90,7 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
         </div>
         <div className={`${prefixCls}__footer`}>
           <Checkbox
+            disabled={allDisabled}
             checked={isAllChecked}
             onChange={handleAllCheckedChange}
             indeterminate={isIndeterminate}>
