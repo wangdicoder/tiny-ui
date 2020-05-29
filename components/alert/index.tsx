@@ -1,29 +1,10 @@
-import React, { ReactNode, useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
-import { BaseProps } from '../_utils/props';
 import { getPrefixCls } from '../_utils/general';
-import Transition from '../transition';
 import { CheckCircle, CloseCircle, InfoCircle, WarningCircle } from '../_utils/components';
-
-export type AlertType = 'success' | 'info' | 'warning' | 'error';
-
-export interface AlertProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'title'> {
-  title?: string | ReactNode;
-  type?: AlertType;
-  icon?: boolean | ReactNode;
-  iconSize?: number;
-  /** Whether Alert can be closed */
-  closable?: boolean;
-  /** Close text to show */
-  closeText?: ReactNode;
-  /** Trigger when animation ending of Alert */
-  afterClose?: () => void;
-  onClose?: React.MouseEventHandler<HTMLSpanElement>;
-  children?: ReactNode;
-}
+import { AlertProps } from './types';
+import Transition from '../transition';
 
 const setClosedStyle = (node: HTMLElement): void => {
   node.style.borderTopWidth = '0';
