@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { InputSizes } from './index';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 
 export interface InputGroupProps
   extends BaseProps,
     React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  size?: InputSizes;
+  size?: SizeType;
   disabled?: boolean;
   children: React.ReactElement;
 }

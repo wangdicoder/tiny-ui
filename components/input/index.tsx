@@ -1,8 +1,8 @@
-import Input, { InputProps, InputSizes } from './input';
+import Input, { InputProps } from './input';
 import InputGroup, { InputGroupProps } from './input-group';
 import InputGroupAddon, { InputGroupAddonProps } from './input-group-addon';
 
-export { InputProps, InputSizes, InputGroupProps, InputGroupAddonProps };
+export { InputProps, InputGroupProps, InputGroupAddonProps };
 
 type IInput = typeof Input & {
   Group: typeof InputGroup;

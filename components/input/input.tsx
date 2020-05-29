@@ -3,19 +3,16 @@ import React, {
   useEffect,
   useState,
   ReactNode,
-  MouseEvent,
   KeyboardEvent,
   ChangeEvent,
   useContext,
 } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
-import { BaseProps } from '../_utils/props';
+import { BaseProps, SizeType } from '../_utils/props';
 import { KeyCode } from '../_utils/enum';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type InputSizes = 'sm' | 'md' | 'lg';
+import { CloseCircle } from '../_utils/components';
 
 export interface InputProps
   extends BaseProps,
@@ -28,13 +25,13 @@ export interface InputProps
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onEnterPress?: (e: KeyboardEvent<HTMLInputElement>) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>; // prevent covering keydown event by enter press
-  size?: InputSizes;
+  size?: SizeType;
   disabled?: boolean;
 }
 
 const DEFAULT_MARGIN = 16; // 8px * 2
 
-const Input = (props: InputProps): React.ReactElement => {
+const Input = (props: InputProps): JSX.Element => {
   const {
     size = 'md',
     disabled = false,
@@ -58,7 +55,9 @@ const Input = (props: InputProps): React.ReactElement => {
   });
   const prefixRef = useRef<HTMLDivElement | null>(null);
   const suffixRef = useRef<HTMLDivElement | null>(null);
-  const [value, setValue] = useState('value' in props ? props.value : defaultValue);
+  const [value, setValue] = useState<string>(
+    'value' in props ? (props.value as string) : defaultValue
+  );
   const [inputPadding, setInputPadding] = useState({ paddingLeft: '7px', paddingRight: '7px' });
 
   const inputOnChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -74,15 +73,15 @@ const Input = (props: InputProps): React.ReactElement => {
     onKeyDown && onKeyDown(e);
   };
 
-  const clearBtnOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
-    setValue('');
+  const clearBtnOnClick = (): void => {
+    !('value' in props) && setValue('');
   };
 
-  const renderClearButton = (): React.ReactElement | null => {
+  const renderClearButton = (): ReactNode => {
     if (clearable && value && value.length > 0) {
       return (
         <span className={`${prefixCls}__clear-btn`} onClick={clearBtnOnClick}>
-          <Icon name="close-fill" />
+          <CloseCircle size={16} color="#BFBFBF" />
         </span>
       );
     }
@@ -90,19 +89,31 @@ const Input = (props: InputProps): React.ReactElement => {
   };
 
   useEffect(() => {
-    const prefixWidth = prefixRef.current && prefixRef.current!.offsetWidth;
-    const suffixWidth = suffixRef.current && suffixRef.current!.offsetWidth;
+    const prefixNode = prefixRef.current;
+    const suffixNode = suffixRef.current;
+
+    const prefixWidth = prefixNode && prefixNode.offsetWidth;
+    const suffixWidth = suffixNode && suffixNode.offsetWidth;
     const padding = { ...inputPadding };
+
     if (prefixWidth) {
       padding.paddingLeft = prefixWidth + DEFAULT_MARGIN + 'px';
     }
     if (suffixWidth) {
       padding.paddingRight = suffixWidth + DEFAULT_MARGIN + 'px';
     }
-    setInputPadding(padding);
 
-    'value' in props && setValue(props.value);
-  }, [props.value]);
+    if (
+      padding.paddingLeft !== inputPadding.paddingLeft ||
+      padding.paddingRight !== inputPadding.paddingRight
+    ) {
+      setInputPadding(padding);
+    }
+  }, [inputPadding]);
+
+  useEffect(() => {
+    'value' in props && setValue(props.value as string);
+  }, [props]);
 
   return (
     <div className={cls} style={style}>
@@ -112,13 +123,13 @@ const Input = (props: InputProps): React.ReactElement => {
         </div>
       )}
       <input
+        {...otherProps}
         value={value}
         disabled={disabled}
         className={`${prefixCls}__input`}
         style={{ paddingLeft: inputPadding.paddingLeft, paddingRight: inputPadding.paddingRight }}
         onChange={inputOnChange}
         onKeyDown={inputOnKeydown}
-        {...otherProps}
       />
       {(suffix || clearable) && (
         <div ref={suffixRef} className={`${prefixCls}__suffix`}>
