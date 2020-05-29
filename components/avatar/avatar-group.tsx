@@ -1,16 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { AvatarProps } from './avatar';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface AvatarGroupProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
-  gap: number | string;
-  children: React.ReactNode;
-}
+import { AvatarProps, AvatarGroupProps } from './types';
 
 const AvatarGroup = (props: AvatarGroupProps): JSX.Element => {
   const { gap = -15, className, style, children, prefixCls: customisedCls, ...otherProps } = props;

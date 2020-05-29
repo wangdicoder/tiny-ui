@@ -1,23 +1,8 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type AvatarShape = 'circle' | 'square';
-export type AvatarPresence = 'online' | 'busy' | 'away' | 'offline';
-
-export interface AvatarProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
-  icon?: React.ReactNode;
-  shape?: AvatarShape;
-  size?: number;
-  src?: string;
-  presence?: AvatarPresence;
-  alt?: string;
-  children?: React.ReactNode;
-}
+import { AvatarProps } from './types';
 
 const Avatar = (props: AvatarProps): JSX.Element => {
   const {

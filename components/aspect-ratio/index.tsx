@@ -1,16 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface AspectRatioProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  width?: number | string;
-  ratio?: number;
-  children?: React.ReactNode;
-}
+import { AspectRatioProps } from './types';
 
 const AspectRatio = (props: AspectRatioProps): React.ReactElement => {
   const {

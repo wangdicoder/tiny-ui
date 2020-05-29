@@ -1,7 +1,5 @@
-import Avatar, { AvatarProps, AvatarPresence, AvatarShape } from './avatar';
-import AvatarGroup, { AvatarGroupProps } from './avatar-group';
-
-export { AvatarProps, AvatarPresence, AvatarShape, AvatarGroupProps };
+import Avatar from './avatar';
+import AvatarGroup from './avatar-group';
 
 type IAvatar = typeof Avatar & {
   Group: typeof AvatarGroup;
