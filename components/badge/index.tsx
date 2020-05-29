@@ -1,35 +1,18 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import warning from '../_utils/warning';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface BadgeProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
-  count?: React.ReactNode | number;
-  color?: string;
-  max?: number;
-  dot?: boolean;
-  processing?: boolean;
-  /** when value is equal to zero, the badge will be hidden by default */
-  showZero?: boolean;
-  text?: string | undefined;
-  title?: string;
-  badgeStyle?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+import { BadgeProps } from './types';
 
 const Badge = (props: BadgeProps): JSX.Element => {
   const {
-    count = 0,
+    count,
     color = '#f2453d',
     max = 99,
     dot = false,
     processing = false,
     showZero = false,
-    text = undefined,
     prefixCls: customisedCls,
     title,
     className,
@@ -40,24 +23,21 @@ const Badge = (props: BadgeProps): JSX.Element => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('badge', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, { [`${prefixCls}_no-wrap`]: !children });
-
   const dotCls = classNames(`${prefixCls}__dot`, { [`${prefixCls}__dot_wave`]: processing });
 
   warning(!dot && processing, 'only dot badge has the processing effect');
 
   const renderCount = () => {
-    const isZero = typeof count === 'number' && count === 0;
-    if (isZero && !showZero) {
-      return null;
-    }
-
-    if (typeof count === 'number') {
+    if (typeof count === 'number' || typeof count === 'string') {
+      if (count === 0 && !showZero) {
+        return null;
+      }
       return (
         <sup
           title={title}
           className={`${prefixCls}__count`}
           style={{ backgroundColor: color, ...badgeStyle }}>
-          {text || (count > max ? `${max}+` : count)}
+          {typeof count === 'number' && count > max ? `${max}+` : count}
         </sup>
       );
     } else {

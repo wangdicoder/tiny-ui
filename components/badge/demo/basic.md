@@ -27,7 +27,10 @@ Simplest Usage.
       <Badge count={0} showZero style={badgeStyle}>
         <span style={spanStyle} />
       </Badge>
-      <Badge count={<Icon type="lock" style={{ color: '#f5222d' }} />}>
+      <Badge count="hot" style={badgeStyle}>
+        <span style={spanStyle} />
+      </Badge>
+      <Badge count={<Icon name="lock" style={{ color: '#f5222d' }} />}>
         <span style={spanStyle} />
       </Badge>
     </>
