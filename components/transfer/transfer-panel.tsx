@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactNode, useContext } from 'react';
+import React, { ChangeEvent, ReactNode, useContext, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -20,6 +20,8 @@ export interface TransferPanelProps
   footer?: ReactNode;
   placeholder?: string;
   showSearch?: boolean;
+  renderItem?: (item: TransferItem) => ReactNode;
+  filterOption?: (input: string, item: TransferItem) => boolean;
 }
 
 const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
@@ -33,6 +35,8 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
       showSearch,
       className,
       onChange,
+      renderItem,
+      filterOption,
       disabled: allDisabled,
       prefixCls: customisedCls,
       ...otherProps
@@ -40,7 +44,23 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('transfer-panel', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className);
-    const checkableData = dataSource.filter((item) => !item.disabled);
+    const [query, setQuery] = useState('');
+
+    const getFilteredData = (): TransferItem[] => {
+      return dataSource.filter((item) => {
+        if (typeof filterOption === 'function') {
+          return filterOption(query, item);
+        } else if (query.trim().length > 0) {
+          const label = item.label;
+          return label.toLowerCase().includes(query.toLowerCase());
+        } else {
+          return true;
+        }
+      });
+    };
+
+    const filteredData = getFilteredData();
+    const checkableData = filteredData.filter((item) => !item.disabled);
     const isAllChecked = checkableData.length > 0 && checkedKeys.length === checkableData.length;
     const isIndeterminate = checkedKeys.length > 0 && checkedKeys.length < checkableData.length;
 
@@ -55,9 +75,9 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
 
     const checkedSummary = (): string => {
       if (isIndeterminate || isAllChecked) {
-        return `${checkedKeys.length} / ${dataSource.length} checked`;
+        return `${checkedKeys.length} / ${filteredData.length} checked`;
       }
-      return `${dataSource.length} items`;
+      return `${filteredData.length} items`;
     };
 
     return (
@@ -66,27 +86,41 @@ const TransferPanel = React.forwardRef<HTMLDivElement, TransferPanelProps>(
         <div className={`${prefixCls}__body`}>
           {showSearch && (
             <div className={`${prefixCls}__input-container`}>
-              <Input clearable size="sm" placeholder={placeholder} />
+              <Input
+                clearable
+                size="sm"
+                placeholder={placeholder}
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.currentTarget.value);
+                }}
+                onClearClick={() => setQuery('')}
+              />
             </div>
           )}
-          {dataSource.length > 0 ? (
-            <CheckboxGroup
-              value={checkedKeys}
-              onChange={(values) => onChange(values)}
-              className={`${prefixCls}__list`}>
-              {dataSource.map(({ key, label, disabled }) => (
-                <Checkbox
-                  key={key}
-                  value={key}
-                  disabled={allDisabled || disabled}
-                  className={`${prefixCls}__list-item`}>
-                  {label}
-                </Checkbox>
-              ))}
-            </CheckboxGroup>
-          ) : (
-            <Empty className={`${prefixCls}__not-found`} />
-          )}
+          <div className={`${prefixCls}__list-container`}>
+            {filteredData.length > 0 ? (
+              <CheckboxGroup
+                value={checkedKeys}
+                onChange={(values) => onChange(values)}
+                className={`${prefixCls}__list`}>
+                {filteredData.map((item) => {
+                  const { key, label, disabled } = item;
+                  return (
+                    <Checkbox
+                      key={key}
+                      value={key}
+                      disabled={allDisabled || disabled}
+                      className={`${prefixCls}__list-item`}>
+                      {renderItem ? renderItem(item) : label}
+                    </Checkbox>
+                  );
+                })}
+              </CheckboxGroup>
+            ) : (
+              <Empty className={`${prefixCls}__not-found`} />
+            )}
+          </div>
         </div>
         <div className={`${prefixCls}__footer`}>
           <Checkbox

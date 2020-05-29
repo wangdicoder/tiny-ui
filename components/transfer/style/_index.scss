@@ -53,10 +53,14 @@
     padding: 6px 12px 12px;
   }
 
+  &__list-container{
+    height: 192px;
+  }
+
   &__list {
     display: block;
     position: relative;
-    height: 192px;
+    height: 100%;
     overflow-y: auto;
     margin: 0;
     list-style: none;

@@ -27,6 +27,8 @@ export interface TransferProps
   onChange?: (targetKeys: string[], direction: string, moveKeys: string[]) => void;
   leftDefaultChecked?: string[];
   rightDefaultChecked?: string[];
+  renderItem?: (item: TransferItem) => ReactNode;
+  filterOption?: (input: string, item: TransferItem) => boolean;
 }
 
 const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
@@ -44,6 +46,8 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
       placeholders,
       className,
       onChange,
+      renderItem,
+      filterOption,
       prefixCls: customisedCls,
       ...otherProps
     } = props;
@@ -122,6 +126,8 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
           checkedKeys={leftCheckedKeys}
           disabled={disabled}
           onChange={(keys: string[]) => setLeftCheckedKeys(keys)}
+          renderItem={renderItem}
+          filterOption={filterOption}
         />
         <div className={`${prefixCls}__buttons`}>
           <Button
@@ -149,6 +155,8 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
           checkedKeys={rightCheckedKeys}
           disabled={disabled}
           onChange={(keys: string[]) => setRightCheckedKeys(keys)}
+          renderItem={renderItem}
+          filterOption={filterOption}
         />
       </div>
     );

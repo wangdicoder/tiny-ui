@@ -1,12 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  ReactNode,
-  KeyboardEvent,
-  ChangeEvent,
-  useContext,
-} from 'react';
+import React, { useRef, useEffect, useState, ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import { BaseProps, SizeType } from '../_utils/props';
 import { KeyCode } from '../_utils/enum';
@@ -22,11 +14,12 @@ export interface InputProps
   suffix?: ReactNode;
   value?: string;
   defaultValue?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onEnterPress?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onEnterPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>; // prevent covering keydown event by enter press
   size?: SizeType;
   disabled?: boolean;
+  onClearClick?: (e: React.MouseEvent<HTMLSpanElement>) => void;
 }
 
 const DEFAULT_MARGIN = 16; // 8px * 2
@@ -44,6 +37,7 @@ const Input = (props: InputProps): JSX.Element => {
     onKeyDown,
     className,
     style,
+    onClearClick,
     prefixCls: customisedCls,
     ...otherProps
   } = props;
@@ -60,21 +54,22 @@ const Input = (props: InputProps): JSX.Element => {
   );
   const [inputPadding, setInputPadding] = useState({ paddingLeft: '7px', paddingRight: '7px' });
 
-  const inputOnChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const val = e.currentTarget.value;
     !('value' in props) && setValue(val);
     onChange && onChange(e);
   };
 
-  const inputOnKeydown = (e: KeyboardEvent<HTMLInputElement>): void => {
+  const inputOnKeydown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.keyCode === KeyCode.ENTER) {
       onEnterPress && onEnterPress(e);
     }
     onKeyDown && onKeyDown(e);
   };
 
-  const clearBtnOnClick = (): void => {
+  const clearBtnOnClick = (e: React.MouseEvent<HTMLSpanElement>): void => {
     !('value' in props) && setValue('');
+    onClearClick && onClearClick(e);
   };
 
   const renderClearButton = (): ReactNode => {
