@@ -199,6 +199,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'tooltip',
         component: lazy(() => import('../../components/tooltip/index.md')),
       },
+      {
+        title: 'Transfer',
+        route: 'transfer',
+        component: lazy(() => import('../../components/transfer/index.md')),
+      },
     ],
   },
   {
