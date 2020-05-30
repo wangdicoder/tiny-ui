@@ -20,7 +20,7 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 
 ### Bug Fixes
 
-* checkbox disabled style when unchecked status ([967e524](https://github.com/wangdicoder/tiny-ui/commit/967e524c4a040e7c2238d288c88c6612b54663a6))
+* `<Checkbox />` - disabled styles when unchecked status ([967e524](https://github.com/wangdicoder/tiny-ui/commit/967e524c4a040e7c2238d288c88c6612b54663a6))
 
 ### [0.0.88](https://github.com/wangdicoder/tiny-ui/compare/v0.0.87...v0.0.88) (2020-05-25)
 
