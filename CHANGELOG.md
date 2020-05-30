@@ -8,6 +8,20 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.89](https://github.com/wangdicoder/tiny-ui/compare/v0.0.88...v0.0.89) (2020-05-30)
+
+
+### Features
+
+* `<Icon />` component ([ac7abb8](https://github.com/wangdicoder/tiny-ui/commit/ac7abb8302167f2e0d35a217d23f9529941fd8df))
+* `<Sticky />` component ([7a1fe40](https://github.com/wangdicoder/tiny-ui/commit/7a1fe40653d0821e4c10f9314905848d03bb451c))
+* `<Transfer />` component ([488d8b5](https://github.com/wangdicoder/tiny-ui/commit/488d8b5e57c00ddc69f6ae6dc13c0ffac30e4dff))
+
+
+### Bug Fixes
+
+* checkbox disabled style when unchecked status ([967e524](https://github.com/wangdicoder/tiny-ui/commit/967e524c4a040e7c2238d288c88c6612b54663a6))
+
 ### [0.0.88](https://github.com/wangdicoder/tiny-ui/compare/v0.0.87...v0.0.88) (2020-05-25)
 
 
