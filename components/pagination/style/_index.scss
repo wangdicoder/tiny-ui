@@ -56,6 +56,14 @@
     }
   }
 
+  &__left-arrow {
+    transform: rotate(90deg);
+  }
+
+  &__right-arrow {
+    transform: rotate(-90deg);
+  }
+
   &_md {
     .#{$prefix}-pagination__item {
       min-width: 32px;

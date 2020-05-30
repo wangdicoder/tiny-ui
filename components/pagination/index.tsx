@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { ArrowDown } from '../_utils/components';
 import { PaginationProps } from './types';
 
 type ItemSourceData = {
@@ -11,7 +12,7 @@ type ItemSourceData = {
   label: string;
 };
 
-const Pagination = (props: PaginationProps): React.ReactElement => {
+const Pagination = (props: PaginationProps): JSX.Element => {
   const {
     align = 'center',
     size = 'md',
@@ -31,8 +32,12 @@ const Pagination = (props: PaginationProps): React.ReactElement => {
     [`${prefixCls}_${size}`]: size,
     [`${prefixCls}_disabled`]: disabled,
   });
-  const [current, setCurrent] = useState(props.current ? props.current : defaultCurrent);
-  const [pageSize, setPageSize] = useState(props.pageSize ? props.pageSize : defaultPageSize);
+  const [current, setCurrent] = useState<number>(
+    'current' in props ? (props.current as number) : defaultCurrent
+  );
+  const [pageSize, setPageSize] = useState<number>(
+    'pageSize' in props ? (props.pageSize as number) : defaultPageSize
+  );
 
   const itemOnClick = (item: ItemSourceData): void => {
     // If this item is in active or disabled status, reject the next action.
@@ -109,34 +114,10 @@ const Pagination = (props: PaginationProps): React.ReactElement => {
     const { type, label } = item;
     switch (type) {
       case 'prev':
-        return (
-          <svg
-            viewBox="64 64 896 896"
-            focusable="false"
-            className=""
-            data-icon="left"
-            width="1em"
-            height="1em"
-            fill="currentColor"
-            aria-hidden="true">
-            <path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z" />
-          </svg>
-        );
+        return <ArrowDown size={12} className={`${prefixCls}__left-arrow`} />;
 
       case 'next':
-        return (
-          <svg
-            viewBox="64 64 896 896"
-            focusable="false"
-            className=""
-            data-icon="right"
-            width="1em"
-            height="1em"
-            fill="currentColor"
-            aria-hidden="true">
-            <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z" />
-          </svg>
-        );
+        return <ArrowDown size={12} className={`${prefixCls}__right-arrow`} />;
 
       default:
         return label;
@@ -144,8 +125,8 @@ const Pagination = (props: PaginationProps): React.ReactElement => {
   };
 
   useEffect(() => {
-    'current' in props && setCurrent(props.current!);
-    'pageSize' in props && setPageSize(props.pageSize!);
+    'current' in props && setCurrent(props.current as number);
+    'pageSize' in props && setPageSize(props.pageSize as number);
   }, [props]);
 
   return (

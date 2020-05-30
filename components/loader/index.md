@@ -38,4 +38,12 @@ import { Loader } from 'tiny-ui';
 
 ## API
 
+| Property          | Description                                           | Type                                  | Default   |
+| ----------------- | ----------------------------------------------------- | ------------------------------------- | --------- |
+| indicator         | customise the spinning indicator                      | ReactNode                             | -         |
+| size              | loader size                                           | enum: `sm` &#124; `md` &#124; `lg`    | `md`      |
+| loading           | loading status                                        | boolean                               | true      |
+| tip               | customize description content when Spin has children  | string                                | -         |
+| vertical          | vertical the content                                  | boolean                               | false     |
+| blurred           | determine whether blur the loading background         | boolean                               | false     |
 

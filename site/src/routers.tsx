@@ -199,11 +199,6 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'tooltip',
         component: lazy(() => import('../../components/tooltip/index.md')),
       },
-      {
-        title: 'Transfer',
-        route: 'transfer',
-        component: lazy(() => import('../../components/transfer/index.md')),
-      },
     ],
   },
   {
@@ -262,6 +257,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Textarea',
         route: 'textarea',
         component: lazy(() => import('../../components/textarea/index.md')),
+      },
+      {
+        title: 'Transfer',
+        route: 'transfer',
+        component: lazy(() => import('../../components/transfer/index.md')),
       },
       {
         title: 'Upload',
