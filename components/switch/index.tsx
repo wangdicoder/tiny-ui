@@ -1,22 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface SwitchProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['label']>, 'onChange' | 'onClick'> {
-  defaultChecked?: boolean;
-  checked?: boolean;
-  disabled?: boolean;
-  loading?: boolean;
-  size?: SizeType;
-  onChange?: (checked: boolean, event: React.MouseEvent) => void;
-  onClick?: (checked: boolean, event: React.MouseEvent) => void;
-  checkedText?: React.ReactNode;
-  uncheckedText?: React.ReactNode;
-}
+import { SwitchProps } from './types';
 
 const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
   (props: SwitchProps, ref): JSX.Element => {

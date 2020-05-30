@@ -2,22 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps, DirectionType } from '../_utils/props';
-import { StepsItemProps } from './steps-item';
 import { StepsContext } from './steps-context';
-
-export type StepsStatus = 'wait' | 'process' | 'finish' | 'error';
-
-export interface StepsProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
-  current?: number;
-  defaultCurrent?: number;
-  direction?: DirectionType;
-  status?: StepsStatus;
-  labelPlacement?: DirectionType;
-  onChange?: (current: number) => void;
-}
+import { StepsItemProps, StepsProps } from './types';
 
 const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
   (props: StepsProps, ref): React.ReactElement => {

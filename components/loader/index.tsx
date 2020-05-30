@@ -1,22 +1,9 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import Indicator from './indicator';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface LoaderProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  indicator?: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg';
-  /** loading status */
-  loading?: boolean;
-  tip?: string;
-  vertical?: boolean;
-  blurred?: boolean;
-  children?: React.ReactNode;
-}
+import { LoaderProps } from './types';
 
 const Loader = (props: LoaderProps): JSX.Element => {
   const {

@@ -1,20 +1,10 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { TextareaProps } from './types';
 
-export interface TextareaProps extends BaseProps {
-  rows?: number;
-  limit?: number;
-  counter?: (count?: number) => React.ReactNode;
-  defaultValue?: string;
-  value?: string;
-  onChange?: (value: string, event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  disabled?: boolean;
-}
-
-const Textarea = (props: TextareaProps): React.ReactElement => {
+const Textarea = (props: TextareaProps): JSX.Element => {
   const {
     disabled = false,
     prefixCls: customisedCls,
@@ -74,5 +64,7 @@ const Textarea = (props: TextareaProps): React.ReactElement => {
     );
   }
 };
+
+Textarea.displayName = 'Textarea';
 
 export default Textarea;

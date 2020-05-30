@@ -1,7 +1,5 @@
-import Flip, { FlipProps } from './flip';
-import FlipItem, { FlipItemProps } from './flip-item';
-
-export { FlipProps, FlipItemProps };
+import Flip from './flip';
+import FlipItem from './flip-item';
 
 type IFlip = typeof Flip & {
   Item: typeof FlipItem;

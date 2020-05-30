@@ -1,5 +1,5 @@
 import React from 'react';
-import { StepsStatus } from './steps';
+import { StepsStatus } from './types';
 import { DirectionType } from '../_utils/props';
 
 type Props = {

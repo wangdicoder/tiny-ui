@@ -1,6 +1,6 @@
 import React from 'react';
 import { SizeType } from '../_utils/props';
-import { SpaceSize } from '../space';
+import { SpaceSize } from '../space/types';
 
 export interface ConfigContextProps {
   prefixCls?: string;

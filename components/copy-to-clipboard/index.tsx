@@ -1,15 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface CopyToClipboardProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
-  text: string;
-  children?: React.ReactNode;
-}
+import { CopyToClipboardProps } from './types';
 
 const copy = (value: string) => {
   const textArea = document.createElement('textarea');

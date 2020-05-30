@@ -2,13 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps } from '../_utils/props';
-
-export interface SkeletonProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['div']> {
-  active?: boolean;
-  rounded?: boolean;
-  children?: React.ReactNode;
-}
+import { SkeletonProps } from './types';
 
 const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   (props: SkeletonProps, ref): JSX.Element => {

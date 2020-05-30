@@ -1,16 +1,8 @@
-import React, { CSSProperties, useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface TimelineItemProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['li']> {
-  dot?: React.ReactNode;
-  dotStyle?: CSSProperties;
-  children?: React.ReactNode;
-}
+import { TimelineItemProps } from './types';
 
 const TimelineItem = (props: TimelineItemProps): React.ReactElement => {
   const { dot, dotStyle, className, children, prefixCls: customisedCls, ...otherProps } = props;

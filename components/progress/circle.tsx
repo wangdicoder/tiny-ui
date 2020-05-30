@@ -1,25 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { strokeLineCaps, strokePresetColors } from './shared-props';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface CircleProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  percent?: number;
-  /** Customise label style for both outer and inner label */
-  format?: (percent: number) => React.ReactNode;
-  width?: number;
-  strokeWidth?: number;
-  strokeLinecap?: strokeLineCaps;
-  strokeColor?: string;
-  reverse?: boolean;
-  prefixCls?: string;
-  textStyle?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+import { CircleProps, strokePresetColors } from './types';
 
 const Circle = (props: CircleProps): React.ReactElement => {
   const {

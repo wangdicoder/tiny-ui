@@ -1,11 +1,5 @@
 import React from 'react';
-import { BaseProps } from '../_utils/props';
-
-export interface FlipItemProps
-  extends Omit<BaseProps, 'prefixCls'>,
-    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  children?: React.ReactNode;
-}
+import { FlipItemProps } from './types';
 
 const FlipItem = (props: FlipItemProps): JSX.Element => {
   const { className, children, ...otherProps } = props;

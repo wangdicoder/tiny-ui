@@ -1,27 +1,9 @@
-import React, { ReactNode, useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CheckCircle, CloseCircle, InfoCircle, WarningCircle } from '../_utils/components';
-
-export type NotificationType = 'success' | 'error' | 'warning' | 'info' | undefined;
-
-export interface NotificationProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'title'> {
-  type: NotificationType;
-  title?: ReactNode;
-  description?: ReactNode;
-  footer?: ReactNode;
-  onClick?: (e: React.MouseEvent) => void;
-  onClose?: (e: React.MouseEvent) => void;
-  icon?: ReactNode | boolean;
-  willUnmount: (height: number) => void;
-  didMount: () => void;
-  duration?: number;
-  children?: React.ReactNode;
-}
+import { NotificationProps } from './types';
 
 const Notification = (props: NotificationProps): JSX.Element => {
   const {
@@ -44,11 +26,11 @@ const Notification = (props: NotificationProps): JSX.Element => {
   const cls = classNames(prefixCls, className);
   const ref = useRef<HTMLDivElement | null>(null);
   const timerRef = useRef<number>();
-  let height = 0;
+  const height = useRef(0);
 
   const closeBtnOnClick = (e: React.MouseEvent): void => {
     timerRef.current && window.clearTimeout(timerRef.current);
-    willUnmount(height);
+    willUnmount(height.current);
     onClose && onClose(e);
   };
 
@@ -74,14 +56,15 @@ const Notification = (props: NotificationProps): JSX.Element => {
 
   useEffect(() => {
     didMount();
-    height = (ref.current && ref.current!.offsetHeight) || 0;
+    const node = ref.current;
+    height.current = node ? node.offsetHeight : 0;
 
     if (duration !== 0) {
       timerRef.current = window.setTimeout(() => {
-        willUnmount(height);
+        willUnmount(height.current);
       }, duration);
     }
-  }, []);
+  }, [didMount, duration, willUnmount]);
 
   return (
     <div {...otherProps} className={cls} onClick={onClick} ref={ref}>

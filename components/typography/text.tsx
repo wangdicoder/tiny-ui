@@ -1,20 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface TextProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['span']> {
-  code?: boolean;
-  del?: boolean;
-  underline?: boolean;
-  strong?: boolean;
-  italic?: boolean;
-  mark?: boolean;
-  sub?: boolean;
-  sup?: boolean;
-  children: React.ReactNode;
-}
+import { TextProps } from './types';
 
 const tagGenerator = (
   isRequired: boolean,

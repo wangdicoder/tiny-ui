@@ -1,16 +1,9 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { MenuContext } from './menu-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface MenuItemProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['li']> {
-  index?: string;
-  disabled?: boolean;
-}
+import { MenuItemProps } from './types';
 
 const MenuItem = (props: MenuItemProps): React.ReactElement => {
   const {

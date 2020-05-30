@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState, ReactNode, useContext } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import {
@@ -11,17 +10,7 @@ import {
   LoadingCircle,
   WarningCircle,
 } from '../_utils/components';
-
-export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading' | undefined;
-
-export interface MessageProps extends BaseProps {
-  type: MessageType;
-  content: string;
-  duration: number;
-  icon?: ReactNode;
-  extra?: ReactNode;
-  willUnmount: (height: number) => void;
-}
+import { MessageProps } from './types';
 
 const Message = (props: MessageProps): JSX.Element => {
   const {

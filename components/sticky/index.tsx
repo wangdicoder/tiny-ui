@@ -2,17 +2,8 @@ import React, { CSSProperties, useCallback, useContext, useEffect, useRef, useSt
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps } from '../_utils/props';
-import { Target, getRect, getScroll, getNodeHeight } from '../_utils/dom';
-
-export interface StickyProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'onChange'> {
-  offsetTop?: number;
-  offsetBottom?: number;
-  container?: () => Target;
-  onChange?: (stuck: boolean) => void;
-}
+import { getRect, getScroll, getNodeHeight } from '../_utils/dom';
+import { StickyProps } from './types';
 
 const Sticky = (props: StickyProps): JSX.Element => {
   const {

@@ -1,8 +1,9 @@
 import React, { ReactNode, MouseEventHandler } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import raf from 'raf';
-import Notification, { NotificationProps, NotificationType } from './notification';
+import Notification from './notification';
 import { camelCaseToDash } from '../_utils/general';
+import { NotificationProps, NotificationType } from './types';
 
 const className = 'ty-notification-container';
 
@@ -76,7 +77,7 @@ const createComponent = (options: Options, type: NotificationType) => {
       // When notification component mounted, set up the position to display the entry animation
       placement.includes('Right') ? (div.style.right = `0px`) : (div.style.left = `0px`);
     },
-    willUnmount: height => {
+    willUnmount: (height) => {
       const updatedPosition = parseInt(div.style[direction] || '0', 10);
       unmountDom(queryName, div, updatedPosition, height, direction);
     },
@@ -91,7 +92,7 @@ const open = (options: Options) => {
 
 const notificationContainer: any = {};
 
-['success', 'error', 'warning', 'info'].forEach(type => {
+['success', 'error', 'warning', 'info'].forEach((type) => {
   notificationContainer[type] = (options: Options) => {
     createComponent(options, type as NotificationType);
   };

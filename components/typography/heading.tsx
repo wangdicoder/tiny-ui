@@ -1,15 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface HeadingProps
-  extends BaseProps,
-    React.PropsWithRef<React.HTMLAttributes<HTMLHeadingElement>> {
-  level?: number;
-  children?: React.ReactNode;
-}
+import { HeadingProps } from './types';
 
 const headingGenerator = (htmlType: string, displayName: string) => {
   const Component = React.forwardRef<HTMLHeadingElement, HeadingProps>(

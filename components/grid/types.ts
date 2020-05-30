@@ -6,7 +6,7 @@ export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-be
 
 export interface RowProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   gutter?: number | [number, number];
-  // | { xs: number; sm: number; md: number; lg: number; xl: number; xxl: number };
+  // { xs: number; sm: number; md: number; lg: number; xl: number; xxl: number };
   /** gutter padding includes first and end child  */
   gutterSide?: boolean;
   align?: RowAlign;

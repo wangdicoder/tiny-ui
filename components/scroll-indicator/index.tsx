@@ -1,17 +1,10 @@
 import React, { useCallback, useContext, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { Target, getScroll, getNodeScrollHeight, getNodeHeight } from '../_utils/dom';
 import { useEventListener } from '../_utils/hooks';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface ScrollIndicatorProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  fixed?: boolean;
-  target?: () => Target;
-}
+import { ScrollIndicatorProps } from './types';
 
 const ScrollIndicator = (props: ScrollIndicatorProps): React.ReactElement => {
   const { prefixCls: customisedCls, fixed = true, target, className, style, ...otherProps } = props;
@@ -46,5 +39,7 @@ const ScrollIndicator = (props: ScrollIndicatorProps): React.ReactElement => {
 
   return <div {...otherProps} className={cls} style={{ ...style, width }} />;
 };
+
+ScrollIndicator.displayName = 'ScrollIndicator';
 
 export default ScrollIndicator;

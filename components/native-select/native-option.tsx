@@ -1,6 +1,5 @@
 import React from 'react';
-
-export type NativeSelectOptionProps = React.PropsWithRef<JSX.IntrinsicElements['option']>;
+import { NativeSelectOptionProps } from './types';
 
 const NativeOption = React.forwardRef<HTMLOptionElement, NativeSelectOptionProps>(
   (props: NativeSelectOptionProps, ref): React.ReactElement => {

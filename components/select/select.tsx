@@ -1,31 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
-import Input from '../input/input';
-import { SelectOptionsProps } from './option';
 import { useClickOutside } from '../_utils/hooks';
 import { ArrowDown } from '../_utils/components';
 import { SelectContext } from './select-context';
-import Popup from '../popup';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-type SelectValue = string | string[];
-
-export interface SelectProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'onSelect'> {
-  value?: SelectValue;
-  defaultValue?: SelectValue;
-  onSelect?: (value: SelectValue) => void;
-  placeholder?: string;
-  disabled?: boolean;
-  defaultOpen?: boolean;
-  open?: boolean;
-  onDropdownVisibleChange?: (open: boolean) => void;
-  dropdownStyle?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+import { SelectOptionsProps, SelectProps, SelectValue } from './types';
+import Popup from '../popup';
+import Input from '../input/input';
 
 const Select = (props: SelectProps): React.ReactElement => {
   const {

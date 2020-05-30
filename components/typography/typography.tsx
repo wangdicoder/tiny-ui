@@ -1,14 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface TypographyProps
-  extends BaseProps,
-    React.PropsWithRef<JSX.IntrinsicElements['div']> {
-  children?: React.ReactNode;
-}
+import { TypographyProps } from './types';
 
 const Typography = React.forwardRef<HTMLParagraphElement, TypographyProps>(
   (props: TypographyProps, ref): JSX.Element => {

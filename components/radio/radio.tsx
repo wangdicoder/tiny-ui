@@ -1,21 +1,9 @@
-import React, { useState, useEffect, useContext, RefObject } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { RadioGroupContext } from './radio-group-context';
-
-export interface RadioProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['label']>, 'onChange'> {
-  radioRef?: RefObject<HTMLInputElement>;
-  value?: string | number;
-  name?: string;
-  defaultChecked?: boolean;
-  checked?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
-}
+import { RadioProps } from './types';
 
 const Radio = React.forwardRef<HTMLLabelElement, RadioProps>(
   (props: RadioProps, ref): React.ReactElement => {

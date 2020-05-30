@@ -1,5 +1,3 @@
-import Split, { SplitProps } from './split';
-
-export { SplitProps };
+import Split from './split';
 
 export default Split;

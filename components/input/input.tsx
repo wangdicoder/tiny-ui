@@ -1,26 +1,10 @@
 import React, { useRef, useEffect, useState, ReactNode, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps, SizeType } from '../_utils/props';
 import { KeyCode } from '../_utils/enum';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CloseCircle } from '../_utils/components';
-
-export interface InputProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['input']>, 'size' | 'prefix'> {
-  clearable?: boolean;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
-  value?: string;
-  defaultValue?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onEnterPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>; // prevent covering keydown event by enter press
-  size?: SizeType;
-  disabled?: boolean;
-  onClearClick?: (e: React.MouseEvent<HTMLSpanElement>) => void;
-}
+import { InputProps } from './types';
 
 const DEFAULT_MARGIN = 16; // 8px * 2
 

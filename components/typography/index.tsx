@@ -1,9 +1,7 @@
-import Heading, { HeadingProps } from './heading';
-import Typography, { TypographyProps } from './typography';
-import Paragraph, { ParagraphProps } from './paragraph';
-import Text, { TextProps } from './text';
-
-export { HeadingProps, TypographyProps, ParagraphProps, TextProps };
+import Heading from './heading';
+import Typography from './typography';
+import Paragraph from './paragraph';
+import Text from './text';
 
 type ITypography = typeof Typography & {
   Heading: typeof Heading;

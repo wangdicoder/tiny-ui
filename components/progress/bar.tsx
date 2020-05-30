@@ -1,26 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { strokeLineCaps, strokePresetColors } from './shared-props';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type BarBackgroundType = 'impulse' | 'striped';
-
-export interface BarProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  percent?: number;
-  /** Customise label style for both outer and inner label */
-  format?: (percent: number) => React.ReactNode;
-  /** Determine display the label */
-  showInfo?: boolean;
-  strokeLinecap?: strokeLineCaps;
-  strokeColor?: string | string[];
-  strokeWidth?: number;
-  /** Determine display the label in the bar or right of bar */
-  innerText?: boolean;
-  backgroundType?: BarBackgroundType;
-  children?: React.ReactNode;
-}
+import { BarProps, strokePresetColors } from './types';
 
 const Bar = (props: BarProps): React.ReactElement => {
   const {

@@ -1,24 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type PaginationAlign = 'left' | 'center' | 'right';
-
-export interface PaginationProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['ul']>, 'onChange'> {
-  current?: number;
-  total?: number;
-  defaultCurrent?: number;
-  disabled?: boolean;
-  pageSize?: number;
-  defaultPageSize?: number;
-  size?: 'sm' | 'md';
-  align?: PaginationAlign;
-  onChange?: (current: number, total: number, pageSize: number) => void;
-}
+import { PaginationProps } from './types';
 
 type ItemSourceData = {
   type: 'prev' | 'next' | 'jump-prev' | 'jump-next' | 'page';

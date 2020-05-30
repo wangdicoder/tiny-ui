@@ -3,9 +3,7 @@ import classNames from 'classnames';
 import { SidebarContext } from './sidebar-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps } from '../_utils/props';
-
-export interface LayoutProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['div']> {}
+import { LayoutProps } from './types';
 
 /**
  * Layout component

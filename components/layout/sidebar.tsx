@@ -3,23 +3,9 @@ import { useState, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import { SidebarContext } from './sidebar-context';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type SidebarTheme = 'light' | 'dark';
-
-export interface SidebarProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['div']> {
-  collapsible?: boolean;
-  collapsed?: boolean;
-  defaultCollapsed?: boolean;
-  onCollapse?: (collapsed: boolean) => void;
-  trigger?: React.ReactNode;
-  width?: number | string;
-  collapsedWidth?: number | string;
-  theme?: SidebarTheme;
-  children?: React.ReactNode;
-}
+import { SidebarProps } from './types';
 
 const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
   (props: SidebarProps, ref): JSX.Element => {
@@ -98,5 +84,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
     );
   }
 );
+
+Sidebar.displayName = 'Sidebar';
 
 export default Sidebar;

@@ -1,9 +1,7 @@
-import Menu, { MenuProps } from './menu';
-import MenuItem, { MenuItemProps } from './menu-item';
-import SubMenu, { SubMenuProps } from './sub-menu';
-import MenuItemGroup, { MenuItemGroupProps } from './menu-item-group';
-
-export { MenuProps, MenuItemProps, SubMenuProps, MenuItemGroupProps };
+import Menu from './menu';
+import MenuItem from './menu-item';
+import SubMenu from './sub-menu';
+import MenuItemGroup from './menu-item-group';
 
 type IMenu = typeof Menu & {
   Item: typeof MenuItem;

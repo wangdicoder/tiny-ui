@@ -1,7 +1,5 @@
-import Radio, { RadioProps } from './radio';
-import RadioGroup, { RadioGroupProps } from './radio-group';
-
-export { RadioProps, RadioGroupProps };
+import Radio from './radio';
+import RadioGroup from './radio-group';
 
 type IRadio = typeof Radio & {
   Group: typeof RadioGroup;

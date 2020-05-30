@@ -1,18 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { TimelineItemProps } from './timeline-item';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type TimelinePosition = 'left' | 'center';
-
-export interface TimelineProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['ul']> {
-  position?: TimelinePosition;
-  children: React.ReactNode;
-}
+import { TimelineItemProps, TimelineProps } from './types';
 
 const Timeline = (props: TimelineProps): React.ReactElement => {
   const { position = 'left', prefixCls: customisedCls, className, children, ...otherProps } = props;

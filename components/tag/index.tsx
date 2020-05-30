@@ -1,7 +1,5 @@
-import Tag, { TagProps, PresetColors } from './tag';
-import CheckableTag, { CheckableTagProps } from './checkable-tag';
-
-export { TagProps, PresetColors, CheckableTagProps };
+import Tag from './tag';
+import CheckableTag from './checkable-tag';
 
 type ITag = typeof Tag & {
   CheckableTag: typeof CheckableTag;

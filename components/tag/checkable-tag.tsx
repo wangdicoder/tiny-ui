@@ -1,18 +1,11 @@
 import React, { MouseEvent, useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import Tag from './index';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { CheckableTagProps } from './types';
+import Tag from './index';
 
-export interface CheckableTagProps extends BaseProps {
-  defaultChecked?: boolean;
-  checked?: boolean;
-  onChange?: (checked: boolean, e: MouseEvent) => void;
-  children?: React.ReactNode;
-}
-
-const CheckableTag = (props: CheckableTagProps) => {
+const CheckableTag = (props: CheckableTagProps): JSX.Element => {
   const {
     defaultChecked = true,
     prefixCls: customisedCls,
@@ -21,7 +14,9 @@ const CheckableTag = (props: CheckableTagProps) => {
     style,
     children,
   } = props;
-  const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
+  const [checked, setChecked] = useState<boolean>(
+    'checked' in props ? (props.checked as boolean) : defaultChecked
+  );
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('checkable-tag', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
@@ -38,8 +33,8 @@ const CheckableTag = (props: CheckableTagProps) => {
   };
 
   useEffect(() => {
-    'checked' in props && setChecked(props.checked);
-  }, [props.checked]);
+    'checked' in props && setChecked(props.checked as boolean);
+  }, [props]);
 
   return (
     <Tag className={cls} style={style} onClick={itemOnClick}>

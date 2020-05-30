@@ -1,12 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface KeyboardProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['kbd']> {
-  children?: React.ReactNode;
-}
+import { KeyboardProps } from './types';
 
 const Keyboard = React.forwardRef<HTMLElement, KeyboardProps>((props: KeyboardProps, ref) => {
   const { prefixCls: customisedCls, className, children, ...otherProps } = props;

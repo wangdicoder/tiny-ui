@@ -1,8 +1,6 @@
-import Select, { SelectProps } from './select';
-import SelectOption, { SelectOptionsProps } from './option';
-import SelectOptGroup, { SelectOptGroupProps } from './opt-group';
-
-export { SelectProps, SelectOptGroupProps, SelectOptionsProps };
+import Select from './select';
+import SelectOption from './option';
+import SelectOptGroup from './opt-group';
 
 type ISelect = typeof Select & {
   Option: typeof SelectOption;

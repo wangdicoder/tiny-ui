@@ -1,19 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps, DirectionType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type DivideAlign = 'left' | 'right' | 'center';
-
-export interface DividerProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  type?: DirectionType;
-  dashed?: boolean;
-  align?: DivideAlign;
-  children?: React.ReactNode;
-}
+import { DividerProps } from './types';
 
 const Divider = (props: DividerProps): JSX.Element => {
   const {

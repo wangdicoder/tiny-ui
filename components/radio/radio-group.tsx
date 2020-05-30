@@ -1,20 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { RadioGroupContext } from './radio-group-context';
-
-export interface RadioGroupProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
-  name?: string;
-  defaultValue?: number | string;
-  value?: number | string;
-  onChange?: (value: number | string) => void;
-  disabled?: boolean;
-  children: React.ReactNode;
-}
+import { RadioGroupProps } from './types';
 
 const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   (props: RadioGroupProps, ref): JSX.Element => {

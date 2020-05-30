@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-import Message, { MessageProps, MessageType } from './message';
+import Message from './message';
 import raf from 'raf';
+import { MessageProps, MessageType } from './types';
 
 const className = '.ty-message-container';
 
@@ -73,7 +74,7 @@ const createComponent: CreateComponent = (
     icon: options.icon,
     extra: options.extra,
     className: options.className,
-    willUnmount: height => {
+    willUnmount: (height) => {
       const updatedTop = parseInt(div.style.top || '0', 10);
       unmountDom(div, updatedTop, height, onClose);
     },
@@ -92,7 +93,7 @@ const messageContainer: any = (
   createComponent(undefined, content, duration, onClose, options);
 };
 
-['success', 'error', 'warning', 'info', 'loading'].forEach(type => {
+['success', 'error', 'warning', 'info', 'loading'].forEach((type) => {
   messageContainer[type] = (
     content: string,
     duration: number,

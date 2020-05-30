@@ -2,16 +2,8 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps, SizeType, DirectionType } from '../_utils/props';
-
-export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
-export type SpaceSize = SizeType | number;
-
-export interface SpaceProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['div']> {
-  align?: SpaceAlign;
-  direction?: DirectionType;
-  size?: SpaceSize;
-}
+import { SizeType } from '../_utils/props';
+import { SpaceProps } from './types';
 
 const spaceSize = {
   sm: 8,

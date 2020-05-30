@@ -1,19 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
-import { NativeSelectGroupProps } from './native-opt-group';
-import { NativeSelectOptionProps } from './native-option';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type NativeSelectSize = 'sm' | 'md' | 'lg';
-
-export interface NativeSelectProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['select']>, 'size'> {
-  size?: NativeSelectSize;
-  children: React.ReactElement<NativeSelectGroupProps | NativeSelectOptionProps>;
-}
+import { NativeSelectProps } from './types';
 
 const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
   (props: NativeSelectProps, ref) => {

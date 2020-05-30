@@ -1,7 +1,5 @@
-import Timeline, { TimelineProps, TimelinePosition } from './timeline';
-import TimelineItem, { TimelineItemProps } from './timeline-item';
-
-export { TimelineProps, TimelinePosition, TimelineItemProps };
+import Timeline from './timeline';
+import TimelineItem from './timeline-item';
 
 type ITimeline = typeof Timeline & {
   Item: typeof TimelineItem;

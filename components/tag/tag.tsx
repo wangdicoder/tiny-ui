@@ -1,34 +1,10 @@
 import React, { useState, useEffect, MouseEvent, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { PresetColors, TagProps } from './types';
 
-export const PresetColors = [
-  'magenta',
-  'red',
-  'volcano',
-  'orange',
-  'gold',
-  'lime',
-  'green',
-  'cyan',
-  'blue',
-  'geekblue',
-  'purple',
-];
-
-export interface TagProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  color?: string;
-  closable?: boolean;
-  onClose?: React.MouseEventHandler;
-  onClick?: React.MouseEventHandler;
-  defaultVisible?: boolean;
-  visible?: boolean;
-  children?: React.ReactNode;
-}
-
-const Tag = (props: TagProps): React.ReactElement => {
+const Tag = (props: TagProps): JSX.Element => {
   const {
     closable = false,
     defaultVisible = true,
@@ -41,7 +17,9 @@ const Tag = (props: TagProps): React.ReactElement => {
     children,
     ...otherProps
   } = props;
-  const [visible, setVisible] = useState('visible' in props ? props.visible : defaultVisible);
+  const [visible, setVisible] = useState<boolean>(
+    'visible' in props ? (props.visible as boolean) : defaultVisible
+  );
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('tag', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
@@ -70,8 +48,8 @@ const Tag = (props: TagProps): React.ReactElement => {
   };
 
   useEffect(() => {
-    'visible' in props && setVisible(props.visible);
-  }, [props.visible]);
+    'visible' in props && setVisible(props.visible as boolean);
+  }, [props]);
 
   return (
     <div {...otherProps} className={cls} style={tagStyle} onClick={onClick}>

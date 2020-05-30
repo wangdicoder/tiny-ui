@@ -2,21 +2,9 @@ import React, { useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps } from '../_utils/props';
-import { StepsStatus } from './steps';
 import { StepsContext } from './steps-context';
 import { Check, Close } from '../_utils/components';
-
-export interface StepsItemProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'title'> {
-  stepIndex?: number;
-  icon?: ReactNode;
-  title?: ReactNode;
-  description?: ReactNode;
-  status?: StepsStatus;
-  disabled?: boolean;
-}
+import { StepsItemProps } from './types';
 
 const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
   (props: StepsItemProps, ref): React.ReactElement => {

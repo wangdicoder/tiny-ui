@@ -1,23 +1,8 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type DateType = {
-  day: number;
-  hour: number;
-  min: number;
-  sec: number;
-  millisec: number;
-};
-
-export interface CountdownProps extends BaseProps {
-  value?: Date;
-  onFinish?: () => void;
-  millisec?: boolean;
-  children?: (date: DateType) => React.ReactNode;
-}
+import { CountdownProps, DateType } from './types';
 
 const Countdown = (props: CountdownProps): JSX.Element => {
   const {
@@ -38,7 +23,7 @@ const Countdown = (props: CountdownProps): JSX.Element => {
   const startInterval = useCallback((): void => {
     timerRef.current = window.setInterval(
       () => {
-        const distance = value!.getTime() - Date.now();
+        const distance = value.getTime() - Date.now();
 
         // when the count down finished
         if (distance < 0) {

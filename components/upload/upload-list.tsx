@@ -1,7 +1,7 @@
 import React from 'react';
-import { UploadFile } from './upload';
 import { CheckCircle, CloseCircle, LoadingCircle, PaperClip } from '../_utils/components';
 import Progress from '../progress';
+import { UploadFile } from './types';
 
 type UploadListProps = {
   prefixCls: string;

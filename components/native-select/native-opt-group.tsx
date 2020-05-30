@@ -1,6 +1,5 @@
 import React from 'react';
-
-export type NativeSelectGroupProps = React.PropsWithRef<JSX.IntrinsicElements['optgroup']>;
+import { NativeSelectGroupProps } from './types';
 
 const NativeOptGroup = React.forwardRef<HTMLOptGroupElement, NativeSelectGroupProps>(
   (props: NativeSelectGroupProps, ref): React.ReactElement => {

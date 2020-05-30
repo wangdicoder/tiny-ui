@@ -1,6 +1,5 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import {
@@ -10,19 +9,7 @@ import {
   LoadingCircle,
   WarningCircle,
 } from '../_utils/components';
-
-export type ResultStatus = 'success' | 'error' | 'info' | 'warning' | 'loading';
-
-export interface ResultProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'title'> {
-  title?: ReactNode;
-  subtitle?: ReactNode;
-  status?: ResultStatus;
-  icon?: ReactNode;
-  extra?: ReactNode;
-  children?: ReactNode;
-}
+import { ResultProps } from './types';
 
 const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps, ref) => {
   const {

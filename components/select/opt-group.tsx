@@ -1,16 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
-import { SelectOptionsProps } from './option';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface SelectOptGroupProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['li']> {
-  label?: string;
-  children?: React.ReactNode;
-}
+import { SelectOptGroupProps, SelectOptionsProps } from './types';
 
 const SelectOptGroup = (props: SelectOptGroupProps): React.ReactElement => {
   const { prefixCls: customisedCls, label, className, children, ...otherProps } = props;

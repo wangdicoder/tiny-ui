@@ -1,5 +1,3 @@
-import Upload, { UploadProps } from './upload';
-
-export { UploadProps };
+import Upload from './upload';
 
 export default Upload;

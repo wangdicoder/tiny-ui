@@ -1,17 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
-import { MenuItemProps } from './menu-item';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface MenuItemGroupProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['li']>, 'title'> {
-  index?: string;
-  title?: string;
-  children?: React.ReactNode;
-}
+import { MenuItemGroupProps, MenuItemProps } from './types';
 
 const MenuItemGroup = (props: MenuItemGroupProps): React.ReactElement => {
   const {

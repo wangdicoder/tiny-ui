@@ -1,13 +1,9 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import classNames from 'classnames';
-import Input, { InputProps } from '../input/input';
+import Input from '../input/input';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
-  options?: (option: string) => string[];
-  onSelect?: (item: string) => void;
-}
+import { AutoCompleteProps } from './types';
 
 function Autocomplete(props: AutoCompleteProps): React.ReactElement {
   const { prefixCls: customisedCls, value, className, style, children, ...otherProps } = props;

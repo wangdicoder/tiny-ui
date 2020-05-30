@@ -1,27 +1,9 @@
 import React, { useEffect, useState, MouseEvent, useContext } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
-import { BaseProps, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface InputNumberProps extends BaseProps {
-  min?: number;
-  max?: number;
-  step?: number;
-  precision?: number;
-  defaultValue?: number;
-  value?: number;
-  onChange?: (
-    value: number,
-    e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLSpanElement>
-  ) => void;
-  size?: SizeType;
-  disabled?: boolean;
-  /** Determine whether always display the control button  */
-  controls?: boolean;
-  children?: React.ReactNode;
-}
+import { InputNumberProps } from './types';
 
 /**
  * Valid the string is a number
@@ -52,7 +34,9 @@ const InputNumber = (props: InputNumberProps): React.ReactElement => {
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_always-controls`]: controls,
   });
-  const [value, setValue] = useState<number>('value' in props ? props.value! : defaultValue);
+  const [value, setValue] = useState<number>(
+    'value' in props ? (props.value as number) : defaultValue
+  );
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const val = Number(e.target.value.trim());
@@ -83,8 +67,8 @@ const InputNumber = (props: InputNumberProps): React.ReactElement => {
   };
 
   useEffect(() => {
-    'value' in props && setValue(props.value!);
-  }, [props.value]);
+    'value' in props && setValue(props.value as number);
+  }, [props]);
 
   return (
     <div className={cls} style={style}>

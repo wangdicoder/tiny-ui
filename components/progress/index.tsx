@@ -1,8 +1,5 @@
-import Circle, { CircleProps } from './circle';
-import Bar, { BarProps, BarBackgroundType } from './bar';
-import { strokeLineCaps, strokePresetColors } from './shared-props';
-
-export { CircleProps, BarProps, BarBackgroundType, strokeLineCaps, strokePresetColors };
+import Circle from './circle';
+import Bar from './bar';
 
 const Progress = {
   Circle,

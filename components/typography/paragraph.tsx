@@ -1,12 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface ParagraphProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['p']> {
-  children?: React.ReactNode;
-}
+import { ParagraphProps } from './types';
 
 const Paragraph = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
   (props: ParagraphProps, ref): JSX.Element => {

@@ -1,17 +1,9 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { SelectContext } from './select-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface SelectOptionsProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['li']> {
-  value: string;
-  disabled?: boolean;
-  children?: React.ReactNode;
-}
+import { SelectOptionsProps } from './types';
 
 const SelectOption = (props: SelectOptionsProps): React.ReactElement => {
   const {

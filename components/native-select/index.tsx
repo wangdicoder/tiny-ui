@@ -1,8 +1,6 @@
-import NativeSelect, { NativeSelectProps, NativeSelectSize } from './native-select';
-import NativeOption, { NativeSelectOptionProps } from './native-option';
-import NativeOptGroup, { NativeSelectGroupProps } from './native-opt-group';
-
-export { NativeSelectSize, NativeSelectProps, NativeSelectOptionProps, NativeSelectGroupProps };
+import NativeSelect from './native-select';
+import NativeOption from './native-option';
+import NativeOptGroup from './native-opt-group';
 
 type ISelect = typeof NativeSelect & {
   Option: typeof NativeOption;

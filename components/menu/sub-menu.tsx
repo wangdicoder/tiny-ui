@@ -1,20 +1,11 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { MenuContext } from './menu-context';
-import { MenuItemProps } from './menu-item';
 import Transition from '../transition';
 import { ArrowDown } from '../_utils/components';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface SubMenuProps
-  extends BaseProps,
-    Omit<React.PropsWithoutRef<JSX.IntrinsicElements['li']>, 'title'> {
-  title: React.ReactNode;
-  index?: string;
-  children?: React.ReactNode;
-}
+import { MenuItemProps, SubMenuProps } from './types';
 
 const SubMenu = (props: SubMenuProps): React.ReactElement => {
   const { index, title, className, children, prefixCls: customisedCls, ...otherProps } = props;

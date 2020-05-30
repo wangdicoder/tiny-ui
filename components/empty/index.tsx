@@ -1,27 +1,19 @@
-import React, { ReactNode, CSSProperties, useContext } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface EmptyProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  image?: string | ReactNode;
-  imageStyle?: CSSProperties;
-  description?: boolean | string | React.ReactNode;
-  descStyle?: CSSProperties;
-  children?: React.ReactNode;
-}
+import { EmptyProps } from './types';
 
 const Empty = (props: EmptyProps): React.ReactElement => {
   const {
     description = 'No Data',
-    prefixCls: customisedCls,
     image,
     imageStyle,
     descStyle,
     className,
     style,
     children,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
   const configContext = useContext(ConfigContext);
@@ -50,7 +42,7 @@ const Empty = (props: EmptyProps): React.ReactElement => {
   return (
     <div {...otherProps} className={cls} style={style}>
       <div className={`${prefixCls}__image-container`}>{renderImage()}</div>
-      {typeof description === 'boolean' && !description ? null : (
+      {typeof props.description === 'boolean' && !description ? null : (
         <p className={`${prefixCls}__desc`} style={descStyle}>
           {description}
         </p>
