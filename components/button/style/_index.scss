@@ -67,6 +67,10 @@ $btn-prefix: #{$prefix}-btn;
   &_ghost {
     @include button-style($primary-color, transparent, transparent, lighten($primary-color, 40%), transparent, $primary-color,
         lighten($primary-color, 30%), transparent, $primary-color);
+
+    &:disabled {
+      border: 0;
+    }
   }
 
   &_link {
@@ -196,10 +200,10 @@ $btn-prefix: #{$prefix}-btn;
   }
 
   &_primary,
-  &_blue,
-  &_green,
-  &_yellow,
-  &_red {
+  &_info,
+  &_success,
+  &_warning,
+  &_danger {
     .#{$btn-prefix} {
       &:not(:first-child) {
         border-left-color: rgba(255, 255, 255, 0.2);
