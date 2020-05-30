@@ -1,59 +1,11 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { createPopper, Instance } from '@popperjs/core';
-import { BaseProps } from '../_utils/props';
 import Transition, { AnimationName } from '../transition';
 import Portal from '../portal';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type TriggerType = 'hover' | 'focus' | 'click' | 'contextmenu' | 'manual';
-export type PopoverTheme = 'light' | 'dark';
-export type Placement =
-  | 'top-start'
-  | 'top'
-  | 'top-end'
-  | 'bottom-start'
-  | 'bottom'
-  | 'bottom-end'
-  | 'left-start'
-  | 'left'
-  | 'left-end'
-  | 'right-start'
-  | 'right'
-  | 'right-end';
-
-export interface PopupProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  content?: React.ReactNode;
-  placement?: Placement;
-  visible?: boolean;
-  defaultVisible?: boolean;
-  onVisibleChange?: (visible: boolean) => void;
-
-  /** Determine whether using a portal to wrap the content */
-  usePortal?: boolean;
-
-  /** Provide white and black backgrounds */
-  theme?: PopoverTheme;
-
-  flip?: boolean;
-
-  /** Determine whether display an arrow */
-  arrow?: boolean;
-
-  /** The distance between popup window and trigger target */
-  offset?: number;
-
-  /** Delay in seconds, before tooltip is shown on mouse enter */
-  mouseEnterDelay?: number;
-
-  /** Delay in seconds, before tooltip is hidden on mouse leave */
-  mouseLeaveDelay?: number;
-
-  /** Trigger mode */
-  trigger?: TriggerType;
-  children: React.ReactElement;
-}
+import { Placement, PopupProps } from './types';
 
 const Popup = (props: PopupProps): JSX.Element => {
   const {

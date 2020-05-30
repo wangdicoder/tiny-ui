@@ -1,7 +1,5 @@
-import Collapse, { CollapseProps } from './collapse';
-import CollapsePanel, { CollapsePanelProps } from './collapse-panel';
-
-export { CollapseProps, CollapsePanelProps };
+import Collapse from './collapse';
+import CollapsePanel from './collapse-panel';
 
 type ICollapse = typeof Collapse & {
   Panel: typeof CollapsePanel;

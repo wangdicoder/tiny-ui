@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import copy from 'copy-to-clipboard';
 import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -11,6 +10,20 @@ export interface CopyToClipboardProps
   text: string;
   children?: React.ReactNode;
 }
+
+const copy = (value: string) => {
+  const textArea = document.createElement('textarea');
+  textArea.style.background = 'transparent';
+  textArea.value = value;
+  document.body.appendChild(textArea);
+  textArea.select();
+  try {
+    document.execCommand('copy');
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+  document.body.removeChild(textArea);
+};
 
 const CopyToClipboard = (props: CopyToClipboardProps): React.ReactElement => {
   const { prefixCls: customisedCls, text, className, children, onClick, ...otherProps } = props;

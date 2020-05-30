@@ -1,7 +1,5 @@
-import Checkbox, { CheckboxProps } from './checkbox';
-import CheckboxGroup, { CheckboxGroupProps } from './checkbox-group';
-
-export { CheckboxProps, CheckboxGroupProps };
+import Checkbox from './checkbox';
+import CheckboxGroup from './checkbox-group';
 
 type ICheckbox = typeof Checkbox & {
   Group: typeof CheckboxGroup;

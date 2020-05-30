@@ -2,23 +2,9 @@ import React, { useContext, useRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import CollapseTransition from './collapse-transition';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface CollapsePanelProps extends BaseProps {
-  itemKey: string;
-  header: React.ReactNode;
-  duration: number;
-  isActive?: boolean;
-  disabled?: boolean;
-  extra?: React.ReactNode;
-  deletable?: boolean;
-  /** header click callback */
-  onItemClick?: (itemKey: string) => void;
-  showArrow?: boolean;
-  children?: React.ReactNode;
-}
+import { CollapsePanelProps } from './types';
 
 /**
  * Allow to parse active status to a node
@@ -45,8 +31,7 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     style,
     children,
   } = props;
-  const itemEl = useRef<HTMLDivElement | null>(null);
-  const contentEl = useRef<HTMLDivElement | null>(null);
+  const itemRef = useRef<HTMLDivElement | null>(null);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('collapse-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
@@ -66,8 +51,9 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
    */
   const _removeItem = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
-    if (!disabled && itemEl.current) {
-      itemEl.current!.parentNode!.removeChild(itemEl.current!);
+    if (!disabled) {
+      const itemNode = itemRef.current;
+      itemNode && itemNode.parentNode?.removeChild(itemNode);
     }
   };
 
@@ -91,12 +77,10 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
   };
 
   return (
-    <div className={cls} style={style} ref={itemEl}>
+    <div className={cls} style={style} ref={itemRef}>
       {_renderHeader()}
       <CollapseTransition duration={duration} isShow={isActive}>
-        <div ref={contentEl} className={`${prefixCls}__content`}>
-          {richNode(children, isActive)}
-        </div>
+        <div className={`${prefixCls}__content`}>{richNode(children, isActive)}</div>
       </CollapseTransition>
     </div>
   );

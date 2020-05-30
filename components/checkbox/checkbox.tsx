@@ -1,22 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CheckboxGroupContext } from './checkbox-group-context';
-
-export interface CheckboxProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['label']>, 'onChange'> {
-  /** Only required when use checkbox group */
-  value?: string;
-  defaultChecked?: boolean;
-  checked?: boolean;
-  indeterminate?: boolean;
-  disabled?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  checkboxRef?: React.RefObject<HTMLInputElement>;
-}
+import { CheckboxProps } from './types';
 
 const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
   (props: CheckboxProps, ref): React.ReactElement => {

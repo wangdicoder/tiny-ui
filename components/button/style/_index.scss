@@ -32,18 +32,18 @@ $btn-prefix: #{$prefix}-btn;
     @include loader();
   }
 
-  &__icon-container, &__loader  {
+  &__icon-container, &__loader {
     display: inline-block;
     pointer-events: none;
     line-height: $btn-line-height;
     vertical-align: middle;
 
-    & + span{
+    & + span {
       margin-left: .3em;
     }
   }
 
-  &__children{
+  &__children {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,32 +54,48 @@ $btn-prefix: #{$prefix}-btn;
     @include button-style($body-color, $white-color, $gray-400, $white-color, $primary-color, $primary-color,
         darken($white-color, 7.5%), $primary-color, $primary-color);
   }
+
   &_primary {
     @include button-style($white-color, $primary-color, $primary-color);
   }
+
   &_outline {
     @include button-style($primary-color, $white-color, $primary-color, lighten($primary-color, 40%), lighten($primary-color, 10%), $primary-color,
         lighten($primary-color, 30%));
   }
+
   &_ghost {
     @include button-style($primary-color, transparent, transparent, lighten($primary-color, 40%), transparent, $primary-color,
         lighten($primary-color, 30%), transparent, $primary-color);
   }
+
   &_link {
     @include button-style($primary-color, transparent, transparent);
-    &:hover{
+
+    &:hover {
       text-decoration-line: underline;
     }
+
+    &:disabled {
+      color: rgba(0, 0, 0, .25);
+      background-color: transparent;
+      border-color: transparent;
+      text-decoration-line: none;
+    }
   }
+
   &_info {
     @include button-style($white-color, $info-color, $info-color);
   }
+
   &_success {
     @include button-style($white-color, $success-color, $success-color);
   }
+
   &_warning {
     @include button-style($white-color, $warning-color, $warning-color);
   }
+
   &_danger {
     @include button-style($white-color, $danger-color, $danger-color);
   }
@@ -88,9 +104,11 @@ $btn-prefix: #{$prefix}-btn;
   &_sm {
     @include btn-size($btn-padding-sm, $btn-font-size-sm, $btn-height-sm);
   }
+
   &_md {
     @include btn-size($btn-padding-md, $btn-font-size-md, $btn-height-md);
   }
+
   &_lg {
     @include btn-size($btn-padding-lg, $btn-font-size-lg, $btn-height-lg);
   }
@@ -107,15 +125,24 @@ $btn-prefix: #{$prefix}-btn;
     border-radius: $btn-height-lg;
   }
 
-  &_loading, &_disabled {
-    opacity: $btn-disabled-opacity;
-    &:hover{
-      text-decoration-line: none;
-    }
-  }
+  &_loading {
+    position: relative;
+    pointer-events: none;
 
-  &_loading{
-    cursor: progress;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      left: -1px;
+      z-index: 1;
+      display: block;
+      background: #fff;
+      border-radius: inherit;
+      opacity: $btn-loading-opacity;
+      transition: opacity .2s;
+    }
   }
 
   &_disabled {

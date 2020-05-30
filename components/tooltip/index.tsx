@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import Popup, { PopupProps, Placement } from '../popup';
+import Popup from '../popup';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface TooltipProps extends Omit<PopupProps, 'title' | 'content'> {
-  title?: React.ReactNode;
-}
+import { TooltipProps } from './types';
 
 const Tooltip = (props: TooltipProps): React.ReactElement => {
   const {
@@ -36,5 +33,4 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
 
 Tooltip.displayName = 'Tooltip';
 
-export { Placement };
 export default Tooltip;

@@ -1,14 +1,9 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import Popup, { PopupProps } from '../popup';
+import Popup from '../popup';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface PopoverProps extends Omit<PopupProps, 'title'> {
-  role?: string;
-  title?: React.ReactNode;
-  children: React.ReactElement;
-}
+import { PopoverProps } from './types';
 
 const Popover = (props: PopoverProps): JSX.Element => {
   const {

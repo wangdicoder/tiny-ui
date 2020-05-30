@@ -1,7 +1,5 @@
-import Card, { CardProps } from './card';
-import CardContent, { CardContentProps } from './card-content';
-
-export { CardProps, CardContentProps };
+import Card from './card';
+import CardContent from './card-content';
 
 type ICard = typeof Card & {
   Content: typeof CardContent;

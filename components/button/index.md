@@ -31,9 +31,9 @@ const { Group } = Button;
     <MoreTypes/>
     <Size/>
     <ButtonGroup/>
+    <Loading/>
   </column>
   <column>
-    <Loading/>
     <Icon/>
     <Disabled/>
     <Block/>

@@ -1,40 +1,9 @@
 import React, { useContext, useRef, useState, ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
-import { BaseProps, DirectionType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import Tooltip, { Placement } from '../tooltip';
-
-export type SliderValue = number | [number, number];
-export type SliderMarks = {
-  [key: string]:
-    | React.ReactNode
-    | {
-        style: React.CSSProperties;
-        label: ReactNode;
-      };
-};
-
-export interface SliderProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange' | 'defaultValue'> {
-  value?: SliderValue;
-  defaultValue?: SliderValue;
-  min?: number;
-  max?: number;
-  marks?: SliderMarks;
-  dots?: boolean;
-  direction?: DirectionType;
-  step?: number;
-  disabled?: boolean;
-  track?: boolean;
-  tooltipVisible?: boolean;
-  tooltipPlacement?: Placement;
-  tipFormatter?: (value: number) => ReactNode;
-  onChange?: (value: SliderValue) => void;
-  onAfterChange?: (value: SliderValue) => void;
-  children?: ReactNode;
-}
+import Tooltip from '../tooltip';
+import { SliderProps } from './types';
 
 const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
   (props: SliderProps, ref): JSX.Element => {

@@ -1,9 +1,5 @@
 import React from 'react';
-
-export interface CardContentProps extends React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
-  prefixCls?: string;
-  children: string;
-}
+import { CardContentProps } from './types';
 
 const CardContent = (props: CardContentProps): React.ReactElement => {
   const { prefixCls, children, ...otherProps } = props;

@@ -1,20 +1,13 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import Popover, { PopoverProps } from '../popover';
+import Popover from '../popover';
 import Button from '../button';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { WarningCircle } from '../_utils/components';
+import { PopConfirmProps } from './types';
 
-export interface PopConfirmProps extends PopoverProps {
-  confirmText?: string;
-  cancelText?: string;
-  onConfirm?: (e: React.MouseEvent) => void;
-  onCancel?: (e: React.MouseEvent) => void;
-  icon?: React.ReactNode;
-}
-
-const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
+const PopConfirm = (props: PopConfirmProps): JSX.Element => {
   const {
     placement = 'top',
     confirmText = 'Yes',
@@ -79,5 +72,7 @@ const PopConfirm = (props: PopConfirmProps): React.ReactElement => {
     </Popover>
   );
 };
+
+PopConfirm.displayName = 'PopConfirm';
 
 export default PopConfirm;

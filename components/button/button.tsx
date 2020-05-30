@@ -1,32 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export type ButtonType =
-  | 'default'
-  | 'primary'
-  | 'outline'
-  | 'ghost'
-  | 'link'
-  | 'info'
-  | 'error'
-  | 'warning'
-  | 'success';
-
-export interface ButtonProps
-  extends BaseProps,
-    React.PropsWithRef<JSX.IntrinsicElements['button']> {
-  btnType?: ButtonType;
-  loading?: boolean;
-  disabled?: boolean;
-  block?: boolean;
-  size?: SizeType;
-  round?: boolean;
-  icon?: React.ReactNode;
-  children?: React.ReactNode;
-}
+import { ButtonProps } from './types';
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonProps, ref) => {
   const {
@@ -35,12 +11,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
     loading = false,
     disabled = false,
     block = false,
-    prefixCls: customisedCls,
+    onClick,
     icon,
     round,
     children,
     className,
     style,
+    prefixCls: customisedCls,
     ...otherProps
   } = props;
   const configContext = useContext(ConfigContext);
@@ -53,6 +30,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
     [`${prefixCls}_disabled`]: disabled,
     [`${prefixCls}_loading`]: loading,
   });
+
+  const btnOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (disabled || loading) {
+      return;
+    }
+    onClick && onClick(e);
+  };
 
   const renderIcon = (): React.ReactElement | null => {
     if (loading) {
@@ -70,7 +54,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
       ref={ref}
       role="button"
       className={cls}
-      disabled={disabled || loading}
+      disabled={disabled}
+      onClick={btnOnClick}
       style={style}>
       {renderIcon()}
       {children && <span className={`${prefixCls}__children`}>{children}</span>}

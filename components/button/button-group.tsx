@@ -1,19 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps, SizeType } from '../_utils/props';
-import { ButtonProps, ButtonType } from './button';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface ButtonGroupProps
-  extends BaseProps,
-    React.PropsWithRef<JSX.IntrinsicElements['div']> {
-  btnType?: ButtonType;
-  size?: SizeType;
-  round?: boolean;
-  disabled?: boolean;
-  children: React.ReactNode;
-}
+import { ButtonGroupProps, ButtonProps } from './types';
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props: ButtonGroupProps, ref) => {

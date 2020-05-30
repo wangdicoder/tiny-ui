@@ -1,18 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CheckboxGroupContext } from './checkbox-group-context';
-
-export interface CheckboxGroupProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
-  defaultValue?: string[];
-  value?: string[];
-  onChange?: (checkedValues: string[]) => void;
-  disabled?: boolean;
-}
+import { CheckboxGroupProps } from './types';
 
 const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
   (props: CheckboxGroupProps, ref): React.ReactElement => {

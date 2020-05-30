@@ -1,16 +1,8 @@
 import React, { ReactElement, useContext } from 'react';
 import classNames from 'classnames';
-import { BreadcrumbItemProps } from './breadcrumb-item';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface BreadcrumbProps
-  extends BaseProps,
-    React.PropsWithoutRef<JSX.IntrinsicElements['nav']> {
-  separator?: React.ReactNode;
-  children: ReactElement<BreadcrumbItemProps>;
-}
+import { BreadcrumbItemProps, BreadcrumbProps } from './types';
 
 const Breadcrumb = (props: BreadcrumbProps): React.ReactElement => {
   const { separator = '/', prefixCls: customisedCls, className, style, children } = props;

@@ -1,35 +1,11 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps } from '../_utils/props';
+import { ArrowDown } from '../_utils/components';
+import { TransferProps, TransferItem } from './types';
 import TransferPanel from './transfer-panel';
 import Button from '../button/button';
-import { ArrowDown } from '../_utils/components';
-
-export type TransferItem = {
-  key: string;
-  label: string;
-  disabled: boolean;
-};
-
-export interface TransferProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
-  dataSource?: TransferItem[];
-  value?: string[];
-  defaultValue?: string[];
-  disabled?: boolean;
-  showSearch?: boolean;
-  titles?: [ReactNode, ReactNode];
-  placeholders?: [string, string];
-  buttonTexts?: [ReactNode, ReactNode];
-  onChange?: (targetKeys: string[], direction: string, moveKeys: string[]) => void;
-  leftDefaultChecked?: string[];
-  rightDefaultChecked?: string[];
-  renderItem?: (item: TransferItem) => ReactNode;
-  filterOption?: (input: string, item: TransferItem) => boolean;
-}
 
 const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
   (props: TransferProps, ref): React.ReactElement => {

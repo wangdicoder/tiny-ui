@@ -1,23 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import { CollapsePanelProps } from './collapse-panel';
-import { BaseProps } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-
-export interface CollapseProps extends BaseProps {
-  defaultActiveKey?: string | string[];
-  activeKey?: string | string[];
-  duration?: number;
-  /** Only open one panel */
-  accordion?: boolean;
-  /** Allow to delete */
-  deletable?: boolean;
-  showArrow?: boolean;
-  bordered?: boolean;
-  onChange?: (keys: string | string[]) => void;
-  children: React.ReactElement<CollapsePanelProps>;
-}
+import { CollapsePanelProps, CollapseProps } from './types';
 
 /**
  * Format active key to array

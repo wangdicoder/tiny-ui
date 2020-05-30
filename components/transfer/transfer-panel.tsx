@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { BaseProps } from '../_utils/props';
-import { TransferItem } from './transfer';
+import { TransferItem } from './types';
 import Checkbox from '../checkbox/checkbox';
 import CheckboxGroup from '../checkbox/checkbox-group';
 import Empty from '../empty';

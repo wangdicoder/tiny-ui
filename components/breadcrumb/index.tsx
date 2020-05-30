@@ -1,7 +1,5 @@
-import Breadcrumb, { BreadcrumbProps } from './breadcrumb';
-import BreadcrumbItem, { BreadcrumbItemProps } from './breadcrumb-item';
-
-export { BreadcrumbProps, BreadcrumbItemProps };
+import Breadcrumb from './breadcrumb';
+import BreadcrumbItem from './breadcrumb-item';
 
 type IBreadcrumb = typeof Breadcrumb & {
   Item: typeof BreadcrumbItem;
