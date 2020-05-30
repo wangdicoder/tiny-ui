@@ -19,8 +19,6 @@ export interface TransferProps
   placeholders?: [string, string];
   buttonTexts?: [ReactNode, ReactNode];
   onChange?: (targetKeys: string[], direction: string, moveKeys: string[]) => void;
-  leftDefaultChecked?: string[];
-  rightDefaultChecked?: string[];
   renderItem?: (item: TransferItem) => ReactNode;
   filterOption?: (input: string, item: TransferItem) => boolean;
 }

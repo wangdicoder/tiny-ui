@@ -13,11 +13,10 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
       dataSource = [],
       defaultValue = [],
       buttonTexts = [],
-      leftDefaultChecked = [],
-      rightDefaultChecked = [],
       placeholder = 'search',
       showSearch = false,
       disabled = false,
+      value,
       titles,
       placeholders,
       className,
@@ -32,17 +31,17 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
     const cls = classNames(prefixCls, className);
 
     const getDataKeys = useCallback((): [TransferItem[], TransferItem[]] => {
-      const rightKeys: string[] = 'value' in props ? (props.value as string[]) : defaultValue;
+      const rightKeys: string[] = 'value' in props ? (value as string[]) : defaultValue;
       const rightData: TransferItem[] = dataSource.filter((item) => rightKeys.includes(item.key));
       const leftData: TransferItem[] = dataSource.filter((item) => !rightKeys.includes(item.key));
       return [leftData, rightData];
-    }, [props, dataSource, defaultValue]);
+    }, [props, value, dataSource, defaultValue]);
 
     const [leftData, rightData] = getDataKeys();
     const [sourceData, setSourceData] = useState<TransferItem[]>(leftData);
     const [targetData, setTargetData] = useState<TransferItem[]>(rightData);
-    const [leftCheckedKeys, setLeftCheckedKeys] = useState<string[]>(leftDefaultChecked);
-    const [rightCheckedKeys, setRightCheckedKeys] = useState<string[]>(rightDefaultChecked);
+    const [leftCheckedKeys, setLeftCheckedKeys] = useState<string[]>([]);
+    const [rightCheckedKeys, setRightCheckedKeys] = useState<string[]>([]);
 
     const addToLeft = () => {
       const leftKeys = sourceData.map((item) => item.key);
