@@ -170,6 +170,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/empty/index.md')),
       },
       {
+        title: 'Descriptions',
+        route: 'descriptions',
+        component: lazy(() => import('../../components/descriptions/index.md')),
+      },
+      {
         title: 'Flip',
         route: 'flip',
         component: lazy(() => import('../../components/flip/index.md')),
