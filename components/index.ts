@@ -15,6 +15,7 @@ export { default as Col } from './col';
 export { default as Collapse } from './collapse';
 export { default as Countdown } from './countdown';
 // export { default as DatePicker } from './date-picker';
+export { default as Descriptions } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Dropdown } from './dropdown';
 export { default as Drawer } from './drawer';
