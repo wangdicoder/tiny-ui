@@ -1,57 +1,115 @@
 @import '../../style/variables';
 
 .#{$prefix}-descriptions {
-  width: 100%;
-  table-layout: fixed;
-  box-sizing: border-box;
-  text-align: left;
-  background-color: #fff;
 
-  &__title{
+  &__body {
+    width: 100%;
+    overflow: hidden;
+
+    > table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      box-sizing: border-box;
+      text-align: left;
+      background-color: #fff;
+    }
+  }
+
+  &__title {
     text-align: left;
     margin-bottom: 20px;
-    color: rgba(0,0,0,.85);
+    color: rgba(0, 0, 0, .85);
     font-weight: 600;
     font-size: 16px;
   }
 
-  &__item {
-    padding-bottom: 16px;
-
-    &_colon:after{
-      content: ':';
-      margin-left: 2px;
-      margin-right: 5px;
-    }
+  &__item_colon:after {
+    content: ':';
+    margin-left: 2px;
+    margin-right: 5px;
   }
 
-  &__item-label{
-    color: rgba(0,0,0,.85);
+  &__item-label {
+    color: rgba(0, 0, 0, .85);
     font-size: $font-size-base;
     font-weight: 400;
+    line-height: $line-height-base;
   }
 
-  &__item-content{
-    color: rgba(0,0,0,.65);
+  &__item-content {
+    color: rgba(0, 0, 0, .65);
     font-size: $font-size-base;
+    line-height: $line-height-base;
   }
 
-  &_bordered{
-    border: 1px solid #f0f0f0;
-    border-collapse: collapse;
-
-    tr, td{
-      border: 1px solid #f0f0f0;
-    }
-
+  &_bordered {
     .#{$prefix}-descriptions {
-      &__item-label{
+      &__body {
+        border: 1px solid $description-border-color;
+        border-radius: $description-border-radius;
+      }
+
+      &__row {
+        border-bottom: 1px solid $description-border-color;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+
+      &__item-label {
         background-color: #fafafa;
-        border-right: 1px solid #f0f0f0;
       }
 
       &__item-label, &__item-content {
-        padding: 16px 24px;
+        border-right: 1px solid $description-border-color;
+
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+  }
+
+  &_sm {
+    .#{$prefix}-descriptions__item {
+      padding-bottom: $description-sm-padding-vt;
+    }
+
+    &.#{$prefix}-descriptions_bordered {
+      .#{$prefix}-descriptions {
+        &__item-label, &__item-content {
+          padding: $description-sm-padding-vt $description-sm-padding-hr;
+        }
+      }
+    }
+  }
+
+  &_md {
+    .#{$prefix}-descriptions__item {
+      padding-bottom: $description-md-padding-vt;
+    }
+
+    &.#{$prefix}-descriptions_bordered {
+      .#{$prefix}-descriptions {
+        &__item-label, &__item-content {
+          padding: $description-md-padding-vt $description-md-padding-hr;
+        }
+      }
+    }
+  }
+
+  &_lg {
+    .#{$prefix}-descriptions__item {
+      padding-bottom: $description-lg-padding-vt;
+    }
+
+    &.#{$prefix}-descriptions_bordered {
+      .#{$prefix}-descriptions {
+        &__item-label, &__item-content {
+          padding: $description-lg-padding-vt $description-lg-padding-hr;
+        }
       }
     }
   }

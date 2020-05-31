@@ -8,7 +8,7 @@ import Row from './row';
 
 export interface DescriptionsProps
   extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['table']>, 'title'> {
+    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'title'> {
   title?: React.ReactNode;
   bordered?: boolean;
   column?: number;
@@ -23,7 +23,6 @@ const Descriptions = (props: DescriptionsProps): React.ReactElement => {
     bordered = false,
     column = 3,
     layout = 'horizontal',
-    colon,
     title,
     className,
     children,
@@ -75,23 +74,28 @@ const Descriptions = (props: DescriptionsProps): React.ReactElement => {
 
   const rows = getRows();
   const displayColon = 'colon' in props ? (props.colon as boolean) : !bordered;
+  // the reason of using a div to wrapper a table is to figure out border radius issue of the table
   return (
-    <table {...otherProps} className={cls}>
-      {title && <caption className={`${prefixCls}__title`}>{title}</caption>}
-      <tbody>
-        {rows.map((row, idx) => (
-          <Row
-            key={idx}
-            index={idx}
-            colon={displayColon}
-            bordered={bordered}
-            prefixCls={prefixCls}
-            layout={layout}
-            row={row}
-          />
-        ))}
-      </tbody>
-    </table>
+    <div {...otherProps} className={cls}>
+      {title && <div className={`${prefixCls}__title`}>{title}</div>}
+      <div className={`${prefixCls}__body`}>
+        <table>
+          <tbody>
+            {rows.map((row, idx) => (
+              <Row
+                key={idx}
+                index={idx}
+                colon={displayColon}
+                bordered={bordered}
+                prefixCls={prefixCls}
+                layout={layout}
+                row={row}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 
