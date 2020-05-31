@@ -21,9 +21,9 @@ const Descriptions = (props: DescriptionsProps): React.ReactElement => {
   const {
     size = 'md',
     bordered = false,
-    colon = false,
     column = 3,
     layout = 'horizontal',
+    colon,
     title,
     className,
     children,
@@ -31,7 +31,7 @@ const Descriptions = (props: DescriptionsProps): React.ReactElement => {
     ...otherProps
   } = props;
   const configContext = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('Descriptions', configContext.prefixCls, customisedCls);
+  const prefixCls = getPrefixCls('descriptions', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_bordered`]: bordered,
   });
@@ -53,16 +53,13 @@ const Descriptions = (props: DescriptionsProps): React.ReactElement => {
           rows.push(columns);
         }
 
-        // Always set last span to align the end of Descriptions
-        const lastItem = idx === numOfChildren - 1;
-        // let lastSpanSame = true;
-        if (lastItem) {
-          // lastSpanSame = !itemNode.props.span || itemNode.props.span === leftSpans;
+        // set last span to align the end of Descriptions
+        if (idx === numOfChildren - 1) {
           const props = { span: leftSpans };
           itemNode = React.cloneElement(childElement, props);
         }
 
-        // Calculate left fill span
+        // calculate left fill span
         const { span = 1 } = itemNode.props;
         columns.push(itemNode);
         leftSpans -= span;
@@ -77,15 +74,16 @@ const Descriptions = (props: DescriptionsProps): React.ReactElement => {
   };
 
   const rows = getRows();
+  const displayColon = 'colon' in props ? (props.colon as boolean) : !bordered;
   return (
     <table {...otherProps} className={cls}>
-      {title && <caption>{title}</caption>}
+      {title && <caption className={`${prefixCls}__title`}>{title}</caption>}
       <tbody>
         {rows.map((row, idx) => (
           <Row
             key={idx}
             index={idx}
-            colon={colon}
+            colon={displayColon}
             bordered={bordered}
             prefixCls={prefixCls}
             layout={layout}

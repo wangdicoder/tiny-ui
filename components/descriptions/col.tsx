@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { DescriptionsItemProps } from './descriptions-item';
 
 type Props = {
@@ -15,13 +16,15 @@ const Col = (props: Props): React.ReactElement => {
 
   const { label, children, span = 1 } = item.props;
   switch (type) {
-    case 'item':
+    case 'item': {
+      const labelCls = classNames(`${prefixCls}__item-label`, {
+        [`${prefixCls}__item_colon`]: colon,
+      });
       if (bordered) {
         return (
           <>
-            <th className={`${prefixCls}__item-label`} colSpan={1}>
+            <th className={labelCls} colSpan={1}>
               {label}
-              {colon ? ':' : ''}
             </th>
             <td className={`${prefixCls}__item-content`} colSpan={span * 2 - 1}>
               {children}
@@ -31,27 +34,31 @@ const Col = (props: Props): React.ReactElement => {
       } else {
         return (
           <td className={`${prefixCls}__item`} colSpan={span}>
-            <span className={`${prefixCls}__item-label`}>
-              {label}
-              {colon ? ':' : ''}
-            </span>
+            <span className={labelCls}>{label}</span>
             <span className={`${prefixCls}__item-content`}>{children}</span>
           </td>
         );
       }
-    case 'label':
+    }
+    case 'label': {
+      const cls = classNames(
+        { [`${prefixCls}__item`]: !bordered, [`${prefixCls}__item_colon`]: colon },
+        `${prefixCls}__item-label`
+      );
       return (
-        <th className={`${prefixCls}__item-label`} colSpan={span}>
+        <th className={cls} colSpan={span}>
           {label}
-          {colon ? ':' : ''}
         </th>
       );
-    case 'content':
+    }
+    case 'content': {
+      const cls = classNames({ [`${prefixCls}__item`]: !bordered }, `${prefixCls}__item-content`);
       return (
-        <td className={`${prefixCls}__item-content`} colSpan={span}>
+        <td className={cls} colSpan={span}>
           {children}
         </td>
       );
+    }
   }
 };
 

@@ -1,1 +1,58 @@
 @import '../../style/variables';
+
+.#{$prefix}-descriptions {
+  width: 100%;
+  table-layout: fixed;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: #fff;
+
+  &__title{
+    text-align: left;
+    margin-bottom: 20px;
+    color: rgba(0,0,0,.85);
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &__item {
+    padding-bottom: 16px;
+
+    &_colon:after{
+      content: ':';
+      margin-left: 2px;
+      margin-right: 5px;
+    }
+  }
+
+  &__item-label{
+    color: rgba(0,0,0,.85);
+    font-size: $font-size-base;
+    font-weight: 400;
+  }
+
+  &__item-content{
+    color: rgba(0,0,0,.65);
+    font-size: $font-size-base;
+  }
+
+  &_bordered{
+    border: 1px solid #f0f0f0;
+    border-collapse: collapse;
+
+    tr, td{
+      border: 1px solid #f0f0f0;
+    }
+
+    .#{$prefix}-descriptions {
+      &__item-label{
+        background-color: #fafafa;
+        border-right: 1px solid #f0f0f0;
+      }
+
+      &__item-label, &__item-content {
+        padding: 16px 24px;
+      }
+    }
+  }
+}
