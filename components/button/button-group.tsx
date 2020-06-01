@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { ButtonGroupProps, ButtonProps } from './types';
+import { ButtonGroupProps, ButtonProps, ButtonType } from './types';
+import { SizeType } from '../_utils/props';
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props: ButtonGroupProps, ref) => {
@@ -29,10 +30,9 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
           const childElement = child as React.FunctionComponentElement<ButtonProps>;
           const { displayName } = childElement.type;
           if (displayName === 'Button') {
-            const childProps = {
-              ...childElement.props,
-              btnType,
-              size: btnSize,
+            const childProps: Partial<ButtonProps> = {
+              btnType: btnType as ButtonType,
+              size: btnSize as SizeType,
               disabled: 'disabled' in childElement.props ? childElement.props.disabled : disabled,
             };
             return React.cloneElement(childElement, childProps);

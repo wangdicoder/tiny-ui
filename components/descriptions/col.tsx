@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { DescriptionsItemProps } from './descriptions-item';
+import { DescriptionsItemProps } from './types';
 
 type Props = {
   index: number;

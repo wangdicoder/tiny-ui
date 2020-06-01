@@ -47,8 +47,7 @@ const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
           {React.Children.map(children, (child, idx) => {
             const childElement = child as React.FunctionComponentElement<StepsItemProps>;
             if (childElement.type.displayName === 'StepsItem') {
-              const childProps = {
-                ...childElement.props,
+              const childProps: Partial<StepsItemProps> = {
                 stepIndex: idx,
               };
               return React.cloneElement(childElement, childProps);

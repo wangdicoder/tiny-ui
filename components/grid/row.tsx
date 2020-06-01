@@ -42,8 +42,7 @@ const Row = (props: RowProps): React.ReactElement => {
                     : normalisedGutter[0] / 2,
               }
             : {};
-          const childProps = {
-            ...child.props,
+          const childProps: Partial<ColProps> = {
             style: {
               ...child.props.style,
               ...gutterStyle,

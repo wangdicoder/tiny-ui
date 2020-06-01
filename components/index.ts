@@ -21,7 +21,7 @@ export { default as Dropdown } from './dropdown';
 export { default as Drawer } from './drawer';
 export { default as Empty } from './empty';
 export { default as Flip } from './flip';
-export { default as Form } from './form';
+// export { default as Form } from './form';
 export { default as Icon } from './icon';
 export { default as Image } from './image';
 export { default as Input } from './input';

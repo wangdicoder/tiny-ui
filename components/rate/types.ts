@@ -1,7 +1,9 @@
+import React from 'react';
 import { ReactNode } from 'react';
 import { BaseProps } from '../_utils/props';
 
-export interface RateProps extends BaseProps {
+export interface RateProps extends BaseProps,
+  Omit<React.PropsWithRef<JSX.IntrinsicElements['ul']>, 'onChange'> {
   color?: string;
   clearable?: boolean;
   half?: boolean;

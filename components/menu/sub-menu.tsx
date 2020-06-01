@@ -71,8 +71,7 @@ const SubMenu = (props: SubMenuProps): React.ReactElement => {
               childElement.type.displayName === 'MenuItem' ||
               childElement.type.displayName === 'MenuItemGroup'
             ) {
-              const childProps = {
-                ...childElement.props,
+              const childProps: Partial<MenuItemProps> = {
                 index: `${index}-${idx}`,
               };
               return React.cloneElement(childElement, childProps);

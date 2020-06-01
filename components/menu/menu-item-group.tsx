@@ -25,8 +25,7 @@ const MenuItemGroup = (props: MenuItemGroupProps): React.ReactElement => {
         {React.Children.map(children, (child, idx) => {
           const childElement = child as React.FunctionComponentElement<MenuItemProps>;
           if (childElement.type.displayName === 'MenuItem') {
-            const childProps = {
-              ...childElement.props,
+            const childProps: Partial<MenuItemProps> = {
               index: `${index}-${idx}`,
             };
             return React.cloneElement(childElement, childProps);

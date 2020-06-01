@@ -68,8 +68,7 @@ const Card = (props: CardProps): JSX.Element => {
         // Pass prefixCls attribute to child if it is a CardContent instance
         const childElement = child as React.FunctionComponentElement<CardContentProps>;
         if (childElement.type.displayName === 'CardContent') {
-          const childProps = {
-            ...childElement.props,
+          const childProps: Partial<CardContentProps> = {
             prefixCls,
           };
           return React.cloneElement(childElement, childProps);

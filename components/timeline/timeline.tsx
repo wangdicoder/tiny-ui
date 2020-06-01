@@ -17,8 +17,7 @@ const Timeline = (props: TimelineProps): React.ReactElement => {
       {React.Children.map(children, (child, idx) => {
         const childElement = child as React.FunctionComponentElement<TimelineItemProps>;
         if (childElement.type.displayName === 'TimelineItem') {
-          const childProps: TimelineItemProps = {
-            ...childElement.props,
+          const childProps: Partial<TimelineItemProps> = {
             className:
               position === 'center'
                 ? idx % 2 === 0

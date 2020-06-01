@@ -53,7 +53,7 @@ const Circle = (props: CircleProps): React.ReactElement => {
     };
   };
 
-  const _renderLabel = (): React.ReactNode => {
+  const renderLabel = (): React.ReactNode => {
     return (
       <div className={`${prefixCls}__text`} style={textStyle}>
         {format ? format(percent) : `${percentage}%`}
@@ -79,7 +79,7 @@ const Circle = (props: CircleProps): React.ReactElement => {
           style={_circlePathStyle()}
         />
       </svg>
-      {_renderLabel()}
+      {renderLabel()}
     </div>
   );
 };

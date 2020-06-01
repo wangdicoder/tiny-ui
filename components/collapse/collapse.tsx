@@ -72,8 +72,7 @@ const Collapse = (props: CollapseProps): React.ReactElement => {
   return (
     <div className={cls} style={style}>
       {React.Children.map(children, (child) => {
-        const itemProps: CollapsePanelProps = {
-          ...child.props,
+        const itemProps: Partial<CollapsePanelProps> = {
           duration,
           deletable,
           showArrow,

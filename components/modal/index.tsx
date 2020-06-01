@@ -45,7 +45,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
   const prefixCls = getPrefixCls('modal', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, { [`${prefixCls}_centered`]: centered });
 
-  const _renderFooter = (): React.ReactNode => {
+  const renderFooter = (): React.ReactNode => {
     if (React.isValidElement(footer)) {
       return footer;
     } else if (footer === null) {
@@ -103,7 +103,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
               <div className={`${prefixCls}__body`} style={bodyStyle}>
                 {children}
               </div>
-              {_renderFooter()}
+              {renderFooter()}
             </div>
           </CSSTransition>
         </div>

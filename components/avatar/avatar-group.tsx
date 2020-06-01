@@ -15,8 +15,7 @@ const AvatarGroup = (props: AvatarGroupProps): JSX.Element => {
       {React.Children.map(children, (child, idx) => {
         const childElement = child as React.FunctionComponentElement<AvatarProps>;
         if (childElement.type.displayName === 'Avatar') {
-          const childProps = {
-            ...childElement.props,
+          const childProps: Partial<AvatarProps> = {
             style: {
               ...childElement.props.style,
               marginLeft: idx === 0 ? 0 : gap,

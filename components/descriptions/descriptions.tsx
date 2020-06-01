@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { DescriptionsProps } from './types';
+import { DescriptionsItemProps, DescriptionsProps } from './types';
 import Row from './row';
 
 const Descriptions = (props: DescriptionsProps): React.ReactElement => {
@@ -42,7 +42,7 @@ const Descriptions = (props: DescriptionsProps): React.ReactElement => {
 
         // set last span to align the end of Descriptions
         if (idx === numOfChildren - 1) {
-          const props = { span: leftSpans };
+          const props: Partial<DescriptionsItemProps> = { span: leftSpans };
           itemNode = React.cloneElement(childElement, props);
         }
 

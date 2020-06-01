@@ -19,7 +19,9 @@ const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
       prefixCls: customisedCls,
       ...otherProps
     } = props;
-    const [checked, setChecked] = useState('checked' in props ? props.checked : defaultChecked);
+    const [checked, setChecked] = useState<boolean>(
+      'checked' in props ? (props.checked as boolean) : defaultChecked
+    );
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('switch', configContext.prefixCls, customisedCls);
     const switchSize = props.size || configContext.componentSize || size;
@@ -39,7 +41,7 @@ const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
     };
 
     useEffect(() => {
-      'checked' in props && setChecked(props.checked);
+      'checked' in props && setChecked(props.checked as boolean);
     }, [props]);
 
     return (

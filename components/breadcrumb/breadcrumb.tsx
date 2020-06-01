@@ -14,10 +14,7 @@ const Breadcrumb = (props: BreadcrumbProps): React.ReactElement => {
     <nav className={cls} style={style}>
       <ol className={`${prefixCls}__ol`}>
         {React.Children.map(children, (child: ReactElement<BreadcrumbItemProps>) => {
-          const childProps = {
-            ...child.props,
-            separator,
-          };
+          const childProps: Partial<BreadcrumbItemProps> = { separator };
           return React.cloneElement(child, childProps);
         })}
       </ol>

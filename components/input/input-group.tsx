@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { InputGroupProps } from './types';
+import { InputGroupProps, InputProps } from './types';
+import { SizeType } from '../_utils/props';
 
 const InputGroup = (props: InputGroupProps): React.ReactElement => {
   const {
@@ -21,10 +22,9 @@ const InputGroup = (props: InputGroupProps): React.ReactElement => {
   return (
     <div {...otherProps} className={cls}>
       {React.Children.map(children, (child: React.ReactElement) => {
-        const childProps = {
-          ...child.props,
+        const childProps: Partial<InputProps> = {
           disabled,
-          size: inputSize,
+          size: inputSize as SizeType,
         };
         return React.cloneElement(child, childProps);
       })}

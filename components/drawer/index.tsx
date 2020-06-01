@@ -15,7 +15,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
     unmountOnClose = true,
     maskType = 'default',
     maskClosable = true,
-    onClose = (): void => {},
+    onClose,
     prefixCls: customisedCls,
     afterClose,
     zIndex = 1000,
@@ -43,7 +43,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
       isShow={visible}
       onExited={afterClose}
       clickCallback={(e: React.MouseEvent): void => {
-        maskClosable ? onClose(e) : undefined;
+        maskClosable && onClose ? onClose(e) : undefined;
       }}
       style={maskStyle}>
       <div className={cls} style={{ ...style, ...sty }}>

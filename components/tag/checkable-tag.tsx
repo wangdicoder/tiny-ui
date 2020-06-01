@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -26,7 +26,7 @@ const CheckableTag = (props: CheckableTagProps): JSX.Element => {
   /**
    * Callback when the tag itself is clicked.
    */
-  const itemOnClick = (e: MouseEvent): void => {
+  const itemOnClick = (e: React.MouseEvent): void => {
     const state = !checked;
     !('checked' in props) && setChecked(state);
     onChange && onChange(state, e);

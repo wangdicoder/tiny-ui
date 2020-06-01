@@ -59,7 +59,8 @@ const Message = (props: MessageProps): JSX.Element => {
   };
 
   useEffect(() => {
-    const height = (ref.current && ref.current!.offsetHeight) || 0;
+    const node = ref.current;
+    const height = (node && node.offsetHeight) || 0;
     const timer = window.setTimeout(() => {
       setVisible(false);
       willUnmount(height);
@@ -68,7 +69,7 @@ const Message = (props: MessageProps): JSX.Element => {
     return (): void => {
       window.clearTimeout(timer);
     };
-  }, []);
+  }, [duration, willUnmount]);
 
   return (
     <CSSTransition in={visible} appear={true} timeout={0} classNames={`${prefixCls}_fade-slide`}>

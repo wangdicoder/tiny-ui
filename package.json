@@ -50,7 +50,6 @@
   "dependencies": {
     "@popperjs/core": "^2.4.0",
     "classnames": "^2.2.6",
-    "lodash": "^4.17.15",
     "raf": "^3.4.1",
     "react-transition-group": "^4.4.1"
   },

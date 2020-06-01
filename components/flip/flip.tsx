@@ -40,8 +40,7 @@ const Flip = (props: FlipProps): React.ReactElement => {
         {React.Children.map(children, (child, index: number) => {
           const childElement = child as React.FunctionComponentElement<FlipItemProps>;
           if (childElement.type.displayName === 'FlipItem') {
-            const childProps = {
-              ...child.props,
+            const childProps: Partial<FlipItemProps> = {
               className: classNames(
                 {
                   [`${prefixCls}__item-front`]: index === 0,

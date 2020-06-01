@@ -1,7 +1,7 @@
 import React from 'react';
 import { DirectionType } from '../_utils/props';
-import { DescriptionsItemProps } from './descriptions-item';
 import Col from './col';
+import { DescriptionsItemProps } from './types';
 
 type Props = {
   index: number;
