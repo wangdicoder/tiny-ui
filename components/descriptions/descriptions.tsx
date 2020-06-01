@@ -2,20 +2,8 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps, DirectionType, SizeType } from '../_utils/props';
-import { DescriptionsItemProps } from './descriptions-item';
+import { DescriptionsProps } from './types';
 import Row from './row';
-
-export interface DescriptionsProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'title'> {
-  title?: React.ReactNode;
-  bordered?: boolean;
-  column?: number;
-  size?: SizeType;
-  layout?: DirectionType;
-  colon?: boolean;
-}
 
 const Descriptions = (props: DescriptionsProps): React.ReactElement => {
   const {

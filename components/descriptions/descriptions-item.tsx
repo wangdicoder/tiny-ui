@@ -1,11 +1,4 @@
-import React from 'react';
-import { BaseProps } from '../_utils/props';
-
-export interface DescriptionsItemProps extends BaseProps {
-  label?: React.ReactNode;
-  span?: number;
-  children: React.ReactNode;
-}
+import { DescriptionsItemProps } from './types';
 
 const DescriptionsItem = (props: DescriptionsItemProps): JSX.Element => {
   return props.children as JSX.Element;
