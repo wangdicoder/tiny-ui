@@ -1,19 +1,11 @@
 import { deepCopy } from '../_utils/object';
-
-// define a form listener
-export type FormListener = (name: string) => void;
-
-export type Rule = {
-  type?: 'string' | 'number' | 'boolean' | 'url' | 'email';
-  message?: string;
-  max?: number;
-  min?: number;
-  required?: boolean;
-};
+import { validate } from './form-helper';
+import { Rule } from './types';
 
 export type FormValues = { [name: string]: any };
-export type FormRules = { [name: string]: Rule[] };
-export type FormErrors = { [name: string]: string[] };
+type FormListener = (name: string) => void;
+type FormRules = { [name: string]: Rule[] };
+type FormErrors = { [name: string]: string[] };
 
 export default class FormStore {
   private readonly initValues: FormValues;
@@ -36,20 +28,45 @@ export default class FormStore {
     this.notify(name);
   }
 
-  setFieldValues(fields: FormValues = {}): void {
-    Object.keys(fields).forEach(name => this.setFieldValue(name, fields[name]));
+  setFieldValues(values: FormValues = {}): void {
+    Object.keys(values).forEach(name => this.setFieldValue(name, values[name]));
   }
 
-  getFieldError(name: string): string[] {
-    return this.errors[name];
+  getFieldError(name: string): string | undefined {
+    return this.errors[name] && this.errors[name].length > 0 ? this.errors[name][0] : undefined;
+  }
+
+  setFieldError(name: string, errors: string[]): void {
+    this.errors[name] = errors;
   }
 
   setFiledRules(name: string, rules: Rule[]): void {
     this.rules[name] = rules;
   }
 
-  reset(): void {
+  resetFields(): void {
     this.values = deepCopy(this.initValues);
+  }
+
+  validateField(name: string): void {
+    const rules = this.rules[name];
+    const value = this.values[name];
+    if (rules) {
+      const errMessages: string[] = [];
+      rules.forEach(rule => {
+        const res = validate(value, rule);
+        if (res !== undefined) {
+          errMessages.push(res);
+        }
+      });
+      // update filed errors
+      this.setFieldError(name, errMessages);
+      this.notify(name);
+    }
+  }
+
+  validateFields(): void {
+    Object.keys(this.rules).forEach(name => this.validateField(name));
   }
 
   subscribe(listener: FormListener): () => void {

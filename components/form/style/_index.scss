@@ -6,16 +6,27 @@
   &__label {
     box-sizing: border-box;
     display: inline-block;
-    font-size: 12px;
     line-height: 30px;
     text-align: right;
     vertical-align: top;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: $font-size-base;
+
+    &_required:before{
+      content: '*';
+      margin-right: 3px;
+      color: rgb(255, 77, 79);
+    }
+
+    &_colon:after{
+      content: ':';
+      margin: 0 8px 0 2px;
+    }
   }
 
   &__controls {
     box-sizing: border-box;
     display: inline-block;
-    margin-left: 10px;
   }
 
   &__addon {
@@ -27,31 +38,7 @@
     line-height: 14px;
     font-size: 12px;
     color: #f30;
-    opacity: 0;
-    transform: translateY(-10px);
     transition: all 250ms;
-
-    &_slide {
-      &-enter {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-
-      &-enter-done {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      &-exit {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      &-exit-done {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-    }
   }
 
   &__helper {

@@ -1,16 +1,17 @@
-import Form, { FormProps } from './form';
-import FormItem, { FormItemProps } from './form-item';
+import Form from './form';
+import FormItem from './form-item';
 import FormStore from './form-store';
-
-export { FormProps, FormItemProps };
+import useForm from './use-form';
 
 type IForm = typeof Form & {
   Item: typeof FormItem;
   FormStore: typeof FormStore;
+  useForm: typeof useForm;
 };
 
 const DefaultForm = Form as IForm;
 DefaultForm.Item = FormItem;
 DefaultForm.FormStore = FormStore;
+DefaultForm.useForm = useForm;
 
 export default DefaultForm;
