@@ -6,23 +6,52 @@
   $scaleEnd: scaleY(1),
   $origin: center top,
 ) {
-  .#{$prefix}-zoom-#{$direction}-enter {
-    opacity: 0;
-    transform: $scaleStart;
+  .#{$prefix}-zoom-#{$direction} {
+    &-enter {
+      opacity: 0;
+      transform: $scaleStart;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transform: $scaleEnd;
+      transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+      transform-origin: $origin
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: $scaleStart;
+      transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+      transform-origin: $origin;
+    }
   }
-  .#{$prefix}-zoom-#{$direction}-enter-active {
-    opacity: 1;
-    transform: $scaleEnd;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-    transform-origin: $origin
-  }
-  .#{$prefix}-zoom-#{$direction}-exit {
-    opacity: 1;
-  }
-  .#{$prefix}-zoom-#{$direction}-exit-active {
-    opacity: 0;
-    transform: $scaleStart;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-    transform-origin: $origin;
+}
+
+@mixin slide-animation($direction, $moveStart, $moveEnd) {
+  .#{$prefix}-slide-#{$direction} {
+    &-enter {
+      opacity: 0;
+      transform: $moveStart;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transform: $moveEnd;
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: $moveEnd;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: $moveStart;
+    }
   }
 }

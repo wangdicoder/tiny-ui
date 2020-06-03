@@ -18,7 +18,9 @@ export type AnimationName =
   | 'zoom-left-end'
   | 'zoom-right-start'
   | 'zoom-right'
-  | 'zoom-right-end';
+  | 'zoom-right-end'
+  | 'slide-up'
+  | 'slide-down';
 
 export type TransitionProps = {
   /** Animation prefix */

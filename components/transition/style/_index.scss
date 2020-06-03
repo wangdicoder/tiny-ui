@@ -19,3 +19,6 @@
 @include zoom-animation('right-start', scale(0, 0), scale(1, 1), left top);
 @include zoom-animation('right', scale(0, 0), scale(1, 1), left center);
 @include zoom-animation('right-end', scale(0, 0), scale(1, 1), left bottom);
+
+@include slide-animation('down', translateY(-10px), translateY(0));
+@include slide-animation('up', translateY(10px), translateY(0));
