@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import classNames from 'classnames';
-import { FormStoreContext } from './form-store-context';
+import { FormInstanceContext } from './form-instance-context';
+import { FormOptionsContext } from './form-options-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { FormItemProps } from './types';
 import { getPropName, getValueFromEvent } from './form-helper';
+import Row from '../grid/row';
+import Col from '../grid/col';
 import Transition from '../transition';
 
 const FormItem = (props: FormItemProps): JSX.Element => {
@@ -27,26 +30,33 @@ const FormItem = (props: FormItemProps): JSX.Element => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('form-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
-  const store = React.useContext(FormStoreContext);
-  const [value, setValue] = useState(store ? store.getFieldValue(name) : undefined);
-  const [error, setError] = useState<string | undefined>(
-    store ? store.getFieldError(name) : undefined
-  );
+  const form = React.useContext(FormInstanceContext);
+  const { wrapperCol, labelCol } = React.useContext(FormOptionsContext);
+  const [value, setValue] = useState(form.getFieldValue(name));
+  const [error, setError] = useState<string | undefined>(form.getFieldError(name));
   const isRequired = (rules && rules.some((rule) => rule.required)) || required;
 
+  // get onChange event from all components which support onChange callback
   const onChange = useCallback(
     (...args: any[]) => {
-      if (store) {
-        store.setFieldValue(name, valueGetter(...args));
-        validateTrigger === 'onChange' && store.validateField(name);
+      if (form) {
+        form.setFieldValue(name, valueGetter(...args));
+        validateTrigger === 'onChange' && form.validateField(name);
       }
     },
-    [name, store, valueGetter, validateTrigger]
+    [name, form, valueGetter, validateTrigger]
   );
+
+  // get onBlur event from input
+  const onBlur = useCallback(() => {
+    if (form) {
+      validateTrigger === 'onBlur' && form.validateField(name);
+    }
+  }, [name, form, validateTrigger]);
 
   let child: any = children;
   const prop = getPropName(valuePropName, child && child.type);
-  const childProps = { [prop]: value, onChange };
+  const childProps = { [prop]: value, onChange, onBlur };
   child = React.cloneElement(child, childProps);
 
   const labelCls = classNames({
@@ -55,30 +65,35 @@ const FormItem = (props: FormItemProps): JSX.Element => {
   });
 
   useEffect(() => {
-    if (store) {
-      rules && store.setFiledRules(name, rules);
+    if (form) {
+      rules && form.setFiledRules(name, rules);
 
-      return store.subscribe((n) => {
+      return form.subscribe((n) => {
         if (name === '*' || n === name || n === '*') {
-          setValue(store.getFieldValue(name));
-          setError(store.getFieldError(name));
+          setValue(form.getFieldValue(name));
+          setError(form.getFieldError(name));
         }
       });
     }
     return () => undefined;
-  }, [store, name, rules]);
+  }, [form, name, rules]);
+
+  const labelSpan = typeof labelCol === 'number' ? labelCol : labelCol.span;
+  const labelOffset = typeof labelCol === 'number' ? 0 : labelCol.offset;
+  const wrapperSpan = typeof wrapperCol === 'number' ? wrapperCol : wrapperCol.span;
+  const wrapperOffset = typeof wrapperCol === 'number' ? 0 : wrapperCol.offset;
 
   return (
-    <div className={cls} style={style}>
-      <div className={`${prefixCls}__label`}>
+    <Row className={cls} style={style}>
+      <Col span={labelSpan} offset={labelOffset} className={`${prefixCls}__label`}>
         <label
           htmlFor={name}
           title={typeof label === 'string' ? label : undefined}
           className={labelCls}>
           {label}
         </label>
-      </div>
-      <div className={`${prefixCls}__controls`}>
+      </Col>
+      <Col span={wrapperSpan} offset={wrapperOffset} className={`${prefixCls}__controls`}>
         {child}
         <div className={`${prefixCls}__addon`}>
           {notice && <div className={`${prefixCls}__notice`}>{notice}</div>}
@@ -87,8 +102,8 @@ const FormItem = (props: FormItemProps): JSX.Element => {
             <div className={`${prefixCls}__error`}>{error}</div>
           </Transition>
         </div>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 

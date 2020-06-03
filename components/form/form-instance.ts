@@ -7,7 +7,7 @@ type FormListener = (name: string) => void;
 type FormRules = { [name: string]: Rule[] };
 type FormErrors = { [name: string]: string[] };
 
-export default class FormStore {
+export default class FormInstance {
   private readonly initValues: FormValues;
   private values: FormValues;
   private rules: FormRules = {};
@@ -45,7 +45,9 @@ export default class FormStore {
   }
 
   resetFields(): void {
+    this.errors = {};
     this.values = deepCopy(this.initValues);
+    this.notify('*');
   }
 
   validateField(name: string): void {

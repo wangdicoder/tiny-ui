@@ -1,6 +1,6 @@
-import { BaseProps } from '../_utils/props';
+import { BaseProps, DirectionType } from '../_utils/props';
 import React from 'react';
-import FormStore, { FormValues } from './form-store';
+import FormInstance, { FormValues } from './form-instance';
 
 export type Rule = {
   // specific type
@@ -53,8 +53,17 @@ export interface FormItemProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-export interface FormProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['form']> {
-  form?: FormStore;
+export type FormLayout = DirectionType | 'inline';
+
+export interface FormOptionsProps {
+  labelCol: number | { span: number, offset: number };
+  wrapperCol: number | { span: number, offset: number };
+}
+
+export interface FormProps extends BaseProps, Partial<FormOptionsProps>,
+  React.PropsWithRef<JSX.IntrinsicElements['form']> {
+  form?: FormInstance;
   initialValues?: FormValues;
+  layout?: FormLayout;
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }

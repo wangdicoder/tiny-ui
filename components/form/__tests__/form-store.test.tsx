@@ -1,8 +1,8 @@
-import FormStore from '../form-store';
+import FormInstance from '../form-store';
 
 describe('FormStore', () => {
   it('set', () => {
-    const store = new FormStore();
+    const store = new FormInstance();
 
     store.setFieldValue('key', 'value');
     expect(store.getFieldValue('key')).toBe('value');

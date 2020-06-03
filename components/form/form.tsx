@@ -1,14 +1,17 @@
 import React, { useContext, useRef } from 'react';
 import classNames from 'classnames';
-import { FormStoreContext } from './form-store-context';
+import { FormInstanceContext } from './form-instance-context';
+import { FormOptionsContext } from './form-options-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import useForm from './use-form';
 import { FormProps } from './types';
+import useForm from './use-form';
 
 const Form = (props: FormProps): JSX.Element => {
   const {
     initialValues = {},
+    labelCol = { span: 8, offset: 0 },
+    wrapperCol = { span: 16, offset: 0 },
     form,
     onSubmit,
     className,
@@ -20,16 +23,20 @@ const Form = (props: FormProps): JSX.Element => {
   const prefixCls = getPrefixCls('form', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const localForm = useForm();
-  const formStore = form ? form : localForm;
-  formStore.setFieldValues(initialValues);
-  const store = useRef(formStore);
+  // If you want to control the form outside, namely get the form instance, just pass a form store.
+  // Otherwise, the form component will manage the state internally.
+  const formInstance = form ? form : localForm;
+  formInstance.setFieldValues(initialValues);
+  const instance = useRef(formInstance);
 
   return (
-    <FormStoreContext.Provider value={store.current}>
-      <form {...otherProps} className={cls} onSubmit={onSubmit}>
-        {children}
-      </form>
-    </FormStoreContext.Provider>
+    <FormInstanceContext.Provider value={instance.current}>
+      <FormOptionsContext.Provider value={{ labelCol, wrapperCol }}>
+        <form {...otherProps} className={cls} onSubmit={onSubmit}>
+          {children}
+        </form>
+      </FormOptionsContext.Provider>
+    </FormInstanceContext.Provider>
   );
 };
 

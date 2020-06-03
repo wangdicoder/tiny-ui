@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import FormStore from './form-store';
+import FormInstance from './form-instance';
 
-export default function useForm(): FormStore {
-  return useMemo(() => new FormStore(), []);
+export default function useForm(): FormInstance {
+  return useMemo(() => new FormInstance(), []);
 }
