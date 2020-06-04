@@ -1,9 +1,9 @@
 import React, { useEffect, useState, MouseEvent, useContext } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { InputNumberProps } from './types';
+import { ArrowDown } from '../_utils/components';
 
 /**
  * Valid the string is a number
@@ -89,10 +89,10 @@ const InputNumber = (props: InputNumberProps): React.ReactElement => {
       />
       <div className={`${prefixCls}__controls`}>
         <span className={`${prefixCls}__up`} onClick={plusOnClick}>
-          <Icon name="up" size={8} color="#999" />
+          <ArrowDown size={8} className={`${prefixCls}__icon ${prefixCls}__icon_reverse`} />
         </span>
         <span className={`${prefixCls}__down`} onClick={minusOnClick}>
-          <Icon name="down" size={8} color="#999" />
+          <ArrowDown size={8} className={`${prefixCls}__icon`} />
         </span>
       </div>
     </div>

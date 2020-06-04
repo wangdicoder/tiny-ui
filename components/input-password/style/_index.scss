@@ -4,4 +4,13 @@
   &__suffix {
     cursor: pointer;
   }
+
+  &__icon {
+    color: rgba(0, 0, 0, .45);
+    transition: color 250ms;
+
+    &:hover{
+      color: rgba(0, 0, 0, .65);
+    }
+  }
 }

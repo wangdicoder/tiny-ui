@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import Input from '../input';
-import Icon from '../icon';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { InputPasswordProps } from './types';
+import { Eye, EyeClose } from '../_utils/components';
 
 const InputPassword = (props: InputPasswordProps): JSX.Element => {
   const {
@@ -26,7 +26,11 @@ const InputPassword = (props: InputPasswordProps): JSX.Element => {
         setVisible(!visible);
         visibleOnClick && visibleOnClick();
       }}>
-      {visible ? <Icon name="eye" /> : <Icon name="eye-close" />}
+      {visible ? (
+        <Eye size={17} className={`${prefixCls}__icon`} />
+      ) : (
+        <EyeClose size={17} className={`${prefixCls}__icon`} />
+      )}
     </div>
   );
 
