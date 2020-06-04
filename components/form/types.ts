@@ -37,8 +37,6 @@ export type Rule = {
   whitespace?: boolean;
 };
 
-export type ValidateTrigger = 'onChange' | 'onBlur' | 'onSubmit';
-
 export interface FormItemProps extends BaseProps {
   name: string;
   required?: boolean;
@@ -49,21 +47,23 @@ export interface FormItemProps extends BaseProps {
   notice?: React.ReactNode;
   valuePropName?: string;
   valueGetter?: (...args: any[]) => any;
-  validateTrigger?: ValidateTrigger;
   children?: React.ReactNode;
 }
 
 export type FormLayout = DirectionType | 'inline';
 
+export type ValidateTrigger = 'onChange' | 'onBlur' | 'onSubmit';
+
 export interface FormOptionsProps {
   labelCol: number | { span: number, offset: number };
   wrapperCol: number | { span: number, offset: number };
+  validateTrigger: ValidateTrigger;
+  layout: FormLayout;
 }
 
 export interface FormProps extends BaseProps, Partial<FormOptionsProps>,
   React.PropsWithRef<JSX.IntrinsicElements['form']> {
   form?: FormInstance;
   initialValues?: FormValues;
-  layout?: FormLayout;
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }

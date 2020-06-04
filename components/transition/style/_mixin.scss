@@ -42,16 +42,17 @@
     &-enter-active {
       opacity: 1;
       transform: $moveEnd;
+      transition: transform 250ms, opacity 250ms;
     }
 
     &-exit {
       opacity: 1;
-      transform: $moveEnd;
     }
 
     &-exit-active {
       opacity: 0;
       transform: $moveStart;
+      transition: transform 250ms, opacity 250ms;
     }
   }
 }

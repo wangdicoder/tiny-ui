@@ -15,7 +15,6 @@ const FormItem = (props: FormItemProps): JSX.Element => {
     colon = true,
     valueGetter = getValueFromEvent,
     valuePropName = 'value',
-    validateTrigger = 'onChange',
     required,
     name,
     label,
@@ -31,7 +30,7 @@ const FormItem = (props: FormItemProps): JSX.Element => {
   const prefixCls = getPrefixCls('form-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const form = React.useContext(FormInstanceContext);
-  const { wrapperCol, labelCol } = React.useContext(FormOptionsContext);
+  const { wrapperCol, labelCol, validateTrigger, layout } = React.useContext(FormOptionsContext);
   const [value, setValue] = useState(form.getFieldValue(name));
   const [error, setError] = useState<string | undefined>(form.getFieldError(name));
   const isRequired = (rules && rules.some((rule) => rule.required)) || required;
@@ -64,6 +63,21 @@ const FormItem = (props: FormItemProps): JSX.Element => {
     [`${prefixCls}__label_colon`]: colon,
   });
 
+  const getCol = (col: number | { span: number; offset: number }): [number, number] => {
+    if (layout === 'vertical') {
+      return [24, 0];
+    } else {
+      if (typeof col === 'number') {
+        return [col, 0];
+      } else {
+        return [col.span, col.offset];
+      }
+    }
+  };
+
+  const [labelSpan, labelOffset] = getCol(labelCol);
+  const [wrapperSpan, wrapperOffset] = getCol(wrapperCol);
+
   useEffect(() => {
     if (form) {
       rules && form.setFiledRules(name, rules);
@@ -77,11 +91,6 @@ const FormItem = (props: FormItemProps): JSX.Element => {
     }
     return () => undefined;
   }, [form, name, rules]);
-
-  const labelSpan = typeof labelCol === 'number' ? labelCol : labelCol.span;
-  const labelOffset = typeof labelCol === 'number' ? 0 : labelCol.offset;
-  const wrapperSpan = typeof wrapperCol === 'number' ? wrapperCol : wrapperCol.span;
-  const wrapperOffset = typeof wrapperCol === 'number' ? 0 : wrapperCol.offset;
 
   return (
     <Row className={cls} style={style}>

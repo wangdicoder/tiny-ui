@@ -1,32 +1,39 @@
 @import '../../style/variables';
 
+.#{$prefix}-form {
+
+  &_vertical {
+    .#{$prefix}-form-item__label {
+      text-align: left;
+    }
+  }
+
+  &_inline {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 .#{$prefix}-form-item {
   font-family: $font-family;
 
   &__label {
-    box-sizing: border-box;
-    display: inline-block;
     line-height: 30px;
     text-align: right;
     vertical-align: top;
     color: rgba(0, 0, 0, 0.85);
     font-size: $font-size-base;
 
-    &_required:before{
+    &_required:before {
       content: '*';
       margin-right: 3px;
       color: rgb(255, 77, 79);
     }
 
-    &_colon:after{
+    &_colon:after {
       content: ':';
       margin: 0 8px 0 2px;
     }
-  }
-
-  &__controls {
-    box-sizing: border-box;
-    display: inline-block;
   }
 
   &__addon {
@@ -36,18 +43,17 @@
   &__error {
     height: 14px;
     line-height: 14px;
-    font-size: 12px;
+    font-size: 13px;
     color: #f30;
-    transition: all 250ms;
   }
 
   &__helper {
-    font-size: 12px;
+    font-size: 13px;
     color: #999;
   }
 
   &__notice {
-    font-size: 12px;
+    font-size: 13px;
     border-radius: 2px;
     background: #fff7cc;
     color: #333;

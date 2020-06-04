@@ -12,6 +12,8 @@ const Form = (props: FormProps): JSX.Element => {
     initialValues = {},
     labelCol = { span: 8, offset: 0 },
     wrapperCol = { span: 16, offset: 0 },
+    validateTrigger = 'onChange',
+    layout = 'horizontal',
     form,
     onSubmit,
     className,
@@ -21,7 +23,7 @@ const Form = (props: FormProps): JSX.Element => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('form', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className);
+  const cls = classNames(prefixCls, className, `${prefixCls}_${layout}`);
   const localForm = useForm();
   // If you want to control the form outside, namely get the form instance, just pass a form store.
   // Otherwise, the form component will manage the state internally.
@@ -31,7 +33,7 @@ const Form = (props: FormProps): JSX.Element => {
 
   return (
     <FormInstanceContext.Provider value={instance.current}>
-      <FormOptionsContext.Provider value={{ labelCol, wrapperCol }}>
+      <FormOptionsContext.Provider value={{ labelCol, wrapperCol, validateTrigger, layout }}>
         <form {...otherProps} className={cls} onSubmit={onSubmit}>
           {children}
         </form>
