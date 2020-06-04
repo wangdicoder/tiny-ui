@@ -36,7 +36,7 @@ export type TransitionProps = {
 
 const Transition = (props: TransitionProps): React.ReactElement => {
   const {
-    timeout = 250,
+    timeout = 300,
     unmountOnExit = true,
     appear = true,
     prefix = 'ty',
