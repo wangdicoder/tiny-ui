@@ -37,4 +37,4 @@ import { Sticky } from 'tiny-ui';
 | container         | specifies the scrollable area DOM node.       | () => HTMLElement             | () => window  |
 | onChange          | callback for when sticky state is changed.    | (stuck: boolean) => void     | -             |
 
-**Node: ** Children of `Sticky` must not have the property `position: absolute`.
+**Note: ** Children of `Sticky` must not have the property `position: absolute`.

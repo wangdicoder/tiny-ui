@@ -209,10 +209,11 @@ export const COMPONENT_MENU: RouterItem[] = [
   {
     title: 'Form Item',
     children: [
-      // {
-      //   title: 'Form',
-      //   route: 'form',
-      // },
+      {
+        title: 'Form',
+        route: 'form',
+        component: lazy(() => import('../../components/form/index.md')),
+      },
       {
         title: 'Checkbox',
         route: 'checkbox',
