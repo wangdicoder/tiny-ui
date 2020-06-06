@@ -15,7 +15,6 @@ const FormItem = (props: FormItemProps): JSX.Element => {
     colon = true,
     valueGetter = getValueFromEvent,
     valuePropName = 'value',
-    required,
     name,
     label,
     helper,
@@ -24,21 +23,28 @@ const FormItem = (props: FormItemProps): JSX.Element => {
     className,
     style,
     children,
+    labelCol: itemLabelCol,
+    wrapperCol: itemWrapperCol,
     prefixCls: customisedCls,
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('form-item', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className);
   const form = React.useContext(FormInstanceContext);
   const { wrapperCol, labelCol, validateTrigger, layout } = React.useContext(FormOptionsContext);
-  const [value, setValue] = useState(form.getFieldValue(name));
-  const [error, setError] = useState<string | undefined>(form.getFieldError(name));
-  const isRequired = (rules && rules.some((rule) => rule.required)) || required;
+  const [value, setValue] = useState(name ? form.getFieldValue(name) : undefined);
+  const [error, setError] = useState<string | undefined>(
+    name ? form.getFieldError(name) : undefined
+  );
+  const cls = classNames(prefixCls, className, {
+    [`${prefixCls}_has-error`]: !!error,
+  });
+  const isRequired =
+    'required' in props ? props.required : (rules && rules.some((rule) => rule.required)) || false;
 
   // get onChange event from all components which support onChange callback
   const onChange = useCallback(
     (...args: any[]) => {
-      if (form) {
+      if (name) {
         form.setFieldValue(name, valueGetter(...args));
         validateTrigger === 'onChange' && form.validateField(name);
       }
@@ -48,9 +54,7 @@ const FormItem = (props: FormItemProps): JSX.Element => {
 
   // get onBlur event from input
   const onBlur = useCallback(() => {
-    if (form) {
-      validateTrigger === 'onBlur' && form.validateField(name);
-    }
+    name && validateTrigger === 'onBlur' && form.validateField(name);
   }, [name, form, validateTrigger]);
 
   let child: any = children;
@@ -59,37 +63,51 @@ const FormItem = (props: FormItemProps): JSX.Element => {
   child = React.cloneElement(child, childProps);
 
   const labelCls = classNames({
-    [`${prefixCls}__label_required`]: isRequired,
-    [`${prefixCls}__label_colon`]: colon,
+    [`${prefixCls}__label_required`]: label && isRequired,
+    [`${prefixCls}__label_colon`]: label && colon,
   });
 
-  const getCol = (col: number | { span: number; offset: number }): [number, number] => {
-    if (layout === 'vertical') {
-      return [24, 0];
+  const getSpanAndOffset = (col: number | { span: number; offset: number }): [number, number] => {
+    if (typeof col === 'number') {
+      return [col, 0];
     } else {
-      if (typeof col === 'number') {
-        return [col, 0];
-      } else {
-        return [col.span, col.offset];
-      }
+      return [col.span, col.offset];
     }
   };
 
-  const [labelSpan, labelOffset] = getCol(labelCol);
-  const [wrapperSpan, wrapperOffset] = getCol(wrapperCol);
+  const getCol = (
+    col: number | { span: number; offset: number },
+    isSelf?: boolean
+  ): [number, number] => {
+    if (isSelf) {
+      return getSpanAndOffset(col);
+    }
+
+    if (layout === 'vertical') {
+      return [24, 0];
+    } else {
+      return getSpanAndOffset(col);
+    }
+  };
+
+  const [labelSpan, labelOffset] = itemLabelCol ? getCol(itemLabelCol, true) : getCol(labelCol);
+  const [wrapperSpan, wrapperOffset] = itemWrapperCol
+    ? getCol(itemWrapperCol, true)
+    : getCol(wrapperCol);
 
   useEffect(() => {
-    if (form) {
-      rules && form.setFiledRules(name, rules);
-
-      return form.subscribe((n) => {
-        if (name === '*' || n === name || n === '*') {
-          setValue(form.getFieldValue(name));
-          setError(form.getFieldError(name));
-        }
-      });
+    if (!name) {
+      return;
     }
-    return () => undefined;
+
+    rules && form.setFiledRules(name, rules);
+
+    return form.subscribe((n) => {
+      if (name === '*' || n === name || n === '*') {
+        setValue(form.getFieldValue(name));
+        setError(form.getFieldError(name));
+      }
+    });
   }, [form, name, rules]);
 
   return (
@@ -103,14 +121,14 @@ const FormItem = (props: FormItemProps): JSX.Element => {
         </label>
       </Col>
       <Col span={wrapperSpan} offset={wrapperOffset} className={`${prefixCls}__controls`}>
-        {child}
-        <div className={`${prefixCls}__addon`}>
-          {notice && <div className={`${prefixCls}__notice`}>{notice}</div>}
-          {helper && <div className={`${prefixCls}__helper`}>{helper}</div>}
-          <Transition in={!!error} animation="slide-down">
-            <div className={`${prefixCls}__error`}>{error}</div>
-          </Transition>
+        <div className={`${prefixCls}__input`}>
+          <div className={`${prefixCls}__input-content`}>{child}</div>
         </div>
+        {notice && <div className={`${prefixCls}__notice`}>{notice}</div>}
+        {helper && <div className={`${prefixCls}__helper`}>{helper}</div>}
+        <Transition in={!!error} animation="slide-down">
+          <div className={`${prefixCls}__error`}>{error}</div>
+        </Transition>
       </Col>
     </Row>
   );

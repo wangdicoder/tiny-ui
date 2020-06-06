@@ -3,10 +3,13 @@ import { validate } from './form-helper';
 import { Rule } from './types';
 
 export type FormValues = { [name: string]: any };
+export type FormErrors = { [name: string]: string[] };
 type FormListener = (name: string) => void;
 type FormRules = { [name: string]: Rule[] };
-type FormErrors = { [name: string]: string[] };
 
+/**
+ * The form state, including errors and rules of each form item
+ */
 export default class FormInstance {
   private readonly initValues: FormValues;
   private values: FormValues;
@@ -16,7 +19,11 @@ export default class FormInstance {
 
   constructor(initValues: FormValues = {}) {
     this.initValues = initValues;
-    this.values = initValues;
+    this.values = deepCopy(initValues);
+  }
+
+  getFieldValues(): FormValues {
+    return this.values;
   }
 
   getFieldValue(name: string): any {
@@ -30,6 +37,10 @@ export default class FormInstance {
 
   setFieldValues(values: FormValues = {}): void {
     Object.keys(values).forEach(name => this.setFieldValue(name, values[name]));
+  }
+
+  getFiledErrors(): FormErrors {
+    return this.errors;
   }
 
   getFieldError(name: string): string | undefined {

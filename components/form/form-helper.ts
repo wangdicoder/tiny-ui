@@ -11,25 +11,57 @@ export function getValueFromEvent(...args: any[]): any {
 }
 
 export function validate(value: any, rule: Rule): string | undefined {
-  const { required, max, min, message } = rule;
-  if (required && !value) {
+  const {
+    message,
+    required,
+    max,
+    min,
+    enum: enumVal,
+    len,
+    pattern,
+    transform,
+    type,
+    validator,
+    whitespace,
+  } = rule;
+  const val = transform ? transform(value) : value;
+
+  if (required && !val) {
     return message || 'The value is required';
   }
-  if (max) {
-    if (typeof value === 'number' && value > max) {
+  if (type && typeof val !== type) {
+    return message || `The value is not a ${type}`;
+  }
+  if (max || len) {
+    const segment = (max || len) as number;
+    if (typeof val === 'number' && val > segment) {
       return message || 'The value is greater than the max';
-    } else if ((typeof value === 'string' || Array.isArray(value)) && value.length > max) {
+    } else if ((typeof val === 'string' || Array.isArray(val)) && val.length > segment) {
       return message || 'The length of value is greater than the max';
     }
   }
   if (min) {
-    if (typeof value === 'number' && value < min) {
+    if (typeof val === 'number' && val < min) {
       return message || 'The value is less than the max';
-    } else if ((typeof value === 'string' || Array.isArray(value)) && value.length < min) {
+    } else if ((typeof val === 'string' || Array.isArray(val)) && val.length < min) {
       return message || 'The length of value is less than the max';
     }
+  }
+  if (enumVal && !enumVal.includes(val)) {
+    return message || 'The value is not in the enum';
+  }
+  if (pattern && !pattern.test(val)) {
+    return message || 'The value does not find a match';
+  }
+  if (validator) {
+    const res = validator(val);
+    if (res instanceof Promise ? !res.then(val) : !res) {
+      return message || 'The value is validated unsuccessfully';
+    }
+  }
+  if (whitespace && typeof val === 'string' && val.trim().length <= 0) {
+    return message || 'The input contains whitespace';
   }
 
   return undefined;
 }
-

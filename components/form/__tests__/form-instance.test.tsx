@@ -1,6 +1,6 @@
-import FormInstance from '../form-store';
+import FormInstance from '../form-instance';
 
-describe('FormStore', () => {
+describe('FormInstance', () => {
   it('set', () => {
     const store = new FormInstance();
 

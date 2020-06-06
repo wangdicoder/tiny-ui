@@ -1,11 +1,11 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { FormInstanceContext } from './form-instance-context';
 import { FormOptionsContext } from './form-options-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { FormProps } from './types';
-import useForm from './use-form';
+import FormInstance from './form-instance';
 
 const Form = (props: FormProps): JSX.Element => {
   const {
@@ -15,7 +15,8 @@ const Form = (props: FormProps): JSX.Element => {
     validateTrigger = 'onChange',
     layout = 'horizontal',
     form,
-    onSubmit,
+    onFinish,
+    onFinishFailed,
     className,
     children,
     prefixCls: customisedCls,
@@ -24,17 +25,31 @@ const Form = (props: FormProps): JSX.Element => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('form', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, `${prefixCls}_${layout}`);
-  const localForm = useForm();
   // If you want to control the form outside, namely get the form instance, just pass a form store.
   // Otherwise, the form component will manage the state internally.
-  const formInstance = form ? form : localForm;
-  formInstance.setFieldValues(initialValues);
-  const instance = useRef(formInstance);
+  const formRef = React.useRef(form ? form : new FormInstance(initialValues));
+
+  const formOnSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formIns = formRef.current;
+    formIns.validateFields();
+    const values = formIns.getFieldValues();
+    const errors = formIns.getFiledErrors();
+    if (Object.keys(errors).some((key) => errors[key].length > 0)) {
+      onFinishFailed && onFinishFailed({ values, errors });
+    } else {
+      onFinish && onFinish(values);
+    }
+  };
+
+  const formOnReset = () => {
+    formRef.current.resetFields();
+  };
 
   return (
-    <FormInstanceContext.Provider value={instance.current}>
+    <FormInstanceContext.Provider value={formRef.current}>
       <FormOptionsContext.Provider value={{ labelCol, wrapperCol, validateTrigger, layout }}>
-        <form {...otherProps} className={cls} onSubmit={onSubmit}>
+        <form {...otherProps} className={cls} onSubmit={formOnSubmit} onReset={formOnReset}>
           {children}
         </form>
       </FormOptionsContext.Provider>

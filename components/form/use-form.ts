@@ -1,6 +1,5 @@
-import { useMemo } from 'react';
-import FormInstance from './form-instance';
+import FormInstance, { FormValues } from './form-instance';
 
-export default function useForm(): FormInstance {
-  return useMemo(() => new FormInstance(), []);
+export default function useForm(initialValues: FormValues = {}): [FormInstance] {
+  return [new FormInstance(initialValues)];
 }

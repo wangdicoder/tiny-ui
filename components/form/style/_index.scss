@@ -15,8 +15,7 @@
 }
 
 .#{$prefix}-form-item {
-  font-family: $font-family;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 
   &__label {
     line-height: 30px;
@@ -37,27 +36,23 @@
     }
   }
 
-  &__input{
+  &__input {
     position: relative;
     min-height: 32px;
     display: flex;
     align-items: center;
   }
 
-  &__input-content{
+  &__input-content {
     flex: auto;
     max-width: 100%;
   }
 
-  &__addon {
-    //margin: 7px 0;
-  }
-
   &__error {
-    height: 14px;
-    line-height: 14px;
+    min-height: 22px;
+    line-height: 22px;
     font-size: 13px;
-    color: #f30;
+    color: #ff4d4f;
   }
 
   &__helper {
@@ -72,5 +67,22 @@
     color: #333;
     padding: 5px;
     margin-bottom: 3px;
+  }
+
+  &_has-error {
+    margin-bottom: 0;
+
+    .#{$prefix}-input__input, .#{$prefix}-input-number__input, .#{$prefix}-textarea {
+      border-color: #ff4d4f;
+
+      &:not([disabled]):hover{
+        border-color: #ff4d4f;
+      }
+
+      &:focus{
+        border-color: #ff7875;
+        box-shadow: 0 0 0 2px rgba(255,77,79,.2);
+      }
+    }
   }
 }
