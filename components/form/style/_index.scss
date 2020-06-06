@@ -16,6 +16,7 @@
 
 .#{$prefix}-form-item {
   font-family: $font-family;
+  margin-bottom: 20px;
 
   &__label {
     line-height: 30px;
@@ -36,8 +37,20 @@
     }
   }
 
+  &__input{
+    position: relative;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input-content{
+    flex: auto;
+    max-width: 100%;
+  }
+
   &__addon {
-    margin: 7px 0;
+    //margin: 7px 0;
   }
 
   &__error {
