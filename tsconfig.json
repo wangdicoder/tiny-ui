@@ -38,6 +38,7 @@
     "components/"
   ],
   "exclude": [
+    "components/**/*.test.ts",
     "components/**/*.test.tsx"
   ]
 }

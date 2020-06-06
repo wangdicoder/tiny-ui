@@ -35,8 +35,10 @@ const FormItem = (props: FormItemProps): JSX.Element => {
   const [error, setError] = useState<string | undefined>(
     name ? form.getFieldError(name) : undefined
   );
+  const [hasErrLabel, setHasErrLabel] = useState(false);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_has-error`]: !!error,
+    [`${prefixCls}_with-err-label`]: hasErrLabel,
   });
   const isRequired =
     'required' in props ? props.required : (rules && rules.some((rule) => rule.required)) || false;
@@ -110,6 +112,12 @@ const FormItem = (props: FormItemProps): JSX.Element => {
     });
   }, [form, name, rules]);
 
+  useEffect(() => {
+    if (error) {
+      setHasErrLabel(true);
+    }
+  }, [error]);
+
   return (
     <Row className={cls} style={style}>
       <Col span={labelSpan} offset={labelOffset} className={`${prefixCls}__label`}>
@@ -126,7 +134,7 @@ const FormItem = (props: FormItemProps): JSX.Element => {
         </div>
         {notice && <div className={`${prefixCls}__notice`}>{notice}</div>}
         {helper && <div className={`${prefixCls}__helper`}>{helper}</div>}
-        <Transition in={!!error} animation="slide-down">
+        <Transition in={!!error} animation="slide-down" onExited={() => setHasErrLabel(false)}>
           <div className={`${prefixCls}__error`}>{error}</div>
         </Transition>
       </Col>

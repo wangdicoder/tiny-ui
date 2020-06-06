@@ -16,6 +16,7 @@
 
 .#{$prefix}-form-item {
   margin-bottom: 22px;
+  vertical-align: top;
 
   &__label {
     line-height: 30px;
@@ -69,9 +70,11 @@
     margin-bottom: 3px;
   }
 
-  &_has-error {
+  &_with-err-label {
     margin-bottom: 0;
+  }
 
+  &_has-error {
     .#{$prefix}-input__input, .#{$prefix}-input-number__input, .#{$prefix}-textarea {
       border-color: #ff4d4f;
 
