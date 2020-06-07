@@ -57,17 +57,19 @@
   }
 
   &__helper {
+    min-height: 22px;
+    line-height: 22px;
     font-size: 13px;
     color: #999;
   }
 
   &__notice {
     font-size: 13px;
-    border-radius: 2px;
+    border-radius: $border-radius;
     background: #fff7cc;
-    color: #333;
+    color: #555;
     padding: 5px;
-    margin-bottom: 3px;
+    margin-top: 5px;
   }
 
   &_with-err-label {

@@ -1,8 +1,10 @@
 import Basic from './demo/basic.md'
+import Extra from './demo/extra.md'
 import Layout from './demo/layout.md'
 import Method from './demo/method.md'
 import ComplexLayout from './demo/complex-layout.md'
 import ValidateTrigger from './demo/validate-trigger.md'
+import Modal from './demo/modal.md'
 import OtherControls from './demo/other-controls.md'
 
 # Form
@@ -25,10 +27,12 @@ const { Item, useForm, FormInstance } = Form;
 ## Examples
 
 <Basic />
+<Extra />
 <Layout />
 <Method />
 <ComplexLayout />
 <ValidateTrigger />
+<Modal />
 <OtherControls />
 
 ## API
