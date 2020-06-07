@@ -7,7 +7,7 @@ type CollapseTransitionProps = {
 
 const COLLAPSE_DURATION = 250;
 
-export const CollapseTransition = (props: CollapseTransitionProps): JSX.Element => {
+const CollapseTransition = (props: CollapseTransitionProps): JSX.Element => {
   const { isShow, children } = props;
   const leaveTimerRef = useRef<number | null>(null);
   const enterTimerRef = useRef<number | null>(null);
@@ -109,3 +109,7 @@ export const CollapseTransition = (props: CollapseTransitionProps): JSX.Element 
     </div>
   );
 };
+
+CollapseTransition.displayName = 'CollapseTransition';
+
+export default CollapseTransition;

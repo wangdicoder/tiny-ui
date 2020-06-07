@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from 'react';
 import classNames from 'classnames';
-import { CollapseTransition } from './collapse-transition';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CollapsePanelProps } from './types';
 import { ArrowDown } from '../_utils/components';
+import CollapseTransition from '../collapse-transition';
 
 /**
  * Allow to parse active status to a node
