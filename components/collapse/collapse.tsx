@@ -19,7 +19,6 @@ const Collapse = (props: CollapseProps): React.ReactElement => {
     deletable = false,
     accordion = false,
     defaultActiveKey = [],
-    duration = 300,
     prefixCls: customisedCls,
     activeKey,
     onChange,
@@ -73,7 +72,6 @@ const Collapse = (props: CollapseProps): React.ReactElement => {
     <div className={cls} style={style}>
       {React.Children.map(children, (child) => {
         const itemProps: Partial<CollapsePanelProps> = {
-          duration,
           deletable,
           showArrow,
           isActive: activeItems.includes(child.props.itemKey),

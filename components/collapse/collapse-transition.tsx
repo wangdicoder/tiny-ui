@@ -1,140 +1,111 @@
-import React, { PureComponent } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 
 type CollapseTransitionProps = {
-  duration: number;
   isShow: boolean;
-  children: React.ReactElement;
+  children: React.ReactNode;
 };
 
-type CollapseTransitionState = {
-  isShow: boolean;
-};
+const COLLAPSE_DURATION = 250;
 
-export default class CollapseTransition extends PureComponent<
-  CollapseTransitionProps,
-  CollapseTransitionState
-> {
-  selfRef: any;
-  leaveTimer: any;
-  enterTimer: any;
+export const CollapseTransition = (props: CollapseTransitionProps): JSX.Element => {
+  const { isShow, children } = props;
+  const leaveTimerRef = useRef<number | null>(null);
+  const enterTimerRef = useRef<number | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
-  static defaultProps = {
-    duration: 300,
-  };
-
-  state = {
-    isShow: false,
-  };
-
-  componentDidMount(): void {
-    this.beforeEnter();
-    this.props.isShow && this.enter();
-  }
-
-  componentWillUnmount(): void {
-    this.beforeLeave();
-    this.leave();
-  }
-
-  static getDerivedStateFromProps(
-    nextProps: Readonly<CollapseTransitionProps>,
-    prevState: Readonly<CollapseTransitionState>
-  ) {
-    if (nextProps.isShow !== prevState.isShow) {
-      return {
-        isShow: nextProps.isShow,
-      };
+  const beforeEnter = useCallback((): void => {
+    const el = ref.current;
+    if (el) {
+      el.style.display = 'block';
+      el.style.height = '0px';
     }
+  }, []);
 
-    return null;
-  }
-
-  componentDidUpdate(
-    prevProps: Readonly<CollapseTransitionProps>,
-    prevState: Readonly<CollapseTransitionState>
-  ): void {
-    if (this.props.isShow !== prevProps.isShow) {
-      this.triggerChange(this.props.isShow);
-    }
-  }
-
-  triggerChange(isShow: boolean): void {
-    clearTimeout(this.enterTimer);
-    clearTimeout(this.leaveTimer);
-    if (isShow) {
-      this.beforeEnter();
-      this.enter();
-    } else {
-      this.beforeLeave();
-      this.leave();
-    }
-  }
-
-  beforeEnter(): void {
-    const el = this.selfRef;
-    el.dataset.oldOverflow = el.style.overflow;
-    el.style.height = '0';
-  }
-
-  enter(): void {
-    const el = this.selfRef;
-    el.style.display = 'block';
-    if (el.scrollHeight !== 0) {
-      el.style.height = el.scrollHeight + 'px';
-    } else {
+  const afterEnter = useCallback((): void => {
+    const el = ref.current;
+    if (el) {
+      el.style.display = 'block';
       el.style.height = '';
     }
+  }, []);
 
-    el.style.overflow = 'hidden';
+  const enter = useCallback((): void => {
+    const el = ref.current;
+    if (el) {
+      if (el.scrollHeight !== 0) {
+        el.style.height = el.scrollHeight + 'px';
+      } else {
+        el.style.height = '';
+      }
 
-    this.enterTimer = setTimeout(() => this.afterEnter(), this.props.duration);
-  }
-
-  afterEnter(): void {
-    const el = this.selfRef;
-    el.style.display = 'block';
-    el.style.height = '';
-    el.style.overflow = el.dataset.oldOverflow;
-  }
-
-  beforeLeave(): void {
-    const el = this.selfRef;
-    el.dataset.oldOverflow = el.style.overflow;
-
-    el.style.display = 'block';
-    if (el.scrollHeight !== 0) {
-      el.style.height = el.scrollHeight + 'px';
+      enterTimerRef.current = window.setTimeout(() => afterEnter(), COLLAPSE_DURATION);
     }
-    el.style.overflow = 'hidden';
-  }
+  }, [afterEnter]);
 
-  leave(): void {
-    const el = this.selfRef;
-    if (el.scrollHeight !== 0) {
-      el.style.height = 0;
+  const beforeLeave = useCallback((): void => {
+    const el = ref.current;
+    if (el) {
+      el.style.display = 'block';
+      if (el.scrollHeight !== 0) {
+        el.style.height = el.scrollHeight + 'px';
+      }
     }
-    this.leaveTimer = setTimeout(() => this.afterLeave(), this.props.duration);
-  }
+  }, []);
 
-  afterLeave(): void {
-    const el = this.selfRef;
-    if (!el) {
-      return;
+  const afterLeave = useCallback((): void => {
+    const el = ref.current;
+    if (el) {
+      el.style.display = 'none';
+      el.style.height = '';
     }
+  }, []);
 
-    el.style.display = 'none';
-    el.style.height = '';
-    el.style.overflow = el.dataset.oldOverflow;
-  }
+  const leave = useCallback((): void => {
+    const el = ref.current;
+    if (el) {
+      if (el.scrollHeight !== 0) {
+        el.style.height = '0px';
+      }
 
-  render(): React.ReactNode {
-    return (
-      <div
-        className="collapse-transition"
-        style={{ overflow: 'hidden' }}
-        ref={el => (this.selfRef = el)}>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+      leaveTimerRef.current = window.setTimeout(() => afterLeave(), COLLAPSE_DURATION);
+    }
+  }, [afterLeave]);
+
+  const triggerChange = useCallback(
+    (isCollapsed: boolean): void => {
+      const enterTimer = enterTimerRef.current;
+      const leaveTimer = leaveTimerRef.current;
+      enterTimer && window.clearTimeout(enterTimer);
+      leaveTimer && window.clearTimeout(leaveTimer);
+
+      if (isCollapsed) {
+        beforeEnter();
+        enter();
+      } else {
+        beforeLeave();
+        leave();
+      }
+    },
+    [enter, leave, beforeEnter, beforeLeave]
+  );
+
+  useEffect(() => {
+    beforeEnter();
+    enter();
+
+    return () => {
+      beforeLeave();
+      leave();
+    };
+  }, [enter, leave, beforeEnter, beforeLeave]);
+
+  useEffect(() => {
+    triggerChange(isShow);
+  }, [isShow, triggerChange]);
+
+  return (
+    <div className="ty-collapse-transition" ref={ref}>
+      {children}
+    </div>
+  );
+};

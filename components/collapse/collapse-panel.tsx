@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
-import CollapseTransition from './collapse-transition';
+import { CollapseTransition } from './collapse-transition';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CollapsePanelProps } from './types';
+import { ArrowDown } from '../_utils/components';
 
 /**
  * Allow to parse active status to a node
@@ -21,7 +21,6 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     isActive = false,
     prefixCls: customisedCls,
     itemKey,
-    duration,
     header,
     disabled,
     extra,
@@ -38,7 +37,7 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     [`${prefixCls}_active`]: isActive,
   });
 
-  const _headerOnClick = () => {
+  const headerOnClick = () => {
     if (!disabled) {
       onItemClick && onItemClick(itemKey);
     }
@@ -49,7 +48,7 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
    * @param e
    * @private
    */
-  const _removeItem = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const removeItem = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
     if (!disabled) {
       const itemNode = itemRef.current;
@@ -57,7 +56,7 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     }
   };
 
-  const _renderHeader = () => {
+  const renderHeader = () => {
     const headerCls = classNames(`${prefixCls}__header`, {
       [`${prefixCls}__header_disabled`]: disabled,
     });
@@ -66,11 +65,11 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     });
 
     return (
-      <div className={headerCls} onClick={_headerOnClick}>
-        {showArrow && <Icon name="right" className={arrowCls} />}
+      <div className={headerCls} onClick={headerOnClick}>
+        {showArrow && <ArrowDown size={10} className={arrowCls} />}
         <div className={`${prefixCls}__title`}>{richNode(header, isActive)}</div>
         <div className={`${prefixCls}__extra`}>
-          {deletable ? <span onClick={_removeItem}>✕</span> : richNode(extra, isActive)}
+          {deletable ? <span onClick={removeItem}>✕</span> : richNode(extra, isActive)}
         </div>
       </div>
     );
@@ -78,8 +77,8 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
 
   return (
     <div className={cls} style={style} ref={itemRef}>
-      {_renderHeader()}
-      <CollapseTransition duration={duration} isShow={isActive}>
+      {renderHeader()}
+      <CollapseTransition isShow={isActive}>
         <div className={`${prefixCls}__content`}>{richNode(children, isActive)}</div>
       </CollapseTransition>
     </div>

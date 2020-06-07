@@ -4,7 +4,6 @@ import { BaseProps } from '../_utils/props';
 export interface CollapsePanelProps extends BaseProps {
   itemKey: string;
   header: React.ReactNode;
-  duration: number;
   isActive?: boolean;
   disabled?: boolean;
   extra?: React.ReactNode;
@@ -18,7 +17,6 @@ export interface CollapsePanelProps extends BaseProps {
 export interface CollapseProps extends BaseProps {
   defaultActiveKey?: string | string[];
   activeKey?: string | string[];
-  duration?: number;
   /** Only open one panel */
   accordion?: boolean;
   /** Allow to delete */

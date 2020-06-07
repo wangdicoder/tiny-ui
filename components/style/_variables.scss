@@ -136,7 +136,7 @@ $avatar-color: #fff                           !default;
 $avatar-border-radius: 2px                    !default;
 
 // Collapse
-$collapse-border-radius: 4px                  !default;
+$collapse-border-radius: $border-radius       !default;
 
 // Badge
 $badge-font-size: 12px                        !default;
