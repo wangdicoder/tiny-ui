@@ -21,7 +21,6 @@ $btn-prefix: #{$prefix}-btn;
   user-select: none;
   border-radius: $btn-border-radius;
   transition: $btn-transition;
-  font-family: $font-family;
   line-height: $btn-line-height;
 
   & + .#{$btn-prefix} {

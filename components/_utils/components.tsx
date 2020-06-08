@@ -161,3 +161,12 @@ export const EyeClose = (props: IconProps): React.ReactElement => {
     </svg>
   );
 };
+
+export const TreeArrow = (props: IconProps): React.ReactElement => {
+  const { size = 20, color = 'currentcolor', ...otherProps } = props;
+  return (
+    <svg {...otherProps} width={size} height={size} viewBox="0 0 1024 1024">
+      <path fill={color} d="M726.652801 429.305603 297.347199 429.305603 512.193405 638.156258Z" />
+    </svg>
+  );
+};

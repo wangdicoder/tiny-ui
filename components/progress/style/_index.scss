@@ -1,7 +1,6 @@
 @import '../../style/variables';
 
 .#{$prefix}-progress-bar {
-  font-family: $font-family;
   display: flex;
   align-items: center;
   font-size: 13px;
@@ -103,7 +102,6 @@
 }
 
 .#{$prefix}-progress-circle {
-  font-family: $font-family;
   display: inline-block;
   position: relative;
 
