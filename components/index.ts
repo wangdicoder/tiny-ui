@@ -64,6 +64,7 @@ export { default as Timeline } from './timeline';
 export { default as Tooltip } from './tooltip';
 export { default as Transfer } from './transfer';
 export { default as Transition } from './transition';
+export { default as Tree } from './tree';
 export { default as Typography } from './typography';
 export { default as Upload } from './upload';
 // export { default as Waterfall } from './waterfall';

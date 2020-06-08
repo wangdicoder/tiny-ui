@@ -1,0 +1,39 @@
+@import '../../style/variables';
+
+.#{$prefix}-tree {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.#{$prefix}-tree-node {
+
+  &__switcher{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__arrow {
+    color: #999;
+    transform: rotate(-90deg);
+    transition: transform 250ms;
+
+    &_active {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__title {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+  }
+
+  .#{$prefix}-checkbox {
+    margin-right: 0;
+  }
+}
