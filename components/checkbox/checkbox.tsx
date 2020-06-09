@@ -32,7 +32,7 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
         ? (checkboxGroupContext.disabled as boolean)
         : false;
     const cls = classNames(prefixCls, className, {
-      [`${prefixCls}_indeterminate`]: indeterminate && !checked,
+      [`${prefixCls}_indeterminate`]: indeterminate,
       [`${prefixCls}_checked`]: checked && !indeterminate,
       [`${prefixCls}_disabled`]: disabled,
     });

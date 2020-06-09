@@ -17,10 +17,11 @@ The `indeterminate` property can help you to achieve a **check all** effect.
       <>
         <div style={{ borderBottom: '1px solid rgb(233, 233, 233)', marginBottom: '15px' }}>
           <Checkbox
-            onChange={val => {
-              val ? setCheckboxVal(['a', 'b', 'c']) : setCheckboxVal([]);
+            onChange={e => {
+              const { checked } = e.currentTarget;
+              checked ? setCheckboxVal(['a', 'b', 'c']) : setCheckboxVal([]);
               setIndeterminate(false);
-              setCheckAll(val);
+              setCheckAll(checked);
             }}
             checked={checkAll}
             indeterminate={indeterminate}>
