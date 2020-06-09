@@ -4,11 +4,13 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: $tree-font-size;
 }
 
 .#{$prefix}-tree-node {
+  margin: 2px 0;
 
-  &__switcher{
+  &__switcher {
     width: 20px;
     height: 20px;
     display: flex;
@@ -26,14 +28,60 @@
     }
   }
 
+  &__label {
+    padding: 1px 2px;
+    margin-left: -4px;
+  }
+
   &__title {
     cursor: pointer;
-    display: flex;
     align-items: center;
     min-height: 24px;
+    display: inline-flex;
+    transition: background-color 250ms;
+  }
+
+  &__label {
+    transition: background-color 250ms;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
   }
 
   .#{$prefix}-checkbox {
     margin-right: 0;
+  }
+
+  &_block {
+    .#{$prefix}-tree-node__title {
+      display: flex;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  &_selected.#{$prefix}-tree-node_block {
+    .#{$prefix}-tree-node__title {
+      background-color: $tree-selected-bg-color;
+
+      &:hover {
+        background-color: $tree-selected-bg-color;
+      }
+    }
+
+    .#{$prefix}-tree-node__label:hover {
+      background-color: transparent;
+    }
+  }
+
+  &_selected:not(.#{$prefix}-tree-node_block) .#{$prefix}-tree-node__label {
+    background-color: $tree-selected-bg-color;
+
+    &:hover {
+      background-color: $tree-selected-bg-color;
+    }
   }
 }

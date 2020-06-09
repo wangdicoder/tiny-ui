@@ -12,8 +12,8 @@ export type Node = {
   expanded: boolean;
   disabled: boolean;
   disableCheckbox: boolean;
+  parentKey: string;
   icon?: (isExpanded: boolean) => React.ReactNode;
-  parentKey?: string;
   children?: Node[];
 };
 
@@ -89,17 +89,47 @@ export class TreeInstance {
     for (const key of keys) {
       if (curr) {
         target = curr[key];
-        curr = target.children;
+        curr = target?.children;
       }
     }
 
     return target;
   }
 
+  checkChildren(children: Node[], isChecked: boolean): void {
+    children.forEach((child) => {
+      child.checked = isChecked;
+      if (child.children) {
+        this.checkChildren(child.children, isChecked);
+      }
+    });
+  }
+
+  checkParent(node: Node): void {
+    const children = node.children as Node[];
+    const numOfChecked = children.filter((n) => n.checked).length;
+    node.checked = numOfChecked === children.length;
+    const parentNode = this.getNodeByUniqueKey(node.parentKey);
+    if (parentNode) {
+      this.checkParent(parentNode);
+    }
+  }
+
   setNodeChecked(uniqueKey: string, isChecked: boolean): void {
     const node = this.getNodeByUniqueKey(uniqueKey);
     if (node) {
       node.checked = isChecked;
+      // check parent node
+      // if siblings of current node are all checked, set the parent node checked
+      const parentNode = this.getNodeByUniqueKey(node.parentKey);
+      if (parentNode) {
+        this.checkParent(parentNode);
+      }
+      // update children node
+      // if children are existing, make them all checked
+      if (node.children) {
+        this.checkChildren(node.children, isChecked);
+      }
     }
   }
 
