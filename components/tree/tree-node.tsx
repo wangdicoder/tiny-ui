@@ -73,7 +73,7 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
             checked={checked}
             indeterminate={indeterminate}
             onChange={checkboxOnChange}
-            disabled={disableCheckbox}
+            disabled={disabled || disableCheckbox}
           />
         )}
         <span className={`${prefixCls}__label`}>{title}</span>
@@ -83,7 +83,7 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
           <ul className={treeClassName} aria-level={level + 1}>
             {node.children &&
               node.children.map((node) => (
-                <TreeNode {...props} key={node.key} node={node} level={level + 1} />
+                <TreeNode {...props} key={node.uniqueKey} node={node} level={level + 1} />
               ))}
           </ul>
         </CollapseTransition>

@@ -2,8 +2,8 @@ import React from 'react';
 import { BaseProps } from '../_utils/props';
 
 export type TreeData = {
-  key: string;
-  title?: string;
+  key?: string;
+  title?: React.ReactNode;
   disableCheckbox?: boolean;
   disabled?: boolean;
   icon?: (isExpanded: boolean) => React.ReactNode;

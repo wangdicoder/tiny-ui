@@ -1,12 +1,12 @@
-import { TreeData } from './types';
 import React from 'react';
+import { TreeData } from './types';
 
 export type Node = {
   // data source key provided by user
-  key: string;
+  key?: string;
   // unique key managed by TreeInstance. x-x-x
   uniqueKey: string;
-  title: string;
+  title: React.ReactNode;
   checked: boolean;
   indeterminate: boolean;
   expanded: boolean;
@@ -43,17 +43,18 @@ export class TreeInstance {
     parentKey: string
   ): Node[] {
     return data.map((item, idx) => {
-      const { title, children, disableCheckbox, disabled, ...otherProps } = item;
-      const key = parentKey ? parentKey + `-${idx}` : `${idx}`;
+      const { key, title, children, disableCheckbox, disabled, ...otherProps } = item;
+      const uniqueKey = parentKey ? parentKey + `-${idx}` : `${idx}`;
       const node: Node = {
         ...otherProps,
-        uniqueKey: key,
+        key,
+        uniqueKey,
         title: title || '---',
         disabled: disabled || false,
         disableCheckbox: disableCheckbox || false,
-        checked: defaultCheckedKeys.includes(item.key),
+        checked: key ? defaultCheckedKeys.includes(key) : false,
         indeterminate: false,
-        expanded: defaultExpandAll || defaultExpandedKeys.includes(item.key),
+        expanded: defaultExpandAll || (key ? defaultExpandedKeys.includes(key) : false),
         parentKey,
       };
 
@@ -63,7 +64,7 @@ export class TreeInstance {
           defaultCheckedKeys,
           defaultExpandedKeys,
           defaultExpandAll,
-          key
+          uniqueKey
         );
         const indeterminate = this.isIndeterminate(node);
         return {
@@ -107,6 +108,10 @@ export class TreeInstance {
 
   checkChildren(children: Node[], isChecked: boolean): void {
     children.forEach((child) => {
+      if (child.disabled) {
+        return;
+      }
+
       child.checked = isChecked;
       child.indeterminate = this.isIndeterminate(child);
       if (child.children) {
@@ -116,6 +121,10 @@ export class TreeInstance {
   }
 
   checkParent(node: Node): void {
+    if (node.disabled) {
+      return;
+    }
+
     const children = node.children as Node[];
     const numOfChecked = children.filter((n) => n.checked).length;
     node.checked = numOfChecked === children.length;

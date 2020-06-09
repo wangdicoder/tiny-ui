@@ -5,7 +5,6 @@ import { getPrefixCls } from '../_utils/general';
 import { TreeProps } from './types';
 import { TreeInstance } from './tree-instance';
 import TreeNode from './tree-node';
-import { deepCopy } from '../_utils/object';
 
 const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
   (props: TreeProps, ref): JSX.Element => {
@@ -31,12 +30,12 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
 
     const onCheckboxChange = (key: string, e: React.ChangeEvent<HTMLInputElement>) => {
       treeInstance.current.setNodeChecked(key, e.currentTarget.checked);
-      setTreeNodes(deepCopy(treeInstance.current.nodes));
+      setTreeNodes([...treeInstance.current.nodes]);
     };
 
     const onExpandChange = (key: string, isExpanded: boolean) => {
       treeInstance.current.setNodeExpanded(key, isExpanded);
-      setTreeNodes(deepCopy(treeInstance.current.nodes));
+      setTreeNodes([...treeInstance.current.nodes]);
     };
 
     return (
@@ -44,7 +43,7 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
         {treeNodes.map((item) => (
           <TreeNode
             {...props}
-            key={item.key}
+            key={item.uniqueKey}
             node={item}
             level={0}
             indent={indent}
