@@ -13,7 +13,6 @@
   }
 
   &__editor-container {
-    position: relative;
     background-color: #f9fafc;
     border-top: solid 1px #eaeefb;
     padding: 15px;
@@ -26,7 +25,6 @@
 
   &__editor-wrapper {
     width: 800px;
-    position: absolute;
   }
 
   &__controller {

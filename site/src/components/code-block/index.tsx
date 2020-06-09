@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import './code-block.scss';
 import Highlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { CodeTheme } from './code-theme';
 import * as Components from '../../../../components';
+import CollapseTransition from '../../../../components/collapse-transition';
 
 type Props = {
   children: string;
@@ -13,30 +14,29 @@ type Props = {
 
 export const CodeBlock = ({ children, className, live }: Props): React.ReactElement => {
   const [showCode, setShowCode] = useState(false);
-  const [editorContainerHeight, setEditorContainerHeight] = useState(0);
+  const ref = useRef<HTMLDivElement | null>(null);
   let language: Language = 'markup';
   if (className != null) {
     language = className.replace(/language-/, '') as Language;
   }
-  const el = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    el.current && setEditorContainerHeight((el.current as HTMLDivElement).offsetHeight + 30); // padding 15px
-  });
 
   if (live) {
     return (
-      <div className="code-block__container">
+      <div className="code-block__container" ref={ref}>
         <LiveProvider code={children.trim()} theme={CodeTheme as PrismTheme} scope={Components}>
           <LivePreview className="code-block__previewer" />
           <LiveError />
-          {showCode && (
-            <div className="code-block__editor-container" style={{ height: editorContainerHeight }}>
-              <div className="code-block__editor-wrapper" ref={el}>
+          <CollapseTransition isShow={showCode}>
+            <div
+              className="code-block__editor-container"
+              style={{
+                maxWidth: ref.current ? (ref.current as HTMLDivElement).offsetWidth : 0,
+              }}>
+              <div className="code-block__editor-wrapper">
                 <LiveEditor />
               </div>
             </div>
-          )}
+          </CollapseTransition>
           <div className="code-block__controller" onClick={() => setShowCode(!showCode)}>
             {showCode ? 'Hide Code' : 'Show Code'}
           </div>

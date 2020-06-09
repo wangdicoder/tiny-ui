@@ -1,7 +1,7 @@
 import React from 'react';
 import './component-overview.scss';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import { Row, Button } from '../../../../components';
+import { Row, Button, Tag } from '../../../../components';
 import { COMPONENT_MENU } from '../../routers';
 
 const ComponentOverview = () => {
@@ -20,7 +20,9 @@ const ComponentOverview = () => {
       </p>
       {COMPONENT_MENU.map((router) => (
         <div key={router.title}>
-          <h2 className="markdown__heading-2">{router.title}</h2>
+          <h3 className="markdown__heading-3">
+            {router.title} <Tag>{router.children?.length}</Tag>
+          </h3>
           <Row gutter={24} gutterSide>
             {router.children!.map((item) => (
               <Button

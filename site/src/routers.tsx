@@ -204,6 +204,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         route: 'tooltip',
         component: lazy(() => import('../../components/tooltip/index.md')),
       },
+      {
+        title: 'Tree',
+        route: 'tree',
+        component: lazy(() => import('../../components/tree/index.md')),
+      },
     ],
   },
   {
