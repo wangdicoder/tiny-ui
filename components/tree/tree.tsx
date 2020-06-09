@@ -12,13 +12,11 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
     const {
       data = [],
       defaultCheckedKeys = [],
-      defaultSelectedKeys = [],
       defaultExpandedKeys = [],
       defaultExpandAll = false,
       indent = 20,
       blockNode = true,
       checkable = false,
-      selectable = false,
       disabled = false,
       className,
       prefixCls: customisedCls,
@@ -27,25 +25,12 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
     const prefixCls = getPrefixCls('tree', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className);
     const treeInstance = useRef(
-      new TreeInstance(
-        data,
-        defaultCheckedKeys,
-        defaultSelectedKeys,
-        defaultExpandedKeys,
-        defaultExpandAll
-      )
+      new TreeInstance(data, defaultCheckedKeys, defaultExpandedKeys, defaultExpandAll)
     );
     const [treeNodes, setTreeNodes] = useState(treeInstance.current.nodes);
 
-    console.log(treeNodes);
-
     const onCheckboxChange = (key: string, e: React.ChangeEvent<HTMLInputElement>) => {
       treeInstance.current.setNodeChecked(key, e.currentTarget.checked);
-      setTreeNodes(deepCopy(treeInstance.current.nodes));
-    };
-
-    const onSelectChange = (key: string, isSelected: boolean) => {
-      treeInstance.current.setNodeSelected(key, isSelected);
       setTreeNodes(deepCopy(treeInstance.current.nodes));
     };
 
@@ -65,11 +50,9 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
             indent={indent}
             blockNode={blockNode}
             checkable={checkable}
-            selectable={selectable}
             disabled={disabled}
             treeClassName={cls}
             onCheckboxChange={onCheckboxChange}
-            onSelectChange={onSelectChange}
             onExpandChange={onExpandChange}
           />
         ))}

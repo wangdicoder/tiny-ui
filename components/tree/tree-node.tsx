@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -13,13 +13,11 @@ interface TreeNodeProps extends BaseProps {
   level: number;
   treeClassName: string;
   onCheckboxChange: (uniqueKey: string, e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSelectChange: (key: string, isSelected: boolean) => void;
   onExpandChange: (key: string, isExpanded: boolean) => void;
   // tree props
   indent: number;
   blockNode: boolean;
   checkable: boolean;
-  selectable: boolean;
   disabled: boolean;
 }
 
@@ -33,27 +31,17 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
     className,
     treeClassName,
     onCheckboxChange,
-    // onSelectChange,
     onExpandChange,
     prefixCls: customisedCls,
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('tree-node', configContext.prefixCls, customisedCls);
-  const { title, selected, checked, icon, expanded, disableCheckbox } = node;
+  const { title, checked, icon, expanded, disableCheckbox, indeterminate } = node;
   const disabled = node.disabled || props.disabled;
   const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_selected`]: selected,
     [`${prefixCls}_block`]: blockNode,
     [`${prefixCls}_disabled`]: disabled,
   });
-
-  const getIndeterminate = useCallback((): boolean => {
-    if (node.children) {
-      const numOfChecked = node.children.filter((item) => item.checked).length;
-      return numOfChecked > 0 && numOfChecked < node.children.length;
-    }
-    return false;
-  }, [node.children]);
 
   const switcherOnClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
@@ -64,11 +52,6 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
     e.stopPropagation();
     onCheckboxChange(node.uniqueKey, e);
   };
-
-  // const titleOnClick = (e: React.MouseEvent) => {
-  //   e.stopPropagation();
-  //   onSelectChange(node.uniqueKey, !selected);
-  // };
 
   return (
     <li className={cls}>
@@ -88,7 +71,7 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
         {checkable && (
           <Checkbox
             checked={checked}
-            indeterminate={getIndeterminate()}
+            indeterminate={indeterminate}
             onChange={checkboxOnChange}
             disabled={disableCheckbox}
           />

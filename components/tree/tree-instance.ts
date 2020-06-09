@@ -8,7 +8,7 @@ export type Node = {
   uniqueKey: string;
   title: string;
   checked: boolean;
-  selected: boolean;
+  indeterminate: boolean;
   expanded: boolean;
   disabled: boolean;
   disableCheckbox: boolean;
@@ -23,14 +23,12 @@ export class TreeInstance {
   constructor(
     data: TreeData[],
     defaultCheckedKeys: string[],
-    defaultSelectedKeys: string[],
     defaultExpandedKeys: string[],
     defaultExpandAll: boolean
   ) {
     this.treeNodes = this.handleTreeNode(
       data,
       defaultCheckedKeys,
-      defaultSelectedKeys,
       defaultExpandedKeys,
       defaultExpandAll,
       ''
@@ -40,7 +38,6 @@ export class TreeInstance {
   private handleTreeNode(
     data: TreeData[],
     defaultCheckedKeys: string[],
-    defaultSelectedKeys: string[],
     defaultExpandedKeys: string[],
     defaultExpandAll: boolean,
     parentKey: string
@@ -55,22 +52,23 @@ export class TreeInstance {
         disabled: disabled || false,
         disableCheckbox: disableCheckbox || false,
         checked: defaultCheckedKeys.includes(item.key),
-        selected: defaultSelectedKeys.includes(item.key),
+        indeterminate: false,
         expanded: defaultExpandAll || defaultExpandedKeys.includes(item.key),
         parentKey,
       };
 
       if (children) {
+        node.children = this.handleTreeNode(
+          children,
+          defaultCheckedKeys,
+          defaultExpandedKeys,
+          defaultExpandAll,
+          key
+        );
+        const indeterminate = this.isIndeterminate(node);
         return {
           ...node,
-          children: this.handleTreeNode(
-            children,
-            defaultCheckedKeys,
-            defaultSelectedKeys,
-            defaultExpandedKeys,
-            defaultExpandAll,
-            key
-          ),
+          indeterminate,
         };
       }
       return node;
@@ -96,9 +94,21 @@ export class TreeInstance {
     return target;
   }
 
+  isIndeterminate(node: Node): boolean {
+    if (node.children) {
+      if (node.children.some((n) => n.indeterminate)) {
+        return true;
+      }
+      const numOfChecked = node.children.filter((n) => n.checked).length;
+      return numOfChecked > 0 && numOfChecked < node.children.length;
+    }
+    return false;
+  }
+
   checkChildren(children: Node[], isChecked: boolean): void {
     children.forEach((child) => {
       child.checked = isChecked;
+      child.indeterminate = this.isIndeterminate(child);
       if (child.children) {
         this.checkChildren(child.children, isChecked);
       }
@@ -109,6 +119,7 @@ export class TreeInstance {
     const children = node.children as Node[];
     const numOfChecked = children.filter((n) => n.checked).length;
     node.checked = numOfChecked === children.length;
+    node.indeterminate = this.isIndeterminate(node);
     const parentNode = this.getNodeByUniqueKey(node.parentKey);
     if (parentNode) {
       this.checkParent(parentNode);
@@ -119,16 +130,17 @@ export class TreeInstance {
     const node = this.getNodeByUniqueKey(uniqueKey);
     if (node) {
       node.checked = isChecked;
+      // update children node
+      // if children are existing, make them all checked
+      if (node.children) {
+        this.checkChildren(node.children, isChecked);
+      }
+      node.indeterminate = this.isIndeterminate(node);
       // check parent node
       // if siblings of current node are all checked, set the parent node checked
       const parentNode = this.getNodeByUniqueKey(node.parentKey);
       if (parentNode) {
         this.checkParent(parentNode);
-      }
-      // update children node
-      // if children are existing, make them all checked
-      if (node.children) {
-        this.checkChildren(node.children, isChecked);
       }
     }
   }
@@ -137,13 +149,6 @@ export class TreeInstance {
     const node = this.getNodeByUniqueKey(uniqueKey);
     if (node) {
       node.expanded = isExpanded;
-    }
-  }
-
-  setNodeSelected(uniqueKey: string, isSelected: boolean): void {
-    const node = this.getNodeByUniqueKey(uniqueKey);
-    if (node) {
-      node.selected = isSelected;
     }
   }
 }

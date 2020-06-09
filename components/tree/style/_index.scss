@@ -62,26 +62,4 @@
       }
     }
   }
-
-  &_selected.#{$prefix}-tree-node_block {
-    .#{$prefix}-tree-node__title {
-      background-color: $tree-selected-bg-color;
-
-      &:hover {
-        background-color: $tree-selected-bg-color;
-      }
-    }
-
-    .#{$prefix}-tree-node__label:hover {
-      background-color: transparent;
-    }
-  }
-
-  &_selected:not(.#{$prefix}-tree-node_block) .#{$prefix}-tree-node__label {
-    background-color: $tree-selected-bg-color;
-
-    &:hover {
-      background-color: $tree-selected-bg-color;
-    }
-  }
 }

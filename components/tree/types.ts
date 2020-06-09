@@ -15,14 +15,11 @@ export interface TreeProps
     Omit<React.PropsWithRef<JSX.IntrinsicElements['ul']>, 'onSelect'> {
   data?: TreeData[];
   indent?: number;
-  selectable?: boolean;
   checkable?: boolean;
   blockNode?: boolean;
   disabled?: boolean;
   defaultCheckedKeys?: string[];
-  defaultSelectedKeys?: string[];
   defaultExpandedKeys?: string[];
   defaultExpandAll?: boolean;
   onCheck?: (checkedKeys: string[]) => void;
-  onSelect?: (selectedKeys: string[]) => void;
 }
