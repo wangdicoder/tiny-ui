@@ -7,6 +7,7 @@
   font-size: $font-size-base;
   text-align: left;
   box-shadow: $popover-box-shadow;
+  z-index: 999;
 
   &__wrapper {
     display: inline-block;
