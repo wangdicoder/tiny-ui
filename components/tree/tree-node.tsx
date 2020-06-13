@@ -13,7 +13,7 @@ interface TreeNodeProps extends BaseProps {
   level: number;
   treeClassName: string;
   onCheckboxChange: (uniqueKey: string, e: React.ChangeEvent<HTMLInputElement>) => void;
-  onExpandChange: (key: string, isExpanded: boolean) => void;
+  onExpandChange: (key: string, isExpanded: boolean, e: React.MouseEvent) => void;
   // tree props
   indent: number;
   blockNode: boolean;
@@ -45,7 +45,7 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
 
   const switcherOnClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
-    onExpandChange(node.uniqueKey, !expanded);
+    onExpandChange(node.uniqueKey, !expanded, e);
   };
 
   const checkboxOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +76,9 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
             disabled={disabled || disableCheckbox}
           />
         )}
-        <span className={`${prefixCls}__label`}>{title}</span>
+        <span className={`${prefixCls}__label`} onClick={switcherOnClick}>
+          {title}
+        </span>
       </div>
       {node.children && (
         <CollapseTransition isShow={expanded}>

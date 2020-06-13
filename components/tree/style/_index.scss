@@ -42,6 +42,7 @@
   }
 
   &__label {
+    flex: 1;
     transition: background-color 250ms;
 
     &:hover {

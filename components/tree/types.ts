@@ -21,5 +21,6 @@ export interface TreeProps
   defaultCheckedKeys?: string[];
   defaultExpandedKeys?: string[];
   defaultExpandAll?: boolean;
-  onCheck?: (checkedKeys: string[]) => void;
+  onCheck?: (checkedKeys: string[], e: React.ChangeEvent) => void;
+  onExpand?: (expandedKeys: string[], e: React.MouseEvent) => void;
 }

@@ -17,6 +17,8 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
       blockNode = true,
       checkable = false,
       disabled = false,
+      onCheck,
+      onExpand,
       className,
       prefixCls: customisedCls,
     } = props;
@@ -29,13 +31,17 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
     const [treeNodes, setTreeNodes] = useState(treeInstance.current.nodes);
 
     const onCheckboxChange = (key: string, e: React.ChangeEvent<HTMLInputElement>) => {
-      treeInstance.current.setNodeChecked(key, e.currentTarget.checked);
+      const tree = treeInstance.current;
+      tree.setNodeChecked(key, e.currentTarget.checked);
       setTreeNodes([...treeInstance.current.nodes]);
+      onCheck && onCheck(tree.getCheckedKeys(), e);
     };
 
-    const onExpandChange = (key: string, isExpanded: boolean) => {
-      treeInstance.current.setNodeExpanded(key, isExpanded);
+    const onExpandChange = (key: string, isExpanded: boolean, e: React.MouseEvent) => {
+      const tree = treeInstance.current;
+      tree.setNodeExpanded(key, isExpanded);
       setTreeNodes([...treeInstance.current.nodes]);
+      onExpand && onExpand(tree.getExpandedKeys(), e);
     };
 
     return (

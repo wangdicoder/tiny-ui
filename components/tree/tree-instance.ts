@@ -160,4 +160,31 @@ export class TreeInstance {
       node.expanded = isExpanded;
     }
   }
+
+  /**
+   * Check whether the value of a specific prop is true
+   */
+  private isPropValueTrue(node: Node, prop: string, list: string[]): void {
+    const { key, uniqueKey, children } = node;
+    if ((node as any)[prop]) {
+      list.push(key ? key : uniqueKey);
+    }
+    if (children) {
+      children.forEach((child) => {
+        this.isPropValueTrue(child, prop, list);
+      });
+    }
+  }
+
+  getCheckedKeys(): string[] {
+    const keys: string[] = [];
+    this.nodes.forEach((node) => this.isPropValueTrue(node, 'checked', keys));
+    return keys;
+  }
+
+  getExpandedKeys(): string[] {
+    const keys: string[] = [];
+    this.nodes.forEach((node) => this.isPropValueTrue(node, 'expanded', keys));
+    return keys;
+  }
 }
