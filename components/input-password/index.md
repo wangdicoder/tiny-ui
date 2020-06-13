@@ -1,5 +1,6 @@
 import Basic from './demo/basic.md'
 import HideButton from './demo/hide-button.md'
+import Strength from './demo/strength.md'
 
 # Input Password
 
@@ -20,9 +21,10 @@ import { InputPassword } from 'tiny-ui';
 <layout>
   <column>
     <Basic/>
+    <HideButton/>
   </column>
   <column>
-    <HideButton/>
+    <Strength />
   </column>
 </layout>
 
