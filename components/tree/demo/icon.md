@@ -1,11 +1,11 @@
 <demo>
 
-### Basic
+### Icon
 
-A basic usage.
+Customised icons.
 
 ```jsx live
-class BasicExample extends React.PureComponent {
+class IconExample extends React.PureComponent {
   constructor() {
     super();
     this.treeData = [
@@ -49,7 +49,10 @@ class BasicExample extends React.PureComponent {
 
   render(){
     return (
-      <Tree data={this.treeData} />
+      <Tree 
+        data={this.treeData}
+        icon={(isExpanded) => isExpanded ? <Icon name="zoomout"/> : <Icon name="zoomin"/> }
+      />
     );
   }
 }

@@ -1,5 +1,6 @@
 import Basic from './demo/basic.md'
 import Selectable from './demo/selectable.md'
+import Icon from './demo/icon.md'
 
 # Tree
 
@@ -23,5 +24,6 @@ import { Tree } from 'tiny-ui';
     <Selectable />
   </column>
   <column>
+    <Icon />
   </column>
 </layout>

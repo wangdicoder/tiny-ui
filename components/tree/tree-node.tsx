@@ -19,6 +19,7 @@ interface TreeNodeProps extends BaseProps {
   blockNode: boolean;
   checkable: boolean;
   disabled: boolean;
+  icon?: (isExpanded: boolean) => React.ReactNode;
 }
 
 const TreeNode = (props: TreeNodeProps): JSX.Element => {
@@ -37,6 +38,7 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('tree-node', configContext.prefixCls, customisedCls);
   const { title, checked, icon, expanded, disableCheckbox, indeterminate } = node;
+  const nodeIcon = icon || props.icon;
   const disabled = node.disabled || props.disabled;
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_block`]: blockNode,
@@ -58,8 +60,8 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
       <div className={`${prefixCls}__title`} style={{ paddingLeft: indent * level }}>
         <span className={`${prefixCls}__switcher`} onClick={switcherOnClick}>
           {node.children &&
-            (icon ? (
-              icon(expanded)
+            (nodeIcon ? (
+              nodeIcon(expanded)
             ) : (
               <TreeArrow
                 className={classNames(`${prefixCls}__arrow`, {
