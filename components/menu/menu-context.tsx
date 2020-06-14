@@ -1,9 +1,9 @@
 import React from 'react';
-import { DirectionType } from '../_utils/props';
+import { MenuMode } from './types';
 
 type Props = {
   index: string;
-  mode: DirectionType;
+  mode: MenuMode;
   onSelect?: (selectedIndex: string) => void;
 };
 

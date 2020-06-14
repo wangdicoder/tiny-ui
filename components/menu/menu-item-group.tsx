@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { MenuItemGroupProps, MenuItemProps } from './types';
 
-const MenuItemGroup = (props: MenuItemGroupProps): React.ReactElement => {
+const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
   const {
     index,
     title,

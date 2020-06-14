@@ -15,8 +15,10 @@
   &_horizontal {
     border-bottom: 1px solid #f0f0f0;
 
-    > .#{$prefix}-menu-item {
-      padding: 15px;
+    .#{$prefix}-menu-item {
+      height: 48px;
+      padding: 0 15px;
+      line-height: 48px;
       margin: 0 5px;
       border-bottom: 2px solid transparent;
       position: relative;
@@ -64,11 +66,11 @@
     }
   }
 
-  &_inline {
+  &_inline, &_vertical {
     flex-direction: column;
     border-right: 1px solid #f0f0f0;
 
-    > .#{$prefix}-menu-item {
+    .#{$prefix}-menu-item {
       padding: $menu-item-padding-vertical;
       margin: 5px 0;
       position: relative;
@@ -163,8 +165,8 @@
     padding-left: 0;
     white-space: nowrap;
 
-    > .#{$prefix}-menu-item {
-      padding: 0 20px;
+    > .#{$prefix}-menu-item:not(.#{$prefix}-menu-sub) {
+      padding: 0 15px 0 20px;
       @include menu-sub-item-style();
     }
 
@@ -177,12 +179,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &_popup {
+      padding: 0 15px 0 20px;
+      @include menu-sub-item-style();
+    }
   }
 
   &__arrow {
     display: inline-block;
     transition: transform 300ms;
-    margin-left: 10px;
+    margin-left: 20px;
 
     &_reverse {
       transform: rotate(180deg);
@@ -223,5 +230,5 @@
 .#{$prefix}-menu-divider {
   height: 1px;
   background-color: rgba(0, 0, 0, .15);
-  margin: 0 10px;
+  margin: 10px;
 }

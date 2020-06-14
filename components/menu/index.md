@@ -1,5 +1,6 @@
 import Horizontal from './demo/horizontal.md';
 import Vertical from './demo/vertical.md';
+import Inline from './demo/inline.md';
 
 # Menu
 
@@ -21,3 +22,7 @@ const { Item, SubMenu, ItemGroup } = Menu;
 
 <Horizontal />
 <Vertical />
+<Inline />
+
+
+## API

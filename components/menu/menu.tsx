@@ -5,10 +5,11 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { MenuItemProps, MenuProps } from './types';
 
-const Menu = (props: MenuProps): React.ReactElement => {
+const Menu = (props: MenuProps): JSX.Element => {
   const {
     defaultIndex = '0',
     mode = 'horizontal',
+    theme = 'light',
     onSelect,
     className,
     style,
@@ -18,9 +19,13 @@ const Menu = (props: MenuProps): React.ReactElement => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('menu', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_${mode}`]: mode,
-  });
+  const cls = classNames(
+    prefixCls,
+    className,
+    `${prefixCls}_root`,
+    `${prefixCls}_${theme}`,
+    `${prefixCls}_${mode}`
+  );
   const [activeIndex, setActiveIndex] = useState<string>(defaultIndex);
   const contextValue = {
     mode,
@@ -37,7 +42,11 @@ const Menu = (props: MenuProps): React.ReactElement => {
         {React.Children.map(children, (child, index) => {
           const childElement = child as React.FunctionComponentElement<MenuItemProps>;
           const { displayName } = childElement.type;
-          if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+          if (
+            displayName === 'MenuItem' ||
+            displayName === 'SubMenu' ||
+            (displayName === 'MenuDivider' && mode !== 'horizontal')
+          ) {
             const childProps: Partial<MenuItemProps> = {
               index: `${index}`,
             };

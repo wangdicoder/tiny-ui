@@ -1,13 +1,25 @@
 import React from 'react';
 import { BaseProps, DirectionType } from '../_utils/props';
 
+export type MenuMode = DirectionType | 'inline';
+export type Theme = 'light' | 'dark';
+
 export interface MenuProps
   extends BaseProps,
     Omit<React.PropsWithoutRef<JSX.IntrinsicElements['ul']>, 'onSelect'> {
   defaultIndex?: string;
-  mode?: DirectionType;
+
+  /** color theme of the menu */
+  theme?: Theme;
+
+  /** type of menu: vertical, horizontal or inline */
+  mode?: MenuMode;
+
+  /** indent (in pixels) of inline menu items on each level */
+  inlineIndent?: number;
+
+  /** called when a menu item is selected */
   onSelect?: (selectedIndex: string) => void;
-  children?: React.ReactNode;
 }
 
 export interface MenuItemProps

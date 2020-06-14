@@ -5,7 +5,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { MenuItemProps } from './types';
 
-const MenuItem = (props: MenuItemProps): React.ReactElement => {
+const MenuItem = (props: MenuItemProps): JSX.Element => {
   const {
     disabled = false,
     index,
