@@ -2,6 +2,7 @@
 _template
 coverage
 scripts
+design
 test
 docs
 jest.config.js
