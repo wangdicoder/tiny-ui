@@ -10,7 +10,7 @@
   margin: 0;
   white-space: nowrap;
   border: 0;
-  color: $gray-700;
+  color: $font-color;
 
   &_horizontal {
     border-bottom: 1px solid #f0f0f0;
@@ -64,7 +64,7 @@
     }
   }
 
-  &_vertical {
+  &_inline {
     flex-direction: column;
     border-right: 1px solid #f0f0f0;
 
@@ -152,8 +152,12 @@
   box-sizing: border-box;
   position: relative;
 
+  .#{$prefix}-popup__wrapper {
+    display: block;
+  }
+
   &__list {
-    //display: none;
+    margin: 0;
     min-width: 100%;
     list-style: none;
     padding-left: 0;
@@ -162,6 +166,10 @@
     > .#{$prefix}-menu-item {
       padding: 0 20px;
       @include menu-sub-item-style();
+    }
+
+    &_popup {
+      min-width: 160px;
     }
   }
 
@@ -178,6 +186,10 @@
 
     &_reverse {
       transform: rotate(180deg);
+    }
+
+    &_right {
+      transform: rotate(-90deg);
     }
   }
 }
@@ -206,4 +218,10 @@
       @include menu-sub-item-style();
     }
   }
+}
+
+.#{$prefix}-menu-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, .15);
+  margin: 0 10px;
 }
