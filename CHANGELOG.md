@@ -14,7 +14,7 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 ### Features
 
 * `<Tree />` component ([9c7edd8](https://github.com/wangdicoder/tiny-ui/commit/9c7edd89adfdfbd0560df8de3f6f0b2568e50c04))
-* <StrengthIndicator> component ([89290f9](https://github.com/wangdicoder/tiny-ui/commit/89290f9a0b24c0e80f3c16e6ee0413da65f729bc))
+* `<StrengthIndicator />` component ([89290f9](https://github.com/wangdicoder/tiny-ui/commit/89290f9a0b24c0e80f3c16e6ee0413da65f729bc))
 
 
 ### Bug Fixes
