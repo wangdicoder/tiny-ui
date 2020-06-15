@@ -15,9 +15,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('menu-sub', configContext.prefixCls, customisedCls);
-  const cls = classNames('ty-menu-item', prefixCls, className, {
-    [`${prefixCls}_active`]: index ? context.index.startsWith(index) : false,
-  });
+  const cls = classNames(prefixCls, className);
   const subMenuCls = classNames(`${prefixCls}__list`, {
     [`${prefixCls}__list_open`]: menuOpen,
   });
@@ -28,8 +26,9 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
     : classNames(`${prefixCls}__arrow`, {
         [`${prefixCls}__arrow_reverse`]: menuOpen,
       });
-  const titleCls = classNames(`${prefixCls}__title`, {
-    [`${prefixCls}__title_popup`]: nonRootSubMenu,
+  const menuItemCls = `${configContext.prefixCls ? configContext.prefixCls : 'ty'}-menu-item`;
+  const titleCls = classNames(menuItemCls, `${prefixCls}__title`, {
+    [`${menuItemCls}_active`]: index ? context.index.startsWith(index) : false,
   });
 
   const handleOnClick = (e: React.MouseEvent): void => {
@@ -37,7 +36,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
     mode === 'inline' && setMenuOpen(!menuOpen);
   };
 
-  const timerRef = useRef<number | null>(null);
+  const timerRef = useRef<number | undefined>(undefined);
   const handleMouse = (e: React.MouseEvent, toggle: boolean): void => {
     e.preventDefault();
     const timer = timerRef.current;
@@ -88,7 +87,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
   if (mode === 'inline') {
     return (
       <li {...otherProps} role="menuitem" key={index} className={cls}>
-        <div className={`${prefixCls}__title`} onClick={handleOnClick}>
+        <div className={titleCls} onClick={handleOnClick}>
           <span>{title}</span>
           <span className={arrowCls}>
             <ArrowDown size={10} />

@@ -29,41 +29,6 @@
         border-bottom-color: $primary-color;
       }
     }
-
-    .#{$prefix}-menu-sub {
-
-      &_active {
-        color: $primary-color;
-        border-bottom-color: $primary-color;
-      }
-
-      &__list {
-        position: absolute;
-        z-index: 1;
-        top: calc(100% + 2px);
-        left: 0;
-        background-color: $white-color;
-        color: $gray-700;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
-        border-radius: $menu-sub-border-radius;
-
-        &_open {
-          display: block;
-        }
-
-        > .#{$prefix}-menu-item_active {
-          @include menu-item-active($primary-color);
-        }
-      }
-    }
-
-    .#{$prefix}-menu-item-group {
-      &__list {
-        > .#{$prefix}-menu-item_active {
-          @include menu-item-active($primary-color);
-        }
-      }
-    }
   }
 
   &_inline, &_vertical {
@@ -78,56 +43,6 @@
 
       &_active {
         @include menu-item-active($primary-color, true);
-      }
-    }
-
-    .#{$prefix}-menu-sub {
-      padding: 0;
-      margin: 0;
-
-      &_active {
-        .#{$prefix}-menu-sub__title {
-          color: $primary-color;
-        }
-      }
-
-      &__title {
-        padding: $menu-item-padding-vertical;
-        margin: 5px 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      &__list {
-        color: $body-color;
-
-        > .#{$prefix}-menu-item {
-          padding: 0 48px;
-        }
-
-        &_open {
-          display: block;
-        }
-
-        > .#{$prefix}-menu-item_active {
-          @include menu-item-active($primary-color, true);
-        }
-      }
-    }
-
-    .#{$prefix}-menu-item-group {
-      &__title {
-        padding: 10px 30px;
-      }
-
-      &__list {
-        > .#{$prefix}-menu-item {
-          padding: 0 48px;
-
-          &_active {
-            @include menu-item-active($primary-color, true);
-          }
-        }
       }
     }
   }
@@ -151,8 +66,6 @@
 }
 
 .#{$prefix}-menu-sub {
-  box-sizing: border-box;
-  position: relative;
 
   .#{$prefix}-popup__wrapper {
     display: block;
@@ -165,7 +78,7 @@
     padding-left: 0;
     white-space: nowrap;
 
-    > .#{$prefix}-menu-item:not(.#{$prefix}-menu-sub) {
+    .#{$prefix}-menu-item {
       padding: 0 15px 0 20px;
       @include menu-sub-item-style();
     }
@@ -179,11 +92,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    &_popup {
-      padding: 0 15px 0 20px;
-      @include menu-sub-item-style();
-    }
   }
 
   &__arrow {
