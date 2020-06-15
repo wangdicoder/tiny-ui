@@ -13,7 +13,15 @@
   color: $font-color;
 
   &_horizontal {
-    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      border-bottom: 1px solid #f0f0f0;
+      width: 100%;
+      bottom: 0;
+    }
 
     .#{$prefix}-menu-item {
       height: 48px;
@@ -22,7 +30,6 @@
       margin: 0 5px;
       border-bottom: 2px solid transparent;
       position: relative;
-      top: 1px;
 
       &_active {
         color: $primary-color;
@@ -33,17 +40,24 @@
 
   &_inline, &_vertical {
     flex-direction: column;
-    border-right: 1px solid #f0f0f0;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      border-right: 1px solid #f0f0f0;
+      height: 100%;
+      right: 0;
+    }
 
     .#{$prefix}-menu-item {
       padding: $menu-item-padding-vertical;
       margin: 5px 0;
       position: relative;
-      right: -1px;
+    }
 
-      &_active {
-        @include menu-item-active($primary-color, true);
-      }
+    li.#{$prefix}-menu-item_active{
+      @include menu-item-active($primary-color, true);
     }
   }
 }
@@ -85,6 +99,10 @@
 
     &_popup {
       min-width: 160px;
+
+      li.#{$prefix}-menu-item_active{
+        @include menu-item-active($primary-color);
+      }
     }
   }
 
@@ -92,6 +110,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &.#{$prefix}-menu-item_active {
+      color: $primary-color;
+    }
   }
 
   &__arrow {
@@ -128,8 +150,8 @@
     padding-left: 0;
     white-space: nowrap;
 
-    .#{$prefix}-menu-item {
-      padding: 0 30px;
+    > .#{$prefix}-menu-item {
+      padding: 0 35px 0 25px;
       @include menu-sub-item-style();
     }
   }
@@ -138,5 +160,5 @@
 .#{$prefix}-menu-divider {
   height: 1px;
   background-color: rgba(0, 0, 0, .15);
-  margin: 10px;
+  margin: 5px;
 }

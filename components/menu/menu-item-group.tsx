@@ -3,9 +3,11 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { MenuItemGroupProps, MenuItemProps } from './types';
+import { MenuContext } from './menu-context';
 
 const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
   const {
+    level = 1,
     index,
     title,
     className,
@@ -15,18 +17,26 @@ const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
     ...otherProps
   } = props;
   const configContext = useContext(ConfigContext);
+  const { mode, inlineIndent } = useContext(MenuContext);
   const prefixCls = getPrefixCls('menu-item-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
   return (
     <li {...otherProps} key={title} className={cls} style={style}>
-      <div className={`${prefixCls}__title`}>{title}</div>
+      <div
+        className={`${prefixCls}__title`}
+        style={{
+          paddingLeft: mode === 'inline' ? inlineIndent * level - inlineIndent / 2 : undefined,
+        }}>
+        {title}
+      </div>
       <ul className={`${prefixCls}__list`}>
         {React.Children.map(children, (child, idx) => {
           const childElement = child as React.FunctionComponentElement<MenuItemProps>;
           if (childElement.type.displayName === 'MenuItem') {
             const childProps: Partial<MenuItemProps> = {
               index: `${index}-${idx}`,
+              level: level,
             };
             return React.cloneElement(childElement, childProps);
           } else {

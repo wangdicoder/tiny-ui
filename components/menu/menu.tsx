@@ -10,6 +10,7 @@ const Menu = (props: MenuProps): JSX.Element => {
     defaultIndex = '0',
     mode = 'horizontal',
     theme = 'light',
+    inlineIndent = 20,
     onSelect,
     className,
     style,
@@ -29,6 +30,7 @@ const Menu = (props: MenuProps): JSX.Element => {
   const [activeIndex, setActiveIndex] = useState<string>(defaultIndex);
   const contextValue = {
     mode,
+    inlineIndent,
     index: activeIndex,
     onSelect: (index: string): void => {
       setActiveIndex(index);
@@ -47,7 +49,7 @@ const Menu = (props: MenuProps): JSX.Element => {
             displayName === 'SubMenu' ||
             (displayName === 'MenuDivider' && mode !== 'horizontal')
           ) {
-            const childProps: Partial<MenuItemProps> = {
+            const childProps = {
               index: `${index}`,
             };
             return React.cloneElement(childElement, childProps);

@@ -9,15 +9,24 @@ import Popup from '../popup';
 import CollapseTransition from '../collapse-transition';
 
 const SubMenu = (props: SubMenuProps): JSX.Element => {
-  const { index, title, className, children, prefixCls: customisedCls, ...otherProps } = props;
-  const context = useContext(MenuContext);
-  const { mode } = context;
+  const {
+    level = 1,
+    index,
+    title,
+    className,
+    children,
+    prefixCls: customisedCls,
+    ...otherProps
+  } = props;
+  const menuContext = useContext(MenuContext);
+  const { mode, inlineIndent } = menuContext;
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('menu-sub', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
   const subMenuCls = classNames(`${prefixCls}__list`, {
     [`${prefixCls}__list_open`]: menuOpen,
+    [`${prefixCls}__list_popup`]: mode !== 'inline',
   });
   const nonRootSubMenu = index?.includes('-');
   const rightPopupMenu = mode === 'vertical' || (mode === 'horizontal' && nonRootSubMenu);
@@ -28,7 +37,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
       });
   const menuItemCls = `${configContext.prefixCls ? configContext.prefixCls : 'ty'}-menu-item`;
   const titleCls = classNames(menuItemCls, `${prefixCls}__title`, {
-    [`${menuItemCls}_active`]: index ? context.index.startsWith(index) : false,
+    [`${menuItemCls}_active`]: index ? menuContext.index.startsWith(index) : false,
   });
 
   const handleOnClick = (e: React.MouseEvent): void => {
@@ -59,8 +68,9 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
       {React.Children.map(children, (child, idx) => {
         const childElement = child as React.FunctionComponentElement<MenuItemProps>;
         const { displayName } = childElement.type;
-        const childProps: Partial<MenuItemProps> = {
+        const childProps = {
           index: `${index}-${idx}`,
+          level: level + 1,
         };
         if (
           displayName === 'MenuItem' ||
@@ -74,6 +84,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
               {...childElement.props}
               title={childElement.props.title}
               index={`${index}-${idx}`}
+              level={level + 1}
             />
           );
         } else {
@@ -87,7 +98,10 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
   if (mode === 'inline') {
     return (
       <li {...otherProps} role="menuitem" key={index} className={cls}>
-        <div className={titleCls} onClick={handleOnClick}>
+        <div
+          className={titleCls}
+          style={{ paddingLeft: inlineIndent * level }}
+          onClick={handleOnClick}>
           <span>{title}</span>
           <span className={arrowCls}>
             <ArrowDown size={10} />
@@ -111,11 +125,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
           trigger="manual"
           visible={menuOpen}
           placement={rightPopupMenu ? 'right-start' : 'bottom-start'}
-          content={
-            <ul className={`${prefixCls}__list ${prefixCls}__list_popup`}>
-              {renderChildrenList()}
-            </ul>
-          }>
+          content={renderChildrenList()}>
           <div className={titleCls} onClick={handleOnClick}>
             <span>{title}</span>
             <span className={arrowCls}>

@@ -9,7 +9,7 @@
 }
 
 @mixin menu-item-active($color, $display-right-border: false){
-  background-color: lighten($color, 40%);
+  background-color: rgba($color, .2);
   color: $color;
   @if $display-right-border {
     border-right: 3px solid $color;

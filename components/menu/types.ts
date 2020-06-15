@@ -27,6 +27,8 @@ export interface MenuItemProps
     React.PropsWithoutRef<JSX.IntrinsicElements['li']> {
   index?: string;
   disabled?: boolean;
+  onClick?: React.MouseEventHandler;
+  level?: number;
 }
 
 export interface MenuItemGroupProps
@@ -35,6 +37,7 @@ export interface MenuItemGroupProps
   index?: string;
   title?: string;
   children?: React.ReactNode;
+  level?: number;
 }
 
 export interface SubMenuProps
@@ -42,5 +45,6 @@ export interface SubMenuProps
     Omit<React.PropsWithoutRef<JSX.IntrinsicElements['li']>, 'title'> {
   title: React.ReactNode;
   index?: string;
+  level?: number;
   children?: React.ReactNode;
 }
