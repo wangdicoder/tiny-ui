@@ -93,7 +93,7 @@
     white-space: nowrap;
 
     .#{$prefix}-menu-item {
-      padding: 0 15px 0 20px;
+      padding: 0 20px;
       @include menu-sub-item-style();
     }
 

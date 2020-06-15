@@ -6,7 +6,7 @@ Horizontal top navigation menu.
 
 ```jsx live
 <Menu>
-  <Menu.Item>Navigation Three</Menu.Item>
+  <Menu.Item>Navigation One</Menu.Item>
   <Menu.Item>Navigation Two</Menu.Item>
   <Menu.Item disabled>Navigation Three</Menu.Item>
   <Menu.SubMenu title="Simple SubMenu">

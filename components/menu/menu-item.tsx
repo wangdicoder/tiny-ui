@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menu-context';
+import { SubMenuContext } from './sub-menu-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { MenuItemProps } from './types';
@@ -18,6 +19,7 @@ const MenuItem = (props: MenuItemProps): JSX.Element => {
     ...otherProps
   } = props;
   const menuContext = useContext(MenuContext);
+  const subMenuContext = useContext(SubMenuContext);
   const { inlineIndent, mode } = menuContext;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('menu-item', configContext.prefixCls, customisedCls);
@@ -27,8 +29,13 @@ const MenuItem = (props: MenuItemProps): JSX.Element => {
   });
 
   const onItemClick = (e: React.MouseEvent): void => {
-    !disabled && onClick && onClick(e);
-    if (menuContext.onSelect && !disabled && typeof index === 'string') {
+    if (disabled) {
+      return;
+    }
+
+    onClick && onClick(e);
+    subMenuContext.onMenuItemClick && subMenuContext.onMenuItemClick();
+    if (menuContext.onSelect && typeof index === 'string') {
       menuContext.onSelect(index);
     }
   };

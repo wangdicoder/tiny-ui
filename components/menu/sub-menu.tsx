@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menu-context';
+import { SubMenuContext } from './sub-menu-context';
 import { ArrowDown } from '../_utils/components';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -19,6 +20,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
     ...otherProps
   } = props;
   const menuContext = useContext(MenuContext);
+  const subMenuContext = useContext(SubMenuContext);
   const { mode, inlineIndent } = menuContext;
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const configContext = useContext(ConfigContext);
@@ -39,6 +41,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
   const titleCls = classNames(menuItemCls, `${prefixCls}__title`, {
     [`${menuItemCls}_active`]: index ? menuContext.index.startsWith(index) : false,
   });
+  const titleRef = useRef<HTMLDivElement | null>(null);
 
   const handleOnClick = (e: React.MouseEvent): void => {
     e.preventDefault();
@@ -63,37 +66,50 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
     mode !== 'inline' && handleMouse(e, false);
   };
 
-  const renderChildrenList = () => (
-    <ul className={subMenuCls}>
-      {React.Children.map(children, (child, idx) => {
-        const childElement = child as React.FunctionComponentElement<MenuItemProps>;
-        const { displayName } = childElement.type;
-        const childProps = {
-          index: `${index}-${idx}`,
-          level: level + 1,
-        };
-        if (
-          displayName === 'MenuItem' ||
-          displayName === 'MenuItemGroup' ||
-          displayName === 'MenuDivider'
-        ) {
-          return React.cloneElement(childElement, childProps);
-        } else if (displayName === 'SubMenu') {
-          return (
-            <SubMenu
-              {...childElement.props}
-              title={childElement.props.title}
-              index={`${index}-${idx}`}
-              level={level + 1}
-            />
-          );
-        } else {
-          console.warn('Menu has a child that is not a MenuItem component.');
-          return null;
-        }
-      })}
-    </ul>
-  );
+  const onMenuItemClick = () => {
+    if (mode !== 'inline') {
+      setMenuOpen(false);
+      // If this is a sub-subMenu, invoke the onMenuItemClick method to notify
+      // its parent to close the menu popup
+      subMenuContext.onMenuItemClick && subMenuContext.onMenuItemClick();
+    }
+  };
+
+  const renderChildrenList = () => {
+    const titleNode = titleRef.current;
+    const minWidth = titleNode && !nonRootSubMenu ? titleNode.offsetWidth : undefined;
+    return (
+      <ul className={subMenuCls} style={{ minWidth }}>
+        {React.Children.map(children, (child, idx) => {
+          const childElement = child as React.FunctionComponentElement<MenuItemProps>;
+          const { displayName } = childElement.type;
+          const childProps = {
+            index: `${index}-${idx}`,
+            level: level + 1,
+          };
+          if (
+            displayName === 'MenuItem' ||
+            displayName === 'MenuItemGroup' ||
+            displayName === 'MenuDivider'
+          ) {
+            return React.cloneElement(childElement, childProps);
+          } else if (displayName === 'SubMenu') {
+            return (
+              <SubMenu
+                {...childElement.props}
+                title={childElement.props.title}
+                index={`${index}-${idx}`}
+                level={level + 1}
+              />
+            );
+          } else {
+            console.warn('Menu has a child that is not a MenuItem component.');
+            return null;
+          }
+        })}
+      </ul>
+    );
+  };
 
   if (mode === 'inline') {
     return (
@@ -112,28 +128,30 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
     );
   } else {
     return (
-      <li
-        {...otherProps}
-        role="menuitem"
-        key={index}
-        className={cls}
-        onMouseEnter={handleOnMouseEnter}
-        onMouseLeave={handleOnMouseLeave}>
-        <Popup
-          flip={false}
-          arrow={false}
-          trigger="manual"
-          visible={menuOpen}
-          placement={rightPopupMenu ? 'right-start' : 'bottom-start'}
-          content={renderChildrenList()}>
-          <div className={titleCls} onClick={handleOnClick}>
-            <span>{title}</span>
-            <span className={arrowCls}>
-              <ArrowDown size={10} />
-            </span>
-          </div>
-        </Popup>
-      </li>
+      <SubMenuContext.Provider value={{ onMenuItemClick }}>
+        <li
+          {...otherProps}
+          role="menuitem"
+          key={index}
+          className={cls}
+          onMouseEnter={handleOnMouseEnter}
+          onMouseLeave={handleOnMouseLeave}>
+          <Popup
+            flip={false}
+            arrow={false}
+            trigger="manual"
+            visible={menuOpen}
+            placement={rightPopupMenu ? 'right-start' : 'bottom-start'}
+            content={renderChildrenList()}>
+            <div ref={titleRef} className={titleCls} onClick={handleOnClick}>
+              <span>{title}</span>
+              <span className={arrowCls}>
+                <ArrowDown size={10} />
+              </span>
+            </div>
+          </Popup>
+        </li>
+      </SubMenuContext.Provider>
     );
   }
 };
