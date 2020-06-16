@@ -1,5 +1,6 @@
 import React from 'react';
 import { BaseProps } from '../_utils/props';
+import { MenuProps } from '../menu/types';
 
 export type DropdownTrigger = 'click' | 'hover' | 'contextmenu';
 export type DropdownPlacement =
@@ -8,11 +9,14 @@ export type DropdownPlacement =
   | 'top-end'
   | 'bottom-start'
   | 'bottom'
-  | 'bottom-end'
+  | 'bottom-end';
 
-export interface DropdownProps extends BaseProps{
+export interface DropdownProps extends BaseProps {
+  disabled?: boolean;
   trigger?: DropdownTrigger;
   placement?: DropdownPlacement;
-  overlay?: React.ReactElement;
+  overlay?: React.ReactElement<MenuProps>;
+  visible?: boolean;
+  onVisibleChange?: (visible: boolean) => void;
   children: React.ReactElement;
 }
