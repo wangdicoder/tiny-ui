@@ -18,6 +18,7 @@ export type Placement =
   | 'right-end';
 
 export interface PopupProps extends BaseProps, React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
+  disabled?: boolean;
   content?: React.ReactNode;
   placement?: Placement;
   visible?: boolean;

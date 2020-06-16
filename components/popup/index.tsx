@@ -9,6 +9,7 @@ import { Placement, PopupProps } from './types';
 
 const Popup = (props: PopupProps): JSX.Element => {
   const {
+    disabled = false,
     trigger = 'click',
     placement = 'top',
     defaultVisible = false,
@@ -167,6 +168,8 @@ const Popup = (props: PopupProps): JSX.Element => {
   };
 
   useEffect(() => {
+    if (disabled) return;
+
     if (!targetRef.current) return;
     const target = targetRef.current as HTMLElement;
 
@@ -201,6 +204,7 @@ const Popup = (props: PopupProps): JSX.Element => {
     };
   }, [
     props.visible,
+    disabled,
     targetRef,
     trigger,
     handleTargetOnMouseClick,
