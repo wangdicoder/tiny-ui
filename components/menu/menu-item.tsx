@@ -9,7 +9,6 @@ import { MenuItemProps } from './types';
 const MenuItem = (props: MenuItemProps): JSX.Element => {
   const {
     disabled = false,
-    level = 1,
     index,
     className,
     style,
@@ -21,6 +20,7 @@ const MenuItem = (props: MenuItemProps): JSX.Element => {
   const menuContext = useContext(MenuContext);
   const subMenuContext = useContext(SubMenuContext);
   const { inlineIndent, mode } = menuContext;
+  const { level = 1, onMenuItemClick } = subMenuContext;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('menu-item', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
@@ -34,7 +34,7 @@ const MenuItem = (props: MenuItemProps): JSX.Element => {
     }
 
     onClick && onClick(e);
-    subMenuContext.onMenuItemClick && subMenuContext.onMenuItemClick();
+    onMenuItemClick && onMenuItemClick();
     if (menuContext.onSelect && typeof index === 'string') {
       menuContext.onSelect(index);
     }

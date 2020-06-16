@@ -10,18 +10,10 @@ import Popup from '../popup';
 import CollapseTransition from '../collapse-transition';
 
 const SubMenu = (props: SubMenuProps): JSX.Element => {
-  const {
-    level = 1,
-    index,
-    title,
-    className,
-    children,
-    prefixCls: customisedCls,
-    ...otherProps
-  } = props;
+  const { index, title, className, children, prefixCls: customisedCls, ...otherProps } = props;
   const menuContext = useContext(MenuContext);
-  const subMenuContext = useContext(SubMenuContext);
   const { mode, inlineIndent } = menuContext;
+  const { level = 1, onMenuItemClick: _onMenuItemClick } = useContext(SubMenuContext);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('menu-sub', configContext.prefixCls, customisedCls);
@@ -71,7 +63,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
       setMenuOpen(false);
       // If this is a sub-subMenu, invoke the onMenuItemClick method to notify
       // its parent to close the menu popup
-      subMenuContext.onMenuItemClick && subMenuContext.onMenuItemClick();
+      _onMenuItemClick && _onMenuItemClick();
     }
   };
 
@@ -89,23 +81,14 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
           const { displayName } = childElement.type;
           const childProps = {
             index: `${index}-${idx}`,
-            level: level + 1,
           };
           if (
             displayName === 'MenuItem' ||
             displayName === 'MenuItemGroup' ||
+            displayName === 'SubMenu' ||
             displayName === 'MenuDivider'
           ) {
             return React.cloneElement(childElement, childProps);
-          } else if (displayName === 'SubMenu') {
-            return (
-              <SubMenu
-                {...childElement.props}
-                title={childElement.props.title}
-                index={`${index}-${idx}`}
-                level={level + 1}
-              />
-            );
           } else {
             console.warn('Menu has a child that is not a MenuItem component.');
             return null;
@@ -117,22 +100,24 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
 
   if (mode === 'inline') {
     return (
-      <li {...otherProps} role="menuitem" key={index} className={cls}>
-        <div
-          className={titleCls}
-          style={{ paddingLeft: inlineIndent * level }}
-          onClick={handleOnClick}>
-          <span>{title}</span>
-          <span className={arrowCls}>
-            <ArrowDown size={10} />
-          </span>
-        </div>
-        <CollapseTransition isShow={menuOpen}>{renderChildrenList()}</CollapseTransition>
-      </li>
+      <SubMenuContext.Provider value={{ level: level + 1 }}>
+        <li {...otherProps} role="menuitem" key={index} className={cls}>
+          <div
+            className={titleCls}
+            style={{ paddingLeft: inlineIndent * level }}
+            onClick={handleOnClick}>
+            <span>{title}</span>
+            <span className={arrowCls}>
+              <ArrowDown size={10} />
+            </span>
+          </div>
+          <CollapseTransition isShow={menuOpen}>{renderChildrenList()}</CollapseTransition>
+        </li>
+      </SubMenuContext.Provider>
     );
   } else {
     return (
-      <SubMenuContext.Provider value={{ level: 1, onMenuItemClick }}>
+      <SubMenuContext.Provider value={{ onMenuItemClick }}>
         <li
           {...otherProps}
           role="menuitem"

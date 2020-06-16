@@ -4,10 +4,10 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { MenuItemGroupProps, MenuItemProps } from './types';
 import { MenuContext } from './menu-context';
+import { SubMenuContext } from './sub-menu-context';
 
 const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
   const {
-    level = 1,
     index,
     title,
     className,
@@ -18,6 +18,7 @@ const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
   } = props;
   const configContext = useContext(ConfigContext);
   const { mode, inlineIndent } = useContext(MenuContext);
+  const { level = 1 } = useContext(SubMenuContext);
   const prefixCls = getPrefixCls('menu-item-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
 
@@ -36,7 +37,6 @@ const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
           if (childElement.type.displayName === 'MenuItem') {
             const childProps: Partial<MenuItemProps> = {
               index: `${index}-${idx}`,
-              level: level,
             };
             return React.cloneElement(childElement, childProps);
           } else {
