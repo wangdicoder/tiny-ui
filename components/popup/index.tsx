@@ -20,6 +20,7 @@ const Popup = (props: PopupProps): JSX.Element => {
     usePortal = true,
     mouseEnterDelay = 100,
     mouseLeaveDelay = 100,
+    biZoom = true,
     prefixCls: customisedCls,
     content,
     visible,
@@ -41,7 +42,7 @@ const Popup = (props: PopupProps): JSX.Element => {
   const popupRef = useRef<HTMLDivElement | null>(null);
   const delayDisplayPopupTimer = useRef<number | undefined>(undefined);
   const delayHidePopupTimer = useRef<number | undefined>(undefined);
-  const popperInstance = useRef<Instance | undefined>(undefined);
+  const popperRef = useRef<Instance | undefined>(undefined);
 
   const displayPopup = useCallback(() => {
     setPopupVisible(true);
@@ -148,23 +149,42 @@ const Popup = (props: PopupProps): JSX.Element => {
       instance.state.elements.popper.addEventListener('mouseenter', handlePopupOnMouseEnter);
       instance.state.elements.popper.addEventListener('mouseleave', handlePopupOnMouseLeave);
     }
-    popperInstance.current = instance;
+    popperRef.current = instance;
   };
 
   const transitionOnExited = (): void => {
-    if (popperInstance.current) {
+    const popperInstance = popperRef.current;
+    if (popperInstance) {
       if (trigger === 'hover') {
-        popperInstance.current.state.elements.popper.removeEventListener(
+        popperInstance.state.elements.popper.removeEventListener(
           'mouseenter',
           handlePopupOnMouseEnter
         );
-        popperInstance.current.state.elements.popper.removeEventListener(
+        popperInstance.state.elements.popper.removeEventListener(
           'mouseleave',
           handlePopupOnMouseLeave
         );
       }
-      popperInstance.current.destroy();
+      popperInstance.destroy();
     }
+  };
+
+  const getAnimationMapping = () => {
+    const mapping = {
+      'top-start': biZoom ? 'top-start' : 'center-top',
+      top: biZoom ? 'top' : 'center-top',
+      'top-end': biZoom ? 'top-end' : 'center-top',
+      'bottom-start': biZoom ? 'bottom-start' : 'center-bottom',
+      bottom: biZoom ? 'bottom' : 'center-bottom',
+      'bottom-end': biZoom ? 'bottom-end' : 'center-bottom',
+      'left-start': biZoom ? 'bottom-end' : 'center-left',
+      left: biZoom ? 'left' : 'center-left',
+      'left-end': biZoom ? 'top-end' : 'center-left',
+      'right-start': biZoom ? 'bottom-start' : 'center-right',
+      right: biZoom ? 'right' : 'center-right',
+      'right-end': biZoom ? 'top-start' : 'center-right',
+    };
+    return `zoom-${mapping[placement]}` as AnimationName;
   };
 
   useEffect(() => {
@@ -223,7 +243,7 @@ const Popup = (props: PopupProps): JSX.Element => {
       in={popupVisible}
       onEnter={transitionOnEnter}
       onExited={transitionOnExited}
-      animation={`zoom-${placement}` as AnimationName}>
+      animation={getAnimationMapping()}>
       <div {...otherProps} className={cls} ref={popupRef}>
         {content && arrow && <div data-popper-arrow className={`${prefixCls}__arrow`} />}
         {content}

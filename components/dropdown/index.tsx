@@ -49,6 +49,7 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
   return (
     <Popup
       {...otherProps}
+      biZoom={false}
       arrow={false}
       disabled={disabled}
       placement={placement}

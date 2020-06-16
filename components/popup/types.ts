@@ -47,5 +47,9 @@ export interface PopupProps extends BaseProps, React.PropsWithoutRef<JSX.Intrins
 
   /** Trigger mode */
   trigger?: TriggerType;
+
+  /** Determine using a bidirectional effect of the zoom animation */
+  biZoom?: boolean;
+
   children: React.ReactElement;
 }
