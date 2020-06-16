@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { BaseProps, DirectionType } from '../_utils/props';
 
 export type MenuMode = DirectionType | 'inline';
@@ -36,15 +36,15 @@ export interface MenuItemGroupProps
     Omit<React.PropsWithoutRef<JSX.IntrinsicElements['li']>, 'title'> {
   index?: string;
   title?: string;
-  children?: React.ReactNode;
   level?: number;
 }
 
 export interface SubMenuProps
   extends BaseProps,
     Omit<React.PropsWithoutRef<JSX.IntrinsicElements['li']>, 'title'> {
-  title: React.ReactNode;
+  title: ReactNode;
   index?: string;
   level?: number;
-  children?: React.ReactNode;
+  disabled?: boolean;
+  icon?: ReactNode;
 }

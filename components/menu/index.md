@@ -15,7 +15,7 @@ An accessible dropdown menu for the common dropdown menu button design pattern. 
 ```jsx
 import { Menu } from 'tiny-ui';
 
-const { Item, SubMenu, ItemGroup } = Menu;
+const { Item, SubMenu, ItemGroup, Divider } = Menu;
 ```
 
 ## Examples

@@ -76,8 +76,12 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
   };
 
   const renderChildrenList = () => {
+    let minWidth = undefined;
     const titleNode = titleRef.current;
-    const minWidth = titleNode && !nonRootSubMenu ? titleNode.offsetWidth : undefined;
+    if (titleNode && !nonRootSubMenu) {
+      const { marginLeft, marginRight } = window.getComputedStyle(titleNode);
+      minWidth = titleNode.offsetWidth + parseFloat(marginLeft) + parseFloat(marginRight);
+    }
     return (
       <ul className={subMenuCls} style={{ minWidth }}>
         {React.Children.map(children, (child, idx) => {
@@ -128,7 +132,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
     );
   } else {
     return (
-      <SubMenuContext.Provider value={{ onMenuItemClick }}>
+      <SubMenuContext.Provider value={{ level: 1, onMenuItemClick }}>
         <li
           {...otherProps}
           role="menuitem"

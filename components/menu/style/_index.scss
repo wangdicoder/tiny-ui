@@ -55,10 +55,14 @@
       margin: 5px 0;
       position: relative;
     }
+  }
 
-    li.#{$prefix}-menu-item_active{
-      @include menu-item-active($primary-color, true);
-    }
+  &_inline li.#{$prefix}-menu-item_active{
+    @include menu-item-active($primary-color, true);
+  }
+
+  &_vertical li.#{$prefix}-menu-item_active{
+    @include menu-item-active($primary-color);
   }
 }
 
@@ -160,5 +164,5 @@
 .#{$prefix}-menu-divider {
   height: 1px;
   background-color: rgba(0, 0, 0, .15);
-  margin: 5px;
+  margin: 5px 10px;
 }
