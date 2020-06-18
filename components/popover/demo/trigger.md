@@ -21,6 +21,8 @@ Mouse to click, right click, focus and move in.
       <Popover content={content} title="Title" trigger="focus">
         <Button>Focus me</Button>
       </Popover>
+      <br />
+      <br />
       <Popover content={content} title="Title" trigger="click">
         <Button>Click me</Button>
       </Popover>

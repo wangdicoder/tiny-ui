@@ -9,10 +9,6 @@
   box-shadow: $popover-box-shadow;
   z-index: 999;
 
-  &__wrapper {
-    display: inline-block;
-  }
-
   &__arrow, &__arrow:before {
     width: $popover-arrow-size;
     height: $popover-arrow-size;

@@ -38,7 +38,7 @@ const Popup = (props: PopupProps): JSX.Element => {
     `${prefixCls}_${theme}`
   );
   const [popupVisible, setPopupVisible] = useState('visible' in props ? visible : defaultVisible);
-  const targetRef = useRef<HTMLDivElement | null>(null);
+  const targetRef = useRef<HTMLElement | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
   const delayDisplayPopupTimer = useRef<number | undefined>(undefined);
   const delayHidePopupTimer = useRef<number | undefined>(undefined);
@@ -92,11 +92,13 @@ const Popup = (props: PopupProps): JSX.Element => {
 
   const documentOnClick = useCallback(
     (e: Event): void => {
+      const target = targetRef.current;
+      const popup = popupRef.current;
       if (
-        !targetRef ||
-        (targetRef.current as HTMLElement).contains(e.target as HTMLElement) ||
-        !popupRef.current ||
-        (popupRef.current as HTMLDivElement).contains(e.target as HTMLElement)
+        !target ||
+        target.contains(e.target as HTMLElement) ||
+        !popup ||
+        popup.contains(e.target as HTMLElement)
       )
         return;
 
@@ -112,7 +114,7 @@ const Popup = (props: PopupProps): JSX.Element => {
         hidePopup();
       } else {
         displayPopup();
-        document.addEventListener('click', documentOnClick, { capture: true });
+        document.addEventListener('click', documentOnClick, true);
       }
     },
     [popupVisible, hidePopup, displayPopup, documentOnClick]
@@ -169,7 +171,7 @@ const Popup = (props: PopupProps): JSX.Element => {
     }
   };
 
-  const getAnimationMapping = () => {
+  const getAnimationName = () => {
     const mapping = {
       'top-start': biZoom ? 'top-start' : 'center-top',
       top: biZoom ? 'top' : 'center-top',
@@ -190,8 +192,8 @@ const Popup = (props: PopupProps): JSX.Element => {
   useEffect(() => {
     if (disabled) return;
 
-    if (!targetRef.current) return;
-    const target = targetRef.current as HTMLElement;
+    const target = targetRef.current;
+    if (!target) return;
 
     if (trigger === 'hover') {
       target.addEventListener('mouseenter', handleTargetOnMouseEnter);
@@ -235,15 +237,17 @@ const Popup = (props: PopupProps): JSX.Element => {
   ]);
 
   useEffect(() => {
-    'visible' in props && setPopupVisible(props.visible);
-  }, [props]);
+    if ('visible' in props) {
+      props.visible ? displayPopup() : hidePopup();
+    }
+  }, [props, displayPopup, hidePopup]);
 
   const renderContent = () => (
     <Transition
       in={popupVisible}
       onEnter={transitionOnEnter}
       onExited={transitionOnExited}
-      animation={getAnimationMapping()}>
+      animation={getAnimationName()}>
       <div {...otherProps} className={cls} ref={popupRef}>
         {content && arrow && <div data-popper-arrow className={`${prefixCls}__arrow`} />}
         {content}
@@ -251,11 +255,13 @@ const Popup = (props: PopupProps): JSX.Element => {
     </Transition>
   );
 
+  const elementProps = {
+    ref: (ref: HTMLElement | null) => (targetRef.current = ref),
+  };
+
   return (
     <>
-      <div ref={targetRef} className={`${prefixCls}__wrapper`}>
-        {children}
-      </div>
+      {React.cloneElement(children, elementProps)}
       {usePortal ? <Portal>{renderContent()}</Portal> : renderContent()}
     </>
   );
