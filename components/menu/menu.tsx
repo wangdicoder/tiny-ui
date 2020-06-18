@@ -13,6 +13,7 @@ const Menu = (props: MenuProps): JSX.Element => {
     inlineIndent = 20,
     onSelect,
     className,
+    overlayClassName,
     style,
     children,
     prefixCls: customisedCls,
@@ -50,6 +51,7 @@ const Menu = (props: MenuProps): JSX.Element => {
             (displayName === 'MenuDivider' && mode !== 'horizontal')
           ) {
             const childProps = {
+              overlayClassName,
               index: `${index}`,
             };
             return React.cloneElement(childElement, childProps);

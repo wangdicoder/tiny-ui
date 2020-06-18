@@ -10,7 +10,16 @@ import Popup from '../popup';
 import CollapseTransition from '../collapse-transition';
 
 const SubMenu = (props: SubMenuProps): JSX.Element => {
-  const { index, title, className, children, prefixCls: customisedCls, ...otherProps } = props;
+  const {
+    index,
+    title,
+    disabled,
+    className,
+    overlayClassName,
+    children,
+    prefixCls: customisedCls,
+    ...otherProps
+  } = props;
   const menuContext = useContext(MenuContext);
   const { mode, inlineIndent } = menuContext;
   const { level = 1, onMenuItemClick: _onMenuItemClick } = useContext(SubMenuContext);
@@ -31,13 +40,14 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
       });
   const menuItemCls = `${configContext.prefixCls ? configContext.prefixCls : 'ty'}-menu-item`;
   const titleCls = classNames(menuItemCls, `${prefixCls}__title`, {
+    [`${menuItemCls}_disabled`]: disabled,
     [`${menuItemCls}_active`]: index ? menuContext.index.startsWith(index) : false,
   });
   const titleRef = useRef<HTMLDivElement | null>(null);
 
   const handleOnClick = (e: React.MouseEvent): void => {
     e.preventDefault();
-    mode === 'inline' && setMenuOpen(!menuOpen);
+    !disabled && mode === 'inline' && setMenuOpen(!menuOpen);
   };
 
   const timerRef = useRef<number | undefined>(undefined);
@@ -51,7 +61,7 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
   };
 
   const handleOnMouseEnter = (e: React.MouseEvent): void => {
-    mode !== 'inline' && handleMouse(e, true);
+    !disabled && mode !== 'inline' && handleMouse(e, true);
   };
 
   const handleOnMouseLeave = (e: React.MouseEvent): void => {
@@ -128,8 +138,10 @@ const SubMenu = (props: SubMenuProps): JSX.Element => {
           <Popup
             flip={false}
             arrow={false}
+            className={overlayClassName}
             trigger="manual"
             visible={menuOpen}
+            biZoom={rightPopupMenu}
             placement={rightPopupMenu ? 'right-start' : 'bottom-start'}
             content={renderChildrenList()}>
             <div ref={titleRef} className={titleCls} onClick={handleOnClick}>

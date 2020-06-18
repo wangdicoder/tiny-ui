@@ -1,1 +1,23 @@
 @import '../../style/variables';
+
+.#{$prefix}-dropdown {
+
+  .#{$prefix}-menu, .#{$prefix}-menu-sub__list {
+    padding: 4px 0;
+
+    li.#{$prefix}-menu-item_active {
+      background-color: transparent;
+      color: $font-color;
+    }
+
+    .#{$prefix}-menu-item {
+      padding: 8px 15px;
+      margin: 0;
+
+      &:hover {
+        background-color: #f5f5f5;
+        color: $font-color;
+      }
+    }
+  }
+}

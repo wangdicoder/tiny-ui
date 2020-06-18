@@ -14,6 +14,11 @@ Horizontal top navigation menu.
     <Menu.Item disabled>Menu Item 2</Menu.Item>
     <Menu.Item>Menu Item 3</Menu.Item>
     <Menu.Item>Menu Item 4</Menu.Item>
+    <Menu.SubMenu title="Second Simple SubMenu">
+      <Menu.Item>Menu Item 5</Menu.Item>
+      <Menu.Item>Menu Item 6</Menu.Item>
+      <Menu.Item>Menu Item 7</Menu.Item>
+    </Menu.SubMenu>
   </Menu.SubMenu>
   <Menu.SubMenu title="Submenu with ItemGroup">
     <Menu.ItemGroup title="Group 1">

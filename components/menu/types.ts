@@ -20,6 +20,8 @@ export interface MenuProps
 
   /** called when a menu item is selected */
   onSelect?: (selectedIndex: string) => void;
+
+  overlayClassName?: string;
 }
 
 export interface MenuItemProps
@@ -44,4 +46,5 @@ export interface SubMenuProps
   index?: string;
   disabled?: boolean;
   icon?: ReactNode;
+  overlayClassName?: string;
 }

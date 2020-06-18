@@ -10,7 +10,6 @@
   margin: 0;
   white-space: nowrap;
   border: 0;
-  color: $font-color;
 
   &_horizontal {
     position: relative;
@@ -18,7 +17,7 @@
     &:before {
       content: '';
       position: absolute;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid;
       width: 100%;
       bottom: 0;
     }
@@ -45,7 +44,7 @@
     &:before {
       content: '';
       position: absolute;
-      border-right: 1px solid #f0f0f0;
+      border-right: 1px solid;
       height: 100%;
       right: 0;
     }
@@ -57,12 +56,30 @@
     }
   }
 
-  &_inline li.#{$prefix}-menu-item_active{
+  &_inline li.#{$prefix}-menu-item_active {
     @include menu-item-active($primary-color, true);
   }
 
-  &_vertical li.#{$prefix}-menu-item_active{
+  &_vertical li.#{$prefix}-menu-item_active {
     @include menu-item-active($primary-color);
+  }
+
+  &_light {
+    color: $font-color;
+    background: #fff;
+
+    &:before {
+      border-color: #f0f0f0;
+    }
+  }
+
+  &_dark {
+    color: rgba(255, 255, 255, .65);
+    background: #001529;
+
+    &:before {
+      border-color: #001529;
+    }
   }
 }
 
@@ -70,7 +87,7 @@
   box-sizing: border-box;
   white-space: nowrap;
   cursor: pointer;
-  transition: background-color 300ms;
+  transition: background-color 300ms, color 250ms;
 
   &:hover {
     color: $primary-color;
@@ -104,7 +121,7 @@
     &_popup {
       min-width: 160px;
 
-      li.#{$prefix}-menu-item_active{
+      li.#{$prefix}-menu-item_active {
         @include menu-item-active($primary-color);
       }
     }
@@ -163,6 +180,6 @@
 
 .#{$prefix}-menu-divider {
   height: 1px;
-  background-color: rgba(0, 0, 0, .15);
-  margin: 5px 10px;
+  background-color: rgba(0, 0, 0, .1);
+  margin: 5px 0;
 }

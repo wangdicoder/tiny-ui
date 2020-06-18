@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -21,13 +21,27 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('dropdown', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
-  const [visible, setVisible] = useState<boolean>(
+  const [popupVisible, setPopupVisible] = useState<boolean>(
     'visible' in props ? (props.visible as boolean) : false
   );
+  const delayDisplayPopupTimer = useRef<number | undefined>(undefined);
+  const delayHidePopupTimer = useRef<number | undefined>(undefined);
 
-  const onMenuItemSelect = () => {
-    !('visible' in props) && setVisible(false);
-  };
+  const displayPopup = useCallback(() => {
+    !('visible' in props) && setPopupVisible(true);
+    onVisibleChange && onVisibleChange(true);
+  }, [props, onVisibleChange]);
+
+  const hidePopup = useCallback(() => {
+    !('visible' in props) && setPopupVisible(false);
+    onVisibleChange && onVisibleChange(false);
+  }, [props, onVisibleChange]);
+
+  const delayHidePopup = useCallback((): void => {
+    delayHidePopupTimer.current = window.setTimeout(() => {
+      hidePopup();
+    }, 100);
+  }, [hidePopup]);
 
   const renderOverlay = (): React.ReactNode => {
     if (!overlay) {
@@ -35,17 +49,61 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
     }
 
     const overlayProps: Partial<MenuProps> = {
+      overlayClassName: cls,
       mode: 'vertical',
       theme: 'light',
-      onSelect: onMenuItemSelect,
+      onMouseEnter: () => {
+        if (trigger === 'hover') {
+          displayPopup();
+          window.clearTimeout(delayHidePopupTimer.current);
+        }
+      },
+      onMouseLeave: () => {
+        if (trigger === 'hover') {
+          delayHidePopup();
+          window.clearTimeout(delayDisplayPopupTimer.current);
+        }
+      },
+      onSelect: (selectedIndex) => {
+        const { onSelect } = overlay.props;
+        onSelect && onSelect(selectedIndex);
+        hidePopup();
+      },
     };
     return React.cloneElement(overlay, overlayProps);
   };
 
+  const handleTargetOnMouseEnter = () => {
+    if (trigger === 'hover') {
+      displayPopup();
+      window.clearTimeout(delayHidePopupTimer.current);
+    }
+  };
+
+  const handleTargetOnMouseLeave = () => {
+    if (trigger === 'hover') {
+      delayHidePopup();
+      window.clearTimeout(delayDisplayPopupTimer.current);
+    }
+  };
+
+  const handleTargetOnClick = () => {
+    if (trigger === 'click') {
+      displayPopup();
+    }
+  };
+
   useEffect(() => {
-    'visible' in props && setVisible(props.visible as boolean);
+    'visible' in props && setPopupVisible(props.visible as boolean);
   }, [props]);
 
+  const childrenProps = {
+    onMouseEnter: handleTargetOnMouseEnter,
+    onMouseLeave: handleTargetOnMouseLeave,
+    onClick: handleTargetOnClick,
+  };
+
+  React.Children.only(children);
   return (
     <Popup
       {...otherProps}
@@ -53,12 +111,11 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
       arrow={false}
       disabled={disabled}
       placement={placement}
-      trigger={trigger}
+      trigger="manual"
       className={cls}
-      visible={visible}
-      onVisibleChange={onVisibleChange}
+      visible={popupVisible}
       content={renderOverlay()}>
-      {children}
+      {React.cloneElement(children, childrenProps)}
     </Popup>
   );
 };
