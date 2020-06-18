@@ -5,7 +5,7 @@
   .#{$prefix}-menu, .#{$prefix}-menu-sub__list {
     padding: 4px 0;
 
-    li.#{$prefix}-menu-item_active {
+    .#{$prefix}-menu-item_active {
       background-color: transparent;
       color: $font-color;
     }

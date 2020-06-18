@@ -1,10 +1,9 @@
-@mixin menu-sub-item-style(){
-  height: 40px;
+@mixin menu-sub-item-style($padding: 12px 20px){
+  padding: $padding;
   margin-top: 4px;
   margin-bottom: 4px;
   overflow: hidden;
   font-size: 14px;
-  line-height: 40px;
   text-overflow: ellipsis;
 }
 

@@ -114,7 +114,6 @@
     white-space: nowrap;
 
     .#{$prefix}-menu-item {
-      padding: 0 20px;
       @include menu-sub-item-style();
     }
 
@@ -172,8 +171,7 @@
     white-space: nowrap;
 
     > .#{$prefix}-menu-item {
-      padding: 0 35px 0 25px;
-      @include menu-sub-item-style();
+      padding: 12px 35px 12px 25px;
     }
   }
 }
