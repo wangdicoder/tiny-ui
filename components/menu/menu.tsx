@@ -48,6 +48,7 @@ const Menu = (props: MenuProps): JSX.Element => {
           if (
             displayName === 'MenuItem' ||
             displayName === 'SubMenu' ||
+            displayName === 'MenuItemGroup' ||
             (displayName === 'MenuDivider' && mode !== 'horizontal')
           ) {
             const childProps = {

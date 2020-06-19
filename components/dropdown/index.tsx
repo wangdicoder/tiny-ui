@@ -111,6 +111,7 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
       arrow={false}
       disabled={disabled}
       placement={placement}
+      flip={!('placement' in props)}
       trigger="manual"
       className={cls}
       visible={popupVisible}

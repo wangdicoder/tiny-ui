@@ -109,6 +109,7 @@ a {
   background-color: transparent;
   color: $link-color;
   text-decoration: $link-decoration;
+  cursor: pointer;
 
   &:hover {
     color: $link-hover-color;

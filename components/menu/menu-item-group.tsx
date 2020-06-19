@@ -17,7 +17,7 @@ const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
     ...otherProps
   } = props;
   const configContext = useContext(ConfigContext);
-  const { mode, inlineIndent } = useContext(MenuContext);
+  const { inlineIndent } = useContext(MenuContext);
   const { level = 1 } = useContext(SubMenuContext);
   const prefixCls = getPrefixCls('menu-item-group', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
@@ -27,7 +27,7 @@ const MenuItemGroup = (props: MenuItemGroupProps): JSX.Element => {
       <div
         className={`${prefixCls}__title`}
         style={{
-          paddingLeft: mode === 'inline' ? inlineIndent * level - inlineIndent / 2 : undefined,
+          paddingLeft: inlineIndent * level - inlineIndent / 2,
         }}>
         {title}
       </div>

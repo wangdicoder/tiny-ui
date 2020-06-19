@@ -14,9 +14,19 @@
       padding: 8px 15px;
       margin: 0;
 
-      &:hover {
+      &:hover:not(.#{$prefix}-menu-item_disabled) {
         background-color: #f5f5f5;
         color: $font-color;
+      }
+    }
+  }
+
+  .#{$prefix}-menu-item-group {
+    &__title {
+      padding: 8px 10px;
+
+      &:first-child {
+        margin-top: 0;
       }
     }
   }
