@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { BaseProps } from '../_utils/props';
 
 export interface CollapsePanelProps extends BaseProps {
   itemKey: string;
-  header: React.ReactNode;
-  isActive?: boolean;
+  header: ReactNode;
   disabled?: boolean;
-  extra?: React.ReactNode;
+  extra?: ReactNode;
   deletable?: boolean;
   /** header click callback */
   onItemClick?: (itemKey: string) => void;
   showArrow?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
-export interface CollapseProps extends BaseProps {
+export interface CollapseProps
+  extends BaseProps,
+    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
   defaultActiveKey?: string | string[];
   activeKey?: string | string[];
   /** Only open one panel */
@@ -24,5 +25,4 @@ export interface CollapseProps extends BaseProps {
   showArrow?: boolean;
   bordered?: boolean;
   onChange?: (keys: string | string[]) => void;
-  children: React.ReactElement<CollapsePanelProps>;
 }
