@@ -47,7 +47,7 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>(
       onChange && onChange(items);
     };
 
-    const itemClickCallback = (itemKey: string) => {
+    const handleOnItemClick = (itemKey: string) => {
       let items = activeItems;
       if (accordion) {
         items = items[0] === itemKey ? [] : [itemKey];
@@ -72,7 +72,11 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>(
 
     return (
       <div {...otherProps} ref={ref} className={cls}>
-        <CollapseContext.Provider value={{ activeKeys: activeItems }}>
+        <CollapseContext.Provider
+          value={{
+            activeKeys: activeItems,
+            onItemClick: handleOnItemClick,
+          }}>
           {React.Children.map(children, (child, idx) => {
             const childElement = child as React.FunctionComponentElement<CollapsePanelProps>;
             if (childElement.type.displayName === 'CollapsePanel') {
@@ -80,7 +84,6 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>(
                 deletable,
                 showArrow,
                 itemKey: `${idx}`,
-                onItemClick: itemClickCallback,
               };
               return React.cloneElement(childElement, itemProps);
             }

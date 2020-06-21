@@ -19,28 +19,29 @@ const richNode = (node: React.ReactNode, isActive: boolean) => {
 const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
   const {
     showArrow = true,
-    prefixCls: customisedCls,
     itemKey,
     header,
     disabled,
     extra,
     deletable,
-    onItemClick,
+    onHeaderOnClick,
     className,
     style,
     children,
+    prefixCls: customisedCls,
   } = props;
   const itemRef = useRef<HTMLDivElement | null>(null);
   const configContext = useContext(ConfigContext);
-  const { activeKeys } = useContext(CollapseContext);
+  const { activeKeys, onItemClick } = useContext(CollapseContext);
   const prefixCls = getPrefixCls('collapse-item', configContext.prefixCls, customisedCls);
   const active = activeKeys.includes(itemKey);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_active`]: active,
   });
 
-  const headerOnClick = () => {
+  const headerOnClick = (e: React.MouseEvent) => {
     if (!disabled) {
+      onHeaderOnClick && onHeaderOnClick(e);
       onItemClick && onItemClick(itemKey);
     }
   };

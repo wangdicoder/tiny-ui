@@ -7,9 +7,8 @@ export interface CollapsePanelProps extends BaseProps {
   disabled?: boolean;
   extra?: ReactNode;
   deletable?: boolean;
-  /** header click callback */
-  onItemClick?: (itemKey: string) => void;
   showArrow?: boolean;
+  onHeaderOnClick?: (e: React.MouseEvent) => void;
   children?: ReactNode;
 }
 
