@@ -16,13 +16,13 @@ Only one panel can be expanded at a time.
   
   return (
     <Collapse accordion defaultActiveKey={'1'}>
-      <Panel header="This is panel header 1" itemKey="1">
+      <Panel header="This is panel header 1">
         <p>{text}</p>
       </Panel>
-      <Panel header="This is panel header 2" itemKey="2">
+      <Panel header="This is panel header 2">
         <p>{text}</p>
       </Panel>
-      <Panel header="This is panel header 3" itemKey="3">
+      <Panel header="This is panel header 3">
         <p>{text}</p>
       </Panel>
     </Collapse>
