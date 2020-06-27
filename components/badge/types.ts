@@ -4,7 +4,7 @@ import { BaseProps } from '../_utils/props';
 export interface BadgeProps
   extends BaseProps,
     React.PropsWithoutRef<JSX.IntrinsicElements['span']> {
-  /** display number */
+  /** the number to show in badge */
   count?: React.ReactNode;
 
   /** background color */

@@ -34,4 +34,14 @@ import { Badge } from 'tiny-ui';
 
 ## API
 
+| Property      | Description                                                       | Type              | Default   |
+| ------------- | ----------------------------------------------------------------- | ----------------- | --------- |
+| count         | the number to show in badge                                       | ReactNode         |           |
+| color         | background color                                                  | string            | #f2453d   |
+| max           | max count to show                                                 | number            | 99        |
+| dot           | display a dot only                                                | boolean           | false     |
+| processing    | display wave effect                                               | boolean           | false     |
+| showZero      | when value is equal to zero, the badge will be hidden by default  | boolean           | false     |
+| title         | text to show when hovering over the badge                         | string            |           |
+| badgeStyle    | internal badge style                                              | CSSProperties     |           |
 
