@@ -1,4 +1,5 @@
 export { default as Alert } from './alert';
+export { default as Anchor } from './anchor';
 export { default as AspectRatio } from './aspect-ratio';
 export { default as Autocomplete } from './autocomplete';
 export { default as Avatar } from './avatar';
@@ -19,6 +20,7 @@ export { default as Descriptions } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Dropdown } from './dropdown';
 export { default as Drawer } from './drawer';
+export { default as Ellipsis } from './ellipsis';
 export { default as Empty } from './empty';
 export { default as Flip } from './flip';
 export { default as Form } from './form';
