@@ -17,7 +17,7 @@ function buildScss() {
   return src(`${SOURCE_PATH}/style/index.scss`)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([autoPrefixer]))
+    .pipe(postcss([autoPrefixer()]))
     .pipe(sourcemaps.write('./'))
     .pipe(dest(DIST_PATH));
 }
