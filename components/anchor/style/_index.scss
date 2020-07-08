@@ -1,1 +1,25 @@
 @import '../../style/variables';
+
+.#{$prefix}-anchor{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #f0f0f0;
+  list-style: none;
+
+  &__link:not(:last-child){
+    margin-bottom: 4px;
+
+    & > a {
+      display: block;
+      padding-left: 16px;
+      overflow: hidden;
+      color: rgba(0,0,0,.85);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      border-left: 1px solid transparent;
+    }
+  }
+}

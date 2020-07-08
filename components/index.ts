@@ -20,7 +20,6 @@ export { default as Descriptions } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Dropdown } from './dropdown';
 export { default as Drawer } from './drawer';
-export { default as Ellipsis } from './ellipsis';
 export { default as Empty } from './empty';
 export { default as Flip } from './flip';
 export { default as Form } from './form';
