@@ -8,7 +8,7 @@ import '../../components/style/index.scss';
 import { components } from './components/markdown-tag';
 import { Header } from './components/header';
 import HomePage from './containers/home';
-import Test from './containers/test';
+// import Test from './containers/test';
 import GuidePage from './containers/guide';
 import ComponentsPage from './containers/components';
 
@@ -20,7 +20,7 @@ const App = (): React.ReactElement => (
         <Route exact path="/" component={HomePage} />
         <Route path="/guide" component={GuidePage} />
         <Route path="/components" component={ComponentsPage} />
-        <Route path="/test" component={Test} />
+        {/*<Route path="/test" component={Test} />*/}
       </Switch>
     </>
   </HashRouter>
