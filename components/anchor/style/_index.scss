@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.#{$prefix}-anchor{
+.#{$prefix}-anchor {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,17 +9,27 @@
   border-left: 1px solid #f0f0f0;
   list-style: none;
 
-  &__link:not(:last-child){
-    margin-bottom: 4px;
+  &__link {
+    padding: 7px 0 7px 16px;
+
+    .#{$prefix}-anchor{
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 0;
+    }
 
     & > a {
       display: block;
-      padding-left: 16px;
       overflow: hidden;
-      color: rgba(0,0,0,.85);
+      color: rgba(0, 0, 0, .65);
       white-space: nowrap;
       text-overflow: ellipsis;
-      border-left: 1px solid transparent;
+      border-left: 2px solid transparent;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
 }

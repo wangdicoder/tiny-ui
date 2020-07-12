@@ -2,17 +2,9 @@ import React, { useContext, useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { BaseProps } from '../_utils/props';
-import Sticky from '../sticky';
-import { AnchorLinkProps } from './types';
+import { AnchorLinkProps, AnchorProps } from './types';
 import { AnchorContext } from './anchor-context';
-
-export interface AnchorProps extends BaseProps {
-  affix?: boolean;
-  offsetBottom?: number;
-  offsetTop?: number;
-  children?: React.ReactNode;
-}
+import Sticky from '../sticky';
 
 const Anchor = (props: AnchorProps): JSX.Element => {
   const {
@@ -26,22 +18,31 @@ const Anchor = (props: AnchorProps): JSX.Element => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('anchor', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
-  const { hash } = window.location;
   const [activeId, setActiveId] = useState('');
+
+  const scrollToAnchor = (anchor: string): void => {
+    if (!window.document.body.querySelector(`#${anchor}`)) {
+      const element = window.document.body.querySelector(`[name=user-content-${anchor}]`);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  };
 
   /**
    * If the url contains the hash, check whether there is an element can be scrolled into
    */
   const hashScroll = useCallback(() => {
-    console.log(hash);
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element)
-        setTimeout(() => {
-          element.scrollIntoView();
-        }, 100);
+    const { location } = window;
+    if (location.search) {
+      const urlParams = new URLSearchParams(location.search);
+      const anchor = urlParams.get('anchor');
+      !!anchor && scrollToAnchor(anchor);
+    } else if (location.hash) {
+      const anchor = location.hash.replace('#', '');
+      !!anchor && scrollToAnchor(anchor);
     }
-  }, [hash]);
+  }, []);
 
   const handleScroll = useCallback(() => {
     const headings = document.querySelectorAll('*[id]');
@@ -59,6 +60,18 @@ const Anchor = (props: AnchorProps): JSX.Element => {
     setActiveId(newActive);
   }, []);
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, anchorName: string) => {
+    const { location } = window;
+    // if it is a HashRouter mode, prevent the default event nad update the query.
+    if (location.pathname === location.hash.replace('#', '').replace(/\?.*/, '')) {
+      e.preventDefault();
+      const url =
+        location.protocol + '//' + location.host + location.pathname + `?anchor=${anchorName}`;
+      window.history.pushState({ path: url }, '', url);
+    }
+    scrollToAnchor(anchorName);
+  };
+
   useEffect(() => {
     hashScroll();
 
@@ -71,7 +84,7 @@ const Anchor = (props: AnchorProps): JSX.Element => {
 
   return (
     <Sticky offsetTop={offsetTop} offsetBottom={offsetBottom}>
-      <AnchorContext.Provider value={{ activeId }}>
+      <AnchorContext.Provider value={{ activeId, onClick: handleLinkClick }}>
         <ul className={cls} style={style}>
           {React.Children.map(children, (child) => {
             const childElement = child as React.FunctionComponentElement<AnchorLinkProps>;

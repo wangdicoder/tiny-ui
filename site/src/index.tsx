@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDom from 'react-dom';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/react';
 import './index.scss';
 import '../../components/style/index.scss';
@@ -12,7 +12,7 @@ import GuidePage from './containers/guide';
 import ComponentsPage from './containers/components';
 
 const App = (): React.ReactElement => (
-  <HashRouter>
+  <BrowserRouter>
     <>
       <Header />
       <Switch>
@@ -26,7 +26,7 @@ const App = (): React.ReactElement => (
         )}
       </Switch>
     </>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 ReactDom.render(
