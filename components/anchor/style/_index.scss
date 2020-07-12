@@ -6,13 +6,43 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #f0f0f0;
   list-style: none;
+  position: relative;
+
+  &__ink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    &:before {
+      content: '';
+      position: relative;
+      display: block;
+      width: 2px;
+      height: 100%;
+      margin: 0 auto;
+      background-color: #f0f0f0;
+    }
+  }
+
+  &__ink-ball {
+    position: absolute;
+    left: 50%;
+    display: none;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border: 2px solid $primary-color;
+    border-radius: 8px;
+    transform: translateX(-50%);
+    transition: top .3s ease-in-out;
+  }
 
   &__link {
     padding: 7px 0 7px 16px;
 
-    .#{$prefix}-anchor{
+    .#{$prefix}-anchor {
       padding-top: 5px;
       padding-bottom: 5px;
       border: 0;

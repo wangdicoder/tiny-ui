@@ -21,11 +21,9 @@ const Anchor = (props: AnchorProps): JSX.Element => {
   const [activeId, setActiveId] = useState('');
 
   const scrollToAnchor = (anchor: string): void => {
-    if (!window.document.body.querySelector(`#${anchor}`)) {
-      const element = window.document.body.querySelector(`[name=user-content-${anchor}]`);
-      if (element) {
-        element.scrollIntoView();
-      }
+    const element = document.body.querySelector(`#${anchor}`);
+    if (element) {
+      element.scrollIntoView();
     }
   };
 
@@ -65,6 +63,7 @@ const Anchor = (props: AnchorProps): JSX.Element => {
     // if it is a HashRouter mode, prevent the default event nad update the query.
     if (location.pathname === location.hash.replace('#', '').replace(/\?.*/, '')) {
       e.preventDefault();
+      console.log(location.origin);
       const url =
         location.protocol + '//' + location.host + location.pathname + `?anchor=${anchorName}`;
       window.history.pushState({ path: url }, '', url);
@@ -86,6 +85,9 @@ const Anchor = (props: AnchorProps): JSX.Element => {
     <Sticky offsetTop={offsetTop} offsetBottom={offsetBottom}>
       <AnchorContext.Provider value={{ activeId, onClick: handleLinkClick }}>
         <ul className={cls} style={style}>
+          <div className={`${prefixCls}__ink`}>
+            <div className={`${prefixCls}__ink-ball`} />
+          </div>
           {React.Children.map(children, (child) => {
             const childElement = child as React.FunctionComponentElement<AnchorLinkProps>;
             if (childElement.type.displayName === 'AnchorLink') {

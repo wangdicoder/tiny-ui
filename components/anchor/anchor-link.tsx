@@ -14,14 +14,18 @@ const AnchorLink = React.forwardRef<HTMLAnchorElement, AnchorLinkProps>(
 
     return (
       <li title={title} className={`${prefixCls}__link`}>
-        <a {...otherProps} ref={ref} onClick={onLinkClick} target={undefined}>
+        <a
+          {...otherProps}
+          ref={ref}
+          onClick={onLinkClick}
+          target={'target' in props ? props.target : undefined}>
           {title}
         </a>
         {children && (
           <ul className={prefixCls}>
-            {React.Children.map(children, (child) => {
-              return <AnchorLink title={child.props.title} prefixCls={prefixCls} />;
-            })}
+            {React.Children.map(children, (child) => (
+              <AnchorLink {...child.props} prefixCls={prefixCls} />
+            ))}
           </ul>
         )}
       </li>
