@@ -88,6 +88,23 @@
     }
   }
 
+  &__heading-2,
+  &__heading-3 {
+    & > a {
+      opacity: 0;
+      margin-left: 5px;
+      text-decoration: none;
+      font-size: 0.8em;
+      transition: opacity 250ms;
+    }
+
+    &:hover {
+      & > a {
+        opacity: 1;
+      }
+    }
+  }
+
   &__heading-4 {
     font-size: 16px;
   }

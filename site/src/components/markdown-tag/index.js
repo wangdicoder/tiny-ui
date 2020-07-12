@@ -8,8 +8,18 @@ import { CodeBlock } from '../code-block';
 export const components = {
   wrapper: (props) => <div {...props} className="markdown" />,
   h1: (props) => <h1 {...props} className="markdown__heading-1" />,
-  h2: (props) => <h2 {...props} className="markdown__heading-2" />,
-  h3: (props) => <h3 {...props} className="markdown__heading-3" />,
+  h2: ({ children, ...props }) => (
+    <h2 {...props} className="markdown__heading-2" id={children.toLowerCase()}>
+      {children}
+      <a href={`#${children.toLowerCase()}`}>#</a>
+    </h2>
+  ),
+  h3: ({ children, ...props }) => (
+    <h3 {...props} className="markdown__heading-3" id={children.toLowerCase()}>
+      {children}
+      <a href={`#${children.toLowerCase()}`}>#</a>
+    </h3>
+  ),
   h4: (props) => <h4 {...props} className="markdown__heading-4" />,
   h5: (props) => <h5 {...props} className="markdown__heading-5" />,
   h6: (props) => <h6 {...props} className="markdown__heading-6" />,
