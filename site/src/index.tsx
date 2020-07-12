@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/react';
@@ -19,11 +19,11 @@ const App = (): React.ReactElement => (
         <Route exact path="/" component={HomePage} />
         <Route path="/guide" component={GuidePage} />
         <Route path="/components" component={ComponentsPage} />
-        {process.env.NODE_ENV === 'development' && (
-          <Suspense fallback="none">
-            <Route path="/test" component={lazy(() => import('./containers/test'))} />
-          </Suspense>
-        )}
+        {/*{process.env.NODE_ENV === 'development' && (*/}
+        {/*  <Suspense fallback="none">*/}
+        {/*    <Route path="/test" component={lazy(() => import('./containers/test'))} />*/}
+        {/*  </Suspense>*/}
+        {/*)}*/}
       </Switch>
     </>
   </BrowserRouter>

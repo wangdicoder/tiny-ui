@@ -16,14 +16,14 @@ export const SidebarMenu = (props: Props): React.ReactElement => {
   return (
     <Sidebar theme="light" width={250} className="sidebar-menu">
       <ul className="sidebar-menu__menu">
-        {routers.map(router => {
+        {routers.map((router) => {
           if (router.children) {
             return (
               <li key={router.title}>
                 <div className="sidebar-menu__group-title">{router.title}</div>
                 <ul className="sidebar-menu__group-list">
-                  {router.children.map((item, idx) => (
-                    <li key={idx} className="sidebar-menu__menu-item">
+                  {router.children.map((item) => (
+                    <li key={item.title} className="sidebar-menu__menu-item">
                       <NavLink
                         to={{
                           pathname: `${url}/${item.route}`,
