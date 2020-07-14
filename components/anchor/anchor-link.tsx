@@ -1,22 +1,29 @@
 import React, { useContext } from 'react';
+import classNames from 'classnames';
 import { AnchorLinkProps } from './types';
 import { AnchorContext } from './anchor-context';
 
 const AnchorLink = React.forwardRef<HTMLAnchorElement, AnchorLinkProps>(
   (props: AnchorLinkProps, ref): JSX.Element => {
-    const { title, children, prefixCls, ...otherProps } = props;
+    const { href, title, children, prefixCls, ...otherProps } = props;
     const anchorContext = useContext(AnchorContext);
+    const cls = classNames(`${prefixCls}__link`, {
+      [`${prefixCls}__link_active`]: `#${anchorContext.activeId}` === href,
+    });
 
     const onLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
       const { onClick } = anchorContext;
-      onClick && onClick(e, title);
+      onClick && onClick(e, href.replace('#', ''));
     };
 
     return (
-      <li title={title} className={`${prefixCls}__link`}>
+      <li title={title} className={cls}>
         <a
           {...otherProps}
+          className={`${prefixCls}__link-title`}
           ref={ref}
+          href={href}
           onClick={onLinkClick}
           target={'target' in props ? props.target : undefined}>
           {title}

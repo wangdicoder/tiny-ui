@@ -8,6 +8,7 @@
   flex-direction: column;
   list-style: none;
   position: relative;
+  background-color: #fff;
 
   &__ink {
     position: absolute;
@@ -43,23 +44,31 @@
     padding: 7px 0 7px 16px;
 
     .#{$prefix}-anchor {
-      padding-top: 5px;
-      padding-bottom: 5px;
       border: 0;
     }
 
-    & > a {
-      display: block;
-      overflow: hidden;
-      color: rgba(0, 0, 0, .65);
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      border-left: 2px solid transparent;
-      text-decoration: none;
-
-      &:hover {
+    &_active {
+      & > a {
         color: $primary-color;
       }
+    }
+  }
+
+  &__link-title {
+    display: block;
+    overflow: hidden;
+    color: rgba(0, 0, 0, .65);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-left: 2px solid transparent;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: none;
+    }
+
+    &:not(:only-child) {
+      margin-bottom: 5px;
     }
   }
 }

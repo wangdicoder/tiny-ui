@@ -9,6 +9,7 @@ export interface AnchorProps extends BaseProps {
 }
 
 export interface AnchorLinkProps extends BaseProps, React.PropsWithRef<JSX.IntrinsicElements['a']> {
+  href: string;
   title: string;
   children?: React.ReactElement<AnchorLinkProps>[];
 }

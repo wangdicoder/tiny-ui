@@ -20,17 +20,30 @@ const Anchor = (props: AnchorProps): JSX.Element => {
   const cls = classNames(prefixCls, className);
   const [activeId, setActiveId] = useState('');
 
-  const scrollToAnchor = (anchor: string): void => {
-    const element = document.body.querySelector(`#${anchor}`);
+  const scrollToAnchor = (anchorName: string): void => {
+    const element = document.body.querySelector(`#${anchorName}`);
     if (element) {
-      element.scrollIntoView();
+      element.scrollIntoView(true);
     }
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, anchorName: string) => {
+    const { location } = window;
+    let url;
+    // if it is a HashRouter mode, prevent the default event nad update the query.
+    if (location.pathname.includes('/#/')) {
+      url = location.protocol + '//' + location.host + location.pathname + `?anchor=${anchorName}`;
+    } else {
+      url = location.protocol + '//' + location.host + location.pathname + `#${anchorName}`;
+    }
+    window.history.pushState({ path: url }, '', url);
+    scrollToAnchor(anchorName);
   };
 
   /**
    * If the url contains the hash, check whether there is an element can be scrolled into
    */
-  const hashScroll = useCallback(() => {
+  const initHashScroll = useCallback(() => {
     const { location } = window;
     if (location.search) {
       const urlParams = new URLSearchParams(location.search);
@@ -58,28 +71,17 @@ const Anchor = (props: AnchorProps): JSX.Element => {
     setActiveId(newActive);
   }, []);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, anchorName: string) => {
-    const { location } = window;
-    // if it is a HashRouter mode, prevent the default event nad update the query.
-    if (location.pathname === location.hash.replace('#', '').replace(/\?.*/, '')) {
-      e.preventDefault();
-      console.log(location.origin);
-      const url =
-        location.protocol + '//' + location.host + location.pathname + `?anchor=${anchorName}`;
-      window.history.pushState({ path: url }, '', url);
-    }
-    scrollToAnchor(anchorName);
-  };
+  useEffect(() => {
+    initHashScroll();
+  }, [initHashScroll]);
 
   useEffect(() => {
-    hashScroll();
-
     document.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [hashScroll, handleScroll]);
+  }, [handleScroll]);
 
   return (
     <Sticky offsetTop={offsetTop} offsetBottom={offsetBottom}>
