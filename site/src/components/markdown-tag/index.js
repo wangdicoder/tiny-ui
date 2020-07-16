@@ -5,19 +5,23 @@ import React from 'react';
 import './md-tag.scss';
 import { CodeBlock } from '../code-block';
 
+const slugifyLink = (name) => {
+  return name.toLowerCase().split(' ').join('-');
+};
+
 export const components = {
-  wrapper: (props) => <div {...props} className="markdown" />,
+  wrapper: ({ history, location, match, ...props }) => <div {...props} className="markdown" />,
   h1: (props) => <h1 {...props} className="markdown__heading-1" />,
   h2: ({ children, ...props }) => (
-    <h2 {...props} className="markdown__heading-2" id={children.toLowerCase()}>
+    <h2 {...props} className="markdown__heading-2" id={slugifyLink(children)}>
       {children}
-      <a href={`#${children.toLowerCase()}`}>#</a>
+      <a href={`#${slugifyLink(children)}`}>#</a>
     </h2>
   ),
   h3: ({ children, ...props }) => (
-    <h3 {...props} className="markdown__heading-3" id={children.toLowerCase()}>
+    <h3 {...props} className="markdown__heading-3" id={slugifyLink(children)}>
       {children}
-      <a href={`#${children.toLowerCase()}`}>#</a>
+      <a href={`#${slugifyLink(children)}`}>#</a>
     </h3>
   ),
   h4: (props) => <h4 {...props} className="markdown__heading-4" />,
