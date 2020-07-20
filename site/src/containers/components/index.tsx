@@ -10,7 +10,7 @@ const { Content } = Layout;
 
 const flattenRouters = (routers: RouterItem[]): RouterItem[] => {
   return routers.reduce((res: RouterItem[], router) => {
-    router.children!.forEach((child) => {
+    router.children?.forEach((child) => {
       res.push(child);
     });
     return res;
@@ -45,7 +45,7 @@ export default class ComponentsPage extends React.PureComponent<RouteComponentPr
               </Switch>
             </Suspense>
             <Divider className="doc-container__divider" />
-            <DocFooter currPathname={this.props.location.pathname} routers={flattenedRouters} />
+            <DocFooter routers={flattenedRouters} />
           </Content>
         </Layout>
       </Layout>

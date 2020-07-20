@@ -34,7 +34,7 @@ export default class GuidePage extends React.PureComponent<RouteComponentProps> 
               </Switch>
             </Suspense>
             <Divider className="doc-container__divider" />
-            <DocFooter currPathname={this.props.location.pathname} routers={GUIDE_MENU} />
+            <DocFooter routers={GUIDE_MENU} />
           </Content>
         </Layout>
       </Layout>
