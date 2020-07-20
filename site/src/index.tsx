@@ -19,7 +19,7 @@ const App = (): React.ReactElement => (
         <Route exact path="/" component={HomePage} />
         <Route path="/guide" component={GuidePage} />
         <Route path="/components" component={ComponentsPage} />
-        {process.env.NODE_ENV === 'development' && (
+        {process.env.NODE_ENV?.trim() === 'development' && (
           <Suspense fallback="none">
             <Route path="/test" component={lazy(() => import('./containers/test'))} />
           </Suspense>
