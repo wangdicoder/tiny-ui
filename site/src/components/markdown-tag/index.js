@@ -6,7 +6,10 @@ import './md-tag.scss';
 import { CodeBlock } from '../code-block';
 
 const slugifyLink = (name) => {
-  return name.toLowerCase().split(' ').join('-');
+  if (name.includes(' ')) {
+    return name.toLowerCase().split(' ').join('-');
+  }
+  return name;
 };
 
 export const components = {

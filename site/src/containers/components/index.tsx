@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
 import { COMPONENT_MENU, RouterItem } from '../../routers';
 import { SidebarMenu } from '../../components/sidebar-menu';
-import { Layout, Loader } from '../../../../components';
-// import { DocFooter } from '../../components/doc-footer';
+import { Layout, Loader, Divider } from '../../../../components';
+import { DocFooter } from '../../components/doc-footer';
 import ComponentOverview from './overview';
 
 const { Content } = Layout;
@@ -44,8 +44,8 @@ export default class ComponentsPage extends React.PureComponent<RouteComponentPr
                 ))}
               </Switch>
             </Suspense>
-            {/*<Divider className="doc-container__divider" />*/}
-            {/*<DocFooter routers={flattenedRouters} />*/}
+            <Divider className="doc-container__divider" />
+            <DocFooter currPathname={this.props.location.pathname} routers={flattenedRouters} />
           </Content>
         </Layout>
       </Layout>

@@ -3,14 +3,14 @@ import './component-page.scss';
 import { Link } from 'react-router-dom';
 import { RouterItem } from '../../routers';
 import { Icon } from '../../../../components';
-import { useLocation } from 'react-router-dom';
 
 type Props = {
+  currPathname: string;
   routers: RouterItem[];
 };
 
 const getSiblingMenus = (routerName: string, routers: RouterItem[]): [RouterItem, RouterItem] => {
-  const idx = routers.findIndex(menu => {
+  const idx = routers.findIndex((menu) => {
     return menu.route === routerName;
   });
   if (idx === 0) {
@@ -22,14 +22,13 @@ const getSiblingMenus = (routerName: string, routers: RouterItem[]): [RouterItem
   }
 };
 
-export const DocFooter = ({ routers }: Props): React.ReactElement => {
-  const { pathname } = useLocation();
-  const paths = pathname.split('/');
+export const DocFooter = ({ currPathname, routers }: Props): React.ReactElement => {
+  const paths = currPathname.split('/');
   const currRouteName = paths[paths.length - 1];
   const siblingMenus = getSiblingMenus(currRouteName, routers);
   return (
     <footer className="component-page__footer">
-      {siblingMenus[0].route !== currRouteName ? (
+      {siblingMenus[0] && siblingMenus[0].route !== currRouteName ? (
         <Link to={siblingMenus[0].route!}>
           <Icon name="left" className="component-page__footer-icon-left" />
           <span className="component-page__footer-label">{siblingMenus[0].title}</span>
@@ -37,7 +36,7 @@ export const DocFooter = ({ routers }: Props): React.ReactElement => {
       ) : (
         <div />
       )}
-      {siblingMenus[1].route !== currRouteName && (
+      {siblingMenus[1] && siblingMenus[1].route !== currRouteName && (
         <Link to={siblingMenus[1].route!}>
           <span className="component-page__footer-label">{siblingMenus[1].title}</span>
           <Icon name="right" className="component-page__footer-icon-right" />

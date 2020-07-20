@@ -2,22 +2,12 @@ import React, { Suspense } from 'react';
 import { Route, RouteComponentProps, Switch, Redirect } from 'react-router-dom';
 import { GUIDE_MENU } from '../../routers';
 import { SidebarMenu } from '../../components/sidebar-menu';
-import { Layout, Loader, Anchor } from '../../../../components';
-// import { DocFooter } from '../../components/doc-footer';
+import { Layout, Loader, Divider } from '../../../../components';
+import { DocFooter } from '../../components/doc-footer';
 
-const { Content, Sidebar } = Layout;
-const { Link } = Anchor;
+const { Content } = Layout;
 
 export default class GuidePage extends React.PureComponent<RouteComponentProps> {
-  private getAnchors = (): void => {
-    const mdNode = document.getElementsByClassName('markdown');
-    console.log(mdNode);
-  };
-
-  componentDidMount(): void {
-    this.getAnchors();
-  }
-
   render(): React.ReactNode {
     const { url } = this.props.match;
     return (
@@ -43,15 +33,9 @@ export default class GuidePage extends React.PureComponent<RouteComponentProps> 
                 <Redirect from={`${url}`} to={`${url}/${GUIDE_MENU[0].route}`} />
               </Switch>
             </Suspense>
-            {/*<Divider className="doc-container__divider" />*/}
-            {/*<DocFooter routers={GUIDE_MENU} />*/}
+            <Divider className="doc-container__divider" />
+            <DocFooter currPathname={this.props.location.pathname} routers={GUIDE_MENU} />
           </Content>
-          <Sidebar width={140}>
-            <Anchor offsetTop={90}>
-              <Link href="#features" title="Features" />
-              <Link href="#version" title="Version" />
-            </Anchor>
-          </Sidebar>
         </Layout>
       </Layout>
     );
