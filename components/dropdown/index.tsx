@@ -11,6 +11,7 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
     trigger = 'hover',
     placement = 'bottom-start',
     disabled = false,
+    arrow = false,
     onVisibleChange,
     overlay,
     className,
@@ -108,7 +109,7 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
     <Popup
       {...otherProps}
       biZoom={false}
-      arrow={false}
+      arrow={arrow}
       disabled={disabled}
       placement={placement}
       flip={!('placement' in props)}
