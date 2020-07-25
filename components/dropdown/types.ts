@@ -17,6 +17,7 @@ export interface DropdownProps extends BaseProps {
   placement?: DropdownPlacement;
   overlay?: React.ReactElement<MenuProps>;
   visible?: boolean;
+  arrow?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   children: React.ReactElement;
 }

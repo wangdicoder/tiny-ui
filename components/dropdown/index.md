@@ -2,6 +2,7 @@ import Basic from './demo/basic.md'
 import Other from './demo/other.md'
 import Cascade from './demo/cascade.md'
 import Placement from './demo/placement.md'
+import Arrow from './demo/arrow.md'
 import Trigger from './demo/trigger.md'
 import Close from './demo/close.md'
 
@@ -26,6 +27,7 @@ import { Dropdown } from 'tiny-ui';
     <Basic />
     <Other />
     <Cascade />
+    <Arrow />
   </column>
   <column>
     <Placement />
