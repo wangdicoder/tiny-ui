@@ -37,3 +37,13 @@ import { Dropdown } from 'tiny-ui';
 </layout>
 
 ## API
+
+| Property          | Description                           | Type                          | Default   |
+| ----------------- | ------------------------------------- | ----------------------------- | --------- |
+| disabled          | whether the dropdown menu is disabled | boolean                       | false     |
+| trigger           | trigger mode                          | enum: `click` &#124; `hover`  | `hover`   |
+| placement         | placement of popup menu               | enum: `top-start` &#124; `top` &#124; `end` &#124; `bottom-start` &#124; `bottom` &#124; `bottom-end` | `bottom-start`    |
+| overlay           | dropdown menu                         | [Menu](/components/menu)      | -         |
+| visible           | whether the dropdown menu is visible  | boolean                       | -         |
+| arrow             | display the dropdown arrow            | boolean                       | false     |
+| onVisibleChange   | allow to get millisecond value        | (visible: boolean) => void    | -         |

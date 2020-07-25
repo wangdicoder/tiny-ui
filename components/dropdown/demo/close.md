@@ -16,14 +16,15 @@ class CloseExample extends React.PureComponent {
   }
 
   handleMenuClick(key) {
-    console.log(key)
     if (key === '2') {
       this.setState({ visible: false });
     }
   };
 
   handleVisibleChange(visible) {
-    this.setState({ visible });
+    if(visible) {
+      this.setState({ visible });
+    }
   };
 
   renderOverlay() {

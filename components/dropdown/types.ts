@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseProps } from '../_utils/props';
 import { MenuProps } from '../menu/types';
 
-export type DropdownTrigger = 'click' | 'hover' | 'contextmenu';
+export type DropdownTrigger = 'click' | 'hover';
 export type DropdownPlacement =
   | 'top-start'
   | 'top'
