@@ -71,7 +71,8 @@ hr {
 a {
   background-color: transparent;
   color: #6E41BF;
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
   a:hover {
     color: #4d2d86;
     text-decoration: underline; }
@@ -401,7 +402,6 @@ template {
 
 .ty-alert {
   border: 1px solid;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   border-radius: 3px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -465,6 +465,65 @@ template {
     background-color: #e6f7ff;
     color: #0b8aff; }
 
+.ty-anchor {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  position: relative;
+  background-color: #fff; }
+  .ty-anchor__ink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%; }
+    .ty-anchor__ink:before {
+      content: '';
+      position: relative;
+      display: block;
+      width: 2px;
+      height: 100%;
+      margin: 0 auto;
+      background-color: #f0f0f0; }
+  .ty-anchor__ink-ball {
+    position: absolute;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border: 2px solid #6E41BF;
+    border-radius: 8px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    -webkit-transition: top .3s ease-in-out;
+    transition: top .3s ease-in-out; }
+  .ty-anchor__link {
+    padding: 7px 0 7px 16px; }
+    .ty-anchor__link .ty-anchor {
+      border: 0; }
+    .ty-anchor__link_active > a {
+      color: #6E41BF; }
+  .ty-anchor__link-title {
+    display: block;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.65);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-left: 2px solid transparent; }
+    .ty-anchor__link-title:hover {
+      color: #6E41BF;
+      text-decoration: none; }
+    .ty-anchor__link-title:not(:only-child) {
+      margin-bottom: 5px; }
+
 .ty-aspect-ratio {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -485,7 +544,6 @@ template {
 .ty-avatar {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -594,7 +652,6 @@ template {
     opacity: 0; } }
 
 .ty-badge {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -741,7 +798,6 @@ template {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.5; }
   .ty-btn + .ty-btn {
     margin-left: 10px; }
@@ -1144,7 +1200,6 @@ template {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   margin-right: 8px;
   color: rgba(0, 0, 0, 0.75);
   -webkit-box-sizing: border-box;
@@ -1244,21 +1299,21 @@ template {
 .ty-collapse {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 2px;
   color: #32325d;
   font-size: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   border: 1px solid #d9d9d9;
   border-bottom: 0;
-  background-color: #fafafa; }
+  background-color: #fafafa;
+  overflow: hidden; }
   .ty-collapse-item {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     border-bottom: 1px solid #d9d9d9; }
     .ty-collapse-item:last-child {
-      border-radius: 0 0 4px 4px; }
+      border-radius: 0 0 2px 2px; }
       .ty-collapse-item:last-child .ty-collapse-item__content {
-        border-radius: 0 0 4px 4px; }
+        border-radius: 0 0 2px 2px; }
     .ty-collapse-item__header {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -1281,17 +1336,16 @@ template {
         color: rgba(0, 0, 0, 0.25);
         cursor: not-allowed; }
     .ty-collapse-item__arrow {
-      margin-right: 15px;
-      -webkit-transform: rotate(0);
-              transform: rotate(0);
+      margin-right: 10px;
+      -webkit-transform: rotate(-90deg);
+              transform: rotate(-90deg);
       text-align: center;
-      font-size: 12px;
-      color: inherit;
+      color: currentColor;
       -webkit-transition: all 300ms;
       transition: all 300ms; }
       .ty-collapse-item__arrow_active {
-        -webkit-transform: rotate(90deg);
-                transform: rotate(90deg); }
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg); }
     .ty-collapse-item__title {
       -webkit-box-flex: 1;
           -ms-flex: 1;
@@ -1320,9 +1374,10 @@ template {
     border-top: 0;
     padding-top: 4px; }
 
-.collapse-transition {
-  -webkit-transition: 250ms height ease-in-out, 250ms padding-top ease-in-out, 250ms padding-bottom ease-in-out;
-  transition: 250ms height ease-in-out, 250ms padding-top ease-in-out, 250ms padding-bottom ease-in-out; }
+.ty-collapse-transition {
+  overflow: hidden;
+  -webkit-transition: 250ms height, 250ms padding-top, 250ms padding-bottom;
+  transition: 250ms height, 250ms padding-top, 250ms padding-bottom; }
 
 .ty-date-picker {
   display: inline-block;
@@ -1485,7 +1540,6 @@ template {
   padding: 16px 24px; }
 
 .ty-divider {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 16px;
   line-height: 1.5;
   -webkit-box-sizing: border-box;
@@ -1638,6 +1692,23 @@ template {
       -webkit-transform: translateX(-100%);
               transform: translateX(-100%); }
 
+.ty-dropdown .ty-menu, .ty-dropdown .ty-menu-sub__list {
+  padding: 4px 0; }
+  .ty-dropdown .ty-menu .ty-menu-item_active, .ty-dropdown .ty-menu-sub__list .ty-menu-item_active {
+    background-color: transparent;
+    color: #32325d; }
+  .ty-dropdown .ty-menu .ty-menu-item, .ty-dropdown .ty-menu-sub__list .ty-menu-item {
+    padding: 8px 15px;
+    margin: 0; }
+    .ty-dropdown .ty-menu .ty-menu-item:hover:not(.ty-menu-item_disabled), .ty-dropdown .ty-menu-sub__list .ty-menu-item:hover:not(.ty-menu-item_disabled) {
+      background-color: #f5f5f5;
+      color: #32325d; }
+
+.ty-dropdown .ty-menu-item-group__title {
+  padding: 8px 10px; }
+  .ty-dropdown .ty-menu-item-group__title:first-child {
+    margin-top: 0; }
+
 .ty-empty {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1659,7 +1730,6 @@ template {
   .ty-empty__desc {
     color: rgba(0, 0, 0, 0.35);
     font-size: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     margin: 0; }
   .ty-empty__footer {
     margin-top: 16px; }
@@ -1763,15 +1833,17 @@ template {
     font-size: 13px;
     color: #ff4d4f; }
   .ty-form-item__helper {
+    min-height: 22px;
+    line-height: 22px;
     font-size: 13px;
     color: #999; }
   .ty-form-item__notice {
     font-size: 13px;
     border-radius: 2px;
     background: #fff7cc;
-    color: #333;
+    color: #555;
     padding: 5px;
-    margin-bottom: 3px; }
+    margin-top: 5px; }
   .ty-form-item_with-err-label {
     margin-bottom: 0; }
   .ty-form-item_has-error .ty-input__input, .ty-form-item_has-error .ty-input-number__input, .ty-form-item_has-error .ty-textarea {
@@ -3977,7 +4049,7 @@ template {
     top: 50%;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
-    z-index: 2;
+    z-index: 1;
     margin: 0 8px; }
   .ty-input__prefix {
     left: 0; }
@@ -4512,91 +4584,66 @@ template {
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  border: 0;
-  color: #525f7f; }
+  border: 0; }
   .ty-menu_horizontal {
-    border-bottom: 1px solid #f0f0f0; }
-    .ty-menu_horizontal > .ty-menu-item {
-      padding: 15px;
+    position: relative; }
+    .ty-menu_horizontal:before {
+      content: '';
+      position: absolute;
+      border-bottom: 1px solid;
+      width: 100%;
+      bottom: 0; }
+    .ty-menu_horizontal .ty-menu-item {
+      height: 48px;
+      padding: 0 15px;
+      line-height: 48px;
       margin: 0 5px;
       border-bottom: 2px solid transparent;
-      position: relative;
-      top: 1px; }
-      .ty-menu_horizontal > .ty-menu-item_active {
+      position: relative; }
+      .ty-menu_horizontal .ty-menu-item_active {
         color: #6E41BF;
         border-bottom-color: #6E41BF; }
-    .ty-menu_horizontal .ty-menu-sub_active {
-      color: #6E41BF;
-      border-bottom-color: #6E41BF; }
-    .ty-menu_horizontal .ty-menu-sub__list {
-      position: absolute;
-      z-index: 1;
-      top: calc(100% + 2px);
-      left: 0;
-      background-color: #fff;
-      color: #525f7f;
-      -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
-              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
-      border-radius: 2px; }
-      .ty-menu_horizontal .ty-menu-sub__list_open {
-        display: block; }
-      .ty-menu_horizontal .ty-menu-sub__list > .ty-menu-item_active {
-        background-color: #e2daf2;
-        color: #6E41BF; }
-    .ty-menu_horizontal .ty-menu-item-group__list > .ty-menu-item_active {
-      background-color: #e2daf2;
-      color: #6E41BF; }
-  .ty-menu_vertical {
+  .ty-menu_inline, .ty-menu_vertical {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    border-right: 1px solid #f0f0f0; }
-    .ty-menu_vertical > .ty-menu-item {
-      padding: 13px 18px;
+    position: relative; }
+    .ty-menu_inline:before, .ty-menu_vertical:before {
+      content: '';
+      position: absolute;
+      border-right: 1px solid;
+      height: 100%;
+      right: 0; }
+    .ty-menu_inline .ty-menu-item, .ty-menu_vertical .ty-menu-item {
+      padding: 15px 20px;
       margin: 5px 0;
-      position: relative;
-      right: -1px; }
-      .ty-menu_vertical > .ty-menu-item_active {
-        background-color: #e2daf2;
-        color: #6E41BF;
-        border-right: 3px solid #6E41BF; }
-    .ty-menu_vertical .ty-menu-sub {
-      padding: 0;
-      margin: 0; }
-      .ty-menu_vertical .ty-menu-sub_active .ty-menu-sub__title {
-        color: #6E41BF; }
-      .ty-menu_vertical .ty-menu-sub__title {
-        padding: 13px 18px;
-        margin: 5px 0;
-        overflow: hidden;
-        text-overflow: ellipsis; }
-      .ty-menu_vertical .ty-menu-sub__list {
-        color: #32325d; }
-        .ty-menu_vertical .ty-menu-sub__list > .ty-menu-item {
-          padding: 0 48px; }
-        .ty-menu_vertical .ty-menu-sub__list_open {
-          display: block; }
-        .ty-menu_vertical .ty-menu-sub__list > .ty-menu-item_active {
-          background-color: #e2daf2;
-          color: #6E41BF;
-          border-right: 3px solid #6E41BF; }
-    .ty-menu_vertical .ty-menu-item-group__title {
-      padding: 10px 30px; }
-    .ty-menu_vertical .ty-menu-item-group__list > .ty-menu-item {
-      padding: 0 48px; }
-      .ty-menu_vertical .ty-menu-item-group__list > .ty-menu-item_active {
-        background-color: #e2daf2;
-        color: #6E41BF;
-        border-right: 3px solid #6E41BF; }
+      position: relative; }
+  .ty-menu_inline li.ty-menu-item_active {
+    background-color: rgba(110, 65, 191, 0.2);
+    color: #6E41BF;
+    border-right: 3px solid #6E41BF; }
+  .ty-menu_vertical li.ty-menu-item_active {
+    background-color: rgba(110, 65, 191, 0.2);
+    color: #6E41BF; }
+  .ty-menu_light {
+    color: #32325d;
+    background: #fff; }
+    .ty-menu_light:before {
+      border-color: #f0f0f0; }
+  .ty-menu_dark {
+    color: rgba(255, 255, 255, 0.65);
+    background: #001529; }
+    .ty-menu_dark:before {
+      border-color: #001529; }
 
 .ty-menu-item {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   white-space: nowrap;
   cursor: pointer;
-  -webkit-transition: background-color 300ms;
-  transition: background-color 300ms; }
+  -webkit-transition: background-color 300ms, color 250ms;
+  transition: background-color 300ms, color 250ms; }
   .ty-menu-item:hover {
     color: #6E41BF; }
   .ty-menu-item_disabled {
@@ -4604,44 +4651,54 @@ template {
     opacity: .5;
     cursor: not-allowed; }
 
-.ty-menu-sub {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  position: relative; }
-  .ty-menu-sub__list {
-    min-width: 100%;
-    list-style: none;
-    padding-left: 0;
-    white-space: nowrap; }
-    .ty-menu-sub__list > .ty-menu-item {
-      padding: 0 20px;
-      height: 40px;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      overflow: hidden;
-      font-size: 14px;
-      line-height: 40px;
-      text-overflow: ellipsis; }
-  .ty-menu-sub__title {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
-  .ty-menu-sub__arrow {
-    display: inline-block;
-    -webkit-transition: -webkit-transform 300ms;
-    transition: -webkit-transform 300ms;
-    transition: transform 300ms;
-    transition: transform 300ms, -webkit-transform 300ms;
-    margin-left: 10px; }
-    .ty-menu-sub__arrow_reverse {
-      -webkit-transform: rotate(180deg);
-              transform: rotate(180deg); }
+.ty-menu-sub .ty-popup__wrapper {
+  display: block; }
+
+.ty-menu-sub__list {
+  margin: 0;
+  min-width: 100%;
+  list-style: none;
+  padding-left: 0;
+  white-space: nowrap; }
+  .ty-menu-sub__list .ty-menu-item {
+    padding: 12px 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    font-size: 14px;
+    text-overflow: ellipsis; }
+  .ty-menu-sub__list_popup {
+    min-width: 160px; }
+    .ty-menu-sub__list_popup li.ty-menu-item_active {
+      background-color: rgba(110, 65, 191, 0.2);
+      color: #6E41BF; }
+
+.ty-menu-sub__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .ty-menu-sub__title.ty-menu-item_active {
+    color: #6E41BF; }
+
+.ty-menu-sub__arrow {
+  display: inline-block;
+  -webkit-transition: -webkit-transform 300ms;
+  transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  transition: transform 300ms, -webkit-transform 300ms;
+  margin-left: 20px; }
+  .ty-menu-sub__arrow_reverse {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); }
+  .ty-menu-sub__arrow_right {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg); }
 
 .ty-menu-item-group {
   -webkit-box-sizing: border-box;
@@ -4657,15 +4714,13 @@ template {
     list-style: none;
     padding-left: 0;
     white-space: nowrap; }
-    .ty-menu-item-group__list .ty-menu-item {
-      padding: 0 30px;
-      height: 40px;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      overflow: hidden;
-      font-size: 14px;
-      line-height: 40px;
-      text-overflow: ellipsis; }
+    .ty-menu-item-group__list > .ty-menu-item {
+      padding: 12px 35px 12px 25px; }
+
+.ty-menu-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 5px 0; }
 
 @keyframes ty-rotate {
   0% {
@@ -4752,7 +4807,6 @@ template {
 
 .ty-modal {
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 100vh;
@@ -5073,9 +5127,8 @@ template {
   font-size: 1rem;
   text-align: left;
   -webkit-box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05); }
-  .ty-popup__wrapper {
-    display: inline-block; }
+          box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  z-index: 999; }
   .ty-popup__arrow, .ty-popup__arrow:before {
     width: 8px;
     height: 8px;
@@ -5118,7 +5171,6 @@ template {
               box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.07); }
 
 .ty-progress-bar {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5182,7 +5234,6 @@ template {
     border-radius: 0; }
 
 .ty-progress-circle {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   display: inline-block;
   position: relative; }
   .ty-progress-circle__bg {
@@ -5255,7 +5306,6 @@ template {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   margin-right: 8px;
   color: rgba(0, 0, 0, 0.75); }
   .ty-radio__native {
@@ -5974,6 +6024,48 @@ template {
   -webkit-transform: translateZ(0);
           transform: translateZ(0); }
 
+.ty-strength-indicator {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .ty-strength-indicator__item {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin: 0 2px; }
+    .ty-strength-indicator__item:first-child {
+      margin-left: 0; }
+      .ty-strength-indicator__item:first-child .ty-strength-indicator__inner {
+        border-top-left-radius: 99px;
+        border-bottom-left-radius: 99px; }
+    .ty-strength-indicator__item:last-child {
+      margin-right: 0; }
+      .ty-strength-indicator__item:last-child .ty-strength-indicator__inner {
+        border-top-right-radius: 99px;
+        border-bottom-right-radius: 99px; }
+  .ty-strength-indicator__inner {
+    background-color: #f5f5f5;
+    min-height: 8px;
+    -webkit-transition: background-color 300ms;
+    transition: background-color 300ms; }
+  .ty-strength-indicator__label {
+    text-align: center;
+    margin-top: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 12px; }
+
 @keyframes ty-rotate {
   0% {
     -webkit-transform: rotate(0deg);
@@ -6012,7 +6104,6 @@ template {
     left: 0;
     bottom: 0;
     right: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     background-color: rgba(0, 0, 0, 0.25);
     -webkit-transition: background-color 300ms;
     transition: background-color 300ms;
@@ -6296,6 +6387,153 @@ template {
     color: #fff;
     border-color: #6E41BF; }
 
+.ty-textarea {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  color: #32325d;
+  border: 1px solid #d9d9d9;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  outline: 0;
+  border-radius: 2px;
+  font-size: 1rem;
+  padding: 5px;
+  overflow: hidden; }
+  .ty-textarea:hover {
+    border-color: #6E41BF; }
+  .ty-textarea:focus {
+    border-color: rgba(110, 65, 191, 0.8);
+    -webkit-box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2);
+            box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
+  .ty-textarea::-webkit-input-placeholder {
+    color: #bfbfbf; }
+  .ty-textarea::-moz-placeholder {
+    color: #bfbfbf; }
+  .ty-textarea:-ms-input-placeholder {
+    color: #bfbfbf; }
+  .ty-textarea::-ms-input-placeholder {
+    color: #bfbfbf; }
+  .ty-textarea::placeholder {
+    color: #bfbfbf; }
+  .ty-textarea_disabled {
+    cursor: not-allowed;
+    background-color: #f4f4f5;
+    color: #999; }
+    .ty-textarea_disabled:hover {
+      border-color: #d9d9d9; }
+  .ty-textarea-container {
+    position: relative; }
+    .ty-textarea-container .ty-textarea {
+      padding-bottom: 20px; }
+      .ty-textarea-container .ty-textarea__counter {
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+        font-size: 14px;
+        color: #666; }
+
+.ty-timeline {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.ty-timeline-item {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 20px;
+  font-size: 14px;
+  list-style: none; }
+  .ty-timeline-item:last-child .ty-timeline-item__head:before {
+    display: none; }
+  .ty-timeline-item__head {
+    width: 16px;
+    background-color: #fff;
+    position: absolute;
+    color: #6E41BF;
+    height: 100%; }
+    .ty-timeline-item__head:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      height: 100%;
+      border-left: 2px solid #e8e8e8; }
+  .ty-timeline-item__dot-container {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    background-color: #fff; }
+  .ty-timeline-item__dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #6E41BF;
+    border-radius: 100px; }
+  .ty-timeline-item__content {
+    position: relative;
+    top: 0;
+    padding-left: 25px; }
+  .ty-timeline-item_left .ty-timeline-item__head, .ty-timeline-item_right .ty-timeline-item__head {
+    left: 50%; }
+  .ty-timeline-item_left .ty-timeline-item__content {
+    left: 50%;
+    width: 50%; }
+  .ty-timeline-item_right .ty-timeline-item__content {
+    width: 50%;
+    text-align: right;
+    padding-left: 0;
+    padding-right: 9px; }
+
+.ty-time-picker {
+  display: inline-block;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+  .ty-time-picker__panel {
+    display: inline-block;
+    max-height: 210px;
+    overflow-y: auto;
+    color: rgba(0, 0, 0, 0.65);
+    border-left: 1px solid #e8e8e8; }
+    .ty-time-picker__panel:first-child {
+      border-left: 0; }
+  .ty-time-picker__ul {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    list-style-type: none;
+    padding: 0 0 180px;
+    margin: 0; }
+  .ty-time-picker__li {
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    padding: 0 15px 0 10px; }
+    .ty-time-picker__li:hover {
+      background-color: #e2daf2; }
+    .ty-time-picker__li_selected {
+      font-weight: bold;
+      background: #f5f5f5; }
+
 .ty-tooltip {
   font-size: 0.875rem; }
   .ty-tooltip__inner {
@@ -6404,8 +6642,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: center top;
-          transform-origin: center top; }
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom; }
 
 .ty-zoom-center-top-exit {
   opacity: 1; }
@@ -6418,8 +6656,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: center top;
-          transform-origin: center top; }
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom; }
 
 .ty-zoom-center-left-enter {
   opacity: 0;
@@ -6434,8 +6672,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: left center;
-          transform-origin: left center; }
+  -webkit-transform-origin: right center;
+          transform-origin: right center; }
 
 .ty-zoom-center-left-exit {
   opacity: 1; }
@@ -6448,8 +6686,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: left center;
-          transform-origin: left center; }
+  -webkit-transform-origin: right center;
+          transform-origin: right center; }
 
 .ty-zoom-center-right-enter {
   opacity: 0;
@@ -6464,8 +6702,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: right center;
-          transform-origin: right center; }
+  -webkit-transform-origin: left center;
+          transform-origin: left center; }
 
 .ty-zoom-center-right-exit {
   opacity: 1; }
@@ -6478,8 +6716,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: right center;
-          transform-origin: right center; }
+  -webkit-transform-origin: left center;
+          transform-origin: left center; }
 
 .ty-zoom-center-bottom-enter {
   opacity: 0;
@@ -6494,8 +6732,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: center bottom;
-          transform-origin: center bottom; }
+  -webkit-transform-origin: center top;
+          transform-origin: center top; }
 
 .ty-zoom-center-bottom-exit {
   opacity: 1; }
@@ -6508,8 +6746,8 @@ template {
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: center bottom;
-          transform-origin: center bottom; }
+  -webkit-transform-origin: center top;
+          transform-origin: center top; }
 
 .ty-zoom-top-start-enter {
   opacity: 0;
@@ -6691,36 +6929,6 @@ template {
   -webkit-transform-origin: right top;
           transform-origin: right top; }
 
-.ty-zoom-left-start-enter {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0); }
-
-.ty-zoom-left-start-enter-active {
-  opacity: 1;
-  -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: right top;
-          transform-origin: right top; }
-
-.ty-zoom-left-start-exit {
-  opacity: 1; }
-
-.ty-zoom-left-start-exit-active {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: right top;
-          transform-origin: right top; }
-
 .ty-zoom-left-enter {
   opacity: 0;
   -webkit-transform: scale(0, 0);
@@ -6751,66 +6959,6 @@ template {
   -webkit-transform-origin: right center;
           transform-origin: right center; }
 
-.ty-zoom-left-end-enter {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0); }
-
-.ty-zoom-left-end-enter-active {
-  opacity: 1;
-  -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: right bottom;
-          transform-origin: right bottom; }
-
-.ty-zoom-left-end-exit {
-  opacity: 1; }
-
-.ty-zoom-left-end-exit-active {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: right bottom;
-          transform-origin: right bottom; }
-
-.ty-zoom-right-start-enter {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0); }
-
-.ty-zoom-right-start-enter-active {
-  opacity: 1;
-  -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: left top;
-          transform-origin: left top; }
-
-.ty-zoom-right-start-exit {
-  opacity: 1; }
-
-.ty-zoom-right-start-exit-active {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: left top;
-          transform-origin: left top; }
-
 .ty-zoom-right-enter {
   opacity: 0;
   -webkit-transform: scale(0, 0);
@@ -6840,36 +6988,6 @@ template {
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   -webkit-transform-origin: left center;
           transform-origin: left center; }
-
-.ty-zoom-right-end-enter {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0); }
-
-.ty-zoom-right-end-enter-active {
-  opacity: 1;
-  -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: left bottom;
-          transform-origin: left bottom; }
-
-.ty-zoom-right-end-exit {
-  opacity: 1; }
-
-.ty-zoom-right-end-exit-active {
-  opacity: 0;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  -webkit-transform-origin: left bottom;
-          transform-origin: left bottom; }
 
 .ty-slide-down-enter {
   opacity: 0;
@@ -6923,152 +7041,67 @@ template {
   transition: transform 300ms, opacity 300ms;
   transition: transform 300ms, opacity 300ms, -webkit-transform 300ms; }
 
-.ty-textarea {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  color: #32325d;
-  border: 1px solid #d9d9d9;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  outline: 0;
-  border-radius: 2px;
-  font-size: 1rem;
-  padding: 5px;
-  overflow: hidden; }
-  .ty-textarea:hover {
-    border-color: #6E41BF; }
-  .ty-textarea:focus {
-    border-color: rgba(110, 65, 191, 0.8);
-    -webkit-box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2);
-            box-shadow: 0 0 0 2px rgba(110, 65, 191, 0.2); }
-  .ty-textarea::-webkit-input-placeholder {
-    color: #bfbfbf; }
-  .ty-textarea::-moz-placeholder {
-    color: #bfbfbf; }
-  .ty-textarea:-ms-input-placeholder {
-    color: #bfbfbf; }
-  .ty-textarea::-ms-input-placeholder {
-    color: #bfbfbf; }
-  .ty-textarea::placeholder {
-    color: #bfbfbf; }
-  .ty-textarea_disabled {
-    cursor: not-allowed;
-    background-color: #f4f4f5;
-    color: #999; }
-    .ty-textarea_disabled:hover {
-      border-color: #d9d9d9; }
-  .ty-textarea-container {
-    position: relative; }
-    .ty-textarea-container .ty-textarea {
-      padding-bottom: 20px; }
-      .ty-textarea-container .ty-textarea__counter {
-        position: absolute;
-        bottom: 6px;
-        right: 6px;
-        font-size: 14px;
-        color: #666; }
-
-.ty-timeline {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.65);
-  font-size: 1rem;
-  line-height: 1.5;
+.ty-tree {
   margin: 0;
   padding: 0;
-  list-style: none; }
+  list-style: none;
+  font-size: 1rem; }
 
-.ty-timeline-item {
-  position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0 0 20px;
-  font-size: 14px;
-  list-style: none; }
-  .ty-timeline-item:last-child .ty-timeline-item__head:before {
-    display: none; }
-  .ty-timeline-item__head {
-    width: 16px;
-    background-color: #fff;
-    position: absolute;
-    color: #6E41BF;
-    height: 100%; }
-    .ty-timeline-item__head:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-              transform: translateX(-50%);
-      height: 100%;
-      border-left: 2px solid #e8e8e8; }
-  .ty-timeline-item__dot-container {
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    background-color: #fff; }
-  .ty-timeline-item__dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border: 2px solid #6E41BF;
-    border-radius: 100px; }
-  .ty-timeline-item__content {
-    position: relative;
-    top: 0;
-    padding-left: 25px; }
-  .ty-timeline-item_left .ty-timeline-item__head, .ty-timeline-item_right .ty-timeline-item__head {
-    left: 50%; }
-  .ty-timeline-item_left .ty-timeline-item__content {
-    left: 50%;
-    width: 50%; }
-  .ty-timeline-item_right .ty-timeline-item__content {
-    width: 50%;
-    text-align: right;
-    padding-left: 0;
-    padding-right: 9px; }
-
-.ty-time-picker {
-  display: inline-block;
-  font-size: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
-  .ty-time-picker__panel {
-    display: inline-block;
-    max-height: 210px;
-    overflow-y: auto;
-    color: rgba(0, 0, 0, 0.65);
-    border-left: 1px solid #e8e8e8; }
-    .ty-time-picker__panel:first-child {
-      border-left: 0; }
-  .ty-time-picker__ul {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    list-style-type: none;
-    padding: 0 0 180px;
-    margin: 0; }
-  .ty-time-picker__li {
+.ty-tree-node {
+  margin: 2px 0; }
+  .ty-tree-node__switcher {
+    width: 20px;
+    height: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .ty-tree-node__arrow {
+    color: #999;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    -webkit-transition: -webkit-transform 250ms;
+    transition: -webkit-transform 250ms;
+    transition: transform 250ms;
+    transition: transform 250ms, -webkit-transform 250ms; }
+    .ty-tree-node__arrow_active {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg); }
+  .ty-tree-node__label {
+    padding: 1px 2px;
+    margin-left: -4px; }
+  .ty-tree-node__title {
     cursor: pointer;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    padding: 0 15px 0 10px; }
-    .ty-time-picker__li:hover {
-      background-color: #e2daf2; }
-    .ty-time-picker__li_selected {
-      font-weight: bold;
-      background: #f5f5f5; }
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-height: 24px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-transition: background-color 250ms;
+    transition: background-color 250ms; }
+  .ty-tree-node__label {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-transition: background-color 250ms;
+    transition: background-color 250ms; }
+    .ty-tree-node__label:hover {
+      background-color: #f5f5f5; }
+  .ty-tree-node .ty-checkbox {
+    margin-right: 0; }
+  .ty-tree-node_block .ty-tree-node__title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .ty-tree-node_block .ty-tree-node__title:hover {
+      background-color: #f5f5f5; }
 
 .ty-typography {
   -webkit-box-sizing: border-box;
