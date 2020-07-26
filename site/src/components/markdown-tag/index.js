@@ -9,7 +9,7 @@ const slugifyLink = (name) => {
   if (name.includes(' ')) {
     return name.toLowerCase().split(' ').join('-');
   }
-  return name;
+  return name.toLowerCase();
 };
 
 export const components = {
