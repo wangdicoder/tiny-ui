@@ -2,4 +2,8 @@
 
 .#{$prefix}-split-button {
 
+  &__dropdown-btn{
+    padding: 0 8px;
+    min-width: auto;
+  }
 }
