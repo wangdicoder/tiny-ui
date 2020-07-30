@@ -20,10 +20,14 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('btn-group', configContext.prefixCls, customisedCls);
     const btnSize = props.size || configContext.componentSize || size;
-    const cls = classNames(prefixCls, className, {
-      [`${prefixCls}_round`]: round,
-      [`${prefixCls}_${btnType}`]: btnType,
-    });
+    const cls = classNames(
+      prefixCls,
+      {
+        [`${prefixCls}_round`]: round,
+        [`${prefixCls}_${btnType}`]: btnType,
+      },
+      className
+    );
     return (
       <div {...otherProps} className={cls} ref={ref}>
         {React.Children.map(children, (child) => {

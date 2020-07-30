@@ -23,13 +23,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonPr
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('btn', configContext.prefixCls, customisedCls);
   const btnSize = props.size || configContext.componentSize || size;
-  const cls = classNames(prefixCls, className, `${prefixCls}_${btnSize}`, {
-    [`${prefixCls}_${btnType}`]: btnType,
-    [`${prefixCls}_block`]: block,
-    [`${prefixCls}_round`]: round,
-    [`${prefixCls}_disabled`]: disabled,
-    [`${prefixCls}_loading`]: loading,
-  });
+  const cls = classNames(
+    prefixCls,
+    `${prefixCls}_${btnSize}`,
+    {
+      [`${prefixCls}_${btnType}`]: btnType,
+      [`${prefixCls}_block`]: block,
+      [`${prefixCls}_round`]: round,
+      [`${prefixCls}_disabled`]: disabled,
+      [`${prefixCls}_loading`]: loading,
+    },
+    className
+  );
 
   const btnOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled || loading) {

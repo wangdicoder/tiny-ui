@@ -265,6 +265,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/slider/index.md')),
       },
       {
+        title: 'Split Button',
+        route: 'split-button',
+        component: lazy(() => import('../../components/split-button/index.md')),
+      },
+      {
         title: 'Switch',
         route: 'switch',
         component: lazy(() => import('../../components/switch/index.md')),
