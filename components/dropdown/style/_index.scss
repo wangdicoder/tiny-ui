@@ -21,6 +21,10 @@
     }
   }
 
+  .#{$prefix}-menu:before{
+    content: none;
+  }
+
   .#{$prefix}-menu-item-group {
     &__title {
       padding: 8px 10px;
