@@ -4,7 +4,6 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { ArrowDown } from '../_utils/components';
 import { SplitButtonProps } from './types';
-import { DropdownPlacement } from '../dropdown/types';
 import ButtonGroup from '../button/button-group';
 import Button from '../button/button';
 import Dropdown from '../dropdown';
@@ -15,7 +14,7 @@ const SplitButton = (props: SplitButtonProps): React.ReactElement => {
     btnType = 'default',
     disabled = false,
     loading = false,
-    dropdownPlacement = 'end',
+    dropdownPlacement = 'bottom-end',
     dropdownTrigger = 'hover',
     onClick,
     overlay,
@@ -33,11 +32,12 @@ const SplitButton = (props: SplitButtonProps): React.ReactElement => {
       <Button onClick={onClick} loading={loading}>
         {children}
       </Button>
-      <Dropdown
-        overlay={overlay}
-        trigger={dropdownTrigger}
-        placement={`bottom-${dropdownPlacement}` as DropdownPlacement}>
-        <Button className={`${prefixCls}__dropdown-btn`}>
+      <Dropdown overlay={overlay} trigger={dropdownTrigger} placement={dropdownPlacement}>
+        <Button
+          className={`${prefixCls}__dropdown-btn`}
+          btnType={btnType}
+          disabled={disabled}
+          size={size}>
           <ArrowDown size={10} />
         </Button>
       </Dropdown>
