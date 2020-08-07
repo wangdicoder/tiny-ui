@@ -60,6 +60,7 @@
       font-size: 13px;
       overflow: auto;
     }
+
     .prism-code {
       margin: 0;
       border: 1px solid #eee;
@@ -90,19 +91,20 @@
 
   &__heading-2,
   &__heading-3 {
-    & > a {
-      opacity: 0;
-      margin-left: 5px;
-      text-decoration: none;
-      font-size: 0.8em;
-      transition: opacity 250ms;
-    }
-
     &:hover {
       & > a {
         opacity: 1;
+        text-decoration: none;
       }
     }
+  }
+
+  &__h-link {
+    opacity: 0;
+    margin-left: 5px;
+    text-decoration: none;
+    font-size: 0.8em;
+    transition: opacity 250ms;
   }
 
   &__heading-4 {
@@ -155,6 +157,7 @@
     tbody {
       tr {
         transition: all 300ms;
+
         &:hover {
           background: rgba(60, 90, 100, 0.04);
         }
