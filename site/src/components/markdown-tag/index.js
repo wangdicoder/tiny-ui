@@ -9,7 +9,7 @@ const slugifyLink = (name) => {
   if (name.includes(' ')) {
     return name.toLowerCase().split(' ').join('-');
   }
-  return name.toLowerCase();
+  return typeof name === 'string' ? name.toLowerCase() : name;
 };
 
 export const components = {
@@ -18,13 +18,17 @@ export const components = {
   h2: ({ children, ...props }) => (
     <h2 {...props} className="markdown__heading-2" id={slugifyLink(children)}>
       {children}
-      <a href={`#${slugifyLink(children)}`}>#</a>
+      <a className="markdown__h-link" href={`#${slugifyLink(children)}`}>
+        #
+      </a>
     </h2>
   ),
   h3: ({ children, ...props }) => (
     <h3 {...props} className="markdown__heading-3" id={slugifyLink(children)}>
       {children}
-      <a href={`#${slugifyLink(children)}`}>#</a>
+      <a className="markdown__h-link" href={`#${slugifyLink(children)}`}>
+        #
+      </a>
     </h3>
   ),
   h4: (props) => <h4 {...props} className="markdown__heading-4" />,

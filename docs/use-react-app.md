@@ -2,7 +2,7 @@
 
 [create-react-app](https://github.com/facebook/create-react-app) can help build a react project quickly, and this wizard will explain how to use tiny-ui in conjunction with create-react-app.
 
-## Install and Initialization
+## Install and Initialisation
 
 Before all start, you may need install `npm`.
 
