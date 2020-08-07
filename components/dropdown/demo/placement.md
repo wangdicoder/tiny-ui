@@ -19,17 +19,6 @@ class PlacementExample extends React.PureComponent {
   render() {
     return (
       <div>
-        <Dropdown overlay={this.renderOverlay()} placement="bottom-start">
-          <Button>bottomLeft</Button>
-        </Dropdown>
-        <Dropdown overlay={this.renderOverlay()} placement="bottom">
-          <Button>bottomCenter</Button>
-        </Dropdown>
-        <Dropdown overlay={this.renderOverlay()} placement="bottom-end">
-          <Button>bottomRight</Button>
-        </Dropdown>
-        <br />
-        <br />
         <Dropdown overlay={this.renderOverlay()} placement="top-start">
           <Button>topLeft</Button>
         </Dropdown>
@@ -38,6 +27,19 @@ class PlacementExample extends React.PureComponent {
         </Dropdown>
         <Dropdown overlay={this.renderOverlay()} placement="top-end">
           <Button>topRight</Button>
+        </Dropdown>     
+   
+        <br />
+        <br />
+
+        <Dropdown overlay={this.renderOverlay()} placement="bottom-start">
+          <Button>bottomLeft</Button>
+        </Dropdown>
+        <Dropdown overlay={this.renderOverlay()} placement="bottom">
+          <Button>bottomCenter</Button>
+        </Dropdown>
+        <Dropdown overlay={this.renderOverlay()} placement="bottom-end">
+          <Button>bottomRight</Button>
         </Dropdown>
       </div> 
     );
