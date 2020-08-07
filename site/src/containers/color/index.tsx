@@ -64,14 +64,14 @@ const NEUTRALS = [
 const ColorPage = (): React.ReactElement => {
   return (
     <div className="color-page">
-      <h1 className="md__heading-1">Color</h1>
-      <p className="md__p">
+      <h1 className="markdown__heading-1">Color</h1>
+      <p className="markdown__p">
         Tiny UI uses a specific set of palettes to specify colors to provide a consistent look and
         feel for the products you build.
       </p>
 
-      <h2 className="md__heading-2">Primary colors</h2>
-      <p className="md__p">
+      <h2 className="markdown__heading-2">Primary colors</h2>
+      <p className="markdown__p">
         Primary palette is comprised of neutrals, white, and purple. These colors are present across
         most touch points from marketing to product.
       </p>
@@ -85,8 +85,8 @@ const ColorPage = (): React.ReactElement => {
         <ColorCard name="Warning" hex="#ff9800" />
       </div>
 
-      <h2 className="md__heading-2">Light neutrals</h2>
-      <p className="md__p">
+      <h2 className="markdown__heading-2">Light neutrals</h2>
+      <p className="markdown__p">
         Light neutrals are helpful for offsetting content in a primarily white layout without losing
         warmth and cleanliness, and are therefore often used as a background color for web
         components.
@@ -95,7 +95,7 @@ const ColorPage = (): React.ReactElement => {
       <div className="code-table-container">
         <table className="color-page__table">
           <tbody>
-            {NEUTRALS.map(color => (
+            {NEUTRALS.map((color) => (
               <tr key={color.hex}>
                 <td>
                   <span
