@@ -22,6 +22,7 @@
     color: $hover-color;
     background: $hover-background;
     border-color: $hover-border;
+    z-index: 1;
   }
 
   &:active {
