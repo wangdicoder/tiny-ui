@@ -69,12 +69,16 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../public'),
-        to: path.resolve(__dirname, '../build'),
-        ignore: ['*.html'],
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../public'),
+          to: path.resolve(__dirname, '../build'),
+          globOptions: {
+            ignore: ['*.html'],
+          },
+        },
+      ],
+    }),
   ],
 };
