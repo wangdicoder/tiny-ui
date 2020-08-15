@@ -13,7 +13,7 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 
 ### Bug Fixes
 
-* ButtonGroup style in focus state ([#9](https://github.com/wangdicoder/tiny-ui/issues/9)) ([29e88ac](https://github.com/wangdicoder/tiny-ui/commit/29e88ac4fff455ffdb4240f368e394bbcfc71bfb))
+* `<Button />` - fix ButtonGroup style in focus state ([#9](https://github.com/wangdicoder/tiny-ui/issues/9)) ([29e88ac](https://github.com/wangdicoder/tiny-ui/commit/29e88ac4fff455ffdb4240f368e394bbcfc71bfb))
 
 ### [0.0.92](https://github.com/wangdicoder/tiny-ui/compare/v0.0.91...v0.0.92) (2020-07-25)
 
