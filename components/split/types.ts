@@ -1,5 +1,6 @@
 import React from 'react';
 import { BaseProps, DirectionType } from '../_utils/props';
+import { ResizerProps } from './resizer';
 
 export interface SplitProps
   extends BaseProps,
@@ -23,7 +24,7 @@ export interface SplitProps
   defaultSize?: number | string;
 
   /** Resizer's other props */
-  resizerProps?: Record<string, unknown>;
+  resizerProps?: ResizerProps;
 
   /** Drag step */
   step?: number;

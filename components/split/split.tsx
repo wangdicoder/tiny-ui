@@ -61,7 +61,7 @@ const Split = (props: SplitProps): JSX.Element => {
     maxSize = (mode === 'vertical' ? width : height) - maxSize - resizerSize;
   }
 
-  const resizerOnMouseDown = (e: React.MouseEvent<HTMLElement>): void => {
+  const onResizerMouseDown = (e: React.MouseEvent<HTMLElement>): void => {
     isActiveMove.current = true;
     lastPosition.current = e[mode === 'vertical' ? 'clientX' : 'clientY'];
     onDragStarted && onDragStarted();
@@ -158,7 +158,7 @@ const Split = (props: SplitProps): JSX.Element => {
           {...resizerProps}
           size={resizerSize}
           mode={mode}
-          onMouseDown={resizerOnMouseDown}
+          onResizerMouseDown={onResizerMouseDown}
         />
         <Pane style={{ flex: '1 1 0%' }}>{childrenList[1]}</Pane>
       </div>

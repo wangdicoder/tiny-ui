@@ -9,11 +9,18 @@ export interface ResizerProps
     React.PropsWithoutRef<JSX.IntrinsicElements['div']> {
   size: number;
   mode: DirectionType;
-  onMouseDown: MouseEventHandler<HTMLDivElement>;
+  onResizerMouseDown: MouseEventHandler<HTMLDivElement>;
 }
 
 const Resizer = (props: ResizerProps): JSX.Element => {
-  const { size, onMouseDown, prefixCls: customisedCls, mode, className, ...otherProps } = props;
+  const {
+    size,
+    onResizerMouseDown,
+    prefixCls: customisedCls,
+    mode,
+    className,
+    ...otherProps
+  } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('split-bar', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
@@ -21,6 +28,12 @@ const Resizer = (props: ResizerProps): JSX.Element => {
   });
 
   const style: React.CSSProperties = mode === 'vertical' ? { width: size } : { height: size };
+
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    props.onMouseDown && props.onMouseDown(e);
+    onResizerMouseDown(e);
+  };
+
   return (
     <div
       {...otherProps}
