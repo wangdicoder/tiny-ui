@@ -50,6 +50,7 @@ module.exports = {
             options: {
               limit: 10240,
               name: path.join('img/[name].[hash:7].[ext]'),
+              esModule: false,
             },
           },
         ],
@@ -62,6 +63,7 @@ module.exports = {
             options: {
               limit: 10240,
               name: path.join('font/[name].[hash:7].[ext]'),
+              esModule: false,
             },
           },
         ],
