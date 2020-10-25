@@ -44,7 +44,7 @@ const Anchor = (props: AnchorProps): JSX.Element => {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, anchorName: string) => {
     const { location } = window;
     let url;
-    // if it is a HashRouter mode, prevent the default event nad update the query.
+    // if it is a HashRouter mode, prevent the default event and update the query.
     if (location.pathname.includes('/#/')) {
       url = location.protocol + '//' + location.host + location.pathname + `?anchor=${anchorName}`;
     } else {
