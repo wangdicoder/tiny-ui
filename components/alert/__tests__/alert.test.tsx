@@ -8,58 +8,56 @@ describe('<Alert />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render correct', () => {
-    const wrapper = render(<Alert>Alert</Alert>);
-    const element = wrapper.getByRole('alert');
-    expect(element).toBeInTheDocument();
-    expect(element).toHaveClass('ty-alert');
+  it('should render correctly', () => {
+    const { container } = render(<Alert>Alert</Alert>);
+    expect(container.firstChild).toHaveClass('ty-alert');
   });
 
   it('should render correct types', () => {
-    expect(
-      render(
-        <Alert type="success" data-testid="success">
-          Alert
-        </Alert>
-      ).getByTestId('success')
-    ).toHaveClass('ty-alert_success');
-    expect(
-      render(
-        <Alert type="info" data-testid="info">
-          Alert
-        </Alert>
-      ).getByTestId('info')
-    ).toHaveClass('ty-alert_info');
-    expect(
-      render(
-        <Alert type="warning" data-testid="warning">
-          Alert
-        </Alert>
-      ).getByTestId('warning')
-    ).toHaveClass('ty-alert_warning');
-    expect(
-      render(
-        <Alert type="error" data-testid="error">
-          Alert
-        </Alert>
-      ).getByTestId('error')
-    ).toHaveClass('ty-alert_error');
+    expect(render(<Alert type="success">Alert</Alert>).container.firstChild).toHaveClass(
+      'ty-alert_success'
+    );
+
+    expect(render(<Alert type="info">Alert</Alert>).container.firstChild).toHaveClass(
+      'ty-alert_info'
+    );
+
+    expect(render(<Alert type="warning">Alert</Alert>).container.firstChild).toHaveClass(
+      'ty-alert_warning'
+    );
+
+    expect(render(<Alert type="error">Alert</Alert>).container.firstChild).toHaveClass(
+      'ty-alert_error'
+    );
+  });
+
+  it('should render title', () => {
+    const { container } = render(<Alert title="This is a title">Alert Component</Alert>);
+    expect(container.querySelector('.ty-alert__title')).toBeTruthy();
   });
 
   it('should render cross icon', () => {
-    const wrapper = render(<Alert closable>This is closable.</Alert>);
-    expect(wrapper.getByText('✕')).toBeInTheDocument();
+    const { container } = render(<Alert closable>This is closable.</Alert>);
+    expect(container.querySelector('.ty-alert__close-btn')).toBeTruthy();
+  });
+
+  it('should render custom close text', () => {
+    const { container } = render(<Alert closeText="close now">This is closable.</Alert>);
+    expect(container.querySelector('.ty-alert__close-btn')).toBeTruthy();
+    expect(container.querySelector('.ty-alert__close-btn')?.innerHTML).toBe('close now');
   });
 
   it('should trigger onClose event', () => {
-    const mockCallback = jest.fn();
+    const fn = jest.fn();
     const wrapper = render(
-      <Alert closable onClose={mockCallback}>
+      <Alert closable onClose={fn}>
         This is a alert
       </Alert>
     );
     const closeBtn = wrapper.getByText('✕');
+
     fireEvent.click(closeBtn);
-    expect(mockCallback).toHaveBeenCalled();
+
+    expect(fn).toHaveBeenCalledTimes(1);
   });
 });
