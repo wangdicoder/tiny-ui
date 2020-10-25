@@ -9,15 +9,18 @@ describe('<AspectRatio />', () => {
   });
 
   it('should render children', () => {
-    const wrapper = render(<AspectRatio>children</AspectRatio>);
-    expect(wrapper.getByText('children')).toBeInTheDocument();
+    const { container } = render(<AspectRatio>children</AspectRatio>);
+    expect(container.firstChild).toHaveStyle({ width: '100%' });
+    expect(container).toContainHTML('children');
   });
 
   it('should render correct ratio container', () => {
-    // const wrapper = render(<AspectRatio ratio={4 / 3} width={40} />);
+    const { container } = render(<AspectRatio ratio={4 / 3} />);
+    expect(container.querySelector('.ty-aspect-ratio__padding')).toHaveStyle({ paddingTop: '75%' });
   });
 
   it('should render correct width', () => {
-    // const wrapper = render(<AspectRatio width={20} />);
+    const { container } = render(<AspectRatio width={20} />);
+    expect(container.firstChild).toHaveStyle({ width: '20px' });
   });
 });
