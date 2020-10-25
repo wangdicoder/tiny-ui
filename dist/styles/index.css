@@ -840,7 +840,8 @@ template {
     .ty-btn_default:focus {
       color: #6E41BF;
       background: #fff;
-      border-color: #6E41BF; }
+      border-color: #6E41BF;
+      z-index: 1; }
     .ty-btn_default:active {
       color: #6E41BF;
       background: #ececec;
@@ -860,7 +861,8 @@ template {
     .ty-btn_primary:focus {
       color: #fff;
       background: #845ec9;
-      border-color: #8b67cc; }
+      border-color: #8b67cc;
+      z-index: 1; }
     .ty-btn_primary:active {
       color: #fff;
       background: #5d37a3;
@@ -880,7 +882,8 @@ template {
     .ty-btn_outline:focus {
       color: #6E41BF;
       background: #e2daf2;
-      border-color: #8b67cc; }
+      border-color: #8b67cc;
+      z-index: 1; }
     .ty-btn_outline:active {
       color: #6E41BF;
       background: #c5b3e6;
@@ -900,7 +903,8 @@ template {
     .ty-btn_ghost:focus {
       color: #6E41BF;
       background: #e2daf2;
-      border-color: transparent; }
+      border-color: transparent;
+      z-index: 1; }
     .ty-btn_ghost:active {
       color: #6E41BF;
       background: #c5b3e6;
@@ -922,7 +926,8 @@ template {
     .ty-btn_link:focus {
       color: #6E41BF;
       background: rgba(19, 19, 19, 0);
-      border-color: rgba(26, 26, 26, 0); }
+      border-color: rgba(26, 26, 26, 0);
+      z-index: 1; }
     .ty-btn_link:active {
       color: #6E41BF;
       background: rgba(0, 0, 0, 0);
@@ -951,7 +956,8 @@ template {
     .ty-btn_info:focus {
       color: #fff;
       background: #3ea2ff;
-      border-color: #4ba9ff; }
+      border-color: #4ba9ff;
+      z-index: 1; }
     .ty-btn_info:active {
       color: #fff;
       background: #007df1;
@@ -971,7 +977,8 @@ template {
     .ty-btn_success:focus {
       color: #fff;
       background: #62e223;
-      border-color: #6ae32e; }
+      border-color: #6ae32e;
+      z-index: 1; }
     .ty-btn_success:active {
       color: #fff;
       background: #44a216;
@@ -991,7 +998,8 @@ template {
     .ty-btn_warning:focus {
       color: #fff;
       background: #ffa726;
-      border-color: #ffad33; }
+      border-color: #ffad33;
+      z-index: 1; }
     .ty-btn_warning:active {
       color: #fff;
       background: #d98100;
@@ -1011,7 +1019,8 @@ template {
     .ty-btn_danger:focus {
       color: #fff;
       background: #f6655a;
-      border-color: #f77066; }
+      border-color: #f77066;
+      z-index: 1; }
     .ty-btn_danger:active {
       color: #fff;
       background: #f22112;
@@ -1703,6 +1712,9 @@ template {
     .ty-dropdown .ty-menu .ty-menu-item:hover:not(.ty-menu-item_disabled), .ty-dropdown .ty-menu-sub__list .ty-menu-item:hover:not(.ty-menu-item_disabled) {
       background-color: #f5f5f5;
       color: #32325d; }
+
+.ty-dropdown .ty-menu:before {
+  content: none; }
 
 .ty-dropdown .ty-menu-item-group__title {
   padding: 8px 10px; }
@@ -5868,6 +5880,10 @@ template {
       margin-right: 1px; }
     .ty-split-bar_horizontal:after {
       margin-left: 1px; }
+
+.ty-split-button__dropdown-btn {
+  padding: 0 8px;
+  min-width: auto; }
 
 .ty-steps {
   -webkit-box-sizing: border-box;
