@@ -8,6 +8,14 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+### [0.0.94](https://github.com/wangdicoder/tiny-ui/compare/v0.0.93...v0.0.94) (2020-10-25)
+
+
+### Bug Fixes
+
+* `<Button />` danger type ([c280e07](https://github.com/wangdicoder/tiny-ui/commit/c280e0703614acd33670879af14b1b0817320093))
+* `<Split />` - resizer `onMouseDown` event ([73d74eb](https://github.com/wangdicoder/tiny-ui/commit/73d74eb09bafc2e925144e266716d2a708bb0262))
+
 ### [0.0.93](https://github.com/wangdicoder/tiny-ui/compare/v0.0.92...v0.0.93) (2020-08-09)
 
 
