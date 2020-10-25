@@ -8,7 +8,7 @@ export type ButtonType =
   | 'ghost'
   | 'link'
   | 'info'
-  | 'error'
+  | 'danger'
   | 'warning'
   | 'success';
 
