@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <a
+    aria-disabled="false"
+    class="ty-link"
+    href="#"
+    role="link"
+    target="_blank"
+  >
+    <span>
+      Link
+    </span>
+  </a>
+</DocumentFragment>
+`;
