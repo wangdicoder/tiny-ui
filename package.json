@@ -42,7 +42,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:update": "jest --updateSnapshot",
-    "lint:style": "stylelint --syntax scss",
+    "lint:style": "stylelint components/**/*.scss --syntax scss",
     "lint:style:fix": "npm run lint:style -- --fix"
   },
   "peerDependencies": {
@@ -116,6 +116,7 @@
     "standard-version": "^9.0.0",
     "style-loader": "^2.0.0",
     "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
     "terser-webpack-plugin": "^4.2.0",
     "ts-jest": "^26.4.2",
     "ts-loader": "^8.0.7",
@@ -128,7 +129,7 @@
   },
   "lint-staged": {
     "components/**/*.scss": [
-      "stylelint --syntax scss --fix"
+      "npm run lint:style:fix"
     ]
   },
   "husky": {

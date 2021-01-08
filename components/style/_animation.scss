@@ -2,6 +2,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -11,6 +12,7 @@
   from {
     transform: rotate(0);
   }
+
   to {
     transform: rotate(-360deg);
   }
@@ -21,6 +23,7 @@
     transform: scale(0.8);
     opacity: 0.5;
   }
+
   100% {
     transform: scale(2.8);
     opacity: 0;
