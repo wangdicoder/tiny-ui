@@ -43,6 +43,9 @@ const Popup = (props: PopupProps): JSX.Element => {
   const delayDisplayPopupTimer = useRef<number | undefined>(undefined);
   const delayHidePopupTimer = useRef<number | undefined>(undefined);
   const popperRef = useRef<Instance | undefined>(undefined);
+  const elementProps = {
+    ref: (ref: HTMLElement | null) => (targetRef.current = ref),
+  };
 
   const displayPopup = useCallback(() => {
     setPopupVisible(true);
@@ -254,10 +257,6 @@ const Popup = (props: PopupProps): JSX.Element => {
       </div>
     </Transition>
   );
-
-  const elementProps = {
-    ref: (ref: HTMLElement | null) => (targetRef.current = ref),
-  };
 
   return (
     <>
