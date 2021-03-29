@@ -46,10 +46,10 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
     };
 
     useEffect(() => {
-      if ('value' in checkboxGroupContext && 'value' in props) {
-        setChecked((checkboxGroupContext.value as string[]).includes(value as string));
+      if ('value' in checkboxGroupContext && typeof checkboxGroupContext.value !== 'undefined' && 'value' in props ) {
+        setChecked((checkboxGroupContext.value).includes(value as string));
       }
-      'checked' in props && setChecked(props.checked as boolean);
+      'checked' in props && typeof props.checked !== 'undefined' && setChecked(props.checked);
     }, [props, checkboxGroupContext, value]);
 
     return (

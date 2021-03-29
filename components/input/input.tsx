@@ -92,7 +92,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     }, [inputPadding]);
 
     useEffect(() => {
-      'value' in props && setValue(props.value as string);
+      'value' in props && typeof props.value !== 'undefined' && setValue(props.value);
     }, [props]);
 
     return (

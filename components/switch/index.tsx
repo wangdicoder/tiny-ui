@@ -41,7 +41,7 @@ const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
     };
 
     useEffect(() => {
-      'checked' in props && setChecked(props.checked as boolean);
+      'checked' in props && typeof props.checked !== 'undefined' && setChecked(props.checked);
     }, [props]);
 
     return (
