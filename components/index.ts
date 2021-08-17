@@ -1,3 +1,5 @@
+import 'intersection-observer';
+
 export { default as Alert } from './alert';
 export { default as Anchor } from './anchor';
 export { default as AspectRatio } from './aspect-ratio';

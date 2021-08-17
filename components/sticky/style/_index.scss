@@ -1,5 +1,8 @@
 @import '../../style/variables';
 
 .#{$prefix}-sticky {
-  transform: translateZ(0);
+
+  &_fixed {
+    position: fixed;
+  }
 }
