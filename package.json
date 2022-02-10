@@ -100,7 +100,7 @@
     "husky": "^4.2.5",
     "jest": "^26.6.1",
     "mini-css-extract-plugin": "^1.2.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "postcss-loader": "^4.0.1",
     "prettier": "2.1.1",
     "prism-react-renderer": "^1.1.1",
