@@ -1,30 +1,28 @@
-const path = require('path');
-const webpack = require('webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { HotModuleReplacementPlugin } = require('webpack');
 const { merge } = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const baseConfig = require('./webpack.common');
+const common = require('./webpack.common');
 
 const devConfig = {
   mode: 'development',
-  devtool: 'source-map',
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve(__dirname, '../public/index.html'),
-      inject: true,
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
   devServer: {
-    host: 'localhost',
     port: 3000,
-    historyApiFallback: true,
-    overlay: {
-      errors: true,
-    },
-    inline: true,
-    hot: true,
+    open: true,
   },
+  target: 'web',
+  plugins: [
+    new HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin()
+  ],
+  devtool: 'eval-cheap-module-source-map',
+  module: {
+    rules: [
+      {
+        test: /.s?css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  }
 };
 
-module.exports = merge(baseConfig, devConfig);
+module.exports = merge(common, devConfig);
