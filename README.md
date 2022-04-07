@@ -30,12 +30,6 @@
   <a href="https://github.com/wangdicoder/tiny-ui/blob/master/LICENSE" target="_blank">
     <img src="https://img.shields.io/npm/l/tiny-ui.svg?style=flat-square">
   </a>
-  <a href="https://david-dm.org/wangdicoder/tiny-ui" target="_blank">
-    <img src="https://david-dm.org/wangdicoder/tiny-ui/status.svg?style=flat-square"/>
-  </a>
-  <a href="https://david-dm.org/wangdicoder/tiny-ui?type=dev" target="_blank">
-    <img src="https://david-dm.org/wangdicoder/tiny-ui/dev-status.svg?style=flat-square"/>
-  </a>
 </p>
 
 
