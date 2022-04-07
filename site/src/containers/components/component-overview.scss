@@ -1,24 +1,31 @@
 .component-overview {
+  // &__btn {
+  //   border: 1px solid #f4f5f7;
+  //   margin: 0 20px 20px 0;
+  //   display: flex;
+  //   flex-direction: column;
+  //   cursor: pointer;
+  //   transition: all 350ms;
+
+  //   & + & {
+  //     margin-left: 0;
+  //   }
+
+  //   &:hover {
+  //     box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 16px -8px, rgba(0, 0, 0, 0.05) 0px 9px 28px 0px,
+  //       rgba(0, 0, 0, 0.03) 0px 12px 48px 16px;
+  //   }
+  // }
+
+  // &__btn-title {
+  //   padding: 10px 12px;
+  //   border-bottom: 1px solid #f4f5f7;
+  // }
   &__btn {
-    border: 1px solid #f4f5f7;
-    margin: 0 20px 20px 0;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    transition: all 350ms;
+    margin: 0 10px 10px 0;
 
     & + & {
       margin-left: 0;
     }
-
-    &:hover {
-      box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 16px -8px, rgba(0, 0, 0, 0.05) 0px 9px 28px 0px,
-        rgba(0, 0, 0, 0.03) 0px 12px 48px 16px;
-    }
-  }
-
-  &__btn-title {
-    padding: 10px 12px;
-    border-bottom: 1px solid #f4f5f7;
   }
 }

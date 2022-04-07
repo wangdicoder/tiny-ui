@@ -1,7 +1,7 @@
 import React from 'react';
 import './component-overview.scss';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import { Row, Tag } from '../../../../components';
+import { Row, Tag, Button } from '../../../../components';
 import { COMPONENT_MENU } from '../../routers';
 
 const ComponentOverview = () => {
@@ -25,13 +25,19 @@ const ComponentOverview = () => {
           </h3>
           <Row gutter={24} gutterSide>
             {router.children!.map((item) => (
-              <div
+              // <div
+              //   className="component-overview__btn"
+              //   key={item.title}
+              //   onClick={() => history.push(`${url}/${item.route!}`)}>
+              //   <div className="component-overview__btn-title">{item.title}</div>
+              //   <img src={require(`../../assets/icon/${item.route}.svg`)} alt="img" />
+              // </div>
+              <Button
                 className="component-overview__btn"
                 key={item.title}
                 onClick={() => history.push(`${url}/${item.route!}`)}>
-                <div className="component-overview__btn-title">{item.title}</div>
-                <img src={require(`../../assets/icon/${item.route}.svg`)} alt="img" />
-              </div>
+                {item.title}
+              </Button>
             ))}
           </Row>
         </div>

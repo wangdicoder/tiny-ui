@@ -2,19 +2,14 @@ import React, { CSSProperties, useCallback, useContext, useEffect, useRef, useSt
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { getRect, getScroll, getNodeHeight } from '../_utils/dom';
 import { StickyProps } from './types';
-
-type StickyMode = {
-  top: boolean;
-  bottom: boolean;
-  offset: number;
-}
 
 const Sticky = (props: StickyProps): JSX.Element => {
   const {
     offsetTop,
     offsetBottom,
-    container = () => null,
+    container = () => window,
     onChange,
     className,
     style,
@@ -24,16 +19,15 @@ const Sticky = (props: StickyProps): JSX.Element => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('sticky', configContext.prefixCls, customisedCls);
-  const [isFixed, setFixed] = useState(false);
-  const stickyRef = useRef<HTMLDivElement | null>(null);
+  const cls = classNames(prefixCls, className);
   const placeholderRef = useRef<HTMLDivElement | null>(null);
-  const prevIsFixed = useRef(false);
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_fixed`]: isFixed
-  });
+  const stickyRef = useRef<HTMLDivElement | null>(null);
+  const [stickyStyle, setStickyStyle] = useState<CSSProperties>({});
+  const [placeholderStyle, setPlaceholderStyle] = useState<CSSProperties>({});
+  const [stickyContainer, setStickyContainer] = useState(container());
 
-  const getStickyMode = (): StickyMode => {
-    const mode: StickyMode = {
+  const getStickyMode = () => {
+    const mode = {
       top: false,
       bottom: false,
       offset: 0,
@@ -53,45 +47,116 @@ const Sticky = (props: StickyProps): JSX.Element => {
 
     return mode;
   };
+  const [stickyMode] = useState(getStickyMode());
 
-  const handleChange = useCallback((fixed: boolean): void => {
-    if (prevIsFixed.current === fixed) return;
+  const getOffset = useCallback((placeholderNode, stickyContainer): {
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+  } => {
+    const rect = placeholderNode.getBoundingClientRect();
+    const containerRect = getRect(stickyContainer);
+    const containerScrollTop = getScroll(stickyContainer, true);
+    const containerScrollLeft = getScroll(stickyContainer, false);
 
-    prevIsFixed.current = fixed;
-    setFixed(fixed);
-    onChange && onChange(fixed);
-  }, [onChange]);
+    return {
+      top: rect.top - containerRect.top + containerScrollTop,
+      left: rect.left - containerRect.left + containerScrollLeft,
+      width: rect.width,
+      height: rect.height,
+    };
+  }, []);
 
-  useEffect(() => {
-    const placeholderEl = placeholderRef.current;
-    const stickyEl = stickyRef.current;
-    if ((placeholderEl === null) || (stickyEl === null)) return;
+  const updateStickyStyle = useCallback(
+    (stickyStyle: CSSProperties, stuck = false) => {
+      setStickyStyle({ ...stickyStyle });
 
-    placeholderEl.style.height = `${stickyEl.offsetHeight}px`;
-
-    const io = new IntersectionObserver(entries => {
-      const { boundingClientRect, rootBounds } = entries[0]
-
-      if (mode === 'bottom') {
-        handleChange(boundingClientRect.bottom > rootBounds.height);
-      } else if (mode === 'top') {
-        handleChange(boundingClientRect.top < 0);
+      if (stuck) {
+        onChange && onChange(true);
+      } else if (!stickyStyle) {
+        onChange && onChange(false);
       }
-    }, {
-      threshold: [0, 1],
-      root: container(),
-    });
-    io.observe(placeholderEl);
+    },
+    [onChange]
+  );
+
+  const updatePlaceholderStyle = (placeholderStyle: CSSProperties) => {
+    setPlaceholderStyle({ ...placeholderStyle });
+  };
+
+  const updateNodePosition = useCallback(() => {
+    const placeholderNode = placeholderRef.current;
+    const stickyNode = stickyRef.current;
+    if (!placeholderNode || !stickyContainer || !stickyNode) {
+      return;
+    }
+
+    const containerScrollTop = getScroll(stickyContainer, true);
+    const placeholderOffset = getOffset(placeholderNode, stickyContainer);
+    const containerHeight = getNodeHeight(stickyContainer);
+    const placeholderHeight = placeholderNode.offsetHeight;
+    const containerRect = getRect(stickyContainer);
+    const stickyHeight = stickyNode.offsetHeight;
+
+    const stickyStyle: CSSProperties = {
+      width: placeholderOffset.width,
+    };
+    const placeholderStyle: CSSProperties = {
+      width: placeholderOffset.width,
+      height: stickyHeight,
+    };
+    if (stickyMode.top && containerScrollTop > placeholderOffset.top - stickyMode.offset) {
+      // sticky top
+      stickyStyle.position = 'fixed';
+      stickyStyle.top = stickyMode.offset + containerRect.top;
+      updateStickyStyle(stickyStyle, true);
+      updatePlaceholderStyle(placeholderStyle);
+    } else if (
+      stickyMode.bottom &&
+      containerScrollTop <
+        placeholderOffset.top + placeholderHeight + stickyMode.offset - containerHeight
+    ) {
+      // sticky bottom
+      stickyStyle.height = placeholderHeight;
+      stickyStyle.position = 'fixed';
+      stickyStyle.bottom = stickyMode.offset;
+
+      updateStickyStyle(stickyStyle, true);
+      updatePlaceholderStyle(placeholderStyle);
+    } else {
+      updateStickyStyle({});
+      updatePlaceholderStyle({});
+    }
+  }, [stickyContainer, updateStickyStyle, stickyMode, getOffset]);
+
+  /**
+   * If the container is changed, update the listeners
+   */
+  useEffect(() => {
+    const stickyContainer = container();
+    if (!stickyContainer) {
+      return;
+    }
+    setStickyContainer(stickyContainer);
+
+    stickyContainer.addEventListener('scroll', updateNodePosition);
+    stickyContainer.addEventListener('resize', updateNodePosition);
 
     return () => {
-      io.disconnect();
+      stickyContainer.removeEventListener('scroll', updateNodePosition);
+      stickyContainer.removeEventListener('resize', updateNodePosition);
     };
-  }, [container, handleChange]);
+  }, [updateNodePosition, container]);
+
+  useEffect(() => {
+    updateNodePosition();
+  }, [updateNodePosition]);
 
   return (
-    <div aria-hidden ref={placeholderRef}>
-      <div ref={stickyRef} className={cls}>
-        {typeof children === 'function' ? children(isFixed) : children}
+    <div ref={placeholderRef} style={placeholderStyle}>
+      <div {...otherProps} className={cls} ref={stickyRef} style={{ ...stickyStyle, ...style }}>
+        {children}
       </div>
     </div>
   );
