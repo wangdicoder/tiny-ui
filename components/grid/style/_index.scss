@@ -54,11 +54,11 @@
   @mixin grid($size: '') {
     @for $i from 1 through 24 {
       &#{$size}-#{$i} {
-        width: 100% / (24 / $i);
+        width: calc(100% / (24 / $i));
       }
 
       &#{$size}-offset-#{$i} {
-        margin-left: 100% / (24 / $i);
+        margin-left: calc(100% / (24 / $i));
       }
 
       &#{$size}-order-#{$i} {

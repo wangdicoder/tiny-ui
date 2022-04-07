@@ -7,8 +7,8 @@
 
   &:before {
     content: '';
-    width: ($size - 22px)/2 + 10px;
-    height: ($size - 22px)/2 + 10px;
+    width: calc(($size - 22px) / 2) + 10px;
+    height: calc(($size - 22px) / 2) + 10px;
     @include loader();
     display: none;
   }

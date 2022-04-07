@@ -9,7 +9,7 @@ export const getScroll = (node: Target, isVertical = true): number => {
   return node === window ? (node as Window)[windowProp] : (node as HTMLElement)[elementProp];
 };
 
-export const getRect = (node: Target = window): ClientRect => {
+export const getRect = (node: Target = window) => {
   return node !== window
     ? (node as HTMLElement).getBoundingClientRect()
     : {

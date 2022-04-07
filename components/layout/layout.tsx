@@ -8,7 +8,7 @@ import { LayoutProps } from './types';
 /**
  * Layout component
  */
-const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
+const Layout = React.forwardRef<HTMLElement, LayoutProps>(
   (props: LayoutProps, ref): JSX.Element => {
     const { className, children, prefixCls: customisedCls, ...otherProps } = props;
     const [hasSidebar, setHasSidebar] = useState(false);
