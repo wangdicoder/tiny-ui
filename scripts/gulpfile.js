@@ -1,13 +1,11 @@
 const path = require('path');
 const { series, parallel, src, dest } = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoPrefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const cleanCss = require('gulp-clean-css');
-
-sass.compiler = require('node-sass');
 
 const SOURCE_PATH = path.resolve(__dirname, '../components');
 const DIST_PATH = path.resolve(__dirname, '../dist/styles');
