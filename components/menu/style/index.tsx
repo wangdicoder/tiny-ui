@@ -1,4 +1,4 @@
-import './index.scss';
+import './_index.scss';
 
-import '../../popup/style/index.scss';
-import '../../collapse-transition/style/index.scss';
+import '../../popup/style/_index.scss';
+import '../../collapse-transition/style/_index.scss';

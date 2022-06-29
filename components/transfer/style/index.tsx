@@ -1,6 +1,6 @@
-import './index.scss';
+import './_index.scss';
 
-import '../../button/style/index.scss';
-import '../../checkbox/style/index.scss';
-import '../../empty/style/index.scss';
-import '../../input/style/index.scss';
+import '../../button/style/_index.scss';
+import '../../checkbox/style/_index.scss';
+import '../../empty/style/_index.scss';
+import '../../input/style/_index.scss';

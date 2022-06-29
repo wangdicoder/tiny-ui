@@ -1,5 +1,5 @@
-import './index.scss';
+import './_index.scss';
 
 // style dependencies
-import '../../button/style/index.scss';
-import '../../popover/style/index.scss';
+import '../../button/style/_index.scss';
+import '../../popover/style/_index.scss';

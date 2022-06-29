@@ -1,5 +1,5 @@
-import './index.scss';
+import './_index.scss';
 
 // style dependencies
-import '../../overlay/style/index.scss';
-import '../../button/style/index.scss';
+import '../../overlay/style/_index.scss';
+import '../../button/style/_index.scss';

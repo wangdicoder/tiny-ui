@@ -1,3 +1,3 @@
-import './index.scss';
+import './_index.scss';
 
-import '../../transition/style/index.scss';
+import '../../transition/style/_index.scss';
