@@ -1,4 +1,4 @@
-import '../style/index.scss';
+import '../style/_index.scss';
 
 // style dependencies
-import '../../overlay/style/index.scss';
+import '../../overlay/style/_index.scss';

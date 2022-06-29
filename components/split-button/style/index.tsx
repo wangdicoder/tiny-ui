@@ -1,5 +1,5 @@
-import './index.scss';
+import './_index.scss';
 
 // style dependency
-import '../../button/style/index.scss';
-import '../../dropdown/style/index.scss';
+import '../../button/style/_index.scss';
+import '../../dropdown/style/_index.scss';
