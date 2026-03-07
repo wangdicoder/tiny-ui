@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import './code-block.scss';
-import Highlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer';
+import { Highlight, themes, type Language } from 'prism-react-renderer';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { CodeTheme } from './code-theme';
 import * as Components from '../../../../components';
@@ -23,7 +23,7 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
   if (live) {
     return (
       <div className="code-block__container" ref={ref}>
-        <LiveProvider code={children.trim()} theme={CodeTheme as PrismTheme} scope={Components}>
+        <LiveProvider code={children.trim()} theme={CodeTheme as typeof themes.github} scope={Components}>
           <LivePreview className="code-block__previewer" />
           <LiveError />
           <CollapseTransition isShow={showCode}>
@@ -46,10 +46,9 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
   }
   return (
     <Highlight
-      {...defaultProps}
       code={children.trim()}
       language={language}
-      theme={CodeTheme as PrismTheme}>
+      theme={CodeTheme as typeof themes.github}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style, padding: '10px 12px' }}>
           <code>

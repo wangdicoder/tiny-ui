@@ -17,9 +17,11 @@
     border-top: solid 1px #eaeefb;
     padding: 15px;
     overflow-x: scroll;
+    font-family: Menlo, Consolas, "Droid Sans Mono", monospace;
 
     .npm__react-simple-code-editor__textarea {
       outline: none;
+      font-family: inherit;
     }
   }
 

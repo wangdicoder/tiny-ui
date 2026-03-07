@@ -1,10 +1,12 @@
 import React from 'react';
 import './home.scss';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from '../../../../components';
 import { FeatureBlock } from '../../components/feature-block';
 import { Footer } from './footer';
-import { repository } from '../../../../package.json';
+import pkg from '../../../../package.json';
+
+const { repository } = pkg;
 
 const FEATURES = [
   {
@@ -32,79 +34,73 @@ const FEATURES = [
   },
 ];
 
-export default class HomePage extends React.PureComponent<RouteComponentProps> {
-  _navigateToComponentPage = () => {
-    this.props.history.push('/guide');
-  };
+const HomePage = (): React.ReactElement => {
+  const navigate = useNavigate();
 
-  _openGithub = (): void => {
-    window.open(repository.url);
-  };
-
-  render(): React.ReactNode {
-    return (
-      <div className="home">
-        <div className="home__react-login-container">
-          <img
-            src={require('../../assets/logo/react-logo.svg')}
-            alt="react"
-            className="home__react-logo"
-          />
-        </div>
-        <div className="home__slider">
-          <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
-          <h1 className="home__title">Tiny UI</h1>
-          <h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
-          <div className="home__btn-group">
-            <Button
-              className="home__btn"
-              btnType="primary"
-              size="lg"
-              onClick={this._navigateToComponentPage}>
-              Get Started
-            </Button>
-            <Button
-              className="home__btn"
-              size="lg"
-              icon={<Icon name="github" color="#000" />}
-              onClick={this._openGithub}>
-              GitHub
-            </Button>
-          </div>
-        </div>
-
-        <div className="home__section">
-          <h1 className="home__feature-title">Design Principle</h1>
-          <div className="home__features">
-            {FEATURES.map(feature => (
-              <FeatureBlock
-                key={feature.title}
-                icon={feature.icon}
-                title={feature.title}
-                desc={feature.desc}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="home__section">
-          <h1 className="home__feature-title">Blueprint</h1>
-          <p className="home__p">
-            This project is still under development. However, before release version 1, we will
-            implement these components listing in the diagram below.
-          </p>
-          <p className="home__p">
-            Disclaimer: this project is very much under development. The API is subject to change
-            without notice.
-          </p>
-          <img
-            src={require('../../assets/home/blueprint.png')}
-            alt="blueprint"
-            className="home__blueprint"
-          />
-        </div>
-        <Footer />
+  return (
+    <div className="home">
+      <div className="home__react-login-container">
+        <img
+          src={require('../../assets/logo/react-logo.svg')}
+          alt="react"
+          className="home__react-logo"
+        />
       </div>
-    );
-  }
-}
+      <div className="home__slider">
+        <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
+        <h1 className="home__title">Tiny UI</h1>
+        <h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
+        <div className="home__btn-group">
+          <Button
+            className="home__btn"
+            btnType="primary"
+            size="lg"
+            onClick={() => navigate('/guide')}>
+            Get Started
+          </Button>
+          <Button
+            className="home__btn"
+            size="lg"
+            icon={<Icon name="github" color="#000" />}
+            onClick={() => window.open(repository.url)}>
+            GitHub
+          </Button>
+        </div>
+      </div>
+
+      <div className="home__section">
+        <h1 className="home__feature-title">Design Principle</h1>
+        <div className="home__features">
+          {FEATURES.map(feature => (
+            <FeatureBlock
+              key={feature.title}
+              icon={feature.icon}
+              title={feature.title}
+              desc={feature.desc}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="home__section">
+        <h1 className="home__feature-title">Blueprint</h1>
+        <p className="home__p">
+          This project is still under development. However, before release version 1, we will
+          implement these components listing in the diagram below.
+        </p>
+        <p className="home__p">
+          Disclaimer: this project is very much under development. The API is subject to change
+          without notice.
+        </p>
+        <img
+          src={require('../../assets/home/blueprint.png')}
+          alt="blueprint"
+          className="home__blueprint"
+        />
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default HomePage;

@@ -3,7 +3,6 @@ const { series, parallel, src, dest } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoPrefixer = require('autoprefixer');
-const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const cleanCss = require('gulp-clean-css');
 const merge = require('merge-stream');
@@ -13,25 +12,21 @@ const DIST_PATH = path.resolve(__dirname, '../dist/styles');
 const MODULARIZED_DIST_PATH = path.resolve(__dirname, '../lib');
 
 function buildScss() {
-  return src(`${SOURCE_PATH}/style/index.scss`)
-    .pipe(sourcemaps.init())
+  return src(`${SOURCE_PATH}/style/index.scss`, { sourcemaps: true })
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([autoPrefixer()]))
-    .pipe(sourcemaps.write('./'))
-    .pipe(dest(DIST_PATH));
+    .pipe(dest(DIST_PATH, { sourcemaps: '.' }));
 }
 
 function minCss() {
-  return src(`${DIST_PATH}/index.css`)
-    .pipe(sourcemaps.init())
+  return src(`${DIST_PATH}/index.css`, { sourcemaps: true })
     .pipe(cleanCss())
     .pipe(
       rename((path) => {
         path.basename += '.min';
       })
     )
-    .pipe(sourcemaps.write('./'))
-    .pipe(dest(`${DIST_PATH}`));
+    .pipe(dest(`${DIST_PATH}`, { sourcemaps: '.' }));
 }
 
 function copyFont() {

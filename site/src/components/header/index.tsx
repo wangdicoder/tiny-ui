@@ -1,8 +1,10 @@
 import React from 'react';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
-import { version, repository } from '../../../../package.json';
+import pkg from '../../../../package.json';
 import { Icon, Link } from '../../../../components';
+
+const { version, repository } = pkg;
 
 export const Header = (): React.ReactElement => (
   <header className="header">
@@ -15,7 +17,7 @@ export const Header = (): React.ReactElement => (
     <nav className="header__nav">
       <ul className="header__nav-list">
         <li className="header__nav-item">
-          <NavLink exact to="/" className="header__link">
+          <NavLink end to="/" className="header__link">
             Home
           </NavLink>
         </li>

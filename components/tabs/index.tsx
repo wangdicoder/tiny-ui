@@ -1,7 +1,8 @@
-import Tabs, { TabsProps } from './tabs';
-import TabPanel, { TabPanelProps } from './tab-panel';
+import Tabs from './tabs';
+import TabPanel from './tab-panel';
 
-export { TabsProps, TabPanelProps };
+export type { TabsProps } from './tabs';
+export type { TabPanelProps } from './tab-panel';
 
 type ITabs = typeof Tabs & {
   Panel: typeof TabPanel;
