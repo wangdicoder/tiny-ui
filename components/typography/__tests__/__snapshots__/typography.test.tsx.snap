@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Typography /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="ty-typography"
+  >
+    Heading
+  </h1>
+</DocumentFragment>
+`;

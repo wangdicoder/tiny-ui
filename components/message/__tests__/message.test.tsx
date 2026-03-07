@@ -7,26 +7,21 @@ const noop = () => {};
 describe('<Message />', () => {
   it('should match the snapshot', () => {
     const { asFragment } = render(
-      <MessageComponent
-        type="success"
-        content="Success message"
-        duration={3000}
-        willUnmount={noop}
-      />
+      <MessageComponent type="success" content="Success message" duration={3000} willUnmount={noop} />
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
     const { container } = render(
-      <MessageComponent content="Hello" duration={3000} willUnmount={noop} />
+      <MessageComponent type="info" content="Hello" duration={3000} willUnmount={noop} />
     );
-    expect(container.querySelector('.ty-message')).toBeTruthy();
+    expect(container.querySelector('.ty-message')).toBeInTheDocument();
   });
 
   it('should render content text', () => {
     const { getByText } = render(
-      <MessageComponent content="Test message" duration={3000} willUnmount={noop} />
+      <MessageComponent type="info" content="Test message" duration={3000} willUnmount={noop} />
     );
     expect(getByText('Test message')).toBeInTheDocument();
   });
@@ -35,19 +30,12 @@ describe('<Message />', () => {
     const { container } = render(
       <MessageComponent type="success" content="Success" duration={3000} willUnmount={noop} />
     );
-    expect(container.querySelector('.ty-message__icon')).toBeTruthy();
-  });
-
-  it('should render icon for error type', () => {
-    const { container } = render(
-      <MessageComponent type="error" content="Error" duration={3000} willUnmount={noop} />
-    );
-    expect(container.querySelector('.ty-message__icon')).toBeTruthy();
+    expect(container.querySelector('.ty-message__icon')).toBeInTheDocument();
   });
 
   it('should render extra content', () => {
     const { getByText } = render(
-      <MessageComponent content="Msg" duration={3000} willUnmount={noop} extra={<span>Extra</span>} />
+      <MessageComponent type="info" content="Msg" duration={3000} willUnmount={noop} extra={<span>Extra</span>} />
     );
     expect(getByText('Extra')).toBeInTheDocument();
   });

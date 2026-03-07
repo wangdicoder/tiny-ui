@@ -14,7 +14,7 @@ describe('<Overlay />', () => {
   });
 
   it('should render blurred', () => {
-    const { container } = render(<Overlay isShow blurred>Content</Overlay>);
-    expect(container.querySelector('.ty-overlay_blurred')).toBeTruthy();
+    const { baseElement } = render(<Overlay isShow blurred>Content</Overlay>);
+    expect(baseElement.querySelector('.ty-overlay_blurred')).toBeInTheDocument();
   });
 });

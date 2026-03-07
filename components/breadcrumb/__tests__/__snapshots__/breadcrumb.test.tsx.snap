@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumb /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="ty-breadcrumb"
+  >
+    <ol
+      class="ty-breadcrumb__ol"
+    >
+      <li
+        class="ty-breadcrumb-item"
+      >
+        Home
+        <span
+          class="ty-breadcrumb-item__separator"
+        >
+          /
+        </span>
+      </li>
+    </ol>
+  </nav>
+</DocumentFragment>
+`;

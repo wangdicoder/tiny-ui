@@ -1,12 +1,11 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import Transfer from '../index';
 
 describe('<Transfer />', () => {
   const dataSource = [
-    { key: '1', title: 'Item 1' },
-    { key: '2', title: 'Item 2' },
-    { key: '3', title: 'Item 3' },
+    { key: '1', label: 'Item 1', disabled: false },
+    { key: '2', label: 'Item 2', disabled: false },
+    { key: '3', label: 'Item 3', disabled: false },
   ];
 
   it('should match the snapshot', () => {
@@ -21,6 +20,6 @@ describe('<Transfer />', () => {
 
   it('should render two panels', () => {
     const { container } = render(<Transfer dataSource={dataSource} />);
-    expect(container.querySelectorAll('.ty-transfer__panel').length).toBe(2);
+    expect(container.querySelectorAll('.ty-transfer-panel').length).toBe(2);
   });
 });

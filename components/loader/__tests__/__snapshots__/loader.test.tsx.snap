@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-loader ty-loader_md ty-loader_spinning"
+  >
+    <div
+      class="ty-loader__loader-container"
+    >
+      <div
+        class="ty-loader__indicator ty-loader__indicator_md"
+      >
+        <span
+          class="ty-loader__indicator-dot"
+        />
+        <span
+          class="ty-loader__indicator-dot"
+        />
+        <span
+          class="ty-loader__indicator-dot"
+        />
+        <span
+          class="ty-loader__indicator-dot"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

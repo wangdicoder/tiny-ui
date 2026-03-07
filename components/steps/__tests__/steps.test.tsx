@@ -6,9 +6,9 @@ describe('<Steps />', () => {
   it('should match the snapshot', () => {
     const { asFragment } = render(
       <Steps current={1}>
-        <Steps.Item title="Step 1" />
-        <Steps.Item title="Step 2" />
-        <Steps.Item title="Step 3" />
+        <Steps.Step title="Step 1" />
+        <Steps.Step title="Step 2" />
+        <Steps.Step title="Step 3" />
       </Steps>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -17,7 +17,7 @@ describe('<Steps />', () => {
   it('should render correctly', () => {
     const { container } = render(
       <Steps current={0}>
-        <Steps.Item title="Step 1" />
+        <Steps.Step title="Step 1" />
       </Steps>
     );
     expect(container.firstChild).toHaveClass('ty-steps');
@@ -26,8 +26,8 @@ describe('<Steps />', () => {
   it('should render items', () => {
     const { getByText } = render(
       <Steps current={0}>
-        <Steps.Item title="First" />
-        <Steps.Item title="Second" />
+        <Steps.Step title="First" />
+        <Steps.Step title="Second" />
       </Steps>
     );
     expect(getByText('First')).toBeInTheDocument();

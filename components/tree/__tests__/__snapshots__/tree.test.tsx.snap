@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tree /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    aria-level="0"
+    class="ty-tree"
+  >
+    <li
+      class="ty-tree-node ty-tree-node_block"
+    >
+      <div
+        class="ty-tree-node__title"
+        style="padding-left: 0px;"
+      >
+        <span
+          class="ty-tree-node__switcher"
+        >
+          <svg
+            class="ty-tree-node__arrow"
+            height="20"
+            viewBox="0 0 1024 1024"
+            width="20"
+          >
+            <path
+              d="M726.652801 429.305603 297.347199 429.305603 512.193405 638.156258Z"
+              fill="currentcolor"
+            />
+          </svg>
+        </span>
+        <span
+          class="ty-tree-node__label"
+        >
+          Node 1
+        </span>
+      </div>
+      <div
+        class="ty-collapse-transition"
+        style="display: block;"
+      >
+        <ul
+          aria-level="1"
+          class="ty-tree"
+        >
+          <li
+            class="ty-tree-node ty-tree-node_block"
+          >
+            <div
+              class="ty-tree-node__title"
+              style="padding-left: 20px;"
+            >
+              <span
+                class="ty-tree-node__switcher"
+              />
+              <span
+                class="ty-tree-node__label"
+              >
+                Node 1-1
+              </span>
+            </div>
+          </li>
+          <li
+            class="ty-tree-node ty-tree-node_block"
+          >
+            <div
+              class="ty-tree-node__title"
+              style="padding-left: 20px;"
+            >
+              <span
+                class="ty-tree-node__switcher"
+              />
+              <span
+                class="ty-tree-node__label"
+              >
+                Node 1-2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="ty-tree-node ty-tree-node_block"
+    >
+      <div
+        class="ty-tree-node__title"
+        style="padding-left: 0px;"
+      >
+        <span
+          class="ty-tree-node__switcher"
+        />
+        <span
+          class="ty-tree-node__label"
+        >
+          Node 2
+        </span>
+      </div>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

@@ -19,8 +19,8 @@ describe('<Drawer />', () => {
   });
 
   it('should render close button when closable', () => {
-    const { container } = render(<Drawer visible closable>Content</Drawer>);
-    expect(container.querySelector('.ty-drawer__close-btn')).toBeTruthy();
+    const { baseElement } = render(<Drawer visible closable>Content</Drawer>);
+    expect(baseElement.querySelector('.ty-drawer__close-btn')).toBeInTheDocument();
   });
 
   it('should render footer', () => {

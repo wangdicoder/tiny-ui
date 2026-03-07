@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StrengthIndicator /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-strength-indicator"
+  >
+    <div
+      class="ty-strength-indicator__item"
+    >
+      <div
+        class="ty-strength-indicator__inner"
+      />
+    </div>
+    <div
+      class="ty-strength-indicator__item"
+    >
+      <div
+        class="ty-strength-indicator__inner"
+      />
+    </div>
+    <div
+      class="ty-strength-indicator__item"
+    >
+      <div
+        class="ty-strength-indicator__inner"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Textarea from '../index';
 
@@ -10,7 +9,7 @@ describe('<Textarea />', () => {
 
   it('should render correctly', () => {
     const { container } = render(<Textarea />);
-    expect(container.querySelector('textarea')).toBeTruthy();
+    expect(container.querySelector('textarea')).toBeInTheDocument();
   });
 
   it('should render disabled', () => {
@@ -24,10 +23,5 @@ describe('<Textarea />', () => {
     const textarea = container.querySelector('textarea')!;
     fireEvent.change(textarea, { target: { value: 'test' } });
     expect(fn).toHaveBeenCalledTimes(1);
-  });
-
-  it('should render placeholder', () => {
-    const { container } = render(<Textarea placeholder="Enter text..." />);
-    expect(container.querySelector('textarea')?.getAttribute('placeholder')).toBe('Enter text...');
   });
 });

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Upload /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-upload"
+  >
+    <input
+      style="display: none;"
+      type="file"
+    />
+  </div>
+  <ul
+    class="ty-upload__upload-list"
+  />
+</DocumentFragment>
+`;

@@ -10,7 +10,7 @@ describe('<SplitButton />', () => {
 
   it('should render correctly', () => {
     const { container } = render(<SplitButton overlay={<div>Menu</div>}>Action</SplitButton>);
-    expect(container.firstChild).toHaveClass('ty-split-btn');
+    expect(container.querySelector('.ty-split-button')).toBeInTheDocument();
   });
 
   it('should render button text', () => {

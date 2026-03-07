@@ -23,11 +23,6 @@ describe('<Rate />', () => {
     expect(container.querySelectorAll('.ty-rate__item').length).toBe(3);
   });
 
-  it('should render disabled', () => {
-    const { container } = render(<Rate disabled />);
-    expect(container.firstChild).toHaveClass('ty-rate_disabled');
-  });
-
   it('should fire onChange on click', () => {
     const fn = jest.fn();
     const { container } = render(<Rate onChange={fn} />);

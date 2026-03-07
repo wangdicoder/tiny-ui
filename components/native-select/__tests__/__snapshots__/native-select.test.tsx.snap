@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NativeSelect /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <select
+    class="ty-select-native ty-select-native_md"
+  >
+    <option
+      value="a"
+    >
+      A
+    </option>
+  </select>
+</DocumentFragment>
+`;

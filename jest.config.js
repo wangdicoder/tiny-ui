@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/components/'],
   verbose: true,
-  setupFilesAfterSetup: ['<rootDir>/test-setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/test-setup.js'],
   collectCoverageFrom: [
     'components/**/*.{ts,tsx}',
     '!components/**/style/**',

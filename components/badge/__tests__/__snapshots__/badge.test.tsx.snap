@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Badge /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class="ty-badge"
+  >
+    <div>
+      content
+    </div>
+    <sup
+      class="ty-badge__count"
+      style="background-color: rgb(242, 69, 61);"
+    >
+      5
+    </sup>
+  </span>
+</DocumentFragment>
+`;

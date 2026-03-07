@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Progress.Bar /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="50"
+    class="ty-progress-bar ty-progress-bar_round"
+    role="progressbar"
+  >
+    <div
+      class="ty-progress-bar__inner"
+      style="height: 8px;"
+    >
+      <div
+        class="ty-progress-bar__bg ty-progress-bar__bg_primary"
+        style="width: 50%;"
+      >
+        <div
+          class="ty-progress-bar__effect"
+        />
+      </div>
+    </div>
+    <span
+      class="ty-progress-bar__text"
+    >
+      50%
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Progress.Circle /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="50"
+    class="ty-progress-circle"
+    style="width: 120px; height: 120px;"
+  >
+    <svg
+      height="120"
+      viewBox="0 0 100 100"
+      width="120"
+    >
+      <path
+        class="ty-progress-circle__bg"
+        d="M 50 50 m 0 -46.65 a 46.65 46.65
+         0 1 1 0 93.3 a 46.65 46.65 0 1 1 0 -93.3"
+        stroke-width="6.7"
+      />
+      <path
+        class="ty-progress-circle__path ty-progress-circle__path_primary"
+        d="M 50 50 m 0 -46.65 a 46.65 46.65
+         0 1 1 0 93.3 a 46.65 46.65 0 1 1 0 -93.3"
+        stroke-linecap="round"
+        stroke-width="6.7"
+        style="stroke-dasharray: 293.1105945799277px, 293.1105945799277px; stroke-dashoffset: 146.55529728996385px;"
+      />
+    </svg>
+    <div
+      class="ty-progress-circle__text"
+    >
+      50%
+    </div>
+  </div>
+</DocumentFragment>
+`;

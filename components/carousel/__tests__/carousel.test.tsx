@@ -25,14 +25,14 @@ describe('<Carousel />', () => {
   });
 
   it('should render slides', () => {
-    const { getByText } = render(
+    const { getAllByText } = render(
       <Carousel autoplay={false}>
         <Carousel.Item><div>Slide A</div></Carousel.Item>
         <Carousel.Item><div>Slide B</div></Carousel.Item>
       </Carousel>
     );
-    expect(getByText('Slide A')).toBeInTheDocument();
-    expect(getByText('Slide B')).toBeInTheDocument();
+    expect(getAllByText('Slide A').length).toBeGreaterThan(0);
+    expect(getAllByText('Slide B').length).toBeGreaterThan(0);
   });
 
   it('should render dots', () => {

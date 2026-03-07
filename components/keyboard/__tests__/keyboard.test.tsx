@@ -20,6 +20,6 @@ describe('<Keyboard />', () => {
 
   it('should have correct class', () => {
     const { container } = render(<Keyboard>A</Keyboard>);
-    expect(container.firstChild).toHaveClass('ty-keyboard');
+    expect(container.firstChild).toHaveClass('ty-kbd');
   });
 });

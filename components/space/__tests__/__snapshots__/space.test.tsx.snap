@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Space /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-space ty-space_horizontal ty-space_center"
+  >
+    <div
+      class="ty-space__item"
+      style="margin-right: 8px;"
+    >
+      <div>
+        A
+      </div>
+    </div>
+    <div
+      class="ty-space__item"
+    >
+      <div>
+        B
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

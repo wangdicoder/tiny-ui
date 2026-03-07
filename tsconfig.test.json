@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noUnusedLocals": false,
     "types": [
       "node",
       "jest",

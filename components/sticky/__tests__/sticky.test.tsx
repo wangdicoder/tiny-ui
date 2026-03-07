@@ -10,7 +10,7 @@ describe('<Sticky />', () => {
 
   it('should render correctly', () => {
     const { container } = render(<Sticky><div>Sticky</div></Sticky>);
-    expect(container.firstChild).toHaveClass('ty-sticky');
+    expect(container.querySelector('.ty-sticky')).toBeInTheDocument();
   });
 
   it('should render children', () => {

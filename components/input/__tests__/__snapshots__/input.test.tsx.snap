@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-input ty-input_md"
+  >
+    <input
+      class="ty-input__input"
+      style="padding-left: 7px; padding-right: 7px;"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;

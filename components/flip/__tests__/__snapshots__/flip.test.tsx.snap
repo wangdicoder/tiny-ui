@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Flip /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-flip"
+    style="width: 200px; height: 200px;"
+  >
+    <div
+      class="ty-flip__inner ty-flip__inner_hor"
+    >
+      <div
+        class="ty-flip__item-front"
+      >
+        <div>
+          Front
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

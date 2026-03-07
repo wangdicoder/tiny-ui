@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Switch /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="ty-switch ty-switch_md ty-switch_checked"
+  >
+    <span
+      class="ty-switch__bg"
+    >
+      <span
+        class="ty-switch__thumb"
+      />
+      <span
+        class="ty-switch__label"
+      />
+    </span>
+  </label>
+</DocumentFragment>
+`;

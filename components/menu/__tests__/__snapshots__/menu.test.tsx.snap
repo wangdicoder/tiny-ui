@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Menu /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="ty-menu ty-menu_root ty-menu_light ty-menu_horizontal"
+    role="menu"
+  >
+    <li
+      class="ty-menu-item ty-menu-item_active"
+      role="menuitem"
+    >
+      Item 1
+    </li>
+    <li
+      class="ty-menu-item"
+      role="menuitem"
+    >
+      Item 2
+    </li>
+  </ul>
+</DocumentFragment>
+`;

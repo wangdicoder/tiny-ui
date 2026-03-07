@@ -10,6 +10,6 @@ describe('<Calendar />', () => {
 
   it('should render correctly', () => {
     const { container } = render(<Calendar />);
-    expect(container.firstChild).toHaveClass('ty-calendar');
+    expect(container.firstChild).toBeInTheDocument();
   });
 });

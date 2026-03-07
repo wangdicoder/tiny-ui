@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DatePicker /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-date-picker"
+  >
+    <div
+      class="ty-date-picker__input-wrapper"
+    >
+      <input
+        class="ty-date-picker__input"
+        placeholder="Select date"
+        readonly=""
+        value="2024-01-15"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

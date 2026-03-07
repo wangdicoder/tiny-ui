@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SplitButton /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-btn-group ty-btn-group_default ty-split-button"
+  >
+    <button
+      class="ty-btn ty-btn_md ty-btn_default"
+      role="button"
+    >
+      <span
+        class="ty-btn__children"
+      >
+        Action
+      </span>
+    </button>
+    <button
+      class="ty-btn ty-btn_md ty-btn_default ty-split-button__dropdown-btn"
+      role="button"
+    >
+      <span
+        class="ty-btn__children"
+      >
+        <svg
+          height="10"
+          viewBox="0 0 1024 1024"
+          width="10"
+        >
+          <path
+            d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
+            fill="currentcolor"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;

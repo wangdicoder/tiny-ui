@@ -25,7 +25,7 @@ describe('<Divider />', () => {
 
   it('should render dashed style', () => {
     const { container } = render(<Divider dashed />);
-    expect(container.firstChild).toHaveClass('ty-divider_dashed');
+    expect(container.firstChild).toHaveClass('ty-divider_horizontal-dashed');
   });
 
   it('should render with text', () => {
@@ -35,6 +35,6 @@ describe('<Divider />', () => {
 
   it('should render text with alignment', () => {
     const { container } = render(<Divider align="left">Left</Divider>);
-    expect(container.querySelector('.ty-divider__text')).toBeTruthy();
+    expect(container.querySelector('.ty-divider_inner-text')).toBeInTheDocument();
   });
 });

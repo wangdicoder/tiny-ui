@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TimePicker /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-time-picker"
+  >
+    <div
+      class="ty-time-picker__input-wrapper"
+    >
+      <input
+        class="ty-time-picker__input"
+        placeholder="Select time"
+        readonly=""
+        value="10:30:00"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

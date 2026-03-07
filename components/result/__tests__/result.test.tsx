@@ -15,7 +15,7 @@ describe('<Result />', () => {
 
   it('should render info status by default', () => {
     const { container } = render(<Result title="Info" />);
-    expect(container.querySelector('.ty-result__icon')).toBeTruthy();
+    expect(container.querySelector('.ty-result__icon-container')).toBeInTheDocument();
   });
 
   it('should render success status', () => {

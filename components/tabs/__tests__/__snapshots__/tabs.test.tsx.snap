@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tabs /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-tabs ty-tabs_md ty-tabs_horizontal ty-tabs_line"
+  >
+    <div
+      class="ty-tabs__header"
+    >
+      <div
+        class="ty-tabs__header-scroll"
+      >
+        <div
+          class="ty-tabs__header-nav"
+        >
+          <div
+            class="ty-tabs__header-nav-item ty-tabs__header-nav-item_active"
+          >
+            Tab 1
+          </div>
+          <div
+            class="ty-tabs__header-nav-item"
+          >
+            Tab 2
+          </div>
+          <div
+            class="ty-tabs__header-line"
+            style="width: 0px; transform: translate3d(0px, 0, 0);"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="ty-tabs__body ty-tabs__body_animated"
+      style="margin-left: -0%;"
+    >
+      <div
+        class="ty-tabs-panel-item ty-tabs-panel-item_active"
+        tab="Tab 1"
+      >
+        Content 1
+      </div>
+      <div
+        class="ty-tabs-panel-item"
+        tab="Tab 2"
+      >
+        Content 2
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

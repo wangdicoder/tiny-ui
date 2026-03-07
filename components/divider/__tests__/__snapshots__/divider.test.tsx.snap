@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Divider /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-divider ty-divider_horizontal ty-divider_center"
+  />
+</DocumentFragment>
+`;

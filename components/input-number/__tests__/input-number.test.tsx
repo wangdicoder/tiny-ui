@@ -28,6 +28,7 @@ describe('<InputNumber />', () => {
 
   it('should render step buttons', () => {
     const { container } = render(<InputNumber />);
-    expect(container.querySelectorAll('.ty-input-number__btn').length).toBeGreaterThan(0);
+    expect(container.querySelector('.ty-input-number__up')).toBeInTheDocument();
+    expect(container.querySelector('.ty-input-number__down')).toBeInTheDocument();
   });
 });

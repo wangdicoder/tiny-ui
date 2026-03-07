@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Row /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-row"
+  >
+    <div
+      class="ty-col ty-col-12"
+    >
+      A
+    </div>
+    <div
+      class="ty-col ty-col-12"
+    >
+      B
+    </div>
+  </div>
+</DocumentFragment>
+`;

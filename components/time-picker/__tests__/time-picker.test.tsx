@@ -1,6 +1,9 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import TimePicker from '../index';
+
+beforeAll(() => {
+  Element.prototype.scrollTo = jest.fn();
+});
 
 describe('<TimePicker />', () => {
   it('should match the snapshot', () => {

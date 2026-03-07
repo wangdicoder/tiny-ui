@@ -4,12 +4,12 @@ import Typography from '../index';
 
 describe('<Typography />', () => {
   it('should match the snapshot', () => {
-    const { asFragment } = render(<Typography.Title>Heading</Typography.Title>);
+    const { asFragment } = render(<Typography.Heading>Heading</Typography.Heading>);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render Title correctly', () => {
-    const { getByText } = render(<Typography.Title>Heading</Typography.Title>);
+    const { getByText } = render(<Typography.Heading>Heading</Typography.Heading>);
     expect(getByText('Heading')).toBeInTheDocument();
   });
 

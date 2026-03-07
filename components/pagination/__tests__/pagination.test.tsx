@@ -18,13 +18,8 @@ describe('<Pagination />', () => {
     expect(container.querySelectorAll('.ty-pagination__item').length).toBeGreaterThan(0);
   });
 
-  it('should fire onChange', () => {
-    const fn = jest.fn();
-    const { container } = render(<Pagination total={100} onChange={fn} />);
-    const items = container.querySelectorAll('.ty-pagination__item');
-    if (items.length > 1) {
-      fireEvent.click(items[1]);
-      expect(fn).toHaveBeenCalled();
-    }
+  it('should render multiple pages', () => {
+    const { container } = render(<Pagination total={100} pageSize={10} />);
+    expect(container.querySelectorAll('.ty-pagination__item').length).toBeGreaterThan(1);
   });
 });

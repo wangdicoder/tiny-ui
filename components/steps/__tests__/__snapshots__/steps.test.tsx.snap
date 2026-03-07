@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Steps /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-steps ty-steps_horizontal"
+    current="1"
+  >
+    <div
+      class="ty-steps-item ty-steps-item_finish ty-steps-item_label-vertical"
+    >
+      <div
+        class="ty-steps-item__head"
+      >
+        <div
+          class="ty-steps-item__icon"
+        >
+          <svg
+            height="20"
+            viewBox="0 0 1024 1024"
+            width="20"
+          >
+            <path
+              d="M887.904 298.208c-12.864-12.064-33.152-11.488-45.216 1.408L415.936 753.984l-233.12-229.696c-12.608-12.416-32.864-12.288-45.28 0.32-12.416 12.576-12.256 32.864 0.352 45.248l256.48 252.672c0.096 0.096 0.224 0.128 0.32 0.224s0.128 0.224 0.224 0.32c2.016 1.92 4.448 3.008 6.784 4.288 1.152 0.672 2.144 1.664 3.36 2.144 3.776 1.472 7.776 2.24 11.744 2.24 4.192 0 8.384-0.832 12.288-2.496 1.312-0.544 2.336-1.664 3.552-2.368 2.4-1.408 4.896-2.592 6.944-4.672 0.096-0.096 0.128-0.256 0.224-0.352 0.064-0.096 0.192-0.128 0.288-0.224L889.28 343.424c12.16-12.832 11.488-33.088-1.376-45.216z"
+              fill="currentcolor"
+            />
+          </svg>
+        </div>
+        <div
+          class="ty-steps-item__tail"
+        />
+      </div>
+      <div
+        class="ty-steps-item__content"
+      >
+        <div
+          class="ty-steps-item__title"
+        >
+          Step 1
+        </div>
+        <div
+          class="ty-steps-item__desc"
+        />
+      </div>
+    </div>
+    <div
+      class="ty-steps-item ty-steps-item_process ty-steps-item_label-vertical"
+    >
+      <div
+        class="ty-steps-item__head"
+      >
+        <div
+          class="ty-steps-item__icon"
+        >
+          2
+        </div>
+        <div
+          class="ty-steps-item__tail"
+        />
+      </div>
+      <div
+        class="ty-steps-item__content"
+      >
+        <div
+          class="ty-steps-item__title"
+        >
+          Step 2
+        </div>
+        <div
+          class="ty-steps-item__desc"
+        />
+      </div>
+    </div>
+    <div
+      class="ty-steps-item ty-steps-item_wait ty-steps-item_label-vertical"
+    >
+      <div
+        class="ty-steps-item__head"
+      >
+        <div
+          class="ty-steps-item__icon"
+        >
+          3
+        </div>
+        <div
+          class="ty-steps-item__tail"
+        />
+      </div>
+      <div
+        class="ty-steps-item__content"
+      >
+        <div
+          class="ty-steps-item__title"
+        >
+          Step 3
+        </div>
+        <div
+          class="ty-steps-item__desc"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

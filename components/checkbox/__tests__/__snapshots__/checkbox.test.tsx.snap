@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checkbox /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="ty-checkbox"
+  >
+    <input
+      aria-checked="false"
+      class="ty-checkbox__native"
+      role="checkbox"
+      type="checkbox"
+    />
+    <span
+      class="ty-checkbox__inner"
+    />
+    <span>
+      Check me
+    </span>
+  </label>
+</DocumentFragment>
+`;

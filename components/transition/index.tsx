@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 
@@ -43,25 +42,18 @@ const Transition = (props: TransitionProps): React.ReactElement => {
     animation,
     classNames,
     children,
-    wrapper: _wrapper,
-    addEndListener: _addEndListener,
+    wrapper,
     ...otherProps
   } = props;
 
-  const nodeRef = useRef<HTMLDivElement>(null);
-
-  const cssTransitionProps = {
-    ...otherProps,
-    nodeRef,
-    timeout,
-    appear,
-    unmountOnExit,
-    classNames: classNames ? classNames : `${prefix}-${animation}`,
-  } as unknown as CSSTransitionProps;
-
   return (
-    <CSSTransition {...cssTransitionProps}>
-      <div ref={nodeRef}>{children}</div>
+    <CSSTransition
+      {...(otherProps as CSSTransitionProps)}
+      timeout={timeout}
+      appear={appear}
+      unmountOnExit={unmountOnExit}
+      classNames={classNames ? classNames : `${prefix}-${animation}`}>
+      {wrapper ? <div>{children}</div> : (children as React.ReactElement)}
     </CSSTransition>
   );
 };

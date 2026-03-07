@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="ty-pagination ty-pagination_center ty-pagination_md"
+  >
+    <li
+      class="ty-pagination__item ty-pagination__item_disabled"
+      tabindex="0"
+    >
+      <svg
+        class="ty-pagination__left-arrow"
+        height="12"
+        viewBox="0 0 1024 1024"
+        width="12"
+      >
+        <path
+          d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
+          fill="currentcolor"
+        />
+      </svg>
+    </li>
+    <li
+      class="ty-pagination__item ty-pagination__item_active"
+      tabindex="0"
+    >
+      1
+    </li>
+    <li
+      class="ty-pagination__item"
+      tabindex="0"
+    >
+      2
+    </li>
+    <li
+      class="ty-pagination__item"
+      tabindex="0"
+    >
+      3
+    </li>
+    <li
+      class="ty-pagination__item"
+      tabindex="0"
+    >
+      4
+    </li>
+    <li
+      class="ty-pagination__item"
+      tabindex="0"
+    >
+      5
+    </li>
+    <li
+      class="ty-pagination__item ty-pagination__item_ellipsis"
+      tabindex="0"
+    >
+      •••
+    </li>
+    <li
+      class="ty-pagination__item"
+      tabindex="0"
+    >
+      10
+    </li>
+    <li
+      class="ty-pagination__item"
+      tabindex="0"
+    >
+      <svg
+        class="ty-pagination__right-arrow"
+        height="12"
+        viewBox="0 0 1024 1024"
+        width="12"
+      >
+        <path
+          d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
+          fill="currentcolor"
+        />
+      </svg>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

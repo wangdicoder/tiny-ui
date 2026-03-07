@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Rate /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="ty-rate"
+  >
+    <li
+      class="ty-rate__item"
+    >
+      <div
+        class="ty-rate__item-first"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+      <div
+        class="ty-rate__item-second"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+    </li>
+    <li
+      class="ty-rate__item"
+    >
+      <div
+        class="ty-rate__item-first"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+      <div
+        class="ty-rate__item-second"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+    </li>
+    <li
+      class="ty-rate__item"
+    >
+      <div
+        class="ty-rate__item-first"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+      <div
+        class="ty-rate__item-second"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+    </li>
+    <li
+      class="ty-rate__item"
+    >
+      <div
+        class="ty-rate__item-first"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+      <div
+        class="ty-rate__item-second"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+    </li>
+    <li
+      class="ty-rate__item"
+    >
+      <div
+        class="ty-rate__item-first"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+      <div
+        class="ty-rate__item-second"
+        style="color: rgb(232, 232, 232);"
+      >
+        <i
+          class="ty-icon ty--star-fill"
+          style="font-size: 20px;"
+        />
+      </div>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

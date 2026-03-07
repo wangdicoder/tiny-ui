@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Descriptions /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-descriptions ty-descriptions_md"
+  >
+    <div
+      class="ty-descriptions__body"
+    >
+      <table>
+        <tbody>
+          <tr
+            class="ty-descriptions__row"
+          >
+            <td
+              class="ty-descriptions__item"
+              colspan="1"
+            >
+              <span
+                class="ty-descriptions__item-label ty-descriptions__item_colon"
+              >
+                Name
+              </span>
+              <span
+                class="ty-descriptions__item-content"
+              >
+                John
+              </span>
+            </td>
+            <td
+              class="ty-descriptions__item"
+              colspan="2"
+            >
+              <span
+                class="ty-descriptions__item-label ty-descriptions__item_colon"
+              >
+                Age
+              </span>
+              <span
+                class="ty-descriptions__item-content"
+              >
+                30
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</DocumentFragment>
+`;

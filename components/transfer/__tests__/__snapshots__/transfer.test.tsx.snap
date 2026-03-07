@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Transfer /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-transfer"
+  >
+    <div
+      class="ty-transfer-panel"
+    >
+      <div
+        class="ty-transfer-panel__body"
+      >
+        <div
+          class="ty-transfer-panel__list-container"
+        >
+          <div
+            class="ty-checkbox-group ty-transfer-panel__list"
+            role="group"
+            value=""
+          >
+            <label
+              class="ty-checkbox ty-transfer-panel__list-item"
+            >
+              <input
+                aria-checked="false"
+                class="ty-checkbox__native"
+                name="1"
+                role="checkbox"
+                type="checkbox"
+              />
+              <span
+                class="ty-checkbox__inner"
+              />
+              <span>
+                Item 1
+              </span>
+            </label>
+            <label
+              class="ty-checkbox ty-transfer-panel__list-item"
+            >
+              <input
+                aria-checked="false"
+                class="ty-checkbox__native"
+                name="2"
+                role="checkbox"
+                type="checkbox"
+              />
+              <span
+                class="ty-checkbox__inner"
+              />
+              <span>
+                Item 2
+              </span>
+            </label>
+            <label
+              class="ty-checkbox ty-transfer-panel__list-item"
+            >
+              <input
+                aria-checked="false"
+                class="ty-checkbox__native"
+                name="3"
+                role="checkbox"
+                type="checkbox"
+              />
+              <span
+                class="ty-checkbox__inner"
+              />
+              <span>
+                Item 3
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ty-transfer-panel__footer"
+      >
+        <label
+          class="ty-checkbox"
+        >
+          <input
+            aria-checked="false"
+            class="ty-checkbox__native"
+            role="checkbox"
+            type="checkbox"
+          />
+          <span
+            class="ty-checkbox__inner"
+          />
+          <span>
+            3 items
+          </span>
+        </label>
+      </div>
+    </div>
+    <div
+      class="ty-transfer__buttons"
+    >
+      <button
+        class="ty-btn ty-btn_sm ty-btn_primary ty-btn_disabled"
+        disabled=""
+        role="button"
+      >
+        <span
+          class="ty-btn__children"
+        >
+          <svg
+            class="ty-transfer__left-arrow"
+            height="12"
+            viewBox="0 0 1024 1024"
+            width="12"
+          >
+            <path
+              d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
+              fill="currentcolor"
+            />
+          </svg>
+        </span>
+      </button>
+      <button
+        class="ty-btn ty-btn_sm ty-btn_primary ty-btn_disabled"
+        disabled=""
+        role="button"
+      >
+        <span
+          class="ty-btn__children"
+        >
+          <svg
+            class="ty-transfer__right-arrow"
+            height="12"
+            viewBox="0 0 1024 1024"
+            width="12"
+          >
+            <path
+              d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
+              fill="currentcolor"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="ty-transfer-panel"
+    >
+      <div
+        class="ty-transfer-panel__body"
+      >
+        <div
+          class="ty-transfer-panel__list-container"
+        >
+          <div
+            class="ty-empty ty-transfer-panel__not-found"
+          >
+            <div
+              class="ty-empty__image-container"
+            >
+              <svg
+                height="40px"
+                version="1.1"
+                viewBox="0 0 61 40"
+                width="61px"
+              >
+                <g
+                  fill="none"
+                  fill-rule="evenodd"
+                  stroke="none"
+                  stroke-width="1"
+                >
+                  <g
+                    transform="translate(0.000000, 1.000000)"
+                  >
+                    <ellipse
+                      cx="30.5"
+                      cy="30.5"
+                      fill="#F5F5F5"
+                      rx="30.5"
+                      ry="8.5"
+                    />
+                    <path
+                      d="M8,14 L16.1016016,14 C17.4262005,14 18.5,15.0737995 18.5,16.3983984 C18.5,17.7229972 19.5737995,18.7967967 20.8983984,18.7967967 L39.1016016,18.7967967 C40.4262005,18.7967967 41.5,17.7229972 41.5,16.3983984 C41.5,15.0737995 42.5737995,14 43.8983984,14 L52,14 C52.5522847,14 53,14.4477153 53,15 L53,29 C53,31.209139 51.209139,33 49,33 L11,33 C8.790861,33 7,31.209139 7,29 L7,15 C7,14.4477153 7.44771525,14 8,14 Z"
+                      fill="#FAFAFA"
+                      stroke="#D9D9D9"
+                    />
+                    <path
+                      d="M7.34587252,14.1911631 L14.8857295,1.90750067 C15.6132226,0.722295128 16.9040854,1.14364005e-15 18.2947537,0 L41.70114,0 C43.0918102,8.62632224e-15 44.3826743,0.722296971 45.1101669,1.90750495 L52.65,14.1911631 L52.65,14.1911631 L44.0201775,14.1911631 C42.6922539,14.1911631 41.6157591,15.2676579 41.6157591,16.5955815 C41.6157591,17.9235052 40.5392643,19 39.2113406,19 L20.7845564,19 C19.4566328,19 18.380138,17.9235052 18.380138,16.5955815 C18.380138,15.2676579 17.3036432,14.1911631 15.9757195,14.1911631 L7.34587252,14.1911631 L7.34587252,14.1911631 Z"
+                      fill="#FFFFFF"
+                      stroke="#D9D9D9"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <p
+              class="ty-empty__desc"
+            >
+              No Data
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ty-transfer-panel__footer"
+      >
+        <label
+          class="ty-checkbox"
+        >
+          <input
+            aria-checked="false"
+            class="ty-checkbox__native"
+            role="checkbox"
+            type="checkbox"
+          />
+          <span
+            class="ty-checkbox__inner"
+          />
+          <span>
+            0 items
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

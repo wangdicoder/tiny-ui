@@ -19,8 +19,8 @@ describe('<Modal />', () => {
   });
 
   it('should render close button when closable', () => {
-    const { container } = render(<Modal visible closable>Content</Modal>);
-    expect(container.querySelector('.ty-modal__close-btn')).toBeTruthy();
+    const { baseElement } = render(<Modal visible closable>Content</Modal>);
+    expect(baseElement.querySelector('.ty-modal__close-btn')).toBeInTheDocument();
   });
 
   it('should render footer buttons', () => {

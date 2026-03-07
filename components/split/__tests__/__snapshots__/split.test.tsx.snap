@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Split /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-split ty-split_vertical"
+  >
+    <div
+      class="ty-split-pane"
+      style="flex: 0 0 auto; width: 50px;"
+    >
+      Content
+    </div>
+    <div
+      class="ty-split-bar ty-split-bar_vertical"
+      role="presentation"
+      style="width: 6px;"
+    >
+      <div
+        class="ty-split-bar__icon"
+      />
+    </div>
+    <div
+      class="ty-split-pane"
+      style="flex: 1 1 0%;"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -19,7 +19,7 @@ describe('<Anchor />', () => {
         <Anchor.Link href="#section1" title="Section 1" />
       </Anchor>
     );
-    expect(container.firstChild).toHaveClass('ty-anchor');
+    expect(container.querySelector('.ty-anchor')).toBeInTheDocument();
   });
 
   it('should render links', () => {

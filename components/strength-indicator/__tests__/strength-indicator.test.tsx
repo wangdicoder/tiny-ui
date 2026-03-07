@@ -1,15 +1,14 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import StrengthIndicator from '../index';
 
 describe('<StrengthIndicator />', () => {
   it('should match the snapshot', () => {
-    const { asFragment } = render(<StrengthIndicator value="" />);
+    const { asFragment } = render(<StrengthIndicator />);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const { container } = render(<StrengthIndicator value="" />);
+    const { container } = render(<StrengthIndicator />);
     expect(container.firstChild).toHaveClass('ty-strength-indicator');
   });
 });

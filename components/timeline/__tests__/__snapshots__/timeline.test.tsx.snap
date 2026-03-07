@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Timeline /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="ty-timeline ty-timeline_left"
+  >
+    <li
+      class="ty-timeline-item"
+    >
+      <div
+        class="ty-timeline-item__head"
+      >
+        <div
+          class="ty-timeline-item__dot-container"
+        >
+          <span
+            class="ty-timeline-item__dot"
+          />
+        </div>
+      </div>
+      <div
+        class="ty-timeline-item__content"
+      >
+        Event 1
+      </div>
+    </li>
+    <li
+      class="ty-timeline-item"
+    >
+      <div
+        class="ty-timeline-item__head"
+      >
+        <div
+          class="ty-timeline-item__dot-container"
+        >
+          <span
+            class="ty-timeline-item__dot"
+          />
+        </div>
+      </div>
+      <div
+        class="ty-timeline-item__content"
+      >
+        Event 2
+      </div>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

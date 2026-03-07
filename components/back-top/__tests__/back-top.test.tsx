@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import BackTop from '../index';
 
@@ -8,8 +7,8 @@ describe('<BackTop />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render correctly', () => {
+  it('should render null when not scrolled', () => {
     const { container } = render(<BackTop />);
-    expect(container.firstChild).toBeTruthy();
+    expect(container.firstChild).toBeNull();
   });
 });

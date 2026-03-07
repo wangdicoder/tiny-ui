@@ -6,8 +6,8 @@ describe('<Collapse />', () => {
   it('should match the snapshot', () => {
     const { asFragment } = render(
       <Collapse>
-        <Collapse.Panel header="Panel 1" panelKey="1">Content 1</Collapse.Panel>
-        <Collapse.Panel header="Panel 2" panelKey="2">Content 2</Collapse.Panel>
+        <Collapse.Panel header="Panel 1" itemKey="1">Content 1</Collapse.Panel>
+        <Collapse.Panel header="Panel 2" itemKey="2">Content 2</Collapse.Panel>
       </Collapse>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -16,7 +16,7 @@ describe('<Collapse />', () => {
   it('should render correctly', () => {
     const { container } = render(
       <Collapse>
-        <Collapse.Panel header="Panel" panelKey="1">Content</Collapse.Panel>
+        <Collapse.Panel header="Panel" itemKey="1">Content</Collapse.Panel>
       </Collapse>
     );
     expect(container.firstChild).toHaveClass('ty-collapse');
@@ -25,8 +25,8 @@ describe('<Collapse />', () => {
   it('should render panel headers', () => {
     const { getByText } = render(
       <Collapse>
-        <Collapse.Panel header="Header 1" panelKey="1">Content 1</Collapse.Panel>
-        <Collapse.Panel header="Header 2" panelKey="2">Content 2</Collapse.Panel>
+        <Collapse.Panel header="Header 1" itemKey="1">Content 1</Collapse.Panel>
+        <Collapse.Panel header="Header 2" itemKey="2">Content 2</Collapse.Panel>
       </Collapse>
     );
     expect(getByText('Header 1')).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe('<Collapse />', () => {
   it('should toggle panel on click', () => {
     const { getByText } = render(
       <Collapse>
-        <Collapse.Panel header="Toggle" panelKey="1">Content</Collapse.Panel>
+        <Collapse.Panel header="Toggle" itemKey="1">Content</Collapse.Panel>
       </Collapse>
     );
     fireEvent.click(getByText('Toggle'));
