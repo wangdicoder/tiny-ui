@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames';
 import { CarouselItemProps } from './carousel-item';
 import { BaseProps } from '../_utils/props';
@@ -38,46 +38,50 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = (props: CarouselProps
   const outerRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLUListElement | null>(null);
   const [width, setWidth] = useState(0);
-  const [currIndex, setCurrIndex] = useState(0);
-  const [intervalTimer, setIntervalTimer] = useState<number | undefined>(undefined);
+  const currIndexRef = useRef(0);
+  const [displayIndex, setDisplayIndex] = useState(0);
 
-  const animate = (distance: number, isAnimated = true) => {
+  const animate = useCallback((distance: number, isAnimated = true) => {
     if (containerRef.current) {
-      const container = containerRef.current as HTMLUListElement;
+      const container = containerRef.current;
       container.style.transitionDuration = isAnimated ? `${animatedDuration}ms` : '0s';
       container.style.left = parseInt(container.style.left!, 10) + distance + 'px';
     }
-  };
+  }, [animatedDuration]);
 
-  const movePrev = (): void => {
-    const prevIndex = currIndex - 1;
-    setCurrIndex(prevIndex);
+  const moveNext = useCallback((): void => {
+    const nextIndex = currIndexRef.current + 1;
+    currIndexRef.current = nextIndex;
+    setDisplayIndex(nextIndex >= children.length ? 0 : nextIndex);
+    animate(-width);
+    if (nextIndex === children.length) {
+      currIndexRef.current = 0;
+      window.setTimeout(() => {
+        const distance = children.length * width;
+        animate(distance, false);
+      }, animatedDuration);
+    }
+  }, [width, children.length, animate, animatedDuration]);
+
+  const movePrev = useCallback((): void => {
+    const prevIndex = currIndexRef.current - 1;
+    currIndexRef.current = prevIndex;
+    setDisplayIndex(prevIndex < 0 ? children.length - 1 : prevIndex);
     animate(width);
     if (prevIndex === -1) {
-      setCurrIndex(children.length - 1);
+      currIndexRef.current = children.length - 1;
       window.setTimeout(() => {
         const distance = children.length * width;
         animate(-distance, false);
       }, animatedDuration);
     }
-  };
-
-  const moveNext = (): void => {
-    const nextIndex = currIndex + 1;
-    setCurrIndex(nextIndex);
-    animate(-width);
-    if (nextIndex === children.length) {
-      setCurrIndex(0);
-      window.setTimeout(() => {
-        const distance = children.length * width;
-        animate(distance, false);
-      }, 600);
-    }
-  };
+  }, [width, children.length, animate, animatedDuration]);
 
   const dotItemOnClick = (index: number): void => {
-    setCurrIndex(index);
-    animate(width * Math.abs(index - currIndex) * (index > currIndex ? -1 : 1));
+    const current = currIndexRef.current;
+    currIndexRef.current = index;
+    setDisplayIndex(index);
+    animate(width * Math.abs(index - current) * (index > current ? -1 : 1));
   };
 
   const getChildrenList = () => {
@@ -92,24 +96,23 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = (props: CarouselProps
 
   useEffect(() => {
     if (outerRef.current && containerRef.current) {
-      const outerWidth = (outerRef.current as HTMLDivElement).clientWidth;
+      const outerWidth = outerRef.current.clientWidth;
       setWidth(outerWidth);
-      (containerRef.current as HTMLUListElement).style.left = `${-outerWidth}px`;
+      containerRef.current.style.left = `${-outerWidth}px`;
     }
   }, []);
 
   useEffect(() => {
-    if (autoplay) {
-      const intervalTimer = window.setInterval(() => {
+    if (autoplay && width > 0) {
+      const timer = window.setInterval(() => {
         moveNext();
       }, interval);
-      setIntervalTimer(intervalTimer);
-    }
 
-    return (): void => {
-      window.clearInterval(intervalTimer);
-    };
-  }, [autoplay]);
+      return (): void => {
+        window.clearInterval(timer);
+      };
+    }
+  }, [autoplay, interval, moveNext, width]);
 
   return (
     <div ref={outerRef} className={cls} style={style}>
@@ -142,7 +145,7 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = (props: CarouselProps
       )}
       {dots && (
         <DotGroup
-          activeIndex={currIndex}
+          activeIndex={displayIndex}
           position={dotPosition}
           amount={children.length}
           itemOnClick={dotItemOnClick}
