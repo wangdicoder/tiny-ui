@@ -72,7 +72,7 @@ const Message = (props: MessageProps): JSX.Element => {
   }, [duration, willUnmount]);
 
   return (
-    <CSSTransition in={visible} appear={true} timeout={0} classNames={`${prefixCls}_fade-slide`}>
+    <CSSTransition nodeRef={ref} in={visible} appear={true} timeout={0} classNames={`${prefixCls}_fade-slide`}>
       <div role="alert" className={cls} style={style} ref={ref}>
         {renderIcon()}
         <span className={`${prefixCls}__content`}>{content}</span>

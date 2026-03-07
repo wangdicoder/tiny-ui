@@ -1,11 +1,11 @@
 import React, { ReactNode, MouseEventHandler } from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import raf from 'raf';
+import { createRoot, Root } from 'react-dom/client';
 import Notification from './notification';
 import { camelCaseToDash } from '../_utils/general';
 import { NotificationProps, NotificationType } from './types';
 
 const className = 'ty-notification-container';
+const rootMap = new Map<HTMLElement, Root>();
 
 type Direction = 'top' | 'bottom';
 type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
@@ -32,9 +32,13 @@ type UnmountDom = (
 let offset: number;
 
 const unmountDom: UnmountDom = (queryName, containerDiv, position, height, direction) => {
-  unmountComponentAtNode(containerDiv);
+  const root = rootMap.get(containerDiv);
+  if (root) {
+    root.unmount();
+    rootMap.delete(containerDiv);
+  }
   document.body.removeChild(containerDiv);
-  raf(() => {
+  requestAnimationFrame(() => {
     const containers = document.querySelectorAll(`.${queryName}`);
     const len = containers.length;
     for (let i = 0; i < len; i++) {
@@ -74,7 +78,6 @@ const createComponent = (options: Options, type: NotificationType) => {
     onClick: options.onClick,
     icon: options.icon,
     didMount: () => {
-      // When notification component mounted, set up the position to display the entry animation
       placement.includes('Right') ? (div.style.right = `0px`) : (div.style.left = `0px`);
     },
     willUnmount: (height) => {
@@ -83,7 +86,9 @@ const createComponent = (options: Options, type: NotificationType) => {
     },
   };
   const element = React.createElement(Notification, props);
-  render(element, div);
+  const root = createRoot(div);
+  rootMap.set(div, root);
+  root.render(element);
 };
 
 const open = (options: Options) => {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import Portal from '../portal';
 import { CSSTransition } from 'react-transition-group';
@@ -25,6 +25,7 @@ const Overlay = (props: OverlayProps): JSX.Element => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('overlay', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, `${prefixCls}_${type}`, { [`${prefixCls}_blurred`]: blurred });
+  const nodeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isShow) {
@@ -38,6 +39,7 @@ const Overlay = (props: OverlayProps): JSX.Element => {
     <Portal>
       <CSSTransition
         appear={true}
+        nodeRef={nodeRef}
         onEnter={onEnter}
         onEntered={onEntered}
         onExit={onExit}
@@ -47,7 +49,7 @@ const Overlay = (props: OverlayProps): JSX.Element => {
         unmountOnExit={unmountOnExit}
         classNames={`${prefixCls}_fade`}
         timeout={{ exit: 300, enter: 0 }}>
-        <div tabIndex={-1} className={cls} onClick={clickCallback} style={{ zIndex, ...style }}>
+        <div ref={nodeRef} tabIndex={-1} className={cls} onClick={clickCallback} style={{ zIndex, ...style }}>
           {children}
         </div>
       </CSSTransition>

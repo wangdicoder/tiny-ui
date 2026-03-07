@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay from '../overlay';
@@ -32,6 +32,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
   const cls = classNames(prefixCls, className, `${prefixCls}_${placement}`);
   const sty: React.CSSProperties =
     placement === 'top' || placement === 'bottom' ? { height: size } : { width: size };
+  const nodeRef = useRef<HTMLDivElement>(null);
 
   return (
     <Overlay
@@ -49,10 +50,11 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
       <div className={cls} style={{ ...style, ...sty }}>
         <CSSTransition
           appear={true}
+          nodeRef={nodeRef}
           in={drawerVisible}
           timeout={0}
           classNames={`${prefixCls}__content_move`}>
-          <div className={`${prefixCls}__content`} onClick={(e) => e.stopPropagation()}>
+          <div ref={nodeRef} className={`${prefixCls}__content`} onClick={(e) => e.stopPropagation()}>
             {closable && (
               <div className={`${prefixCls}__close-btn`} onClick={onClose}>
                 ✕

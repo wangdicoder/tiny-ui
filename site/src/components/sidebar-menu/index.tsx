@@ -25,11 +25,10 @@ export const SidebarMenu = (props: Props): React.ReactElement => {
                   {router.children.map((item) => (
                     <li key={item.title} className="sidebar-menu__menu-item">
                       <NavLink
-                        to={{
-                          pathname: `${url}/${item.route}`,
-                          state: { name: item.title },
-                        }}
-                        activeClassName="sidebar-menu__menu-item_active">
+                        to={`${url}/${item.route}`}
+                        className={({ isActive }) =>
+                          isActive ? 'sidebar-menu__menu-item_active' : ''
+                        }>
                         {item.title}
                       </NavLink>
                     </li>
@@ -41,11 +40,10 @@ export const SidebarMenu = (props: Props): React.ReactElement => {
             return (
               <li key={router.title} className="sidebar-menu__menu-item">
                 <NavLink
-                  to={{
-                    pathname: `${url}/${router.route}`,
-                    state: { name: router.title },
-                  }}
-                  activeClassName="sidebar-menu__menu-item_active">
+                  to={`${url}/${router.route}`}
+                  className={({ isActive }) =>
+                    isActive ? 'sidebar-menu__menu-item_active' : ''
+                  }>
                   {router.title}
                 </NavLink>
               </li>

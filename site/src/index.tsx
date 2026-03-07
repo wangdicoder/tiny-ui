@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/react';
 import './index.scss';
 import '../../components/style/index.scss';
@@ -15,18 +15,18 @@ const App = (): React.ReactElement => (
   <BrowserRouter>
     <>
       <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/guide" component={GuidePage} />
-        <Route path="/components" component={ComponentsPage} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/guide/*" element={<GuidePage />} />
+        <Route path="/components/*" element={<ComponentsPage />} />
+      </Routes>
     </>
   </BrowserRouter>
 );
 
-ReactDom.render(
+const root = createRoot(document.getElementById('root')!);
+root.render(
   <MDXProvider components={components}>
     <App />
-  </MDXProvider>,
-  document.getElementById('root')
+  </MDXProvider>
 );

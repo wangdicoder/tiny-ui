@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import raf from 'raf';
 import { Target } from '../_utils/dom';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -57,7 +56,7 @@ const BackTop = (props: BackTopProps): JSX.Element | null => {
       const time = timestamp - startTime;
       setScrollToTop(easeInOutCubic(time, scrollTop, 0, 450));
       if (time < 450) {
-        raf(step);
+        requestAnimationFrame(step);
       } else {
         setScrollToTop(0);
       }

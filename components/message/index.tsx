@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { createRoot, Root } from 'react-dom/client';
 import Message from './message';
-import raf from 'raf';
 import { MessageProps, MessageType } from './types';
 
 const className = '.ty-message-container';
+const rootMap = new Map<HTMLElement, Root>();
 
 export type Options = {
   top?: number;
@@ -32,9 +32,13 @@ type UnmountDom = (
 let offset: number;
 
 const unmountDom: UnmountDom = (containerDiv, top, height, onClose) => {
-  unmountComponentAtNode(containerDiv);
+  const root = rootMap.get(containerDiv);
+  if (root) {
+    root.unmount();
+    rootMap.delete(containerDiv);
+  }
   document.body.removeChild(containerDiv);
-  raf(() => {
+  requestAnimationFrame(() => {
     const containers = document.querySelectorAll(className);
     const len = containers.length;
     for (let i = 0; i < len; i++) {
@@ -80,10 +84,11 @@ const createComponent: CreateComponent = (
     },
   };
   const component = React.createElement(Message, props);
-  render(component, div);
+  const root = createRoot(div);
+  rootMap.set(div, root);
+  root.render(component);
 };
 
-// TODO: Override function
 const messageContainer: any = (
   content: string,
   duration: number,

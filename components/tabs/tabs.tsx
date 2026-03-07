@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, ReactNode, CSSProperties } from 'react';
+import React, { useContext, useRef, useState, useEffect, useCallback, ReactNode, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { BaseProps, DirectionType, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
@@ -17,10 +17,10 @@ export interface TabsProps
   animated?: boolean;
   direction?: DirectionType;
   size?: SizeType;
-  onChange?: (activeKey?: string) => void;
+  onChange?: (activeKey: number) => void;
   onTabClose?: (activeKey?: string) => void;
-  onPrevClick?: (e?: MouseEvent) => void;
-  onNextClick?: (e?: MouseEvent) => void;
+  onPrevClick?: (e?: React.MouseEvent) => void;
+  onNextClick?: (e?: React.MouseEvent) => void;
 }
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
@@ -31,7 +31,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       size = 'md',
       animated = true,
       activeKey,
-      defaultActiveKey,
+      defaultActiveKey = 0,
       onChange,
       className,
       children,
@@ -40,50 +40,6 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     } = props;
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('tabs', configContext.prefixCls, customisedCls);
-    const [lineWidth] = useState(0);
-    const [lineHeight] = useState(0);
-    const [scrollOffset] = useState(0);
-    const [headerWidth] = useState(0);
-    const [headerHeight] = useState(0);
-    const [scrollWidth] = useState(0);
-    const [scrollHeight] = useState(0);
-    const [isArrowShown] = useState(false);
-    const tabHeaderWrapRef = useRef<HTMLDivElement | null>(null);
-    const tabHeaderNavRef = useRef<HTMLDivElement | null>(null);
-    const activeTab = useRef<HTMLElement | null>(null);
-    const headerDimension = direction === 'horizontal' ? headerWidth : headerHeight;
-    const scrollDimension = direction === 'horizontal' ? scrollWidth : scrollHeight;
-    const arrowL = direction === 'horizontal' ? 'left' : 'top';
-    const arrowR = direction === 'horizontal' ? 'right' : 'bottom';
-    const isArrowLDisabled = scrollOffset === 0;
-    const isArrowRDisabled =
-      Math.floor(Math.abs(scrollOffset + headerDimension - scrollDimension)) === 0;
-    const cls = classNames(
-      prefixCls,
-      className,
-      `${prefixCls}_${size}`,
-      `${prefixCls}_${direction}`,
-      { [`${prefixCls}_${type}`]: direction === 'horizontal' && type }
-    );
-    const headerNavStyle =
-      direction === 'horizontal'
-        ? { transform: `translate3d(${-scrollOffset}px, 0, 0)` }
-        : { transform: `translate3d(0, ${-scrollOffset}px, 0)` };
-    const headerCls = classNames(`${prefixCls}__header`, {
-      [`${prefixCls}__header_arrow-mode`]: isArrowShown,
-    });
-    const bodyCls = classNames(`${prefixCls}__body`, {
-      [`${prefixCls}__body_animated`]: animated,
-    });
-    const arrowLCls = classNames(`${prefixCls}__header__arrow`, {
-      [`${prefixCls}__header__arrow--${arrowL}`]: arrowL,
-      [`${prefixCls}__header__arrow--disabled`]: isArrowLDisabled,
-    });
-
-    const arrowRCls = classNames(`${prefixCls}__header__arrow`, {
-      [`${prefixCls}__header__arrow--${arrowR}`]: arrowR,
-      [`${prefixCls}__header__arrow--disabled`]: isArrowRDisabled,
-    });
 
     const getSelectIndex = (): number => {
       let selectIndex = 0;
@@ -95,52 +51,137 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       });
       return selectIndex;
     };
-    const [value] = useState<number>(activeKey || defaultActiveKey || getSelectIndex());
-    const animateStyle: CSSProperties =
-      direction === 'horizontal' ? { marginLeft: `-${value * 100}%` } : {};
 
-    const scrollLeftOrTop = (e: React.MouseEvent) => {};
+    const [value, setValue] = useState<number>(activeKey ?? defaultActiveKey ?? getSelectIndex());
+    const [lineStyle, setLineStyle] = useState<CSSProperties>({});
+    const [scrollOffset, setScrollOffset] = useState(0);
+    const [isArrowShown, setIsArrowShown] = useState(false);
+    const tabHeaderWrapRef = useRef<HTMLDivElement | null>(null);
+    const tabHeaderNavRef = useRef<HTMLDivElement | null>(null);
+    const tabItemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    const scrollRightOrBottom = (e: React.MouseEvent) => {};
+    const isHorizontal = direction === 'horizontal';
 
-    // const getHeaderStyle = () => {
-    //   const { width: headerWidth = 0, height: headerHeight = 0 } =
-    //     (this.tabHeaderWrap &&
-    //       this.tabHeaderWrap.current &&
-    //       this.tabHeaderWrap.current.getBoundingClientRect()) ||
-    //     {};
-    //   const { width: scrollWidth = 0, height: scrollHeight = 0 } =
-    //     (this.tabHeaderNav &&
-    //       this.tabHeaderNav.current &&
-    //       this.tabHeaderNav.current.getBoundingClientRect()) ||
-    //     {};
-    //   return {
-    //     headerWidth,
-    //     headerHeight,
-    //     scrollWidth,
-    //     scrollHeight,
-    //   };
-    // };
+    useEffect(() => {
+      if (activeKey !== undefined) {
+        setValue(activeKey);
+      }
+    }, [activeKey]);
 
-    const renderHeaderLine = (): ReactNode => {
-      const { offsetLeft = 0, offsetTop = 0 } = activeTab.current || {};
-      const headerLineStyle =
-        direction === 'horizontal'
-          ? { width: lineWidth, height: 0, transform: `translate3d(${offsetLeft}px,0,0)` }
-          : { width: 0, height: lineHeight, transform: `translate3d(0,${offsetTop}px,0)` };
-      return <div className={`${prefixCls}__header-line`} style={headerLineStyle} />;
+    const updateLineStyle = useCallback(() => {
+      const activeEl = tabItemRefs.current[value];
+      if (!activeEl || type !== 'line') return;
+
+      if (isHorizontal) {
+        setLineStyle({
+          width: activeEl.offsetWidth,
+          transform: `translate3d(${activeEl.offsetLeft}px, 0, 0)`,
+        });
+      } else {
+        setLineStyle({
+          height: activeEl.offsetHeight,
+          transform: `translate3d(0, ${activeEl.offsetTop}px, 0)`,
+        });
+      }
+    }, [value, type, isHorizontal]);
+
+    const checkArrows = useCallback(() => {
+      const wrapEl = tabHeaderWrapRef.current;
+      const navEl = tabHeaderNavRef.current;
+      if (!wrapEl || !navEl) return;
+
+      if (isHorizontal) {
+        setIsArrowShown(navEl.scrollWidth > wrapEl.clientWidth);
+      } else {
+        setIsArrowShown(navEl.scrollHeight > wrapEl.clientHeight);
+      }
+    }, [isHorizontal]);
+
+    useEffect(() => {
+      updateLineStyle();
+      checkArrows();
+    }, [updateLineStyle, checkArrows]);
+
+    const handleTabClick = (idx: number, disabled?: boolean) => {
+      if (disabled) return;
+      setValue(idx);
+      onChange?.(idx);
     };
 
+    const scrollStep = 200;
+    const getMaxScroll = () => {
+      const wrapEl = tabHeaderWrapRef.current;
+      const navEl = tabHeaderNavRef.current;
+      if (!wrapEl || !navEl) return 0;
+      return isHorizontal
+        ? navEl.scrollWidth - wrapEl.clientWidth
+        : navEl.scrollHeight - wrapEl.clientHeight;
+    };
+
+    const scrollLeftOrTop = () => {
+      setScrollOffset((prev) => Math.max(0, prev - scrollStep));
+    };
+
+    const scrollRightOrBottom = () => {
+      const max = getMaxScroll();
+      setScrollOffset((prev) => Math.min(max, prev + scrollStep));
+    };
+
+    const isArrowLDisabled = scrollOffset === 0;
+    const isArrowRDisabled = scrollOffset >= getMaxScroll();
+
+    const cls = classNames(
+      prefixCls,
+      className,
+      `${prefixCls}_${size}`,
+      `${prefixCls}_${direction}`,
+      { [`${prefixCls}_${type}`]: isHorizontal && type }
+    );
+    const headerNavStyle: CSSProperties = isHorizontal
+      ? { transform: `translate3d(${-scrollOffset}px, 0, 0)` }
+      : { transform: `translate3d(0, ${-scrollOffset}px, 0)` };
+    const headerCls = classNames(`${prefixCls}__header`, {
+      [`${prefixCls}__header_arrow-mode`]: isArrowShown,
+    });
+    const bodyCls = classNames(`${prefixCls}__body`, {
+      [`${prefixCls}__body_animated`]: animated,
+    });
+    const arrowL = isHorizontal ? 'left' : 'top';
+    const arrowR = isHorizontal ? 'right' : 'bottom';
+    const arrowLCls = classNames(`${prefixCls}__header__arrow`, {
+      [`${prefixCls}__header__arrow--${arrowL}`]: arrowL,
+      [`${prefixCls}__header__arrow--disabled`]: isArrowLDisabled,
+    });
+    const arrowRCls = classNames(`${prefixCls}__header__arrow`, {
+      [`${prefixCls}__header__arrow--${arrowR}`]: arrowR,
+      [`${prefixCls}__header__arrow--disabled`]: isArrowRDisabled,
+    });
+
+    const animateStyle: CSSProperties =
+      isHorizontal ? { marginLeft: `-${value * 100}%` } : {};
+
     const renderHeaderItem = (): ReactNode => {
-      return React.Children.map(children, (child) => {
+      return React.Children.map(children, (child, idx) => {
         const childElement = child as React.FunctionComponentElement<TabPanelProps>;
         if (childElement.type.displayName === 'TabPanel') {
-          return <div className={`${prefixCls}__header-nav-item`}>{childElement.props.tab}</div>;
+          const itemCls = classNames(`${prefixCls}__header-nav-item`, {
+            [`${prefixCls}__header-nav-item_active`]: idx === value,
+            [`${prefixCls}__header-nav-item_disabled`]: childElement.props.disabled,
+          });
+          return (
+            <div
+              ref={(el) => { tabItemRefs.current[idx] = el; }}
+              className={itemCls}
+              onClick={() => handleTabClick(idx, childElement.props.disabled)}>
+              {childElement.props.tab}
+            </div>
+          );
         } else {
           return null;
         }
       });
     };
+
     return (
       <div {...otherProps} ref={ref} className={cls}>
         <div className={headerCls}>
@@ -150,17 +191,17 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
               ref={tabHeaderNavRef}
               style={isArrowShown ? headerNavStyle : {}}>
               {renderHeaderItem()}
-              {type === 'line' && renderHeaderLine()}
+              {type === 'line' && (
+                <div className={`${prefixCls}__header-line`} style={lineStyle} />
+              )}
             </div>
           </div>
           {isArrowShown && (
             <>
-              <span className={arrowLCls} onClick={(e) => !isArrowLDisabled && scrollLeftOrTop(e)}>
+              <span className={arrowLCls} onClick={() => !isArrowLDisabled && scrollLeftOrTop()}>
                 <ArrowDown />
               </span>
-              <span
-                className={arrowRCls}
-                onClick={(e) => !isArrowRDisabled && scrollRightOrBottom(e)}>
+              <span className={arrowRCls} onClick={() => !isArrowRDisabled && scrollRightOrBottom()}>
                 <ArrowDown />
               </span>
             </>

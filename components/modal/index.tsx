@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay from '../overlay';
@@ -38,12 +38,11 @@ const Modal = (props: ModalProps): React.ReactElement => {
     footerStyle,
     prefixCls: customisedCls,
   } = props;
-  // The visible attribute controls the overlay status,
-  // modal visible is triggered by overlay's enter and exit statuses
   const [modalVisible, setModalVisible] = useState(visible);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('modal', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, { [`${prefixCls}_centered`]: centered });
+  const nodeRef = useRef<HTMLDivElement>(null);
 
   const renderFooter = (): React.ReactNode => {
     if (React.isValidElement(footer)) {
@@ -86,10 +85,11 @@ const Modal = (props: ModalProps): React.ReactElement => {
         <div style={{ width, ...style }}>
           <CSSTransition
             appear={true}
+            nodeRef={nodeRef}
             in={modalVisible}
             classNames={`${prefixCls}__content_${animation}`}
             timeout={0}>
-            <div className={`${prefixCls}__content`} onClick={(e): void => e.stopPropagation()}>
+            <div ref={nodeRef} className={`${prefixCls}__content`} onClick={(e): void => e.stopPropagation()}>
               {closable && (
                 <div role="button" className={`${prefixCls}__close-btn`} onClick={onCancel}>
                   ✕

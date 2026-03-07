@@ -1,16 +1,19 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { createRoot, Root } from 'react-dom/client';
 import LoadingBar from './loading-bar';
-import raf from 'raf';
 
 let rafId: number | null = null;
 let loadingBar: HTMLElement | null = null;
 let outerDiv: HTMLElement | null = null;
+let root: Root | null = null;
 let width = 0;
 
 const reset = (): void => {
+  if (root) {
+    root.unmount();
+    root = null;
+  }
   if (outerDiv) {
-    unmountComponentAtNode(outerDiv);
     document.body.removeChild(outerDiv);
   }
   loadingBar = null;
@@ -18,16 +21,13 @@ const reset = (): void => {
   width = 0;
 };
 
-/**
- * When the loading bar component finish mount, this function will be called
- */
 const move = (): void => {
   if (width < 55) {
     width += .4;
-    rafId = raf(move);
+    rafId = requestAnimationFrame(move);
   } else if (width < 90) {
     width += .1;
-    rafId = raf(move);
+    rafId = requestAnimationFrame(move);
   }
 
   loadingBar && (loadingBar.style.width = `${width}%`);
@@ -40,24 +40,21 @@ const createComponent = (): void => {
   const component = React.createElement(LoadingBar, {
     didMount: () => {
       loadingBar = document.getElementById('ty-loading-bar');
-      rafId = raf(move);
+      rafId = requestAnimationFrame(move);
     },
   });
 
-  render(component, outerDiv);
+  root = createRoot(outerDiv);
+  root.render(component);
 };
 
-
-/**
- * Set the opacity of loading 0 bar and then remove it from the dom tree
- */
 const unmountDom = (): void => {
   setTimeout(() => {
     loadingBar && (loadingBar.style.opacity = '0');
   }, 300);
   setTimeout(() => {
     reset();
-  }, 700); // timeout 300ms, fadeout 400ms
+  }, 700);
 };
 
 const start = (): void => {
@@ -68,7 +65,7 @@ const start = (): void => {
 };
 
 const succeed = (): void => {
-  rafId && raf.cancel(rafId);
+  if (rafId) cancelAnimationFrame(rafId);
 
   if (outerDiv && loadingBar) {
     loadingBar.style.width = '100%';
@@ -77,7 +74,7 @@ const succeed = (): void => {
 };
 
 const fail = (): void => {
-  rafId && raf.cancel(rafId);
+  if (rafId) cancelAnimationFrame(rafId);
 
   if (outerDiv && loadingBar) {
     loadingBar.style.width = '100%';

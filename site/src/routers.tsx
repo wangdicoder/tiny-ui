@@ -145,6 +145,11 @@ export const COMPONENT_MENU: RouterItem[] = [
     title: 'Data Display',
     children: [
       {
+        title: 'Carousel',
+        route: 'carousel',
+        component: lazy(() => import('../../components/carousel/index.md')),
+      },
+      {
         title: 'Avatar',
         route: 'avatar',
         component: lazy(() => import('../../components/avatar/index.md')),
@@ -220,6 +225,11 @@ export const COMPONENT_MENU: RouterItem[] = [
     title: 'Form Item',
     children: [
       {
+        title: 'DatePicker',
+        route: 'date-picker',
+        component: lazy(() => import('../../components/date-picker/index.md')),
+      },
+      {
         title: 'Form',
         route: 'form',
         component: lazy(() => import('../../components/form/index.md')),
@@ -275,9 +285,19 @@ export const COMPONENT_MENU: RouterItem[] = [
         component: lazy(() => import('../../components/switch/index.md')),
       },
       {
+        title: 'Tabs',
+        route: 'tabs',
+        component: lazy(() => import('../../components/tabs/index.md')),
+      },
+      {
         title: 'Textarea',
         route: 'textarea',
         component: lazy(() => import('../../components/textarea/index.md')),
+      },
+      {
+        title: 'TimePicker',
+        route: 'time-picker',
+        component: lazy(() => import('../../components/time-picker/index.md')),
       },
       {
         title: 'Transfer',
