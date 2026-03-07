@@ -1,9 +1,6 @@
 const isDev = process.env.NODE_ENV === 'development';
 const plugins = [
-  '@babel/plugin-transform-runtime',
-  '@babel/plugin-syntax-dynamic-import',
-  '@babel/plugin-transform-async-to-generator',
-  'transform-class-properties',
+  ['@babel/plugin-transform-runtime', { corejs: 3 }],
 ];
 
 module.exports = (api) => {
@@ -13,8 +10,8 @@ module.exports = (api) => {
       [
         '@babel/preset-env',
         {
-          corejs: 3.9,
-          useBuiltIns: 'usage',
+          useBuiltIns: false,
+          targets: '> 0.5%, last 2 versions, Firefox ESR, not dead, not IE 11',
         },
       ],
       [

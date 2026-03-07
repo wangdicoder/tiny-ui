@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin/dist/clean-webpack-plugin');
 
 const __DEV__ = process.env.NODE_ENV === 'development';
 const filename = __DEV__ ? 'tiny.js' : 'tiny.min.js';
@@ -11,11 +10,15 @@ module.exports = {
   output: {
     filename,
     path: path.resolve(__dirname, 'dist'),
-    library: 'tiny',
-    libraryTarget: 'umd',
+    library: {
+      name: 'tiny',
+      type: 'umd',
+    },
+    globalObject: 'this',
+    clean: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [{
@@ -24,14 +27,7 @@ module.exports = {
       use: 'babel-loader',
     }],
   },
-  plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['./dist'],
-    }),
-    new webpack.SourceMapDevToolPlugin({
-      filename: 'tiny.map',
-    }),
-  ],
+  devtool: __DEV__ ? 'eval-source-map' : 'source-map',
   externals: {
     react: {
       root: 'React',

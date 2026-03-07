@@ -3,12 +3,13 @@ module.exports = {
     'eslint:recommended',
     'plugin:jest-dom/recommended',
     'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jest', 'jest-dom'],
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
   env: {
@@ -21,7 +22,6 @@ module.exports = {
   globals: {},
   settings: {
     react: {
-      pragma: 'React',
       version: 'detect',
     },
   },

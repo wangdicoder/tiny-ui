@@ -1,22 +1,20 @@
-/** https://github.com/piotrwitek/react-redux-typescript-guide#baseline-tsconfigjson */
 {
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "checkJs": false,
     "declaration": true,
-    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": [
       "dom",
-      "es2017"
+      "dom.iterable",
+      "es2020"
     ],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
@@ -24,15 +22,10 @@
     "noImplicitReturns": true,
     "outDir": "lib/",
     "pretty": true,
-    "removeComments": true,
     "sourceMap": true,
     "strict": true,
-    "types": [
-      "node",
-      "jest",
-      "@testing-library/jest-dom"
-    ],
-    "target": "es5"
+    "baseUrl": ".",
+    "target": "es2020"
   },
   "include": [
     "components/"
