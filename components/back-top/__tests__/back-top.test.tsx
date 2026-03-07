@@ -9,6 +9,6 @@ describe('<BackTop />', () => {
 
   it('should render null when not scrolled', () => {
     const { container } = render(<BackTop />);
-    expect(container.firstChild).toBeNull();
+    expect(container).toBeEmptyDOMElement();
   });
 });
