@@ -29,8 +29,8 @@ describe('<Collapse />', () => {
         <Collapse.Panel header="Header 2" panelKey="2">Content 2</Collapse.Panel>
       </Collapse>
     );
-    expect(getByText('Header 1')).toBeTruthy();
-    expect(getByText('Header 2')).toBeTruthy();
+    expect(getByText('Header 1')).toBeInTheDocument();
+    expect(getByText('Header 2')).toBeInTheDocument();
   });
 
   it('should toggle panel on click', () => {
@@ -40,6 +40,6 @@ describe('<Collapse />', () => {
       </Collapse>
     );
     fireEvent.click(getByText('Toggle'));
-    expect(getByText('Content')).toBeTruthy();
+    expect(getByText('Content')).toBeInTheDocument();
   });
 });

@@ -36,8 +36,8 @@ describe('<Input />', () => {
 
   it('should render prefix and suffix', () => {
     const { getByText } = render(<Input prefix={<span>$</span>} suffix={<span>.00</span>} />);
-    expect(getByText('$')).toBeTruthy();
-    expect(getByText('.00')).toBeTruthy();
+    expect(getByText('$')).toBeInTheDocument();
+    expect(getByText('.00')).toBeInTheDocument();
   });
 
   it('should render clearable button', () => {

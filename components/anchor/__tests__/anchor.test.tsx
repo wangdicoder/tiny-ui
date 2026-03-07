@@ -29,7 +29,7 @@ describe('<Anchor />', () => {
         <Anchor.Link href="#s2" title="Link 2" />
       </Anchor>
     );
-    expect(getByText('Link 1')).toBeTruthy();
-    expect(getByText('Link 2')).toBeTruthy();
+    expect(getByText('Link 1')).toBeInTheDocument();
+    expect(getByText('Link 2')).toBeInTheDocument();
   });
 });

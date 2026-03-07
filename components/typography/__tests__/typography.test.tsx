@@ -10,16 +10,16 @@ describe('<Typography />', () => {
 
   it('should render Title correctly', () => {
     const { getByText } = render(<Typography.Title>Heading</Typography.Title>);
-    expect(getByText('Heading')).toBeTruthy();
+    expect(getByText('Heading')).toBeInTheDocument();
   });
 
   it('should render Paragraph', () => {
     const { getByText } = render(<Typography.Paragraph>Text</Typography.Paragraph>);
-    expect(getByText('Text')).toBeTruthy();
+    expect(getByText('Text')).toBeInTheDocument();
   });
 
   it('should render Text', () => {
     const { getByText } = render(<Typography.Text>Inline</Typography.Text>);
-    expect(getByText('Inline')).toBeTruthy();
+    expect(getByText('Inline')).toBeInTheDocument();
   });
 });

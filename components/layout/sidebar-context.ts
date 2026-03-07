@@ -5,7 +5,10 @@ type Props = {
   removeSidebar: () => void;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = (): void => {};
+
 export const SidebarContext = React.createContext<Props>({
-  addSidebar: () => {},
-  removeSidebar: () => {},
+  addSidebar: noop,
+  removeSidebar: noop,
 });

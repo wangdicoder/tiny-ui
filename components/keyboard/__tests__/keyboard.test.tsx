@@ -15,7 +15,7 @@ describe('<Keyboard />', () => {
 
   it('should render children', () => {
     const { getByText } = render(<Keyboard>Enter</Keyboard>);
-    expect(getByText('Enter')).toBeTruthy();
+    expect(getByText('Enter')).toBeInTheDocument();
   });
 
   it('should have correct class', () => {

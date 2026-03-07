@@ -25,6 +25,6 @@ describe('<Skeleton />', () => {
 
   it('should render children', () => {
     const { getByText } = render(<Skeleton>Loading content</Skeleton>);
-    expect(getByText('Loading content')).toBeTruthy();
+    expect(getByText('Loading content')).toBeInTheDocument();
   });
 });

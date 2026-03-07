@@ -25,6 +25,7 @@ function Autocomplete(props: AutoCompleteProps): React.ReactElement {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onSelect = (): void => {};
 
   return (

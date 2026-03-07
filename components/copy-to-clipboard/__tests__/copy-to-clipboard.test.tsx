@@ -18,6 +18,6 @@ describe('<CopyToClipboard />', () => {
         <button>Copy</button>
       </CopyToClipboard>
     );
-    expect(getByText('Copy')).toBeTruthy();
+    expect(getByText('Copy')).toBeInTheDocument();
   });
 });

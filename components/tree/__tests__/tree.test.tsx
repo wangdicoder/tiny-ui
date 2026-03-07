@@ -27,7 +27,7 @@ describe('<Tree />', () => {
 
   it('should render tree nodes', () => {
     const { getByText } = render(<Tree data={treeData} />);
-    expect(getByText('Node 1')).toBeTruthy();
-    expect(getByText('Node 2')).toBeTruthy();
+    expect(getByText('Node 1')).toBeInTheDocument();
+    expect(getByText('Node 2')).toBeInTheDocument();
   });
 });

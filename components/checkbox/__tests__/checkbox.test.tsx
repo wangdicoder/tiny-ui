@@ -15,7 +15,7 @@ describe('<Checkbox />', () => {
 
   it('should render label', () => {
     const { getByText } = render(<Checkbox>Label</Checkbox>);
-    expect(getByText('Label')).toBeTruthy();
+    expect(getByText('Label')).toBeInTheDocument();
   });
 
   it('should render disabled', () => {

@@ -25,7 +25,7 @@ describe('<Layout />', () => {
     const { getByText } = render(
       <Layout><Header>My Header</Header></Layout>
     );
-    expect(getByText('My Header')).toBeTruthy();
+    expect(getByText('My Header')).toBeInTheDocument();
   });
 
   it('should render sidebar', () => {
@@ -42,6 +42,6 @@ describe('<Layout />', () => {
     const { getByText } = render(
       <Layout><Footer>My Footer</Footer></Layout>
     );
-    expect(getByText('My Footer')).toBeTruthy();
+    expect(getByText('My Footer')).toBeInTheDocument();
   });
 });

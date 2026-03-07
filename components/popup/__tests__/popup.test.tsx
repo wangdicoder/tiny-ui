@@ -14,6 +14,6 @@ describe('<Popup />', () => {
     const { getByText } = render(
       <Popup content="Content"><button>Trigger</button></Popup>
     );
-    expect(getByText('Trigger')).toBeTruthy();
+    expect(getByText('Trigger')).toBeInTheDocument();
   });
 });

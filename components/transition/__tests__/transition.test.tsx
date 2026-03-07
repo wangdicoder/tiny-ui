@@ -18,6 +18,6 @@ describe('<Transition />', () => {
         <div>Visible</div>
       </Transition>
     );
-    expect(getByText('Visible')).toBeTruthy();
+    expect(getByText('Visible')).toBeInTheDocument();
   });
 });

@@ -21,6 +21,6 @@ describe('<Flip />', () => {
     const { getByText } = render(
       <Flip front={<div>Front Side</div>} back={<div>Back Side</div>} />
     );
-    expect(getByText('Front Side')).toBeTruthy();
+    expect(getByText('Front Side')).toBeInTheDocument();
   });
 });

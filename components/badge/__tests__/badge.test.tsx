@@ -15,12 +15,12 @@ describe('<Badge />', () => {
 
   it('should render count', () => {
     const { getByText } = render(<Badge count={5}><div>content</div></Badge>);
-    expect(getByText('5')).toBeTruthy();
+    expect(getByText('5')).toBeInTheDocument();
   });
 
   it('should render max+ when count exceeds max', () => {
     const { getByText } = render(<Badge count={100} max={99}><div>content</div></Badge>);
-    expect(getByText('99+')).toBeTruthy();
+    expect(getByText('99+')).toBeInTheDocument();
   });
 
   it('should render as dot', () => {
@@ -35,6 +35,6 @@ describe('<Badge />', () => {
 
   it('should show zero when showZero is true', () => {
     const { getByText } = render(<Badge count={0} showZero><div>content</div></Badge>);
-    expect(getByText('0')).toBeTruthy();
+    expect(getByText('0')).toBeInTheDocument();
   });
 });

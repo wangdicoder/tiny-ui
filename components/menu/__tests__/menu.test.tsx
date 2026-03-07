@@ -29,8 +29,8 @@ describe('<Menu />', () => {
         <Menu.Item>Item 2</Menu.Item>
       </Menu>
     );
-    expect(getByText('Item 1')).toBeTruthy();
-    expect(getByText('Item 2')).toBeTruthy();
+    expect(getByText('Item 1')).toBeInTheDocument();
+    expect(getByText('Item 2')).toBeInTheDocument();
   });
 
   it('should render horizontal mode', () => {

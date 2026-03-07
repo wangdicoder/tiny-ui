@@ -30,7 +30,7 @@ describe('<Avatar />', () => {
 
   it('should render text content', () => {
     const { getByText } = render(<Avatar>AB</Avatar>);
-    expect(getByText('AB')).toBeTruthy();
+    expect(getByText('AB')).toBeInTheDocument();
   });
 
   it('should render with custom size', () => {

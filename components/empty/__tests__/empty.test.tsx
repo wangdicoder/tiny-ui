@@ -15,12 +15,12 @@ describe('<Empty />', () => {
 
   it('should render default description', () => {
     const { getByText } = render(<Empty />);
-    expect(getByText('No Data')).toBeTruthy();
+    expect(getByText('No Data')).toBeInTheDocument();
   });
 
   it('should render custom description', () => {
     const { getByText } = render(<Empty description="Nothing here" />);
-    expect(getByText('Nothing here')).toBeTruthy();
+    expect(getByText('Nothing here')).toBeInTheDocument();
   });
 
   it('should hide description when false', () => {
@@ -30,6 +30,6 @@ describe('<Empty />', () => {
 
   it('should render children', () => {
     const { getByText } = render(<Empty><button>Create</button></Empty>);
-    expect(getByText('Create')).toBeTruthy();
+    expect(getByText('Create')).toBeInTheDocument();
   });
 });

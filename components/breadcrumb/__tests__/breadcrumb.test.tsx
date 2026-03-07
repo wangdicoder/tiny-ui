@@ -29,8 +29,8 @@ describe('<Breadcrumb />', () => {
         <Breadcrumb.Item>Page</Breadcrumb.Item>
       </Breadcrumb>
     );
-    expect(getByText('Home')).toBeTruthy();
-    expect(getByText('Page')).toBeTruthy();
+    expect(getByText('Home')).toBeInTheDocument();
+    expect(getByText('Page')).toBeInTheDocument();
   });
 
   it('should render custom separator', () => {
@@ -40,6 +40,6 @@ describe('<Breadcrumb />', () => {
         <Breadcrumb.Item>Page</Breadcrumb.Item>
       </Breadcrumb>
     );
-    expect(container.textContent).toContain('>');
+    expect(container).toHaveTextContent(/>/);
   });
 });

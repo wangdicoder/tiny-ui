@@ -31,8 +31,8 @@ describe('<Carousel />', () => {
         <Carousel.Item><div>Slide B</div></Carousel.Item>
       </Carousel>
     );
-    expect(getByText('Slide A')).toBeTruthy();
-    expect(getByText('Slide B')).toBeTruthy();
+    expect(getByText('Slide A')).toBeInTheDocument();
+    expect(getByText('Slide B')).toBeInTheDocument();
   });
 
   it('should render dots', () => {

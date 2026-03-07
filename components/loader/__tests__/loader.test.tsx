@@ -23,11 +23,11 @@ describe('<Loader />', () => {
 
   it('should render with tip', () => {
     const { getByText } = render(<Loader tip="Loading..." />);
-    expect(getByText('Loading...')).toBeTruthy();
+    expect(getByText('Loading...')).toBeInTheDocument();
   });
 
   it('should wrap children', () => {
     const { getByText } = render(<Loader><div>Content</div></Loader>);
-    expect(getByText('Content')).toBeTruthy();
+    expect(getByText('Content')).toBeInTheDocument();
   });
 });

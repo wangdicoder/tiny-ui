@@ -32,7 +32,7 @@ describe('<Switch />', () => {
 
   it('should render checked/unchecked text', () => {
     const { getByText } = render(<Switch checkedText="ON" uncheckedText="OFF" defaultChecked={false} />);
-    expect(getByText('OFF')).toBeTruthy();
+    expect(getByText('OFF')).toBeInTheDocument();
   });
 
   it('should render loading state', () => {

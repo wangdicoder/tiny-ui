@@ -15,7 +15,7 @@ describe('<SplitButton />', () => {
 
   it('should render button text', () => {
     const { getByText } = render(<SplitButton overlay={<div>Menu</div>}>Click</SplitButton>);
-    expect(getByText('Click')).toBeTruthy();
+    expect(getByText('Click')).toBeInTheDocument();
   });
 
   it('should fire onClick', () => {

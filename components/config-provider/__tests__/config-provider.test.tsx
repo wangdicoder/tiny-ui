@@ -19,7 +19,7 @@ describe('<ConfigProvider />', () => {
         <div>Content</div>
       </ConfigProvider>
     );
-    expect(getByText('Content')).toBeTruthy();
+    expect(getByText('Content')).toBeInTheDocument();
   });
 
   it('should provide custom prefix', () => {

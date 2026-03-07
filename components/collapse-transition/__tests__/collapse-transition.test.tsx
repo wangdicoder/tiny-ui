@@ -14,6 +14,6 @@ describe('<CollapseTransition />', () => {
     const { getByText } = render(
       <CollapseTransition isShow><div>Visible Content</div></CollapseTransition>
     );
-    expect(getByText('Visible Content')).toBeTruthy();
+    expect(getByText('Visible Content')).toBeInTheDocument();
   });
 });

@@ -130,7 +130,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   }, [props]);
 
   return (
-    <ul {...otherProps} unselectable="off" className={cls}>
+    <ul {...otherProps} className={cls}>
       {getItems().map((item, idx) => {
         const { active, disabled, type } = item;
         const cls = classNames(`${prefixCls}__item`, {

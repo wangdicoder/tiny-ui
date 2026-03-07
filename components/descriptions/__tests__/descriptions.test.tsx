@@ -28,7 +28,7 @@ describe('<Descriptions />', () => {
         <Descriptions.Item label="Name">John</Descriptions.Item>
       </Descriptions>
     );
-    expect(getByText('User Info')).toBeTruthy();
+    expect(getByText('User Info')).toBeInTheDocument();
   });
 
   it('should render items', () => {
@@ -37,7 +37,7 @@ describe('<Descriptions />', () => {
         <Descriptions.Item label="Name">John</Descriptions.Item>
       </Descriptions>
     );
-    expect(getByText('Name')).toBeTruthy();
-    expect(getByText('John')).toBeTruthy();
+    expect(getByText('Name')).toBeInTheDocument();
+    expect(getByText('John')).toBeInTheDocument();
   });
 });

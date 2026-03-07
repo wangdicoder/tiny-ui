@@ -10,6 +10,6 @@ describe('<PopConfirm />', () => {
 
   it('should render children', () => {
     const { getByText } = render(<PopConfirm title="Sure?"><button>Delete</button></PopConfirm>);
-    expect(getByText('Delete')).toBeTruthy();
+    expect(getByText('Delete')).toBeInTheDocument();
   });
 });

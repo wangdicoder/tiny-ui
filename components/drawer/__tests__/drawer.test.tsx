@@ -10,12 +10,12 @@ describe('<Drawer />', () => {
 
   it('should render when visible', () => {
     const { getByText } = render(<Drawer visible>Drawer Content</Drawer>);
-    expect(getByText('Drawer Content')).toBeTruthy();
+    expect(getByText('Drawer Content')).toBeInTheDocument();
   });
 
   it('should render header', () => {
     const { getByText } = render(<Drawer visible header="Title">Content</Drawer>);
-    expect(getByText('Title')).toBeTruthy();
+    expect(getByText('Title')).toBeInTheDocument();
   });
 
   it('should render close button when closable', () => {
@@ -25,6 +25,6 @@ describe('<Drawer />', () => {
 
   it('should render footer', () => {
     const { getByText } = render(<Drawer visible footer={<div>Footer</div>}>Content</Drawer>);
-    expect(getByText('Footer')).toBeTruthy();
+    expect(getByText('Footer')).toBeInTheDocument();
   });
 });

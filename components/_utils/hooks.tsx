@@ -25,7 +25,7 @@ export const useEventListener = (
   }, [eventName, target]);
 };
 
-export const useClickOutside = (target: HTMLElement, handler: Function): void => {
+export const useClickOutside = (target: HTMLElement, handler: (event: MouseEvent) => void): void => {
   useEffect(() => {
     const listener = (event: MouseEvent): void => {
       if (!target || target.contains(event.target as HTMLElement)) {

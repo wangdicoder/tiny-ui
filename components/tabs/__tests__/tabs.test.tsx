@@ -29,8 +29,8 @@ describe('<Tabs />', () => {
         <Tabs.Panel tab="Tab B">Content B</Tabs.Panel>
       </Tabs>
     );
-    expect(getByText('Tab A')).toBeTruthy();
-    expect(getByText('Tab B')).toBeTruthy();
+    expect(getByText('Tab A')).toBeInTheDocument();
+    expect(getByText('Tab B')).toBeInTheDocument();
   });
 
   it('should switch tabs on click', () => {

@@ -10,7 +10,7 @@ describe('<Tooltip />', () => {
 
   it('should render children', () => {
     const { getByText } = render(<Tooltip title="Tip"><button>Hover me</button></Tooltip>);
-    expect(getByText('Hover me')).toBeTruthy();
+    expect(getByText('Hover me')).toBeInTheDocument();
   });
 
   it('should render with trigger element', () => {

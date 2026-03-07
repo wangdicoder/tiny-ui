@@ -1,6 +1,8 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import NotificationComponent from '../notification';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
 
 describe('<Notification />', () => {
   it('should match the snapshot', () => {
@@ -8,7 +10,7 @@ describe('<Notification />', () => {
       <NotificationComponent
         title="Notice"
         description="Something happened"
-        willUnmount={() => {}}
+        willUnmount={noop}
       />
     );
     expect(asFragment()).toMatchSnapshot();
@@ -16,15 +18,15 @@ describe('<Notification />', () => {
 
   it('should render title', () => {
     const { getByText } = render(
-      <NotificationComponent title="Alert" description="Details" willUnmount={() => {}} />
+      <NotificationComponent title="Alert" description="Details" willUnmount={noop} />
     );
-    expect(getByText('Alert')).toBeTruthy();
+    expect(getByText('Alert')).toBeInTheDocument();
   });
 
   it('should render description', () => {
     const { getByText } = render(
-      <NotificationComponent title="Title" description="Body text" willUnmount={() => {}} />
+      <NotificationComponent title="Title" description="Body text" willUnmount={noop} />
     );
-    expect(getByText('Body text')).toBeTruthy();
+    expect(getByText('Body text')).toBeInTheDocument();
   });
 });

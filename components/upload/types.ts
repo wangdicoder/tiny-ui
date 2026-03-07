@@ -33,6 +33,6 @@ export interface UploadProps extends BaseProps {
   onChange?: (file: UploadFile, fileList: UploadFile[]) => void;
   onRemove?: (file: UploadFile) => void;
   onExceed?: (files: FileList, fileList: UploadFile[]) => void;
-  httpRequest?: Function;
+  httpRequest?: (...args: unknown[]) => void;
   children?: React.ReactNode;
 }

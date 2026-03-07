@@ -10,12 +10,12 @@ describe('<Modal />', () => {
 
   it('should render when visible', () => {
     const { getByText } = render(<Modal visible>Modal Content</Modal>);
-    expect(getByText('Modal Content')).toBeTruthy();
+    expect(getByText('Modal Content')).toBeInTheDocument();
   });
 
   it('should render header', () => {
     const { getByText } = render(<Modal visible header="Title">Content</Modal>);
-    expect(getByText('Title')).toBeTruthy();
+    expect(getByText('Title')).toBeInTheDocument();
   });
 
   it('should render close button when closable', () => {
@@ -25,14 +25,14 @@ describe('<Modal />', () => {
 
   it('should render footer buttons', () => {
     const { getByText } = render(<Modal visible>Content</Modal>);
-    expect(getByText('OK')).toBeTruthy();
-    expect(getByText('Cancel')).toBeTruthy();
+    expect(getByText('OK')).toBeInTheDocument();
+    expect(getByText('Cancel')).toBeInTheDocument();
   });
 
   it('should render custom button text', () => {
     const { getByText } = render(<Modal visible confirmText="Yes" cancelText="No">Content</Modal>);
-    expect(getByText('Yes')).toBeTruthy();
-    expect(getByText('No')).toBeTruthy();
+    expect(getByText('Yes')).toBeInTheDocument();
+    expect(getByText('No')).toBeInTheDocument();
   });
 
   it('should render null footer', () => {

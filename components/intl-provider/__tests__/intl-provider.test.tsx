@@ -9,6 +9,6 @@ describe('<IntlProvider />', () => {
         <div>Content</div>
       </IntlProvider>
     );
-    expect(getByText('Content')).toBeTruthy();
+    expect(getByText('Content')).toBeInTheDocument();
   });
 });

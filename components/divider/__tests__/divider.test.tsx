@@ -30,7 +30,7 @@ describe('<Divider />', () => {
 
   it('should render with text', () => {
     const { getByText } = render(<Divider>Section</Divider>);
-    expect(getByText('Section')).toBeTruthy();
+    expect(getByText('Section')).toBeInTheDocument();
   });
 
   it('should render text with alignment', () => {

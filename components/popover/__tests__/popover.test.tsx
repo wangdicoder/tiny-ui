@@ -10,6 +10,6 @@ describe('<Popover />', () => {
 
   it('should render children', () => {
     const { getByText } = render(<Popover content="Content"><button>Trigger</button></Popover>);
-    expect(getByText('Trigger')).toBeTruthy();
+    expect(getByText('Trigger')).toBeInTheDocument();
   });
 });

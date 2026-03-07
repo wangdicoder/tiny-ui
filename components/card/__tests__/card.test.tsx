@@ -25,16 +25,16 @@ describe('<Card />', () => {
 
   it('should render title', () => {
     const { getByText } = render(<Card title="Title">Content</Card>);
-    expect(getByText('Title')).toBeTruthy();
+    expect(getByText('Title')).toBeInTheDocument();
   });
 
   it('should render extra content', () => {
     const { getByText } = render(<Card title="Title" extra={<span>More</span>}>Content</Card>);
-    expect(getByText('More')).toBeTruthy();
+    expect(getByText('More')).toBeInTheDocument();
   });
 
   it('should render footer', () => {
     const { getByText } = render(<Card footer={<div>Footer</div>}>Content</Card>);
-    expect(getByText('Footer')).toBeTruthy();
+    expect(getByText('Footer')).toBeInTheDocument();
   });
 });

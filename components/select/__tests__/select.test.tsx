@@ -37,7 +37,7 @@ describe('<Select />', () => {
         <Select.Option value="a">A</Select.Option>
       </Select>
     );
-    expect(getByText('Choose...')).toBeTruthy();
+    expect(getByText('Choose...')).toBeInTheDocument();
   });
 
   it('should render different sizes', () => {

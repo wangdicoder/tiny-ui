@@ -15,7 +15,7 @@ describe('<Progress.Bar />', () => {
 
   it('should render with percentage text', () => {
     const { getByText } = render(<Progress.Bar percent={75} showInfo />);
-    expect(getByText('75%')).toBeTruthy();
+    expect(getByText('75%')).toBeInTheDocument();
   });
 });
 

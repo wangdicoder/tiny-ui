@@ -10,7 +10,7 @@ describe('<Overlay />', () => {
 
   it('should render when visible', () => {
     const { getByText } = render(<Overlay isShow>Overlay Content</Overlay>);
-    expect(getByText('Overlay Content')).toBeTruthy();
+    expect(getByText('Overlay Content')).toBeInTheDocument();
   });
 
   it('should render blurred', () => {

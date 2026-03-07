@@ -30,12 +30,12 @@ describe('<Result />', () => {
 
   it('should render title and subtitle', () => {
     const { getByText } = render(<Result title="Title" subtitle="Subtitle" />);
-    expect(getByText('Title')).toBeTruthy();
-    expect(getByText('Subtitle')).toBeTruthy();
+    expect(getByText('Title')).toBeInTheDocument();
+    expect(getByText('Subtitle')).toBeInTheDocument();
   });
 
   it('should render extra actions', () => {
     const { getByText } = render(<Result title="Done" extra={<button>OK</button>} />);
-    expect(getByText('OK')).toBeTruthy();
+    expect(getByText('OK')).toBeInTheDocument();
   });
 });

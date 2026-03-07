@@ -30,7 +30,7 @@ describe('<Steps />', () => {
         <Steps.Item title="Second" />
       </Steps>
     );
-    expect(getByText('First')).toBeTruthy();
-    expect(getByText('Second')).toBeTruthy();
+    expect(getByText('First')).toBeInTheDocument();
+    expect(getByText('Second')).toBeInTheDocument();
   });
 });

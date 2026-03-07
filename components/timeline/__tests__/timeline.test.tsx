@@ -29,7 +29,7 @@ describe('<Timeline />', () => {
         <Timeline.Item>Event 2</Timeline.Item>
       </Timeline>
     );
-    expect(getByText('Event 1')).toBeTruthy();
-    expect(getByText('Event 2')).toBeTruthy();
+    expect(getByText('Event 1')).toBeInTheDocument();
+    expect(getByText('Event 2')).toBeInTheDocument();
   });
 });

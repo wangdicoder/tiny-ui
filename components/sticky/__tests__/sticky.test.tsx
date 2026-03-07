@@ -15,6 +15,6 @@ describe('<Sticky />', () => {
 
   it('should render children', () => {
     const { getByText } = render(<Sticky><div>Content</div></Sticky>);
-    expect(getByText('Content')).toBeTruthy();
+    expect(getByText('Content')).toBeInTheDocument();
   });
 });

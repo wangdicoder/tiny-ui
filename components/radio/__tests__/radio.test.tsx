@@ -15,7 +15,7 @@ describe('<Radio />', () => {
 
   it('should render label', () => {
     const { getByText } = render(<Radio>Label</Radio>);
-    expect(getByText('Label')).toBeTruthy();
+    expect(getByText('Label')).toBeInTheDocument();
   });
 
   it('should render disabled', () => {
