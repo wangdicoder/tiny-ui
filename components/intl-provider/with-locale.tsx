@@ -1,4 +1,4 @@
-import React, { useContext, ComponentType } from 'react';
+import { useContext, ComponentType } from 'react';
 import IntlContext from './intl-context';
 
 export function withLocale<T>(WrappedComponent: ComponentType<T>) {

@@ -61,7 +61,7 @@ const BackTop = (props: BackTopProps): JSX.Element | null => {
         setScrollToTop(0);
       }
     };
-    raf(step);
+    requestAnimationFrame(step);
     onClick && onClick(e);
   };
 

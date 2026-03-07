@@ -1,4 +1,3 @@
-import React from 'react';
 import { ConfigContext } from './config-context';
 import { ConfigProviderProps } from './types';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { MONTHS } from './utils';
 
 export type PickerMode = 'day' | 'month' | 'year';

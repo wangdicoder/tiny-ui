@@ -250,7 +250,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
         const { label, style } = marks[mark] as any;
         return <div style={style}>{label}</div>;
       } else if (marks && marks[mark]) {
-        return marks[mark];
+        return marks[mark] as ReactNode;
       } else {
         return mark;
       }

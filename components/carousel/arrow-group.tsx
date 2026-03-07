@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import { BaseProps } from '../_utils/props';
 
 export interface ArrowGroupProps extends BaseProps {

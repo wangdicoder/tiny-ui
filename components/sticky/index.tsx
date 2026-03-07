@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { CSSProperties, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -49,7 +49,7 @@ const Sticky = (props: StickyProps): JSX.Element => {
   };
   const [stickyMode] = useState(getStickyMode());
 
-  const getOffset = useCallback((placeholderNode, stickyContainer): {
+  const getOffset = useCallback((placeholderNode: HTMLElement, stickyContainer: HTMLElement | Window): {
     top: number;
     left: number;
     width: number;

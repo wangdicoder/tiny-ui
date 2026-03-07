@@ -13,7 +13,6 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
       dataSource = [],
       defaultValue = [],
       buttonTexts = [],
-      placeholder = 'search',
       showSearch = false,
       disabled = false,
       value,
@@ -95,7 +94,7 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
       <div {...otherProps} className={cls} ref={ref}>
         <TransferPanel
           title={titles && titles[0]}
-          placeholder={(placeholders && placeholders[0]) || placeholder}
+          placeholder={(placeholders && placeholders[0]) || 'search'}
           showSearch={showSearch}
           dataSource={sourceData}
           checkedKeys={leftCheckedKeys}
@@ -124,7 +123,7 @@ const Transfer = React.forwardRef<HTMLDivElement, TransferProps>(
         </div>
         <TransferPanel
           title={titles && titles[1]}
-          placeholder={(placeholders && placeholders[1]) || placeholder}
+          placeholder={(placeholders && placeholders[1]) || 'search'}
           showSearch={showSearch}
           dataSource={targetData}
           checkedKeys={rightCheckedKeys}

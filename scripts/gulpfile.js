@@ -5,7 +5,6 @@ const postcss = require('gulp-postcss');
 const autoPrefixer = require('autoprefixer');
 const rename = require('gulp-rename');
 const cleanCss = require('gulp-clean-css');
-const merge = require('merge-stream');
 
 const SOURCE_PATH = path.resolve(__dirname, '../components');
 const DIST_PATH = path.resolve(__dirname, '../dist/styles');
@@ -33,15 +32,21 @@ function copyFont() {
   return src(`${SOURCE_PATH}/style/fonts/*`).pipe(dest(`${DIST_PATH}/fonts`));
 }
 
-function generateModularizedStyles() {
-  const scssFiles = src(`${SOURCE_PATH}/*/style/*.scss`).pipe(dest(`${MODULARIZED_DIST_PATH}`));
-  const styleDir = src(`${SOURCE_PATH}/style/**`).pipe(dest(`${MODULARIZED_DIST_PATH}/style`));
-  const cssFiles = src(`${SOURCE_PATH}/**/*.scss`)
+function copyComponentScss() {
+  return src(`${SOURCE_PATH}/*/style/*.scss`).pipe(dest(`${MODULARIZED_DIST_PATH}`));
+}
+
+function copyStyleDir() {
+  return src(`${SOURCE_PATH}/style/**`).pipe(dest(`${MODULARIZED_DIST_PATH}/style`));
+}
+
+function compileModularizedCss() {
+  return src(`${SOURCE_PATH}/**/*.scss`)
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([autoPrefixer()]))
     .pipe(dest(`${MODULARIZED_DIST_PATH}`));
-
-  return merge(scssFiles, styleDir, cssFiles);
 }
+
+const generateModularizedStyles = parallel(copyComponentScss, copyStyleDir, compileModularizedCss);
 
 exports.default = parallel(series(buildScss, minCss, generateModularizedStyles), copyFont);

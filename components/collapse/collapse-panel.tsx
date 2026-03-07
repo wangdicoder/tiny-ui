@@ -12,7 +12,7 @@ import { CollapseContext } from './collapse-context';
  * @param node
  * @param isActive
  */
-const richNode = (node: React.ReactNode, isActive: boolean) => {
+const richNode = (node: React.ReactNode | ((isActive: boolean) => React.ReactNode), isActive: boolean) => {
   return typeof node === 'function' ? node(isActive) : node;
 };
 

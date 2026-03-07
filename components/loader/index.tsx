@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import classNames from 'classnames';
 import Indicator from './indicator';
 import { ConfigContext } from '../config-provider/config-context';

@@ -103,15 +103,15 @@ const Carousel: React.FC<CarouselProps> & { Item?: any } = (props: CarouselProps
   }, []);
 
   useEffect(() => {
-    if (autoplay && width > 0) {
-      const timer = window.setInterval(() => {
-        moveNext();
-      }, interval);
+    if (!autoplay || width <= 0) return;
 
-      return (): void => {
-        window.clearInterval(timer);
-      };
-    }
+    const timer = window.setInterval(() => {
+      moveNext();
+    }, interval);
+
+    return (): void => {
+      window.clearInterval(timer);
+    };
   }, [autoplay, interval, moveNext, width]);
 
   return (

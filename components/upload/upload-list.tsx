@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckCircle, CloseCircle, LoadingCircle, PaperClip } from '../_utils/components';
 import Progress from '../progress';
 import { UploadFile } from './types';

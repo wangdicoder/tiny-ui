@@ -1,4 +1,3 @@
-import React from 'react';
 import { FlipItemProps } from './types';
 
 const FlipItem = (props: FlipItemProps): JSX.Element => {
