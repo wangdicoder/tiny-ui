@@ -11,8 +11,10 @@ import HomePage from './containers/home';
 import GuidePage from './containers/guide';
 import ComponentsPage from './containers/components';
 
+const basename = (process.env.PUBLIC_PATH || '/').replace(/\/$/, '');
+
 const App = (): React.ReactElement => (
-  <BrowserRouter>
+  <BrowserRouter basename={basename}>
     <>
       <Header />
       <Routes>
