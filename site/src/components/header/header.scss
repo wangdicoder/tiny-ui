@@ -69,10 +69,12 @@
     list-style: none;
     position: relative;
     cursor: pointer;
-    line-height: $header-height;
+    display: flex;
+    align-items: center;
 
     a {
       color: var(--ty-color-text-secondary);
+      line-height: $header-height;
 
       &.active {
         color: $main-color;
