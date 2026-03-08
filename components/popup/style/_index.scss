@@ -7,7 +7,7 @@
   white-space: nowrap;
   font-size: $font-size-base;
   text-align: left;
-  box-shadow: $popover-box-shadow;
+  box-shadow: var(--ty-shadow-popup);
   z-index: 999;
 
   &__arrow, &__arrow:before {
@@ -23,21 +23,21 @@
   }
 
   &_light {
-    background-color: #fff;
-    color: rgba(0, 0, 0, 0.65);
+    background-color: var(--ty-popup-light-bg);
+    color: var(--ty-color-text-secondary);
     .#{$prefix}-popup {
       &__arrow:before {
-        background: #fff;
+        background: var(--ty-popup-light-bg);
       }
     }
   }
 
   &_dark {
-    background-color: #262626;
+    background-color: var(--ty-popup-dark-bg);
     color: #fff;
     .#{$prefix}-popup {
       &__arrow:before {
-        background: #262626;
+        background: var(--ty-popup-dark-bg);
       }
     }
   }
@@ -47,7 +47,7 @@
       bottom: math.div(-$popover-arrow-size, 2);
 
       &:before {
-        box-shadow: 3px 3px 7px rgba(0, 0, 0, .07);
+        box-shadow: 3px 3px 7px var(--ty-popup-arrow-shadow);
       }
     }
   }
@@ -57,7 +57,7 @@
       top: math.div(-$popover-arrow-size, 2);
 
       &:before {
-        box-shadow: -2px -2px 5px rgba(0, 0, 0, .06);
+        box-shadow: -2px -2px 5px var(--ty-popup-arrow-shadow);
       }
     }
   }
@@ -67,7 +67,7 @@
       right: math.div(-$popover-arrow-size, 2);
 
       &:before {
-        box-shadow: 3px -3px 7px rgba(0, 0, 0, .07);
+        box-shadow: 3px -3px 7px var(--ty-popup-arrow-shadow);
       }
     }
   }
@@ -77,9 +77,8 @@
       left: math.div(-$popover-arrow-size, 2);
 
       &:before {
-        box-shadow: -3px 3px 7px rgba(0, 0, 0, .07);
+        box-shadow: -3px 3px 7px var(--ty-popup-arrow-shadow);
       }
     }
   }
 }
-

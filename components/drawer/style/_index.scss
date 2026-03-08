@@ -5,8 +5,8 @@
 
   &__content {
     height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+    background-color: var(--ty-drawer-bg);
+    box-shadow: var(--ty-shadow-modal);
     transition: all 300ms;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
   }
 
   &__header {
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid var(--ty-drawer-border);
   }
 
   &__body {
@@ -27,12 +27,12 @@
   }
 
   &__footer {
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid var(--ty-drawer-border);
   }
 
   &__close-btn {
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.45);
+    color: var(--ty-color-text-tertiary);
     width: 56px;
     height: 56px;
     line-height: 56px;

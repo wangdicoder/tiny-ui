@@ -16,7 +16,7 @@
   }
 
   &__title {
-    color: rgba(0, 0, 0, 0.85);
+    color: var(--ty-color-text);
     font-size: 24px;
     line-height: 1.8;
     text-align: center;
@@ -24,7 +24,7 @@
   }
 
   &__subtitle {
-    color: rgba(0, 0, 0, 0.45);
+    color: var(--ty-color-text-tertiary);
     font-size: 14px;
     line-height: 1.6;
     text-align: center;
@@ -42,7 +42,7 @@
     margin-left: 30px;
     margin-right: 30px;
     padding: 24px 40px;
-    background-color: #fafafa;
+    background-color: var(--ty-result-content-bg);
     box-sizing: border-box;
   }
 }

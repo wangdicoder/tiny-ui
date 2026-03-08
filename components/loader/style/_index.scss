@@ -5,7 +5,7 @@
   font-family: $font-family;
   position: relative;
   display: inline-block;
-  color: $primary-color;
+  color: var(--ty-color-primary);
 
   &__indicator {
     position: relative;
@@ -106,7 +106,7 @@
     justify-content: center;
     box-sizing: border-box;
     z-index: 5;
-    color: $primary-color;
+    color: var(--ty-color-primary);
 
     &:not(:last-child) {
       position: absolute;

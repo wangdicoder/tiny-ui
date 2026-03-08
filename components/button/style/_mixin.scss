@@ -2,11 +2,11 @@
   $color,
   $background,
   $border,
-  $hover-background: lighten($background, 7.5%),
-  $hover-border: lighten($border, 10%),
+  $hover-background: null,
+  $hover-border: null,
   $hover-color: $color,
-  $active-background: darken($background, 7.5%),
-  $active-border: darken($border, 10%),
+  $active-background: null,
+  $active-border: null,
   $active-color: $color,
 ) {
   color: $color;
@@ -14,27 +14,27 @@
   border-color: $border;
   &:hover {
     color: $hover-color;
-    background: $hover-background;
-    border-color: $hover-border;
+    @if $hover-background { background: $hover-background; }
+    @if $hover-border { border-color: $hover-border; }
   }
 
   &:focus {
     color: $hover-color;
-    background: $hover-background;
-    border-color: $hover-border;
+    @if $hover-background { background: $hover-background; }
+    @if $hover-border { border-color: $hover-border; }
     z-index: 1;
   }
 
   &:active {
     color: $active-color;
-    background: $active-background;
-    border-color: $active-border;
+    @if $active-background { background: $active-background; }
+    @if $active-border { border-color: $active-border; }
   }
 
   &:disabled {
-    color: rgba(0, 0, 0, .25);
-    background-color: #f5f5f5;
-    border-color: #d9d9d9;
+    color: var(--ty-btn-disabled-color);
+    background-color: var(--ty-btn-disabled-bg);
+    border-color: var(--ty-btn-disabled-border);
   }
 }
 

@@ -78,7 +78,7 @@ const HomePage = (): React.ReactElement => {
           <Button
             className="home__btn"
             size="lg"
-            icon={<Icon name="github" color="#000" />}
+            icon={<Icon name="github" color="currentColor" />}
             onClick={() => window.open(repository.url)}>
             GitHub
           </Button>

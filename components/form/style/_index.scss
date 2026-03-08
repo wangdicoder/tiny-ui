@@ -22,13 +22,13 @@
     line-height: 30px;
     text-align: right;
     vertical-align: top;
-    color: rgba(0, 0, 0, 0.85);
+    color: var(--ty-color-text);
     font-size: $font-size-base;
 
     &_required:before {
       content: '*';
       margin-right: 3px;
-      color: rgb(255, 77, 79);
+      color: var(--ty-form-error-color);
     }
 
     &_colon:after {
@@ -53,21 +53,21 @@
     min-height: 22px;
     line-height: 22px;
     font-size: 13px;
-    color: #ff4d4f;
+    color: var(--ty-form-error-color);
   }
 
   &__helper {
     min-height: 22px;
     line-height: 22px;
     font-size: 13px;
-    color: #999;
+    color: var(--ty-color-text-tertiary);
   }
 
   &__notice {
     font-size: 13px;
     border-radius: $border-radius;
-    background: #fff7cc;
-    color: #555;
+    background: var(--ty-form-notice-bg);
+    color: var(--ty-form-notice-color);
     padding: 5px;
     margin-top: 5px;
   }
@@ -78,14 +78,14 @@
 
   &_has-error {
     .#{$prefix}-input__input, .#{$prefix}-input-number__input, .#{$prefix}-textarea {
-      border-color: #ff4d4f;
+      border-color: var(--ty-form-error-color);
 
       &:not([disabled]):hover{
-        border-color: #ff4d4f;
+        border-color: var(--ty-form-error-color);
       }
 
       &:focus{
-        border-color: #ff7875;
+        border-color: var(--ty-form-error-hover);
         box-shadow: 0 0 0 2px rgba(255,77,79,.2);
       }
     }

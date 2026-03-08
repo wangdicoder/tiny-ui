@@ -7,7 +7,7 @@
 
     .#{$prefix}-menu-item_active {
       background-color: transparent;
-      color: $font-color;
+      color: var(--ty-color-text);
     }
 
     .#{$prefix}-menu-item {
@@ -15,8 +15,8 @@
       margin: 0;
 
       &:hover:not(.#{$prefix}-menu-item_disabled) {
-        background-color: #f5f5f5;
-        color: $font-color;
+        background-color: var(--ty-color-bg-spotlight);
+        color: var(--ty-color-text);
       }
     }
   }

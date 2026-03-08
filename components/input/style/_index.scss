@@ -4,7 +4,7 @@
 .#{$prefix}-input {
   position: relative;
   box-sizing: border-box;
-  color: $input-font-color;
+  color: var(--ty-color-text);
 
   &__input {
     @include input-default();
@@ -29,7 +29,7 @@
 
   &__clear-btn {
     display: inline-block;
-    color: rgba(0, 0, 0, 0.25);
+    color: var(--ty-color-text-quaternary);
     width: 14px;
     height: 14px;
     position: relative;
@@ -133,13 +133,13 @@
 }
 
 .#{$prefix}-input-group-addon {
-  background-color: #fafafa;
-  border: 1px solid #d9d9d9;
+  background-color: var(--ty-input-addon-bg);
+  border: 1px solid var(--ty-input-border);
   box-sizing: border-box;
   text-align: center;
   line-height: 1;
   border-radius: $input-border-radius;
-  color: $input-font-color;
+  color: var(--ty-color-text);
   padding: 0 7px;
 
   &_sm {

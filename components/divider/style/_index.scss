@@ -15,11 +15,11 @@
     vertical-align: middle;
     position: relative;
     top: -0.1em;
-    background: $divider-line-color;
+    background: var(--ty-divider-color);
 
     &-dashed {
       background: none;
-      border-left: 1px dashed $divider-line-color;
+      border-left: 1px dashed var(--ty-divider-color);
     }
   }
 
@@ -28,11 +28,11 @@
     height: 1px;
     width: 100%;
     margin: 16px 0;
-    background: $divider-line-color;
+    background: var(--ty-divider-color);
 
     &-dashed:not(.#{$prefix}-divider_text) {
       background: none;
-      border-top: 1px dashed $divider-line-color;
+      border-top: 1px dashed var(--ty-divider-color);
     }
   }
 
@@ -42,7 +42,7 @@
     text-align: center;
     background: transparent;
     font-weight: 500;
-    color: #333;
+    color: var(--ty-divider-text-color);
 
     &:before,
     &:after {
@@ -51,7 +51,7 @@
       position: relative;
       top: 50%;
       width: 50%;
-      border-top: 1px solid $divider-line-color;
+      border-top: 1px solid var(--ty-divider-color);
       transform: translateY(50%);
     }
   }

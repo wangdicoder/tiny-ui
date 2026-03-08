@@ -8,7 +8,7 @@
   flex-direction: column;
   list-style: none;
   position: relative;
-  background-color: #fff;
+  background-color: var(--ty-anchor-bg);
 
   &__ink {
     position: absolute;
@@ -23,18 +23,17 @@
       width: 2px;
       height: 100%;
       margin: 0 auto;
-      background-color: #f0f0f0;
+      background-color: var(--ty-anchor-ink-bg);
     }
   }
 
   &__ink-ball {
     position: absolute;
     left: 50%;
-    //display: none;
     width: 8px;
     height: 8px;
-    background-color: #fff;
-    border: 2px solid $primary-color;
+    background-color: var(--ty-anchor-ball-bg);
+    border: 2px solid var(--ty-color-primary);
     border-radius: 8px;
     transform: translateX(-50%);
     transition: top .3s ease-in-out;
@@ -49,7 +48,7 @@
 
     &_active {
       & > a {
-        color: $primary-color;
+        color: var(--ty-color-primary);
       }
     }
   }
@@ -57,13 +56,13 @@
   &__link-title {
     display: block;
     overflow: hidden;
-    color: rgba(0, 0, 0, .65);
+    color: var(--ty-color-text-secondary);
     white-space: nowrap;
     text-overflow: ellipsis;
     border-left: 2px solid transparent;
 
     &:hover {
-      color: $primary-color;
+      color: var(--ty-color-primary);
       text-decoration: none;
     }
 

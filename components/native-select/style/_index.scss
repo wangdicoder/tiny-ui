@@ -7,15 +7,15 @@ $select-arrow: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm
   display: inline-flex;
   -webkit-appearance: none;
   cursor: pointer;
-  color: $font-color;
+  color: var(--ty-color-text);
   min-width: 200px;
   margin: 0;
   line-height: 18px;
   vertical-align: middle;
   box-sizing: border-box;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--ty-input-border);
   border-radius: $native-select-border-radius;
-  background-color: #fff;
+  background-color: var(--ty-native-select-bg);
   background-image: url($select-arrow);
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
@@ -24,20 +24,20 @@ $select-arrow: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm
   outline: none;
 
   &:hover {
-    border-color: $primary-color;
+    border-color: var(--ty-color-primary);
   }
 
   &:focus {
-    border-color: rgba($primary-color, 0.8);
-    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    border-color: var(--ty-input-focus-border);
+    box-shadow: var(--ty-input-focus-shadow);
   }
 
   &_disabled {
     background-image: url($select-arrow);
     background-size: 0.52em auto, 100%;
-    background-color: #ddd;
+    background-color: var(--ty-native-select-disabled-bg);
     opacity: 0.75;
-    color: #a5a5a5;
+    color: var(--ty-native-select-disabled-color);
     cursor: not-allowed;
     resize: none;
 

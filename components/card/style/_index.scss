@@ -7,7 +7,7 @@
   margin: 0;
   border-radius: $card-border-radius;
   transition: all 0.3s;
-  background-color: #fff;
+  background-color: var(--ty-card-bg);
 
   & + & {
     margin-top: 15px;
@@ -18,7 +18,7 @@
   }
 
   &_bordered {
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--ty-card-border);
   }
 
   &_hoverable {
@@ -37,11 +37,11 @@
     display: flex;
     justify-content: space-between;
     padding: $card-header-padding;
-    color: rgba(0, 0, 0, 0.85);
+    color: var(--ty-card-header-color);
     font-weight: 500;
     font-size: 16px;
     background: transparent;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid var(--ty-card-border);
     border-radius: $card-border-radius $card-border-radius 0 0;
   }
 

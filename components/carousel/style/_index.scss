@@ -59,14 +59,14 @@ $carousel-prefix: #{$prefix}-carousel;
     height: 36px;
     border: none;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.25);
+    background: var(--ty-carousel-arrow-bg);
     color: #fff;
     cursor: pointer;
     transition: background 0.3s;
     outline: none;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.45);
+      background: var(--ty-carousel-arrow-hover-bg);
     }
 
     &_prev {
@@ -121,17 +121,17 @@ $carousel-prefix: #{$prefix}-carousel;
     height: 3px;
     margin: 0 4px;
     border-radius: 1px;
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--ty-carousel-dot-bg);
     cursor: pointer;
     transition: all 0.3s;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.6);
+      background: var(--ty-carousel-dot-hover-bg);
     }
 
     &_active {
       width: 24px;
-      background: #fff;
+      background: var(--ty-carousel-dot-active-bg);
     }
   }
 

@@ -8,12 +8,12 @@
     margin: 0;
     padding: 4px 0;
     list-style-type: none;
-    background-color: #fff;
+    background-color: var(--ty-select-dropdown-bg);
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 10;
-    box-shadow: $select-dropdown-shadow;
+    box-shadow: var(--ty-shadow-popup);
     border-radius: $border-radius;
     font-size: $font-size-base;
     max-height: $select-dropdown-max-height;
@@ -34,21 +34,21 @@
   font-size: 14px;
   line-height: 22px;
   cursor: pointer;
-  color: $font-color;
+  color: var(--ty-color-text);
   transition: all 300ms;
 
   &_active {
-    background-color: #f5f5f5;
+    background-color: var(--ty-select-option-active-bg);
   }
 
   &_selected {
-    background-color: lighten($primary-color, 40%);
+    background-color: var(--ty-select-option-selected-bg);
     font-weight: $select-selected-font-weight;
   }
 
   &_disabled {
     cursor: not-allowed;
-    background-color: #fff;
+    background-color: var(--ty-select-option-disabled-bg);
     opacity: .5;
   }
 }

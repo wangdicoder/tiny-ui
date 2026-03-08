@@ -73,13 +73,13 @@
     position: absolute;
     border-radius: 3px;
     box-sizing: border-box;
-    background-color: #e4e8f1;
+    background-color: var(--ty-slider-rail-bg);
   }
 
   &__track {
     box-sizing: border-box;
     border-radius: 3px;
-    background-color: $primary-color;
+    background-color: var(--ty-color-primary);
     position: absolute;
 
     &_invisible{
@@ -114,9 +114,8 @@
     box-sizing: border-box;
     width: 14px;
     height: 14px;
-    border: 1px solid lighten($primary-color, 15);
-    background-color: rgb(245, 248, 250);
-    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    border: 1px solid var(--ty-slider-thumb-border);
+    background-color: var(--ty-slider-thumb-bg);
     border-radius: 50%;
     transition: transform 250ms;
   }
@@ -128,18 +127,18 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #fff;
-    border: 2px solid #f0f0f0;
+    background-color: var(--ty-slider-dot-bg);
+    border: 2px solid var(--ty-slider-dot-border);
     transform: translate(-50%, -50%);
 
     &_active {
-      border-color: lighten($primary-color, 10%);
+      border-color: var(--ty-slider-dot-active-border);
     }
   }
 
   &__mark {
     position: absolute;
-    color: rgba(0, 0, 0, .4);
+    color: var(--ty-slider-mark-color);
     text-align: center;
     word-break: keep-all;
     cursor: pointer;
@@ -147,7 +146,7 @@
     user-select: none;
 
     &_active {
-      color: rgba(0, 0, 0, .7);
+      color: var(--ty-slider-mark-active-color);
     }
   }
 
@@ -156,11 +155,11 @@
 
     .#{$prefix}-slider {
       &__track {
-        background-color: rgba(0, 0, 0, .25);
+        background-color: var(--ty-color-text-quaternary);
       }
 
       &__thumb {
-        border-color: rgba(0, 0, 0, .25);
+        border-color: var(--ty-color-text-quaternary);
         transform: scale(1);
       }
 

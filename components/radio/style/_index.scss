@@ -6,7 +6,7 @@
   align-items: center;
   font-size: $font-size-base;
   margin-right: 8px;
-  color: rgba(0, 0, 0, 0.75);
+  color: var(--ty-color-text);
 
   &__native {
     position: absolute;
@@ -29,8 +29,8 @@
     width: 16px;
     height: 16px;
     border-radius: 100%;
-    background-color: #fff;
-    border: 1px solid $primary-color;
+    background-color: var(--ty-radio-bg);
+    border: 1px solid var(--ty-color-primary);
     align-items: center;
     justify-content: center;
 
@@ -41,7 +41,7 @@
       width: 10px;
       height: 10px;
       border-radius: 100%;
-      background-color: $primary-color;
+      background-color: var(--ty-color-primary);
       transition: all 200ms;
       transform: scale(0);
     }
@@ -67,14 +67,14 @@
       }
 
       &__inner {
-        border-color: #d9d9d9;
+        border-color: var(--ty-radio-disabled-border);
 
         &:after {
-          background-color: rgba(0, 0, 0, 0.2);
+          background-color: var(--ty-radio-disabled-dot);
         }
 
         & + span {
-          color: rgba(0, 0, 0, 0.25);
+          color: var(--ty-color-text-quaternary);
         }
       }
     }

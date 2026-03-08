@@ -12,6 +12,6 @@
     width: 0;
     opacity: 1;
     transition: opacity 400ms;
-    background-color: $primary-color;
+    background-color: var(--ty-color-primary);
   }
 }

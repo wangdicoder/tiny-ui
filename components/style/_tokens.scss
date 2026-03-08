@@ -1,0 +1,61 @@
+// SCSS convenience variables referencing CSS custom properties
+// Usage: background: $token-color-bg;
+
+// ---- Background ----
+$token-color-bg: var(--ty-color-bg);
+$token-color-bg-elevated: var(--ty-color-bg-elevated);
+$token-color-bg-container: var(--ty-color-bg-container);
+$token-color-bg-spotlight: var(--ty-color-bg-spotlight);
+$token-color-bg-disabled: var(--ty-color-bg-disabled);
+$token-color-bg-layout: var(--ty-color-bg-layout);
+
+// ---- Text ----
+$token-color-text: var(--ty-color-text);
+$token-color-text-secondary: var(--ty-color-text-secondary);
+$token-color-text-tertiary: var(--ty-color-text-tertiary);
+$token-color-text-quaternary: var(--ty-color-text-quaternary);
+$token-color-text-heading: var(--ty-color-text-heading);
+$token-color-text-label: var(--ty-color-text-label);
+$token-color-text-placeholder: var(--ty-color-text-placeholder);
+
+// ---- Primary ----
+$token-color-primary: var(--ty-color-primary);
+$token-color-primary-hover: var(--ty-color-primary-hover);
+$token-color-primary-active: var(--ty-color-primary-active);
+$token-color-primary-bg: var(--ty-color-primary-bg);
+$token-color-primary-border: var(--ty-color-primary-border);
+$token-color-primary-bg-hover: var(--ty-color-primary-bg-hover);
+$token-color-primary-text-hover: var(--ty-color-primary-text-hover);
+
+// ---- Border ----
+$token-color-border: var(--ty-color-border);
+$token-color-border-secondary: var(--ty-color-border-secondary);
+$token-color-border-light: var(--ty-color-border-light);
+
+// ---- Fill ----
+$token-color-fill: var(--ty-color-fill);
+$token-color-fill-secondary: var(--ty-color-fill-secondary);
+$token-color-fill-tertiary: var(--ty-color-fill-tertiary);
+
+// ---- Status ----
+$token-color-success: var(--ty-color-success);
+$token-color-success-bg: var(--ty-color-success-bg);
+$token-color-success-border: var(--ty-color-success-border);
+$token-color-warning: var(--ty-color-warning);
+$token-color-warning-bg: var(--ty-color-warning-bg);
+$token-color-warning-border: var(--ty-color-warning-border);
+$token-color-danger: var(--ty-color-danger);
+$token-color-danger-bg: var(--ty-color-danger-bg);
+$token-color-danger-border: var(--ty-color-danger-border);
+$token-color-info: var(--ty-color-info);
+$token-color-info-bg: var(--ty-color-info-bg);
+$token-color-info-border: var(--ty-color-info-border);
+
+// ---- Shadows ----
+$token-shadow-sm: var(--ty-shadow-sm);
+$token-shadow: var(--ty-shadow);
+$token-shadow-lg: var(--ty-shadow-lg);
+$token-shadow-popup: var(--ty-shadow-popup);
+
+// ---- Overlay ----
+$token-color-overlay-bg: var(--ty-color-overlay-bg);

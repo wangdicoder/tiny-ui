@@ -12,7 +12,7 @@
   position: relative;
   vertical-align: middle;
   user-select: none;
-  border: 2px solid #fff;
+  border: 2px solid var(--ty-avatar-border);
 
   &__img {
     width: 100%;
@@ -31,20 +31,20 @@
     bottom: 0;
     right: 0;
     border-radius: 50%;
-    box-shadow: 0 0 0 0.1rem #fff;
+    box-shadow: var(--ty-avatar-presence-shadow);
     height: 0.4em;
     width: 0.4em;
 
     &_online {
-      background-color: $success-color;
+      background-color: var(--ty-color-success);
     }
 
     &_busy {
-      background-color: $danger-color;
+      background-color: var(--ty-color-danger);
     }
 
     &_away {
-      background-color: $warning-color;
+      background-color: var(--ty-color-warning);
     }
 
     &_offline {

@@ -1,5 +1,5 @@
 @mixin alert-mixin($fontColor, $borderColor, $bgColor) {
   border-color: $borderColor;
   background-color: $bgColor;
-  color: darken($fontColor, 2.5%);
+  color: $fontColor;
 }

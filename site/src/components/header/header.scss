@@ -7,8 +7,8 @@
   left: 0;
   z-index: 100;
   height: $header-height;
-  background: #fff;
-  border-bottom: 1px solid rgb(226, 232, 240);
+  background: var(--ty-color-bg-elevated);
+  border-bottom: 1px solid var(--ty-color-border-secondary);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,7 +26,7 @@
     cursor: pointer;
     padding: 4px;
     margin-right: 12px;
-    color: #333;
+    color: var(--ty-color-text);
     line-height: 0;
   }
 
@@ -46,7 +46,7 @@
   &__title {
     margin-left: 10px;
     font-weight: 600;
-    color: #000;
+    color: var(--ty-color-text);
     font-size: 22px;
   }
 
@@ -59,19 +59,20 @@
   &__nav-list {
     height: 100%;
     margin: 0;
+    display: flex;
+    align-items: center;
   }
 
   &__nav-item {
     margin-left: 20px;
     font-size: 16px;
-    float: left;
     list-style: none;
     position: relative;
     cursor: pointer;
     line-height: $header-height;
 
     a {
-      color: #62748c;
+      color: var(--ty-color-text-secondary);
 
       &.active {
         color: $main-color;
@@ -87,6 +88,26 @@
     border-radius: 46px;
     margin-left: 10px;
     padding: 4px 13px;
+  }
+
+  &__theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--ty-color-border);
+    border-radius: 50%;
+    background: var(--ty-color-bg-elevated);
+    color: var(--ty-color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+
+    &:hover {
+      color: var(--ty-color-primary);
+      border-color: var(--ty-color-primary);
+    }
   }
 
   @media (max-width: $size-md) {

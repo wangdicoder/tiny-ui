@@ -72,3 +72,6 @@ export { default as Typography } from './typography';
 export { default as Upload } from './upload';
 
 export { withLocale } from './intl-provider/with-locale';
+
+export { useTheme } from './_utils/use-theme';
+export type { ThemeMode } from './_utils/use-theme';

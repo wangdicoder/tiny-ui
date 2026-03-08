@@ -5,7 +5,7 @@
   height: calc(100% - #{$header-height});
   position: fixed;
   overflow-y: auto;
-  border-right: 1px solid #d5d5d5;
+  border-right: 1px solid var(--ty-color-border);
   padding: 20px 0;
   z-index: 99;
 
@@ -14,7 +14,7 @@
     height: 55px;
     line-height: 55px;
     font-size: 16px;
-    color: #18181a;
+    color: var(--ty-color-text);
     font-weight: 500;
   }
 
@@ -36,7 +36,7 @@
 
     a {
       text-decoration: none;
-      color: #333;
+      color: var(--ty-color-text);
       transition: all 300ms;
 
       &:hover {
@@ -76,12 +76,12 @@
   }
 
   &__count-label {
-    color: #aaa;
+    color: var(--ty-color-text-tertiary);
     font-size: 13px;
   }
 
   &__group-title {
-    color: #999;
+    color: var(--ty-color-text-tertiary);
     font-size: 14px;
     padding-left: 30px;
   }
@@ -98,7 +98,7 @@
   @media (max-width: $size-md) {
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    background: #fff;
+    background: var(--ty-color-bg-elevated);
     z-index: 101;
     top: $header-height;
 

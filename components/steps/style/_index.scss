@@ -4,7 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: $font-color;
+  color: var(--ty-color-text);
   display: flex;
   width: 100%;
 
@@ -32,7 +32,7 @@
             flex: 1;
             width: 100%;
             height: 1px;
-            background: #dcdcdc;
+            background: var(--ty-steps-tail-color);
           }
         }
       }
@@ -86,9 +86,9 @@
   &__icon {
     width: 32px;
     height: 32px;
-    border: 1px solid $primary-color;
+    border: 1px solid var(--ty-color-primary);
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--ty-steps-icon-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,7 +104,7 @@
     flex: 1;
     height: 1px;
     width: 100%;
-    background-color: #dcdcdc;
+    background-color: var(--ty-steps-tail-color);
   }
 
   &__content {
@@ -114,11 +114,11 @@
   &__title {
     line-height: 32px;
     font-size: $steps-title-font-size;
-    color: $steps-title-normal-color;
+    color: var(--ty-color-text-secondary);
   }
 
   &__desc {
-    color: $steps-desc-normal-color;
+    color: var(--ty-color-text-tertiary);
   }
 
   &:last-child {
@@ -139,22 +139,22 @@
   &_process {
     .#{$prefix}-steps-item {
       &__icon {
-        background-color: $primary-color;
+        background-color: var(--ty-color-primary);
         color: #fff;
 
         &_has-icon {
           background-color: transparent;
-          color: $primary-color;
+          color: var(--ty-color-primary);
         }
       }
 
       &__title {
         font-weight: 600;
-        color: $steps-title-active-color;
+        color: var(--ty-color-primary);
       }
 
       &__desc {
-        color: $steps-desc-active-color;
+        color: var(--ty-color-primary);
       }
     }
   }
@@ -163,11 +163,11 @@
     .#{$prefix}-steps-item {
 
       &__icon {
-        color: $primary-color;
+        color: var(--ty-color-primary);
       }
 
       &__tail, &__title:after {
-        background-color: $primary-color;
+        background-color: var(--ty-color-primary);
       }
     }
   }
@@ -175,16 +175,16 @@
   &_wait {
     .#{$prefix}-steps-item {
       &__icon {
-        border-color: $steps-title-wait-color;
-        color: $steps-title-wait-color;
+        border-color: var(--ty-color-text-quaternary);
+        color: var(--ty-color-text-quaternary);
       }
 
       &__title {
-        color: $steps-title-wait-color;
+        color: var(--ty-color-text-quaternary);
       }
 
       &__desc {
-        color: $steps-desc-wait-color;
+        color: var(--ty-color-text-quaternary);
       }
     }
   }
@@ -192,16 +192,16 @@
   &_error {
     .#{$prefix}-steps-item {
       &__icon {
-        border-color: $steps-title-error-color;
-        color: $steps-title-error-color;
+        border-color: var(--ty-color-danger);
+        color: var(--ty-color-danger);
       }
 
       &__title {
-        color: $steps-title-error-color;
+        color: var(--ty-color-danger);
       }
 
       &__desc {
-        color: $steps-desc-error-color;
+        color: var(--ty-color-danger);
       }
     }
   }

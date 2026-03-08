@@ -10,7 +10,7 @@
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    background-color: #e4e8f1;
+    background-color: var(--ty-progress-trail-bg);
   }
 
   &__bg {
@@ -19,28 +19,28 @@
     height: 100%;
     transition: all 0.6s;
     &_primary {
-      background-color: $primary-color;
+      background-color: var(--ty-color-primary);
     }
 
     &_yellow {
-      background-color: $warning-color;
+      background-color: var(--ty-color-warning);
     }
 
     &_blue {
-      background-color: $info-color;
+      background-color: var(--ty-color-info);
     }
 
     &_red {
-      background-color: $danger-color;
+      background-color: var(--ty-color-danger);
     }
 
     &_green {
-      background-color: $success-color;
+      background-color: var(--ty-color-success);
     }
   }
 
   &__text {
-    color: #48576a;
+    color: var(--ty-progress-text-color);
     margin-left: 10px;
     min-width: 40px;
     text-align: right;
@@ -106,7 +106,7 @@
   position: relative;
 
   &__bg {
-    stroke: #e5e9f2;
+    stroke: var(--ty-progress-circle-trail);
     fill: none;
   }
 
@@ -114,23 +114,23 @@
     fill: none;
     transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease;
     &_primary {
-      stroke: $primary-color;
+      stroke: var(--ty-color-primary);
     }
 
     &_yellow {
-      stroke: $warning-color;
+      stroke: var(--ty-color-warning);
     }
 
     &_blue {
-      stroke: $info-color;
+      stroke: var(--ty-color-info);
     }
 
     &_red {
-      stroke: $danger-color;
+      stroke: var(--ty-color-danger);
     }
 
     &_green {
-      stroke: $success-color;
+      stroke: var(--ty-color-success);
     }
   }
 

@@ -6,14 +6,14 @@
   margin-right: 8px;
   padding: 3px 7px;
   font-size: 12px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--ty-tag-border);
   border-radius: $tag-border-radius;
-  color: $font-color;
-  background: #fafafa;
+  color: var(--ty-color-text);
+  background: var(--ty-tag-bg);
 
   a,
   a:hover {
-    color: rgba(0, 0, 0, 0.65);
+    color: var(--ty-color-text-secondary);
   }
 
   &_visible {
@@ -33,82 +33,82 @@
   }
 
   &_magenta {
-    color: $magenta-color;
-    background: #fff0f6;
-    border-color: #ffadd2;
+    color: var(--ty-tag-magenta-color);
+    background: var(--ty-tag-magenta-bg);
+    border-color: var(--ty-tag-magenta-border);
   }
 
   &_red {
-    color: #f5222d;
-    background: #fff1f0;
-    border-color: #ffa39e;
+    color: var(--ty-tag-red-color);
+    background: var(--ty-tag-red-bg);
+    border-color: var(--ty-tag-red-border);
   }
 
   &_volcano {
-    color: #fa541c;
-    background: #fff2e8;
-    border-color: #ffbb96;
+    color: var(--ty-tag-volcano-color);
+    background: var(--ty-tag-volcano-bg);
+    border-color: var(--ty-tag-volcano-border);
   }
 
   &_orange {
-    color: #fa8c16;
-    background: #fff7e6;
-    border-color: #ffd591;
+    color: var(--ty-tag-orange-color);
+    background: var(--ty-tag-orange-bg);
+    border-color: var(--ty-tag-orange-border);
   }
 
   &_gold {
-    color: #faad14;
-    background: #fffbe6;
-    border-color: #ffe58f;
+    color: var(--ty-tag-gold-color);
+    background: var(--ty-tag-gold-bg);
+    border-color: var(--ty-tag-gold-border);
   }
 
   &_lime {
-    color: #a0d911;
-    background: #fcffe6;
-    border-color: #eaff8f;
+    color: var(--ty-tag-lime-color);
+    background: var(--ty-tag-lime-bg);
+    border-color: var(--ty-tag-lime-border);
   }
 
   &_green {
-    color: #52c41a;
-    background: #f6ffed;
-    border-color: #b7eb8f;
+    color: var(--ty-tag-green-color);
+    background: var(--ty-tag-green-bg);
+    border-color: var(--ty-tag-green-border);
   }
 
   &_cyan {
-    color: #13c2c2;
-    background: #e6fffb;
-    border-color: #87e8de;
+    color: var(--ty-tag-cyan-color);
+    background: var(--ty-tag-cyan-bg);
+    border-color: var(--ty-tag-cyan-border);
   }
 
   &_blue {
-    color: #1890ff;
-    background: #e6f7ff;
-    border-color: #91d5ff;
+    color: var(--ty-tag-blue-color);
+    background: var(--ty-tag-blue-bg);
+    border-color: var(--ty-tag-blue-border);
   }
 
   &_geekblue {
-    color: #2f54eb;
-    background: #f0f5ff;
-    border-color: #adc6ff;
+    color: var(--ty-tag-geekblue-color);
+    background: var(--ty-tag-geekblue-bg);
+    border-color: var(--ty-tag-geekblue-border);
   }
 
   &_purple {
-    color: #722ed1;
-    background: #f9f0ff;
-    border-color: #d3adf7;
+    color: var(--ty-tag-purple-color);
+    background: var(--ty-tag-purple-bg);
+    border-color: var(--ty-tag-purple-border);
   }
 }
 
 .#{$prefix}-checkable-tag {
-  background-color: #fff;
-  color: $primary-color;
-  border-color: #fff;
+  background-color: var(--ty-tag-checkable-bg);
+  color: var(--ty-color-primary);
+  border-color: var(--ty-tag-checkable-bg);
   transition: all 300ms;
   cursor: pointer;
 
   &_checked {
-    background-color: $primary-color;
+    background-color: var(--ty-color-primary);
     color: #fff;
-    border-color: $primary-color;
+    border-color: var(--ty-color-primary);
   }
 }

@@ -12,14 +12,14 @@
       table-layout: fixed;
       box-sizing: border-box;
       text-align: left;
-      background-color: #fff;
+      background-color: var(--ty-color-bg-elevated);
     }
   }
 
   &__title {
     text-align: left;
     margin-bottom: 20px;
-    color: rgba(0, 0, 0, .85);
+    color: var(--ty-color-text);
     font-weight: 600;
     font-size: 16px;
   }
@@ -31,14 +31,14 @@
   }
 
   &__item-label {
-    color: rgba(0, 0, 0, .85);
+    color: var(--ty-color-text-label);
     font-size: $font-size-base;
     font-weight: 400;
     line-height: $line-height-base;
   }
 
   &__item-content {
-    color: rgba(0, 0, 0, .65);
+    color: var(--ty-color-text-secondary);
     font-size: $font-size-base;
     line-height: $line-height-base;
   }
@@ -46,12 +46,12 @@
   &_bordered {
     .#{$prefix}-descriptions {
       &__body {
-        border: 1px solid $description-border-color;
+        border: 1px solid var(--ty-descriptions-border);
         border-radius: $description-border-radius;
       }
 
       &__row {
-        border-bottom: 1px solid $description-border-color;
+        border-bottom: 1px solid var(--ty-descriptions-border);
 
         &:last-child {
           border-bottom: 0;
@@ -59,11 +59,11 @@
       }
 
       &__item-label {
-        background-color: #fafafa;
+        background-color: var(--ty-descriptions-label-bg);
       }
 
       &__item-label, &__item-content {
-        border-right: 1px solid $description-border-color;
+        border-right: 1px solid var(--ty-descriptions-border);
 
         &:last-child {
           border-right: 0;

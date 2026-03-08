@@ -36,14 +36,14 @@ $tp-prefix: #{$prefix}-typography;
     margin: 0 .1em;
     padding: .2em .4em .1em;
     font-size: 85%;
-    background: rgba(0, 0, 0, .06);
-    border: 1px solid rgba(0, 0, 0, .06);
+    background: var(--ty-typography-code-bg);
+    border: 1px solid var(--ty-typography-code-border);
     border-radius: $border-radius;
   }
 
   mark {
     padding: 0;
-    background-color: #ffe58f;
+    background-color: var(--ty-typography-mark-bg);
   }
 
   u {
@@ -79,7 +79,7 @@ h5.#{$tp-prefix},
 h6.#{$tp-prefix} {
   margin-top: 0;
   margin-bottom: 0.5em;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--ty-typography-heading-color);
   font-weight: 600;
 }
 
@@ -116,11 +116,11 @@ h6.#{$tp-prefix} {
 p.#{$tp-prefix}, div.#{$tp-prefix} {
   margin-top: 0;
   margin-bottom: 1em;
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--ty-typography-body-color);
   font-size: $font-size-base;
   line-height: 1.5;
 }
 
 span.#{$tp-prefix} {
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--ty-typography-body-color);
 }

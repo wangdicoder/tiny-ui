@@ -6,12 +6,12 @@
   align-items: center;
   font-size: $font-size-base;
   margin-right: 8px;
-  color: rgba(0, 0, 0, 0.75);
+  color: var(--ty-color-text);
   box-sizing: border-box;
 
   &:hover {
     .#{$prefix}-checkbox__inner {
-      border-color: $primary-color;
+      border-color: var(--ty-color-primary);
     }
   }
 
@@ -37,8 +37,8 @@
     width: 16px;
     height: 16px;
     border-radius: 2px;
-    border: 1px solid #d9d9d9;
-    background-color: #fff;
+    border: 1px solid var(--ty-checkbox-border);
+    background-color: var(--ty-checkbox-bg);
     transition: 200ms;
     line-height: 1;
     vertical-align: middle;
@@ -47,7 +47,7 @@
       content: '';
       position: absolute;
       display: block;
-      border: 1px solid #fff;
+      border: 1px solid var(--ty-checkbox-check-color);
       margin-top: -1px;
       left: 3px;
       right: 3px;
@@ -60,7 +60,7 @@
       transform: rotate(45deg) scaleY(1);
       pointer-events: none;
       box-sizing: content-box;
-      border: 2px solid #fff;
+      border: 2px solid var(--ty-checkbox-check-color);
       border-left: 0;
       border-top: 0;
       height: 7px;
@@ -80,8 +80,8 @@
   &_checked {
     .#{$prefix}-checkbox {
       &__inner {
-        background-color: $primary-color;
-        border-color: $primary-color;
+        background-color: var(--ty-color-primary);
+        border-color: var(--ty-color-primary);
 
         &:after {
           content: '';
@@ -98,8 +98,8 @@
   &_indeterminate {
     .#{$prefix}-checkbox {
       &__inner {
-        background-color: $primary-color;
-        border-color: $primary-color;
+        background-color: var(--ty-color-primary);
+        border-color: var(--ty-color-primary);
 
         &:before {
           transform: scale(1);
@@ -119,15 +119,15 @@
       }
 
       &__inner {
-        background-color: #f5f5f5;
-        border-color: #d9d9d9 !important;
+        background-color: var(--ty-checkbox-disabled-bg);
+        border-color: var(--ty-checkbox-border) !important;
 
         &:after {
-          border-color: rgba(0, 0, 0, 0.25);
+          border-color: var(--ty-color-text-quaternary);
         }
 
         & + span {
-          color: rgba(0, 0, 0, 0.25);
+          color: var(--ty-color-text-quaternary);
         }
       }
     }

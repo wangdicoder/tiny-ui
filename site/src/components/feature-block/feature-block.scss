@@ -39,13 +39,13 @@
   &__title {
     font-weight: 600;
     font-size: 1.25rem;
-    color: rgb(26, 32, 44);
+    color: var(--ty-color-text);
     margin: 30px 0 10px;
   }
 
   &__desc {
     margin-top: 10px;
-    color: rgba(26, 32, 44, 0.8);
+    color: var(--ty-color-text-secondary);
     font-size: 15px;
     padding: 0 20px;
     line-height: 1.5;

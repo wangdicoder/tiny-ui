@@ -8,3 +8,5 @@ export type BaseProps = {
   className?: string;
   prefixCls?: string;
 };
+
+export type { ThemeMode } from '../config-provider/config-context';

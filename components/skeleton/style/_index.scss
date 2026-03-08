@@ -6,7 +6,7 @@
   height: 1em;
   position: relative;
   overflow: hidden;
-  background-color: #f2f2f2;
+  background-color: var(--ty-skeleton-bg);
 
   & + & {
     margin-top: 10px;
@@ -19,7 +19,7 @@
     bottom: 0;
     left: 0;
     transform: translateX(-100%);
-    background-image: linear-gradient(to right, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+    background-image: var(--ty-skeleton-shimmer);
     background-size: 200% 100%;
     animation: ty-shimmer 1.5s ease infinite;
   }

@@ -6,7 +6,7 @@ $btn-prefix: #{$prefix}-btn;
 
 .#{$btn-prefix} {
   box-sizing: border-box;
-  border: 1px solid #d0d0d5;
+  border: 1px solid var(--ty-color-border-btn-default);
   outline: none;
   letter-spacing: 0;
   text-align: center;
@@ -50,22 +50,29 @@ $btn-prefix: #{$prefix}-btn;
 
   // Types
   &_default {
-    @include button-style($body-color, $white-color, $gray-400, $white-color, $primary-color, $primary-color,
-        darken($white-color, 7.5%), $primary-color, $primary-color);
+    @include button-style(
+      var(--ty-btn-default-color), var(--ty-btn-default-bg), var(--ty-btn-default-border),
+      var(--ty-btn-default-hover-bg), var(--ty-btn-default-hover-border), var(--ty-btn-default-hover-color),
+      var(--ty-btn-default-active-bg), var(--ty-btn-default-active-border), var(--ty-btn-default-active-color)
+    );
   }
 
   &_primary {
-    @include button-style($white-color, $primary-color, $primary-color);
+    @include button-style(#fff, var(--ty-color-primary), var(--ty-color-primary),
+      var(--ty-color-primary-hover), var(--ty-color-primary-hover), #fff,
+      var(--ty-color-primary-active), var(--ty-color-primary-active), #fff);
   }
 
   &_outline {
-    @include button-style($primary-color, $white-color, $primary-color, lighten($primary-color, 40%), lighten($primary-color, 10%), $primary-color,
-        lighten($primary-color, 30%));
+    @include button-style(var(--ty-color-primary), var(--ty-btn-default-bg), var(--ty-color-primary),
+      var(--ty-btn-outline-hover-bg), var(--ty-color-primary-hover), var(--ty-color-primary),
+      var(--ty-btn-outline-active-bg));
   }
 
   &_ghost {
-    @include button-style($primary-color, transparent, transparent, lighten($primary-color, 40%), transparent, $primary-color,
-        lighten($primary-color, 30%), transparent, $primary-color);
+    @include button-style(var(--ty-color-primary), transparent, transparent,
+      var(--ty-btn-ghost-hover-bg), transparent, var(--ty-color-primary),
+      var(--ty-btn-ghost-active-bg), transparent, var(--ty-color-primary));
 
     &:disabled {
       border: 0;
@@ -73,14 +80,14 @@ $btn-prefix: #{$prefix}-btn;
   }
 
   &_link {
-    @include button-style($primary-color, transparent, transparent);
+    @include button-style(var(--ty-color-primary), transparent, transparent);
 
     &:hover {
       text-decoration-line: underline;
     }
 
     &:disabled {
-      color: rgba(0, 0, 0, .25);
+      color: var(--ty-btn-link-disabled-color);
       background-color: transparent;
       border-color: transparent;
       text-decoration-line: none;
@@ -88,19 +95,19 @@ $btn-prefix: #{$prefix}-btn;
   }
 
   &_info {
-    @include button-style($white-color, $info-color, $info-color);
+    @include button-style(#fff, var(--ty-color-info), var(--ty-color-info));
   }
 
   &_success {
-    @include button-style($white-color, $success-color, $success-color);
+    @include button-style(#fff, var(--ty-color-success), var(--ty-color-success));
   }
 
   &_warning {
-    @include button-style($white-color, $warning-color, $warning-color);
+    @include button-style(#fff, var(--ty-color-warning), var(--ty-color-warning));
   }
 
   &_danger {
-    @include button-style($white-color, $danger-color, $danger-color);
+    @include button-style(#fff, var(--ty-color-danger), var(--ty-color-danger));
   }
 
   // Sizes
@@ -141,7 +148,7 @@ $btn-prefix: #{$prefix}-btn;
       left: -1px;
       z-index: 1;
       display: block;
-      background: #fff;
+      background: var(--ty-btn-loading-bg);
       border-radius: inherit;
       opacity: $btn-loading-opacity;
       transition: opacity .2s;

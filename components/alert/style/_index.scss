@@ -49,18 +49,18 @@
   }
 
   &_error {
-    @include alert-mixin($danger-color, $danger-light-color, $danger-lighter-color);
+    @include alert-mixin(var(--ty-color-danger-text), var(--ty-color-danger-border), var(--ty-color-danger-bg));
   }
 
   &_warning {
-    @include alert-mixin($warning-color, $warning-light-color, $warning-lighter-color);
+    @include alert-mixin(var(--ty-color-warning-text), var(--ty-color-warning-border), var(--ty-color-warning-bg));
   }
 
   &_success {
-    @include alert-mixin($success-color, $success-light-color, $success-lighter-color);
+    @include alert-mixin(var(--ty-color-success-text), var(--ty-color-success-border), var(--ty-color-success-bg));
   }
 
   &_info {
-    @include alert-mixin($info-color, $info-light-color, $info-lighter-color);
+    @include alert-mixin(var(--ty-color-info-text), var(--ty-color-info-border), var(--ty-color-info-bg));
   }
 }

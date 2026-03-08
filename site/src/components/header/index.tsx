@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import pkg from '../../../../package.json';
 import { Icon, Link } from '../../../../components';
 import { useSidebarToggle } from '../../context/sidebar-toggle-context';
+import { ThemeToggle } from './theme-toggle';
 
 const { version, repository } = pkg;
 
@@ -58,8 +59,11 @@ export const Header = (): React.ReactElement => {
           </li>
           <li className="header__nav-item">
             <Link href={repository.url} underline={false} rel="noreferrer noopener">
-              <Icon name="github" color="#222" size={19} />
+              <Icon name="github" color="currentColor" size={19} />
             </Link>
+          </li>
+          <li className="header__nav-item">
+            <ThemeToggle />
           </li>
         </ul>
       </nav>

@@ -17,12 +17,12 @@
   &_light {
     .#{$prefix}-popover {
       &__title {
-        color: rgba(0, 0, 0, 0.85);
-        border-bottom: 1px solid #e8e8e8;
+        color: var(--ty-color-text);
+        border-bottom: 1px solid var(--ty-color-border-secondary);
       }
 
       &__content {
-        color: rgba(0, 0, 0, 0.65);
+        color: var(--ty-color-text-secondary);
       }
     }
   }
@@ -31,7 +31,7 @@
     .#{$prefix}-popover {
       &__title {
         color: #fff;
-        border-bottom: 1px solid #4a4a4a;
+        border-bottom: 1px solid var(--ty-popover-dark-border);
       }
 
       &__content {
@@ -40,4 +40,3 @@
     }
   }
 }
-

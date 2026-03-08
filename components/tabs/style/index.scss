@@ -5,7 +5,7 @@ $tab-prefix: #{$prefix}-tabs;
 .#{$tab-prefix} {
   position: relative;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--ty-color-text);
 
   // ---- Nav ----
   &__nav {
@@ -20,7 +20,7 @@ $tab-prefix: #{$prefix}-tabs;
       bottom: 0;
       left: 0;
       right: 0;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid var(--ty-tabs-border);
     }
   }
 
@@ -49,20 +49,20 @@ $tab-prefix: #{$prefix}-tabs;
     transition: color 0.3s;
 
     &:hover {
-      color: lighten($primary-color, 10%);
+      color: var(--ty-color-primary-text-hover);
     }
 
     &_active {
-      color: $primary-color;
+      color: var(--ty-color-primary);
       font-weight: 500;
     }
 
     &_disabled {
-      color: rgba(0, 0, 0, 0.25);
+      color: var(--ty-color-text-quaternary);
       cursor: not-allowed;
 
       &:hover {
-        color: rgba(0, 0, 0, 0.25);
+        color: var(--ty-color-text-quaternary);
       }
     }
 
@@ -73,12 +73,12 @@ $tab-prefix: #{$prefix}-tabs;
     &-remove {
       margin-left: 8px;
       font-size: 12px;
-      color: rgba(0, 0, 0, 0.45);
+      color: var(--ty-color-text-tertiary);
       cursor: pointer;
       transition: color 0.3s;
 
       &:hover {
-        color: rgba(0, 0, 0, 0.85);
+        color: var(--ty-color-text);
       }
     }
   }
@@ -88,7 +88,7 @@ $tab-prefix: #{$prefix}-tabs;
     position: absolute;
     bottom: 0;
     height: 2px;
-    background: $primary-color;
+    background: var(--ty-color-primary);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
       width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     pointer-events: none;
@@ -136,17 +136,17 @@ $tab-prefix: #{$prefix}-tabs;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    color: rgba(0, 0, 0, 0.45);
+    color: var(--ty-color-text-tertiary);
     transition: color 0.3s;
     flex-shrink: 0;
 
     &:hover {
-      color: rgba(0, 0, 0, 0.85);
+      color: var(--ty-color-text);
     }
   }
 
   &__nav-btn_disabled {
-    color: rgba(0, 0, 0, 0.25);
+    color: var(--ty-color-text-quaternary);
     cursor: not-allowed;
   }
 
@@ -157,18 +157,18 @@ $tab-prefix: #{$prefix}-tabs;
     width: 40px;
     height: 40px;
     background: transparent;
-    border: 1px dashed #d9d9d9;
+    border: 1px dashed var(--ty-color-border);
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.45);
+    color: var(--ty-color-text-tertiary);
     margin-left: 4px;
     flex-shrink: 0;
     transition: all 0.3s;
 
     &:hover {
-      color: $primary-color;
-      border-color: $primary-color;
+      color: var(--ty-color-primary);
+      border-color: var(--ty-color-primary);
     }
   }
 
@@ -205,8 +205,8 @@ $tab-prefix: #{$prefix}-tabs;
     .#{$tab-prefix}__tab {
       padding: 8px 16px;
       margin: 0;
-      background: #fafafa;
-      border: 1px solid #f0f0f0;
+      background: var(--ty-tabs-card-bg);
+      border: 1px solid var(--ty-tabs-border);
       border-bottom: none;
       border-radius: 4px 4px 0 0;
       transition: all 0.3s;
@@ -216,8 +216,8 @@ $tab-prefix: #{$prefix}-tabs;
       }
 
       &_active {
-        background: #fff;
-        border-bottom-color: #fff;
+        background: var(--ty-tabs-card-active-bg);
+        border-bottom-color: var(--ty-tabs-card-active-bg);
       }
     }
 
@@ -293,7 +293,7 @@ $tab-prefix: #{$prefix}-tabs;
   &_left {
     .#{$tab-prefix}__nav {
       margin-right: 24px;
-      border-right: 1px solid #f0f0f0;
+      border-right: 1px solid var(--ty-tabs-border);
     }
 
     .#{$tab-prefix}__ink-bar {
@@ -305,7 +305,7 @@ $tab-prefix: #{$prefix}-tabs;
     .#{$tab-prefix}__nav {
       order: 1;
       margin-left: 24px;
-      border-left: 1px solid #f0f0f0;
+      border-left: 1px solid var(--ty-tabs-border);
     }
 
     .#{$tab-prefix}__ink-bar {

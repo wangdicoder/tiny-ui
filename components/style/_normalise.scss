@@ -114,12 +114,12 @@ hr {
 
 a {
   background-color: transparent;
-  color: $link-color;
+  color: var(--ty-color-primary);
   text-decoration: $link-decoration;
   cursor: pointer;
 
   &:hover {
-    color: $link-hover-color;
+    color: var(--ty-color-primary-hover);
     text-decoration: $link-hover-decoration;
   }
 }

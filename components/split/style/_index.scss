@@ -27,8 +27,8 @@
 .#{$prefix}-split-bar {
   position: relative;
   box-sizing: border-box;
-  background-color: #f8f8f9;
-  border: 1px solid #dcdee2;
+  background-color: var(--ty-split-bar-bg);
+  border: 1px solid var(--ty-split-bar-border);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,7 @@
     content: '';
     box-sizing: border-box;
     display: block;
-    border: 1px solid #d5d5d5;
+    border: 1px solid var(--ty-split-bar-line);
   }
 
   &_vertical {

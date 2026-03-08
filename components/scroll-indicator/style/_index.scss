@@ -4,7 +4,7 @@
   box-sizing: border-box;
   height: 3px;
   transform: translateZ(0);
-  background: $primary-color;
+  background: var(--ty-color-primary);
 
   &_fixed {
     position: fixed;

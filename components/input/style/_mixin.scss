@@ -5,33 +5,34 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-  color: $input-font-color;
-  border: 1px solid #d9d9d9;
+  color: var(--ty-color-text);
+  border: 1px solid var(--ty-input-border);
   transition: all 0.3s;
   outline: 0;
   border-radius: $input-border-radius;
   font-size: $font-size-base;
+  background-color: var(--ty-input-bg);
 
   &:hover {
-    border-color: $primary-color;
+    border-color: var(--ty-color-primary);
   }
 
   &:focus {
-    border-color: rgba($primary-color, 0.8);
-    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    border-color: var(--ty-input-focus-border);
+    box-shadow: var(--ty-input-focus-shadow);
   }
 
   &::placeholder {
-    color: #bfbfbf;
+    color: var(--ty-color-text-placeholder);
   }
 }
 
 @mixin input-default-disabled {
   cursor: not-allowed;
-  background-color: #f4f4f5;
-  color: #999;
+  background-color: var(--ty-input-disabled-bg);
+  color: var(--ty-input-disabled-color);
 
   &:hover {
-    border-color: #d9d9d9;
+    border-color: var(--ty-input-border);
   }
 }

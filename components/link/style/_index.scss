@@ -1,7 +1,7 @@
 @import "../../style/variables";
 
 .#{$prefix}-link {
-  color: $primary-color;
+  color: var(--ty-color-primary);
   text-decoration-line: none;
 
   &_disabled {

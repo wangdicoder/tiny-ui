@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import './code-block.scss';
 import { Highlight, themes, type Language } from 'prism-react-renderer';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import { CodeTheme } from './code-theme';
+import { LightCodeTheme, DarkCodeTheme } from './code-theme';
 import * as Components from '../../../../components';
 import CollapseTransition from '../../../../components/collapse-transition';
+import { useTheme } from '../../../../components';
 
 type Props = {
   children: string;
@@ -15,6 +16,9 @@ type Props = {
 export const CodeBlock = ({ children, className, live }: Props): React.ReactElement => {
   const [showCode, setShowCode] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+  const { resolvedTheme } = useTheme();
+  const codeTheme = (resolvedTheme === 'dark' ? DarkCodeTheme : LightCodeTheme) as typeof themes.github;
+
   let language: Language = 'markup';
   if (className != null) {
     language = className.replace(/language-/, '') as Language;
@@ -23,7 +27,7 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
   if (live) {
     return (
       <div className="code-block__container" ref={ref}>
-        <LiveProvider code={children.trim()} theme={CodeTheme as typeof themes.github} scope={Components}>
+        <LiveProvider code={children.trim()} theme={codeTheme} scope={Components}>
           <LivePreview className="code-block__previewer" />
           <LiveError />
           <CollapseTransition isShow={showCode}>
@@ -48,7 +52,7 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
     <Highlight
       code={children.trim()}
       language={language}
-      theme={CodeTheme as typeof themes.github}>
+      theme={codeTheme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style, padding: '10px 12px' }}>
           <code>

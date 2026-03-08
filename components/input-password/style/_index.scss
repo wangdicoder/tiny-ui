@@ -6,11 +6,11 @@
   }
 
   &__icon {
-    color: rgba(0, 0, 0, .45);
+    color: var(--ty-color-text-tertiary);
     transition: color 250ms;
 
     &:hover{
-      color: rgba(0, 0, 0, .65);
+      color: var(--ty-color-text-secondary);
     }
   }
 }

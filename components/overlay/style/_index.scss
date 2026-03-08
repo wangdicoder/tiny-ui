@@ -12,7 +12,7 @@
   opacity: 0;
 
   &_default {
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: var(--ty-color-overlay-bg);
   }
 
   &_blurred {
@@ -20,7 +20,7 @@
   }
 
   &_inverted {
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: var(--ty-color-overlay-inverted);
   }
 
   &_none {

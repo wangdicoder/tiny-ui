@@ -31,8 +31,8 @@
       position: relative;
 
       &_active {
-        color: $primary-color;
-        border-bottom-color: $primary-color;
+        color: var(--ty-color-primary);
+        border-bottom-color: var(--ty-color-primary);
       }
     }
   }
@@ -57,28 +57,28 @@
   }
 
   &_inline li.#{$prefix}-menu-item_active {
-    @include menu-item-active($primary-color, true);
+    @include menu-item-active(var(--ty-color-primary), true);
   }
 
   &_vertical li.#{$prefix}-menu-item_active {
-    @include menu-item-active($primary-color);
+    @include menu-item-active(var(--ty-color-primary));
   }
 
   &_light {
-    color: $font-color;
-    background: #fff;
+    color: var(--ty-menu-light-color);
+    background: var(--ty-menu-light-bg);
 
     &:before {
-      border-color: #f0f0f0;
+      border-color: var(--ty-menu-light-border);
     }
   }
 
   &_dark {
-    color: rgba(255, 255, 255, .65);
-    background: #001529;
+    color: var(--ty-menu-dark-color);
+    background: var(--ty-menu-dark-bg);
 
     &:before {
-      border-color: #001529;
+      border-color: var(--ty-menu-dark-border);
     }
   }
 }
@@ -90,7 +90,7 @@
   transition: background-color 300ms, color 250ms;
 
   &:hover {
-    color: $primary-color;
+    color: var(--ty-color-primary);
   }
 
   &_disabled {
@@ -121,7 +121,7 @@
       min-width: 160px;
 
       li.#{$prefix}-menu-item_active {
-        @include menu-item-active($primary-color);
+        @include menu-item-active(var(--ty-color-primary));
       }
     }
   }
@@ -132,7 +132,7 @@
     align-items: center;
 
     &.#{$prefix}-menu-item_active {
-      color: $primary-color;
+      color: var(--ty-color-primary);
     }
   }
 
@@ -156,7 +156,7 @@
 
   &__title {
     padding: 10px 16px;
-    color: rgba(0, 0, 0, .45);
+    color: var(--ty-menu-group-title-color);
     font-size: 14px;
     cursor: default;
 
@@ -178,6 +178,6 @@
 
 .#{$prefix}-menu-divider {
   height: 1px;
-  background-color: rgba(0, 0, 0, .1);
+  background-color: var(--ty-menu-divider-color);
   margin: 5px 0;
 }

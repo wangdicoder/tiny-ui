@@ -2,7 +2,7 @@
 
 .#{$prefix}-timeline {
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--ty-color-text-secondary);
   font-size: $font-size-base;
   line-height: 1.5;
   margin: 0;
@@ -28,9 +28,9 @@
 
   &__head {
     width: 16px;
-    background-color: #fff;
+    background-color: var(--ty-timeline-head-bg);
     position: absolute;
-    color: $primary-color;
+    color: var(--ty-color-primary);
     height: 100%;
 
     &:before {
@@ -40,7 +40,7 @@
       left: 50%;
       transform: translateX(-50%);
       height: 100%;
-      border-left: 2px solid #e8e8e8;
+      border-left: 2px solid var(--ty-timeline-line-color);
     }
   }
 
@@ -48,14 +48,14 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
+    background-color: var(--ty-timeline-dot-bg);
   }
 
   &__dot {
     display: inline-block;
     width: 10px;
     height: 10px;
-    border: 2px solid $primary-color;
+    border: 2px solid var(--ty-color-primary);
     border-radius: 100px;
   }
 

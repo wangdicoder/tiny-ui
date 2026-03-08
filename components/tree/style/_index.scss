@@ -19,7 +19,7 @@
   }
 
   &__arrow {
-    color: #999;
+    color: var(--ty-tree-arrow-color);
     transform: rotate(-90deg);
     transition: transform 250ms;
 
@@ -46,7 +46,7 @@
     transition: background-color 250ms;
 
     &:hover {
-      background-color: #f5f5f5;
+      background-color: var(--ty-tree-hover-bg);
     }
   }
 
@@ -59,7 +59,7 @@
       display: flex;
 
       &:hover {
-        background-color: #f5f5f5;
+        background-color: var(--ty-tree-hover-bg);
       }
     }
   }

@@ -4,7 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--ty-color-text-secondary);
   font-size: 14px;
   list-style: none;
 
@@ -22,7 +22,7 @@
 
   &_disabled {
     .#{$prefix}-pagination__item_active {
-      background: #dbdbdb !important;
+      background: var(--ty-pagination-disabled-active-bg) !important;
       border-color: transparent !important;
       color: #fff !important;
     }
@@ -36,7 +36,7 @@
     text-align: center;
     vertical-align: middle;
     list-style: none;
-    background-color: #fff;
+    background-color: var(--ty-pagination-bg);
     border-radius: 2px;
     outline: 0;
     cursor: pointer;
@@ -48,10 +48,10 @@
     }
 
     &_ellipsis {
-      color: rgba(0, 0, 0, 0.25);
+      color: var(--ty-color-text-quaternary);
 
       &:hover {
-        color: $primary-color;
+        color: var(--ty-color-primary);
       }
     }
   }
@@ -71,24 +71,24 @@
       margin-left: 4px;
       margin-right: 4px;
       line-height: 30px;
-      border: 1px solid #d9d9d9;
+      border: 1px solid var(--ty-color-border);
 
       &_active {
-        color: $primary-color;
-        border-color: $primary-color;
+        color: var(--ty-color-primary);
+        border-color: var(--ty-color-primary);
       }
 
       &:hover {
-        border-color: $primary-color;
+        border-color: var(--ty-color-primary);
       }
 
       &_disabled {
-        color: rgba(0, 0, 0, 0.45);
-        background: #f5f5f5;
-        border-color: #d9d9d9;
+        color: var(--ty-color-text-tertiary);
+        background: var(--ty-pagination-disabled-bg);
+        border-color: var(--ty-color-border);
 
         &:hover {
-          border-color: #d9d9d9;
+          border-color: var(--ty-color-border);
         }
       }
 
@@ -108,20 +108,20 @@
       border-color: transparent;
 
       &_active {
-        color: $primary-color;
-        border: 1px solid $primary-color;
+        color: var(--ty-color-primary);
+        border: 1px solid var(--ty-color-primary);
       }
 
       &:hover {
-        color: $primary-color;
+        color: var(--ty-color-primary);
       }
 
       &_disabled {
-        color: #d9d9d9;
-        border-color: #d9d9d9;
+        color: var(--ty-pagination-disabled-color);
+        border-color: var(--ty-pagination-disabled-color);
 
         &:hover {
-          color: #d9d9d9;
+          color: var(--ty-pagination-disabled-color);
         }
       }
     }
