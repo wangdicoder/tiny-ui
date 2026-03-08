@@ -454,11 +454,12 @@ const Select = (props: SelectProps): React.ReactElement => {
               className={`${prefixCls}__search`}
               value={searchValue}
               onChange={handleSearchChange}
+              placeholder={arr.length === 0 ? placeholder : undefined}
               autoComplete="off"
               disabled={disabled}
             />
           )}
-          {arr.length === 0 && !searchValue && (
+          {arr.length === 0 && !searchValue && !showSearch && (
             <span className={`${prefixCls}__placeholder`}>{placeholder}</span>
           )}
         </>
