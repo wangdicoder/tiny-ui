@@ -5,7 +5,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { TooltipProps } from './types';
 
-const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>((props) => {
+const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
   const {
     trigger = 'hover',
     prefixCls: customisedCls,

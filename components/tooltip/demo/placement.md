@@ -9,7 +9,8 @@ There are 12 placement options available.
 ```jsx live
 () => {
   const btnStyle = {
-    width: 80,
+    width: 120,
+    height: 40
   };
 
   return (

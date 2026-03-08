@@ -5,7 +5,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { PopoverProps } from './types';
 
-const Popover = React.forwardRef<HTMLDivElement, PopoverProps>((props) => {
+const Popover = React.forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
   const {
     theme = 'light',
     role = 'tooltip',
