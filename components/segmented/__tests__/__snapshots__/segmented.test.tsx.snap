@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Segmented /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-segmented ty-segmented_md"
+    role="radiogroup"
+  >
+    <label
+      class="ty-segmented__item ty-segmented__item_active"
+    >
+      <input
+        checked=""
+        class="ty-segmented__input"
+        type="radio"
+        value="Daily"
+      />
+      <span
+        class="ty-segmented__label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      class="ty-segmented__item"
+    >
+      <input
+        class="ty-segmented__input"
+        type="radio"
+        value="Weekly"
+      />
+      <span
+        class="ty-segmented__label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      class="ty-segmented__item"
+    >
+      <input
+        class="ty-segmented__input"
+        type="radio"
+        value="Monthly"
+      />
+      <span
+        class="ty-segmented__label"
+      >
+        Monthly
+      </span>
+    </label>
+  </div>
+</DocumentFragment>
+`;

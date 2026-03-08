@@ -1,0 +1,88 @@
+@import '../../style/variables';
+
+.#{$prefix}-segmented {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  background: var(--ty-segmented-bg, #{$gray-200});
+  border-radius: $border-radius;
+  box-sizing: border-box;
+
+  &_block {
+    display: flex;
+    width: 100%;
+
+    .#{$prefix}-segmented__item {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
+  &_disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &_sm .#{$prefix}-segmented__item {
+    padding: 0 8px;
+    height: calc(#{$height-sm} - 4px);
+    font-size: $font-size-sm;
+  }
+
+  &_md .#{$prefix}-segmented__item {
+    padding: 0 12px;
+    height: calc(#{$height-md} - 4px);
+    font-size: $font-size-base;
+  }
+
+  &_lg .#{$prefix}-segmented__item {
+    padding: 0 16px;
+    height: calc(#{$height-lg} - 4px);
+    font-size: $font-size-lg;
+  }
+
+  &__item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    border-radius: $border-radius;
+    transition: all 0.2s;
+    user-select: none;
+    white-space: nowrap;
+
+    &:hover:not(&_active):not(&_disabled) {
+      color: var(--ty-color-text, #{$gray-900});
+    }
+
+    &_active {
+      background: var(--ty-segmented-active-bg, #fff);
+      color: var(--ty-color-text, #{$gray-900});
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      font-weight: 500;
+    }
+
+    &_disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__label {
+    display: inline-block;
+  }
+}
