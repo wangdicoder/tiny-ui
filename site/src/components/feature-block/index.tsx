@@ -6,10 +6,11 @@ type Props = {
   icon: string;
   title: string;
   desc: string;
+  style?: React.CSSProperties;
 };
 
-export const FeatureBlock = ({ icon, title, desc }: Props): React.ReactElement => (
-  <div className="feature-block">
+export const FeatureBlock = ({ icon, title, desc, style }: Props): React.ReactElement => (
+  <div className="feature-block" style={style}>
     <div className="feature-block__icon-container">
       <Icon name={icon} className="feature-block__icon" size={24} />
     </div>

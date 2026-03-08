@@ -2,9 +2,9 @@
 
 Tiny UI uses BEM-styled SCSS which allows you to customize some basic design aspects in order to meet the needs of UI diversity from business and brand, including primary color, border radius, border color, etc.
 
-## Less variables
-We are using [SASS](https://sass-lang.com/) as the development language for styling. A set of less variables are defined for each design aspect that can be customized to your needs.
-There are some major variables below, all less variables could be found in [Default Variables](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/_variables.scss).
+## SCSS variables
+We are using [SASS](https://sass-lang.com/) as the development language for styling. A set of SCSS variables are defined for each design aspect that can be customized to your needs.
+There are some major variables below, all SCSS variables could be found in [Default Variables](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/_variables.scss).
 
 ```css
 // Color
@@ -28,14 +28,14 @@ $border-color: $gray-300                      !default;
 Please report an issue if the existing list of variables is not enough for you.
 
 **What's !default?**
-> Every Sass variable in Tiny UI includes the **!default** flag allowing you to override the variable’s default value in your own Sass without modifying the source code. Copy and paste variables as needed, modify their values, and remove the **!default** flag.
+> Every Sass variable in Tiny UI includes the **!default** flag allowing you to override the variable's default value in your own Sass without modifying the source code. Copy and paste variables as needed, modify their values, and remove the **!default** flag.
 
 ## How to do it - Update SCSS variables in your project
 
 ### 1. Install Sass
 
 ```bash
-$ npm install node-sass --save-dev
+$ npm install sass --save-dev
 ```
 
 ### 2. Override the variables
@@ -62,14 +62,14 @@ In the entry file of your project, import this style file.
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 /** insert here */
 import './theme-variables.scss';
 import './index.scss';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+createRoot(document.getElementById('root')).render(<App />);
 ```
 
 Note: This way will load the styles of all components, regardless of your demand, which cause style option of `babel-plugin-import` not working.

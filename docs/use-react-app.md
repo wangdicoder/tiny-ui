@@ -27,19 +27,17 @@ $ npm install tiny-ui --save
 Modify `src/App.js`, import Button component from `tiny-ui`.
 
 ```jsx
-import React, { Component } from 'react';
-import Button from 'tiny-ui/lib/button';
+import React from 'react';
+import { Button } from 'tiny-ui';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Button btnType="primary">Button</Button>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="App">
+      <Button btnType="primary">Button</Button>
+    </div>
+  );
+};
 
 export default App;
 ```
@@ -125,20 +123,18 @@ Remove the `@import '~tiny-ui/dist/index.css';` statement added before because `
 ```diff
 // src/App.js
 
-  import React, { Component } from 'react';
+  import React from 'react';
 - import Button from 'tiny-ui/lib/button';
 + import { Button } from 'tiny-ui';
   import './App.css';
 
-  class App extends Component {
-    render() {
-      return (
-        <div className="App">
-          <Button btnType="primary">Button</Button>
-        </div>
-      );
-    }
-  }
+  const App = () => {
+    return (
+      <div className="App">
+        <Button btnType="primary">Button</Button>
+      </div>
+    );
+  };
 
   export default App;
 ```

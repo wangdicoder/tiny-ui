@@ -1,5 +1,16 @@
 @import '../../variables';
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .home {
   padding-top: $header-height;
   background-size: 250px;
@@ -12,6 +23,7 @@
     justify-content: center;
     height: 100%;
     padding: 90px 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba($main-color, 0.08) 0%, transparent 70%);
   }
 
   &__logo-container {
@@ -77,14 +89,74 @@
     flex-wrap: wrap;
   }
 
-  &__blueprint {
-    width: 70%;
-    display: block;
+  // Stats ribbon
+  &__stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 50px 40px;
+    background: rgba($main-color, 0.04);
+    border-top: 1px solid rgb(226, 232, 240);
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInUp 0.5s ease both;
+  }
+
+  &__stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: $main-color;
+  }
+
+  &__stat-label {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  // Categories grid
+  &__categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    padding: 0 60px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
-  &__p {
-    text-align: center;
+  &__category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    border-radius: 12px;
+    border: 1px solid rgb(226, 232, 240);
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    animation: fadeInUp 0.5s ease both;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba($main-color, 0.12);
+      border-color: $main-color;
+    }
+  }
+
+  &__category-name {
+    margin: 14px 0 4px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__category-count {
+    font-size: 13px;
     color: #888;
   }
 
@@ -94,12 +166,17 @@
       height: 500px;
     }
 
-    &__blueprint {
-      width: 90%;
-    }
-
     &__features {
       padding: 0 20px;
+    }
+
+    &__stats {
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    &__categories {
+      padding: 0 30px;
     }
   }
 
@@ -124,6 +201,25 @@
     &__section {
       padding: 40px 0;
     }
+
+    &__stats {
+      flex-wrap: wrap;
+      gap: 24px 40px;
+    }
+
+    &__stat-value {
+      font-size: 28px;
+    }
+
+    &__categories {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+      padding: 0 20px;
+    }
+
+    &__category {
+      padding: 24px 12px;
+    }
   }
 
   @media (max-width: $size-xs) {
@@ -139,6 +235,10 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
+    }
+
+    &__stats {
+      gap: 20px 30px;
     }
   }
 

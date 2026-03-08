@@ -34,6 +34,23 @@ const FEATURES = [
   },
 ];
 
+const STATS = [
+  { value: '65+', label: 'Components' },
+  { value: '7', label: 'Categories' },
+  { value: '100%', label: 'TypeScript' },
+  { value: 'MIT', label: 'License' },
+];
+
+const CATEGORIES = [
+  { icon: 'star', name: 'Foundation', count: 5, route: 'button' },
+  { icon: 'structure', name: 'Layout', count: 6, route: 'aspect-ratio' },
+  { icon: 'process', name: 'Navigation', count: 5, route: 'breadcrumb' },
+  { icon: 'eye', name: 'Data Display', count: 15, route: 'carousel' },
+  { icon: 'edit-file', name: 'Form Item', count: 17, route: 'date-picker' },
+  { icon: 'feedback', name: 'Feedback', count: 12, route: 'alert' },
+  { icon: 'puzzle', name: 'Miscellany', count: 5, route: 'back-top' },
+];
+
 const HomePage = (): React.ReactElement => {
   const navigate = useNavigate();
 
@@ -71,33 +88,44 @@ const HomePage = (): React.ReactElement => {
       <div className="home__section">
         <h1 className="home__feature-title">Design Principle</h1>
         <div className="home__features">
-          {FEATURES.map(feature => (
+          {FEATURES.map((feature, i) => (
             <FeatureBlock
               key={feature.title}
               icon={feature.icon}
               title={feature.title}
               desc={feature.desc}
+              style={{ animationDelay: `${i * 0.1}s` }}
             />
           ))}
         </div>
       </div>
 
-      <div className="home__section">
-        <h1 className="home__feature-title">Blueprint</h1>
-        <p className="home__p">
-          This project is still under development. However, before release version 1, we will
-          implement these components listing in the diagram below.
-        </p>
-        <p className="home__p">
-          Disclaimer: this project is very much under development. The API is subject to change
-          without notice.
-        </p>
-        <img
-          src={require('../../assets/home/blueprint.png')}
-          alt="blueprint"
-          className="home__blueprint"
-        />
+      <div className="home__stats">
+        {STATS.map((stat, i) => (
+          <div className="home__stat" key={stat.label} style={{ animationDelay: `${i * 0.1}s` }}>
+            <span className="home__stat-value">{stat.value}</span>
+            <span className="home__stat-label">{stat.label}</span>
+          </div>
+        ))}
       </div>
+
+      <div className="home__section">
+        <h1 className="home__feature-title">Component Categories</h1>
+        <div className="home__categories">
+          {CATEGORIES.map((cat, i) => (
+            <div
+              className="home__category"
+              key={cat.name}
+              style={{ animationDelay: `${i * 0.08}s` }}
+              onClick={() => navigate(`/components/${cat.route}`)}>
+              <Icon name={cat.icon} size={32} color="#6E41BF" />
+              <h3 className="home__category-name">{cat.name}</h3>
+              <span className="home__category-count">{cat.count} components</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <Footer />
     </div>
   );

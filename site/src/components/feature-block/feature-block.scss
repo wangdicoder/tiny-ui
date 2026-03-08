@@ -1,8 +1,25 @@
 @import '../../variables';
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .feature-block {
   flex: 1;
   text-align: center;
+  animation: fadeInUp 0.5s ease both;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
 
   &__icon-container {
     background-color: $main-color;

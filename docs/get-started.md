@@ -38,14 +38,14 @@ The following is a simple example of using a default button component.
 
 ```jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Button } from 'tiny-ui';
 
 const App = () => {
   return <Button>Hello World</Button>;
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+createRoot(document.getElementById('root')).render(<App />);
 ```
 
 And import stylesheets manually,
@@ -69,7 +69,7 @@ To avoid the problem of packaging files too large in a production environment, l
     }
     ```
 
-    This allows you to import components from antd without having to manually import the corresponding stylesheet. The antd babel plugin will automatically import stylesheets.
+    This allows you to import components from tiny-ui without having to manually import the corresponding stylesheet. The babel plugin will automatically import stylesheets.
 
     ```jsx
     // import js and css modularly, parsed by babel-plugin-import
@@ -94,8 +94,8 @@ To avoid the problem of packaging files too large in a production environment, l
     <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tiny-ui@{version_number}/dist/styles/index.css" crossorigin>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
     <!-- tiny.js must be added following by react.js -->
     <script src="https://cdn.jsdelivr.net/npm/tiny-ui@{version_number}/dist/tiny.js" crossorigin></script>
@@ -106,9 +106,8 @@ To avoid the problem of packaging files too large in a production environment, l
     <script type="text/babel">
       const { Button } = tiny;
 
-      ReactDOM.render(
-      	<Button btnType="primary">Click me</Button>,
-      	document.getElementById('root')
+      ReactDOM.createRoot(document.getElementById('root')).render(
+      	<Button btnType="primary">Click me</Button>
       );
     </script>
   </body>
