@@ -1,9 +1,10 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { COMPONENT_MENU, RouterItem } from '../../routers';
+import { getComponentMenu, RouterItem } from '../../routers';
 import { SidebarMenu } from '../../components/sidebar-menu';
 import { Layout, Loader, Divider } from '../../../../components';
 import { DocFooter } from '../../components/doc-footer';
+import { useLocaleContext } from '../../context/locale-context';
 import ComponentOverview from './overview';
 
 const { Content } = Layout;
@@ -18,17 +19,20 @@ const flattenRouters = (routers: RouterItem[]): RouterItem[] => {
 };
 
 const ComponentsPage = (): React.ReactElement => {
-  const flattenedRouters = flattenRouters(COMPONENT_MENU);
+  const { siteLocale } = useLocaleContext();
+  const componentMenu = useMemo(() => getComponentMenu(siteLocale), [siteLocale]);
+  const flattenedRouters = useMemo(() => flattenRouters(componentMenu), [componentMenu]);
+
   return (
     <Layout className="doc-container">
-      <SidebarMenu routers={COMPONENT_MENU} url="/components" />
+      <SidebarMenu routers={componentMenu} url="/components" />
       <Layout className="doc-container__layout">
         <Content>
           <Suspense
             fallback={
               <div className="doc-container__fallback">
                 <Loader />
-                <div style={{ marginLeft: 8 }}>Loading...</div>
+                <div style={{ marginLeft: 8 }}>{siteLocale.common.loading}</div>
               </div>
             }>
             <Routes>
@@ -37,7 +41,7 @@ const ComponentsPage = (): React.ReactElement => {
                 const Component = menu.component;
                 return (
                   <Route
-                    key={menu.title}
+                    key={menu.route}
                     path={menu.route}
                     element={<Component />}
                   />

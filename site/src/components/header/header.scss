@@ -90,6 +90,27 @@
     padding: 4px 13px;
   }
 
+  &__locale-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid var(--ty-color-border);
+    border-radius: 14px;
+    background: var(--ty-color-bg-elevated);
+    color: var(--ty-color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 12px;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--ty-color-primary);
+      border-color: var(--ty-color-primary);
+    }
+  }
+
   &__theme-toggle {
     display: inline-flex;
     align-items: center;

@@ -4,12 +4,15 @@ import { NavLink } from 'react-router-dom';
 import pkg from '../../../../package.json';
 import { Icon, Link } from '../../../../components';
 import { useSidebarToggle } from '../../context/sidebar-toggle-context';
+import { useLocaleContext } from '../../context/locale-context';
 import { ThemeToggle } from './theme-toggle';
+import { LocaleToggle } from './locale-toggle';
 
 const { version, repository } = pkg;
 
 export const Header = (): React.ReactElement => {
   const { toggle } = useSidebarToggle();
+  const { siteLocale: s } = useLocaleContext();
 
   return (
     <header className="header">
@@ -35,17 +38,17 @@ export const Header = (): React.ReactElement => {
         <ul className="header__nav-list">
           <li className="header__nav-item">
             <NavLink end to="/" className="header__link">
-              Home
+              {s.nav.home}
             </NavLink>
           </li>
           <li className="header__nav-item">
             <NavLink to="/guide" className="header__link">
-              Guide
+              {s.nav.guide}
             </NavLink>
           </li>
           <li className="header__nav-item">
             <NavLink to="/components" className="header__link">
-              Components
+              {s.nav.components}
             </NavLink>
           </li>
           <li className="header__nav-item">
@@ -61,6 +64,9 @@ export const Header = (): React.ReactElement => {
             <Link href={repository.url} underline={false} rel="noreferrer noopener">
               <Icon name="github" color="currentColor" size={19} />
             </Link>
+          </li>
+          <li className="header__nav-item">
+            <LocaleToggle />
           </li>
           <li className="header__nav-item">
             <ThemeToggle />

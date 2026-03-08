@@ -4,55 +4,38 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from '../../../../components';
 import { FeatureBlock } from '../../components/feature-block';
 import { Footer } from './footer';
+import { useLocaleContext } from '../../context/locale-context';
 import pkg from '../../../../package.json';
 
 const { repository } = pkg;
 
-const FEATURES = [
-  {
-    icon: 'colorlens',
-    title: 'Themeable',
-    desc:
-      'Quickly and easily reference values from your theme throughout your entire application with any components.',
-  },
-  {
-    icon: 'org-unit',
-    title: 'Elegant',
-    desc: 'Thanks for React Hook, the source code is more light weight.',
-  },
-  {
-    icon: 'puzzle',
-    title: 'Composable',
-    desc:
-      'Completely customisable for all components. You can leverage any component to create new things.',
-  },
-  {
-    icon: 'accessible',
-    title: 'Accessible',
-    desc:
-      'Strictly follows WAI-ARIA standards. All components come with proper attributes and keyboard interactions.',
-  },
-];
-
-const STATS = [
-  { value: '65+', label: 'Components' },
-  { value: '7', label: 'Categories' },
-  { value: '100%', label: 'TypeScript' },
-  { value: 'MIT', label: 'License' },
-];
-
-const CATEGORIES = [
-  { icon: 'star', name: 'Foundation', count: 5, route: 'button' },
-  { icon: 'structure', name: 'Layout', count: 6, route: 'aspect-ratio' },
-  { icon: 'process', name: 'Navigation', count: 5, route: 'breadcrumb' },
-  { icon: 'eye', name: 'Data Display', count: 15, route: 'carousel' },
-  { icon: 'edit-file', name: 'Form Item', count: 17, route: 'date-picker' },
-  { icon: 'feedback', name: 'Feedback', count: 12, route: 'alert' },
-  { icon: 'puzzle', name: 'Miscellany', count: 5, route: 'back-top' },
-];
-
 const HomePage = (): React.ReactElement => {
   const navigate = useNavigate();
+  const { siteLocale: s } = useLocaleContext();
+
+  const features = [
+    { icon: 'colorlens', title: s.home.features.themeable, desc: s.home.features.themeableDesc },
+    { icon: 'org-unit', title: s.home.features.elegant, desc: s.home.features.elegantDesc },
+    { icon: 'puzzle', title: s.home.features.composable, desc: s.home.features.composableDesc },
+    { icon: 'accessible', title: s.home.features.accessible, desc: s.home.features.accessibleDesc },
+  ];
+
+  const stats = [
+    { value: '65+', label: s.home.stats.components },
+    { value: '7', label: s.home.stats.categories },
+    { value: '100%', label: s.home.stats.typescript },
+    { value: 'MIT', label: s.home.stats.license },
+  ];
+
+  const categories = [
+    { icon: 'star', name: s.categories.foundation, count: 5, route: 'button' },
+    { icon: 'structure', name: s.categories.layout, count: 6, route: 'aspect-ratio' },
+    { icon: 'process', name: s.categories.navigation, count: 5, route: 'breadcrumb' },
+    { icon: 'eye', name: s.categories.dataDisplay, count: 15, route: 'carousel' },
+    { icon: 'edit-file', name: s.categories.formItem, count: 17, route: 'date-picker' },
+    { icon: 'feedback', name: s.categories.feedback, count: 12, route: 'alert' },
+    { icon: 'puzzle', name: s.categories.miscellany, count: 5, route: 'back-top' },
+  ];
 
   return (
     <div className="home">
@@ -66,31 +49,31 @@ const HomePage = (): React.ReactElement => {
       <div className="home__slider">
         <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
         <h1 className="home__title">Tiny UI</h1>
-        <h2 className="home__subtitle">A Friendly UI Component Set for React</h2>
+        <h2 className="home__subtitle">{s.home.subtitle}</h2>
         <div className="home__btn-group">
           <Button
             className="home__btn"
             btnType="primary"
             size="lg"
             onClick={() => navigate('/guide')}>
-            Get Started
+            {s.home.getStarted}
           </Button>
           <Button
             className="home__btn"
             size="lg"
             icon={<Icon name="github" color="currentColor" />}
             onClick={() => window.open(repository.url)}>
-            GitHub
+            {s.home.github}
           </Button>
         </div>
       </div>
 
       <div className="home__section">
-        <h1 className="home__feature-title">Design Principle</h1>
+        <h1 className="home__feature-title">{s.home.designPrinciple}</h1>
         <div className="home__features">
-          {FEATURES.map((feature, i) => (
+          {features.map((feature, i) => (
             <FeatureBlock
-              key={feature.title}
+              key={i}
               icon={feature.icon}
               title={feature.title}
               desc={feature.desc}
@@ -101,8 +84,8 @@ const HomePage = (): React.ReactElement => {
       </div>
 
       <div className="home__stats">
-        {STATS.map((stat, i) => (
-          <div className="home__stat" key={stat.label} style={{ animationDelay: `${i * 0.1}s` }}>
+        {stats.map((stat, i) => (
+          <div className="home__stat" key={i} style={{ animationDelay: `${i * 0.1}s` }}>
             <span className="home__stat-value">{stat.value}</span>
             <span className="home__stat-label">{stat.label}</span>
           </div>
@@ -110,17 +93,17 @@ const HomePage = (): React.ReactElement => {
       </div>
 
       <div className="home__section">
-        <h1 className="home__feature-title">Component Categories</h1>
+        <h1 className="home__feature-title">{s.home.componentCategories}</h1>
         <div className="home__categories">
-          {CATEGORIES.map((cat, i) => (
+          {categories.map((cat, i) => (
             <div
               className="home__category"
-              key={cat.name}
+              key={i}
               style={{ animationDelay: `${i * 0.08}s` }}
               onClick={() => navigate(`/components/${cat.route}`)}>
               <Icon name={cat.icon} size={32} color="#6E41BF" />
               <h3 className="home__category-name">{cat.name}</h3>
-              <span className="home__category-count">{cat.count} components</span>
+              <span className="home__category-count">{s.home.nComponents(cat.count)}</span>
             </div>
           ))}
         </div>

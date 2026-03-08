@@ -6,6 +6,7 @@ import { LightCodeTheme, DarkCodeTheme } from './code-theme';
 import * as Components from '../../../../components';
 import CollapseTransition from '../../../../components/collapse-transition';
 import { useTheme } from '../../../../components';
+import { useLocaleContext } from '../../context/locale-context';
 
 type Props = {
   children: string;
@@ -17,6 +18,7 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
   const [showCode, setShowCode] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
   const { resolvedTheme } = useTheme();
+  const { siteLocale: s } = useLocaleContext();
   const codeTheme = (resolvedTheme === 'dark' ? DarkCodeTheme : LightCodeTheme) as typeof themes.github;
 
   let language: Language = 'markup';
@@ -42,7 +44,7 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
             </div>
           </CollapseTransition>
           <div className="code-block__controller" onClick={() => setShowCode(!showCode)}>
-            {showCode ? 'Hide Code' : 'Show Code'}
+            {showCode ? s.codeBlock.hideCode : s.codeBlock.showCode}
           </div>
         </LiveProvider>
       </div>

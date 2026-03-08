@@ -1,0 +1,83 @@
+import { SiteLocale } from './types';
+
+const zh_CN: SiteLocale = {
+  locale: 'zh_CN',
+  nav: {
+    home: '首页',
+    guide: '指南',
+    components: '组件',
+  },
+  home: {
+    subtitle: '一套友好的 React UI 组件库',
+    getStarted: '快速开始',
+    github: 'GitHub',
+    designPrinciple: '设计理念',
+    componentCategories: '组件分类',
+    nComponents: (count) => `${count} 个组件`,
+    features: {
+      themeable: '可定制主题',
+      themeableDesc: '轻松引用主题中的值，快速在整个应用中使用任何组件。',
+      elegant: '优雅轻量',
+      elegantDesc: '得益于 React Hook，源码更加轻量简洁。',
+      composable: '灵活组合',
+      composableDesc: '所有组件均可完全自定义，你可以利用任何组件创造新事物。',
+      accessible: '无障碍',
+      accessibleDesc: '严格遵循 WAI-ARIA 标准，所有组件都具备正确的属性和键盘交互。',
+    },
+    stats: {
+      components: '组件',
+      categories: '分类',
+      typescript: 'TypeScript',
+      license: '开源协议',
+    },
+  },
+  overview: {
+    title: '组件总览',
+    desc: (count) => `以下是所有组件的总览。目前 Tiny-UI 提供了 ${count} 个组件。`,
+  },
+  categories: {
+    foundation: '基础',
+    layout: '布局',
+    navigation: '导航',
+    dataDisplay: '数据展示',
+    formItem: '表单',
+    feedback: '反馈',
+    miscellany: '其他',
+  },
+  guideMenu: {
+    introduction: '介绍',
+    getStarted: '快速开始',
+    useInCRA: '在 create-react-app 中使用',
+    customiseTheme: '自定义主题',
+    colors: '色彩',
+    changelog: '更新日志',
+    faq: '常见问题',
+  },
+  color: {
+    title: '色彩',
+    intro: 'Tiny UI 使用一套特定的调色板来指定颜色，为你构建的产品提供一致的外观和体验。',
+    primaryTitle: '主色',
+    primaryDesc: '主色调由中性色、白色和紫色组成，这些颜色贯穿从营销到产品的大多数触点。',
+    neutralsTitle: '浅色中性色',
+    neutralsDesc:
+      '浅色中性色有助于在以白色为主的布局中区分内容，同时不失温暖和整洁感，因此常用作网页组件的背景色。',
+    nameLabel: '名称',
+    hexLabel: 'HEX',
+    defaultColor: '默认',
+    primary: '主要',
+    secondary: '次要',
+    info: '信息',
+    success: '成功',
+    danger: '危险',
+    warning: '警告',
+  },
+  codeBlock: {
+    showCode: '显示代码',
+    hideCode: '隐藏代码',
+  },
+  common: {
+    loading: '加载中...',
+  },
+};
+
+export default zh_CN;

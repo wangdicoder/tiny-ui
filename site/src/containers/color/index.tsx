@@ -1,21 +1,24 @@
 import React from 'react';
 import './color-page.scss';
+import { useLocaleContext } from '../../context/locale-context';
 
 type ColorCardProps = {
   name: string;
   hex: string;
+  nameLabel: string;
+  hexLabel: string;
 };
 
-const ColorCard = ({ name, hex }: ColorCardProps): React.ReactElement => (
+const ColorCard = ({ name, hex, nameLabel, hexLabel }: ColorCardProps): React.ReactElement => (
   <div className="color-card">
     <div className="color-card__header" style={{ backgroundColor: hex }} />
     <div className="color-card__footer">
       <div>
-        <p className="color-card__title">NAME</p>
+        <p className="color-card__title">{nameLabel}</p>
         <p className="color-card__subtitle">{name}</p>
       </div>
       <div>
-        <p className="color-card__title">HEX</p>
+        <p className="color-card__title">{hexLabel}</p>
         <p className="color-card__subtitle">{hex}</p>
       </div>
     </div>
@@ -23,74 +26,39 @@ const ColorCard = ({ name, hex }: ColorCardProps): React.ReactElement => (
 );
 
 const NEUTRALS = [
-  {
-    name: 'Gray 100',
-    hex: '#f6f9fc',
-  },
-  {
-    name: 'Gray 200',
-    hex: '#e9ecef',
-  },
-  {
-    name: 'Gray 300',
-    hex: '#dee2e6',
-  },
-  {
-    name: 'Gray 400',
-    hex: '#ced4da',
-  },
-  {
-    name: 'Gray 500',
-    hex: '#adb5bd',
-  },
-  {
-    name: 'Gray 600',
-    hex: '#8898aa',
-  },
-  {
-    name: 'Gray 700',
-    hex: '#525f7f',
-  },
-  {
-    name: 'Gray 800',
-    hex: '#32325d',
-  },
-  {
-    name: 'Gray 900',
-    hex: '#212529',
-  },
+  { name: 'Gray 100', hex: '#f6f9fc' },
+  { name: 'Gray 200', hex: '#e9ecef' },
+  { name: 'Gray 300', hex: '#dee2e6' },
+  { name: 'Gray 400', hex: '#ced4da' },
+  { name: 'Gray 500', hex: '#adb5bd' },
+  { name: 'Gray 600', hex: '#8898aa' },
+  { name: 'Gray 700', hex: '#525f7f' },
+  { name: 'Gray 800', hex: '#32325d' },
+  { name: 'Gray 900', hex: '#212529' },
 ];
 
 const ColorPage = (): React.ReactElement => {
+  const { siteLocale: s } = useLocaleContext();
+
   return (
     <div className="color-page">
-      <h1 className="markdown__heading-1">Color</h1>
-      <p className="markdown__p">
-        Tiny UI uses a specific set of palettes to specify colors to provide a consistent look and
-        feel for the products you build.
-      </p>
+      <h1 className="markdown__heading-1">{s.color.title}</h1>
+      <p className="markdown__p">{s.color.intro}</p>
 
-      <h2 className="markdown__heading-2">Primary colors</h2>
-      <p className="markdown__p">
-        Primary palette is comprised of neutrals, white, and purple. These colors are present across
-        most touch points from marketing to product.
-      </p>
+      <h2 className="markdown__heading-2">{s.color.primaryTitle}</h2>
+      <p className="markdown__p">{s.color.primaryDesc}</p>
       <div className="color-page__color-panel">
-        <ColorCard name="Default" hex="#172b4d" />
-        <ColorCard name="Primary" hex="#6E41BF" />
-        <ColorCard name="Secondary" hex="#f7fafc" />
-        <ColorCard name="Info" hex="#00bcd4" />
-        <ColorCard name="Success" hex="#4caf50" />
-        <ColorCard name="Danger" hex="#f44336" />
-        <ColorCard name="Warning" hex="#ff9800" />
+        <ColorCard name={s.color.defaultColor} hex="#172b4d" nameLabel={s.color.nameLabel} hexLabel={s.color.hexLabel} />
+        <ColorCard name={s.color.primary} hex="#6E41BF" nameLabel={s.color.nameLabel} hexLabel={s.color.hexLabel} />
+        <ColorCard name={s.color.secondary} hex="#f7fafc" nameLabel={s.color.nameLabel} hexLabel={s.color.hexLabel} />
+        <ColorCard name={s.color.info} hex="#00bcd4" nameLabel={s.color.nameLabel} hexLabel={s.color.hexLabel} />
+        <ColorCard name={s.color.success} hex="#4caf50" nameLabel={s.color.nameLabel} hexLabel={s.color.hexLabel} />
+        <ColorCard name={s.color.danger} hex="#f44336" nameLabel={s.color.nameLabel} hexLabel={s.color.hexLabel} />
+        <ColorCard name={s.color.warning} hex="#ff9800" nameLabel={s.color.nameLabel} hexLabel={s.color.hexLabel} />
       </div>
 
-      <h2 className="markdown__heading-2">Light neutrals</h2>
-      <p className="markdown__p">
-        Light neutrals are helpful for offsetting content in a primarily white layout without losing
-        warmth and cleanliness, and are therefore often used as a background color for web
-        components.
-      </p>
+      <h2 className="markdown__heading-2">{s.color.neutralsTitle}</h2>
+      <p className="markdown__p">{s.color.neutralsDesc}</p>
 
       <div className="code-table-container">
         <table className="color-page__table">
