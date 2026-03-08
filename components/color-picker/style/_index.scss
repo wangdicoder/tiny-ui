@@ -1,0 +1,190 @@
+@import '../../style/variables';
+
+.#{$prefix}-color-picker {
+  display: inline-block;
+  position: relative;
+
+  &_disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__trigger {
+    cursor: pointer;
+    display: inline-flex;
+  }
+
+  &__swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: $border-radius;
+    border: 1px solid var(--ty-color-picker-border, #{$gray-300});
+    padding: 3px;
+    cursor: pointer;
+  }
+
+  &__swatch-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  &__panel {
+    padding: 12px;
+    background: var(--ty-color-picker-bg, #fff);
+    border-radius: 8px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    width: 240px;
+  }
+
+  &__spectrum {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    border-radius: 4px;
+    cursor: crosshair;
+    overflow: hidden;
+  }
+
+  &__spectrum-white {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #fff, transparent);
+  }
+
+  &__spectrum-black {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, #000);
+  }
+
+  &__spectrum-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  &__preview {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--ty-color-picker-border, #{$gray-300});
+    flex-shrink: 0;
+  }
+
+  &__sliders {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__hue {
+    position: relative;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+    cursor: pointer;
+  }
+
+  &__alpha {
+    position: relative;
+    height: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 6px;
+      background: repeating-conic-gradient(#{$gray-300} 0% 25%, transparent 0% 50%) 0 0 / 8px 8px;
+      z-index: -1;
+    }
+  }
+
+  &__slider-handle {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    background: transparent;
+  }
+
+  &__input-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+    align-items: center;
+  }
+
+  &__format-btn {
+    border: 1px solid var(--ty-color-picker-border, #{$gray-300});
+    background: transparent;
+    border-radius: $border-radius;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--ty-color-text, #{$gray-700});
+    white-space: nowrap;
+
+    &:hover {
+      border-color: var(--ty-color-primary, #{$primary-color});
+    }
+  }
+
+  &__hex-input {
+    flex: 1;
+    border: 1px solid var(--ty-color-picker-border, #{$gray-300});
+    border-radius: $border-radius;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-family: $font-family-monospace;
+    color: var(--ty-color-text, #{$gray-800});
+    outline: none;
+    min-width: 0;
+
+    &:focus {
+      border-color: var(--ty-color-primary, #{$primary-color});
+    }
+  }
+
+  &__presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--ty-color-picker-border, #{$gray-200});
+  }
+
+  &__preset {
+    width: 20px;
+    height: 20px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    border: 1px solid var(--ty-color-picker-border, #{$gray-300});
+    transition: transform 0.15s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
