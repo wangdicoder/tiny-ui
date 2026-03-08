@@ -26,6 +26,11 @@
     margin-left: 5px;
     line-height: 1;
     transition: all 300ms;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
 
     &:hover {
       opacity: 0.8;

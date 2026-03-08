@@ -3,6 +3,10 @@
 .#{$prefix}-input-pwd {
   &__suffix {
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
   }
 
   &__icon {

@@ -58,6 +58,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
   }
 
   &_light {

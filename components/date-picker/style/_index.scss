@@ -76,6 +76,8 @@ $dp: #{$prefix}-date-picker;
     color: var(--ty-color-text-quaternary);
     background: var(--ty-picker-clear-bg);
     cursor: pointer;
+    border: none;
+    padding: 0;
 
     &:hover {
       color: var(--ty-color-text-tertiary);
@@ -122,11 +124,6 @@ $dp: #{$prefix}-date-picker;
 
   // ---- Dropdown ----
   &__dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1050;
-    margin-top: 4px;
     background: var(--ty-picker-dropdown-bg);
     border-radius: 8px;
     box-shadow: var(--ty-shadow-popup);

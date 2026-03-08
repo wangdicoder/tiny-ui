@@ -32,6 +32,12 @@
       line-height: 22px;
       cursor: pointer;
       transition: all 300ms;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: inherit;
+      font-family: inherit;
 
       &:hover {
         background-color: var(--ty-collapse-header-hover-bg);
