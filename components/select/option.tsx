@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
+import { Check } from '../_utils/components';
 import { SelectContext } from './select-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -10,32 +11,30 @@ const SelectOption = (props: SelectOptionsProps): React.ReactElement => {
     disabled = false,
     prefixCls: customisedCls,
     value,
+    label,
     className,
     children,
     ...otherProps
   } = props;
   const context = useContext(SelectContext);
-  const isSelect = context.value === value;
+  const isMultiple = context.mode === 'multiple' || context.mode === 'tags';
+  const isSelected = isMultiple
+    ? Array.isArray(context.value) && context.value.includes(value)
+    : context.value === value;
   const [active, setActive] = useState(false);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('select-option', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_selected`]: isSelect,
+    [`${prefixCls}_selected`]: isSelected,
     [`${prefixCls}_active`]: active,
     [`${prefixCls}_disabled`]: disabled,
   });
 
-  const onMouseEnter = (): void => {
-    setActive(true);
-  };
-
-  const onMouseLeave = (): void => {
-    setActive(false);
-  };
-
   const onClick = (): void => {
     !disabled && context.onSelect(value);
   };
+
+  const displayContent = label ?? children;
 
   return (
     <li
@@ -44,11 +43,16 @@ const SelectOption = (props: SelectOptionsProps): React.ReactElement => {
       role="option"
       className={cls}
       onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      aria-selected={isSelect}
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+      aria-selected={isSelected}
       aria-disabled={disabled}>
-      {children}
+      <span className={`${prefixCls}__content`}>{displayContent}</span>
+      {isMultiple && isSelected && (
+        <span className={`${prefixCls}__check`}>
+          <Check size={14} />
+        </span>
+      )}
     </li>
   );
 };
