@@ -1,8 +1,9 @@
 import React from 'react';
+import { Locale } from '../locale/types';
 import IntlContext from './intl-context';
 
 export interface IntlProviderProps {
-  locale: string;
+  locale: Locale;
   children: React.ReactNode;
 }
 
