@@ -4,14 +4,16 @@ import Popover from '../popover';
 import Button from '../button';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useLocale } from '../_utils/use-locale';
 import { WarningCircle } from '../_utils/components';
 import { PopConfirmProps } from './types';
 
 const PopConfirm = (props: PopConfirmProps): JSX.Element => {
+  const locale = useLocale();
   const {
     placement = 'top',
-    confirmText = 'Yes',
-    cancelText = 'No',
+    confirmText = locale.PopConfirm.okText,
+    cancelText = locale.PopConfirm.cancelText,
     title,
     icon,
     onConfirm,

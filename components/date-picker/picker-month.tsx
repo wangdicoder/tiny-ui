@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-import { MONTHS } from './utils';
 
 export type PickerMonthProps = {
   date: Date | null;
   panelDate: Date;
+  months: string[];
   onChange: (date: Date) => void;
   prefixCls: string;
 };
 
-const PickerMonth = ({ date, panelDate, onChange, prefixCls }: PickerMonthProps) => {
+const PickerMonth = ({ date, panelDate, months, onChange, prefixCls }: PickerMonthProps) => {
   const panelYear = panelDate.getFullYear();
   const selectedMonth = date && date.getFullYear() === panelYear ? date.getMonth() : -1;
   const now = new Date();
@@ -31,7 +31,7 @@ const PickerMonth = ({ date, panelDate, onChange, prefixCls }: PickerMonthProps)
                     key={col}
                     className={cls}
                     onClick={() => onChange(new Date(panelYear, monthIdx, 1))}>
-                    <div className={`${prefixCls}__cell-inner`}>{MONTHS[monthIdx]}</div>
+                    <div className={`${prefixCls}__cell-inner`}>{months[monthIdx]}</div>
                   </td>
                 );
               })}

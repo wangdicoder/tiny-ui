@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { ConfigContext } from './config-context';
 import { ConfigProviderProps } from './types';
+import IntlProvider from '../intl-provider';
 
 const ConfigProvider = (props: ConfigProviderProps): JSX.Element => {
-  const { children, theme, ...otherProps } = props;
+  const { children, theme, locale, ...otherProps } = props;
 
   useEffect(() => {
     if (!theme) return;
@@ -15,9 +16,15 @@ const ConfigProvider = (props: ConfigProviderProps): JSX.Element => {
     }
   }, [theme]);
 
+  const content = locale ? (
+    <IntlProvider locale={locale}>{children}</IntlProvider>
+  ) : (
+    children
+  );
+
   return (
-    <ConfigContext.Provider value={{ theme, ...otherProps }}>
-      {children}
+    <ConfigContext.Provider value={{ theme, locale, ...otherProps }}>
+      {content}
     </ConfigContext.Provider>
   );
 };

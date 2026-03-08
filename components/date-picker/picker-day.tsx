@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import { WEEKS, getMonthDaysArray, isSameDate, isToday } from './utils';
+import { getMonthDaysArray, isSameDate, isToday } from './utils';
 
 export type PickerDayProps = {
   date: Date | null;
   panelDate: Date;
+  weeks: string[];
   disabledDate?: (current: Date) => boolean;
   onChange: (date: Date) => void;
   panelOnChange: (panelDate: Date) => void;
@@ -11,7 +12,7 @@ export type PickerDayProps = {
 };
 
 const PickerDay = (props: PickerDayProps) => {
-  const { prefixCls, date, onChange, panelDate, panelOnChange, disabledDate } = props;
+  const { prefixCls, date, weeks, onChange, panelDate, panelOnChange, disabledDate } = props;
   const panelDays = getMonthDaysArray(panelDate);
 
   const handleClick = (dayCell: typeof panelDays[0]) => {
@@ -25,8 +26,8 @@ const PickerDay = (props: PickerDayProps) => {
       <table className={`${prefixCls}__table`}>
         <thead>
           <tr>
-            {WEEKS.map((week) => (
-              <th key={week} className={`${prefixCls}__cell-header`}>
+            {weeks.map((week, i) => (
+              <th key={i} className={`${prefixCls}__cell-header`}>
                 {week}
               </th>
             ))}

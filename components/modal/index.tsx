@@ -5,9 +5,11 @@ import Overlay from '../overlay';
 import Button from '../button/button';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useLocale } from '../_utils/use-locale';
 import { ModalProps } from './types';
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
+  const locale = useLocale();
   const {
     visible = false,
     width = 520,
@@ -16,8 +18,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     unmountOnClose = true,
     maskType = 'default',
     maskClosable = true,
-    confirmText = 'OK',
-    cancelText = 'Cancel',
+    confirmText = locale.Modal.okText,
+    cancelText = locale.Modal.cancelText,
     confirmLoading = false,
     animation = 'slide',
     zIndex = 1000,

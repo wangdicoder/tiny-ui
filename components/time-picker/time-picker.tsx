@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useLocale } from '../_utils/use-locale';
 import TimePanel from './time-panel';
 import { TimePickerProps } from './types';
 
@@ -54,6 +55,7 @@ function showsMinutes(format: string): boolean {
 }
 
 const TimePicker = (props: TimePickerProps): React.ReactElement => {
+  const locale = useLocale();
   const {
     defaultValue,
     value,
@@ -64,7 +66,7 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
     minuteStep = 1,
     secondStep = 1,
     disabled = false,
-    placeholder = 'Select time',
+    placeholder = locale.TimePicker.selectTime,
     allowClear = true,
     size = 'md',
     inputReadOnly = true,

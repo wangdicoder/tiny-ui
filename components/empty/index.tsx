@@ -2,11 +2,13 @@ import React, { ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useLocale } from '../_utils/use-locale';
 import { EmptyProps } from './types';
 
 const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, ref) => {
+  const locale = useLocale();
   const {
-    description = 'No Data',
+    description = locale.Empty.description,
     image,
     imageStyle,
     descStyle,

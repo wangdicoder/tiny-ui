@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useLocale } from '../_utils/use-locale';
 import PickerHeader from './picker-header';
 import PickerDay from './picker-day';
 import PickerMonth from './picker-month';
@@ -66,6 +67,7 @@ const DatePicker = (props: DatePickerProps) => {
     prefixCls: customisedCls,
   } = props;
 
+  const locale = useLocale();
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('date-picker', configContext.prefixCls, customisedCls);
   const format = getFormatByPicker(picker, customFormat);
@@ -179,7 +181,7 @@ const DatePicker = (props: DatePickerProps) => {
 
   const hasValue = date !== null;
   const displayValue = hasValue ? formatDate(date, format) : '';
-  const defaultPlaceholder = placeholder ?? (picker === 'month' ? 'Select month' : picker === 'year' ? 'Select year' : 'Select date');
+  const defaultPlaceholder = placeholder ?? (picker === 'month' ? locale.DatePicker.selectMonth : picker === 'year' ? locale.DatePicker.selectYear : locale.DatePicker.selectDate);
 
   const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
     [`${prefixCls}_disabled`]: disabled,
@@ -192,12 +194,13 @@ const DatePicker = (props: DatePickerProps) => {
       case 'year':
         return <PickerYear date={date} panelDate={panelDate} onChange={handleYearSelect} prefixCls={prefixCls} />;
       case 'month':
-        return <PickerMonth date={date} panelDate={panelDate} onChange={handleMonthSelect} prefixCls={prefixCls} />;
+        return <PickerMonth date={date} panelDate={panelDate} months={locale.DatePicker.months} onChange={handleMonthSelect} prefixCls={prefixCls} />;
       default:
         return (
           <PickerDay
             date={date}
             panelDate={panelDate}
+            weeks={locale.DatePicker.weeks}
             disabledDate={disabledDate}
             onChange={handleDateSelect}
             panelOnChange={setPanelDate}
@@ -213,6 +216,7 @@ const DatePicker = (props: DatePickerProps) => {
           <PickerHeader
             date={panelDate}
             mode={mode}
+            months={locale.DatePicker.months}
             onChange={setPanelDate}
             onModeChange={handleModeChange}
             prefixCls={prefixCls}
@@ -222,7 +226,7 @@ const DatePicker = (props: DatePickerProps) => {
             <div className={`${prefixCls}__footer`}>
               {renderExtraFooter?.(mode)}
               {showToday && mode === 'date' && picker === 'date' && (
-                <a className={`${prefixCls}__today-btn`} onClick={handleToday}>Today</a>
+                <a className={`${prefixCls}__today-btn`} onClick={handleToday}>{locale.DatePicker.today}</a>
               )}
             </div>
           ) : null}

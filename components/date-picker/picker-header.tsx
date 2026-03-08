@@ -1,15 +1,15 @@
-import { MONTHS } from './utils';
 import { PanelMode } from './types';
 
 export type PickerHeaderProps = {
   date: Date;
   mode: PanelMode;
+  months: string[];
   onChange: (date: Date) => void;
   onModeChange: (mode: PanelMode) => void;
   prefixCls: string;
 };
 
-const PickerHeader = ({ date, mode, onChange, onModeChange, prefixCls }: PickerHeaderProps) => {
+const PickerHeader = ({ date, mode, months, onChange, onModeChange, prefixCls }: PickerHeaderProps) => {
   const year = date.getFullYear();
   const startDecade = year - (year % 10);
 
@@ -60,7 +60,7 @@ const PickerHeader = ({ date, mode, onChange, onModeChange, prefixCls }: PickerH
             <span
               className={`${prefixCls}__header-label`}
               onClick={() => onModeChange('month')}>
-              {MONTHS[date.getMonth()]}
+              {months[date.getMonth()]}
             </span>
             <span
               className={`${prefixCls}__header-label`}
