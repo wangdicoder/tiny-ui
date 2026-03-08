@@ -10,11 +10,11 @@ exports[`<Carousel /> should match the snapshot 1`] = `
     >
       <div
         class="ty-carousel__track"
-        style="width: 0px; transform: translate3d(0px, 0, 0); transition: none;"
+        style="width: 200%; transform: translate3d(0%, 0, 0); transition: none;"
       >
         <div
           class="ty-carousel__slide"
-          style="width: 0px; flex-shrink: 0;"
+          style="width: 50%;"
         >
           <div>
             Slide 1
@@ -22,7 +22,7 @@ exports[`<Carousel /> should match the snapshot 1`] = `
         </div>
         <div
           class="ty-carousel__slide"
-          style="width: 0px; flex-shrink: 0;"
+          style="width: 50%;"
         >
           <div>
             Slide 2
