@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@use '../../style/variables' as *;
 
 .#{$prefix}-aspect-ratio {
   box-sizing: border-box;

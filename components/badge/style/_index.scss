@@ -1,6 +1,6 @@
-@import '../../style/variables';
-@import '../../style/animation';
-@import './mixin';
+@use '../../style/variables' as *;
+@use '../../style/animation' as *;
+@use './mixin' as *;
 
 .#{$prefix}-badge {
   position: relative;

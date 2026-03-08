@@ -1,5 +1,5 @@
-@import '../../style/variables';
-@import '../../input/style/mixin';
+@use '../../style/variables' as *;
+@use '../../input/style/mixin' as *;
 
 .#{$prefix}-input-number {
   position: relative;

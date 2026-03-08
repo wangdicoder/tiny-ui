@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@use '../../style/variables' as *;
 
 .#{$prefix}-pop-confirm {
   color: var(--ty-color-text-secondary);

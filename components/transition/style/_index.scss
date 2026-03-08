@@ -1,4 +1,4 @@
-@import "./mixin";
+@use "./mixin" as *;
 
 // Only scale in one direction
 @include zoom-animation('center-top', scaleY(0), scaleY(1), center bottom);

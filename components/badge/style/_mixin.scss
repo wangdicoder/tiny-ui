@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@use '../../style/variables' as *;
 
 @mixin badge-base {
   box-sizing: border-box;

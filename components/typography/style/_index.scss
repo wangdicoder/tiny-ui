@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@use '../../style/variables' as *;
 
 $tp-prefix: #{$prefix}-typography;
 

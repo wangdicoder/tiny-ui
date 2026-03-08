@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@use '../../style/variables' as *;
 
 .#{$prefix}-divider {
   font-size: 16px;

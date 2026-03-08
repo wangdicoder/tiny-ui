@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@use '../../style/variables' as *;
 
 .#{$prefix}-list {
   color: var(--ty-color-text, #{$gray-800});

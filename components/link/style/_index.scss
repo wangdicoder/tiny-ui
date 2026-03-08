@@ -1,4 +1,4 @@
-@import "../../style/variables";
+@use "../../style/variables" as *;
 
 .#{$prefix}-link {
   color: var(--ty-color-primary);

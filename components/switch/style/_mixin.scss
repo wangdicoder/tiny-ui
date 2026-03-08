@@ -1,4 +1,4 @@
-@import "../../style/mixins";
+@use "../../style/mixins" as *;
 
 @mixin switch-bg($size) {
   width: $size;

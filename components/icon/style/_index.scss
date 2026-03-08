@@ -1,5 +1,5 @@
-@import '../../style/variables';
-@import '../../style/font';
+@use '../../style/variables' as *;
+@use '../../style/font' as *;
 
 .#{$prefix}-icon {
   font-family: 'tiny' !important;

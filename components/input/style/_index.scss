@@ -1,5 +1,5 @@
-@import '../../style/variables';
-@import './mixin';
+@use '../../style/variables' as *;
+@use './mixin' as *;
 
 .#{$prefix}-input {
   position: relative;
