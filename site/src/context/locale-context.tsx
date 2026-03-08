@@ -21,7 +21,7 @@ function isZh(): boolean {
 const LocaleContext = createContext<LocaleContextType>({
   locale: en_US,
   siteLocale: siteEnUS,
-  toggle: () => {},
+  toggle: () => { /* noop */ },
 });
 
 export const useLocaleContext = (): LocaleContextType =>
@@ -37,7 +37,7 @@ export const LocaleProvider = ({
   const toggle = useCallback(() => {
     setZh((prev) => {
       const next = !prev;
-      try { localStorage.setItem(STORAGE_KEY, next ? 'zh_CN' : 'en_US'); } catch {}
+      try { localStorage.setItem(STORAGE_KEY, next ? 'zh_CN' : 'en_US'); } catch { /* ignore */ }
       return next;
     });
   }, []);

@@ -8,8 +8,8 @@ type SidebarToggleContextType = {
 
 const SidebarToggleContext = createContext<SidebarToggleContextType>({
   isOpen: false,
-  toggle: () => {},
-  close: () => {},
+  toggle: () => { /* noop */ },
+  close: () => { /* noop */ },
 });
 
 export const useSidebarToggle = (): SidebarToggleContextType =>

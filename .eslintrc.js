@@ -30,5 +30,14 @@ module.exports = {
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 1,
     '@typescript-eslint/no-unused-vars': [1, { varsIgnorePattern: '^React$' }],
+    'react/prop-types': 0,
   },
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 0,
+      },
+    },
+  ],
 };

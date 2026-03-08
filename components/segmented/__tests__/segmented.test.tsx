@@ -25,7 +25,7 @@ describe('<Segmented />', () => {
     );
     const active = container.querySelector('.ty-segmented__item_active');
     expect(active).toBeTruthy();
-    expect(active!.textContent).toBe('B');
+    expect(active!).toHaveTextContent('B');
   });
 
   it('should handle onChange', () => {

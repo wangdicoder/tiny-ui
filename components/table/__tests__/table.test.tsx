@@ -53,7 +53,7 @@ describe('<Table />', () => {
     const ageHeader = container.querySelector('.ty-table__cell_sortable');
     fireEvent.click(ageHeader!);
     const rows = container.querySelectorAll('.ty-table__tbody .ty-table__row');
-    expect(rows[0].textContent).toContain('Bob');
+    expect(rows[0]).toHaveTextContent(/Bob/);
   });
 
   it('should handle row selection', () => {
