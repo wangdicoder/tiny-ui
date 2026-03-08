@@ -91,6 +91,10 @@
       background: var(--ty-calendar-hover, #{$gray-100});
     }
 
+    &_selected:not(&_disabled):hover .#{$prefix}-calendar__cell-inner {
+      background: var(--ty-color-primary-active);
+    }
+
     &_in-view {
       color: var(--ty-color-text, #{$gray-900});
     }

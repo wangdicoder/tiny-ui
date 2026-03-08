@@ -125,6 +125,16 @@ $carousel-prefix: #{$prefix}-carousel;
     cursor: pointer;
     transition: all 0.3s;
 
+    button {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
     &:hover {
       background: var(--ty-carousel-dot-hover-bg);
     }

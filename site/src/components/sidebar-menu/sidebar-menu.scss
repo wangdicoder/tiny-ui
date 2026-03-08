@@ -40,8 +40,8 @@
       transition: all 300ms;
 
       &:hover {
-        color: $main-color;
-        text-shadow: 1px 1px 4px rgba($main-color, 0.2);
+        color: var(--ty-color-primary);
+        text-shadow: 1px 1px 4px var(--ty-color-primary-bg);
       }
 
       &:before {
@@ -52,7 +52,7 @@
         top: 50%;
         left: 30px;
         transform: translateY(-50%);
-        background-color: rgba($main-color, 0.8);
+        background-color: var(--ty-color-primary);
         transition: height 300ms;
       }
 
@@ -67,7 +67,7 @@
     }
 
     &_active {
-      color: $main-color !important;
+      color: var(--ty-color-primary) !important;
 
       &:before {
         height: 21px !important;

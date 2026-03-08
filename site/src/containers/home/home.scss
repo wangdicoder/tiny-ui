@@ -23,7 +23,7 @@
     justify-content: center;
     height: 100%;
     padding: 90px 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba($main-color, 0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--ty-color-primary) 8%, transparent) 0%, transparent 70%);
   }
 
   &__logo-container {
@@ -95,7 +95,7 @@
     justify-content: center;
     gap: 60px;
     padding: 50px 40px;
-    background: rgba($main-color, 0.04);
+    background: color-mix(in srgb, var(--ty-color-primary) 4%, transparent);
     border-top: 1px solid var(--ty-color-border-secondary);
   }
 
@@ -109,7 +109,7 @@
   &__stat-value {
     font-size: 36px;
     font-weight: 700;
-    color: $main-color;
+    color: var(--ty-color-primary);
   }
 
   &__stat-label {
@@ -138,14 +138,15 @@
     border-radius: 12px;
     border: 1px solid var(--ty-color-border-secondary);
     background: var(--ty-color-bg-elevated);
+    color: var(--ty-color-primary);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     animation: fadeInUp 0.5s ease both;
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba($main-color, 0.12);
-      border-color: $main-color;
+      box-shadow: 0 8px 24px color-mix(in srgb, var(--ty-color-primary) 12%, transparent);
+      border-color: var(--ty-color-primary);
     }
   }
 
@@ -153,6 +154,7 @@
     margin: 14px 0 4px;
     font-size: 16px;
     font-weight: 600;
+    color: var(--ty-color-text);
   }
 
   &__category-count {

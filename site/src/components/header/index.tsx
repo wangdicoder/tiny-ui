@@ -7,6 +7,7 @@ import { useSidebarToggle } from '../../context/sidebar-toggle-context';
 import { useLocaleContext } from '../../context/locale-context';
 import { ThemeToggle } from './theme-toggle';
 import { LocaleToggle } from './locale-toggle';
+import { ColorCustomizer } from './color-customizer';
 
 const { version, repository } = pkg;
 
@@ -67,6 +68,9 @@ export const Header = (): React.ReactElement => {
           </li>
           <li className="header__nav-item">
             <LocaleToggle />
+          </li>
+          <li className="header__nav-item">
+            <ColorCustomizer />
           </li>
           <li className="header__nav-item">
             <ThemeToggle />

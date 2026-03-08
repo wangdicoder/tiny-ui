@@ -101,7 +101,7 @@ const HomePage = (): React.ReactElement => {
               key={i}
               style={{ animationDelay: `${i * 0.08}s` }}
               onClick={() => navigate(`/components/${cat.route}`)}>
-              <Icon name={cat.icon} size={32} color="#6E41BF" />
+              <Icon name={cat.icon} size={32} color="currentColor" />
               <h3 className="home__category-name">{cat.name}</h3>
               <span className="home__category-count">{s.home.nComponents(cat.count)}</span>
             </div>

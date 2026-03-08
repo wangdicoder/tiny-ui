@@ -50,7 +50,7 @@
     font-size: 12px;
 
     &:hover {
-      color: $main-color;
+      color: var(--ty-color-primary);
       background-color: var(--ty-color-fill);
     }
   }

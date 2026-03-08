@@ -59,14 +59,22 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, r
     if ('open' in props) setOpen(props.open as boolean);
   }, [props.open]);
 
-  // Position panel below trigger
+  // Position panel below trigger, clamped to viewport
   useEffect(() => {
-    if (open && wrapperRef.current) {
+    if (open && wrapperRef.current && panelRef.current) {
       const rect = wrapperRef.current.getBoundingClientRect();
+      const panelWidth = panelRef.current.offsetWidth || 240;
+      let left = rect.left + window.scrollX;
+
+      // Clamp so panel doesn't overflow the right edge
+      if (rect.left + panelWidth > window.innerWidth) {
+        left = rect.right + window.scrollX - panelWidth;
+      }
+
       setPanelStyle({
         position: 'absolute',
         top: rect.bottom + 4 + window.scrollY,
-        left: rect.left + window.scrollX,
+        left: Math.max(0, left),
         zIndex: 1050,
       });
     }

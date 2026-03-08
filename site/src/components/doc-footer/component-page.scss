@@ -21,7 +21,7 @@
       text-decoration: none;
       font-size: 15px;
       line-height: 15px;
-      color: $main-color;
+      color: var(--ty-color-primary);
 
       &:hover {
         .component-page__footer-icon-left {

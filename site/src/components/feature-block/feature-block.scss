@@ -22,7 +22,7 @@
   }
 
   &__icon-container {
-    background-color: $main-color;
+    background-color: var(--ty-color-primary);
     width: 3em;
     height: 3em;
     display: inline-flex;
