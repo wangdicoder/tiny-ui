@@ -4,11 +4,21 @@
   &__layout {
     display: flex;
     margin: 0 -8px;
+
+    @media (max-width: $size-md) {
+      flex-direction: column;
+      margin: 0;
+    }
   }
 
   &__column {
     flex: 1;
     padding: 0 8px;
+    min-width: 0;
+
+    @media (max-width: $size-md) {
+      padding: 0;
+    }
   }
 
   &__demo {
@@ -16,6 +26,7 @@
     border: 1px solid #eaeefb;
     border-radius: 3px;
     margin-bottom: 16px;
+    overflow: hidden;
 
     .markdown {
       &__heading-3 {
@@ -143,6 +154,11 @@
     font-size: 90%;
     border-left: 4px solid #ebedf0;
     margin: 1em 0;
+  }
+
+  &__table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   &__table {

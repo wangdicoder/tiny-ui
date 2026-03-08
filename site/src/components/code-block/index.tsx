@@ -52,13 +52,17 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style, padding: '10px 12px' }}>
           <code>
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
+            {tokens.map((line, i) => {
+              const { key: _lk, ...lineProps } = getLineProps({ line });
+              return (
+                <div key={i} {...lineProps}>
+                  {line.map((token, j) => {
+                    const { key: _tk, ...tokenProps } = getTokenProps({ token });
+                    return <span key={j} {...tokenProps} />;
+                  })}
+                </div>
+              );
+            })}
           </code>
         </pre>
       )}

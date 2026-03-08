@@ -74,6 +74,7 @@
   &__features {
     display: flex;
     padding: 0 40px;
+    flex-wrap: wrap;
   }
 
   &__blueprint {
@@ -85,6 +86,60 @@
   &__p {
     text-align: center;
     color: #888;
+  }
+
+  @media (max-width: $size-md) {
+    &__react-logo {
+      width: 500px;
+      height: 500px;
+    }
+
+    &__blueprint {
+      width: 90%;
+    }
+
+    &__features {
+      padding: 0 20px;
+    }
+  }
+
+  @media (max-width: $size-sm) {
+    &__slider {
+      padding: 50px 0;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+    }
+
+    &__react-logo {
+      width: 350px;
+      height: 350px;
+    }
+
+    &__section {
+      padding: 40px 0;
+    }
+  }
+
+  @media (max-width: $size-xs) {
+    &__title {
+      font-size: 26px;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+    }
+
+    &__btn-group {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
   }
 
   @keyframes logo-spin {

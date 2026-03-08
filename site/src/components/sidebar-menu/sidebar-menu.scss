@@ -90,4 +90,28 @@
     margin: 10px 0;
     padding: 0;
   }
+
+  &__backdrop {
+    display: none;
+  }
+
+  @media (max-width: $size-md) {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    background: #fff;
+    z-index: 101;
+    top: $header-height;
+
+    &_open {
+      transform: translateX(0);
+    }
+
+    &__backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 100;
+    }
+  }
 }

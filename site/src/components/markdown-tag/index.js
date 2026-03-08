@@ -34,7 +34,11 @@ export const components = {
   h4: (props) => <h4 {...props} className="markdown__heading-4" />,
   h5: (props) => <h5 {...props} className="markdown__heading-5" />,
   h6: (props) => <h6 {...props} className="markdown__heading-6" />,
-  table: (props) => <table {...props} className="markdown__table" />,
+  table: (props) => (
+    <div className="markdown__table-wrapper">
+      <table {...props} className="markdown__table" />
+    </div>
+  ),
   p: (props) => <p {...props} className="markdown__p" />,
   ul: (props) => <ul {...props} className="markdown__list" />,
   li: (props) => <li {...props} className="markdown__list-item" />,
