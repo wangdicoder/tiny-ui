@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $prefix: 'ty' !default;
 
 // Color
@@ -124,7 +126,7 @@ $pre-color: null !default;
 // Link
 $link-color: $primary-color !default;
 $link-decoration: none !default;
-$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-color: color.adjust($link-color, $lightness: -15%) !default;
 $link-hover-decoration: underline !default;
 
 // Alert

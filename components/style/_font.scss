@@ -1,4 +1,4 @@
-@import "./variables";
+@use "./variables" as *;
 
 @font-face {
   font-family: 'tiny';

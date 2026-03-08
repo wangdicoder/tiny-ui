@@ -1,5 +1,5 @@
-@import './themes/light';
-@import './themes/dark';
+@use './themes/light' as *;
+@use './themes/dark' as *;
 
 // Generate CSS custom properties from a theme map
 @mixin generate-theme-vars($theme) {

@@ -1,4 +1,4 @@
-@import "./animation";
+@use "./animation" as *;
 
 @mixin loader() {
   display: inline-block;
