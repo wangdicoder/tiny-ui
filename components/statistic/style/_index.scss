@@ -1,0 +1,31 @@
+@import '../../style/variables';
+
+.#{$prefix}-statistic {
+  &__title {
+    margin-bottom: 4px;
+    color: var(--ty-color-text-secondary, #{$gray-600});
+    font-size: $font-size-sm;
+  }
+
+  &__content {
+    display: flex;
+    align-items: baseline;
+    color: var(--ty-color-text, #{$gray-900});
+    font-size: 24px;
+    font-weight: 600;
+    font-family: $font-family-sans-serif;
+  }
+
+  &__prefix {
+    margin-right: 4px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__suffix {
+    margin-left: 4px;
+    font-size: $font-size-base;
+    display: inline-flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Statistic /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-statistic"
+  >
+    <div
+      class="ty-statistic__title"
+    >
+      Active Users
+    </div>
+    <div
+      class="ty-statistic__content"
+    >
+      <span
+        class="ty-statistic__value"
+      >
+        112,893
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
