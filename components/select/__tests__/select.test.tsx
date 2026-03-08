@@ -1,23 +1,373 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Select from '../index';
+
+const { Option, OptGroup } = Select;
+
+// Popup uses Portal, so dropdown content is in document.body
+const getOptions = () => document.querySelectorAll('.ty-select-option');
 
 describe('<Select />', () => {
   it('should match the snapshot', () => {
     const { asFragment } = render(
       <Select>
-        <Select.Option value="a">A</Select.Option>
-        <Select.Option value="b">B</Select.Option>
+        <Option value="a">A</Option>
+        <Option value="b">B</Option>
       </Select>
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly with default class', () => {
     const { container } = render(
       <Select>
-        <Select.Option value="a">A</Select.Option>
+        <Option value="a">A</Option>
       </Select>
     );
     expect(container.firstChild).toHaveClass('ty-select');
+  });
+
+  // Single select
+  it('should select an option and display its label', () => {
+    const onChange = jest.fn();
+    render(
+      <Select onChange={onChange} defaultOpen>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    const options = getOptions();
+    fireEvent.click(options[1]);
+    expect(onChange).toHaveBeenCalledWith('b', expect.objectContaining({ value: 'b' }));
+  });
+
+  it('should close dropdown after single select', () => {
+    const { container } = render(
+      <Select defaultOpen>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    const options = getOptions();
+    fireEvent.click(options[0]);
+    expect(container.querySelector('.ty-select')).not.toHaveClass('ty-select_open');
+  });
+
+  it('should show placeholder when no value', () => {
+    const { container } = render(
+      <Select placeholder="Select...">
+        <Option value="a">A</Option>
+      </Select>
+    );
+    expect(container.querySelector('.ty-select__placeholder')?.textContent).toBe('Select...');
+  });
+
+  // Multi-select
+  it('should support multi-select mode with tags', () => {
+    const onChange = jest.fn();
+    render(
+      <Select mode="multiple" onChange={onChange} defaultOpen>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+        <Option value="c">Cherry</Option>
+      </Select>
+    );
+    const options = getOptions();
+    fireEvent.click(options[0]);
+    expect(onChange).toHaveBeenCalledWith(['a'], expect.any(Array));
+
+    fireEvent.click(options[1]);
+    expect(onChange).toHaveBeenCalledWith(['a', 'b'], expect.any(Array));
+  });
+
+  it('should deselect in multi-select mode', () => {
+    const onChange = jest.fn();
+    render(
+      <Select mode="multiple" defaultValue={['a', 'b']} onChange={onChange} defaultOpen>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    const options = getOptions();
+    fireEvent.click(options[0]);
+    expect(onChange).toHaveBeenCalledWith(['b'], expect.any(Array));
+  });
+
+  it('should render tags and support tag removal', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Select mode="multiple" defaultValue={['a', 'b']} onChange={onChange}>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    const tags = container.querySelectorAll('.ty-select__tag');
+    expect(tags.length).toBe(2);
+
+    const closeBtn = tags[0].querySelector('.ty-select__tag-close');
+    fireEvent.click(closeBtn!);
+    expect(onChange).toHaveBeenCalledWith(['b'], expect.any(Array));
+  });
+
+  it('should limit displayed tags with maxTagCount', () => {
+    const { container } = render(
+      <Select mode="multiple" defaultValue={['a', 'b', 'c']} maxTagCount={1}>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+        <Option value="c">Cherry</Option>
+      </Select>
+    );
+    const tags = container.querySelectorAll('.ty-select__tag');
+    // 1 visible tag + 1 "+N..." tag
+    expect(tags.length).toBe(2);
+    expect(tags[1].textContent).toContain('+2');
+  });
+
+  // Search
+  it('should filter options when showSearch is enabled', () => {
+    const { container } = render(
+      <Select showSearch defaultOpen>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+        <Option value="c">Cherry</Option>
+      </Select>
+    );
+    const selector = container.querySelector('.ty-select__selector');
+    fireEvent.click(selector!);
+
+    const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
+    fireEvent.change(searchInput, { target: { value: 'ban' } });
+
+    const options = getOptions();
+    expect(options.length).toBe(1);
+    expect(options[0].textContent).toContain('Banana');
+  });
+
+  it('should call onSearch callback', () => {
+    const onSearch = jest.fn();
+    const { container } = render(
+      <Select showSearch onSearch={onSearch} defaultOpen>
+        <Option value="a">Apple</Option>
+      </Select>
+    );
+    const selector = container.querySelector('.ty-select__selector');
+    fireEvent.click(selector!);
+
+    const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
+    fireEvent.change(searchInput, { target: { value: 'test' } });
+    expect(onSearch).toHaveBeenCalledWith('test');
+  });
+
+  // Keyboard
+  it('should navigate with arrow keys and select with Enter', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Select onChange={onChange}>
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    const selectEl = container.firstChild as HTMLElement;
+    fireEvent.keyDown(selectEl, { key: 'ArrowDown' });
+    fireEvent.keyDown(selectEl, { key: 'ArrowDown' });
+    fireEvent.keyDown(selectEl, { key: 'Enter' });
+    expect(onChange).toHaveBeenCalledWith('b', expect.objectContaining({ value: 'b' }));
+  });
+
+  it('should close on Escape', () => {
+    const { container } = render(
+      <Select defaultOpen>
+        <Option value="a">Apple</Option>
+      </Select>
+    );
+    const selectEl = container.firstChild as HTMLElement;
+    fireEvent.keyDown(selectEl, { key: 'Escape' });
+    expect(container.querySelector('.ty-select')).not.toHaveClass('ty-select_open');
+  });
+
+  // Disabled
+  it('should not open dropdown when disabled', () => {
+    const { container } = render(
+      <Select disabled>
+        <Option value="a">Apple</Option>
+      </Select>
+    );
+    const selector = container.querySelector('.ty-select__selector');
+    fireEvent.click(selector!);
+    expect(container.querySelector('.ty-select')).not.toHaveClass('ty-select_open');
+    expect(container.querySelector('.ty-select')).toHaveClass('ty-select_disabled');
+  });
+
+  it('should not select disabled option', () => {
+    const onChange = jest.fn();
+    render(
+      <Select onChange={onChange} defaultOpen>
+        <Option value="a" disabled>Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    const options = getOptions();
+    fireEvent.click(options[0]);
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  // allowClear
+  it('should clear value when allowClear is clicked', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Select allowClear defaultValue="a" onChange={onChange}>
+        <Option value="a">Apple</Option>
+      </Select>
+    );
+    const clearBtn = container.querySelector('.ty-select__clear');
+    expect(clearBtn).toBeTruthy();
+    fireEvent.click(clearBtn!);
+    expect(onChange).toHaveBeenCalledWith('');
+  });
+
+  // Options prop
+  it('should render options from options prop', () => {
+    render(
+      <Select
+        defaultOpen
+        options={[
+          { value: 'a', label: 'Apple' },
+          { value: 'b', label: 'Banana' },
+          { value: 'c', label: 'Cherry', disabled: true },
+        ]}
+      />
+    );
+    const options = getOptions();
+    expect(options.length).toBe(3);
+    expect(options[2]).toHaveClass('ty-select-option_disabled');
+  });
+
+  it('should filter options prop with search', () => {
+    const { container } = render(
+      <Select
+        showSearch
+        defaultOpen
+        options={[
+          { value: 'a', label: 'Apple' },
+          { value: 'b', label: 'Banana' },
+        ]}
+      />
+    );
+    const selector = container.querySelector('.ty-select__selector');
+    fireEvent.click(selector!);
+
+    const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
+    fireEvent.change(searchInput, { target: { value: 'app' } });
+
+    const options = getOptions();
+    expect(options.length).toBe(1);
+  });
+
+  // Empty state
+  it('should show empty content when no options match', () => {
+    const { container } = render(
+      <Select showSearch defaultOpen notFoundContent="Nothing found">
+        <Option value="a">Apple</Option>
+      </Select>
+    );
+    const selector = container.querySelector('.ty-select__selector');
+    fireEvent.click(selector!);
+
+    const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
+    fireEvent.change(searchInput, { target: { value: 'xyz' } });
+
+    expect(document.querySelector('.ty-select__empty')?.textContent).toBe('Nothing found');
+  });
+
+  // Sizes
+  it('should apply size classes', () => {
+    const { container: smContainer } = render(
+      <Select size="sm"><Option value="a">A</Option></Select>
+    );
+    expect(smContainer.firstChild).toHaveClass('ty-select_sm');
+
+    const { container: lgContainer } = render(
+      <Select size="lg"><Option value="a">A</Option></Select>
+    );
+    expect(lgContainer.firstChild).toHaveClass('ty-select_lg');
+  });
+
+  // Loading
+  it('should show loading spinner', () => {
+    render(
+      <Select loading defaultOpen>
+        <Option value="a">A</Option>
+      </Select>
+    );
+    expect(document.querySelector('.ty-select__loading')).toBeTruthy();
+  });
+
+  // Controlled
+  it('should work in controlled mode', () => {
+    const { container, rerender } = render(
+      <Select value="a">
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    expect(container.querySelector('.ty-select__selection-text')?.textContent).toBe('Apple');
+
+    rerender(
+      <Select value="b">
+        <Option value="a">Apple</Option>
+        <Option value="b">Banana</Option>
+      </Select>
+    );
+    expect(container.querySelector('.ty-select__selection-text')?.textContent).toBe('Banana');
+  });
+
+  // OptGroup
+  it('should render OptGroup', () => {
+    render(
+      <Select defaultOpen>
+        <OptGroup label="Fruits">
+          <Option value="a">Apple</Option>
+        </OptGroup>
+        <OptGroup label="Vegetables">
+          <Option value="b">Broccoli</Option>
+        </OptGroup>
+      </Select>
+    );
+    const groups = document.querySelectorAll('.ty-select-group__title');
+    expect(groups.length).toBe(2);
+  });
+
+  // onSelect backward compat
+  it('should call onSelect callback', () => {
+    const onSelect = jest.fn();
+    render(
+      <Select onSelect={onSelect} defaultOpen>
+        <Option value="a">Apple</Option>
+      </Select>
+    );
+    const options = getOptions();
+    fireEvent.click(options[0]);
+    expect(onSelect).toHaveBeenCalledWith('a');
+  });
+
+  // Custom filter function
+  it('should support custom filterOption function', () => {
+    const { container } = render(
+      <Select
+        showSearch
+        defaultOpen
+        filterOption={(input, option) => option.value.startsWith(input)}>
+        <Option value="apple">Apple</Option>
+        <Option value="banana">Banana</Option>
+      </Select>
+    );
+    const selector = container.querySelector('.ty-select__selector');
+    fireEvent.click(selector!);
+
+    const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
+    fireEvent.change(searchInput, { target: { value: 'b' } });
+
+    const options = getOptions();
+    expect(options.length).toBe(1);
+    expect(options[0].textContent).toContain('Banana');
   });
 });

@@ -5,19 +5,22 @@ exports[`<Select /> should match the snapshot 1`] = `
   <div
     aria-expanded="false"
     aria-haspopup="listbox"
-    class="ty-select"
+    class="ty-select ty-select_md"
     role="combobox"
+    tabindex="0"
   >
     <div
-      class="ty-input ty-input_md"
+      class="ty-select__selector"
     >
-      <input
-        class="ty-input__input"
-        style="padding-left: 7px; padding-right: 7px;"
-        value=""
-      />
       <div
-        class="ty-input__suffix"
+        class="ty-select__selection"
+      >
+        <span
+          class="ty-select__placeholder"
+        />
+      </div>
+      <div
+        class="ty-select__suffix"
       >
         <span
           class="ty-select__arrow"
