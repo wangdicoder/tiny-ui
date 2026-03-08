@@ -9,6 +9,7 @@ const cleanCss = require('gulp-clean-css');
 const SOURCE_PATH = path.resolve(__dirname, '../components');
 const DIST_PATH = path.resolve(__dirname, '../dist/styles');
 const MODULARIZED_DIST_PATH = path.resolve(__dirname, '../lib');
+const ES_DIST_PATH = path.resolve(__dirname, '../es');
 
 function buildScss() {
   return src(`${SOURCE_PATH}/style/index.scss`, { sourcemaps: true })
@@ -47,6 +48,22 @@ function compileModularizedCss() {
     .pipe(dest(`${MODULARIZED_DIST_PATH}`));
 }
 
-const generateModularizedStyles = parallel(copyComponentScss, copyStyleDir, compileModularizedCss);
+function copyComponentScssEs() {
+  return src(`${SOURCE_PATH}/*/style/*.scss`).pipe(dest(`${ES_DIST_PATH}`));
+}
 
-exports.default = parallel(series(buildScss, minCss, generateModularizedStyles), copyFont);
+function copyStyleDirEs() {
+  return src(`${SOURCE_PATH}/style/**`).pipe(dest(`${ES_DIST_PATH}/style`));
+}
+
+function compileModularizedCssEs() {
+  return src(`${SOURCE_PATH}/**/*.scss`)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([autoPrefixer()]))
+    .pipe(dest(`${ES_DIST_PATH}`));
+}
+
+const generateModularizedStyles = parallel(copyComponentScss, copyStyleDir, compileModularizedCss);
+const generateEsStyles = parallel(copyComponentScssEs, copyStyleDirEs, compileModularizedCssEs);
+
+exports.default = parallel(series(buildScss, minCss, generateModularizedStyles, generateEsStyles), copyFont);

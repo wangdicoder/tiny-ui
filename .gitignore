@@ -7,6 +7,9 @@
 /site/build
 /site/dist
 /lib
+/es
+/dist
 /coverage
 
 /site/src/containers/test/index.tsx
+.claude

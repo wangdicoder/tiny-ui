@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const LIB_INPUT_DIR = path.resolve(__dirname, '../lib');
+const ES_INPUT_DIR = path.resolve(__dirname, '../es');
 
 function generateCssJs(filename, path) {
   const content = fs.readFileSync(path + '/index.js', { encoding: 'utf-8' });
@@ -29,4 +30,5 @@ function getFolderList(path) {
 
 (function main() {
   getFolderList(LIB_INPUT_DIR);
+  getFolderList(ES_INPUT_DIR);
 })();

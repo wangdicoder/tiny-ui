@@ -35,13 +35,18 @@
     "./es/*": "./es/*",
     "./dist/*": "./dist/*"
   },
+  "files": [
+    "lib",
+    "es",
+    "dist"
+  ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
     "build": "npm run build-ts && npm run dist",
     "commit": "git add . && ./node_modules/cz-customizable/standalone.js",
-    "build-ts": "rimraf lib && tsc -p tsconfig.json",
+    "build-ts": "rimraf lib es && tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
     "dist-style": "gulp --gulpfile scripts/gulpfile.js && node scripts/generate-style.js",
     "dist-dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --progress",
     "dist-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
