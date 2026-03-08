@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { ColProps, RowProps } from './types';
 
-const Row = (props: RowProps): React.ReactElement => {
+const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   const {
     gutter = 0,
     gutterSide = false,
@@ -29,7 +29,7 @@ const Row = (props: RowProps): React.ReactElement => {
 
   const normalisedGutter = getGutter();
   return (
-    <div {...otherProps} className={cls} style={style}>
+    <div {...otherProps} ref={ref} className={cls} style={style}>
       {React.Children.map(children, (child, idx: number) => {
         const childElement = child as React.FunctionComponentElement<ColProps>;
         if (childElement.type.displayName === 'Col') {
@@ -54,7 +54,7 @@ const Row = (props: RowProps): React.ReactElement => {
       })}
     </div>
   );
-};
+});
 
 Row.displayName = 'Row';
 

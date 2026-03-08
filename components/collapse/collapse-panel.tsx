@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useId, useRef } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -31,6 +31,8 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     prefixCls: customisedCls,
   } = props;
   const itemRef = useRef<HTMLDivElement | null>(null);
+  const panelId = useId();
+  const headerId = useId();
   const configContext = useContext(ConfigContext);
   const { activeKeys, onItemClick } = useContext(CollapseContext);
   const prefixCls = getPrefixCls('collapse-item', configContext.prefixCls, customisedCls);
@@ -68,13 +70,20 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     });
 
     return (
-      <div className={headerCls} onClick={headerOnClick}>
+      <button
+        type="button"
+        id={headerId}
+        className={headerCls}
+        onClick={headerOnClick}
+        aria-expanded={active}
+        aria-controls={panelId}
+        aria-disabled={disabled || undefined}>
         {showArrow && <ArrowDown size={10} className={arrowCls} />}
         <div className={`${prefixCls}__title`}>{richNode(header, active)}</div>
         <div className={`${prefixCls}__extra`}>
           {deletable ? <span onClick={removeItem}>✕</span> : richNode(extra, active)}
         </div>
-      </div>
+      </button>
     );
   };
 
@@ -82,7 +91,7 @@ const CollapsePanel = (props: CollapsePanelProps): React.ReactElement => {
     <div className={cls} style={style} ref={itemRef}>
       {renderHeader()}
       <CollapseTransition isShow={active}>
-        <div className={`${prefixCls}__content`}>{richNode(children, active)}</div>
+        <div className={`${prefixCls}__content`} id={panelId} role="region" aria-labelledby={headerId}>{richNode(children, active)}</div>
       </CollapseTransition>
     </div>
   );

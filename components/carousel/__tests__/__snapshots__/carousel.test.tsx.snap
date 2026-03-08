@@ -3,7 +3,11 @@
 exports[`<Carousel /> should match the snapshot 1`] = `
 <DocumentFragment>
   <div
+    aria-label="Carousel"
+    aria-roledescription="carousel"
     class="ty-carousel ty-carousel_scrollx"
+    role="region"
+    tabindex="0"
   >
     <div
       class="ty-carousel__viewport"
@@ -13,7 +17,11 @@ exports[`<Carousel /> should match the snapshot 1`] = `
         style="width: 200%; transform: translate3d(0%, 0, 0); transition: none;"
       >
         <div
+          aria-hidden="false"
+          aria-label="Slide 1 of 2"
+          aria-roledescription="slide"
           class="ty-carousel__slide"
+          role="group"
           style="width: 50%;"
         >
           <div>
@@ -21,7 +29,11 @@ exports[`<Carousel /> should match the snapshot 1`] = `
           </div>
         </div>
         <div
+          aria-hidden="true"
+          aria-label="Slide 2 of 2"
+          aria-roledescription="slide"
           class="ty-carousel__slide"
+          role="group"
           style="width: 50%;"
         >
           <div>
@@ -35,10 +47,21 @@ exports[`<Carousel /> should match the snapshot 1`] = `
     >
       <li
         class="ty-carousel__dot ty-carousel__dot_active"
-      />
+      >
+        <button
+          aria-current="true"
+          aria-label="Go to slide 1"
+          type="button"
+        />
+      </li>
       <li
         class="ty-carousel__dot"
-      />
+      >
+        <button
+          aria-label="Go to slide 2"
+          type="button"
+        />
+      </li>
     </ul>
   </div>
 </DocumentFragment>

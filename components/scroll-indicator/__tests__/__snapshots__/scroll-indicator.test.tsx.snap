@@ -3,7 +3,11 @@
 exports[`<ScrollIndicator /> should match the snapshot 1`] = `
 <DocumentFragment>
   <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
     class="ty-scroll-indicator ty-scroll-indicator_fixed"
+    role="progressbar"
     style="width: 0%;"
   />
 </DocumentFragment>

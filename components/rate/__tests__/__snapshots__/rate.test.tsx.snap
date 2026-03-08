@@ -3,7 +3,10 @@
 exports[`<Rate /> should match the snapshot 1`] = `
 <DocumentFragment>
   <ul
+    aria-label="Rating"
     class="ty-rate"
+    role="radiogroup"
+    tabindex="0"
   >
     <li
       class="ty-rate__item"

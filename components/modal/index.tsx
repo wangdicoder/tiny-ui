@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useId, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay from '../overlay';
@@ -7,7 +7,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { ModalProps } from './types';
 
-const Modal = (props: ModalProps): React.ReactElement => {
+const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     visible = false,
     width = 520,
@@ -22,7 +22,8 @@ const Modal = (props: ModalProps): React.ReactElement => {
     animation = 'slide',
     zIndex = 1000,
     onConfirm,
-    onCancel,
+    onCancel: onCancelProp,
+    onClose: onCloseProp,
     top,
     header,
     footer,
@@ -38,11 +39,56 @@ const Modal = (props: ModalProps): React.ReactElement => {
     footerStyle,
     prefixCls: customisedCls,
   } = props;
+  const onCancel = onCloseProp ?? onCancelProp;
   const [modalVisible, setModalVisible] = useState(visible);
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('modal', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className, { [`${prefixCls}_centered`]: centered });
   const nodeRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const titleId = useId();
+
+  // Focus trap + Escape key
+  useEffect(() => {
+    if (!visible) return;
+    previousFocusRef.current = document.activeElement as HTMLElement;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onCancel?.(e as unknown as React.MouseEvent);
+        return;
+      }
+      if (e.key === 'Tab' && nodeRef.current) {
+        const focusable = nodeRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Focus first focusable element
+    requestAnimationFrame(() => {
+      if (nodeRef.current) {
+        const focusable = nodeRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length > 0) focusable[0].focus();
+      }
+    });
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previousFocusRef.current?.focus();
+    };
+  }, [visible, onCancel]);
 
   const renderFooter = (): React.ReactNode => {
     if (React.isValidElement(footer)) {
@@ -81,7 +127,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
         maskClosable && onCancel ? onCancel(e) : undefined;
       }}
       style={maskStyle}>
-      <div className={cls} style={{ top }}>
+      <div ref={ref} className={cls} style={{ top }}>
         <div style={{ width, ...style }}>
           <CSSTransition
             appear={true}
@@ -89,15 +135,21 @@ const Modal = (props: ModalProps): React.ReactElement => {
             in={modalVisible}
             classNames={`${prefixCls}__content_${animation}`}
             timeout={0}>
-            <div ref={nodeRef} className={`${prefixCls}__content`} onClick={(e): void => e.stopPropagation()}>
+            <div
+              ref={nodeRef}
+              className={`${prefixCls}__content`}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={header ? titleId : undefined}
+              onClick={(e): void => e.stopPropagation()}>
               {closable && (
-                <div role="button" className={`${prefixCls}__close-btn`} onClick={onCancel}>
+                <button type="button" className={`${prefixCls}__close-btn`} onClick={onCancel} aria-label="Close">
                   ✕
-                </div>
+                </button>
               )}
               {header && (
                 <div className={`${prefixCls}__header`} style={headerStyle}>
-                  <div className={`${prefixCls}__title`}>{header}</div>
+                  <div className={`${prefixCls}__title`} id={titleId}>{header}</div>
                 </div>
               )}
               <div className={`${prefixCls}__body`} style={bodyStyle}>
@@ -110,7 +162,7 @@ const Modal = (props: ModalProps): React.ReactElement => {
       </div>
     </Overlay>
   );
-};
+});
 
 Modal.displayName = 'Modal';
 

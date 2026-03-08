@@ -22,7 +22,7 @@ const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     });
 
     return (
-      <div ref={ref} {...otherProps} className={cls}>
+      <div ref={ref} {...otherProps} className={cls} role="status" aria-busy="true">
         {children}
       </div>
     );

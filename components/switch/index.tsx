@@ -45,7 +45,20 @@ const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
     }, [props]);
 
     return (
-      <label {...otherProps} ref={ref} className={cls} onClick={labelOnClick}>
+      <label
+        {...otherProps}
+        ref={ref}
+        className={cls}
+        role="switch"
+        aria-checked={checked}
+        tabIndex={disabled || loading ? -1 : 0}
+        onClick={labelOnClick}
+        onKeyDown={(e: React.KeyboardEvent<HTMLLabelElement>) => {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            labelOnClick(e as unknown as React.MouseEvent<HTMLLabelElement>);
+          }
+        }}>
         <span className={`${prefixCls}__bg`}>
           <span className={`${prefixCls}__thumb`} />
           <span className={`${prefixCls}__label`}>{checked ? checkedText : uncheckedText}</span>

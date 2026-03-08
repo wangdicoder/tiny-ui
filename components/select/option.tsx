@@ -41,6 +41,7 @@ const SelectOption = (props: SelectOptionsProps): React.ReactElement => {
     <li
       {...otherProps}
       key={value}
+      role="option"
       className={cls}
       onClick={onClick}
       onMouseEnter={onMouseEnter}

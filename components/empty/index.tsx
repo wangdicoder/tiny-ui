@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { EmptyProps } from './types';
 
-const Empty = (props: EmptyProps): React.ReactElement => {
+const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, ref) => {
   const {
     description = 'No Data',
     image,
@@ -49,7 +49,7 @@ const Empty = (props: EmptyProps): React.ReactElement => {
   };
 
   return (
-    <div {...otherProps} className={cls} style={style}>
+    <div {...otherProps} ref={ref} className={cls} style={style}>
       <div className={`${prefixCls}__image-container`}>{renderImage()}</div>
       {typeof props.description === 'boolean' && !description ? null : (
         <p className={`${prefixCls}__desc`} style={descStyle}>
@@ -59,7 +59,7 @@ const Empty = (props: EmptyProps): React.ReactElement => {
       {children && <div className={`${prefixCls}__footer`}>{children}</div>}
     </div>
   );
-};
+});
 
 Empty.displayName = 'Empty';
 

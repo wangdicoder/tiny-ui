@@ -3,7 +3,10 @@
 exports[`<Switch /> should match the snapshot 1`] = `
 <DocumentFragment>
   <label
+    aria-checked="true"
     class="ty-switch ty-switch_md ty-switch_checked"
+    role="switch"
+    tabindex="0"
   >
     <span
       class="ty-switch__bg"

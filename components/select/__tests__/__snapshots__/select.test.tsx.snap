@@ -3,7 +3,10 @@
 exports[`<Select /> should match the snapshot 1`] = `
 <DocumentFragment>
   <div
+    aria-expanded="false"
+    aria-haspopup="listbox"
     class="ty-select"
+    role="combobox"
   >
     <div
       class="ty-input ty-input_md"

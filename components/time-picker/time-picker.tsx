@@ -174,12 +174,17 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
           disabled={disabled}
           placeholder={placeholder}
           value={displayValue}
+          aria-expanded={isOpen}
+          aria-haspopup="dialog"
+          onKeyDown={(e) => {
+            if (e.key === 'Escape' && isOpen) toggleOpen(false);
+          }}
         />
         <span className={`${prefixCls}__suffix`}>
           {allowClear && hasValue && !disabled ? (
-            <span className={`${prefixCls}__clear`} onClick={handleClear}>
+            <button type="button" className={`${prefixCls}__clear`} onClick={handleClear} aria-label="Clear time">
               <ClearIcon />
-            </span>
+            </button>
           ) : null}
           <span className={`${prefixCls}__icon`}>
             {suffixIcon ?? <ClockIcon />}

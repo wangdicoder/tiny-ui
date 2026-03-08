@@ -16,8 +16,10 @@ exports[`<Tabs /> items API should match the snapshot 1`] = `
           class="ty-tabs__nav-list"
         >
           <div
+            aria-controls=":r0:-panel-1"
             aria-selected="true"
             class="ty-tabs__tab ty-tabs__tab_active"
+            id=":r0:-tab-1"
             role="tab"
             tabindex="0"
           >
@@ -28,8 +30,10 @@ exports[`<Tabs /> items API should match the snapshot 1`] = `
             </span>
           </div>
           <div
+            aria-controls=":r0:-panel-2"
             aria-selected="false"
             class="ty-tabs__tab"
+            id=":r0:-tab-2"
             role="tab"
             tabindex="-1"
           >
@@ -40,8 +44,10 @@ exports[`<Tabs /> items API should match the snapshot 1`] = `
             </span>
           </div>
           <div
+            aria-controls=":r0:-panel-3"
             aria-selected="false"
             class="ty-tabs__tab"
+            id=":r0:-tab-3"
             role="tab"
             tabindex="-1"
           >
@@ -66,19 +72,25 @@ exports[`<Tabs /> items API should match the snapshot 1`] = `
         style="transform: translate3d(0%, 0, 0);"
       >
         <div
+          aria-labelledby=":r0:-tab-1"
           class="ty-tabs__panel ty-tabs__panel_active"
+          id=":r0:-panel-1"
           role="tabpanel"
         >
           Content 1
         </div>
         <div
+          aria-labelledby=":r0:-tab-2"
           class="ty-tabs__panel"
+          id=":r0:-panel-2"
           role="tabpanel"
         >
           Content 2
         </div>
         <div
+          aria-labelledby=":r0:-tab-3"
           class="ty-tabs__panel"
+          id=":r0:-panel-3"
           role="tabpanel"
         >
           Content 3

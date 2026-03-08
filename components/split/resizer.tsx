@@ -37,10 +37,31 @@ const Resizer = (props: ResizerProps): JSX.Element => {
   return (
     <div
       {...otherProps}
-      role="presentation"
+      role="separator"
+      tabIndex={0}
+      aria-orientation={mode === 'vertical' ? 'vertical' : 'horizontal'}
       className={cls}
       style={style}
-      onMouseDown={(e): void => onMouseDown(e)}>
+      onMouseDown={(e): void => onMouseDown(e)}
+      onKeyDown={(e) => {
+        const step = 10;
+        if (mode === 'vertical' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+          e.preventDefault();
+          const delta = e.key === 'ArrowRight' ? step : -step;
+          const synthetic = { clientX: (e.target as HTMLElement).getBoundingClientRect().left + delta, clientY: 0 } as MouseEvent;
+          onResizerMouseDown(e as unknown as React.MouseEvent<HTMLDivElement>);
+          window.dispatchEvent(new MouseEvent('mousemove', { clientX: synthetic.clientX }));
+          window.dispatchEvent(new MouseEvent('mouseup'));
+        }
+        if (mode === 'horizontal' && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+          e.preventDefault();
+          const delta = e.key === 'ArrowDown' ? step : -step;
+          const synthetic = { clientY: (e.target as HTMLElement).getBoundingClientRect().top + delta, clientX: 0 } as MouseEvent;
+          onResizerMouseDown(e as unknown as React.MouseEvent<HTMLDivElement>);
+          window.dispatchEvent(new MouseEvent('mousemove', { clientY: synthetic.clientY }));
+          window.dispatchEvent(new MouseEvent('mouseup'));
+        }
+      }}>
       <div className={`${prefixCls}__icon`} />
     </div>
   );

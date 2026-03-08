@@ -1,10 +1,10 @@
-import React, { useState, useEffect, MouseEvent, useContext } from 'react';
+import React, { useState, useEffect, MouseEvent, useContext, forwardRef } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { PresetColors, TagProps } from './types';
 
-const Tag = (props: TagProps): JSX.Element => {
+const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
   const {
     closable = false,
     defaultVisible = true,
@@ -52,16 +52,16 @@ const Tag = (props: TagProps): JSX.Element => {
   }, [props]);
 
   return (
-    <div {...otherProps} className={cls} style={tagStyle} onClick={onClick}>
+    <div {...otherProps} ref={ref} className={cls} style={tagStyle} onClick={onClick}>
       {children}
       {closable && (
-        <span className={`${prefixCls}__close-btn`} onClick={closeBtnOnClick}>
+        <button type="button" className={`${prefixCls}__close-btn`} onClick={closeBtnOnClick} aria-label="Remove">
           ✕
-        </span>
+        </button>
       )}
     </div>
   );
-};
+});
 
 Tag.displayName = 'Tag';
 

@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Indicator from './indicator';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { LoaderProps } from './types';
 
-const Loader = (props: LoaderProps): JSX.Element => {
+const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const {
     size = 'md',
     loading = true,
@@ -33,7 +33,7 @@ const Loader = (props: LoaderProps): JSX.Element => {
   });
 
   return (
-    <div {...otherProps} className={cls}>
+    <div {...otherProps} ref={ref} className={cls} role="status" aria-busy={loading}>
       {loading && (
         <div className={indicatorCls}>
           {indicator ? indicator : <Indicator className={`${prefixCls}__indicator`} size={size} />}
@@ -43,7 +43,7 @@ const Loader = (props: LoaderProps): JSX.Element => {
       {children && <div className={containerCls}>{children}</div>}
     </div>
   );
-};
+});
 
 Loader.displayName = 'Loader';
 

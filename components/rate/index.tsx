@@ -65,7 +65,33 @@ const Rate = React.forwardRef<HTMLUListElement, RateProps>(
     }, [props]);
 
     return (
-      <ul {...otherProps} ref={ref} className={cls} style={style} onMouseLeave={onMouseLeave}>
+      <ul
+        {...otherProps}
+        ref={ref}
+        className={cls}
+        style={style}
+        role="radiogroup"
+        aria-label="Rating"
+        tabIndex={disabled ? -1 : 0}
+        onMouseLeave={onMouseLeave}
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if (disabled) return;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            const step = half ? 0.5 : 1;
+            const newVal = Math.min(tmpValue + step, count);
+            setTmpValue(newVal);
+            !('value' in props) && setValue(newVal);
+            onChange?.(newVal);
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            const step = half ? 0.5 : 1;
+            const newVal = Math.max(tmpValue - step, 0);
+            setTmpValue(newVal);
+            !('value' in props) && setValue(newVal);
+            onChange?.(newVal);
+          }
+        }}>
         {Array(count)
           .fill(0)
           .map((_, idx) => (

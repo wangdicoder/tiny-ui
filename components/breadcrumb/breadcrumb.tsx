@@ -11,7 +11,7 @@ const Breadcrumb = (props: BreadcrumbProps): React.ReactElement => {
   const cls = classNames(prefixCls, className);
 
   return (
-    <nav className={cls} style={style}>
+    <nav className={cls} style={style} aria-label="Breadcrumb">
       <ol className={`${prefixCls}__ol`}>
         {React.Children.map(children, (child: ReactElement<BreadcrumbItemProps>) => {
           const childProps: Partial<BreadcrumbItemProps> = { separator };

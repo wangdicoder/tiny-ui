@@ -23,12 +23,13 @@ exports[`<Notification /> should match the snapshot 1`] = `
         Notice
       </div>
       Something happened
-      <div
+      <button
+        aria-label="Close"
         class="ty-notification__close"
-        role="button"
+        type="button"
       >
         ✕
-      </div>
+      </button>
     </div>
   </div>
 </DocumentFragment>

@@ -3,7 +3,6 @@
 exports[`<Link /> should match the snapshot 1`] = `
 <DocumentFragment>
   <a
-    aria-disabled="false"
     class="ty-link"
     href="#"
     role="link"

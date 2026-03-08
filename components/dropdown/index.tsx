@@ -94,14 +94,31 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
     }
   };
 
+  // Clear timers on unmount
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(delayDisplayPopupTimer.current);
+      window.clearTimeout(delayHidePopupTimer.current);
+    };
+  }, []);
+
   useEffect(() => {
     'visible' in props && setPopupVisible(props.visible as boolean);
   }, [props]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape' && popupVisible) {
+      hidePopup();
+    }
+  };
 
   const childrenProps = {
     onMouseEnter: handleTargetOnMouseEnter,
     onMouseLeave: handleTargetOnMouseLeave,
     onClick: handleTargetOnClick,
+    onKeyDown: handleKeyDown,
+    'aria-expanded': popupVisible,
+    'aria-haspopup': true as const,
   };
 
   React.Children.only(children);

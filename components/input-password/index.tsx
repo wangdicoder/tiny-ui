@@ -20,8 +20,10 @@ const InputPassword = (props: InputPasswordProps): JSX.Element => {
   const [visible, setVisible] = useState(false);
 
   const renderSuffix = (): React.ReactElement => (
-    <div
+    <button
+      type="button"
       className={`${prefixCls}__suffix`}
+      aria-label="Toggle password visibility"
       onClick={(): void => {
         setVisible(!visible);
         visibleOnClick && visibleOnClick();
@@ -31,7 +33,7 @@ const InputPassword = (props: InputPasswordProps): JSX.Element => {
       ) : (
         <EyeClose size={17} className={`${prefixCls}__icon`} />
       )}
-    </div>
+    </button>
   );
 
   return (

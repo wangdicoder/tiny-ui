@@ -3,7 +3,9 @@
 exports[`<Loader /> should match the snapshot 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
     class="ty-loader ty-loader_md ty-loader_spinning"
+    role="status"
   >
     <div
       class="ty-loader__loader-container"

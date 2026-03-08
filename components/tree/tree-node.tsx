@@ -56,7 +56,7 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
   };
 
   return (
-    <li className={cls}>
+    <li className={cls} role="treeitem" aria-expanded={node.children ? expanded : undefined}>
       <div className={`${prefixCls}__title`} style={{ paddingLeft: indent * level }}>
         <span className={`${prefixCls}__switcher`} onClick={switcherOnClick}>
           {node.children &&
@@ -84,7 +84,7 @@ const TreeNode = (props: TreeNodeProps): JSX.Element => {
       </div>
       {node.children && (
         <CollapseTransition isShow={expanded}>
-          <ul className={treeClassName} aria-level={level + 1}>
+          <ul className={treeClassName} role="group" aria-level={level + 1}>
             {node.children &&
               node.children.map((node) => (
                 <TreeNode {...props} key={node.uniqueKey} node={node} level={level + 1} />

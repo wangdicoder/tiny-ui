@@ -8,8 +8,12 @@ exports[`<Collapse /> should match the snapshot 1`] = `
     <div
       class="ty-collapse-item"
     >
-      <div
+      <button
+        aria-controls=":r0:"
+        aria-expanded="false"
         class="ty-collapse-item__header"
+        id=":r1:"
+        type="button"
       >
         <svg
           class="ty-collapse-item__arrow"
@@ -30,13 +34,16 @@ exports[`<Collapse /> should match the snapshot 1`] = `
         <div
           class="ty-collapse-item__extra"
         />
-      </div>
+      </button>
       <div
         class="ty-collapse-transition"
         style="display: block;"
       >
         <div
+          aria-labelledby=":r1:"
           class="ty-collapse-item__content"
+          id=":r0:"
+          role="region"
         >
           Content 1
         </div>
@@ -45,8 +52,12 @@ exports[`<Collapse /> should match the snapshot 1`] = `
     <div
       class="ty-collapse-item"
     >
-      <div
+      <button
+        aria-controls=":r2:"
+        aria-expanded="false"
         class="ty-collapse-item__header"
+        id=":r3:"
+        type="button"
       >
         <svg
           class="ty-collapse-item__arrow"
@@ -67,13 +78,16 @@ exports[`<Collapse /> should match the snapshot 1`] = `
         <div
           class="ty-collapse-item__extra"
         />
-      </div>
+      </button>
       <div
         class="ty-collapse-transition"
         style="display: block;"
       >
         <div
+          aria-labelledby=":r3:"
           class="ty-collapse-item__content"
+          id=":r2:"
+          role="region"
         >
           Content 2
         </div>

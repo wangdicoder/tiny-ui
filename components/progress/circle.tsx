@@ -64,6 +64,7 @@ const Circle = (props: CircleProps): React.ReactElement => {
   return (
     <div
       {...otherProps}
+      role="progressbar"
       className={cls}
       style={{ width, height: width, ...style }}
       aria-valuemax={100}

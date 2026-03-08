@@ -37,7 +37,8 @@ const ScrollIndicator = (props: ScrollIndicatorProps): React.ReactElement => {
   const element = target ? (target() ? target() : window) : window;
   useEventListener('scroll', handleScroll, element);
 
-  return <div {...otherProps} className={cls} style={{ ...style, width }} />;
+  const numericWidth = parseFloat(width) || 0;
+  return <div {...otherProps} className={cls} style={{ ...style, width }} role="progressbar" aria-valuenow={Math.round(numericWidth)} aria-valuemin={0} aria-valuemax={100} />;
 };
 
 ScrollIndicator.displayName = 'ScrollIndicator';

@@ -45,9 +45,17 @@ const MenuItem = (props: MenuItemProps): JSX.Element => {
       {...otherProps}
       key={index}
       role="menuitem"
+      tabIndex={disabled ? -1 : 0}
+      aria-disabled={disabled || undefined}
       className={cls}
       style={{ paddingLeft: mode === 'inline' ? level * inlineIndent : undefined, ...style }}
-      onClick={onItemClick}>
+      onClick={onItemClick}
+      onKeyDown={(e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onItemClick(e as unknown as React.MouseEvent);
+        }
+      }}>
       {children}
     </li>
   );

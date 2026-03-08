@@ -6,7 +6,7 @@ import { ColProps, ColSize } from './types';
 
 const ScreenTypes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-const Col = (props: ColProps): React.ReactElement => {
+const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const {
     span = 24,
     offset = 0,
@@ -50,11 +50,11 @@ const Col = (props: ColProps): React.ReactElement => {
   );
 
   return (
-    <div {...otherProps} className={cls} style={style}>
+    <div {...otherProps} ref={ref} className={cls} style={style}>
       {children}
     </div>
   );
-};
+});
 
 Col.displayName = 'Col';
 

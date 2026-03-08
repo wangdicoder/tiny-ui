@@ -3,6 +3,7 @@
 exports[`<Badge /> should match the snapshot 1`] = `
 <DocumentFragment>
   <span
+    aria-label="5 notifications"
     class="ty-badge"
   >
     <div>

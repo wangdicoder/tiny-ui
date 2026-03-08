@@ -15,7 +15,7 @@ const LoadingBar = (props: LoadingBarProps): React.ReactElement => {
   }, [didMount]);
 
   return (
-    <div {...otherProps} className={cls}>
+    <div {...otherProps} className={cls} role="progressbar">
       <div id="ty-loading-bar" className={`${prefixCls}__inner`} />
     </div>
   );

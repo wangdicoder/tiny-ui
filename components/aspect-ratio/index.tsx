@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { AspectRatioProps } from './types';
 
-const AspectRatio = (props: AspectRatioProps): React.ReactElement => {
+const AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>((props, ref) => {
   const {
     ratio = 1,
     width = '100%',
@@ -19,11 +19,13 @@ const AspectRatio = (props: AspectRatioProps): React.ReactElement => {
   const cls = classNames(prefixCls, className);
 
   return (
-    <div {...otherProps} className={cls} style={{ ...style, width }}>
+    <div {...otherProps} ref={ref} className={cls} style={{ ...style, width }}>
       <div className={`${prefixCls}__padding`} style={{ paddingTop: `${(1 / ratio) * 100}%` }} />
       <div className={`${prefixCls}__inside`}>{children}</div>
     </div>
   );
-};
+});
+
+AspectRatio.displayName = 'AspectRatio';
 
 export default AspectRatio;

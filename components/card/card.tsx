@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CardContentProps, CardProps } from './types';
 
-const Card = (props: CardProps): JSX.Element => {
+const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const {
     bordered = true,
     active = false,
@@ -81,13 +81,13 @@ const Card = (props: CardProps): JSX.Element => {
   };
 
   return (
-    <div className={cls} style={style}>
+    <div ref={ref} className={cls} style={style}>
       {renderHeader()}
       {renderChildren()}
       {renderFooter()}
     </div>
   );
-};
+});
 
 Card.displayName = 'Card';
 

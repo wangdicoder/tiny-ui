@@ -7,7 +7,7 @@ import UploadList from './upload-list';
 import DraggerCover from './dragger-cover';
 import { UploadFile, UploadProps } from './types';
 
-const Upload = (props: UploadProps): JSX.Element => {
+const Upload = React.forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
   const {
     defaultFileList = [],
     httpRequest = ajax,
@@ -150,7 +150,7 @@ const Upload = (props: UploadProps): JSX.Element => {
 
   return (
     <>
-      <div className={cls} style={style} onClick={handleTriggerOnClick}>
+      <div ref={ref} className={cls} style={style} onClick={handleTriggerOnClick}>
         {drag ? (
           <DraggerCover prefixCls={prefixCls} onFile={uploadFiles} disabled={disabled}>
             {children}
@@ -171,7 +171,7 @@ const Upload = (props: UploadProps): JSX.Element => {
       <UploadList prefixCls={prefixCls} fileList={fileList} onRemove={handleOnRemove} />
     </>
   );
-};
+});
 
 Upload.displayName = 'Upload';
 

@@ -72,9 +72,16 @@ const StepsItem = React.forwardRef<HTMLDivElement, StepsItemProps>(
       <div
         {...otherProps}
         role={stepsContext.clickable ? 'button' : undefined}
+        tabIndex={stepsContext.clickable && !disabled ? 0 : undefined}
         ref={ref}
         className={cls}
-        onClick={stepItemOnClick}>
+        onClick={stepItemOnClick}
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if ((e.key === 'Enter' || e.key === ' ') && stepsContext.clickable) {
+            e.preventDefault();
+            stepItemOnClick(e as unknown as React.MouseEvent<HTMLDivElement>);
+          }
+        }}>
         <div className={`${prefixCls}__head`}>
           <div
             className={classNames(`${prefixCls}__icon`, { [`${prefixCls}__icon_has-icon`]: icon })}>

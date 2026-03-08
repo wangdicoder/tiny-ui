@@ -45,7 +45,7 @@ const Tree = React.forwardRef<HTMLUListElement, TreeProps>(
     };
 
     return (
-      <ul className={cls} ref={ref} aria-level={0}>
+      <ul className={cls} ref={ref} role="tree" aria-level={0}>
         {treeNodes.map((item) => (
           <TreeNode
             {...props}

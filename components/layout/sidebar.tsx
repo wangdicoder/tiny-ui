@@ -61,9 +61,9 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
       }
 
       return (
-        <div className={`${prefixCls}__trigger`} onClick={_collapseBtnOnClick}>
+        <button type="button" className={`${prefixCls}__trigger`} onClick={_collapseBtnOnClick} aria-label="Toggle sidebar">
           <Icon name="left" className={`${prefixCls}__trigger-icon`} />
-        </div>
+        </button>
       );
     };
 

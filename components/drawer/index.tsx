@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useId, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay from '../overlay';
@@ -6,7 +6,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { DrawerProps } from './types';
 
-const Drawer = (props: DrawerProps): React.ReactElement => {
+const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
   const {
     visible,
     placement = 'right',
@@ -33,6 +33,49 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
   const sty: React.CSSProperties =
     placement === 'top' || placement === 'bottom' ? { height: size } : { width: size };
   const nodeRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const titleId = useId();
+
+  // Focus trap + Escape key
+  useEffect(() => {
+    if (!visible) return;
+    previousFocusRef.current = document.activeElement as HTMLElement;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose?.(e as unknown as React.MouseEvent);
+        return;
+      }
+      if (e.key === 'Tab' && nodeRef.current) {
+        const focusable = nodeRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    requestAnimationFrame(() => {
+      if (nodeRef.current) {
+        const focusable = nodeRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length > 0) focusable[0].focus();
+      }
+    });
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previousFocusRef.current?.focus();
+    };
+  }, [visible, onClose]);
 
   return (
     <Overlay
@@ -47,20 +90,26 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
         maskClosable && onClose ? onClose(e) : undefined;
       }}
       style={maskStyle}>
-      <div className={cls} style={{ ...style, ...sty }}>
+      <div ref={ref} className={cls} style={{ ...style, ...sty }}>
         <CSSTransition
           appear={true}
           nodeRef={nodeRef}
           in={drawerVisible}
           timeout={0}
           classNames={`${prefixCls}__content_move`}>
-          <div ref={nodeRef} className={`${prefixCls}__content`} onClick={(e) => e.stopPropagation()}>
+          <div
+            ref={nodeRef}
+            className={`${prefixCls}__content`}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={header ? titleId : undefined}
+            onClick={(e) => e.stopPropagation()}>
             {closable && (
-              <div className={`${prefixCls}__close-btn`} onClick={onClose}>
+              <button type="button" className={`${prefixCls}__close-btn`} onClick={onClose} aria-label="Close">
                 ✕
-              </div>
+              </button>
             )}
-            {header && <div className={`${prefixCls}__header`}>{header}</div>}
+            {header && <div className={`${prefixCls}__header`} id={titleId}>{header}</div>}
             <div className={`${prefixCls}__body`}>{children}</div>
             {footer && <div className={`${prefixCls}__footer`}>{footer}</div>}
           </div>
@@ -68,7 +117,7 @@ const Drawer = (props: DrawerProps): React.ReactElement => {
       </div>
     </Overlay>
   );
-};
+});
 
 Drawer.displayName = 'Drawer';
 

@@ -40,7 +40,7 @@ const Menu = (props: MenuProps): JSX.Element => {
   };
 
   return (
-    <ul {...otherProps} role="menu" className={cls} style={style}>
+    <ul {...otherProps} role="menu" aria-orientation={mode === 'horizontal' ? 'horizontal' : 'vertical'} className={cls} style={style}>
       <MenuContext.Provider value={contextValue}>
         {React.Children.map(children, (child, index) => {
           const childElement = child as React.FunctionComponentElement<MenuItemProps>;

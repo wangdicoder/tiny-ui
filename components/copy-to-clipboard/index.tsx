@@ -4,16 +4,29 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CopyToClipboardProps } from './types';
 
-const copy = (value: string) => {
+const copy = async (value: string) => {
+  if (navigator.clipboard) {
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      fallbackCopy(value);
+    }
+  } else {
+    fallbackCopy(value);
+  }
+};
+
+const fallbackCopy = (value: string) => {
   const textArea = document.createElement('textarea');
-  textArea.style.background = 'transparent';
+  textArea.style.position = 'fixed';
+  textArea.style.opacity = '0';
   textArea.value = value;
   document.body.appendChild(textArea);
   textArea.select();
   try {
     document.execCommand('copy');
-  } catch (err) {
-    console.log('Oops, unable to copy');
+  } catch {
+    // copy failed silently
   }
   document.body.removeChild(textArea);
 };

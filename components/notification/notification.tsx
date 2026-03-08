@@ -73,9 +73,9 @@ const Notification = (props: NotificationProps): JSX.Element => {
         <div className={`${prefixCls}__title`}>{title}</div>
         {description}
         {footer}
-        <div role="button" className={`${prefixCls}__close`} onClick={closeBtnOnClick}>
+        <button type="button" className={`${prefixCls}__close`} onClick={closeBtnOnClick} aria-label="Close">
           ✕
-        </div>
+        </button>
       </div>
     </div>
   );

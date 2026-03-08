@@ -16,7 +16,7 @@ const setClosedStyle = (node: HTMLElement): void => {
   node.style.marginBottom = '0';
 };
 
-const Alert = (props: AlertProps): JSX.Element => {
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, forwardedRef) => {
   const {
     type = 'info',
     iconSize = 14,
@@ -46,9 +46,9 @@ const Alert = (props: AlertProps): JSX.Element => {
 
   // Setting close text attribute also allows to be closable
   const closeIcon = (closable || closeText) && (
-    <span role="button" className={`${prefixCls}__close-btn`} onClick={closeBtnOnClick}>
+    <button type="button" className={`${prefixCls}__close-btn`} onClick={closeBtnOnClick} aria-label="Close">
       {closeText || '✕'}
-    </span>
+    </button>
   );
 
   const renderIcon = (): React.ReactNode => {
@@ -70,7 +70,11 @@ const Alert = (props: AlertProps): JSX.Element => {
 
   return (
     <Transition timeout={300} in={isShow} onExited={afterClose}>
-      <div {...otherProps} role="alert" className={cls} style={style} ref={ref}>
+      <div {...otherProps} role="alert" className={cls} style={style} ref={(node) => {
+        ref.current = node;
+        if (typeof forwardedRef === 'function') forwardedRef(node);
+        else if (forwardedRef) forwardedRef.current = node;
+      }}>
         {icon && renderIcon()}
         <div>
           {title && <p className={`${prefixCls}__title`}>{title}</p>}
@@ -80,6 +84,8 @@ const Alert = (props: AlertProps): JSX.Element => {
       </div>
     </Transition>
   );
-};
+});
+
+Alert.displayName = 'Alert';
 
 export default Alert;

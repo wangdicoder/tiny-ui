@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { AvatarProps } from './types';
 
-const Avatar = (props: AvatarProps): JSX.Element => {
+const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const {
     size = 38,
     shape = 'circle',
@@ -86,12 +86,16 @@ const Avatar = (props: AvatarProps): JSX.Element => {
   });
 
   return (
-    <span {...otherProps} ref={outerEl} className={cls} style={styles}>
+    <span {...otherProps} ref={(node) => {
+      outerEl.current = node;
+      if (typeof ref === 'function') ref(node);
+      else if (ref) ref.current = node;
+    }} className={cls} style={styles}>
       {renderItem()}
       {presence && renderPresence()}
     </span>
   );
-};
+});
 
 Avatar.displayName = 'Avatar';
 

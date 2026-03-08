@@ -24,20 +24,24 @@ const Image = (props: ImageProps): JSX.Element => {
   const ref = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
-    if (lazy && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            const lazyImage = entry.target as HTMLImageElement;
-            lazyImage.src = src || fallback || '';
-            observer.unobserve(lazyImage);
-          }
-        });
-      });
+    if (!lazy || !('IntersectionObserver' in window)) return;
 
-      const imgNode = ref.current;
-      imgNode && observer.observe(imgNode);
-    }
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target as HTMLImageElement;
+          lazyImage.src = src || fallback || '';
+          obs.unobserve(lazyImage);
+        }
+      });
+    });
+
+    const imgNode = ref.current;
+    imgNode && observer.observe(imgNode);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [fallback, lazy, src]);
 
   return (

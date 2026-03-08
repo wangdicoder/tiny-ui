@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { DividerProps } from './types';
 
-const Divider = (props: DividerProps): JSX.Element => {
+const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
   const {
     type = 'horizontal',
     dashed = false,
@@ -22,11 +22,11 @@ const Divider = (props: DividerProps): JSX.Element => {
   });
 
   return (
-    <div {...otherProps} className={cls}>
+    <div {...otherProps} ref={ref} role="separator" className={cls}>
       {children && <span className={`${prefixCls}_inner-text`}>{children}</span>}
     </div>
   );
-};
+});
 
 Divider.displayName = 'Divider';
 

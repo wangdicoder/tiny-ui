@@ -16,6 +16,8 @@ exports[`<SplitButton /> should match the snapshot 1`] = `
       </span>
     </button>
     <button
+      aria-expanded="false"
+      aria-haspopup="true"
       class="ty-btn ty-btn_md ty-btn_default ty-split-button__dropdown-btn"
       role="button"
     >

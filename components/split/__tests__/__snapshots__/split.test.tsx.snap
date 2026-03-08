@@ -12,9 +12,11 @@ exports[`<Split /> should match the snapshot 1`] = `
       Content
     </div>
     <div
+      aria-orientation="vertical"
       class="ty-split-bar ty-split-bar_vertical"
-      role="presentation"
+      role="separator"
       style="width: 6px;"
+      tabindex="0"
     >
       <div
         class="ty-split-bar__icon"

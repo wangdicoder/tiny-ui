@@ -5,9 +5,12 @@ exports[`<Tree /> should match the snapshot 1`] = `
   <ul
     aria-level="0"
     class="ty-tree"
+    role="tree"
   >
     <li
+      aria-expanded="false"
       class="ty-tree-node ty-tree-node_block"
+      role="treeitem"
     >
       <div
         class="ty-tree-node__title"
@@ -41,9 +44,11 @@ exports[`<Tree /> should match the snapshot 1`] = `
         <ul
           aria-level="1"
           class="ty-tree"
+          role="group"
         >
           <li
             class="ty-tree-node ty-tree-node_block"
+            role="treeitem"
           >
             <div
               class="ty-tree-node__title"
@@ -61,6 +66,7 @@ exports[`<Tree /> should match the snapshot 1`] = `
           </li>
           <li
             class="ty-tree-node ty-tree-node_block"
+            role="treeitem"
           >
             <div
               class="ty-tree-node__title"
@@ -81,6 +87,7 @@ exports[`<Tree /> should match the snapshot 1`] = `
     </li>
     <li
       class="ty-tree-node ty-tree-node_block"
+      role="treeitem"
     >
       <div
         class="ty-tree-node__title"

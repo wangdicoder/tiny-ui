@@ -13,7 +13,7 @@ const isValid = (val: string | number): boolean => {
   return !isNaN(+val);
 };
 
-const InputNumber = (props: InputNumberProps): React.ReactElement => {
+const InputNumber = React.forwardRef<HTMLDivElement, InputNumberProps>((props, ref) => {
   const {
     size = 'md',
     disabled = false,
@@ -71,7 +71,7 @@ const InputNumber = (props: InputNumberProps): React.ReactElement => {
   }, [props]);
 
   return (
-    <div className={cls} style={style}>
+    <div ref={ref} className={cls} style={style}>
       <input
         autoComplete="off"
         disabled={disabled}
@@ -97,6 +97,8 @@ const InputNumber = (props: InputNumberProps): React.ReactElement => {
       </div>
     </div>
   );
-};
+});
+
+InputNumber.displayName = 'InputNumber';
 
 export default InputNumber;

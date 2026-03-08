@@ -48,7 +48,7 @@ const BackTop = (props: BackTopProps): JSX.Element | null => {
     }
   };
 
-  const scrollToTop = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const scrollToTop = (e: React.MouseEvent<HTMLButtonElement>): void => {
     const scrollTop = getDistanceFromTop();
     const startTime = Date.now();
     const step = (): void => {
@@ -85,7 +85,7 @@ const BackTop = (props: BackTopProps): JSX.Element | null => {
 
   if (visible) {
     return (
-      <div className={cls} style={style} onClick={scrollToTop}>
+      <button type="button" className={cls} style={style} onClick={scrollToTop} aria-label="Back to top">
         {children || (
           <svg viewBox="0 0 1024 1024" width="18" height="18">
             <path
@@ -103,7 +103,7 @@ const BackTop = (props: BackTopProps): JSX.Element | null => {
             />
           </svg>
         )}
-      </div>
+      </button>
     );
   }
 

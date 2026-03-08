@@ -24,7 +24,11 @@ const Link = (props: LinkProps): React.ReactElement => {
   });
 
   if (disabled) {
-    delete otherProps.href;
+    return (
+      <span className={cls} style={style} role="link" aria-disabled="true">
+        <span>{children}</span>
+      </span>
+    );
   }
   return (
     <a
@@ -32,8 +36,7 @@ const Link = (props: LinkProps): React.ReactElement => {
       target={target ? target : external ? '_blank' : '_self'}
       className={cls}
       style={style}
-      role="link"
-      aria-disabled={disabled}>
+      role="link">
       <span>{children}</span>
     </a>
   );

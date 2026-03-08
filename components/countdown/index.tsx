@@ -1,10 +1,10 @@
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CountdownProps, DateType } from './types';
 
-const Countdown = (props: CountdownProps): JSX.Element => {
+const Countdown = React.forwardRef<HTMLDivElement, CountdownProps>((props, ref) => {
   const {
     millisec = false,
     prefixCls: customisedCls,
@@ -54,11 +54,11 @@ const Countdown = (props: CountdownProps): JSX.Element => {
   }, [value, startInterval]);
 
   return (
-    <div className={cls} style={style}>
+    <div ref={ref} className={cls} style={style} role="timer" aria-live="polite">
       {typeof children === 'function' && children(date)}
     </div>
   );
-};
+});
 
 Countdown.displayName = 'Countdown';
 

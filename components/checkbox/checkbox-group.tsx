@@ -26,15 +26,11 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
     const itemOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
       if (!disabled) {
         const name = e.currentTarget.name;
-        const idx = value.indexOf(name);
-        if (idx > -1) {
-          value.splice(idx, 1);
-        } else {
-          value.push(name);
-        }
-        // Update state
-        !('value' in props) && setValue([...value]);
-        onChange && onChange(value);
+        const newValue = value.includes(name)
+          ? value.filter((v) => v !== name)
+          : [...value, name];
+        !('value' in props) && setValue(newValue);
+        onChange && onChange(newValue);
       }
     };
 

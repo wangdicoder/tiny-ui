@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, forwardRef } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { TextareaProps } from './types';
 
-const Textarea = (props: TextareaProps): JSX.Element => {
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
   const {
     disabled = false,
     prefixCls: customisedCls,
@@ -35,6 +35,7 @@ const Textarea = (props: TextareaProps): JSX.Element => {
       <span className={`${prefixCls}-container`}>
         <textarea
           {...otherProps}
+          ref={ref}
           maxLength={limit}
           rows={rows}
           value={value}
@@ -53,6 +54,7 @@ const Textarea = (props: TextareaProps): JSX.Element => {
     return (
       <textarea
         {...props}
+        ref={ref}
         rows={rows}
         value={value}
         defaultValue={defaultValue}
@@ -63,7 +65,7 @@ const Textarea = (props: TextareaProps): JSX.Element => {
       />
     );
   }
-};
+});
 
 Textarea.displayName = 'Textarea';
 

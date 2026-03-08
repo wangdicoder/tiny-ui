@@ -22,7 +22,7 @@ const StrengthIndicator = React.forwardRef<HTMLDivElement, StrengthIndicatorProp
       : ['Weak', 'Medium', 'Strong'];
 
     return (
-      <div {...otherProps} className={cls} ref={ref}>
+      <div {...otherProps} className={cls} ref={ref} role="progressbar" aria-valuenow={current} aria-valuemin={0} aria-valuemax={blocks}>
         {Array.from(new Array(blocks)).map((item, idx) => {
           const itemCls = classNames(`${prefixCls}__item`, {
             [`${prefixCls}__item_active`]: idx < current,

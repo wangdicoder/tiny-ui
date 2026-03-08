@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect, useCallback, CSSProperties } from 'react';
+import React, { useContext, useId, useRef, useState, useEffect, useCallback, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -42,6 +42,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
 
     const [currentKey, setCurrentKey] = useState<string>(activeKey ?? getDefaultKey());
     const [inkStyle, setInkStyle] = useState<CSSProperties>({});
+    const baseId = useId();
     const [scrollOffset, setScrollOffset] = useState(0);
     const [showNav, setShowNav] = useState(false);
     const navWrapRef = useRef<HTMLDivElement>(null);
@@ -111,6 +112,34 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       onEdit?.(e, 'add');
     };
 
+    const handleTabKeyDown = (e: React.KeyboardEvent, itemIndex: number) => {
+      const enabledItems = resolvedItems.filter((item) => !item.disabled);
+      const currentEnabledIdx = enabledItems.findIndex((item) => item.key === resolvedItems[itemIndex].key);
+      let targetItem: TabItem | undefined;
+
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prevIdx = currentEnabledIdx <= 0 ? enabledItems.length - 1 : currentEnabledIdx - 1;
+        targetItem = enabledItems[prevIdx];
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nextIdx = currentEnabledIdx >= enabledItems.length - 1 ? 0 : currentEnabledIdx + 1;
+        targetItem = enabledItems[nextIdx];
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        targetItem = enabledItems[0];
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        targetItem = enabledItems[enabledItems.length - 1];
+      }
+
+      if (targetItem) {
+        const el = tabRefs.current.get(targetItem.key);
+        el?.focus();
+        handleTabClick(targetItem.key, targetItem.disabled, e as unknown as React.MouseEvent);
+      }
+    };
+
     // Scroll navigation
     const scrollStep = 200;
     const getMaxScroll = () => {
@@ -174,7 +203,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       <div {...otherProps} ref={ref} className={cls}>
         {tabPosition === 'bottom' && (
           <div className={`${prefixCls}__content`}>
-            {renderPanels(resolvedItems, currentKey, prefixCls, animated, isHorizontal, destroyInactiveTabPane)}
+            {renderPanels(resolvedItems, currentKey, prefixCls, animated, isHorizontal, destroyInactiveTabPane, baseId)}
           </div>
         )}
         <div
@@ -201,7 +230,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
               className={`${prefixCls}__nav-list`}
               ref={navListRef}
               style={showNav ? navScrollStyle : undefined}>
-              {resolvedItems.map((item) => {
+              {resolvedItems.map((item, idx) => {
                 const isActive = item.key === currentKey;
                 const tabCls = classNames(`${prefixCls}__tab`, {
                   [`${prefixCls}__tab_active`]: isActive,
@@ -218,10 +247,13 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
                     className={tabCls}
                     style={gutter}
                     role="tab"
+                    id={`${baseId}-tab-${item.key}`}
                     aria-selected={isActive}
                     aria-disabled={item.disabled}
+                    aria-controls={`${baseId}-panel-${item.key}`}
                     tabIndex={isActive ? 0 : -1}
-                    onClick={(e) => handleTabClick(item.key, item.disabled, e)}>
+                    onClick={(e) => handleTabClick(item.key, item.disabled, e)}
+                    onKeyDown={(e) => handleTabKeyDown(e, idx)}>
                     {item.icon && <span className={`${prefixCls}__tab-icon`}>{item.icon}</span>}
                     <span className={`${prefixCls}__tab-label`}>{item.label}</span>
                     {type === 'editable-card' && item.closable !== false && (
@@ -266,7 +298,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         </div>
         {tabPosition !== 'bottom' && (
           <div className={`${prefixCls}__content`}>
-            {renderPanels(resolvedItems, currentKey, prefixCls, animated, isHorizontal, destroyInactiveTabPane)}
+            {renderPanels(resolvedItems, currentKey, prefixCls, animated, isHorizontal, destroyInactiveTabPane, baseId)}
           </div>
         )}
       </div>
@@ -297,7 +329,8 @@ function renderPanels(
   prefixCls: string,
   animated: boolean,
   isHorizontal: boolean,
-  destroyInactive: boolean
+  destroyInactive: boolean,
+  baseId?: string
 ): React.ReactNode {
   const activeIdx = items.findIndex((item) => item.key === currentKey);
   const containerStyle: CSSProperties = animated && isHorizontal
@@ -317,11 +350,11 @@ function renderPanels(
         });
 
         if (destroyInactive && !isActive && !item.forceRender) {
-          return <div key={item.key} className={panelCls} role="tabpanel" />;
+          return <div key={item.key} className={panelCls} role="tabpanel" id={baseId ? `${baseId}-panel-${item.key}` : undefined} aria-labelledby={baseId ? `${baseId}-tab-${item.key}` : undefined} />;
         }
 
         return (
-          <div key={item.key} className={panelCls} role="tabpanel">
+          <div key={item.key} className={panelCls} role="tabpanel" id={baseId ? `${baseId}-panel-${item.key}` : undefined} aria-labelledby={baseId ? `${baseId}-tab-${item.key}` : undefined}>
             {item.children}
           </div>
         );

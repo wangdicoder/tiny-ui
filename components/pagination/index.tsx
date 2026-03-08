@@ -130,21 +130,35 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   }, [props]);
 
   return (
-    <ul {...otherProps} className={cls}>
-      {getItems().map((item, idx) => {
-        const { active, disabled, type } = item;
-        const cls = classNames(`${prefixCls}__item`, {
-          [`${prefixCls}__item_active`]: active,
-          [`${prefixCls}__item_disabled`]: disabled,
-          [`${prefixCls}__item_ellipsis`]: type === 'jump-next' || type === 'jump-prev',
-        });
-        return (
-          <li key={idx} className={cls} tabIndex={0} onClick={(): void => itemOnClick(item)}>
-            {renderItem(item)}
-          </li>
-        );
-      })}
-    </ul>
+    <nav {...otherProps} className={cls} aria-label="Pagination">
+      <ul className={`${prefixCls}__list`}>
+        {getItems().map((item, idx) => {
+          const { active, disabled: itemDisabled, type, label } = item;
+          const cls = classNames(`${prefixCls}__item`, {
+            [`${prefixCls}__item_active`]: active,
+            [`${prefixCls}__item_disabled`]: itemDisabled,
+            [`${prefixCls}__item_ellipsis`]: type === 'jump-next' || type === 'jump-prev',
+          });
+          const ariaLabel = type === 'prev' ? 'Previous page' :
+            type === 'next' ? 'Next page' :
+            type === 'jump-prev' ? 'Jump back 5 pages' :
+            type === 'jump-next' ? 'Jump forward 5 pages' :
+            `Page ${label}`;
+          return (
+            <li key={idx} className={cls}>
+              <button
+                type="button"
+                disabled={itemDisabled}
+                aria-current={active ? 'page' : undefined}
+                aria-label={ariaLabel}
+                onClick={(): void => itemOnClick(item)}>
+                {renderItem(item)}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 };
 

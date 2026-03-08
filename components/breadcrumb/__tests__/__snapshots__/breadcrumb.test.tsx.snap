@@ -3,6 +3,7 @@
 exports[`<Breadcrumb /> should match the snapshot 1`] = `
 <DocumentFragment>
   <nav
+    aria-label="Breadcrumb"
     class="ty-breadcrumb"
   >
     <ol

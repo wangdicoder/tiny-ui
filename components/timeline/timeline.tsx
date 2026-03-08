@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { TimelineItemProps, TimelineProps } from './types';
 
-const Timeline = (props: TimelineProps): React.ReactElement => {
+const Timeline = React.forwardRef<HTMLUListElement, TimelineProps>((props, ref) => {
   const { position = 'left', prefixCls: customisedCls, className, children, ...otherProps } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('timeline', configContext.prefixCls, customisedCls);
@@ -13,7 +13,7 @@ const Timeline = (props: TimelineProps): React.ReactElement => {
   });
 
   return (
-    <ul {...otherProps} className={cls}>
+    <ul {...otherProps} ref={ref} className={cls}>
       {React.Children.map(children, (child, idx) => {
         const childElement = child as React.FunctionComponentElement<TimelineItemProps>;
         if (childElement.type.displayName === 'TimelineItem') {
@@ -32,7 +32,7 @@ const Timeline = (props: TimelineProps): React.ReactElement => {
       })}
     </ul>
   );
-};
+});
 
 Timeline.displayName = 'Timeline';
 

@@ -5,7 +5,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { TooltipProps } from './types';
 
-const Tooltip = (props: TooltipProps): React.ReactElement => {
+const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>((props) => {
   const {
     trigger = 'hover',
     prefixCls: customisedCls,
@@ -29,7 +29,7 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
       {children}
     </Popup>
   );
-};
+});
 
 Tooltip.displayName = 'Tooltip';
 

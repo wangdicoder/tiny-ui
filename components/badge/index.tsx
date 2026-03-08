@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import warning from '../_utils/warning';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { BadgeProps } from './types';
 
-const Badge = (props: BadgeProps): JSX.Element => {
+const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const {
     count,
     color = '#f2453d',
@@ -46,7 +46,11 @@ const Badge = (props: BadgeProps): JSX.Element => {
   };
 
   return (
-    <span {...otherProps} className={cls}>
+    <span
+      {...otherProps}
+      ref={ref}
+      className={cls}
+      aria-label={typeof count === 'number' ? `${count > max ? `${max}+` : count} notifications` : undefined}>
       {children}
       {dot ? (
         <sup title={title} className={dotCls} style={{ backgroundColor: color, ...badgeStyle }} />
@@ -55,7 +59,7 @@ const Badge = (props: BadgeProps): JSX.Element => {
       )}
     </span>
   );
-};
+});
 
 Badge.displayName = 'Badge';
 

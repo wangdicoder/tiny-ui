@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useId, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useClickOutside } from '../_utils/hooks';
 import { ArrowDown } from '../_utils/components';
@@ -27,6 +27,8 @@ const Select = (props: SelectProps): React.ReactElement => {
   const [isOpenDropdown, setIsOpenDropdown] = useState('open' in props ? props.open : defaultOpen);
   const [selectVal, setSelectVal] = useState('value' in props ? value : defaultValue);
   const ref = useRef<HTMLDivElement | null>(null);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const listboxId = useId();
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('select', configContext.prefixCls, customisedCls);
   const cls = classNames(prefixCls, className);
@@ -48,6 +50,59 @@ const Select = (props: SelectProps): React.ReactElement => {
     }
   };
 
+  const getOptionValues = (): { value: SelectValue; disabled: boolean }[] => {
+    const options: { value: SelectValue; disabled: boolean }[] = [];
+    React.Children.forEach(children, (child) => {
+      const childElement = child as React.FunctionComponentElement<SelectOptionsProps>;
+      if (childElement?.type?.displayName === 'SelectOption') {
+        options.push({ value: childElement.props.value, disabled: !!childElement.props.disabled });
+      }
+    });
+    return options;
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent): void => {
+    if (disabled) return;
+    const options = getOptionValues();
+    if (e.key === 'Escape') {
+      setIsOpenDropdown(false);
+      onDropdownVisibleChange?.(false);
+      return;
+    }
+    if (e.key === 'Enter' || e.key === ' ') {
+      if (!isOpenDropdown) {
+        e.preventDefault();
+        setIsOpenDropdown(true);
+        onDropdownVisibleChange?.(true);
+      } else if (focusedIndex >= 0 && focusedIndex < options.length) {
+        e.preventDefault();
+        const opt = options[focusedIndex];
+        if (!opt.disabled) {
+          setSelectVal(opt.value);
+          setIsOpenDropdown(false);
+          onSelect?.(opt.value);
+        }
+      }
+      return;
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (!isOpenDropdown) {
+        setIsOpenDropdown(true);
+        onDropdownVisibleChange?.(true);
+        setFocusedIndex(0);
+        return;
+      }
+      const dir = e.key === 'ArrowDown' ? 1 : -1;
+      setFocusedIndex((prev) => {
+        let next = prev + dir;
+        if (next < 0) next = options.length - 1;
+        if (next >= options.length) next = 0;
+        return next;
+      });
+    }
+  };
+
   const contextValue = {
     value: selectVal,
     onSelect: (value: SelectValue): void => {
@@ -63,7 +118,7 @@ const Select = (props: SelectProps): React.ReactElement => {
 
   const renderOverlay = (): React.ReactElement => (
     <SelectContext.Provider value={contextValue}>
-      <ul className={`${prefixCls}__dropdown`} style={dropdownStyle}>
+      <ul className={`${prefixCls}__dropdown`} style={dropdownStyle} role="listbox" id={listboxId}>
         {React.Children.map(children, (child) => {
           const childElement = child as React.FunctionComponentElement<SelectOptionsProps>;
           const { displayName } = childElement.type;
@@ -81,7 +136,15 @@ const Select = (props: SelectProps): React.ReactElement => {
   );
 
   return (
-    <div {...otherProps} ref={ref} className={cls}>
+    <div
+      {...otherProps}
+      ref={ref}
+      className={cls}
+      role="combobox"
+      aria-expanded={isOpenDropdown}
+      aria-haspopup="listbox"
+      aria-owns={isOpenDropdown ? listboxId : undefined}
+      onKeyDown={handleKeyDown}>
       <Popup
         trigger="manual"
         placement="bottom"

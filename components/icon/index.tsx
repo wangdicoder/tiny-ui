@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { IconProps } from './types';
 
-const Icon = (props: IconProps): JSX.Element => {
+const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   const {
     name,
     color,
@@ -20,8 +20,8 @@ const Icon = (props: IconProps): JSX.Element => {
   const cls = classNames(prefixCls, className, `ty--${name}`, {
     [`${prefixCls}_spin`]: spin,
   });
-  return <i className={cls} style={{ color, fontSize: size, ...style }} {...otherProps} />;
-};
+  return <i ref={ref} className={cls} style={{ color, fontSize: size, ...style }} {...otherProps} />;
+});
 
 Icon.displayName = 'Icon';
 

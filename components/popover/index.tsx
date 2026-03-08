@@ -5,7 +5,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { PopoverProps } from './types';
 
-const Popover = (props: PopoverProps): JSX.Element => {
+const Popover = React.forwardRef<HTMLDivElement, PopoverProps>((props) => {
   const {
     theme = 'light',
     role = 'tooltip',
@@ -32,6 +32,8 @@ const Popover = (props: PopoverProps): JSX.Element => {
       {children}
     </Popup>
   );
-};
+});
+
+Popover.displayName = 'Popover';
 
 export default Popover;

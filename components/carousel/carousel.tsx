@@ -171,7 +171,11 @@ const Carousel = forwardRef<CarouselRef, CarouselProps>((props, ref) => {
           <div
             key={idx}
             className={`${prefixCls}__slide`}
-            style={{ width: `${pct}%` }}>
+            style={{ width: `${pct}%` }}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`Slide ${idx + 1} of ${slideCount}`}
+            aria-hidden={idx !== current}>
             {child}
           </div>
         ))}
@@ -193,7 +197,11 @@ const Carousel = forwardRef<CarouselRef, CarouselProps>((props, ref) => {
             style={{
               opacity: isActive ? 1 : 0,
               transition: `opacity ${speed}ms ${easing}`,
-            }}>
+            }}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`Slide ${idx + 1} of ${slideCount}`}
+            aria-hidden={!isActive}>
             {child}
           </div>
         );
@@ -206,6 +214,14 @@ const Carousel = forwardRef<CarouselRef, CarouselProps>((props, ref) => {
       ref={outerRef}
       className={cls}
       style={style}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Carousel"
+      onKeyDown={(e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      }}
+      tabIndex={0}
       onMouseEnter={() => autoplay && setPaused(true)}
       onMouseLeave={() => autoplay && setPaused(false)}
       onMouseDown={handleDragStart}
@@ -253,9 +269,14 @@ const Carousel = forwardRef<CarouselRef, CarouselProps>((props, ref) => {
               key={idx}
               className={classNames(`${prefixCls}__dot`, {
                 [`${prefixCls}__dot_active`]: idx === current,
-              })}
-              onClick={() => goTo(idx)}
-            />
+              })}>
+              <button
+                type="button"
+                aria-label={`Go to slide ${idx + 1}`}
+                aria-current={idx === current ? true : undefined}
+                onClick={() => goTo(idx)}
+              />
+            </li>
           ))}
         </ul>
       )}

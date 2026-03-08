@@ -19,6 +19,7 @@ export interface ModalProps extends BaseProps {
   confirmLoading?: boolean;
   onConfirm?: (e: React.MouseEvent) => void;
   onCancel?: (e: React.MouseEvent) => void;
+  onClose?: (e: React.MouseEvent) => void;
   confirmText?: string;
   cancelText?: string;
   confirmButtonProps?: ButtonProps;
