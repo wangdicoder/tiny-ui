@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect, useContext } from 'react';
+import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -73,7 +74,9 @@ const DatePicker = (props: DatePickerProps) => {
   const [panelDate, setPanelDate] = useState<Date>(value ?? defaultValue ?? new Date());
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<PanelMode>(picker === 'date' ? 'date' : picker);
+  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isOpen = controlledOpen ?? open;
 
@@ -92,12 +95,29 @@ const DatePicker = (props: DatePickerProps) => {
   // Click outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        wrapperRef.current && !wrapperRef.current.contains(target) &&
+        dropdownRef.current && !dropdownRef.current.contains(target)
+      ) {
         toggleOpen(false);
       }
     };
     if (isOpen) document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
+
+  // Position dropdown below input
+  useEffect(() => {
+    if (isOpen && wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect();
+      setDropdownStyle({
+        position: 'absolute',
+        top: rect.bottom + 4 + window.scrollY,
+        left: rect.left + window.scrollX,
+        zIndex: 1050,
+      });
+    }
   }, [isOpen]);
 
   const toggleOpen = useCallback((val: boolean) => {
@@ -187,6 +207,30 @@ const DatePicker = (props: DatePickerProps) => {
     }
   };
 
+  const dropdown = isOpen
+    ? createPortal(
+        <div className={`${prefixCls}__dropdown`} ref={dropdownRef} style={dropdownStyle}>
+          <PickerHeader
+            date={panelDate}
+            mode={mode}
+            onChange={setPanelDate}
+            onModeChange={handleModeChange}
+            prefixCls={prefixCls}
+          />
+          {renderPanel()}
+          {(showToday && mode === 'date' && picker === 'date') || renderExtraFooter ? (
+            <div className={`${prefixCls}__footer`}>
+              {renderExtraFooter?.(mode)}
+              {showToday && mode === 'date' && picker === 'date' && (
+                <a className={`${prefixCls}__today-btn`} onClick={handleToday}>Today</a>
+              )}
+            </div>
+          ) : null}
+        </div>,
+        document.body
+      )
+    : null;
+
   return (
     <div className={cls} style={style} ref={wrapperRef}>
       <div className={`${prefixCls}__input`} onClick={() => !disabled && toggleOpen(!isOpen)}>
@@ -213,27 +257,7 @@ const DatePicker = (props: DatePickerProps) => {
           </span>
         </span>
       </div>
-
-      {isOpen && (
-        <div className={`${prefixCls}__dropdown`}>
-          <PickerHeader
-            date={panelDate}
-            mode={mode}
-            onChange={setPanelDate}
-            onModeChange={handleModeChange}
-            prefixCls={prefixCls}
-          />
-          {renderPanel()}
-          {(showToday && mode === 'date' && picker === 'date') || renderExtraFooter ? (
-            <div className={`${prefixCls}__footer`}>
-              {renderExtraFooter?.(mode)}
-              {showToday && mode === 'date' && picker === 'date' && (
-                <a className={`${prefixCls}__today-btn`} onClick={handleToday}>Today</a>
-              )}
-            </div>
-          ) : null}
-        </div>
-      )}
+      {dropdown}
     </div>
   );
 };

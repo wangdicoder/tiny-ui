@@ -36,7 +36,7 @@ describe('<TimePicker />', () => {
     const { container } = render(<TimePicker />);
     const input = container.querySelector('.ty-time-picker__input');
     input && fireEvent.click(input);
-    expect(container.querySelector('.ty-time-picker__dropdown')).toBeInTheDocument();
+    expect(document.querySelector('.ty-time-picker__dropdown')).toBeInTheDocument();
   });
 
   it('should render formatted time', () => {
@@ -54,20 +54,20 @@ describe('<TimePicker />', () => {
   });
 
   it('should hide seconds column when format excludes seconds', () => {
-    const { container } = render(<TimePicker format="HH:mm" open />);
-    const columns = container.querySelectorAll('.ty-time-picker__column');
+    render(<TimePicker format="HH:mm" open />);
+    const columns = document.querySelectorAll('.ty-time-picker__column');
     expect(columns.length).toBe(2);
   });
 
   it('should show three columns by default', () => {
-    const { container } = render(<TimePicker open />);
-    const columns = container.querySelectorAll('.ty-time-picker__column');
+    render(<TimePicker open />);
+    const columns = document.querySelectorAll('.ty-time-picker__column');
     expect(columns.length).toBe(3);
   });
 
   it('should render step intervals', () => {
-    const { container } = render(<TimePicker hourStep={2} open />);
-    const cells = container.querySelectorAll('.ty-time-picker__column:first-child .ty-time-picker__cell');
+    render(<TimePicker hourStep={2} open />);
+    const cells = document.querySelectorAll('.ty-time-picker__column:first-child .ty-time-picker__cell');
     expect(cells.length).toBe(12); // 24 / 2
   });
 

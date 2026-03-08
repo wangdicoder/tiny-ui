@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback, useContext, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -83,7 +84,9 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
 
   const [date, setDate] = useState<Date | null>(value ?? defaultValue ?? null);
   const [open, setOpen] = useState(false);
+  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isOpen = controlledOpen ?? open;
 
@@ -100,7 +103,11 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
   // Click outside to close
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        wrapperRef.current && !wrapperRef.current.contains(target) &&
+        dropdownRef.current && !dropdownRef.current.contains(target)
+      ) {
         toggleOpen(false);
       }
     };
@@ -108,6 +115,19 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
       document.addEventListener('mousedown', handleClickOutside);
     }
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
+
+  // Position dropdown below input
+  useEffect(() => {
+    if (isOpen && wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect();
+      setDropdownStyle({
+        position: 'absolute',
+        top: rect.bottom + 4 + window.scrollY,
+        left: rect.left + window.scrollX,
+        zIndex: 1050,
+      });
+    }
   }, [isOpen]);
 
   const toggleOpen = useCallback((val: boolean) => {
@@ -163,37 +183,9 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
     [`${prefixCls}_has-value`]: hasValue,
   });
 
-  return (
-    <div className={cls} style={style} ref={wrapperRef}>
-      <div
-        className={`${prefixCls}__input`}
-        onClick={() => !disabled && toggleOpen(!isOpen)}>
-        <input
-          className={`${prefixCls}__input-field`}
-          readOnly={inputReadOnly}
-          disabled={disabled}
-          placeholder={placeholder}
-          value={displayValue}
-          aria-expanded={isOpen}
-          aria-haspopup="dialog"
-          onKeyDown={(e) => {
-            if (e.key === 'Escape' && isOpen) toggleOpen(false);
-          }}
-        />
-        <span className={`${prefixCls}__suffix`}>
-          {allowClear && hasValue && !disabled ? (
-            <button type="button" className={`${prefixCls}__clear`} onClick={handleClear} aria-label="Clear time">
-              <ClearIcon />
-            </button>
-          ) : null}
-          <span className={`${prefixCls}__icon`}>
-            {suffixIcon ?? <ClockIcon />}
-          </span>
-        </span>
-      </div>
-
-      {isOpen && (
-        <div className={`${prefixCls}__dropdown`}>
+  const dropdown = isOpen
+    ? createPortal(
+        <div className={`${prefixCls}__dropdown`} ref={dropdownRef} style={dropdownStyle}>
           <div className={`${prefixCls}__panel`}>
             <TimePanel
               prefixCls={prefixCls}
@@ -226,8 +218,40 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
               {renderExtraFooter()}
             </div>
           )}
-        </div>
-      )}
+        </div>,
+        document.body
+      )
+    : null;
+
+  return (
+    <div className={cls} style={style} ref={wrapperRef}>
+      <div
+        className={`${prefixCls}__input`}
+        onClick={() => !disabled && toggleOpen(!isOpen)}>
+        <input
+          className={`${prefixCls}__input-field`}
+          readOnly={inputReadOnly}
+          disabled={disabled}
+          placeholder={placeholder}
+          value={displayValue}
+          aria-expanded={isOpen}
+          aria-haspopup="dialog"
+          onKeyDown={(e) => {
+            if (e.key === 'Escape' && isOpen) toggleOpen(false);
+          }}
+        />
+        <span className={`${prefixCls}__suffix`}>
+          {allowClear && hasValue && !disabled ? (
+            <button type="button" className={`${prefixCls}__clear`} onClick={handleClear} aria-label="Clear time">
+              <ClearIcon />
+            </button>
+          ) : null}
+          <span className={`${prefixCls}__icon`}>
+            {suffixIcon ?? <ClockIcon />}
+          </span>
+        </span>
+      </div>
+      {dropdown}
     </div>
   );
 };

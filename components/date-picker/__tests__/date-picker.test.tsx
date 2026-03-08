@@ -32,7 +32,7 @@ describe('<DatePicker />', () => {
     const { container } = render(<DatePicker />);
     const input = container.querySelector('.ty-date-picker__input');
     input && fireEvent.click(input);
-    expect(container.querySelector('.ty-date-picker__dropdown')).toBeInTheDocument();
+    expect(document.querySelector('.ty-date-picker__dropdown')).toBeInTheDocument();
   });
 
   it('should render formatted value', () => {
@@ -50,13 +50,13 @@ describe('<DatePicker />', () => {
   });
 
   it('should show Today button by default', () => {
-    const { container } = render(<DatePicker open />);
-    expect(container.querySelector('.ty-date-picker__today-btn')).toBeInTheDocument();
+    render(<DatePicker open />);
+    expect(document.querySelector('.ty-date-picker__today-btn')).toBeInTheDocument();
   });
 
   it('should hide Today button when showToday is false', () => {
-    const { container } = render(<DatePicker open showToday={false} />);
-    expect(container.querySelector('.ty-date-picker__today-btn')).toBeNull();
+    render(<DatePicker open showToday={false} />);
+    expect(document.querySelector('.ty-date-picker__today-btn')).toBeNull();
   });
 
   it('should call onOpenChange', () => {
