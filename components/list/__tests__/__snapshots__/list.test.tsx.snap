@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-list ty-list_md ty-list_split"
+  >
+    <div
+      class="ty-list__body"
+    >
+      <div
+        class="ty-list-item"
+      >
+        <div
+          class="ty-list-item__main"
+        >
+          <div
+            class="ty-list-item__content"
+          >
+            Item 1
+          </div>
+        </div>
+      </div>
+      <div
+        class="ty-list-item"
+      >
+        <div
+          class="ty-list-item__main"
+        >
+          <div
+            class="ty-list-item__content"
+          >
+            Item 2
+          </div>
+        </div>
+      </div>
+      <div
+        class="ty-list-item"
+      >
+        <div
+          class="ty-list-item__main"
+        >
+          <div
+            class="ty-list-item__content"
+          >
+            Item 3
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

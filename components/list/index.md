@@ -1,0 +1,65 @@
+import Basic from './demo/basic.md'
+import Sizes from './demo/sizes.md'
+import Actions from './demo/actions.md'
+import Grid from './demo/grid.md'
+import Loading from './demo/loading.md'
+
+# List
+
+A simple list component for displaying a collection of items.
+
+## Scenario
+
+Used to display structured data in a vertical list, with support for avatars, titles, descriptions, and actions.
+
+## Usage
+
+```jsx
+import { List } from 'tiny-ui';
+```
+
+## Examples
+
+<layout>
+  <column>
+    <Basic/>
+    <Actions/>
+    <Grid/>
+  </column>
+  <column>
+    <Sizes/>
+    <Loading/>
+  </column>
+</layout>
+
+## API
+
+### List
+
+| Property   | Description                      | Type                                    | Default |
+| ---------- | -------------------------------- | --------------------------------------- | ------- |
+| dataSource | data array for the list          | any[]                                   | []      |
+| renderItem | render function for each item    | (item, index) => ReactNode              |         |
+| header     | list header                      | ReactNode                               |         |
+| footer     | list footer                      | ReactNode                               |         |
+| loading    | show loading indicator           | boolean                                 | false   |
+| bordered   | show border                      | boolean                                 | false   |
+| split      | show divider between items       | boolean                                 | true    |
+| size       | list size                        | 'sm' \| 'md' \| 'lg'                   | md      |
+| grid       | grid layout configuration        | { gutter?: number, column?: number }    |         |
+| pagination | pagination config or false       | false \| ListPaginationProps            |         |
+
+### List.Item
+
+| Property | Description              | Type           | Default |
+| -------- | ------------------------ | -------------- | ------- |
+| extra    | extra content            | ReactNode      |         |
+| actions  | list of action buttons   | ReactNode[]    |         |
+
+### List.ItemMeta
+
+| Property    | Description       | Type      | Default |
+| ----------- | ----------------- | --------- | ------- |
+| avatar      | avatar element    | ReactNode |         |
+| title       | item title        | ReactNode |         |
+| description | item description  | ReactNode |         |
