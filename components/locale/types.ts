@@ -22,4 +22,17 @@ export type Locale = {
   Empty: {
     description: string;
   };
+  Table: {
+    sortAscend: string;
+    sortDescend: string;
+    cancelSort: string;
+    selectAll: string;
+    selectNone: string;
+    emptyText: string;
+  };
+  ColorPicker: {
+    hex: string;
+    rgb: string;
+    hsb: string;
+  };
 };

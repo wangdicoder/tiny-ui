@@ -24,6 +24,19 @@ const zh_CN: Locale = {
   Empty: {
     description: '暂无数据',
   },
+  Table: {
+    sortAscend: '升序排列',
+    sortDescend: '降序排列',
+    cancelSort: '取消排序',
+    selectAll: '全选',
+    selectNone: '取消全选',
+    emptyText: '暂无数据',
+  },
+  ColorPicker: {
+    hex: 'HEX',
+    rgb: 'RGB',
+    hsb: 'HSB',
+  },
 };
 
 export default zh_CN;

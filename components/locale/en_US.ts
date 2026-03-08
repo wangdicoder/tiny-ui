@@ -24,6 +24,19 @@ const en_US: Locale = {
   Empty: {
     description: 'No Data',
   },
+  Table: {
+    sortAscend: 'Sort ascending',
+    sortDescend: 'Sort descending',
+    cancelSort: 'Cancel sort',
+    selectAll: 'Select all',
+    selectNone: 'Select none',
+    emptyText: 'No Data',
+  },
+  ColorPicker: {
+    hex: 'HEX',
+    rgb: 'RGB',
+    hsb: 'HSB',
+  },
 };
 
 export default en_US;
