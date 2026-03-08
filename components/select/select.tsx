@@ -282,14 +282,17 @@ const Select = (props: SelectProps): React.ReactElement => {
   };
 
   // Controlled open
+  const openProp = props.open;
+  const hasOpenProp = 'open' in props;
   useEffect(() => {
-    if ('open' in props) setIsOpenDropdown(props.open);
-  }, [props.open]);
+    if (hasOpenProp) setIsOpenDropdown(openProp);
+  }, [hasOpenProp, openProp]);
 
   // Controlled value
+  const hasValueProp = 'value' in props;
   useEffect(() => {
-    if ('value' in props) setSelectVal(value as SelectValue);
-  }, [value]);
+    if (hasValueProp) setSelectVal(value as SelectValue);
+  }, [hasValueProp, value]);
 
   // Reset focused index when filtered options change
   useEffect(() => {

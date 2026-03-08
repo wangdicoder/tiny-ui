@@ -58,7 +58,7 @@ describe('<Select />', () => {
         <Option value="a">A</Option>
       </Select>
     );
-    expect(container.querySelector('.ty-select__placeholder')?.textContent).toBe('Select...');
+    expect(container.querySelector('.ty-select__placeholder')).toHaveTextContent('Select...');
   });
 
   // Multi-select
@@ -103,8 +103,8 @@ describe('<Select />', () => {
     const tags = container.querySelectorAll('.ty-select__tag');
     expect(tags.length).toBe(2);
 
-    const closeBtn = tags[0].querySelector('.ty-select__tag-close');
-    fireEvent.click(closeBtn!);
+    const closeBtn = tags[0].querySelector('.ty-select__tag-close') as HTMLElement;
+    fireEvent.click(closeBtn);
     expect(onChange).toHaveBeenCalledWith(['b'], expect.any(Array));
   });
 
@@ -119,7 +119,7 @@ describe('<Select />', () => {
     const tags = container.querySelectorAll('.ty-select__tag');
     // 1 visible tag + 1 "+N..." tag
     expect(tags.length).toBe(2);
-    expect(tags[1].textContent).toContain('+2');
+    expect(tags[1]).toHaveTextContent('+2');
   });
 
   // Search
@@ -131,15 +131,15 @@ describe('<Select />', () => {
         <Option value="c">Cherry</Option>
       </Select>
     );
-    const selector = container.querySelector('.ty-select__selector');
-    fireEvent.click(selector!);
+    const selector = container.querySelector('.ty-select__selector') as HTMLElement;
+    fireEvent.click(selector);
 
     const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: 'ban' } });
 
     const options = getOptions();
     expect(options.length).toBe(1);
-    expect(options[0].textContent).toContain('Banana');
+    expect(options[0]).toHaveTextContent('Banana');
   });
 
   it('should call onSearch callback', () => {
@@ -149,8 +149,8 @@ describe('<Select />', () => {
         <Option value="a">Apple</Option>
       </Select>
     );
-    const selector = container.querySelector('.ty-select__selector');
-    fireEvent.click(selector!);
+    const selector = container.querySelector('.ty-select__selector') as HTMLElement;
+    fireEvent.click(selector);
 
     const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: 'test' } });
@@ -191,8 +191,8 @@ describe('<Select />', () => {
         <Option value="a">Apple</Option>
       </Select>
     );
-    const selector = container.querySelector('.ty-select__selector');
-    fireEvent.click(selector!);
+    const selector = container.querySelector('.ty-select__selector') as HTMLElement;
+    fireEvent.click(selector);
     expect(container.querySelector('.ty-select')).not.toHaveClass('ty-select_open');
     expect(container.querySelector('.ty-select')).toHaveClass('ty-select_disabled');
   });
@@ -218,9 +218,9 @@ describe('<Select />', () => {
         <Option value="a">Apple</Option>
       </Select>
     );
-    const clearBtn = container.querySelector('.ty-select__clear');
+    const clearBtn = container.querySelector('.ty-select__clear') as HTMLElement;
     expect(clearBtn).toBeTruthy();
-    fireEvent.click(clearBtn!);
+    fireEvent.click(clearBtn);
     expect(onChange).toHaveBeenCalledWith('');
   });
 
@@ -252,8 +252,8 @@ describe('<Select />', () => {
         ]}
       />
     );
-    const selector = container.querySelector('.ty-select__selector');
-    fireEvent.click(selector!);
+    const selector = container.querySelector('.ty-select__selector') as HTMLElement;
+    fireEvent.click(selector);
 
     const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: 'app' } });
@@ -269,13 +269,13 @@ describe('<Select />', () => {
         <Option value="a">Apple</Option>
       </Select>
     );
-    const selector = container.querySelector('.ty-select__selector');
-    fireEvent.click(selector!);
+    const selector = container.querySelector('.ty-select__selector') as HTMLElement;
+    fireEvent.click(selector);
 
     const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: 'xyz' } });
 
-    expect(document.querySelector('.ty-select__empty')?.textContent).toBe('Nothing found');
+    expect(document.querySelector('.ty-select__empty')).toHaveTextContent('Nothing found');
   });
 
   // Sizes
@@ -309,7 +309,7 @@ describe('<Select />', () => {
         <Option value="b">Banana</Option>
       </Select>
     );
-    expect(container.querySelector('.ty-select__selection-text')?.textContent).toBe('Apple');
+    expect(container.querySelector('.ty-select__selection-text')).toHaveTextContent('Apple');
 
     rerender(
       <Select value="b">
@@ -317,7 +317,7 @@ describe('<Select />', () => {
         <Option value="b">Banana</Option>
       </Select>
     );
-    expect(container.querySelector('.ty-select__selection-text')?.textContent).toBe('Banana');
+    expect(container.querySelector('.ty-select__selection-text')).toHaveTextContent('Banana');
   });
 
   // OptGroup
@@ -360,14 +360,14 @@ describe('<Select />', () => {
         <Option value="banana">Banana</Option>
       </Select>
     );
-    const selector = container.querySelector('.ty-select__selector');
-    fireEvent.click(selector!);
+    const selector = container.querySelector('.ty-select__selector') as HTMLElement;
+    fireEvent.click(selector);
 
     const searchInput = container.querySelector('.ty-select__search') as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: 'b' } });
 
     const options = getOptions();
     expect(options.length).toBe(1);
-    expect(options[0].textContent).toContain('Banana');
+    expect(options[0]).toHaveTextContent('Banana');
   });
 });
