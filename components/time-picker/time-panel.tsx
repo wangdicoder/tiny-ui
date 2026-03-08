@@ -1,60 +1,57 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import classNames from 'classnames';
 
 export interface TimePanelProps {
   value: number;
-  count: number;
+  items: number[];
+  disabledItems?: number[];
   onChange: (num: number) => void;
-  prefixCls?: string;
+  prefixCls: string;
 }
 
 const TimePanel = (props: TimePanelProps): React.ReactElement => {
-  const { prefixCls = 'ty-time-picker', value, count, onChange } = props;
-  const [selectedIdx, setSelectedIdx] = useState(-1);
-  const panelRef = useRef<HTMLDivElement | null>(null);
-  const ulRef = useRef<HTMLUListElement | null>(null);
+  const { prefixCls, value, items, disabledItems = [], onChange } = props;
+  const panelRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Map<number, HTMLLIElement>>(new Map());
 
-  const scrollToTop = (idx: number, elHeight = 30) => {
-    setSelectedIdx(idx);
-    panelRef.current &&
-      (panelRef.current as HTMLDivElement).scrollTo({
-        top: idx * elHeight,
-        behavior: 'smooth',
+  const scrollToItem = useCallback((val: number, smooth = false) => {
+    const el = itemRefs.current.get(val);
+    if (el && panelRef.current) {
+      panelRef.current.scrollTo({
+        top: el.offsetTop,
+        behavior: smooth ? 'smooth' : 'auto',
       });
-  };
-
-  const ulOnClick = (e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    if (target.nodeName === 'LI') {
-      const idx: string | undefined = target.dataset.idx;
-      const elHeight = target.clientHeight;
-      if (idx) {
-        scrollToTop(+idx, elHeight);
-        onChange && onChange(+idx);
-      }
     }
-  };
-
-  useEffect(() => {
-    scrollToTop(value);
-    ulRef.current && (ulRef.current as HTMLUListElement).addEventListener('click', ulOnClick);
-
-    return () => {
-      ulRef.current && (ulRef.current as HTMLUListElement).removeEventListener('click', ulOnClick);
-    };
   }, []);
 
-  return (
-    <div className={`${prefixCls}__panel`} ref={panelRef}>
-      <ul className={`${prefixCls}__ul`} ref={ulRef}>
-        {[...Array(count).fill(0)].map((_, idx) => {
-          const cls = classNames(`${prefixCls}__li`, {
-            [`${prefixCls}__li_selected`]: idx === selectedIdx,
-          });
+  useEffect(() => {
+    scrollToItem(value);
+  }, [value, scrollToItem]);
 
+  const handleClick = (num: number) => {
+    if (disabledItems.includes(num)) return;
+    onChange(num);
+    scrollToItem(num, true);
+  };
+
+  return (
+    <div className={`${prefixCls}__column`} ref={panelRef}>
+      <ul className={`${prefixCls}__column-list`}>
+        {items.map((num) => {
+          const isDisabled = disabledItems.includes(num);
+          const cls = classNames(`${prefixCls}__cell`, {
+            [`${prefixCls}__cell_selected`]: num === value,
+            [`${prefixCls}__cell_disabled`]: isDisabled,
+          });
           return (
-            <li key={idx} className={cls} data-idx={idx}>
-              {idx.toString().padStart(2, '0')}
+            <li
+              key={num}
+              ref={(el) => {
+                if (el) itemRefs.current.set(num, el);
+              }}
+              className={cls}
+              onClick={() => handleClick(num)}>
+              {String(num).padStart(2, '0')}
             </li>
           );
         })}

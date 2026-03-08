@@ -18,7 +18,7 @@ describe('<TimePicker />', () => {
 
   it('should render input', () => {
     const { container } = render(<TimePicker />);
-    expect(container.querySelector('input')).toBeTruthy();
+    expect(container.querySelector('input')).toBeInTheDocument();
   });
 
   it('should render disabled', () => {
@@ -34,14 +34,58 @@ describe('<TimePicker />', () => {
 
   it('should open dropdown on click', () => {
     const { container } = render(<TimePicker />);
-    const inputWrapper = container.querySelector('.ty-time-picker__input-wrapper');
-    inputWrapper && fireEvent.click(inputWrapper);
-    expect(container.querySelector('.ty-time-picker__dropdown')).toBeTruthy();
+    const input = container.querySelector('.ty-time-picker__input');
+    input && fireEvent.click(input);
+    expect(container.querySelector('.ty-time-picker__dropdown')).toBeInTheDocument();
   });
 
   it('should render formatted time', () => {
     const date = new Date(2024, 0, 1, 14, 30, 45);
     const { container } = render(<TimePicker defaultValue={date} />);
     expect(container.querySelector('input')?.value).toBe('14:30:45');
+  });
+
+  it('should render different sizes', () => {
+    const { container: sm } = render(<TimePicker size="sm" />);
+    expect(sm.firstChild).toHaveClass('ty-time-picker_sm');
+
+    const { container: lg } = render(<TimePicker size="lg" />);
+    expect(lg.firstChild).toHaveClass('ty-time-picker_lg');
+  });
+
+  it('should hide seconds column when format excludes seconds', () => {
+    const { container } = render(<TimePicker format="HH:mm" open />);
+    const columns = container.querySelectorAll('.ty-time-picker__column');
+    expect(columns.length).toBe(2);
+  });
+
+  it('should show three columns by default', () => {
+    const { container } = render(<TimePicker open />);
+    const columns = container.querySelectorAll('.ty-time-picker__column');
+    expect(columns.length).toBe(3);
+  });
+
+  it('should render step intervals', () => {
+    const { container } = render(<TimePicker hourStep={2} open />);
+    const cells = container.querySelectorAll('.ty-time-picker__column:first-child .ty-time-picker__cell');
+    expect(cells.length).toBe(12); // 24 / 2
+  });
+
+  it('should call onOpenChange', () => {
+    const fn = jest.fn();
+    const { container } = render(<TimePicker onOpenChange={fn} />);
+    const input = container.querySelector('.ty-time-picker__input');
+    input && fireEvent.click(input);
+    expect(fn).toHaveBeenCalledWith(true);
+  });
+
+  it('should clear value on clear button click', () => {
+    const fn = jest.fn();
+    const { container } = render(
+      <TimePicker defaultValue={new Date(2024, 0, 1, 10, 0, 0)} onChange={fn} />
+    );
+    const clear = container.querySelector('.ty-time-picker__clear');
+    clear && fireEvent.click(clear);
+    expect(fn).toHaveBeenCalledWith(null);
   });
 });
