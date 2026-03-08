@@ -1,0 +1,58 @@
+import Basic from './demo/basic.md'
+import CheckAll from './demo/check-all.md'
+import Disabled from './demo/disabled.md'
+import Group from './demo/group.md'
+
+# Checkbox
+
+多选组件。
+
+## 使用场景
+
+- 用于在多个选项中选择多个值。
+- 如果只使用一个 Checkbox，其功能与 Switch 相同，用于在两种状态之间切换。区别在于 Switch 会直接触发状态变更，而 Checkbox 只是标记状态变更，需要配合提交操作。
+
+## 引入方式
+
+```jsx
+import { Checkbox } from 'tiny-ui';
+
+const { Group } = Checkbox;
+```
+
+## 代码示例
+
+<layout>
+  <column>
+    <Basic/>
+    <Group/>
+  </column>
+  <column>
+    <CheckAll/>
+    <Disabled/>
+  </column>
+</layout>
+
+## API
+
+### Checkbox
+
+| 属性           | 说明                             | 类型                                     | 默认值  |
+| -------------- | ---------------------------------------- | ---------------------------------------- | ------- |
+| value          | 仅在与 Group 配合使用时需要      | string                                   | -       |
+| defaultChecked | 初始选中状态                     | boolean                                  | false   |
+| checked        | 受控选中状态                     | boolean                                  | -       |
+| indeterminate  | 半选状态（仅视觉效果）           | boolean                                  | false   |
+| disabled       | 是否禁用                         | boolean                                  | false   |
+| onChange       | 状态变化时的回调                 | (e: ChangeEvent) => void                 | -       |
+| style          | 容器的样式对象                   | CSSProperties                            | -       |
+| className      | 容器的类名                       | string                                   | -       |
+
+### Checkbox.Group
+
+| 属性         | 说明                       | 类型                             | 默认值  |
+| ------------ | ---------------------------------- | -------------------------------- | ------- |
+| defaultValue | 默认选中的值               | string[]                         | -       |
+| value        | 受控选中的值               | string[]                         | -       |
+| onChange     | 选择项变化时的回调         | (checkedValues: string[]) => void| -       |
+| disabled     | 是否禁用所有复选框         | boolean                          | false   |
