@@ -66,6 +66,25 @@ And import style manually:
 import 'tiny-ui/dist/styles/index.css';
 ```
 
+## 🌍 Internationalization
+
+Built-in support for English and Chinese. Set locale via `ConfigProvider` or `IntlProvider`:
+
+```jsx
+import { ConfigProvider, zh_CN } from 'tiny-ui';
+
+const App = () => (
+  <ConfigProvider locale={zh_CN}>
+    <MyApp />
+  </ConfigProvider>
+);
+```
+
+| Locale | Language |
+| ------ | -------- |
+| en_US  | English (default) |
+| zh_CN  | 简体中文 |
+
 ## 🖥  Browser Support
 
 Supports all major modern browsers.
