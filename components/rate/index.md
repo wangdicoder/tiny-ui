@@ -36,4 +36,16 @@ import { Rate } from 'tiny-ui';
 
 ## API
 
-
+| Property     | Description                            | Type                    | Default |
+| ------------ | -------------------------------------- | ----------------------- | ------- |
+| count        | total number of stars                  | number                  | 5       |
+| defaultValue | initial value                          | number                  | 0       |
+| value        | controlled current value               | number                  | -       |
+| half         | allow half star selection              | boolean                 | false   |
+| clearable    | allow clearing by clicking again       | boolean                 | false   |
+| disabled     | whether read-only                      | boolean                 | false   |
+| color        | custom star color                      | string                  | -       |
+| character    | custom rate character                  | ReactNode               | -       |
+| onChange     | callback when value changes            | (value: number) => void | -       |
+| style        | style object of container              | CSSProperties           | -       |
+| className    | className of container                 | string                  | -       |

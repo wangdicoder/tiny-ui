@@ -34,3 +34,17 @@ import { Switch } from 'tiny-ui';
 </layout>
 
 ## API
+
+| Property       | Description                             | Type                                          | Default |
+| -------------- | --------------------------------------- | --------------------------------------------- | ------- |
+| defaultChecked | initial checked state                   | boolean                                       | false   |
+| checked        | controlled checked state                | boolean                                       | -       |
+| disabled       | whether disabled                        | boolean                                       | false   |
+| loading        | loading state                           | boolean                                       | false   |
+| size           | switch size                             | enum: `sm` &#124; `md` &#124; `lg`            | `md`    |
+| checkedText    | content when checked                    | ReactNode                                     | -       |
+| uncheckedText  | content when unchecked                  | ReactNode                                     | -       |
+| onChange       | callback when state changes             | (checked: boolean, e: MouseEvent) => void     | -       |
+| onClick        | click callback                          | (checked: boolean, e: MouseEvent) => void     | -       |
+| style          | style object of container               | CSSProperties                                 | -       |
+| className      | className of container                  | string                                        | -       |

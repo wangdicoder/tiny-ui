@@ -24,3 +24,11 @@ import { Keyboard } from 'tiny-ui';
   </column>
 </layout>
 
+## API
+
+| Property  | Description              | Type          | Default |
+| --------- | ------------------------ | ------------- | ------- |
+| children  | keyboard key label       | ReactNode     | -       |
+| style     | style object of container| CSSProperties | -       |
+| className | className of container   | string        | -       |
+

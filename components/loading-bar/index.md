@@ -30,4 +30,10 @@ LoadingBar.fail();
 
 ## API
 
+LoadingBar is called through static methods:
 
+| Method              | Description                | Type       |
+| ------------------- | -------------------------- | ---------- |
+| LoadingBar.start()  | start the loading bar      | () => void |
+| LoadingBar.succeed() | complete with success     | () => void |
+| LoadingBar.fail()   | complete with failure      | () => void |

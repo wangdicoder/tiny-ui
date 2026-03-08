@@ -34,4 +34,21 @@ import { Message } from 'tiny-ui';
 
 ## API
 
+Message is called through static methods:
 
+| Method                | Description              |
+| --------------------- | ------------------------ |
+| Message.success(config) | display a success message |
+| Message.error(config)   | display an error message  |
+| Message.warning(config) | display a warning message |
+| Message.info(config)    | display an info message   |
+| Message.loading(config) | display a loading message |
+
+### Config
+
+| Property | Description                             | Type      | Default |
+| -------- | --------------------------------------- | --------- | ------- |
+| content  | content of the message                  | string    | -       |
+| duration | time before auto-dismiss in seconds     | number    | 3       |
+| icon     | customised icon                         | ReactNode | -       |
+| extra    | extra content after the message         | ReactNode | -       |

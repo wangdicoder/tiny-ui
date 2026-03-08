@@ -32,3 +32,26 @@ const { Group } = Radio;
 </layout>
 
 ## API
+
+### Radio
+
+| Property       | Description                         | Type                             | Default |
+| -------------- | ----------------------------------- | -------------------------------- | ------- |
+| value          | value used when in a Radio.Group    | string &#124; number             | -       |
+| name           | the name attribute of input         | string                           | -       |
+| defaultChecked | initial checked state               | boolean                          | false   |
+| checked        | controlled checked state            | boolean                          | -       |
+| disabled       | whether disabled                    | boolean                          | false   |
+| onChange       | callback when state changes         | (e: ChangeEvent) => void         | -       |
+| style          | style object of container           | CSSProperties                    | -       |
+| className      | className of container              | string                           | -       |
+
+### Radio.Group
+
+| Property     | Description                       | Type                                      | Default |
+| ------------ | --------------------------------- | ----------------------------------------- | ------- |
+| name         | the name attribute for all radios | string                                    | -       |
+| defaultValue | initial selected value            | string &#124; number                      | -       |
+| value        | controlled selected value         | string &#124; number                      | -       |
+| onChange     | callback when selection changes   | (value: string &#124; number) => void     | -       |
+| disabled     | whether disabled all radios       | boolean                                   | false   |

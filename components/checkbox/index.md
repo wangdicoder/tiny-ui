@@ -34,3 +34,25 @@ const { Group } = Checkbox;
 </layout>
 
 ## API
+
+### Checkbox
+
+| Property       | Description                              | Type                                     | Default |
+| -------------- | ---------------------------------------- | ---------------------------------------- | ------- |
+| value          | only required when used with Group       | string                                   | -       |
+| defaultChecked | initial checked state                    | boolean                                  | false   |
+| checked        | controlled checked state                 | boolean                                  | -       |
+| indeterminate  | half-checked (visual only) state         | boolean                                  | false   |
+| disabled       | whether disabled                         | boolean                                  | false   |
+| onChange       | callback when state changes              | (e: ChangeEvent) => void                 | -       |
+| style          | style object of container                | CSSProperties                            | -       |
+| className      | className of container                   | string                                   | -       |
+
+### Checkbox.Group
+
+| Property     | Description                        | Type                             | Default |
+| ------------ | ---------------------------------- | -------------------------------- | ------- |
+| defaultValue | default selected values            | string[]                         | -       |
+| value        | controlled selected values         | string[]                         | -       |
+| onChange     | callback when selection changes    | (checkedValues: string[]) => void| -       |
+| disabled     | whether disabled all checkboxes    | boolean                          | false   |

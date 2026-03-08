@@ -40,4 +40,25 @@ import { Notification } from 'tiny-ui';
 
 ## API
 
+Notification is called through static methods:
 
+| Method                      | Description                    |
+| --------------------------- | ------------------------------ |
+| Notification.success(config) | display a success notification |
+| Notification.error(config)   | display an error notification  |
+| Notification.warning(config) | display a warning notification |
+| Notification.info(config)    | display an info notification   |
+| Notification.open(config)    | display a plain notification   |
+
+### Config
+
+| Property    | Description                                | Type                              | Default      |
+| ----------- | ------------------------------------------ | --------------------------------- | ------------ |
+| title       | notification title                         | ReactNode                         | -            |
+| description | notification description content           | ReactNode                         | -            |
+| footer      | custom footer content                      | ReactNode                         | -            |
+| duration    | time before auto-dismiss in seconds, 0 to disable | number                      | 4.5          |
+| icon        | custom icon, or false to hide              | ReactNode &#124; boolean          | -            |
+| onClick     | click callback                             | (e: MouseEvent) => void           | -            |
+| onClose     | close callback                             | (e: MouseEvent) => void           | -            |
+| placement   | position of the notification               | enum: `top-right` &#124; `top-left` &#124; `bottom-right` &#124; `bottom-left` | `top-right` |

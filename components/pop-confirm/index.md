@@ -34,4 +34,12 @@ import { PopConfirm } from 'tiny-ui';
 
 ## API
 
+Inherits all [Popover](#/components/popover) props, plus:
 
+| Property    | Description                  | Type                     | Default   |
+| ----------- | ---------------------------- | ------------------------ | --------- |
+| confirmText | text of the confirm button   | string                   | `OK`      |
+| cancelText  | text of the cancel button    | string                   | `Cancel`  |
+| onConfirm   | confirm callback             | (e: MouseEvent) => void  | -         |
+| onCancel    | cancel callback              | (e: MouseEvent) => void  | -         |
+| icon        | custom icon                  | ReactNode                | -         |
