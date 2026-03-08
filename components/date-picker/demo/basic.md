@@ -2,7 +2,7 @@
 
 ### Basic
 
-A basic date picker.
+A basic date picker with a "Today" shortcut.
 
 ```jsx live
 () => {
@@ -10,7 +10,7 @@ A basic date picker.
   return (
     <DatePicker
       value={date}
-      onChange={(d) => setDate(d)}
+      onChange={(d, str) => { setDate(d); console.log(str); }}
     />
   );
 }

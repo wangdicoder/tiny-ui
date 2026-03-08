@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import DatePicker from '../index';
 
@@ -15,7 +14,7 @@ describe('<DatePicker />', () => {
 
   it('should render input', () => {
     const { container } = render(<DatePicker />);
-    expect(container.querySelector('input')).toBeTruthy();
+    expect(container.querySelector('input')).toBeInTheDocument();
   });
 
   it('should render disabled', () => {
@@ -31,14 +30,58 @@ describe('<DatePicker />', () => {
 
   it('should open dropdown on click', () => {
     const { container } = render(<DatePicker />);
-    const inputWrapper = container.querySelector('.ty-date-picker__input-wrapper');
-    inputWrapper && fireEvent.click(inputWrapper);
-    expect(container.querySelector('.ty-date-picker__dropdown')).toBeTruthy();
+    const input = container.querySelector('.ty-date-picker__input');
+    input && fireEvent.click(input);
+    expect(container.querySelector('.ty-date-picker__dropdown')).toBeInTheDocument();
   });
 
   it('should render formatted value', () => {
     const date = new Date(2024, 0, 15);
     const { container } = render(<DatePicker defaultValue={date} />);
     expect(container.querySelector('input')?.value).toBe('2024-01-15');
+  });
+
+  it('should render different sizes', () => {
+    const { container: sm } = render(<DatePicker size="sm" />);
+    expect(sm.firstChild).toHaveClass('ty-date-picker_sm');
+
+    const { container: lg } = render(<DatePicker size="lg" />);
+    expect(lg.firstChild).toHaveClass('ty-date-picker_lg');
+  });
+
+  it('should show Today button by default', () => {
+    const { container } = render(<DatePicker open />);
+    expect(container.querySelector('.ty-date-picker__today-btn')).toBeInTheDocument();
+  });
+
+  it('should hide Today button when showToday is false', () => {
+    const { container } = render(<DatePicker open showToday={false} />);
+    expect(container.querySelector('.ty-date-picker__today-btn')).toBeNull();
+  });
+
+  it('should call onOpenChange', () => {
+    const fn = jest.fn();
+    const { container } = render(<DatePicker onOpenChange={fn} />);
+    const input = container.querySelector('.ty-date-picker__input');
+    input && fireEvent.click(input);
+    expect(fn).toHaveBeenCalledWith(true);
+  });
+
+  it('should format month picker', () => {
+    const { container } = render(<DatePicker picker="month" defaultValue={new Date(2024, 5, 1)} />);
+    expect(container.querySelector('input')?.value).toBe('2024-06');
+  });
+
+  it('should format year picker', () => {
+    const { container } = render(<DatePicker picker="year" defaultValue={new Date(2024, 0, 1)} />);
+    expect(container.querySelector('input')?.value).toBe('2024');
+  });
+
+  it('should clear value', () => {
+    const fn = jest.fn();
+    const { container } = render(<DatePicker defaultValue={new Date(2024, 0, 15)} onChange={fn} />);
+    const clear = container.querySelector('.ty-date-picker__clear');
+    clear && fireEvent.click(clear);
+    expect(fn).toHaveBeenCalledWith(null, '');
   });
 });

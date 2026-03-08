@@ -1,16 +1,16 @@
 import classNames from 'classnames';
 
 export type PickerYearProps = {
-  date: Date;
+  date: Date | null;
   panelDate: Date;
   onChange: (date: Date) => void;
-  prefixCls?: string;
+  prefixCls: string;
 };
 
-const PickerYear = ({ date, panelDate, onChange, prefixCls = 'ty-date-picker-year' }: PickerYearProps) => {
-  const currentYear = panelDate.getFullYear();
-  const startYear = currentYear - (currentYear % 10);
-  const selectedYear = date.getFullYear();
+const PickerYear = ({ date, panelDate, onChange, prefixCls }: PickerYearProps) => {
+  const panelYear = panelDate.getFullYear();
+  const startYear = panelYear - (panelYear % 10);
+  const selectedYear = date?.getFullYear() ?? -1;
   const now = new Date();
 
   const years: number[] = [];
@@ -19,7 +19,7 @@ const PickerYear = ({ date, panelDate, onChange, prefixCls = 'ty-date-picker-yea
   }
 
   return (
-    <div className={prefixCls}>
+    <div className={`${prefixCls}__body`}>
       <table className={`${prefixCls}__table`}>
         <tbody>
           {[0, 1, 2].map((row) => (
@@ -30,16 +30,15 @@ const PickerYear = ({ date, panelDate, onChange, prefixCls = 'ty-date-picker-yea
                 const isOutOfRange = year < startYear || year > startYear + 9;
                 const cls = classNames(`${prefixCls}__cell`, {
                   [`${prefixCls}__cell_selected`]: year === selectedYear,
-                  [`${prefixCls}__cell_current`]: year === now.getFullYear(),
+                  [`${prefixCls}__cell_today`]: year === now.getFullYear(),
                   [`${prefixCls}__cell_dim`]: isOutOfRange,
                 });
                 return (
-                  <td key={col} className={`${prefixCls}__item`}>
-                    <div
-                      className={cls}
-                      onClick={() => onChange(new Date(year, panelDate.getMonth(), 1))}>
-                      {year}
-                    </div>
+                  <td
+                    key={col}
+                    className={cls}
+                    onClick={() => onChange(new Date(year, panelDate.getMonth(), 1))}>
+                    <div className={`${prefixCls}__cell-inner`}>{year}</div>
                   </td>
                 );
               })}

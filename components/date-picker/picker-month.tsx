@@ -2,20 +2,20 @@ import classNames from 'classnames';
 import { MONTHS } from './utils';
 
 export type PickerMonthProps = {
-  date: Date;
+  date: Date | null;
   panelDate: Date;
   onChange: (date: Date) => void;
-  prefixCls?: string;
+  prefixCls: string;
 };
 
-const PickerMonth = ({ date, panelDate, onChange, prefixCls = 'ty-date-picker-month' }: PickerMonthProps) => {
-  const currentYear = panelDate.getFullYear();
-  const selectedMonth = date.getFullYear() === currentYear ? date.getMonth() : -1;
+const PickerMonth = ({ date, panelDate, onChange, prefixCls }: PickerMonthProps) => {
+  const panelYear = panelDate.getFullYear();
+  const selectedMonth = date && date.getFullYear() === panelYear ? date.getMonth() : -1;
   const now = new Date();
-  const isCurrentYear = now.getFullYear() === currentYear;
+  const isCurrentYear = now.getFullYear() === panelYear;
 
   return (
-    <div className={prefixCls}>
+    <div className={`${prefixCls}__body`}>
       <table className={`${prefixCls}__table`}>
         <tbody>
           {[0, 1, 2].map((row) => (
@@ -24,15 +24,14 @@ const PickerMonth = ({ date, panelDate, onChange, prefixCls = 'ty-date-picker-mo
                 const monthIdx = row * 4 + col;
                 const cls = classNames(`${prefixCls}__cell`, {
                   [`${prefixCls}__cell_selected`]: monthIdx === selectedMonth,
-                  [`${prefixCls}__cell_current`]: isCurrentYear && monthIdx === now.getMonth(),
+                  [`${prefixCls}__cell_today`]: isCurrentYear && monthIdx === now.getMonth(),
                 });
                 return (
-                  <td key={col} className={`${prefixCls}__item`}>
-                    <div
-                      className={cls}
-                      onClick={() => onChange(new Date(currentYear, monthIdx, 1))}>
-                      {MONTHS[monthIdx]}
-                    </div>
+                  <td
+                    key={col}
+                    className={cls}
+                    onClick={() => onChange(new Date(panelYear, monthIdx, 1))}>
+                    <div className={`${prefixCls}__cell-inner`}>{MONTHS[monthIdx]}</div>
                   </td>
                 );
               })}
