@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cascader /> should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ty-cascader ty-cascader_md"
+  >
+    <div
+      class="ty-cascader__selector"
+    >
+      <span
+        class="ty-cascader__placeholder"
+      >
+        Please select
+      </span>
+      <span
+        class="ty-cascader__arrow"
+      >
+        ▾
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
