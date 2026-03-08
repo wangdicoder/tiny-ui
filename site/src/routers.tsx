@@ -145,11 +145,6 @@ export const COMPONENT_MENU: RouterItem[] = [
     title: 'Data Display',
     children: [
       {
-        title: 'Carousel',
-        route: 'carousel',
-        component: lazy(() => import('../../components/carousel/index.md')),
-      },
-      {
         title: 'Avatar',
         route: 'avatar',
         component: lazy(() => import('../../components/avatar/index.md')),
@@ -163,6 +158,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Card',
         route: 'card',
         component: lazy(() => import('../../components/card/index.md')),
+      },
+      {
+        title: 'Carousel',
+        route: 'carousel',
+        component: lazy(() => import('../../components/carousel/index.md')),
       },
       {
         title: 'Collapse',
@@ -225,11 +225,6 @@ export const COMPONENT_MENU: RouterItem[] = [
     title: 'Form Item',
     children: [
       {
-        title: 'DatePicker',
-        route: 'date-picker',
-        component: lazy(() => import('../../components/date-picker/index.md')),
-      },
-      {
         title: 'Form',
         route: 'form',
         component: lazy(() => import('../../components/form/index.md')),
@@ -238,6 +233,11 @@ export const COMPONENT_MENU: RouterItem[] = [
         title: 'Checkbox',
         route: 'checkbox',
         component: lazy(() => import('../../components/checkbox/index.md')),
+      },
+      {
+        title: 'DatePicker',
+        route: 'date-picker',
+        component: lazy(() => import('../../components/date-picker/index.md')),
       },
       {
         title: 'Input',
