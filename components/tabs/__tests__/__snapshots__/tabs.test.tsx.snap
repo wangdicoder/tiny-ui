@@ -1,51 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tabs /> should match the snapshot 1`] = `
+exports[`<Tabs /> items API should match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ty-tabs ty-tabs_md ty-tabs_horizontal ty-tabs_line"
+    class="ty-tabs ty-tabs_md ty-tabs_top ty-tabs_line"
   >
     <div
-      class="ty-tabs__header"
+      class="ty-tabs__nav"
+      role="tablist"
     >
       <div
-        class="ty-tabs__header-scroll"
+        class="ty-tabs__nav-wrap"
       >
         <div
-          class="ty-tabs__header-nav"
+          class="ty-tabs__nav-list"
         >
           <div
-            class="ty-tabs__header-nav-item ty-tabs__header-nav-item_active"
+            aria-selected="true"
+            class="ty-tabs__tab ty-tabs__tab_active"
+            role="tab"
+            tabindex="0"
           >
-            Tab 1
+            <span
+              class="ty-tabs__tab-label"
+            >
+              Tab 1
+            </span>
           </div>
           <div
-            class="ty-tabs__header-nav-item"
+            aria-selected="false"
+            class="ty-tabs__tab"
+            role="tab"
+            tabindex="-1"
           >
-            Tab 2
+            <span
+              class="ty-tabs__tab-label"
+            >
+              Tab 2
+            </span>
           </div>
           <div
-            class="ty-tabs__header-line"
+            aria-selected="false"
+            class="ty-tabs__tab"
+            role="tab"
+            tabindex="-1"
+          >
+            <span
+              class="ty-tabs__tab-label"
+            >
+              Tab 3
+            </span>
+          </div>
+          <div
+            class="ty-tabs__ink-bar"
             style="width: 0px; transform: translate3d(0px, 0, 0);"
           />
         </div>
       </div>
     </div>
     <div
-      class="ty-tabs__body ty-tabs__body_animated"
-      style="margin-left: -0%;"
+      class="ty-tabs__content"
     >
       <div
-        class="ty-tabs-panel-item ty-tabs-panel-item_active"
-        tab="Tab 1"
+        class="ty-tabs__content-inner ty-tabs__content-inner_animated"
+        style="transform: translate3d(0%, 0, 0);"
       >
-        Content 1
-      </div>
-      <div
-        class="ty-tabs-panel-item"
-        tab="Tab 2"
-      >
-        Content 2
+        <div
+          class="ty-tabs__panel ty-tabs__panel_active"
+          role="tabpanel"
+        >
+          Content 1
+        </div>
+        <div
+          class="ty-tabs__panel"
+          role="tabpanel"
+        >
+          Content 2
+        </div>
+        <div
+          class="ty-tabs__panel"
+          role="tabpanel"
+        >
+          Content 3
+        </div>
       </div>
     </div>
   </div>

@@ -1,76 +1,315 @@
 @import '../../style/variables';
 
-.#{$prefix}-tabs {
-  position: relative;
-  overflow: hidden;
+$tab-prefix: #{$prefix}-tabs;
 
-  &__header {
+.#{$tab-prefix} {
+  position: relative;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.85);
+
+  // ---- Nav ----
+  &__nav {
+    display: flex;
+    align-items: center;
     position: relative;
     margin-bottom: 16px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
   }
 
-  &__header-line {
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-
-  &__body {
+  &__nav-wrap {
     position: relative;
+    overflow: hidden;
+    flex: 1;
   }
 
-  &_horizontal {
-    .#{$prefix}-tabs {
-      &__header-scroll {
-        position: relative;
-        overflow: hidden;
-        white-space: nowrap;
-        margin-bottom: -1px;
-      }
+  &__nav-list {
+    display: flex;
+    position: relative;
+    transition: transform 0.3s;
+  }
 
-      &__header-nav {
-        display: inline-block;
-      }
+  // ---- Tab ----
+  &__tab {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    margin: 0 32px 0 0;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    user-select: none;
+    transition: color 0.3s;
 
-      &__header-nav-item {
-        display: inline-block;
-        padding: 0 16px;
-        margin-right: 16px;
-        text-align: center;
-        position: relative;
-        cursor: pointer;
-      }
+    &:hover {
+      color: lighten($primary-color, 10%);
+    }
 
-      &__header-line {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        border-bottom: 2px solid $primary-color;
-      }
+    &_active {
+      color: $primary-color;
+      font-weight: 500;
+    }
 
-      &__body {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-      }
+    &_disabled {
+      color: rgba(0, 0, 0, 0.25);
+      cursor: not-allowed;
 
-      &-panel-item {
-        width: 100%;
-        flex-shrink: 0;
+      &:hover {
+        color: rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    &-icon {
+      margin-right: 8px;
+    }
+
+    &-remove {
+      margin-left: 8px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: rgba(0, 0, 0, 0.85);
       }
     }
   }
 
-  &_vertical {
+  // ---- Ink bar ----
+  &__ink-bar {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background: $primary-color;
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+      width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    pointer-events: none;
   }
 
-  &-panel-item {
-    line-height: normal;
-    opacity: 0;
+  // ---- Content ----
+  &__content {
+    position: relative;
     overflow: hidden;
+    width: 100%;
+  }
+
+  &__content-inner {
+    display: flex;
+    width: 100%;
+
+    &_animated {
+      transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+  }
+
+  &__panel {
+    flex-shrink: 0;
+    width: 100%;
+    opacity: 0;
     height: 0;
-    font-size: 14px;
+    overflow: hidden;
+    outline: none;
+
     &_active {
       opacity: 1;
       height: auto;
+    }
+  }
+
+  // ---- Scroll nav ----
+  &__nav-prev,
+  &__nav-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.45);
+    transition: color 0.3s;
+    flex-shrink: 0;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  &__nav-btn_disabled {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+  }
+
+  &__nav-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px dashed #d9d9d9;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.45);
+    margin-left: 4px;
+    flex-shrink: 0;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+
+  // ---- Extra content ----
+  &__nav-extra_left,
+  &__nav-extra_right {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__nav-extra_left {
+    margin-right: 16px;
+  }
+
+  &__nav-extra_right {
+    margin-left: 16px;
+  }
+
+  // ---- Sizes ----
+  &_sm &__tab {
+    padding: 8px 0;
+    font-size: 13px;
+  }
+
+  &_lg &__tab {
+    padding: 16px 0;
+    font-size: 15px;
+  }
+
+  // ---- Card type ----
+  &_card,
+  &_editable-card {
+    .#{$tab-prefix}__tab {
+      padding: 8px 16px;
+      margin: 0;
+      background: #fafafa;
+      border: 1px solid #f0f0f0;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+      transition: all 0.3s;
+
+      & + .#{$tab-prefix}__tab {
+        margin-left: 2px;
+      }
+
+      &_active {
+        background: #fff;
+        border-bottom-color: #fff;
+      }
+    }
+
+    .#{$tab-prefix}__ink-bar {
+      display: none;
+    }
+  }
+
+  &_editable-card .#{$tab-prefix}__tab {
+    padding-right: 8px;
+  }
+
+  // ---- Centered ----
+  &_centered .#{$tab-prefix}__nav-list {
+    justify-content: center;
+  }
+
+  // ---- Positions ----
+  &_bottom {
+    .#{$tab-prefix}__nav {
+      margin-bottom: 0;
+      margin-top: 16px;
+
+      &::before {
+        top: 0;
+        bottom: auto;
+      }
+    }
+
+    .#{$tab-prefix}__ink-bar {
+      top: 0;
+      bottom: auto;
+    }
+  }
+
+  &_left,
+  &_right {
+    display: flex;
+
+    .#{$tab-prefix}__nav {
+      flex-direction: column;
+      margin-bottom: 0;
+      min-width: 60px;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .#{$tab-prefix}__nav-list {
+      flex-direction: column;
+    }
+
+    .#{$tab-prefix}__tab {
+      margin: 0 0 4px;
+      padding: 8px 24px;
+    }
+
+    .#{$tab-prefix}__ink-bar {
+      width: 2px;
+      height: auto;
+    }
+
+    .#{$tab-prefix}__content {
+      flex: 1;
+    }
+
+    .#{$tab-prefix}__content-inner {
+      display: block;
+    }
+  }
+
+  &_left {
+    .#{$tab-prefix}__nav {
+      margin-right: 24px;
+      border-right: 1px solid #f0f0f0;
+    }
+
+    .#{$tab-prefix}__ink-bar {
+      right: 0;
+    }
+  }
+
+  &_right {
+    .#{$tab-prefix}__nav {
+      order: 1;
+      margin-left: 24px;
+      border-left: 1px solid #f0f0f0;
+    }
+
+    .#{$tab-prefix}__ink-bar {
+      left: 0;
     }
   }
 }

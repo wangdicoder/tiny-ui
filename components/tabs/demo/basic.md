@@ -2,14 +2,17 @@
 
 ### Basic
 
-Basic usage of Tabs.
+Basic usage of Tabs with the `items` API.
 
 ```jsx live
-<Tabs defaultActiveKey={0}>
-  <Tabs.Panel tab="Tab 1">Content of Tab 1</Tabs.Panel>
-  <Tabs.Panel tab="Tab 2">Content of Tab 2</Tabs.Panel>
-  <Tabs.Panel tab="Tab 3">Content of Tab 3</Tabs.Panel>
-</Tabs>
+() => {
+  const items = [
+    { key: '1', label: 'Tab 1', children: 'Content of Tab 1' },
+    { key: '2', label: 'Tab 2', children: 'Content of Tab 2' },
+    { key: '3', label: 'Tab 3', children: 'Content of Tab 3' },
+  ];
+  return <Tabs defaultActiveKey="1" items={items} />;
+}
 ```
 
 </demo>

@@ -1,38 +1,28 @@
-import React, { useContext, useRef, useState, useEffect, useCallback, ReactNode, CSSProperties } from 'react';
+import React, { useContext, useRef, useState, useEffect, useCallback, CSSProperties } from 'react';
 import classNames from 'classnames';
-import { BaseProps, DirectionType, SizeType } from '../_utils/props';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
-import { TabPanelProps } from './tab-panel';
-import { ArrowDown } from '../_utils/components';
-
-export type TabType = 'line' | 'card' | 'noborder-card';
-
-export interface TabsProps
-  extends BaseProps,
-    Omit<React.PropsWithRef<JSX.IntrinsicElements['div']>, 'onChange'> {
-  activeKey?: number;
-  defaultActiveKey?: number;
-  type?: TabType;
-  animated?: boolean;
-  direction?: DirectionType;
-  size?: SizeType;
-  onChange?: (activeKey: number) => void;
-  onTabClose?: (activeKey?: string) => void;
-  onPrevClick?: (e?: React.MouseEvent) => void;
-  onNextClick?: (e?: React.MouseEvent) => void;
-}
+import { TabsProps, TabItem, TabPanelProps } from './types';
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-  (props: TabsProps, ref): JSX.Element => {
+  (props: TabsProps, ref): React.ReactElement => {
     const {
       type = 'line',
-      direction = 'horizontal',
+      tabPosition = 'top',
       size = 'md',
       animated = true,
+      centered = false,
+      destroyInactiveTabPane = false,
+      hideAdd = false,
       activeKey,
-      defaultActiveKey = 0,
+      defaultActiveKey,
+      items,
+      tabBarExtraContent,
+      tabBarGutter,
+      tabBarStyle,
       onChange,
+      onTabClick,
+      onEdit,
       className,
       children,
       prefixCls: customisedCls,
@@ -41,191 +31,304 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     const configContext = useContext(ConfigContext);
     const prefixCls = getPrefixCls('tabs', configContext.prefixCls, customisedCls);
 
-    const getSelectIndex = (): number => {
-      let selectIndex = 0;
-      React.Children.forEach(children, (child, idx) => {
-        const element = child as React.FunctionComponentElement<TabPanelProps>;
-        if (element.props && element.props.selected) {
-          selectIndex = idx;
-        }
-      });
-      return selectIndex;
+    // Resolve items from either `items` prop or `children`
+    const resolvedItems: TabItem[] = items ?? resolveItemsFromChildren(children);
+
+    const getDefaultKey = (): string => {
+      if (defaultActiveKey !== undefined) return defaultActiveKey;
+      const first = resolvedItems.find((item) => !item.disabled);
+      return first?.key ?? '';
     };
 
-    const [value, setValue] = useState<number>(activeKey ?? defaultActiveKey ?? getSelectIndex());
-    const [lineStyle, setLineStyle] = useState<CSSProperties>({});
+    const [currentKey, setCurrentKey] = useState<string>(activeKey ?? getDefaultKey());
+    const [inkStyle, setInkStyle] = useState<CSSProperties>({});
     const [scrollOffset, setScrollOffset] = useState(0);
-    const [isArrowShown, setIsArrowShown] = useState(false);
-    const tabHeaderWrapRef = useRef<HTMLDivElement | null>(null);
-    const tabHeaderNavRef = useRef<HTMLDivElement | null>(null);
-    const tabItemRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [showNav, setShowNav] = useState(false);
+    const navWrapRef = useRef<HTMLDivElement>(null);
+    const navListRef = useRef<HTMLDivElement>(null);
+    const tabRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
-    const isHorizontal = direction === 'horizontal';
+    const isHorizontal = tabPosition === 'top' || tabPosition === 'bottom';
 
+    // Controlled mode
     useEffect(() => {
       if (activeKey !== undefined) {
-        setValue(activeKey);
+        setCurrentKey(activeKey);
       }
     }, [activeKey]);
 
-    const updateLineStyle = useCallback(() => {
-      const activeEl = tabItemRefs.current[value];
-      if (!activeEl || type !== 'line') return;
+    // Update ink indicator
+    const updateInk = useCallback(() => {
+      if (type !== 'line') return;
+      const el = tabRefs.current.get(currentKey);
+      if (!el) return;
 
       if (isHorizontal) {
-        setLineStyle({
-          width: activeEl.offsetWidth,
-          transform: `translate3d(${activeEl.offsetLeft}px, 0, 0)`,
+        setInkStyle({
+          width: el.offsetWidth,
+          transform: `translate3d(${el.offsetLeft}px, 0, 0)`,
         });
       } else {
-        setLineStyle({
-          height: activeEl.offsetHeight,
-          transform: `translate3d(0, ${activeEl.offsetTop}px, 0)`,
+        setInkStyle({
+          height: el.offsetHeight,
+          transform: `translate3d(0, ${el.offsetTop}px, 0)`,
         });
       }
-    }, [value, type, isHorizontal]);
+    }, [currentKey, type, isHorizontal]);
 
-    const checkArrows = useCallback(() => {
-      const wrapEl = tabHeaderWrapRef.current;
-      const navEl = tabHeaderNavRef.current;
-      if (!wrapEl || !navEl) return;
-
-      if (isHorizontal) {
-        setIsArrowShown(navEl.scrollWidth > wrapEl.clientWidth);
-      } else {
-        setIsArrowShown(navEl.scrollHeight > wrapEl.clientHeight);
-      }
+    // Check overflow for scroll arrows
+    const checkOverflow = useCallback(() => {
+      const wrap = navWrapRef.current;
+      const list = navListRef.current;
+      if (!wrap || !list) return;
+      setShowNav(
+        isHorizontal
+          ? list.scrollWidth > wrap.clientWidth
+          : list.scrollHeight > wrap.clientHeight
+      );
     }, [isHorizontal]);
 
     useEffect(() => {
-      updateLineStyle();
-      checkArrows();
-    }, [updateLineStyle, checkArrows]);
+      updateInk();
+      checkOverflow();
+    }, [updateInk, checkOverflow]);
 
-    const handleTabClick = (idx: number, disabled?: boolean) => {
+    const handleTabClick = (key: string, disabled: boolean | undefined, e: React.MouseEvent) => {
       if (disabled) return;
-      setValue(idx);
-      onChange?.(idx);
+      onTabClick?.(key, e);
+      if (activeKey === undefined) {
+        setCurrentKey(key);
+      }
+      onChange?.(key);
     };
 
+    const handleRemove = (key: string, e: React.MouseEvent) => {
+      e.stopPropagation();
+      onEdit?.(key, 'remove');
+    };
+
+    const handleAdd = (e: React.MouseEvent) => {
+      onEdit?.(e, 'add');
+    };
+
+    // Scroll navigation
     const scrollStep = 200;
     const getMaxScroll = () => {
-      const wrapEl = tabHeaderWrapRef.current;
-      const navEl = tabHeaderNavRef.current;
-      if (!wrapEl || !navEl) return 0;
+      const wrap = navWrapRef.current;
+      const list = navListRef.current;
+      if (!wrap || !list) return 0;
       return isHorizontal
-        ? navEl.scrollWidth - wrapEl.clientWidth
-        : navEl.scrollHeight - wrapEl.clientHeight;
+        ? list.scrollWidth - wrap.clientWidth
+        : list.scrollHeight - wrap.clientHeight;
     };
 
-    const scrollLeftOrTop = () => {
-      setScrollOffset((prev) => Math.max(0, prev - scrollStep));
-    };
+    const scrollPrev = () => setScrollOffset((prev) => Math.max(0, prev - scrollStep));
+    const scrollNext = () => setScrollOffset((prev) => Math.min(getMaxScroll(), prev + scrollStep));
 
-    const scrollRightOrBottom = () => {
-      const max = getMaxScroll();
-      setScrollOffset((prev) => Math.min(max, prev + scrollStep));
-    };
+    // Ensure active tab is scrolled into view
+    useEffect(() => {
+      const el = tabRefs.current.get(currentKey);
+      const wrap = navWrapRef.current;
+      if (!el || !wrap || !showNav) return;
 
-    const isArrowLDisabled = scrollOffset === 0;
-    const isArrowRDisabled = scrollOffset >= getMaxScroll();
+      if (isHorizontal) {
+        const elLeft = el.offsetLeft;
+        const elRight = elLeft + el.offsetWidth;
+        if (elLeft < scrollOffset) {
+          setScrollOffset(elLeft);
+        } else if (elRight > scrollOffset + wrap.clientWidth) {
+          setScrollOffset(elRight - wrap.clientWidth);
+        }
+      }
+    }, [currentKey, showNav, isHorizontal, scrollOffset]);
 
-    const cls = classNames(
-      prefixCls,
-      className,
-      `${prefixCls}_${size}`,
-      `${prefixCls}_${direction}`,
-      { [`${prefixCls}_${type}`]: isHorizontal && type }
-    );
-    const headerNavStyle: CSSProperties = isHorizontal
+    // Extra content
+    const isExtraObj = tabBarExtraContent != null
+      && typeof tabBarExtraContent === 'object'
+      && !React.isValidElement(tabBarExtraContent)
+      && ('left' in tabBarExtraContent || 'right' in tabBarExtraContent);
+    const extraLeft: React.ReactNode = isExtraObj
+      ? (tabBarExtraContent as { left?: React.ReactNode }).left ?? null
+      : null;
+    const extraRight: React.ReactNode = isExtraObj
+      ? (tabBarExtraContent as { right?: React.ReactNode }).right ?? null
+      : (tabBarExtraContent as React.ReactNode) ?? null;
+
+    // Class names
+    const isVertical = !isHorizontal;
+    const cls = classNames(prefixCls, className, `${prefixCls}_${size}`, {
+      [`${prefixCls}_${tabPosition}`]: true,
+      [`${prefixCls}_${type}`]: true,
+      [`${prefixCls}_vertical`]: isVertical,
+      [`${prefixCls}_centered`]: centered,
+    });
+
+    const navScrollStyle: CSSProperties = isHorizontal
       ? { transform: `translate3d(${-scrollOffset}px, 0, 0)` }
       : { transform: `translate3d(0, ${-scrollOffset}px, 0)` };
-    const headerCls = classNames(`${prefixCls}__header`, {
-      [`${prefixCls}__header_arrow-mode`]: isArrowShown,
-    });
-    const bodyCls = classNames(`${prefixCls}__body`, {
-      [`${prefixCls}__body_animated`]: animated,
-    });
-    const arrowL = isHorizontal ? 'left' : 'top';
-    const arrowR = isHorizontal ? 'right' : 'bottom';
-    const arrowLCls = classNames(`${prefixCls}__header__arrow`, {
-      [`${prefixCls}__header__arrow--${arrowL}`]: arrowL,
-      [`${prefixCls}__header__arrow--disabled`]: isArrowLDisabled,
-    });
-    const arrowRCls = classNames(`${prefixCls}__header__arrow`, {
-      [`${prefixCls}__header__arrow--${arrowR}`]: arrowR,
-      [`${prefixCls}__header__arrow--disabled`]: isArrowRDisabled,
-    });
 
-    const animateStyle: CSSProperties =
-      isHorizontal ? { marginLeft: `-${value * 100}%` } : {};
-
-    const renderHeaderItem = (): ReactNode => {
-      return React.Children.map(children, (child, idx) => {
-        const childElement = child as React.FunctionComponentElement<TabPanelProps>;
-        if (childElement.type.displayName === 'TabPanel') {
-          const itemCls = classNames(`${prefixCls}__header-nav-item`, {
-            [`${prefixCls}__header-nav-item_active`]: idx === value,
-            [`${prefixCls}__header-nav-item_disabled`]: childElement.props.disabled,
-          });
-          return (
-            <div
-              ref={(el) => { tabItemRefs.current[idx] = el; }}
-              className={itemCls}
-              onClick={() => handleTabClick(idx, childElement.props.disabled)}>
-              {childElement.props.tab}
-            </div>
-          );
-        } else {
-          return null;
-        }
-      });
-    };
+    const prevDisabled = scrollOffset === 0;
+    const nextDisabled = scrollOffset >= getMaxScroll();
 
     return (
       <div {...otherProps} ref={ref} className={cls}>
-        <div className={headerCls}>
-          <div className={`${prefixCls}__header-scroll`} ref={tabHeaderWrapRef}>
+        {tabPosition === 'bottom' && (
+          <div className={`${prefixCls}__content`}>
+            {renderPanels(resolvedItems, currentKey, prefixCls, animated, isHorizontal, destroyInactiveTabPane)}
+          </div>
+        )}
+        <div
+          className={classNames(`${prefixCls}__nav`, {
+            [`${prefixCls}__nav_overflow`]: showNav,
+          })}
+          style={tabBarStyle}
+          role="tablist">
+          {extraLeft && <div className={`${prefixCls}__nav-extra_left`}>{extraLeft}</div>}
+          {showNav && (
+            <button
+              className={classNames(`${prefixCls}__nav-prev`, {
+                [`${prefixCls}__nav-btn_disabled`]: prevDisabled,
+              })}
+              disabled={prevDisabled}
+              onClick={scrollPrev}
+              type="button"
+              aria-label="Previous tabs">
+              ‹
+            </button>
+          )}
+          <div className={`${prefixCls}__nav-wrap`} ref={navWrapRef}>
             <div
-              className={`${prefixCls}__header-nav`}
-              ref={tabHeaderNavRef}
-              style={isArrowShown ? headerNavStyle : {}}>
-              {renderHeaderItem()}
+              className={`${prefixCls}__nav-list`}
+              ref={navListRef}
+              style={showNav ? navScrollStyle : undefined}>
+              {resolvedItems.map((item) => {
+                const isActive = item.key === currentKey;
+                const tabCls = classNames(`${prefixCls}__tab`, {
+                  [`${prefixCls}__tab_active`]: isActive,
+                  [`${prefixCls}__tab_disabled`]: item.disabled,
+                });
+                const gutter = tabBarGutter !== undefined ? { marginRight: tabBarGutter } : undefined;
+                return (
+                  <div
+                    key={item.key}
+                    ref={(el) => {
+                      if (el) tabRefs.current.set(item.key, el);
+                      else tabRefs.current.delete(item.key);
+                    }}
+                    className={tabCls}
+                    style={gutter}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-disabled={item.disabled}
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={(e) => handleTabClick(item.key, item.disabled, e)}>
+                    {item.icon && <span className={`${prefixCls}__tab-icon`}>{item.icon}</span>}
+                    <span className={`${prefixCls}__tab-label`}>{item.label}</span>
+                    {type === 'editable-card' && item.closable !== false && (
+                      <span
+                        className={`${prefixCls}__tab-remove`}
+                        onClick={(e) => handleRemove(item.key, e)}
+                        role="button"
+                        aria-label="Remove tab">
+                        ✕
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
               {type === 'line' && (
-                <div className={`${prefixCls}__header-line`} style={lineStyle} />
+                <div className={`${prefixCls}__ink-bar`} style={inkStyle} />
               )}
             </div>
           </div>
-          {isArrowShown && (
-            <>
-              <span className={arrowLCls} onClick={() => !isArrowLDisabled && scrollLeftOrTop()}>
-                <ArrowDown />
-              </span>
-              <span className={arrowRCls} onClick={() => !isArrowRDisabled && scrollRightOrBottom()}>
-                <ArrowDown />
-              </span>
-            </>
+          {showNav && (
+            <button
+              className={classNames(`${prefixCls}__nav-next`, {
+                [`${prefixCls}__nav-btn_disabled`]: nextDisabled,
+              })}
+              disabled={nextDisabled}
+              onClick={scrollNext}
+              type="button"
+              aria-label="Next tabs">
+              ›
+            </button>
           )}
+          {type === 'editable-card' && !hideAdd && (
+            <button
+              className={`${prefixCls}__nav-add`}
+              onClick={handleAdd}
+              type="button"
+              aria-label="Add tab">
+              +
+            </button>
+          )}
+          {extraRight && <div className={`${prefixCls}__nav-extra_right`}>{extraRight}</div>}
         </div>
-        <div className={bodyCls} style={animateStyle}>
-          {React.Children.map(children, (child, idx) => {
-            const childElement = child as React.FunctionComponentElement<TabPanelProps>;
-            if (childElement.type.displayName === 'TabPanel') {
-              const childProps = {
-                ...childElement.props,
-                selected: value === idx,
-              };
-              return React.cloneElement(childElement, childProps);
-            } else {
-              console.warn('Tabs has a child that is not a TabPanel component.');
-              return null;
-            }
-          })}
-        </div>
+        {tabPosition !== 'bottom' && (
+          <div className={`${prefixCls}__content`}>
+            {renderPanels(resolvedItems, currentKey, prefixCls, animated, isHorizontal, destroyInactiveTabPane)}
+          </div>
+        )}
       </div>
     );
   }
 );
+
+function resolveItemsFromChildren(children: React.ReactNode): TabItem[] {
+  const items: TabItem[] = [];
+  React.Children.forEach(children, (child, idx) => {
+    if (!React.isValidElement<TabPanelProps>(child)) return;
+    const { tab, tabKey, disabled, closable, forceRender, children: content } = child.props;
+    items.push({
+      key: tabKey ?? String(idx),
+      label: tab,
+      children: content,
+      disabled,
+      closable,
+      forceRender,
+    });
+  });
+  return items;
+}
+
+function renderPanels(
+  items: TabItem[],
+  currentKey: string,
+  prefixCls: string,
+  animated: boolean,
+  isHorizontal: boolean,
+  destroyInactive: boolean
+): React.ReactNode {
+  const activeIdx = items.findIndex((item) => item.key === currentKey);
+  const containerStyle: CSSProperties = animated && isHorizontal
+    ? { transform: `translate3d(${-activeIdx * 100}%, 0, 0)` }
+    : {};
+
+  const containerCls = classNames(`${prefixCls}__content-inner`, {
+    [`${prefixCls}__content-inner_animated`]: animated && isHorizontal,
+  });
+
+  return (
+    <div className={containerCls} style={containerStyle}>
+      {items.map((item) => {
+        const isActive = item.key === currentKey;
+        const panelCls = classNames(`${prefixCls}__panel`, {
+          [`${prefixCls}__panel_active`]: isActive,
+        });
+
+        if (destroyInactive && !isActive && !item.forceRender) {
+          return <div key={item.key} className={panelCls} role="tabpanel" />;
+        }
+
+        return (
+          <div key={item.key} className={panelCls} role="tabpanel">
+            {item.children}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 Tabs.displayName = 'Tabs';
 
