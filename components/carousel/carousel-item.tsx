@@ -1,22 +1,17 @@
-import React from 'react';
-import classNames from 'classnames';
 import { BaseProps } from '../_utils/props';
 
-export interface CarouselItemProps extends React.PropsWithRef<BaseProps> {
+export interface CarouselItemProps extends BaseProps {
   children?: React.ReactNode;
 }
 
-const CarouselItem = React.forwardRef<HTMLLIElement, CarouselItemProps>(
-  (props: CarouselItemProps, ref) => {
-    const { prefixCls = 'ty-carousel-item', className, style, children } = props;
-    const cls = classNames(prefixCls, className);
-    return (
-      <li ref={ref} className={cls} style={style}>
-        {children}
-      </li>
-    );
-  }
-);
+const CarouselItem = (props: CarouselItemProps): React.ReactElement => {
+  const { children, style, className } = props;
+  return (
+    <div style={style} className={className}>
+      {children}
+    </div>
+  );
+};
 
 CarouselItem.displayName = 'CarouselItem';
 

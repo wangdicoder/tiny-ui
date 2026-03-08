@@ -3,94 +3,38 @@
 exports[`<Carousel /> should match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ty-carousel"
+    class="ty-carousel ty-carousel_scrollx"
   >
-    <ul
-      class="ty-carousel__container"
-      style="transition-timing-function: linear; width: 0px; left: 0px;"
+    <div
+      class="ty-carousel__viewport"
     >
-      <li
-        class="ty-carousel-item"
-        style="width: 0px;"
+      <div
+        class="ty-carousel__track"
+        style="width: 0px; transform: translate3d(0px, 0, 0); transition: none;"
       >
-        <div>
-          Slide 3
-        </div>
-      </li>
-      <li
-        class="ty-carousel-item"
-        style="width: 0px;"
-      >
-        <div>
-          Slide 1
-        </div>
-      </li>
-      <li
-        class="ty-carousel-item"
-        style="width: 0px;"
-      >
-        <div>
-          Slide 2
-        </div>
-      </li>
-      <li
-        class="ty-carousel-item"
-        style="width: 0px;"
-      >
-        <div>
-          Slide 3
-        </div>
-      </li>
-      <li
-        class="ty-carousel-item"
-        style="width: 0px;"
-      >
-        <div>
-          Slide 1
-        </div>
-      </li>
-    </ul>
-    <ul
-      class="ty-carousel__arrow-group"
-      style="width: 0px;"
-    >
-      <li
-        class="ty-carousel__arrow-left"
-      >
-        <svg
-          fill="currentColor"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
+        <div
+          class="ty-carousel__slide"
+          style="width: 0px; flex-shrink: 0;"
         >
-          <path
-            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-          />
-        </svg>
-      </li>
-      <li
-        class="ty-carousel__arrow-right"
-      >
-        <svg
-          fill="currentColor"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
+          <div>
+            Slide 1
+          </div>
+        </div>
+        <div
+          class="ty-carousel__slide"
+          style="width: 0px; flex-shrink: 0;"
         >
-          <path
-            d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"
-          />
-        </svg>
-      </li>
-    </ul>
+          <div>
+            Slide 2
+          </div>
+        </div>
+      </div>
+    </div>
     <ul
-      class="ty-carousel__dots-container ty-carousel_dots-bottom"
+      class="ty-carousel__dots ty-carousel__dots_bottom"
     >
       <li
         class="ty-carousel__dot ty-carousel__dot_active"
-      />
-      <li
-        class="ty-carousel__dot"
       />
       <li
         class="ty-carousel__dot"

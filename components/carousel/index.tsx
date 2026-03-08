@@ -1,8 +1,14 @@
-import CarouselItem from './carousel-item';
 import Carousel from './carousel';
+import CarouselItem from './carousel-item';
 
-export type { CarouselProps, EasingType } from './carousel';
+export type { CarouselProps, CarouselRef, DotPlacement, CarouselEffect } from './types';
 export type { CarouselItemProps } from './carousel-item';
 
-Carousel.Item = CarouselItem;
-export default Carousel;
+type ICarousel = typeof Carousel & {
+  Item: typeof CarouselItem;
+};
+
+const DefaultCarousel = Carousel as unknown as ICarousel;
+DefaultCarousel.Item = CarouselItem;
+
+export default DefaultCarousel;

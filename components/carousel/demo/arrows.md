@@ -1,8 +1,8 @@
 <demo>
 
-### Basic
+### Arrows
 
-A basic carousel. You can pass children directly — no need for `Carousel.Item`.
+Show navigation arrows on hover.
 
 ```jsx live
 () => {
@@ -15,11 +15,10 @@ A basic carousel. You can pass children directly — no need for `Carousel.Item`
     fontSize: 24,
   };
   return (
-    <Carousel autoplay>
+    <Carousel arrows>
       <div style={{ ...style, background: '#364d79' }}>Slide 1</div>
       <div style={{ ...style, background: '#6b8e23' }}>Slide 2</div>
       <div style={{ ...style, background: '#8b4513' }}>Slide 3</div>
-      <div style={{ ...style, background: '#483d8b' }}>Slide 4</div>
     </Carousel>
   );
 }

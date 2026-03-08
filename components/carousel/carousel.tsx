@@ -1,159 +1,268 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+  useImperativeHandle,
+  forwardRef,
+  useContext,
+} from 'react';
 import classNames from 'classnames';
-import { CarouselItemProps } from './carousel-item';
-import { BaseProps } from '../_utils/props';
-import DotGroup, { DotPosition } from './dot-group';
-import ArrowGroup from './arrow-group';
+import { ConfigContext } from '../config-provider/config-context';
+import { getPrefixCls } from '../_utils/general';
+import { CarouselProps, CarouselRef } from './types';
 
-export type EasingType = 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
-
-export interface CarouselProps extends BaseProps {
-  dots?: boolean;
-  arrows?: boolean;
-  autoplay?: boolean;
-  interval?: number;
-  animatedDuration?: number;
-  dotPosition?: DotPosition;
-  easing?: EasingType;
-  beforeChange?: () => void;
-  afterChange?: () => void;
-  children: React.ReactElement<CarouselItemProps>[];
-}
-
-const Carousel: React.FC<CarouselProps> & { Item?: any } = (props: CarouselProps) => {
+const Carousel = forwardRef<CarouselRef, CarouselProps>((props, ref) => {
   const {
-    prefixCls = 'ty-carousel',
     dots = true,
-    arrows = true,
-    interval = 3000,
-    animatedDuration = 500,
-    autoplay = true,
-    dotPosition = 'bottom',
-    easing = 'linear',
+    arrows = false,
+    autoplay = false,
+    autoplaySpeed = 3000,
+    dotPlacement = 'bottom',
+    effect = 'scrollx',
+    easing = 'ease',
+    speed = 500,
+    infinite = true,
+    draggable = false,
+    waitForAnimate = false,
+    beforeChange,
+    afterChange,
     className,
     style,
     children,
+    prefixCls: customisedCls,
   } = props;
-  const cls = classNames(prefixCls, className);
-  const outerRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLUListElement | null>(null);
-  const [width, setWidth] = useState(0);
-  const currIndexRef = useRef(0);
-  const [displayIndex, setDisplayIndex] = useState(0);
 
-  const animate = useCallback((distance: number, isAnimated = true) => {
-    if (containerRef.current) {
-      const container = containerRef.current;
-      container.style.transitionDuration = isAnimated ? `${animatedDuration}ms` : '0s';
-      container.style.left = parseInt(container.style.left!, 10) + distance + 'px';
-    }
-  }, [animatedDuration]);
+  const configContext = useContext(ConfigContext);
+  const prefixCls = getPrefixCls('carousel', configContext.prefixCls, customisedCls);
 
-  const moveNext = useCallback((): void => {
-    const nextIndex = currIndexRef.current + 1;
-    currIndexRef.current = nextIndex;
-    setDisplayIndex(nextIndex >= children.length ? 0 : nextIndex);
-    animate(-width);
-    if (nextIndex === children.length) {
-      currIndexRef.current = 0;
-      window.setTimeout(() => {
-        const distance = children.length * width;
-        animate(distance, false);
-      }, animatedDuration);
-    }
-  }, [width, children.length, animate, animatedDuration]);
+  const slideCount = React.Children.count(children);
+  const slides = React.Children.toArray(children) as React.ReactElement[];
 
-  const movePrev = useCallback((): void => {
-    const prevIndex = currIndexRef.current - 1;
-    currIndexRef.current = prevIndex;
-    setDisplayIndex(prevIndex < 0 ? children.length - 1 : prevIndex);
-    animate(width);
-    if (prevIndex === -1) {
-      currIndexRef.current = children.length - 1;
-      window.setTimeout(() => {
-        const distance = children.length * width;
-        animate(-distance, false);
-      }, animatedDuration);
-    }
-  }, [width, children.length, animate, animatedDuration]);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const animatingRef = useRef(false);
 
-  const dotItemOnClick = (index: number): void => {
-    const current = currIndexRef.current;
-    currIndexRef.current = index;
-    setDisplayIndex(index);
-    animate(width * Math.abs(index - current) * (index > current ? -1 : 1));
+  // Drag state
+  const dragStartX = useRef(0);
+  const dragDelta = useRef(0);
+  const isDragging = useRef(false);
+
+  const isFade = effect === 'fade';
+
+  // ---- Navigate ----
+  const goTo = useCallback(
+    (index: number, dontAnimate = false) => {
+      if (waitForAnimate && animatingRef.current) return;
+      if (index === current) return;
+
+      const next = ((index % slideCount) + slideCount) % slideCount;
+      beforeChange?.(current, next);
+
+      if (dontAnimate || isFade) {
+        setCurrent(next);
+        afterChange?.(next);
+      } else {
+        setIsAnimating(true);
+        animatingRef.current = true;
+        setCurrent(next);
+      }
+    },
+    [current, slideCount, beforeChange, afterChange, isFade, waitForAnimate]
+  );
+
+  const next = useCallback(() => {
+    if (!infinite && current >= slideCount - 1) return;
+    goTo(current + 1);
+  }, [current, slideCount, infinite, goTo]);
+
+  const prev = useCallback(() => {
+    if (!infinite && current <= 0) return;
+    goTo(current - 1);
+  }, [current, infinite, goTo]);
+
+  // ---- Imperative handle ----
+  useImperativeHandle(ref, () => ({ goTo, next, prev }), [goTo, next, prev]);
+
+  // ---- Animation end ----
+  const handleTransitionEnd = useCallback(() => {
+    setIsAnimating(false);
+    animatingRef.current = false;
+    afterChange?.(current);
+  }, [afterChange, current]);
+
+  // ---- Autoplay ----
+  useEffect(() => {
+    if (!autoplay || slideCount <= 1) return;
+    const timer = window.setInterval(next, autoplaySpeed);
+    return () => window.clearInterval(timer);
+  }, [autoplay, autoplaySpeed, next, slideCount]);
+
+  // ---- Drag ----
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!draggable) return;
+    isDragging.current = true;
+    dragDelta.current = 0;
+    dragStartX.current = 'touches' in e ? e.touches[0].clientX : e.clientX;
   };
 
-  const getChildrenList = () => {
-    const finalChildren = [];
-    finalChildren.push(children[children.length - 1]);
-    React.Children.forEach(children, (child: React.ReactElement<CarouselItemProps>) => {
-      finalChildren.push(child);
-    });
-    finalChildren.push(children[0]);
-    return finalChildren;
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging.current) return;
+    const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    dragDelta.current = x - dragStartX.current;
   };
 
-  useEffect(() => {
-    if (outerRef.current && containerRef.current) {
-      const outerWidth = outerRef.current.clientWidth;
-      setWidth(outerWidth);
-      containerRef.current.style.left = `${-outerWidth}px`;
+  const handleDragEnd = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const containerWidth = outerRef.current?.clientWidth ?? 300;
+    const threshold = containerWidth / 4;
+    if (dragDelta.current < -threshold) {
+      next();
+    } else if (dragDelta.current > threshold) {
+      prev();
     }
-  }, []);
+    dragDelta.current = 0;
+  };
 
+  // ---- Pause on hover ----
+  const [paused, setPaused] = useState(false);
   useEffect(() => {
-    if (!autoplay || width <= 0) return;
+    if (!autoplay || !paused) return;
+    // Autoplay effect handles timer — paused state is checked via dependency
+  }, [autoplay, paused]);
 
-    const timer = window.setInterval(() => {
-      moveNext();
-    }, interval);
+  // Override autoplay to account for pause
+  useEffect(() => {
+    if (!autoplay || slideCount <= 1 || paused) return;
+    const timer = window.setInterval(next, autoplaySpeed);
+    return () => window.clearInterval(timer);
+  }, [autoplay, autoplaySpeed, next, slideCount, paused]);
 
-    return (): void => {
-      window.clearInterval(timer);
+  // ---- Dots config ----
+  const showDots = dots !== false;
+  const dotsClassName = typeof dots === 'object' ? dots.className : undefined;
+  const isVerticalDot = dotPlacement === 'left' || dotPlacement === 'right';
+
+  // ---- Class names ----
+  const cls = classNames(prefixCls, className, {
+    [`${prefixCls}_${effect}`]: true,
+    [`${prefixCls}_vertical-dots`]: isVerticalDot,
+  });
+
+  // ---- Render scrollx track ----
+  const renderScrollxTrack = () => {
+    const pct = 100 / slideCount;
+    const trackStyle: React.CSSProperties = {
+      width: `${slideCount * 100}%`,
+      transform: `translate3d(${-current * pct}%, 0, 0)`,
+      transition: isAnimating ? `transform ${speed}ms ${easing}` : 'none',
     };
-  }, [autoplay, interval, moveNext, width]);
+
+    return (
+      <div
+        className={`${prefixCls}__track`}
+        ref={trackRef}
+        style={trackStyle}
+        onTransitionEnd={handleTransitionEnd}>
+        {slides.map((child, idx) => (
+          <div
+            key={idx}
+            className={`${prefixCls}__slide`}
+            style={{ width: `${pct}%` }}>
+            {child}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  // ---- Render fade ----
+  const renderFadeTrack = () => (
+    <div className={`${prefixCls}__track ${prefixCls}__track_fade`}>
+      {slides.map((child, idx) => {
+        const isActive = idx === current;
+        return (
+          <div
+            key={idx}
+            className={classNames(`${prefixCls}__slide`, {
+              [`${prefixCls}__slide_active`]: isActive,
+            })}
+            style={{
+              opacity: isActive ? 1 : 0,
+              transition: `opacity ${speed}ms ${easing}`,
+            }}>
+            {child}
+          </div>
+        );
+      })}
+    </div>
+  );
 
   return (
-    <div ref={outerRef} className={cls} style={style}>
-      <ul
-        ref={containerRef}
-        className={`${cls}__container`}
-        style={{
-          transitionTimingFunction: easing,
-          width: width * (children.length + 2),
-        }}>
-        {getChildrenList().map((child: React.ReactElement<CarouselItemProps>, index) => {
-          const childProps = {
-            key: index,
-            ...child.props,
-            style: {
-              width,
-              ...child.props.style,
-            },
-          };
-          return React.cloneElement(child, childProps);
-        })}
-      </ul>
-      {arrows && (
-        <ArrowGroup
-          leftBtnOnClick={movePrev}
-          rightBtnOnClick={moveNext}
-          prefixCls={prefixCls}
-          style={{ width }}
-        />
+    <div
+      ref={outerRef}
+      className={cls}
+      style={style}
+      onMouseEnter={() => autoplay && setPaused(true)}
+      onMouseLeave={() => autoplay && setPaused(false)}
+      onMouseDown={handleDragStart}
+      onMouseMove={handleDragMove}
+      onMouseUp={handleDragEnd}
+      onTouchStart={handleDragStart}
+      onTouchMove={handleDragMove}
+      onTouchEnd={handleDragEnd}>
+      <div className={`${prefixCls}__viewport`}>
+        {isFade ? renderFadeTrack() : renderScrollxTrack()}
+      </div>
+
+      {arrows && slideCount > 1 && (
+        <>
+          <button
+            className={`${prefixCls}__arrow ${prefixCls}__arrow_prev`}
+            onClick={prev}
+            type="button"
+            aria-label="Previous slide">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+          <button
+            className={`${prefixCls}__arrow ${prefixCls}__arrow_next`}
+            onClick={next}
+            type="button"
+            aria-label="Next slide">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+            </svg>
+          </button>
+        </>
       )}
-      {dots && (
-        <DotGroup
-          activeIndex={displayIndex}
-          position={dotPosition}
-          amount={children.length}
-          itemOnClick={dotItemOnClick}
-          prefixCls={prefixCls}
-        />
+
+      {showDots && slideCount > 1 && (
+        <ul
+          className={classNames(
+            `${prefixCls}__dots`,
+            `${prefixCls}__dots_${dotPlacement}`,
+            dotsClassName
+          )}>
+          {slides.map((_, idx) => (
+            <li
+              key={idx}
+              className={classNames(`${prefixCls}__dot`, {
+                [`${prefixCls}__dot_active`]: idx === current,
+              })}
+              onClick={() => goTo(idx)}
+            />
+          ))}
+        </ul>
       )}
     </div>
   );
-};
+});
+
+Carousel.displayName = 'Carousel';
 
 export default Carousel;
