@@ -28,7 +28,7 @@
 
   &__head {
     width: 16px;
-    background-color: var(--ty-timeline-head-bg);
+    background-color: transparent;
     position: absolute;
     color: var(--ty-color-primary);
     height: 100%;
@@ -48,7 +48,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--ty-timeline-dot-bg);
+    background-color: transparent;
   }
 
   &__dot {
@@ -57,6 +57,7 @@
     height: 10px;
     border: 2px solid var(--ty-color-primary);
     border-radius: 100px;
+    background-color: var(--ty-color-bg);
   }
 
   &__content {
