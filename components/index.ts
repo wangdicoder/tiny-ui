@@ -60,6 +60,7 @@ export { default as Slider } from './slider';
 export { default as Split } from './split';
 export { default as SplitButton } from './split-button';
 export { default as Space } from './space';
+export { default as SpeedDial } from './speed-dial';
 export { default as Steps } from './steps';
 export { default as Statistic } from './statistic';
 export { default as Sticky } from './sticky';

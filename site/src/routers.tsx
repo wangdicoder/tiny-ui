@@ -125,6 +125,7 @@ const c = {
   keyboard: ll(() => import('../../components/keyboard/index.md'), () => import('../../components/keyboard/index.zh_CN.md')),
   sticky: ll(() => import('../../components/sticky/index.md'), () => import('../../components/sticky/index.zh_CN.md')),
   select: ll(() => import('../../components/select/index.md'), () => import('../../components/select/index.zh_CN.md')),
+  speedDial: ll(() => import('../../components/speed-dial/index.md'), () => import('../../components/speed-dial/index.md')),
 };
 
 export const getGuideMenu = (s: SiteLocale): RouterItem[] => {
@@ -171,6 +172,7 @@ export const getComponentMenu = (s: SiteLocale): RouterItem[] => {
         { title: 'Dropdown', route: 'dropdown', component: pick(c.dropdown, z) },
         { title: 'Menu', route: 'menu', component: pick(c.menu, z) },
         { title: 'Pagination', route: 'pagination', component: pick(c.pagination, z) },
+        { title: 'SpeedDial', route: 'speed-dial', component: pick(c.speedDial, z) },
         { title: 'Steps', route: 'steps', component: pick(c.steps, z) },
       ],
     },
