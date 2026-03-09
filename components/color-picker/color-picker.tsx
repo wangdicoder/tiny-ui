@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useRef, useContext, useCallback } from 'react';
-import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useClickOutside } from '../_utils/hooks';
+import Popup from '../popup';
 import { ColorPickerProps, Color, ColorFormat } from './types';
 import { parseColor, formatColor, hsbToHex } from './utils';
 
-const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, ref) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, _ref) => {
   const {
     defaultValue = '#6e41bf',
     presets,
     showAlpha = false,
     disabled = false,
     size,
-    allowClear = false,
     trigger = 'click',
     defaultFormat = 'hex',
     prefixCls: customisedCls,
@@ -37,13 +38,14 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, r
   );
   const [open, setOpen] = useState(false);
   const [dragging, setDragging] = useState(false);
-  const [panelStyle, setPanelStyle] = useState<React.CSSProperties>({});
 
   const spectrumRef = useRef<HTMLDivElement>(null);
   const hueRef = useRef<HTMLDivElement>(null);
   const alphaRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
+
+  const isOpen = ('open' in props ? (props.open as boolean) : undefined) ?? open;
+  const controlledOpen = 'open' in props ? (props.open as boolean) : undefined;
 
   useEffect(() => {
     if ('value' in props && props.value) {
@@ -59,26 +61,10 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, r
     if ('open' in props) setOpen(props.open as boolean);
   }, [props.open]);
 
-  // Position panel below trigger, clamped to viewport
-  useEffect(() => {
-    if (open && wrapperRef.current && panelRef.current) {
-      const rect = wrapperRef.current.getBoundingClientRect();
-      const panelWidth = panelRef.current.offsetWidth || 240;
-      let left = rect.left + window.scrollX;
-
-      // Clamp so panel doesn't overflow the right edge
-      if (rect.left + panelWidth > window.innerWidth) {
-        left = rect.right + window.scrollX - panelWidth;
-      }
-
-      setPanelStyle({
-        position: 'absolute',
-        top: rect.bottom + 4 + window.scrollY,
-        left: Math.max(0, left),
-        zIndex: 1050,
-      });
-    }
-  }, [open]);
+  useClickOutside(wrapperRef.current as HTMLDivElement, () => {
+    if (controlledOpen === undefined) setOpen(false);
+    props.onOpenChange?.(false);
+  });
 
   const emitChange = useCallback((c: Color) => {
     const formatted = formatColor(c, format);
@@ -161,27 +147,10 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, r
     };
   }, [dragging, color.h, color.a]);
 
-  // Click outside
-  useEffect(() => {
-    if (!open) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as Node;
-      if (
-        wrapperRef.current && !wrapperRef.current.contains(target) &&
-        panelRef.current && !panelRef.current.contains(target)
-      ) {
-        if (!('open' in props)) setOpen(false);
-        props.onOpenChange?.(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [open]);
-
   const toggleOpen = () => {
     if (disabled) return;
-    const next = !open;
-    if (!('open' in props)) setOpen(next);
+    const next = !isOpen;
+    if (controlledOpen === undefined) setOpen(next);
     props.onOpenChange?.(next);
   };
 
@@ -207,112 +176,115 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, r
   const hexColor = hsbToHex(color);
   const hueColor = hsbToHex({ h: color.h, s: 100, b: 100, a: 1 });
 
-  const panel = open
-    ? createPortal(
-        <div className={`${prefixCls}__panel`} ref={panelRef} style={panelStyle}>
+  const renderPanel = () => (
+    <div className={`${prefixCls}__panel`}>
+      <div
+        ref={spectrumRef}
+        className={`${prefixCls}__spectrum`}
+        style={{ backgroundColor: hueColor }}
+        onMouseDown={handleSpectrumMouseDown}
+      >
+        <div className={`${prefixCls}__spectrum-white`} />
+        <div className={`${prefixCls}__spectrum-black`} />
+        <div
+          className={`${prefixCls}__spectrum-handle`}
+          style={{
+            left: `${color.s}%`,
+            top: `${100 - color.b}%`,
+            backgroundColor: hexColor,
+          }}
+        />
+      </div>
+
+      <div className={`${prefixCls}__controls`}>
+        <div className={`${prefixCls}__preview`} style={{ backgroundColor: hexColor }} />
+        <div className={`${prefixCls}__sliders`}>
           <div
-            ref={spectrumRef}
-            className={`${prefixCls}__spectrum`}
-            style={{ backgroundColor: hueColor }}
-            onMouseDown={handleSpectrumMouseDown}
+            ref={hueRef}
+            className={`${prefixCls}__hue`}
+            onMouseDown={handleHueMouseDown}
           >
-            <div className={`${prefixCls}__spectrum-white`} />
-            <div className={`${prefixCls}__spectrum-black`} />
             <div
-              className={`${prefixCls}__spectrum-handle`}
+              className={`${prefixCls}__slider-handle`}
+              style={{ left: `${(color.h / 360) * 100}%` }}
+            />
+          </div>
+          {showAlpha && (
+            <div
+              ref={alphaRef}
+              className={`${prefixCls}__alpha`}
+              onMouseDown={handleAlphaMouseDown}
               style={{
-                left: `${color.s}%`,
-                top: `${100 - color.b}%`,
-                backgroundColor: hexColor,
+                background: `linear-gradient(to right, transparent, ${hsbToHex({ ...color, a: 1 })})`,
               }}
-            />
-          </div>
-
-          <div className={`${prefixCls}__controls`}>
-            <div className={`${prefixCls}__preview`} style={{ backgroundColor: hexColor }} />
-            <div className={`${prefixCls}__sliders`}>
-              <div
-                ref={hueRef}
-                className={`${prefixCls}__hue`}
-                onMouseDown={handleHueMouseDown}
-              >
-                <div
-                  className={`${prefixCls}__slider-handle`}
-                  style={{ left: `${(color.h / 360) * 100}%` }}
-                />
-              </div>
-              {showAlpha && (
-                <div
-                  ref={alphaRef}
-                  className={`${prefixCls}__alpha`}
-                  onMouseDown={handleAlphaMouseDown}
-                  style={{
-                    background: `linear-gradient(to right, transparent, ${hsbToHex({ ...color, a: 1 })})`,
-                  }}
-                >
-                  <div
-                    className={`${prefixCls}__slider-handle`}
-                    style={{ left: `${color.a * 100}%` }}
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className={`${prefixCls}__input-row`}>
-            <button
-              type="button"
-              className={`${prefixCls}__format-btn`}
-              onClick={handleFormatChange}
             >
-              {format.toUpperCase()}
-            </button>
-            <input
-              className={`${prefixCls}__hex-input`}
-              value={formatColor(color, format)}
-              onChange={(e) => {
-                const c = parseColor(e.target.value);
-                if (!('value' in props)) setColor(c);
-                onChange?.(e.target.value);
-              }}
-            />
-          </div>
-
-          {presets && presets.length > 0 && (
-            <div className={`${prefixCls}__presets`}>
-              {presets.map((preset, i) => (
-                <div
-                  key={i}
-                  className={`${prefixCls}__preset`}
-                  style={{ backgroundColor: preset }}
-                  onClick={() => handlePresetClick(preset)}
-                  title={preset}
-                />
-              ))}
+              <div
+                className={`${prefixCls}__slider-handle`}
+                style={{ left: `${color.a * 100}%` }}
+              />
             </div>
           )}
-        </div>,
-        document.body
-      )
-    : null;
+        </div>
+      </div>
+
+      <div className={`${prefixCls}__input-row`}>
+        <button
+          type="button"
+          className={`${prefixCls}__format-btn`}
+          onClick={handleFormatChange}
+        >
+          {format.toUpperCase()}
+        </button>
+        <input
+          className={`${prefixCls}__hex-input`}
+          value={formatColor(color, format)}
+          onChange={(e) => {
+            const c = parseColor(e.target.value);
+            if (!('value' in props)) setColor(c);
+            onChange?.(e.target.value);
+          }}
+        />
+      </div>
+
+      {presets && presets.length > 0 && (
+        <div className={`${prefixCls}__presets`}>
+          {presets.map((preset, i) => (
+            <div
+              key={i}
+              className={`${prefixCls}__preset`}
+              style={{ backgroundColor: preset }}
+              onClick={() => handlePresetClick(preset)}
+              title={preset}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div {...otherProps} ref={wrapperRef} className={cls} style={style}>
-      <div
-        className={`${prefixCls}__trigger`}
-        onClick={trigger === 'click' ? toggleOpen : undefined}
-        onMouseEnter={trigger === 'hover' ? toggleOpen : undefined}
-      >
-        {children || (
-          <div className={`${prefixCls}__swatch`}>
-            <div
-              className={`${prefixCls}__swatch-inner`}
-              style={{ backgroundColor: hexColor }}
-            />
-          </div>
-        )}
-      </div>
-      {panel}
+      <Popup
+        trigger="manual"
+        placement="bottom"
+        arrow={false}
+        visible={isOpen}
+        content={renderPanel()}>
+        <div
+          className={`${prefixCls}__trigger`}
+          onClick={trigger === 'click' ? toggleOpen : undefined}
+          onMouseEnter={trigger === 'hover' ? toggleOpen : undefined}
+        >
+          {children || (
+            <div className={`${prefixCls}__swatch`}>
+              <div
+                className={`${prefixCls}__swatch-inner`}
+                style={{ backgroundColor: hexColor }}
+              />
+            </div>
+          )}
+        </div>
+      </Popup>
     </div>
   );
 });

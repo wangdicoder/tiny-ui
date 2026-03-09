@@ -23,7 +23,6 @@ export interface ColorPickerProps
   showAlpha?: boolean;
   disabled?: boolean;
   size?: SizeType;
-  allowClear?: boolean;
   trigger?: 'click' | 'hover';
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
