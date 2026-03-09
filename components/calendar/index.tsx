@@ -34,6 +34,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     onChange,
     onSelect,
     onPanelChange,
+    value: _value,
+    mode: _mode,
     ...otherProps
   } = props;
 

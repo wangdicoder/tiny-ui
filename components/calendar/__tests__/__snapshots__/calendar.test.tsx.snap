@@ -4,7 +4,6 @@ exports[`<Calendar /> should match the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ty-calendar ty-calendar_fullscreen"
-    value="Mon Jan 15 2024 00:00:00 GMT+1100 (Australian Eastern Daylight Time)"
   >
     <div
       class="ty-calendar__header"
