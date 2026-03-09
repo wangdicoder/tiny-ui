@@ -13,12 +13,18 @@ const isValid = (val: string | number): boolean => {
   return !isNaN(+val);
 };
 
+const toPrecision = (val: number, precision?: number): number => {
+  if (precision === undefined) return val;
+  return parseFloat(val.toFixed(precision));
+};
+
 const InputNumber = React.forwardRef<HTMLDivElement, InputNumberProps>((props, ref) => {
   const {
     size = 'md',
     disabled = false,
     defaultValue = 0,
     step = 1,
+    precision,
     controls = false,
     min = Number.NEGATIVE_INFINITY,
     max = Number.POSITIVE_INFINITY,
@@ -39,7 +45,8 @@ const InputNumber = React.forwardRef<HTMLDivElement, InputNumberProps>((props, r
   );
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const val = Number(e.target.value.trim());
+    const raw = Number(e.target.value.trim());
+    const val = toPrecision(raw, precision);
     !('value' in props) && setValue(val);
     onChange && isValid(val) && onChange(val, e);
   };
@@ -47,7 +54,7 @@ const InputNumber = React.forwardRef<HTMLDivElement, InputNumberProps>((props, r
   const plusOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
     e.stopPropagation();
     if (!disabled && isValid(step)) {
-      const val = +value + +step;
+      const val = toPrecision(+value + +step, precision);
       if (val <= max) {
         !('value' in props) && setValue(val);
         onChange && onChange(val, e);
@@ -58,7 +65,7 @@ const InputNumber = React.forwardRef<HTMLDivElement, InputNumberProps>((props, r
   const minusOnClick = (e: MouseEvent<HTMLSpanElement>): void => {
     e.stopPropagation();
     if (!disabled && isValid(step)) {
-      const val = +value - +step;
+      const val = toPrecision(+value - +step, precision);
       if (val >= min) {
         !('value' in props) && setValue(val);
         onChange && onChange(val, e);
@@ -75,7 +82,7 @@ const InputNumber = React.forwardRef<HTMLDivElement, InputNumberProps>((props, r
       <input
         autoComplete="off"
         disabled={disabled}
-        value={value}
+        value={precision !== undefined ? value.toFixed(precision) : value}
         type="number"
         className={`${prefixCls}__input`}
         max={max}

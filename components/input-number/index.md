@@ -1,6 +1,7 @@
 import Basic from './demo/basic.md'
 import Size from './demo/size.md'
 import Disabled from './demo/disabled.md'
+import Precision from './demo/precision.md'
 
 # Input Number
 
@@ -25,6 +26,7 @@ import { InputNumber } from 'tiny-ui';
   </column>
   <column>
     <Size/>
+    <Precision/>
   </column>
 </layout>
 
