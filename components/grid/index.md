@@ -3,6 +3,7 @@ import Gutter from './demo/gutter.md'
 import Offset from './demo/offset.md'
 import Order from './demo/order.md'
 import Alignment from './demo/alignment.md'
+import Responsive from './demo/responsive.md'
 
 # Grid
 
@@ -21,6 +22,7 @@ import { Row, Col } from 'tiny-ui';
 <Offset />
 <Order />
 <Alignment />
+<Responsive />
 
 ## API
 

@@ -28,18 +28,24 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   };
 
   const normalisedGutter = getGutter();
+
+  const rowGutterStyle = gutter
+    ? {
+        marginLeft: gutterSide ? 0 : -normalisedGutter[0] / 2,
+        marginRight: gutterSide ? 0 : -normalisedGutter[0] / 2,
+        rowGap: normalisedGutter[1] || undefined,
+      }
+    : {};
+
   return (
-    <div {...otherProps} ref={ref} className={cls} style={style}>
-      {React.Children.map(children, (child, idx: number) => {
+    <div {...otherProps} ref={ref} className={cls} style={{ ...style, ...rowGutterStyle }}>
+      {React.Children.map(children, (child) => {
         const childElement = child as React.FunctionComponentElement<ColProps>;
         if (childElement.type.displayName === 'Col') {
           const gutterStyle = gutter
             ? {
-                paddingLeft: !gutterSide && idx === 0 ? 0 : normalisedGutter[0] / 2, // first child left padding
-                paddingRight:
-                  !gutterSide && idx === React.Children.count(children) - 1
-                    ? 0
-                    : normalisedGutter[0] / 2,
+                paddingLeft: normalisedGutter[0] / 2,
+                paddingRight: normalisedGutter[0] / 2,
               }
             : {};
           const childProps: Partial<ColProps> = {
