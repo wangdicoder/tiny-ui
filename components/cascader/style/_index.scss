@@ -94,6 +94,7 @@
     background: var(--ty-cascader-dropdown-bg, #fff);
     border-radius: $border-radius;
     box-shadow: $select-dropdown-shadow;
+    font-size: $font-size-base;
   }
 
   &__menus {
@@ -117,7 +118,6 @@
     padding: 8px 12px;
     color: var(--ty-color-text-secondary, #{$gray-500});
     text-align: center;
-    font-size: $font-size-sm;
   }
 
   &__menu-item {
@@ -127,7 +127,6 @@
     padding: 5px 12px;
     cursor: pointer;
     transition: background 0.15s;
-    font-size: $font-size-sm;
 
     &:hover:not(&_disabled) {
       background: var(--ty-cascader-hover, #{$gray-100});
