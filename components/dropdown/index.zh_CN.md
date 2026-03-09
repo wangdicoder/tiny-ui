@@ -43,7 +43,7 @@ import { Dropdown } from 'tiny-ui';
 | disabled          | 是否禁用下拉菜单 | boolean                       | false     |
 | trigger           | 触发方式                          | enum: `click` &#124; `hover`  | `hover`   |
 | placement         | 弹出菜单的位置               | enum: `top-start` &#124; `top` &#124; `end` &#124; `bottom-start` &#124; `bottom` &#124; `bottom-end` | `bottom-start`    |
-| overlay           | 下拉菜单                         | [Menu](/components/menu)      | -         |
+| overlay           | 下拉菜单                         | [Menu](../components/menu)      | -         |
 | visible           | 下拉菜单是否可见  | boolean                       | -         |
 | arrow             | 是否显示下拉箭头            | boolean                       | false     |
 | onVisibleChange   | 可见状态变化时的回调        | (visible: boolean) => void    | -         |
