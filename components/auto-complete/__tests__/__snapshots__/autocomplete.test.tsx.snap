@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Autocomplete /> should match the snapshot 1`] = `
+exports[`<AutoComplete /> should match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ty-autocomplete"
+    class="ty-auto-complete"
   >
     <div
       class="ty-input ty-input_md"

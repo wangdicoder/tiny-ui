@@ -1,7 +1,7 @@
 export { default as Alert } from './alert';
 export { default as Anchor } from './anchor';
 export { default as AspectRatio } from './aspect-ratio';
-export { default as Autocomplete } from './autocomplete';
+export { default as AutoComplete } from './auto-complete';
 export { default as Avatar } from './avatar';
 export { default as BackTop } from './back-top';
 export { default as Badge } from './badge';

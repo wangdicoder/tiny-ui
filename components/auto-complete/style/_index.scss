@@ -1,0 +1,58 @@
+@use "../../style/variables" as *;
+
+.#{$prefix}-auto-complete {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  &_disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // Dropdown
+  &__dropdown {
+    width: 100%;
+    margin: 0;
+    padding: 4px 0;
+    list-style-type: none;
+    background-color: var(--ty-select-dropdown-bg);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: var(--ty-shadow-popup);
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    max-height: $select-dropdown-max-height;
+  }
+
+  // Empty state
+  &__empty {
+    padding: 16px;
+    text-align: center;
+    color: var(--ty-color-text-quaternary);
+    font-size: $font-size-sm;
+  }
+}
+
+// Option
+.#{$prefix}-auto-complete-option {
+  display: flex;
+  align-items: center;
+  padding: 7px 12px;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+  color: var(--ty-color-text);
+  transition: background-color 0.2s;
+
+  &_active {
+    background-color: var(--ty-select-option-active-bg);
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
