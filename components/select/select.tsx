@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useId, useRef, useState, useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { useClickOutside } from '../_utils/hooks';
+import { useCombobox } from '../_utils/useCombobox';
 import { ArrowDown, Close, CloseCircle, LoadingCircle, Check } from '../_utils/components';
 import { SelectContext } from './select-context';
 import { ConfigContext } from '../config-provider/config-context';
@@ -40,12 +41,10 @@ const Select = (props: SelectProps): React.ReactElement => {
   const isMultiple = mode === 'multiple' || mode === 'tags';
   const defaultVal = defaultValue ?? (isMultiple ? [] : '');
 
-  const [isOpenDropdown, setIsOpenDropdown] = useState('open' in props ? props.open : defaultOpen);
   const [selectVal, setSelectVal] = useState<SelectValue>(
     'value' in props ? (value as SelectValue) : defaultVal
   );
   const [searchValue, setSearchValue] = useState('');
-  const [focusedIndex, setFocusedIndex] = useState(-1);
 
   const ref = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
@@ -58,26 +57,6 @@ const Select = (props: SelectProps): React.ReactElement => {
   const hasSomeValue = isMultiple
     ? Array.isArray(selectVal) && selectVal.length > 0
     : selectVal !== '' && selectVal !== undefined;
-
-  const cls = classNames(prefixCls, className, `${prefixCls}_${selectSize}`, {
-    [`${prefixCls}_disabled`]: disabled,
-    [`${prefixCls}_open`]: isOpenDropdown,
-    [`${prefixCls}_multiple`]: isMultiple,
-    [`${prefixCls}_showSearch`]: showSearch,
-    [`${prefixCls}_has-value`]: allowClear && hasSomeValue && !disabled,
-  });
-
-  const arrowCls = classNames(`${prefixCls}__arrow`, {
-    [`${prefixCls}__arrow_reverse`]: isOpenDropdown,
-  });
-
-  useClickOutside(ref.current as HTMLDivElement, () => {
-    if (!('open' in props)) {
-      setIsOpenDropdown(false);
-      onDropdownVisibleChange?.(false);
-    }
-    setSearchValue('');
-  });
 
   // Build flat option list from children or options prop
   const flatOptions = useMemo((): SelectOptionItem[] => {
@@ -102,52 +81,6 @@ const Select = (props: SelectProps): React.ReactElement => {
     return result;
   }, [optionsProp, children]);
 
-  // Filter logic
-  const matchesFilter = useCallback(
-    (opt: SelectOptionItem): boolean => {
-      if (!searchValue) return true;
-      if (filterOption === false) return true;
-      if (typeof filterOption === 'function') return filterOption(searchValue, opt);
-      const label = typeof opt.label === 'string' ? opt.label : String(opt.value);
-      return label.toLowerCase().includes(searchValue.toLowerCase());
-    },
-    [searchValue, filterOption]
-  );
-
-  const filteredOptions = useMemo(
-    () => flatOptions.filter(matchesFilter),
-    [flatOptions, matchesFilter]
-  );
-
-  // Get display label for a value
-  const getLabelForValue = useCallback(
-    (val: string): React.ReactNode => {
-      const opt = flatOptions.find((o) => o.value === val);
-      const label = opt?.label ?? val;
-      if (labelRender && opt) {
-        return labelRender({ label, value: val });
-      }
-      return label;
-    },
-    [flatOptions, labelRender]
-  );
-
-  // Open/close helpers
-  const openDropdown = (): void => {
-    if (!('open' in props)) {
-      setIsOpenDropdown(true);
-      onDropdownVisibleChange?.(true);
-    }
-  };
-
-  const closeDropdown = (): void => {
-    if (!('open' in props)) {
-      setIsOpenDropdown(false);
-      onDropdownVisibleChange?.(false);
-    }
-    setSearchValue('');
-  };
-
   // Handle option select
   const handleSelect = useCallback(
     (optValue: string): void => {
@@ -162,25 +95,72 @@ const Select = (props: SelectProps): React.ReactElement => {
         if (!('value' in props)) {
           setSelectVal(newVal);
         }
-        const opt = flatOptions.find((o) => o.value === optValue);
         onChange?.(newVal, flatOptions.filter((o) => newVal.includes(o.value)));
         onSelect?.(newVal);
-        if (opt) {
-          // Keep dropdown open in multi-select mode
-        }
         setSearchValue('');
       } else {
         if (!('value' in props)) {
           setSelectVal(optValue);
         }
-        const opt = flatOptions.find((o) => o.value === optValue);
-        onChange?.(optValue, opt);
+        onChange?.(optValue, flatOptions.find((o) => o.value === optValue));
         onSelect?.(optValue);
-        closeDropdown();
+        combo.closeDropdown();
+        setSearchValue('');
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isMultiple, selectVal, flatOptions, onChange, onSelect, props]
+  );
+
+  const handleComboSelect = useCallback(
+    (item: SelectOptionItem) => {
+      if (!item.disabled) handleSelect(item.value);
+    },
+    [handleSelect]
+  );
+
+  const combo = useCombobox<SelectOptionItem>({
+    items: flatOptions,
+    searchValue,
+    filterOption,
+    isOpen: 'open' in props ? props.open : undefined,
+    defaultOpen,
+    disabled,
+    defaultActiveFirstOption: false,
+    onOpenChange: onDropdownVisibleChange,
+    onSelect: handleComboSelect,
+  });
+
+  const cls = classNames(prefixCls, className, `${prefixCls}_${selectSize}`, {
+    [`${prefixCls}_disabled`]: disabled,
+    [`${prefixCls}_open`]: combo.isOpen,
+    [`${prefixCls}_multiple`]: isMultiple,
+    [`${prefixCls}_showSearch`]: showSearch,
+    [`${prefixCls}_has-value`]: allowClear && hasSomeValue && !disabled,
+  });
+
+  const arrowCls = classNames(`${prefixCls}__arrow`, {
+    [`${prefixCls}__arrow_reverse`]: combo.isOpen,
+  });
+
+  useClickOutside(ref.current as HTMLDivElement, () => {
+    if (!('open' in props)) {
+      combo.closeDropdown();
+    }
+    setSearchValue('');
+  });
+
+  // Get display label for a value
+  const getLabelForValue = useCallback(
+    (val: string): React.ReactNode => {
+      const opt = flatOptions.find((o) => o.value === val);
+      const label = opt?.label ?? val;
+      if (labelRender && opt) {
+        return labelRender({ label, value: val });
+      }
+      return label;
+    },
+    [flatOptions, labelRender]
   );
 
   // Remove tag
@@ -214,30 +194,25 @@ const Select = (props: SelectProps): React.ReactElement => {
     const val = e.target.value;
     setSearchValue(val);
     onSearch?.(val);
-    if (!isOpenDropdown) {
-      openDropdown();
+    if (!combo.isOpen) {
+      combo.openDropdown();
     }
   };
 
   // Selector click
   const handleSelectorClick = (): void => {
     if (disabled) return;
-    if (isOpenDropdown && !showSearch) {
-      closeDropdown();
+    if (combo.isOpen && !showSearch) {
+      combo.closeDropdown();
     } else {
-      openDropdown();
+      combo.openDropdown();
       setTimeout(() => searchInputRef.current?.focus(), 0);
     }
   };
 
-  // Keyboard
+  // Keyboard — wrap hook's handler with Select-specific keys
   const handleKeyDown = (e: React.KeyboardEvent): void => {
     if (disabled) return;
-
-    if (e.key === 'Escape') {
-      closeDropdown();
-      return;
-    }
 
     if (e.key === 'Backspace' && isMultiple && !searchValue) {
       const arr = Array.isArray(selectVal) ? selectVal : [];
@@ -250,43 +225,20 @@ const Select = (props: SelectProps): React.ReactElement => {
       return;
     }
 
-    if (e.key === 'Enter' || e.key === ' ') {
-      if (!isOpenDropdown) {
+    if (e.key === ' ') {
+      if (!combo.isOpen) {
         e.preventDefault();
-        openDropdown();
-      } else if (focusedIndex >= 0 && focusedIndex < filteredOptions.length) {
+        combo.openDropdown();
+      } else if (combo.focusedIndex >= 0 && combo.focusedIndex < combo.filteredItems.length) {
         e.preventDefault();
-        const opt = filteredOptions[focusedIndex];
-        if (!opt.disabled) {
-          handleSelect(opt.value);
-        }
+        const opt = combo.filteredItems[combo.focusedIndex];
+        if (!opt.disabled) handleSelect(opt.value);
       }
       return;
     }
 
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (!isOpenDropdown) {
-        openDropdown();
-        setFocusedIndex(0);
-        return;
-      }
-      const dir = e.key === 'ArrowDown' ? 1 : -1;
-      setFocusedIndex((prev) => {
-        let next = prev + dir;
-        if (next < 0) next = filteredOptions.length - 1;
-        if (next >= filteredOptions.length) next = 0;
-        return next;
-      });
-    }
+    combo.handleKeyDown(e);
   };
-
-  // Controlled open
-  const openProp = props.open;
-  const hasOpenProp = 'open' in props;
-  useEffect(() => {
-    if (hasOpenProp) setIsOpenDropdown(openProp);
-  }, [hasOpenProp, openProp]);
 
   // Controlled value
   const hasValueProp = 'value' in props;
@@ -294,9 +246,10 @@ const Select = (props: SelectProps): React.ReactElement => {
     if (hasValueProp) setSelectVal(value as SelectValue);
   }, [hasValueProp, value]);
 
-  // Reset focused index when filtered options change
+  // Reset focused index when search changes
   useEffect(() => {
-    setFocusedIndex(-1);
+    combo.setFocusedIndex(-1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   const hasValue = hasSomeValue;
@@ -324,7 +277,7 @@ const Select = (props: SelectProps): React.ReactElement => {
           label: el.props.label ?? el.props.children,
           disabled: !!el.props.disabled,
         };
-        if (!matchesFilter(opt)) return null;
+        if (!combo.matchesFilter(opt)) return null;
         return React.cloneElement(el, el.props);
       }
       if (el.type.displayName === 'SelectOptGroup') {
@@ -350,7 +303,7 @@ const Select = (props: SelectProps): React.ReactElement => {
     let content: React.ReactNode;
 
     if (optionsProp) {
-      const filtered = filteredOptions;
+      const filtered = combo.filteredItems;
       if (filtered.length === 0) {
         content = null;
       } else {
@@ -360,7 +313,7 @@ const Select = (props: SelectProps): React.ReactElement => {
             : selectVal === opt.value;
           const optCls = classNames(`${prefixCls}-option`, {
             [`${prefixCls}-option_selected`]: isSelected,
-            [`${prefixCls}-option_active`]: index === focusedIndex,
+            [`${prefixCls}-option_active`]: index === combo.focusedIndex,
             [`${prefixCls}-option_disabled`]: opt.disabled,
           });
 
@@ -375,7 +328,7 @@ const Select = (props: SelectProps): React.ReactElement => {
               aria-selected={isSelected}
               aria-disabled={opt.disabled}
               onClick={() => !opt.disabled && handleSelect(opt.value)}
-              onMouseEnter={() => setFocusedIndex(index)}>
+              onMouseEnter={() => combo.setFocusedIndex(index)}>
               <span className={`${prefixCls}-option__content`}>{renderedContent}</span>
               {isMultiple && isSelected && (
                 <span className={`${prefixCls}-option__check`}>
@@ -467,7 +420,7 @@ const Select = (props: SelectProps): React.ReactElement => {
     }
 
     // Single mode
-    if (showSearch && isOpenDropdown) {
+    if (showSearch && combo.isOpen) {
       return (
         <input
           ref={searchInputRef}
@@ -498,16 +451,16 @@ const Select = (props: SelectProps): React.ReactElement => {
       ref={ref}
       className={cls}
       role="combobox"
-      aria-expanded={isOpenDropdown}
+      aria-expanded={combo.isOpen}
       aria-haspopup="listbox"
-      aria-owns={isOpenDropdown ? listboxId : undefined}
+      aria-owns={combo.isOpen ? listboxId : undefined}
       onKeyDown={handleKeyDown}
       tabIndex={disabled ? undefined : 0}>
       <Popup
         trigger="manual"
         placement="bottom"
         arrow={false}
-        visible={isOpenDropdown}
+        visible={combo.isOpen}
         content={renderOverlay()}>
         <div className={`${prefixCls}__selector`} onClick={handleSelectorClick}>
           <div className={`${prefixCls}__selection`}>{renderSelectorContent()}</div>
