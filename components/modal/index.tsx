@@ -7,6 +7,8 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { useLocale } from '../_utils/use-locale';
 import { ModalProps } from './types';
+import { ModalProvider, useModal } from './modal-context';
+import type { ModalProviderProps, UseModalReturn } from './modal-context';
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const locale = useLocale();
@@ -168,4 +170,14 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
 Modal.displayName = 'Modal';
 
-export default Modal;
+type ModalComponent = typeof Modal & {
+  Provider: typeof ModalProvider;
+  useModal: typeof useModal;
+};
+
+const ModalWithContext = Modal as ModalComponent;
+ModalWithContext.Provider = ModalProvider;
+ModalWithContext.useModal = useModal;
+
+export default ModalWithContext;
+export type { ModalProviderProps, UseModalReturn };

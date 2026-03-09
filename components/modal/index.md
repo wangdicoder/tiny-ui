@@ -1,5 +1,6 @@
 import Animation from './demo/animation.md'
 import Basic from './demo/basic.md'
+import Context from './demo/context.md'
 import CustomisedFooter from './demo/customised-footer.md'
 import Position from './demo/position.md'
 
@@ -27,6 +28,7 @@ import { Modal } from 'tiny-ui';
   <column>
     <Position/>
     <Animation/>
+    <Context/>
   </column>
 </layout>
 
