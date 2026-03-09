@@ -33,6 +33,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  position: relative;
   transition: all 200ms;
   background: var(--ty-layout-sidebar-bg);
   color: #fff;

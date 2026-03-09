@@ -1,4 +1,5 @@
 import Basic from './demo/basic.md'
+import Sidebar from './demo/sidebar.md'
 
 # Layout
 
@@ -23,6 +24,7 @@ const { Header, Footer, Content, Sidebar } = Layout;
 ## Examples
 
 <Basic />
+<Sidebar />
 
 
 ## API
