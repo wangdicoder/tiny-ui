@@ -3,6 +3,7 @@ import Sizes from './demo/sizes.md'
 import Actions from './demo/actions.md'
 import Grid from './demo/grid.md'
 import Loading from './demo/loading.md'
+import Virtual from './demo/virtual.md'
 
 # List
 
@@ -29,6 +30,7 @@ import { List } from 'tiny-ui';
   <column>
     <Sizes/>
     <Loading/>
+    <Virtual/>
   </column>
 </layout>
 
@@ -47,6 +49,9 @@ import { List } from 'tiny-ui';
 | split      | show divider between items       | boolean                                 | true    |
 | size       | list size                        | 'sm' \| 'md' \| 'lg'                   | md      |
 | grid       | grid layout configuration        | { gutter?: number, column?: number }    |         |
+| virtual    | enable virtual scrolling         | boolean                                 | false   |
+| height     | container height (required when virtual) | number                           |         |
+| itemHeight | height of each item in px (virtual mode) | number                           |         |
 | pagination | pagination config or false       | false \| ListPaginationProps            |         |
 
 ### List.Item

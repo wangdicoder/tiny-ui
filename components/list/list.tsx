@@ -2,7 +2,10 @@ import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useVirtualScroll } from '../_utils/use-virtual-scroll';
 import { ListProps } from './types';
+
+const ITEM_HEIGHT_MAP = { sm: 41, md: 49, lg: 57 } as const;
 
 const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
   const {
@@ -16,6 +19,9 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
     size,
     grid,
     locale,
+    virtual = false,
+    height,
+    itemHeight: itemHeightProp,
     pagination,
     prefixCls: customisedCls,
     className,
@@ -28,8 +34,24 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
   const prefixCls = getPrefixCls('list', configContext.prefixCls, customisedCls);
   const listSize = size || configContext.componentSize || 'md';
 
+  if (virtual && height == null) {
+    console.warn('[tiny-ui: List] `height` is required when `virtual` is enabled.');
+  }
+  if (virtual && grid) {
+    console.warn('[tiny-ui: List] `virtual` is not supported with `grid` mode. Falling back to normal rendering.');
+  }
+
+  const isVirtual = virtual && height != null && !grid;
+
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = pagination && pagination.pageSize ? pagination.pageSize : 10;
+
+  const itemHeight = itemHeightProp ?? ITEM_HEIGHT_MAP[listSize] ?? ITEM_HEIGHT_MAP.md;
+  const { visibleRange, totalHeight, offsetY, onScroll } = useVirtualScroll({
+    itemCount: dataSource.length,
+    itemHeight,
+    containerHeight: height ?? 0,
+  });
 
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_${listSize}`]: listSize,
@@ -52,6 +74,28 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
   };
 
   const renderItems = () => {
+    if (isVirtual) {
+      if (dataSource.length === 0) {
+        return (
+          <div className={`${prefixCls}__empty`}>
+            {locale?.emptyText ?? 'No Data'}
+          </div>
+        );
+      }
+      if (renderItem) {
+        const [start, end] = visibleRange;
+        const visibleItems = dataSource.slice(start, end + 1).map((item, i) => renderItem(item, start + i));
+        return (
+          <div style={{ height: totalHeight, position: 'relative' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, transform: `translateY(${offsetY}px)` }}>
+              {visibleItems}
+            </div>
+          </div>
+        );
+      }
+      return children;
+    }
+
     const items = paginatedData();
     if (items.length === 0 && !children) {
       return (
@@ -81,15 +125,24 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
     return children;
   };
 
+  const showPagination = pagination && !isVirtual;
   const paginationConfig = pagination && typeof pagination === 'object' ? pagination : undefined;
   const totalItems = paginationConfig?.total ?? dataSource.length;
   const totalPages = Math.ceil(totalItems / pageSize);
   const activePage = paginationConfig?.current ?? currentPage;
 
+  const bodyCls = classNames(`${prefixCls}__body`, {
+    [`${prefixCls}__body_virtual`]: isVirtual,
+  });
+
+  const bodyStyle: React.CSSProperties | undefined = isVirtual
+    ? { height, overflowY: 'auto' }
+    : undefined;
+
   return (
     <div {...otherProps} ref={ref} className={cls} style={style}>
       {header && <div className={`${prefixCls}__header`}>{header}</div>}
-      <div className={`${prefixCls}__body`}>
+      <div className={bodyCls} style={bodyStyle} onScroll={isVirtual ? onScroll : undefined}>
         {loading ? (
           <div className={`${prefixCls}__loading`}>Loading...</div>
         ) : (
@@ -97,7 +150,7 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
         )}
       </div>
       {footer && <div className={`${prefixCls}__footer`}>{footer}</div>}
-      {pagination && totalPages > 1 && (
+      {showPagination && totalPages > 1 && (
         <div className={`${prefixCls}__pagination`}>
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
             <button

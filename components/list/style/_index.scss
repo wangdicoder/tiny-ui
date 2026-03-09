@@ -40,6 +40,15 @@
     border-top: 1px solid var(--ty-list-border, #{$gray-300});
   }
 
+  &__body_virtual {
+    overflow-y: auto;
+    will-change: transform;
+
+    .#{$prefix}-list-item:last-child {
+      border-bottom: 1px solid var(--ty-list-border, #{$gray-200});
+    }
+  }
+
   &__empty {
     padding: 24px;
     text-align: center;

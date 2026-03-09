@@ -14,6 +14,9 @@ export interface ListProps<T = any>
   size?: SizeType;
   grid?: ListGridType;
   locale?: { emptyText?: React.ReactNode };
+  virtual?: boolean;
+  height?: number;
+  itemHeight?: number;
   pagination?: false | ListPaginationProps;
   children?: React.ReactNode;
 }
