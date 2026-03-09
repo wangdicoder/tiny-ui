@@ -40,6 +40,9 @@ export interface TableProps<T = any>
   loading?: boolean;
   bordered?: boolean;
   size?: SizeType;
+  virtual?: boolean;
+  height?: number;
+  itemHeight?: number;
   scroll?: { x?: number | string; y?: number | string };
   rowSelection?: RowSelection<T>;
   pagination?: false | TablePaginationConfig;

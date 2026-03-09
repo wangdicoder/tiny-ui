@@ -37,6 +37,19 @@
     font-size: $font-size-lg;
   }
 
+  // Sticky header for virtual scroll
+  &__thead_sticky {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  // Spacer rows for virtual scroll
+  &__row_spacer td {
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
   // Header
   &__thead {
     .#{$prefix}-table__cell {

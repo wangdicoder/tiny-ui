@@ -2,7 +2,10 @@ import React, { useState, useEffect, useContext, useMemo } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { useVirtualScroll } from '../_utils/use-virtual-scroll';
 import { TableProps, ColumnType, SortOrder } from './types';
+
+const ROW_HEIGHT_MAP = { sm: 40, md: 48, lg: 56 } as const;
 
 const getRowKey = <T,>(record: T, rowKey: string | ((record: T) => React.Key), index: number): React.Key => {
   if (typeof rowKey === 'function') return rowKey(record);
@@ -23,6 +26,9 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
     bordered = false,
     size,
     scroll,
+    virtual = false,
+    height,
+    itemHeight: itemHeightProp,
     rowSelection,
     pagination,
     onChange,
@@ -39,6 +45,12 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('table', configContext.prefixCls, customisedCls);
   const tableSize = size || configContext.componentSize || 'md';
+
+  if (virtual && height == null) {
+    console.warn('[tiny-ui: Table] `height` is required when `virtual` is enabled.');
+  }
+
+  const isVirtual = virtual && height != null;
 
   // Sorting
   const [sortField, setSortField] = useState<string | undefined>();
@@ -92,12 +104,20 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
     return sorted;
   }, [dataSource, sortField, sortOrder, columns]);
 
+  const rowHeight = itemHeightProp ?? ROW_HEIGHT_MAP[tableSize] ?? ROW_HEIGHT_MAP.md;
+  const { visibleRange, totalHeight, offsetY, onScroll } = useVirtualScroll({
+    itemCount: sortedData.length,
+    itemHeight: rowHeight,
+    containerHeight: height ?? 0,
+  });
+
   const paginatedData = useMemo(() => {
+    if (isVirtual) return sortedData;
     if (pagination === false) return sortedData;
     const page = pagination?.current ?? currentPage;
     const start = (page - 1) * pageSize;
     return sortedData.slice(start, start + pageSize);
-  }, [sortedData, pagination, currentPage, pageSize]);
+  }, [sortedData, pagination, currentPage, pageSize, isVirtual]);
 
   const paginationConfig = pagination && typeof pagination === 'object' ? pagination : undefined;
   const totalItems = paginationConfig?.total ?? dataSource.length;
@@ -167,7 +187,10 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
   if (scroll?.x) tableStyle.minWidth = scroll.x;
 
   const wrapperStyle: React.CSSProperties = {};
-  if (scroll?.y) {
+  if (isVirtual) {
+    wrapperStyle.height = height;
+    wrapperStyle.overflowY = 'auto';
+  } else if (scroll?.y) {
     wrapperStyle.maxHeight = scroll.y;
     wrapperStyle.overflowY = 'auto';
   }
@@ -176,12 +199,120 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
   const allSelected = allPageKeys.length > 0 && allPageKeys.every((k) => selectedKeys.includes(k));
   const someSelected = allPageKeys.some((k) => selectedKeys.includes(k));
 
+  const colCount = columns.length + (rowSelection ? 1 : 0);
+
+  const renderRow = (record: any, rowIndex: number) => {
+    const key = getRowKey(record, rowKey, rowIndex);
+    const isSelected = selectedKeys.includes(key);
+    const rowCls = classNames(`${prefixCls}__row`, {
+      [`${prefixCls}__row_selected`]: isSelected,
+    }, typeof rowClassName === 'function' ? rowClassName(record, rowIndex) : rowClassName);
+    const rowProps = onRow?.(record, rowIndex) ?? {};
+    return (
+      <tr key={key} className={rowCls} {...rowProps}>
+        {rowSelection && (
+          <td className={`${prefixCls}__cell ${prefixCls}__selection-col`}>
+            <input
+              type={rowSelection.type === 'radio' ? 'radio' : 'checkbox'}
+              checked={isSelected}
+              onChange={() => handleSelectRow(record, key)}
+              aria-label={`Select row ${rowIndex + 1}`}
+            />
+          </td>
+        )}
+        {columns.map((col, colIndex) => {
+          const colKey = col.key ?? col.dataIndex ?? colIndex;
+          const value = getValue(record, col.dataIndex);
+          const tdCls = classNames(`${prefixCls}__cell`, col.className, {
+            [`${prefixCls}__cell_ellipsis`]: col.ellipsis,
+            [`${prefixCls}__cell_align-${col.align}`]: col.align,
+          });
+          return (
+            <td key={colKey} className={tdCls} style={{ width: col.width }}>
+              {col.render ? col.render(value, record, rowIndex) : value}
+            </td>
+          );
+        })}
+      </tr>
+    );
+  };
+
+  const renderTbody = () => {
+    if (loading) {
+      return (
+        <tr>
+          <td
+            className={`${prefixCls}__cell ${prefixCls}__loading-cell`}
+            colSpan={colCount}
+          >
+            Loading...
+          </td>
+        </tr>
+      );
+    }
+
+    if (isVirtual) {
+      if (sortedData.length === 0) {
+        return (
+          <tr>
+            <td className={`${prefixCls}__cell ${prefixCls}__empty-cell`} colSpan={colCount}>
+              {emptyText}
+            </td>
+          </tr>
+        );
+      }
+      const [start, end] = visibleRange;
+      const topHeight = offsetY;
+      const bottomHeight = totalHeight - offsetY - (end - start + 1) * rowHeight;
+      return (
+        <>
+          {topHeight > 0 && (
+            <tr className={`${prefixCls}__row_spacer`}>
+              <td colSpan={colCount} style={{ height: topHeight }} />
+            </tr>
+          )}
+          {sortedData.slice(start, end + 1).map((record, i) => renderRow(record, start + i))}
+          {bottomHeight > 0 && (
+            <tr className={`${prefixCls}__row_spacer`}>
+              <td colSpan={colCount} style={{ height: Math.max(0, bottomHeight) }} />
+            </tr>
+          )}
+        </>
+      );
+    }
+
+    if (paginatedData.length === 0) {
+      return (
+        <tr>
+          <td
+            className={`${prefixCls}__cell ${prefixCls}__empty-cell`}
+            colSpan={colCount}
+          >
+            {emptyText}
+          </td>
+        </tr>
+      );
+    }
+
+    return paginatedData.map((record, rowIndex) => renderRow(record, rowIndex));
+  };
+
+  const theadCls = classNames(`${prefixCls}__thead`, {
+    [`${prefixCls}__thead_sticky`]: isVirtual,
+  });
+
+  const showPagination = pagination !== false && !isVirtual;
+
   return (
     <div {...otherProps} ref={ref} className={cls} style={style}>
-      <div className={`${prefixCls}__wrapper`} style={wrapperStyle}>
+      <div
+        className={`${prefixCls}__wrapper`}
+        style={wrapperStyle}
+        onScroll={isVirtual ? onScroll : undefined}
+      >
         <table className={`${prefixCls}__table`} style={tableStyle}>
           {showHeader && (
-            <thead className={`${prefixCls}__thead`}>
+            <thead className={theadCls}>
               <tr>
                 {rowSelection && (
                   <th className={`${prefixCls}__cell ${prefixCls}__selection-col`}>
@@ -227,65 +358,11 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
             </thead>
           )}
           <tbody className={`${prefixCls}__tbody`}>
-            {loading ? (
-              <tr>
-                <td
-                  className={`${prefixCls}__cell ${prefixCls}__loading-cell`}
-                  colSpan={columns.length + (rowSelection ? 1 : 0)}
-                >
-                  Loading...
-                </td>
-              </tr>
-            ) : paginatedData.length === 0 ? (
-              <tr>
-                <td
-                  className={`${prefixCls}__cell ${prefixCls}__empty-cell`}
-                  colSpan={columns.length + (rowSelection ? 1 : 0)}
-                >
-                  {emptyText}
-                </td>
-              </tr>
-            ) : (
-              paginatedData.map((record, rowIndex) => {
-                const key = getRowKey(record, rowKey, rowIndex);
-                const isSelected = selectedKeys.includes(key);
-                const rowCls = classNames(`${prefixCls}__row`, {
-                  [`${prefixCls}__row_selected`]: isSelected,
-                }, typeof rowClassName === 'function' ? rowClassName(record, rowIndex) : rowClassName);
-                const rowProps = onRow?.(record, rowIndex) ?? {};
-                return (
-                  <tr key={key} className={rowCls} {...rowProps}>
-                    {rowSelection && (
-                      <td className={`${prefixCls}__cell ${prefixCls}__selection-col`}>
-                        <input
-                          type={rowSelection.type === 'radio' ? 'radio' : 'checkbox'}
-                          checked={isSelected}
-                          onChange={() => handleSelectRow(record, key)}
-                          aria-label={`Select row ${rowIndex + 1}`}
-                        />
-                      </td>
-                    )}
-                    {columns.map((col, colIndex) => {
-                      const colKey = col.key ?? col.dataIndex ?? colIndex;
-                      const value = getValue(record, col.dataIndex);
-                      const tdCls = classNames(`${prefixCls}__cell`, col.className, {
-                        [`${prefixCls}__cell_ellipsis`]: col.ellipsis,
-                        [`${prefixCls}__cell_align-${col.align}`]: col.align,
-                      });
-                      return (
-                        <td key={colKey} className={tdCls} style={{ width: col.width }}>
-                          {col.render ? col.render(value, record, rowIndex) : value}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              })
-            )}
+            {renderTbody()}
           </tbody>
         </table>
       </div>
-      {pagination !== false && totalPages > 1 && (
+      {showPagination && totalPages > 1 && (
         <div className={`${prefixCls}__pagination`}>
           <button
             type="button"

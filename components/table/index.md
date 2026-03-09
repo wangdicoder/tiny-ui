@@ -4,6 +4,7 @@ import Sorting from './demo/sorting.md'
 import CustomRender from './demo/custom-render.md'
 import Sizes from './demo/sizes.md'
 import Pagination from './demo/pagination.md'
+import Virtual from './demo/virtual.md'
 
 # Table
 
@@ -31,6 +32,7 @@ import { Table } from 'tiny-ui';
     <Sorting/>
     <CustomRender/>
     <Sizes/>
+    <Virtual/>
   </column>
 </layout>
 
@@ -46,6 +48,9 @@ import { Table } from 'tiny-ui';
 | loading       | loading state                        | boolean                                         | false   |
 | bordered      | show all borders                     | boolean                                         | false   |
 | size          | table size                           | 'sm' \| 'md' \| 'lg'                           | md      |
+| virtual       | enable virtual scrolling             | boolean                                         | false   |
+| height        | container height (required when virtual) | number                                      |         |
+| itemHeight    | height of each row in px (virtual mode)  | number                                      |         |
 | scroll        | scrollable area                      | { x?: number, y?: number }                      |         |
 | rowSelection  | row selection config                 | RowSelection                                    |         |
 | pagination    | pagination config (false to disable) | false \| TablePaginationConfig                  |         |
