@@ -1,4 +1,5 @@
 import Basic from './demo/basic.md'
+import ChangeOnSelect from './demo/change-on-select.md'
 import DefaultValue from './demo/default-value.md'
 import Hover from './demo/hover.md'
 import Disabled from './demo/disabled.md'
@@ -29,6 +30,7 @@ import { Cascader } from 'tiny-ui';
   <column>
     <DefaultValue/>
     <Disabled/>
+    <ChangeOnSelect/>
   </column>
 </layout>
 

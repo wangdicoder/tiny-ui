@@ -84,6 +84,9 @@
     font-size: 12px;
     color: var(--ty-color-text-secondary, #{$gray-400});
     transition: transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &_open &__arrow {
