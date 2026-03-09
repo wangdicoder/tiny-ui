@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseProps, SizeType } from '../_utils/props';
+import { BaseProps } from '../_utils/props';
 
 export type ColorFormat = 'hex' | 'rgb' | 'hsb';
 
@@ -22,7 +22,6 @@ export interface ColorPickerProps
   presets?: string[];
   showAlpha?: boolean;
   disabled?: boolean;
-  size?: SizeType;
   trigger?: 'click' | 'hover';
   open?: boolean;
   onOpenChange?: (open: boolean) => void;

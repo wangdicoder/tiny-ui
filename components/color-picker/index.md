@@ -1,4 +1,8 @@
+import Alpha from './demo/alpha.md'
 import Basic from './demo/basic.md'
+import Disabled from './demo/disabled.md'
+import Format from './demo/format.md'
+import Trigger from './demo/trigger.md'
 
 # ColorPicker
 
@@ -19,6 +23,12 @@ import { ColorPicker } from 'tiny-ui';
 <layout>
   <column>
     <Basic/>
+    <Format/>
+    <Alpha/>
+  </column>
+  <column>
+    <Disabled/>
+    <Trigger/>
   </column>
 </layout>
 
@@ -34,7 +44,6 @@ import { ColorPicker } from 'tiny-ui';
 | presets        | preset color swatches              | string[]                         |         |
 | showAlpha      | show alpha slider                  | boolean                          | false   |
 | disabled       | disable the picker                 | boolean                          | false   |
-| size           | trigger size                       | 'sm' \| 'md' \| 'lg'           | md      |
 | trigger        | trigger mode                       | 'click' \| 'hover'             | click   |
 | open           | controlled panel visibility        | boolean                          |         |
 | onOpenChange   | callback when visibility changes   | (open: boolean) => void          |         |

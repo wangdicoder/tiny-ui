@@ -7,14 +7,12 @@ import Popup from '../popup';
 import { ColorPickerProps, Color, ColorFormat } from './types';
 import { parseColor, formatColor, hsbToHex } from './utils';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, _ref) => {
   const {
     defaultValue = '#6e41bf',
     presets,
     showAlpha = false,
     disabled = false,
-    size,
     trigger = 'click',
     defaultFormat = 'hex',
     prefixCls: customisedCls,
@@ -28,7 +26,6 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, _
 
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('color-picker', configContext.prefixCls, customisedCls);
-  const pickerSize = size || configContext.componentSize || 'md';
 
   const [color, setColor] = useState<Color>(() =>
     parseColor('value' in props ? (props.value as string) : defaultValue)
@@ -169,7 +166,6 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, _
   };
 
   const cls = classNames(prefixCls, className, {
-    [`${prefixCls}_${pickerSize}`]: pickerSize,
     [`${prefixCls}_disabled`]: disabled,
   });
 
