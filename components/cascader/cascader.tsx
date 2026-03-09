@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
+import { ArrowDown } from '../_utils/components';
 import { CascaderProps, CascaderOption, CascaderValue } from './types';
 
 const getOptionsByValue = (
@@ -249,7 +250,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>((props, ref) =>
             ✕
           </span>
         )}
-        <span className={`${prefixCls}__arrow`}>▾</span>
+        <span className={`${prefixCls}__arrow`}><ArrowDown size={10} /></span>
       </div>
       {dropdown}
     </div>

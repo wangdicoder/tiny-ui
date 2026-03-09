@@ -355,4 +355,21 @@ $dark-theme: (
 
   // ---- Component-specific: Textarea ----
   textarea-counter-color: rgba(255, 255, 255, 0.45),
+
+  // ---- Component-specific: Table ----
+  table-header-bg: #262626,
+  table-border: #363636,
+  table-hover: #2a2a2a,
+  table-selected-bg: rgba(144, 101, 208, 0.1),
+
+  // ---- Component-specific: Segmented ----
+  segmented-bg: #2a2a2a,
+  segmented-active-bg: #1f1f1f,
+
+  // ---- Component-specific: Cascader ----
+  cascader-bg: #1f1f1f,
+  cascader-border: #424242,
+  cascader-dropdown-bg: #1f1f1f,
+  cascader-hover: #2a2a2a,
+  cascader-selected-bg: rgba(144, 101, 208, 0.1),
 );

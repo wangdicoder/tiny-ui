@@ -355,4 +355,21 @@ $light-theme: (
 
   // ---- Component-specific: Textarea ----
   textarea-counter-color: #666,
+
+  // ---- Component-specific: Table ----
+  table-header-bg: #f6f9fc,
+  table-border: #e9ecef,
+  table-hover: #f6f9fc,
+  table-selected-bg: rgba(110, 65, 191, 0.06),
+
+  // ---- Component-specific: Segmented ----
+  segmented-bg: #e9ecef,
+  segmented-active-bg: #fff,
+
+  // ---- Component-specific: Cascader ----
+  cascader-bg: #fff,
+  cascader-border: #d9d9d9,
+  cascader-dropdown-bg: #fff,
+  cascader-hover: #f5f5f5,
+  cascader-selected-bg: rgba(110, 65, 191, 0.06),
 );
