@@ -206,8 +206,8 @@ export const getComponentMenu = (s: SiteLocale): RouterItem[] => {
     {
       title: s.categories.formItem,
       children: [
-        { title: 'AutoComplete', route: 'auto-complete', component: pick(c.autoComplete, z) },
         { title: 'Form', route: 'form', component: pick(c.form, z) },
+        { title: 'AutoComplete', route: 'auto-complete', component: pick(c.autoComplete, z) },
         { title: 'Cascader', route: 'cascader', component: pick(c.cascader, z) },
         { title: 'Checkbox', route: 'checkbox', component: pick(c.checkbox, z) },
         { title: 'ColorPicker', route: 'color-picker', component: pick(c.colorPicker, z) },

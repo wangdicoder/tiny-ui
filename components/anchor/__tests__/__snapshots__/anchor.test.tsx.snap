@@ -2,44 +2,38 @@
 
 exports[`<Anchor /> should match the snapshot 1`] = `
 <DocumentFragment>
-  <div>
+  <ul
+    class="ty-anchor"
+  >
     <div
-      class="ty-sticky"
+      class="ty-anchor__ink"
     >
-      <ul
-        class="ty-anchor"
-      >
-        <div
-          class="ty-anchor__ink"
-        >
-          <div
-            class="ty-anchor__ink-ball"
-          />
-        </div>
-        <li
-          class="ty-anchor__link"
-          title="Section 1"
-        >
-          <a
-            class="ty-anchor__link-title"
-            href="#section1"
-          >
-            Section 1
-          </a>
-        </li>
-        <li
-          class="ty-anchor__link"
-          title="Section 2"
-        >
-          <a
-            class="ty-anchor__link-title"
-            href="#section2"
-          >
-            Section 2
-          </a>
-        </li>
-      </ul>
+      <div
+        class="ty-anchor__ink-ball"
+      />
     </div>
-  </div>
+    <li
+      class="ty-anchor__link"
+      title="Section 1"
+    >
+      <a
+        class="ty-anchor__link-title"
+        href="#section1"
+      >
+        Section 1
+      </a>
+    </li>
+    <li
+      class="ty-anchor__link"
+      title="Section 2"
+    >
+      <a
+        class="ty-anchor__link-title"
+        href="#section2"
+      >
+        Section 2
+      </a>
+    </li>
+  </ul>
 </DocumentFragment>
 `;

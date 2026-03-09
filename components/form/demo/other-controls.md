@@ -8,7 +8,7 @@ A versatile example.
 <Form 
   onFinish={(values) => console.log(values)}
   onFinishFailed={({values, errors}) => console.log(values, errors)}
-  initialValues={{ number: 10, switch: true, radios: '', checks: ['check1'], slide: 20, rate: 3, comment: '' }} 
+  initialValues={{ number: 10, switch: true, radios: '', checks: ['check1'], slide: 20, rate: 3, comment: '', fruit: 'banana', date: null, time: null, color: '#6e41bf' }}
   style={{ maxWidth: 500 }}>
   <Form.Item label="Plain Text">
     <span>A form</span>
@@ -65,6 +65,31 @@ A versatile example.
     label="Rate"
     name="rate">
     <Rate />
+  </Form.Item>
+  <Form.Item
+    label="Select"
+    name="fruit"
+    rules={[{ required: true }]}>
+    <Select placeholder="Pick a fruit" options={[
+      { value: 'apple', label: 'Apple' },
+      { value: 'banana', label: 'Banana' },
+      { value: 'cherry', label: 'Cherry' },
+    ]} />
+  </Form.Item>
+  <Form.Item
+    label="Date"
+    name="date">
+    <DatePicker placeholder="Pick a date" />
+  </Form.Item>
+  <Form.Item
+    label="Time"
+    name="time">
+    <TimePicker placeholder="Pick a time" />
+  </Form.Item>
+  <Form.Item
+    label="Color"
+    name="color">
+    <ColorPicker />
   </Form.Item>
   <Form.Item
     label="Comments"

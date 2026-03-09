@@ -41,7 +41,7 @@ describe('<AutoComplete />', () => {
     fireEvent.change(input, { target: { value: 'ap' } });
     const items = getOptions();
     expect(items.length).toBe(1);
-    expect(items[0].textContent).toBe('Apple');
+    expect(items[0]).toHaveTextContent('Apple');
   });
 
   it('should select option on click', () => {
@@ -128,7 +128,7 @@ describe('<AutoComplete />', () => {
     fireEvent.change(input, { target: { value: 'ch' } });
     const items = getOptions();
     expect(items.length).toBe(1);
-    expect(items[0].textContent).toBe('Cherry');
+    expect(items[0]).toHaveTextContent('Cherry');
   });
 
   it('should not select disabled option', () => {
