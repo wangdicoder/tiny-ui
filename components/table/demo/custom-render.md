@@ -22,7 +22,7 @@ Use the `render` property on columns to customize cell content with tags, links,
       render: (val) => (
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <div style={{ flex: 1, height: 6, background: '#eee', borderRadius: 3 }}>
-            <div style={{ width: `${val}%`, height: '100%', background: '#6e41bf', borderRadius: 3 }} />
+            <div style={{ width: val + '%', height: '100%', background: '#6e41bf', borderRadius: 3 }} />
           </div>
           <span style={{ fontSize: 12 }}>{val}%</span>
         </div>
@@ -33,7 +33,7 @@ Use the `render` property on columns to customize cell content with tags, links,
       title: 'Action',
       dataIndex: 'action',
       render: (_, record) => (
-        <a onClick={() => alert(`View ${record.name}`)}>View</a>
+        <a onClick={() => alert('View ' + record.name)}>View</a>
       ),
     },
   ];
