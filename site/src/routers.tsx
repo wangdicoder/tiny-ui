@@ -125,7 +125,9 @@ const c = {
   keyboard: ll(() => import('../../components/keyboard/index.md'), () => import('../../components/keyboard/index.zh_CN.md')),
   sticky: ll(() => import('../../components/sticky/index.md'), () => import('../../components/sticky/index.zh_CN.md')),
   select: ll(() => import('../../components/select/index.md'), () => import('../../components/select/index.zh_CN.md')),
-  speedDial: ll(() => import('../../components/speed-dial/index.md'), () => import('../../components/speed-dial/index.md')),
+  speedDial: ll(() => import('../../components/speed-dial/index.md'), () => import('../../components/speed-dial/index.zh_CN.md')),
+  anchor: ll(() => import('../../components/anchor/index.md'), () => import('../../components/anchor/index.zh_CN.md')),
+  autoComplete: ll(() => import('../../components/auto-complete/index.md'), () => import('../../components/auto-complete/index.zh_CN.md')),
 };
 
 export const getGuideMenu = (s: SiteLocale): RouterItem[] => {
@@ -168,6 +170,7 @@ export const getComponentMenu = (s: SiteLocale): RouterItem[] => {
     {
       title: s.categories.navigation,
       children: [
+        { title: 'Anchor', route: 'anchor', component: pick(c.anchor, z) },
         { title: 'Breadcrumb', route: 'breadcrumb', component: pick(c.breadcrumb, z) },
         { title: 'Dropdown', route: 'dropdown', component: pick(c.dropdown, z) },
         { title: 'Menu', route: 'menu', component: pick(c.menu, z) },
@@ -203,6 +206,7 @@ export const getComponentMenu = (s: SiteLocale): RouterItem[] => {
     {
       title: s.categories.formItem,
       children: [
+        { title: 'AutoComplete', route: 'auto-complete', component: pick(c.autoComplete, z) },
         { title: 'Form', route: 'form', component: pick(c.form, z) },
         { title: 'Cascader', route: 'cascader', component: pick(c.cascader, z) },
         { title: 'Checkbox', route: 'checkbox', component: pick(c.checkbox, z) },
