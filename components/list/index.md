@@ -3,6 +3,7 @@ import Sizes from './demo/sizes.md'
 import Actions from './demo/actions.md'
 import Grid from './demo/grid.md'
 import Loading from './demo/loading.md'
+import Pagination from './demo/pagination.md'
 import Virtual from './demo/virtual.md'
 
 # List
@@ -31,6 +32,7 @@ import { List } from 'tiny-ui';
     <Sizes/>
     <Loading/>
     <Virtual/>
+    <Pagination/>
   </column>
 </layout>
 

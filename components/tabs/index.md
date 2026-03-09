@@ -1,6 +1,7 @@
 import Basic from './demo/basic.md'
 import Card from './demo/card.md'
 import Disabled from './demo/disabled.md'
+import Extra from './demo/extra.md'
 import Position from './demo/position.md'
 import Editable from './demo/editable.md'
 
@@ -25,6 +26,7 @@ import { Tabs } from 'tiny-ui';
   <column>
     <Disabled/>
     <Position/>
+    <Extra/>
   </column>
 </layout>
 

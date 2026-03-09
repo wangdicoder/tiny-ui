@@ -1,6 +1,7 @@
 import Basic from './demo/basic.md'
 import Search from './demo/search.md'
 import Multiple from './demo/multiple.md'
+import Render from './demo/render.md'
 import Sizes from './demo/sizes.md'
 import Groups from './demo/groups.md'
 import Custom from './demo/custom.md'
@@ -35,6 +36,7 @@ const { Option, OptGroup } = Select;
     <Sizes/>
     <Groups/>
     <Custom/>
+    <Render/>
   </column>
 </layout>
 

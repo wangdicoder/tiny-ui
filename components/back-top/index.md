@@ -1,4 +1,5 @@
 import Basic from './demo/basic.md'
+import Custom from './demo/custom.md'
 
 # BackTop
 
@@ -22,6 +23,7 @@ import { BackTop } from 'tiny-ui';
     <Basic/>
   </column>
   <column>
+    <Custom/>
   </column>
 </layout>
 

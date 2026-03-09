@@ -2,6 +2,7 @@ import Accordion from './demo/accordion.md'
 import Basic from './demo/basic.md'
 import Borderless from './demo/borderless.md'
 import Deletable from './demo/deletable.md'
+import Extra from './demo/extra.md'
 import Nested from './demo/nested.md'
 
 # Collapse
@@ -33,6 +34,7 @@ const { Panel } = Collapse;
   <column>
     <Borderless/>
     <Deletable/>
+    <Extra/>
   </column>
 </layout>
 

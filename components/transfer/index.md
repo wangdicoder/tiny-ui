@@ -1,4 +1,5 @@
 import Basic from './demo/basic.md'
+import Custom from './demo/custom.md'
 import Search from './demo/search.md'
 
 # Transfer
@@ -20,6 +21,7 @@ import { Transfer } from 'tiny-ui';
 
 <Basic />
 <Search />
+<Custom />
 
 ## API
 

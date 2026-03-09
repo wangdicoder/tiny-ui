@@ -1,6 +1,7 @@
 import Basic from './demo/basic.md'
 import Arrows from './demo/arrows.md'
 import Fade from './demo/fade.md'
+import Methods from './demo/methods.md'
 
 # Carousel
 
@@ -21,6 +22,7 @@ import { Carousel } from 'tiny-ui';
   </column>
   <column>
     <Arrows/>
+    <Methods/>
   </column>
 </layout>
 
