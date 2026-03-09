@@ -1,3 +1,4 @@
+import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 
@@ -31,7 +32,7 @@ export type TransitionProps = {
   /** Prevent the transition conflict with the inner component */
   wrapper?: boolean;
   children?: React.ReactNode;
-} & Partial<CSSTransitionProps>;
+} & Partial<CSSTransitionProps<HTMLElement>>;
 
 const Transition = (props: TransitionProps): React.ReactElement => {
   const {
@@ -41,6 +42,7 @@ const Transition = (props: TransitionProps): React.ReactElement => {
     prefix = 'ty',
     animation,
     classNames,
+    nodeRef,
     children,
     wrapper,
     ...otherProps
@@ -48,10 +50,11 @@ const Transition = (props: TransitionProps): React.ReactElement => {
 
   return (
     <CSSTransition
-      {...(otherProps as CSSTransitionProps)}
+      {...(otherProps as CSSTransitionProps<HTMLElement>)}
       timeout={timeout}
       appear={appear}
       unmountOnExit={unmountOnExit}
+      nodeRef={nodeRef}
       classNames={classNames ? classNames : `${prefix}-${animation}`}>
       {wrapper ? <div>{children}</div> : (children as React.ReactElement)}
     </CSSTransition>

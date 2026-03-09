@@ -69,7 +69,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, forwardedRef)
   };
 
   return (
-    <Transition timeout={300} in={isShow} onExited={afterClose}>
+    <Transition timeout={300} in={isShow} nodeRef={ref} onExited={afterClose}>
       <div {...otherProps} role="alert" className={cls} style={style} ref={(node) => {
         ref.current = node;
         if (typeof forwardedRef === 'function') forwardedRef(node);

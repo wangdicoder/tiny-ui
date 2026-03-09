@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext, useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import { FormInstanceContext } from './form-instance-context';
 import { FormOptionsContext } from './form-options-context';
@@ -36,6 +36,7 @@ const FormItem = (props: FormItemProps): JSX.Element => {
     name ? form.getFieldError(name) : undefined
   );
   const [hasErrLabel, setHasErrLabel] = useState(false);
+  const errorRef = useRef<HTMLDivElement>(null);
   const cls = classNames(prefixCls, className, {
     [`${prefixCls}_has-error`]: !!error,
     [`${prefixCls}_with-err-label`]: hasErrLabel,
@@ -134,8 +135,8 @@ const FormItem = (props: FormItemProps): JSX.Element => {
         </div>
         {notice && <div className={`${prefixCls}__notice`}>{notice}</div>}
         {helper && <div className={`${prefixCls}__helper`}>{helper}</div>}
-        <Transition in={!!error} animation="slide-down" onExited={() => setHasErrLabel(false)}>
-          <div className={`${prefixCls}__error`}>{error}</div>
+        <Transition in={!!error} nodeRef={errorRef} animation="slide-down" onExited={() => setHasErrLabel(false)}>
+          <div ref={errorRef} className={`${prefixCls}__error`}>{error}</div>
         </Transition>
       </Col>
     </Row>

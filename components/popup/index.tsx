@@ -248,6 +248,7 @@ const Popup = (props: PopupProps): JSX.Element => {
   const renderContent = () => (
     <Transition
       in={popupVisible}
+      nodeRef={popupRef}
       onEnter={transitionOnEnter}
       onExited={transitionOnExited}
       animation={getAnimationName()}>
