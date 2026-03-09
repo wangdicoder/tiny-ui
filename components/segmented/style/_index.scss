@@ -21,6 +21,11 @@
   &_disabled {
     opacity: 0.5;
     cursor: not-allowed;
+
+    .#{$prefix}-segmented__item {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 
   &_sm .#{$prefix}-segmented__item {

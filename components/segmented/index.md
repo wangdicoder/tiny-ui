@@ -1,4 +1,7 @@
 import Basic from './demo/basic.md'
+import Disabled from './demo/disabled.md'
+import IconDemo from './demo/icon.md'
+import Size from './demo/size.md'
 
 # Segmented
 
@@ -19,6 +22,11 @@ import { Segmented } from 'tiny-ui';
 <layout>
   <column>
     <Basic/>
+    <IconDemo/>
+  </column>
+  <column>
+    <Size/>
+    <Disabled/>
   </column>
 </layout>
 
