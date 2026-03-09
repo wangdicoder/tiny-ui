@@ -70,4 +70,14 @@
       margin-bottom: 5px;
     }
   }
+
+  &_line {
+    .#{$prefix}-anchor__ink-ball {
+      width: 2px;
+      border: 0;
+      border-radius: 0;
+      background-color: var(--ty-color-primary);
+      transition: top .3s ease-in-out, height .3s ease-in-out;
+    }
+  }
 }

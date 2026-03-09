@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback, useEffect, useRef } from 'react';
+import React, { useContext, useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -8,8 +8,13 @@ import Sticky from '../sticky';
 
 const Anchor = (props: AnchorProps): JSX.Element => {
   const {
+    affix = false,
     offsetTop = 0,
     offsetBottom,
+    type = 'dot',
+    getContainer,
+    onChange,
+    onClick,
     className,
     style,
     children,
@@ -17,31 +22,65 @@ const Anchor = (props: AnchorProps): JSX.Element => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('anchor', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className);
+  const cls = classNames(prefixCls, { [`${prefixCls}_line`]: type === 'line' }, className);
   const [activeId, setActiveId] = useState('');
   const anchorRef = useRef<HTMLUListElement | null>(null);
   const inkBallRef = useRef<HTMLDivElement | null>(null);
+  const linksRef = useRef<Set<string>>(new Set());
+
+  const registerLink = useCallback((href: string) => {
+    linksRef.current.add(href);
+  }, []);
+
+  const unregisterLink = useCallback((href: string) => {
+    linksRef.current.delete(href);
+  }, []);
 
   const updateInk = useCallback(() => {
     const anchorEl = anchorRef.current;
-    if (anchorEl) {
-      const linkNode = anchorEl.getElementsByClassName(`${prefixCls}__link_active`)[0];
-      const inkEl = inkBallRef.current;
-      if (linkNode && inkEl) {
-        const linkEl = linkNode as HTMLLIElement;
-        inkEl.style.top = `${linkEl.offsetTop + linkEl.clientHeight / 2 - 4.5}px`;
+    if (!anchorEl) return;
+    const activeNodes = anchorEl.getElementsByClassName(`${prefixCls}__link_active`);
+    const inkEl = inkBallRef.current;
+    // Use the last (deepest) active link so the ink ball targets the child, not the parent
+    const linkNode = activeNodes[activeNodes.length - 1];
+    if (linkNode && inkEl) {
+      // Use the <a> title element, not the <li> (which includes nested children)
+      const titleEl = linkNode.querySelector(`.${prefixCls}__link-title`);
+      const targetEl = titleEl || linkNode;
+      const anchorRect = anchorEl.getBoundingClientRect();
+      const targetRect = targetEl.getBoundingClientRect();
+      if (type === 'line') {
+        inkEl.style.top = `${targetRect.top - anchorRect.top}px`;
+        inkEl.style.height = `${targetEl.clientHeight}px`;
+      } else {
+        inkEl.style.top = `${targetRect.top - anchorRect.top + targetEl.clientHeight / 2 - 4.5}px`;
       }
     }
-  }, [prefixCls]);
+  }, [prefixCls, type]);
 
-  const scrollToAnchor = useCallback((anchorName: string): void => {
-    const element = document.body.querySelector(`#${anchorName}`);
-    if (element) {
-      element.scrollIntoView(true);
-    }
-  }, []);
+  const getScrollContainer = useCallback((): HTMLElement | Window => {
+    return getContainer ? getContainer() : window;
+  }, [getContainer]);
+
+  const scrollToAnchor = useCallback(
+    (anchorName: string): void => {
+      const element = document.getElementById(anchorName);
+      if (!element) return;
+
+      if (getContainer) {
+        const container = getContainer();
+        const containerRect = container.getBoundingClientRect();
+        const elementRect = element.getBoundingClientRect();
+        container.scrollTop += elementRect.top - containerRect.top;
+      } else {
+        element.scrollIntoView(true);
+      }
+    },
+    [getContainer]
+  );
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, anchorName: string) => {
+    onClick?.(e, { title: anchorName, href: `#${anchorName}` });
     const { location } = window;
     let url;
     // if it is a HashRouter mode, prevent the default event and update the query.
@@ -70,53 +109,85 @@ const Anchor = (props: AnchorProps): JSX.Element => {
   }, [scrollToAnchor]);
 
   const handleScroll = useCallback(() => {
-    const headings = document.querySelectorAll('*[id]');
-    if (headings.length === 0) return;
+    const links = linksRef.current;
+    if (links.size === 0) return;
 
-    let newActiveId = headings[0].id;
-    const top = document.documentElement.scrollTop;
-    headings.forEach((h) => {
-      const el = document.querySelector(`#${h.id}`);
+    const container = getContainer?.();
+    const containerTop = container
+      ? container.getBoundingClientRect().top
+      : 0;
+
+    let newActiveId = '';
+    let maxTop = -Infinity;
+    links.forEach((href) => {
+      const id = href.replace('#', '');
+      const el = document.getElementById(id);
       if (!el) return;
-      if ((el as HTMLElement).offsetTop <= top) {
-        newActiveId = h.id;
-        updateInk();
+      const elTop = el.getBoundingClientRect().top - containerTop;
+      if (elTop <= offsetTop && elTop > maxTop) {
+        maxTop = elTop;
+        newActiveId = id;
       }
     });
-    setActiveId(newActiveId);
-  }, [updateInk]);
+
+    setActiveId((prev) => {
+      if (prev !== newActiveId) {
+        onChange?.(`#${newActiveId}`);
+      }
+      return newActiveId;
+    });
+  }, [onChange, getContainer, offsetTop]);
+
+  useEffect(() => {
+    updateInk();
+  }, [activeId, updateInk]);
 
   useEffect(() => {
     initHashScroll();
   }, [initHashScroll]);
 
   useEffect(() => {
-    document.addEventListener('scroll', handleScroll);
+    const scrollTarget = getScrollContainer();
+    scrollTarget.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => {
-      document.removeEventListener('scroll', handleScroll);
+      scrollTarget.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll]);
+  }, [handleScroll, getScrollContainer]);
+
+  const contextValue = useMemo(
+    () => ({ activeId, onClick: handleLinkClick, registerLink, unregisterLink }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeId, registerLink, unregisterLink]
+  );
+
+  const anchorContent = (
+    <ul className={cls} style={style} ref={anchorRef}>
+      <div className={`${prefixCls}__ink`}>
+        <div className={`${prefixCls}__ink-ball`} ref={inkBallRef} />
+      </div>
+      {React.Children.map(children, (child) => {
+        const childElement = child as React.FunctionComponentElement<AnchorLinkProps>;
+        if (childElement.type.displayName === 'AnchorLink') {
+          const childProps: Partial<AnchorLinkProps> = {
+            prefixCls,
+          };
+          return React.cloneElement(childElement, childProps);
+        }
+        return null;
+      })}
+    </ul>
+  );
 
   return (
-    <AnchorContext.Provider value={{ activeId, onClick: handleLinkClick }}>
-      <Sticky offsetTop={offsetTop} offsetBottom={offsetBottom}>
-        <ul className={cls} style={style} ref={anchorRef}>
-          <div className={`${prefixCls}__ink`}>
-            <div className={`${prefixCls}__ink-ball`} ref={inkBallRef} />
-          </div>
-          {React.Children.map(children, (child) => {
-            const childElement = child as React.FunctionComponentElement<AnchorLinkProps>;
-            if (childElement.type.displayName === 'AnchorLink') {
-              const childProps: Partial<AnchorLinkProps> = {
-                prefixCls,
-              };
-              return React.cloneElement(childElement, childProps);
-            }
-            return null;
-          })}
-        </ul>
-      </Sticky>
+    <AnchorContext.Provider value={contextValue}>
+      {affix ? (
+        <Sticky offsetTop={offsetTop} offsetBottom={offsetBottom}>
+          {anchorContent}
+        </Sticky>
+      ) : (
+        anchorContent
+      )}
     </AnchorContext.Provider>
   );
 };

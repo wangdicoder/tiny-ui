@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { AnchorLinkProps } from './types';
 import { AnchorContext } from './anchor-context';
@@ -7,8 +7,17 @@ const AnchorLink = React.forwardRef<HTMLAnchorElement, AnchorLinkProps>(
   (props: AnchorLinkProps, ref): JSX.Element => {
     const { href, title, children, prefixCls, ...otherProps } = props;
     const anchorContext = useContext(AnchorContext);
+
+    useEffect(() => {
+      anchorContext.registerLink?.(href);
+      return () => anchorContext.unregisterLink?.(href);
+    }, [href, anchorContext]);
+
+    const activeHref = `#${anchorContext.activeId}`;
+    const isActive = activeHref === href;
+
     const cls = classNames(`${prefixCls}__link`, {
-      [`${prefixCls}__link_active`]: `#${anchorContext.activeId}` === href,
+      [`${prefixCls}__link_active`]: isActive,
     });
 
     const onLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
