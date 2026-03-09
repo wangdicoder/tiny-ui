@@ -51,10 +51,9 @@ const Menu = (props: MenuProps): JSX.Element => {
             displayName === 'MenuItemGroup' ||
             (displayName === 'MenuDivider' && mode !== 'horizontal')
           ) {
-            const childProps = {
-              overlayClassName,
-              index: `${index}`,
-            };
+            const childProps = displayName === 'SubMenu' && overlayClassName
+              ? { index: `${index}`, overlayClassName }
+              : { index: `${index}` };
             return React.cloneElement(childElement, childProps);
           } else {
             console.warn('Menu has a child that is not a MenuItem component.');
