@@ -1,4 +1,6 @@
 import Basic from './demo/basic.md'
+import Formatter from './demo/formatter.md'
+import Style from './demo/style.md'
 
 # Statistic
 
@@ -19,6 +21,10 @@ import { Statistic } from 'tiny-ui';
 <layout>
   <column>
     <Basic/>
+    <Formatter/>
+  </column>
+  <column>
+    <Style/>
   </column>
 </layout>
 
