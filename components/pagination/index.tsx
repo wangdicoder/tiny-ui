@@ -16,7 +16,9 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   const {
     align = 'center',
     size = 'md',
+    current: currentProp,
     defaultCurrent = 1,
+    pageSize: pageSizeProp,
     defaultPageSize = 10,
     total = 0,
     disabled = false,
@@ -33,10 +35,10 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     [`${prefixCls}_disabled`]: disabled,
   });
   const [current, setCurrent] = useState<number>(
-    'current' in props ? (props.current as number) : defaultCurrent
+    currentProp !== undefined ? currentProp : defaultCurrent
   );
   const [pageSize, setPageSize] = useState<number>(
-    'pageSize' in props ? (props.pageSize as number) : defaultPageSize
+    pageSizeProp !== undefined ? pageSizeProp : defaultPageSize
   );
 
   const itemOnClick = (item: ItemSourceData): void => {
@@ -66,7 +68,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       }
     }
 
-    !('current' in props) && setCurrent(curr);
+    currentProp === undefined && setCurrent(curr);
     onChange && onChange(curr, total, pageSize);
   };
 
@@ -125,9 +127,9 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   };
 
   useEffect(() => {
-    'current' in props && setCurrent(props.current as number);
-    'pageSize' in props && setPageSize(props.pageSize as number);
-  }, [props]);
+    currentProp !== undefined && setCurrent(currentProp);
+    pageSizeProp !== undefined && setPageSize(pageSizeProp);
+  }, [currentProp, pageSizeProp]);
 
   return (
     <nav {...otherProps} className={cls} aria-label="Pagination">
