@@ -23,9 +23,6 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 * `<Statistic />` - add formatter and value style demos ([25a7652](https://github.com/wangdicoder/tiny-ui/commit/25a7652))
 * Dark mode support ([e88fa43](https://github.com/wangdicoder/tiny-ui/commit/e88fa43))
 * Locale (i18n) support with useLocale hook ([6f049cb](https://github.com/wangdicoder/tiny-ui/commit/6f049cb))
-* Redesign component overview page with SVG card grid ([5c87538](https://github.com/wangdicoder/tiny-ui/commit/5c87538))
-* Add unique SVG illustrations for all 77 components ([6e97d36](https://github.com/wangdicoder/tiny-ui/commit/6e97d36))
-* Redesign home page with library components ([f082455](https://github.com/wangdicoder/tiny-ui/commit/f082455))
 
 ### Bug Fixes
 
