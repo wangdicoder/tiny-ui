@@ -8,6 +8,44 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+## [1.0.0](https://github.com/wangdicoder/tiny-ui/compare/v0.0.94...v1.0.0) (2026-03-10)
+
+### Features
+
+* `<Flex />` - add Flex component for lightweight flexbox layouts ([a5029cb](https://github.com/wangdicoder/tiny-ui/commit/a5029cb))
+* `<Anchor />` - enhance with scroll container, link registration, and line type ([ad06647](https://github.com/wangdicoder/tiny-ui/commit/ad06647))
+* `<AutoComplete />` - rewrite with filtering, keyboard nav, and Popup ([3f1f674](https://github.com/wangdicoder/tiny-ui/commit/3f1f674))
+* `<SpeedDial />` - add new Speed Dial component
+* `<Select />` - rewrite with shared useCombobox hook ([8e726d3](https://github.com/wangdicoder/tiny-ui/commit/8e726d3))
+* `<Segmented />` - add demos and fix disabled cursor on items ([94affee](https://github.com/wangdicoder/tiny-ui/commit/94affee))
+* `<ColorPicker />` - add demos and remove unused size prop ([6c974e6](https://github.com/wangdicoder/tiny-ui/commit/6c974e6))
+* `<Cascader />` - fix caret rotation and add changeOnSelect demo ([97a3b4d](https://github.com/wangdicoder/tiny-ui/commit/97a3b4d))
+* `<Statistic />` - add formatter and value style demos ([25a7652](https://github.com/wangdicoder/tiny-ui/commit/25a7652))
+* Dark mode support ([e88fa43](https://github.com/wangdicoder/tiny-ui/commit/e88fa43))
+* Locale (i18n) support with useLocale hook ([6f049cb](https://github.com/wangdicoder/tiny-ui/commit/6f049cb))
+* Redesign component overview page with SVG card grid ([5c87538](https://github.com/wangdicoder/tiny-ui/commit/5c87538))
+* Add unique SVG illustrations for all 77 components ([6e97d36](https://github.com/wangdicoder/tiny-ui/commit/6e97d36))
+* Redesign home page with library components ([f082455](https://github.com/wangdicoder/tiny-ui/commit/f082455))
+
+### Bug Fixes
+
+* `<Pagination />` - prevent custom props from leaking to DOM element ([#41](https://github.com/wangdicoder/tiny-ui/issues/41)) ([4b5103a](https://github.com/wangdicoder/tiny-ui/commit/4b5103a))
+* `<BackTop />` - reset native button styles and support custom children ([095da1e](https://github.com/wangdicoder/tiny-ui/commit/095da1e))
+* `<Tabs />` - reduce editable-card add button size to match tab height ([492cd06](https://github.com/wangdicoder/tiny-ui/commit/492cd06))
+* `<ColorPicker />` - show not-allowed cursor in disabled state ([17eba92](https://github.com/wangdicoder/tiny-ui/commit/17eba92))
+* `<SpeedDial />` - replace deprecated darken() with color.adjust() ([98f470a](https://github.com/wangdicoder/tiny-ui/commit/98f470a))
+* `<Grid />` - fix responsive breakpoints and gutter wrapping ([19ff93c](https://github.com/wangdicoder/tiny-ui/commit/19ff93c))
+* `<Layout />` - fix sidebar trigger position and add collapsible demo ([4ef6ad3](https://github.com/wangdicoder/tiny-ui/commit/4ef6ad3))
+* `<InputNumber />` - implement precision prop to fix floating point errors ([30be362](https://github.com/wangdicoder/tiny-ui/commit/30be362))
+* `<Menu />` - only pass overlayClassName to SubMenu children ([383ccf5](https://github.com/wangdicoder/tiny-ui/commit/383ccf5))
+* Fix CSSTransition findDOMNode deprecation warning ([d3d550c](https://github.com/wangdicoder/tiny-ui/commit/d3d550c))
+* Render picker dropdowns via portal to prevent clipping ([3d67750](https://github.com/wangdicoder/tiny-ui/commit/3d67750))
+
+### Refactors
+
+* Unify picker dropdowns to use Popup instead of createPortal ([6909813](https://github.com/wangdicoder/tiny-ui/commit/6909813))
+* Extract shared useCombobox hook for Select and AutoComplete ([8e726d3](https://github.com/wangdicoder/tiny-ui/commit/8e726d3))
+
 ### [0.0.94](https://github.com/wangdicoder/tiny-ui/compare/v0.0.93...v0.0.94) (2020-10-25)
 
 
