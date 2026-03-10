@@ -1,4 +1,5 @@
 @use "../../style/variables" as *;
+@use "sass:color";
 
 $speed-dial-fab-size: 56px;
 $speed-dial-action-size: 40px;
@@ -26,7 +27,7 @@ $speed-dial-actions-gap: 16px;
     outline: none;
 
     &:hover:not(.#{$prefix}-speed-dial__button_disabled) {
-      background-color: var(--ty-speed-dial-bg-hover, #{darken($primary-color, 8%)});
+      background-color: var(--ty-speed-dial-bg-hover, #{color.adjust($primary-color, $lightness: -8%)});
     }
 
     &:focus-visible {
