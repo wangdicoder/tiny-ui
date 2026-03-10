@@ -6,7 +6,13 @@
 
   &_disabled {
     opacity: 0.5;
-    pointer-events: none;
+    cursor: not-allowed;
+
+    .#{$prefix}-color-picker__trigger,
+    .#{$prefix}-color-picker__swatch {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 
   &__trigger {
