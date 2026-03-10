@@ -12,5 +12,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border: none;
+  padding: 0;
   transition: opacity 200ms linear 0s, visibility;
+
+  &_custom {
+    background: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+  }
 }

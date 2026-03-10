@@ -27,7 +27,9 @@ const BackTop = (props: BackTopProps): JSX.Element | null => {
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('back-top', configContext.prefixCls, customisedCls);
-  const cls = classNames(prefixCls, className);
+  const cls = classNames(prefixCls, className, {
+    [`${prefixCls}_custom`]: !!children,
+  });
   const [visible, setVisible] = useState(true);
 
   const getDistanceFromTop = useCallback((): number => {

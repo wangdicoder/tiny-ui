@@ -7,7 +7,7 @@ Use custom children to replace the default button.
 ```jsx live
 () => {
   return (
-    <BackTop visibilityHeight={100}>
+    <BackTop visibilityHeight={100} style={{ bottom: 100 }}>
       <div style={{
         width: 40,
         height: 40,
