@@ -8,13 +8,13 @@ There are `default`, `primary`, `outline`, `ghost` and `link` button.
 
 
 ```jsx live
-<>
+<Flex gap="sm">
   <Button>Default</Button>
   <Button btnType="primary">Primary</Button>
   <Button btnType="outline">Outline</Button>
   <Button btnType="ghost">Ghost</Button>
   <Button btnType="link">Link</Button>
-</>
+</Flex>
 ```
 
 </demo>

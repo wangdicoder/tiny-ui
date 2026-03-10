@@ -23,10 +23,6 @@ $btn-prefix: #{$prefix}-btn;
   transition: $btn-transition;
   line-height: $btn-line-height;
 
-  & + .#{$btn-prefix} {
-    margin-left: 10px;
-  }
-
   &__loader {
     @include loader();
   }

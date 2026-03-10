@@ -12,42 +12,42 @@ Add the `disabled` property to disable the Button.
 
   return (
     <>
-      <div>
+      <Flex gap="sm">
         <Button style={style}>Default</Button>
         <Button disabled style={style}>Default (disabled)</Button>
-      </div>
-      <div>
+      </Flex>
+      <Flex gap="sm">
         <Button btnType="primary" style={style}>Primary</Button>
         <Button disabled btnType="primary" style={style}>Primary (disabled)</Button>
-      </div>
-      <div>
+      </Flex>
+      <Flex gap="sm">
         <Button btnType="outline" style={style}>Outline</Button>
         <Button disabled btnType="outline" style={style}>Outline (disabled)</Button>
-      </div>
-      <div>
+      </Flex>
+      <Flex gap="sm">
         <Button btnType="ghost" style={style}>Ghost</Button>
         <Button disabled btnType="ghost" style={style}>Ghost (disabled)</Button>
-      </div>
-      <div>
+      </Flex>
+      <Flex gap="sm">
         <Button btnType="success" style={style}>Success</Button>
         <Button disabled btnType="success" style={style}>Success (disabled)</Button>
-      </div>
-      <div>
+      </Flex>
+      <Flex gap="sm">
         <Button btnType="info" style={style}>Info</Button>
         <Button disabled btnType="info" style={style}>Info (disabled)</Button>
-      </div>
-      <div>
+      </Flex>
+      <Flex gap="sm">
         <Button btnType="warning" style={style}>Warning</Button>
         <Button disabled btnType="warning" style={style}>Warning (disabled)</Button>
-      </div>
-      <div>      
+      </Flex>
+      <Flex gap="sm">    
         <Button btnType="danger" style={style}>Danger</Button>
         <Button disabled btnType="danger" style={style}>Danger (disabled)</Button>
-      </div>
-      <div>
+      </Flex>
+      <Flex gap="sm">
         <Button btnType="link" style={style}>Link</Button>
         <Button disabled btnType="link" style={style}>Link (disabled)</Button>
-      </div>
+      </Flex>
     </>
   )
 }

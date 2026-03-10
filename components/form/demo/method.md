@@ -31,11 +31,11 @@ Call form method with `Form.useForm`.
         <InputPassword />
       </Form.Item>
       <Form.Item>
-        <>
-        <Button btnType="primary" type="submit">Submit</Button>
-        <Button type="button" onClick={resetForm}>Reset</Button>
-        <Button btnType="link" type="button" onClick={fillForm}>Fill form</Button>
-        </>
+        <Flex gap="sm">
+          <Button btnType="primary" type="submit">Submit</Button>
+          <Button type="button" onClick={resetForm}>Reset</Button>
+          <Button btnType="link" type="button" onClick={fillForm}>Fill form</Button>
+        </Flex>
       </Form.Item>
     </Form>
   );

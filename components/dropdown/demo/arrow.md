@@ -18,27 +18,30 @@ class ArrowExample extends React.PureComponent {
 
   render() {
     return (
-      <div>
-        <Dropdown arrow overlay={this.renderOverlay()} placement="bottom-start">
-          <Button>bottomLeft</Button>
-        </Dropdown>
-        <Dropdown arrow overlay={this.renderOverlay()} placement="bottom">
-          <Button>bottomCenter</Button>
-        </Dropdown>
-        <Dropdown arrow overlay={this.renderOverlay()} placement="bottom-end">
-          <Button>bottomRight</Button>
-        </Dropdown>
+      <>
+        <Flex gap="sm">
+          <Dropdown arrow overlay={this.renderOverlay()} placement="bottom-start">
+            <Button>bottomLeft</Button>
+          </Dropdown>
+          <Dropdown arrow overlay={this.renderOverlay()} placement="bottom">
+            <Button>bottomCenter</Button>
+          </Dropdown>
+          <Dropdown arrow overlay={this.renderOverlay()} placement="bottom-end">
+            <Button>bottomRight</Button>
+          </Dropdown>
+        </Flex>
         <br />
-        <br />
-        <Dropdown arrow overlay={this.renderOverlay()} placement="top-start">
-          <Button>topLeft</Button>
-        </Dropdown>
-        <Dropdown arrow overlay={this.renderOverlay()} placement="top">
-          <Button>topCenter</Button>
-        </Dropdown>
-        <Dropdown arrow overlay={this.renderOverlay()} placement="top-end">
-          <Button>topRight</Button>
-        </Dropdown>
+        <Flex gap="sm">
+          <Dropdown arrow overlay={this.renderOverlay()} placement="top-start">
+            <Button>topLeft</Button>
+          </Dropdown>
+          <Dropdown arrow overlay={this.renderOverlay()} placement="top">
+            <Button>topCenter</Button>
+          </Dropdown>
+          <Dropdown arrow overlay={this.renderOverlay()} placement="top-end">
+            <Button>topRight</Button>
+          </Dropdown>
+        </Flex>
       </div> 
     );
   }

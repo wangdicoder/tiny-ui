@@ -28,10 +28,10 @@ Basic Form data control.
     <Checkbox>Remember Me</Checkbox>
   </Form.Item>
   <Form.Item>
-    <>
+    <Flex gap="sm">
       <Button btnType="primary" type="submit">Submit</Button>
       <Button type="reset">Reset</Button>
-    </> 
+    </Flex> 
   </Form.Item>
 </Form>
 ```
