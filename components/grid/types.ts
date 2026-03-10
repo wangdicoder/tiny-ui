@@ -11,7 +11,7 @@ export interface RowProps extends BaseProps, React.PropsWithoutRef<JSX.Intrinsic
   gutterSide?: boolean;
   align?: RowAlign;
   justify?: RowJustify;
-  children: React.ReactElement<ColProps>[];
+  children: React.ReactElement<ColProps>[] | React.ReactElement<ColProps>;
 }
 
 export type ColSize = {
