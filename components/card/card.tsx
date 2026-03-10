@@ -20,6 +20,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     className,
     style,
     children,
+    ...otherProps
   } = props;
   const configContext = useContext(ConfigContext);
   const prefixCls = getPrefixCls('card', configContext.prefixCls, customisedCls);
@@ -81,7 +82,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   };
 
   return (
-    <div ref={ref} className={cls} style={style}>
+    <div ref={ref} {...otherProps} className={cls} style={style}>
       {renderHeader()}
       {renderChildren()}
       {renderFooter()}

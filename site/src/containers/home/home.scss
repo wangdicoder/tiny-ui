@@ -26,11 +26,6 @@
     background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--ty-color-primary) 8%, transparent) 0%, transparent 70%);
   }
 
-  &__logo-container {
-    position: relative;
-    margin-right: 40px;
-  }
-
   &__react-login-container {
     position: absolute;
     left: 50%;
@@ -49,22 +44,25 @@
     width: 200px;
   }
 
-  &__title {
+  &__title.ty-typography {
     font-weight: 600;
     font-size: 45px;
     margin: 30px 0 0;
   }
 
-  &__subtitle {
+  &__subtitle.ty-typography {
     font-weight: 400;
-    margin: 10px 0 0 0;
     font-size: 24px;
     color: var(--ty-color-text-secondary);
   }
 
+  // Override Typography's adjacent sibling margin rules
+  &__slider .ty-typography + .ty-typography {
+    margin: 10px 0 0 0;
+  }
+
   &__btn-group {
     margin: 30px 0 0 0;
-    display: flex;
   }
 
   &__btn {
@@ -77,47 +75,79 @@
     padding: 70px 0;
   }
 
-  &__feature-title {
+  &__feature-title.ty-typography {
     text-align: center;
     font-weight: 500;
-    margin: 0px 0 40px;
+    margin: 0 0 40px;
   }
 
   &__features {
-    display: flex;
     padding: 0 40px;
-    flex-wrap: wrap;
+  }
+
+  &__feature-card {
+    text-align: center;
+    height: 100%;
+    background: transparent;
+    animation: fadeInUp 0.5s ease both;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    h3.ty-typography {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+
+    p.ty-typography {
+      margin: 0;
+      color: var(--ty-color-text-secondary);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+  }
+
+  &__feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--ty-color-primary);
+    color: #fff;
   }
 
   // Stats ribbon
   &__stats {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
     padding: 50px 40px;
     background: color-mix(in srgb, var(--ty-color-primary) 4%, transparent);
     border-top: 1px solid var(--ty-color-border-secondary);
-  }
 
-  &__stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: fadeInUp 0.5s ease both;
-  }
+    .ty-statistic {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      animation: fadeInUp 0.5s ease both;
+    }
 
-  &__stat-value {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--ty-color-primary);
-  }
+    .ty-statistic__content {
+      color: var(--ty-color-primary);
+      font-size: 36px;
+      font-weight: 700;
+    }
 
-  &__stat-label {
-    margin-top: 6px;
-    font-size: 14px;
-    color: var(--ty-color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    .ty-statistic__title {
+      margin-bottom: 0;
+      margin-top: 6px;
+      font-size: 14px;
+      color: var(--ty-color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
   }
 
   // Categories grid
@@ -128,33 +158,30 @@
     padding: 0 60px;
     max-width: 1000px;
     margin: 0 auto;
+
+    .ty-card + .ty-card {
+      margin-top: 0;
+    }
   }
 
   &__category {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px 16px;
-    border-radius: 12px;
-    border: 1px solid var(--ty-color-border-secondary);
-    background: var(--ty-color-bg-elevated);
     color: var(--ty-color-primary);
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     animation: fadeInUp 0.5s ease both;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    padding: 32px 16px;
+    border-radius: 12px;
+
+    .ty-typography strong {
+      font-size: 16px;
+      color: var(--ty-color-text);
+    }
 
     &:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 24px color-mix(in srgb, var(--ty-color-primary) 12%, transparent);
       border-color: var(--ty-color-primary);
     }
-  }
-
-  &__category-name {
-    margin: 14px 0 4px;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--ty-color-text);
   }
 
   &__category-count {
@@ -173,7 +200,6 @@
     }
 
     &__stats {
-      gap: 40px;
       padding: 40px 20px;
     }
 
@@ -187,12 +213,14 @@
       padding: 50px 0;
     }
 
-    &__title {
+    &__title.ty-typography {
       font-size: 32px;
     }
 
-    &__subtitle {
+    &__subtitle.ty-typography {
       font-size: 18px;
+      padding: 0 20px;
+      text-align: center;
     }
 
     &__react-logo {
@@ -205,12 +233,11 @@
     }
 
     &__stats {
-      flex-wrap: wrap;
       gap: 24px 40px;
-    }
 
-    &__stat-value {
-      font-size: 28px;
+      .ty-statistic__content {
+        font-size: 28px;
+      }
     }
 
     &__categories {
@@ -218,18 +245,14 @@
       gap: 16px;
       padding: 0 20px;
     }
-
-    &__category {
-      padding: 24px 12px;
-    }
   }
 
   @media (max-width: $size-xs) {
-    &__title {
+    &__title.ty-typography {
       font-size: 26px;
     }
 
-    &__subtitle {
+    &__subtitle.ty-typography {
       font-size: 16px;
     }
 

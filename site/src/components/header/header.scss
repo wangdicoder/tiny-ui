@@ -5,7 +5,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 101;
   height: $header-height;
   background: var(--ty-color-bg-elevated);
   border-bottom: 1px solid var(--ty-color-border-secondary);
@@ -164,7 +164,15 @@
   }
 
   @media (max-width: $size-xs) {
-    &__nav {
+    &__nav-item {
+      margin-left: 12px;
+      font-size: 14px;
+    }
+
+    &__version,
+    &__locale-toggle,
+    &__color-swatch,
+    &__theme-toggle {
       display: none;
     }
   }

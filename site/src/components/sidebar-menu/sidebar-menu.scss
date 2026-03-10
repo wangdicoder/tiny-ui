@@ -2,9 +2,12 @@
 
 .sidebar-menu {
   width: 250px;
-  height: calc(100% - #{$header-height});
   position: fixed;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
   overflow-y: auto;
+  background: var(--ty-color-bg-elevated);
   border-right: 1px solid var(--ty-color-border);
   padding: 20px 0;
   z-index: 99;
@@ -98,9 +101,7 @@
   @media (max-width: $size-md) {
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    background: var(--ty-color-bg-elevated);
     z-index: 101;
-    top: $header-height;
 
     &_open {
       transform: translateX(0);

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Icon } from '../../../../components';
-import { FeatureBlock } from '../../components/feature-block';
+import { Button, Icon, Flex, Typography, Statistic, Card, Row, Col } from '../../../../components';
 import { Footer } from './footer';
 import { useLocaleContext } from '../../context/locale-context';
+import { getComponentMenu } from '../../routers';
 import pkg from '../../../../package.json';
 
 const { repository } = pkg;
@@ -20,22 +20,27 @@ const HomePage = (): React.ReactElement => {
     { icon: 'accessible', title: s.home.features.accessible, desc: s.home.features.accessibleDesc },
   ];
 
-  const stats = [
-    { value: '65+', label: s.home.stats.components },
-    { value: '7', label: s.home.stats.categories },
-    { value: '100%', label: s.home.stats.typescript },
-    { value: 'MIT', label: s.home.stats.license },
-  ];
+  const categoryIcons = ['star', 'structure', 'process', 'eye', 'edit-file', 'feedback', 'puzzle'];
 
-  const categories = [
-    { icon: 'star', name: s.categories.foundation, count: 5, route: 'button' },
-    { icon: 'structure', name: s.categories.layout, count: 6, route: 'aspect-ratio' },
-    { icon: 'process', name: s.categories.navigation, count: 5, route: 'breadcrumb' },
-    { icon: 'eye', name: s.categories.dataDisplay, count: 15, route: 'carousel' },
-    { icon: 'edit-file', name: s.categories.formItem, count: 17, route: 'date-picker' },
-    { icon: 'feedback', name: s.categories.feedback, count: 12, route: 'alert' },
-    { icon: 'puzzle', name: s.categories.miscellany, count: 5, route: 'back-top' },
-  ];
+  const { stats, categories } = useMemo(() => {
+    const menu = getComponentMenu(s);
+    const totalComponents = menu.reduce((sum, cat) => sum + (cat.children?.length ?? 0), 0);
+    const cats = menu.map((cat, i) => ({
+      icon: categoryIcons[i] ?? 'puzzle',
+      name: cat.title,
+      count: cat.children?.length ?? 0,
+      route: cat.children?.[0]?.route ?? '',
+    }));
+    return {
+      stats: [
+        { value: `${totalComponents}+`, label: s.home.stats.components },
+        { value: String(menu.length), label: s.home.stats.categories },
+        { value: '100%', label: s.home.stats.typescript },
+        { value: 'MIT', label: s.home.stats.license },
+      ],
+      categories: cats,
+    };
+  }, [s]);
 
   return (
     <div className="home">
@@ -48,9 +53,9 @@ const HomePage = (): React.ReactElement => {
       </div>
       <div className="home__slider">
         <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
-        <h1 className="home__title">Tiny UI</h1>
-        <h2 className="home__subtitle">{s.home.subtitle}</h2>
-        <div className="home__btn-group">
+        <Typography.Heading level={1} className="home__title">Tiny UI</Typography.Heading>
+        <Typography.Heading level={2} className="home__subtitle">{s.home.subtitle}</Typography.Heading>
+        <Flex gap="sm" className="home__btn-group">
           <Button
             className="home__btn"
             btnType="primary"
@@ -65,46 +70,50 @@ const HomePage = (): React.ReactElement => {
             onClick={() => window.open(repository.url)}>
             {s.home.github}
           </Button>
-        </div>
+        </Flex>
       </div>
 
       <div className="home__section">
-        <h1 className="home__feature-title">{s.home.designPrinciple}</h1>
-        <div className="home__features">
+        <Typography.Heading level={1} className="home__feature-title">{s.home.designPrinciple}</Typography.Heading>
+        <Row gutter={[24, 24]} justify="center" className="home__features">
           {features.map((feature, i) => (
-            <FeatureBlock
-              key={i}
-              icon={feature.icon}
-              title={feature.title}
-              desc={feature.desc}
-              style={{ animationDelay: `${i * 0.1}s` }}
-            />
+            <Col key={i} xs={12} sm={12} lg={6}>
+              <Card bordered={false} className="home__feature-card" style={{ animationDelay: `${i * 0.1}s` }}>
+                <Flex vertical align="center" gap="md">
+                  <div className="home__feature-icon">
+                    <Icon name={feature.icon} size={24} />
+                  </div>
+                  <Typography.Heading level={3}>{feature.title}</Typography.Heading>
+                  <Typography.Paragraph>{feature.desc}</Typography.Paragraph>
+                </Flex>
+              </Card>
+            </Col>
           ))}
-        </div>
+        </Row>
       </div>
 
-      <div className="home__stats">
+      <Flex justify="center" gap={60} wrap="wrap" className="home__stats">
         {stats.map((stat, i) => (
-          <div className="home__stat" key={i} style={{ animationDelay: `${i * 0.1}s` }}>
-            <span className="home__stat-value">{stat.value}</span>
-            <span className="home__stat-label">{stat.label}</span>
-          </div>
+          <Statistic key={i} value={stat.value} title={stat.label} style={{ animationDelay: `${i * 0.1}s` }} />
         ))}
-      </div>
+      </Flex>
 
       <div className="home__section">
-        <h1 className="home__feature-title">{s.home.componentCategories}</h1>
+        <Typography.Heading level={1} className="home__feature-title">{s.home.componentCategories}</Typography.Heading>
         <div className="home__categories">
           {categories.map((cat, i) => (
-            <div
-              className="home__category"
+            <Card
               key={i}
-              style={{ animationDelay: `${i * 0.08}s` }}
-              onClick={() => navigate(`/components/${cat.route}`)}>
-              <Icon name={cat.icon} size={32} color="currentColor" />
-              <h3 className="home__category-name">{cat.name}</h3>
-              <span className="home__category-count">{s.home.nComponents(cat.count)}</span>
-            </div>
+              hoverable
+              className="home__category"
+              onClick={() => navigate(`/components/${cat.route}`)}
+              style={{ animationDelay: `${i * 0.08}s` }}>
+              <Flex vertical align="center" gap="sm">
+                <Icon name={cat.icon} size={32} color="currentColor" />
+                <Typography.Text strong>{cat.name}</Typography.Text>
+                <Typography.Text className="home__category-count">{s.home.nComponents(cat.count)}</Typography.Text>
+              </Flex>
+            </Card>
           ))}
         </div>
       </div>
