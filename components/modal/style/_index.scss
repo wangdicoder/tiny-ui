@@ -21,6 +21,7 @@
     &_slide {
       &-enter {
         transform: translateY(-20px);
+        transition: none;
       }
 
       &-enter-done {
@@ -39,6 +40,7 @@
     &_scale {
       &-enter {
         transform: scale(0);
+        transition: none;
       }
 
       &-enter-done {
@@ -99,7 +101,6 @@
   &__footer {
     box-sizing: border-box;
     padding: 12px 16px;
-    text-align: right;
     border-top: 1px solid var(--ty-modal-footer-border);
     border-radius: 0 0 4px 4px;
   }

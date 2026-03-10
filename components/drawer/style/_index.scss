@@ -64,6 +64,7 @@
     .#{$prefix}-drawer__content_move {
       &-enter {
         transform: translateY(-100%);
+        transition: none;
       }
 
       &-enter-done {
@@ -86,6 +87,7 @@
     .#{$prefix}-drawer__content_move {
       &-enter {
         transform: translateY(100%);
+        transition: none;
       }
 
       &-enter-done {
@@ -108,6 +110,7 @@
     .#{$prefix}-drawer__content_move {
       &-enter {
         transform: translateX(100%);
+        transition: none;
       }
 
       &-enter-done {
@@ -130,6 +133,7 @@
     .#{$prefix}-drawer__content_move {
       &-enter {
         transform: translateX(-100%);
+        transition: none;
       }
 
       &-enter-done {
