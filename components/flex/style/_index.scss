@@ -1,0 +1,5 @@
+@use '../../style/variables' as *;
+
+.#{$prefix}-flex {
+  display: flex;
+}

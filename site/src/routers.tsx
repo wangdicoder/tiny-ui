@@ -62,6 +62,7 @@ const c = {
   grid: ll(() => import('../../components/grid/index.md'), () => import('../../components/grid/index.zh_CN.md')),
   layout: ll(() => import('../../components/layout/index.md'), () => import('../../components/layout/index.zh_CN.md')),
   space: ll(() => import('../../components/space/index.md'), () => import('../../components/space/index.zh_CN.md')),
+  flex: ll(() => import('../../components/flex/index.md'), () => import('../../components/flex/index.zh_CN.md')),
   split: ll(() => import('../../components/split/index.md'), () => import('../../components/split/index.zh_CN.md')),
   breadcrumb: ll(() => import('../../components/breadcrumb/index.md'), () => import('../../components/breadcrumb/index.zh_CN.md')),
   dropdown: ll(() => import('../../components/dropdown/index.md'), () => import('../../components/dropdown/index.zh_CN.md')),
@@ -161,6 +162,7 @@ export const getComponentMenu = (s: SiteLocale): RouterItem[] => {
       children: [
         { title: 'Aspect Ratio', route: 'aspect-ratio', component: pick(c.aspectRatio, z) },
         { title: 'Divider', route: 'divider', component: pick(c.divider, z) },
+        { title: 'Flex', route: 'flex', component: pick(c.flex, z) },
         { title: 'Grid', route: 'grid', component: pick(c.grid, z) },
         { title: 'Layout', route: 'layout', component: pick(c.layout, z) },
         { title: 'Space', route: 'space', component: pick(c.space, z) },
