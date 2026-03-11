@@ -43,7 +43,7 @@
     "es"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "scripts": {
     "build": "npm run clean && tsdown && node scripts/build-styles.js && node scripts/inject-style-imports.js",

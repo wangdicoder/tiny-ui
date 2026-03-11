@@ -20,19 +20,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build site
-        run: npm run site:build
-        env:
-          PUBLIC_PATH: /tiny-ui/
+        run: npx vite build site --base /tiny-ui/
 
       - name: Copy 404.html for SPA routing
         run: cp site/build/index.html site/build/404.html
