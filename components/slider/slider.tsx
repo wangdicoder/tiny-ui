@@ -151,7 +151,9 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
 
     // Store latest drag/dragEnd handlers in refs so window listeners
     // always dispatch to the current closure (no stale captures).
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const draggingRef = useRef<(e: MouseEvent) => void>(() => {});
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const dragEndRef = useRef<() => void>(() => {});
 
     draggingRef.current = (e: MouseEvent): void => {

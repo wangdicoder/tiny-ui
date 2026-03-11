@@ -63,7 +63,7 @@ describe('FormHelper validate', () => {
   });
 
   it('should skip async validators and log a warning', () => {
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => { /* noop */ });
     const asyncValidator = () => Promise.resolve(true);
     const res = validate('value', { validator: asyncValidator });
     expect(res).toBe(undefined);
