@@ -8,6 +8,13 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+## [1.0.3](https://github.com/wangdicoder/tiny-ui/compare/v1.0.2...v1.0.3) (2026-03-11)
+
+### Bug Fixes
+
+* make light mode the default and use data-tiny-theme attribute ([bdd69b4](https://github.com/wangdicoder/tiny-ui/commit/bdd69b4))
+* unit tests ([4f78b3c](https://github.com/wangdicoder/tiny-ui/commit/4f78b3c))
+
 ## [1.0.2](https://github.com/wangdicoder/tiny-ui/compare/v1.0.1...v1.0.2) (2026-03-11)
 
 ### Bug Fixes

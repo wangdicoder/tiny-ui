@@ -265,7 +265,7 @@
   --ty-calendar-hover: #f6f9fc;
 }
 
-html[data-theme=dark] {
+html[data-tiny-theme=dark] {
   --ty-color-bg: #141414;
   --ty-color-bg-elevated: #1f1f1f;
   --ty-color-bg-container: #1f1f1f;
@@ -533,7 +533,7 @@ html[data-theme=dark] {
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
+  html[data-tiny-theme=system] {
     --ty-color-bg: #141414;
     --ty-color-bg-elevated: #1f1f1f;
     --ty-color-bg-container: #1f1f1f;
