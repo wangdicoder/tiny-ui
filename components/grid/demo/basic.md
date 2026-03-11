@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic Grid
 
@@ -49,4 +49,4 @@ Create basic grid layout using columns.
 }
 ```
 
-</demo>
+</Demo>

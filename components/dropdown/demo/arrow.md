@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Arrow
 
@@ -48,4 +48,4 @@ class ArrowExample extends React.PureComponent {
 }
 ```
 
-</demo>
+</Demo>

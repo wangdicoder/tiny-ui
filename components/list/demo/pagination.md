@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Pagination
 
@@ -20,4 +20,4 @@ Use `pagination` to add a pager to the list.
 }
 ```
 
-</demo>
+</Demo>

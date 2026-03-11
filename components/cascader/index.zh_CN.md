@@ -20,17 +20,17 @@ import { Cascader } from 'tiny-ui';
 
 ## 代码演示
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Hover/>
     <Sizes/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <DefaultValue/>
     <Disabled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Horizontal divider
 
@@ -15,4 +15,4 @@ Left & Right.
 </Split>
 ```
 
-</demo>
+</Demo>

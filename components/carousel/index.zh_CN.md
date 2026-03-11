@@ -14,15 +14,15 @@ import { Carousel } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Fade/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Arrows/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

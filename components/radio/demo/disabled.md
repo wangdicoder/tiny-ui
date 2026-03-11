@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -35,4 +35,4 @@ Disabled state of Radio.
 }
 ```
 
-</demo>
+</Demo>

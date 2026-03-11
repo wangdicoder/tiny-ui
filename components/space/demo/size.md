@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Space Size
 
@@ -41,4 +41,4 @@
 }
 ```
 
-</demo>
+</Demo>

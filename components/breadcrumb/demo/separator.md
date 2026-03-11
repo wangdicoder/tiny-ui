@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Separator
 
@@ -17,4 +17,4 @@ Customise the separator symbol.
 </Breadcrumb>
 ```
 
-</demo>
+</Demo>

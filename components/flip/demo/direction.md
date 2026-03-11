@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Direction
 
@@ -65,4 +65,4 @@
 }
 ```
 
-</demo>
+</Demo>

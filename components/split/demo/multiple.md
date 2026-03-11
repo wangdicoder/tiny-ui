@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Multiple
 
@@ -15,4 +15,4 @@ Multiple divider.
 </Split>
 ```
 
-</demo>
+</Demo>

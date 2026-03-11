@@ -22,18 +22,18 @@ import { Alert } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Closable/>
     <Icon/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Type/>
     <Title/>
     <CloseButton/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Hover Expand
 
@@ -46,4 +46,4 @@ Expand sub-menus on hover instead of click for faster navigation.
 }
 ```
 
-</demo>
+</Demo>

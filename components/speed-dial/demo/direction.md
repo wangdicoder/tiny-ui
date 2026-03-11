@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Direction
 
@@ -35,4 +35,4 @@ SpeedDial supports four directions: `up`, `down`, `left`, and `right`.
 }
 ```
 
-</demo>
+</Demo>

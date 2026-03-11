@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Gap
 
@@ -29,4 +29,4 @@ Preset sizes `sm` (8px), `md` (16px), `lg` (24px) or a custom number via slider.
 }
 ```
 
-</demo>
+</Demo>

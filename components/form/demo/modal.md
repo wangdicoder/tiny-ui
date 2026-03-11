@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Create in `Modal`
 
@@ -42,4 +42,4 @@ Create a form in a `Modal`.
 }
 ```
 
-</demo>
+</Demo>

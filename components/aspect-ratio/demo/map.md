@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Embed Map
 
@@ -15,4 +15,4 @@ A `16:9` map.
 </AspectRatio>
 ```
 
-</demo>
+</Demo>

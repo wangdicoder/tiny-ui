@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Size
 
@@ -12,4 +12,4 @@ There are three different sizes of the loader.
 </>
 ```
 
-</demo>
+</Demo>

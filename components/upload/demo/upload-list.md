@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Default Files
 
@@ -32,4 +32,4 @@ Use `defaultFileList` for uploaded files when initialising the page.
 </Upload>
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Column offset
 
@@ -42,4 +42,4 @@
 }
 ```
 
-</demo>
+</Demo>

@@ -17,14 +17,14 @@ import { Countdown } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Millisecond/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

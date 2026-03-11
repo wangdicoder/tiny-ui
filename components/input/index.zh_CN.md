@@ -23,18 +23,18 @@ const { Group, Addon } = Input;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Addon/>
     <AddonButton/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <PreSuffix/>
     <Size/>
     <Clearable/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

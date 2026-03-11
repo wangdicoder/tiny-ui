@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Alignment
 
@@ -14,4 +14,4 @@ Set different alignments of pagination.
 </>
 ```
 
-</demo>
+</Demo>

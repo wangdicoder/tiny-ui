@@ -22,16 +22,16 @@ const { Group, Option } = NativeSelect;
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Size/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Group/>
     <Disabled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

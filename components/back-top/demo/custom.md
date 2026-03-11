@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Trigger
 
@@ -25,4 +25,4 @@ Use custom children to replace the default button.
 }
 ```
 
-</demo>
+</Demo>

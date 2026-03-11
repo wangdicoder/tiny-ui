@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -25,4 +25,4 @@ A basic carousel. You can pass children directly — no need for `Carousel.Item`
 }
 ```
 
-</demo>
+</Demo>

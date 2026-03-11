@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Read only
 
@@ -8,4 +8,4 @@ Read only, can't be interactive.
 <Rate disabled defaultValue={3} />
 ```
 
-</demo>
+</Demo>

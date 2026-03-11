@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Sizes
 
@@ -40,4 +40,4 @@ Three built-in sizes: `sm`, `md`, and `lg`.
 }
 ```
 
-</demo>
+</Demo>

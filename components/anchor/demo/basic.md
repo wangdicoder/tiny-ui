@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -46,4 +46,4 @@ Anchor with a scrollable container. Click a link to scroll to the section; scrol
 }
 ```
 
-</demo>
+</Demo>

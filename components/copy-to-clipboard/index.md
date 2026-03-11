@@ -15,14 +15,14 @@ import { CopyToClipboard } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <UseInput/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

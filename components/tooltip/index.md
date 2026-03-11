@@ -19,15 +19,15 @@ import { Tooltip } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Arrow/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Placement/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

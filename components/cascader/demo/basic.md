@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -179,4 +179,4 @@ Select a location from a country → state/province → city hierarchy.
 }
 ```
 
-</demo>
+</Demo>

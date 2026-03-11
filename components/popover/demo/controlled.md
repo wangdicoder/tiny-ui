@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Controlled dialog
 
@@ -32,4 +32,4 @@ Use `visible` prop to control the display of the card.
 };
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Horizontal
 
@@ -16,4 +16,4 @@ Divider default type is `horizontal`. Support inner text inside Divider.
 </>
 ```
 
-</demo>
+</Demo>

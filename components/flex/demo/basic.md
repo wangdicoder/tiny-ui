@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic Layout
 
@@ -30,4 +30,4 @@ Use `vertical` to control the direction. Default is horizontal.
 }
 ```
 
-</demo>
+</Demo>

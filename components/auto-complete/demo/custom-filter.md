@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Filter
 
@@ -29,4 +29,4 @@ Use `filterOption` to implement custom filtering logic.
 }
 ```
 
-</demo>
+</Demo>

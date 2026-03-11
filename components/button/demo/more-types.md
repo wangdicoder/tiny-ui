@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### More Types
 
@@ -13,4 +13,4 @@ Different colors represent different meanings.
 </Flex>
 ```
 
-</demo>
+</Demo>

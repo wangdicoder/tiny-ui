@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Icon
 
@@ -58,4 +58,4 @@ class IconExample extends React.PureComponent {
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Heading
 
@@ -20,4 +20,4 @@ Display title in different levels.
 }
 ```
 
-</demo>
+</Demo>

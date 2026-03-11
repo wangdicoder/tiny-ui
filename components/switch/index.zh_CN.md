@@ -21,17 +21,17 @@ import { Switch } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Text/>
     <Size/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Loading/>
     <Disabled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

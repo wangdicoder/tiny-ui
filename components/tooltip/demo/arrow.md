@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disable Arrow
 
@@ -10,4 +10,4 @@ Set `arrow={false}` to hide arrow.
 </Tooltip> 
 ```
 
-</demo>
+</Demo>

@@ -17,16 +17,16 @@ import { Link } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Underline/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Disabled/>
     <External/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

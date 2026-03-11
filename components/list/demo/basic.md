@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -32,4 +32,4 @@ A simple bordered list with header, footer, and meta layout.
 }
 ```
 
-</demo>
+</Demo>

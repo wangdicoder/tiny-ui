@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Editable Tabs
 
@@ -39,4 +39,4 @@ Add and remove tabs dynamically with the `editable-card` type.
 }
 ```
 
-</demo>
+</Demo>

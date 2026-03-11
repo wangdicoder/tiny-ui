@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Rich Items
 
@@ -47,4 +47,4 @@ List items with avatars, multiple actions, and a timestamp on the right.
 }
 ```
 
-</demo>
+</Demo>

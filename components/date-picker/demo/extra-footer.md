@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Extra Footer
 
@@ -15,4 +15,4 @@ Render extra content in the panel footer.
 }
 ```
 
-</demo>
+</Demo>

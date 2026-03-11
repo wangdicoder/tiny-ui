@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Top Navigation
 
@@ -34,4 +34,4 @@ Horizontal top navigation menu.
 </Menu>
 ```
 
-</demo>
+</Demo>

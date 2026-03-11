@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Vertical mode
 
@@ -38,4 +38,4 @@ Use `direction` to create a vertical slider.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Group
 
@@ -22,4 +22,4 @@
 }
 ```
 
-</demo>
+</Demo>

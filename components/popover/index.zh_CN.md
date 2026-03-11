@@ -21,16 +21,16 @@ import { Popover } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Placement/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Trigger/>
     <Controlled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

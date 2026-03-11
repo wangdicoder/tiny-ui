@@ -20,17 +20,17 @@ import { ColorPicker } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Format/>
     <Alpha/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Disabled/>
     <Trigger/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

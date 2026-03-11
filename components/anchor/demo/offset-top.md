@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Offset Top
 
@@ -42,4 +42,4 @@ Use `offsetTop` to set a pixel threshold before a section becomes active. A sect
 }
 ```
 
-</demo>
+</Demo>

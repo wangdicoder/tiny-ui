@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### With Icon
 
@@ -13,4 +13,4 @@ Use a customised icon for `Step`.
 </Steps>
 ```
 
-</demo>
+</Demo>

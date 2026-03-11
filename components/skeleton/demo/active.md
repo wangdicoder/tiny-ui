@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Active
 
@@ -13,4 +13,4 @@ Set `active={true}` to activate the Shimmer effect.
 </>
 ```
 
-</demo>
+</Demo>

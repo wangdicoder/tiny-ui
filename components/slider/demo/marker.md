@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Marker
 
@@ -39,4 +39,4 @@ Display marker on the slider bar.
 }
 ```
 
-</demo>
+</Demo>

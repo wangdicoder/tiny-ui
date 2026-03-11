@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### With Icon
 
@@ -16,4 +16,4 @@ Using an icon replaces a text or combination.
 </Breadcrumb>
 ```
 
-</demo>
+</Demo>

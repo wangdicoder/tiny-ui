@@ -1,10 +1,9 @@
-<demo>
+<Demo>
 
 ### Basic
 
 Basic modal.
 
-<!--start-code-->
 
 ```jsx live
 () => {
@@ -31,4 +30,4 @@ Basic modal.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Loading state
 
@@ -32,4 +32,4 @@ Control the loading state.
 }
 ```
 
-</demo>
+</Demo>

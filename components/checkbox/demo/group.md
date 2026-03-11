@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Checkbox Group
 
@@ -18,4 +18,4 @@ A group of checkbox components.
 }
 ```
 
-</demo>
+</Demo>

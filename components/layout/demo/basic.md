@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic Structure
 
@@ -80,4 +80,4 @@ Classic page layouts.
 };
 ```
 
-</demo>
+</Demo>

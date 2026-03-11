@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -8,4 +8,4 @@ A disabled color picker.
 <ColorPicker defaultValue="#722ed1" disabled />
 ```
 
-</demo>
+</Demo>

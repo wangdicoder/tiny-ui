@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Option Groups
 
@@ -31,4 +31,4 @@ Use `OptGroup` to group options together.
 }
 ```
 
-</demo>
+</Demo>

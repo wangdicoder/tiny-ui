@@ -28,21 +28,21 @@ const { Bar, Circle } = Progress;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <ProgressBar/>
     <ProgressCircle/>
     <InternalText/>
     <Active/>
     <LinearGradient/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Dynamic/>
     <CustomText/>
     <Reverse/>
     <SquareLinecaps/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

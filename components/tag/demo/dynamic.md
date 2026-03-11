@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Add & Remove Dynamically
 
@@ -68,4 +68,4 @@ Adding or removing a set of tags dynamically.
 }
 ```
 
-</demo>
+</Demo>

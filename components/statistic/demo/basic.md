@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -16,4 +16,4 @@ Display a statistic with title and formatted value.
 }
 ```
 
-</demo>
+</Demo>

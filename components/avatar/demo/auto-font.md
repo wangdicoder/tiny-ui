@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Auto set font size
 
@@ -31,4 +31,4 @@ For letter type Avatar, when the letters are too long to display, the font size 
 };
 ```
 
-</demo>
+</Demo>

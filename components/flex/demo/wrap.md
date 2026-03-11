@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Wrap
 
@@ -14,4 +14,4 @@ Flex items wrap automatically when `wrap` is set.
 )
 ```
 
-</demo>
+</Demo>

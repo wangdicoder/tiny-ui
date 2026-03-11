@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Callback
 
@@ -10,4 +10,4 @@ Callback with affixed state.
 </Sticky>
 ```
 
-</demo>
+</Demo>

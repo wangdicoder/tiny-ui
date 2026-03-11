@@ -14,7 +14,7 @@ import HomePage from './containers/home';
 import GuidePage from './containers/guide';
 import ComponentsPage from './containers/components';
 
-const basename = (process.env.PUBLIC_PATH || '/').replace(/\/$/, '');
+const basename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 
 const AppInner = (): React.ReactElement => {
   const { locale } = useLocaleContext();

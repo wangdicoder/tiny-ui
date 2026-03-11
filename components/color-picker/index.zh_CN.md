@@ -16,11 +16,11 @@ import { ColorPicker } from 'tiny-ui';
 
 ## 代码演示
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -17,18 +17,18 @@ import { Tabs } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Card/>
     <Editable/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Disabled/>
     <Position/>
     <Extra/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

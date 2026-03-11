@@ -13,7 +13,7 @@ const slugifyLink = (name) => {
 };
 
 export const components = {
-  wrapper: ({ history, location, match, ...props }) => <div {...props} className="markdown" />,
+  wrapper: (props) => <div {...props} className="markdown" />,
   h1: (props) => <h1 {...props} className="markdown__heading-1" />,
   h2: ({ children, ...props }) => (
     <h2 {...props} className="markdown__heading-2" id={slugifyLink(children)}>
@@ -43,11 +43,21 @@ export const components = {
   ul: (props) => <ul {...props} className="markdown__list" />,
   li: (props) => <li {...props} className="markdown__list-item" />,
   blockquote: (props) => <blockquote {...props} className="markdown__blockquote" />,
-  inlineCode: (props) => <code {...props} className="markdown__inline-code" />,
-  pre: (props) => <div {...props} className="markdown__pre-container" />,
-  code: (props) => <CodeBlock {...props} />,
-  // Customised tags
-  layout: (props) => <div {...props} className="markdown__layout" />,
-  column: (props) => <div {...props} className="markdown__column" />,
-  demo: (props) => <section {...props} className="markdown__demo" />,
+  pre: ({ children, live, ...rest }) => {
+    if (live && React.isValidElement(children)) {
+      const { className, children: code } = children.props;
+      return (
+        <div className="markdown__pre-container">
+          <CodeBlock className={className} live>{code}</CodeBlock>
+        </div>
+      );
+    }
+    return <div {...rest} className="markdown__pre-container">{children}</div>;
+  },
+  code: ({ className, ...props }) =>
+    className ? <CodeBlock className={className} {...props} /> : <code {...props} className="markdown__inline-code" />,
+  // Customised tags (PascalCase for MDX v3 provider resolution)
+  Layout: (props) => <div {...props} className="markdown__layout" />,
+  Column: (props) => <div {...props} className="markdown__column" />,
+  Demo: (props) => <section {...props} className="markdown__demo" />,
 };

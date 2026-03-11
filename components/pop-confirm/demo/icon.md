@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Customised Icon
 
@@ -13,4 +13,4 @@ Set `icon` props to customize the icon.
 </PopConfirm>
 ```
 
-</demo>
+</Demo>

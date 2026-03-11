@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Extra info
 
@@ -31,4 +31,4 @@ Use `hrlper` and `notice` to provide more field info.
 </Form>
 ```
 
-</demo>
+</Demo>

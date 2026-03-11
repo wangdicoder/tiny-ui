@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -46,4 +46,4 @@ Display the document sample.
 }
 ```
 
-</demo>
+</Demo>

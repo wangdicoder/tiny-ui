@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Different sizes
 
@@ -32,4 +32,4 @@
 }
 ```
 
-</demo>
+</Demo>

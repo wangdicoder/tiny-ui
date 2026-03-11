@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### To customize the position of modal
 
@@ -48,4 +48,4 @@ Use `centered` or `top` or other styles to set position of modal dialog.
 }
 ```
 
-</demo>
+</Demo>

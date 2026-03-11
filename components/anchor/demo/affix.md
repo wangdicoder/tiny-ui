@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Affix
 
@@ -42,4 +42,4 @@ Set `affix` to enable sticky positioning.
 }
 ```
 
-</demo>
+</Demo>

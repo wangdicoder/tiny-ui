@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Hide Button
 
@@ -10,4 +10,4 @@ The suffix button can be hidden.
 </div>
 ```
 
-</demo>
+</Demo>

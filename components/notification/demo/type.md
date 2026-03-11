@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Different types of notification
 
@@ -27,4 +27,4 @@ A notification box with a icon at the left side.
 }
 ```
 
-</demo>
+</Demo>

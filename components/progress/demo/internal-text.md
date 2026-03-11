@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Internal Text
 
@@ -20,4 +20,4 @@ Set `innerText` to display the text inside the bar.
 }
 ```
 
-</demo>
+</Demo>

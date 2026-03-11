@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Virtual Scroll
 
@@ -33,4 +33,4 @@ Render large tables efficiently with virtual scrolling. The header stays fixed w
 }
 ```
 
-</demo>
+</Demo>

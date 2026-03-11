@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Rendering
 
@@ -29,4 +29,4 @@ Use `renderItem` to customize each item's display.
 }
 ```
 
-</demo>
+</Demo>

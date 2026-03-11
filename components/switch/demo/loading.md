@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Loading
 
@@ -28,4 +28,4 @@ Mark a pending state of switch.
 }
 ```
 
-</demo>
+</Demo>

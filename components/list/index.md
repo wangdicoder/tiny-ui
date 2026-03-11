@@ -22,19 +22,19 @@ import { List } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Actions/>
     <Grid/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Sizes/>
     <Loading/>
     <Virtual/>
     <Pagination/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -50,7 +50,7 @@ import { List } from 'tiny-ui';
 | bordered   | show border                      | boolean                                 | false   |
 | split      | show divider between items       | boolean                                 | true    |
 | size       | list size                        | 'sm' \| 'md' \| 'lg'                   | md      |
-| grid       | grid layout configuration        | { gutter?: number, column?: number }    |         |
+| grid       | grid layout configuration        | \{ gutter?: number, column?: number \}    |         |
 | virtual    | enable virtual scrolling         | boolean                                 | false   |
 | height     | container height (required when virtual) | number                           |         |
 | itemHeight | height of each item in px (virtual mode) | number                           |         |

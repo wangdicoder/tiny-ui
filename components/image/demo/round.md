@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Rounded Image
 
@@ -8,4 +8,4 @@ Display a rounded image.
 <Image round src="/avatar/avatar2.png"/>
 ```
 
-</demo>
+</Demo>

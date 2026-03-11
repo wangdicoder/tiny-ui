@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Customised icon.
 
@@ -17,4 +17,4 @@ Pass `icon` attribute to set the icon.
 />
 ```
 
-</demo>
+</Demo>

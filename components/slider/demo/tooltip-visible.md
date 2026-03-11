@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Control visible of ToolTip
 
@@ -17,4 +17,4 @@ When `tooltipVisible` is true, `ToolTip` will always show even if dragging or ho
 }
 ```
 
-</demo>
+</Demo>

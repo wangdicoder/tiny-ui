@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Formatter
 
@@ -26,4 +26,4 @@ Use `formatter` to fully customize the value display.
 }
 ```
 
-</demo>
+</Demo>

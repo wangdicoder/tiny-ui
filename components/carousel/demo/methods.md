@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Ref Methods
 
@@ -34,4 +34,4 @@ Use `ref` to access `goTo`, `next`, and `prev` methods for programmatic control.
 }
 ```
 
-</demo>
+</Demo>

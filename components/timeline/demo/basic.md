@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -13,4 +13,4 @@ Basic timeline.
 </Timeline>
 ```
 
-</demo>
+</Demo>

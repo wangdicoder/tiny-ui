@@ -16,13 +16,13 @@ import { Keyboard } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-  <column>
-  </column>
-</layout>
+  </Column>
+  <Column>
+  </Column>
+</Layout>
 
 ## API
 

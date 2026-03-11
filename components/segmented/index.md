@@ -19,16 +19,16 @@ import { Segmented } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <IconDemo/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Size/>
     <Disabled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

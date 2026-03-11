@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -21,4 +21,4 @@ Click the button to toggle between available and disabled states.
 }
 ```
 
-</demo>
+</Demo>

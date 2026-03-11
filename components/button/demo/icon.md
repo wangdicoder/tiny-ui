@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Icon Button
 
@@ -13,4 +13,4 @@ Use icons to add more meaning to Button. You can use icon alone to save some spa
 </Flex>
 ```
 
-</demo>
+</Demo>

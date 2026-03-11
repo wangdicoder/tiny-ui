@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Align
 
@@ -42,4 +42,4 @@ Item align.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Placement
 
@@ -48,4 +48,4 @@ class PlacementExample extends React.PureComponent {
 }
 ```
 
-</demo>
+</Demo>

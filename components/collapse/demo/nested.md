@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Nested panel
 
@@ -34,4 +34,4 @@
 }
 ```
 
-</demo>
+</Demo>

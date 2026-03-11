@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Blur the container
 
@@ -32,4 +32,4 @@ Use `blurred` to control the container overlay.
 }
 ```
 
-</demo>
+</Demo>

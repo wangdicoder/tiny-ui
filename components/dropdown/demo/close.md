@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Different approaches to hide the menu 
 
@@ -52,4 +52,4 @@ class CloseExample extends React.PureComponent {
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Placement
 
@@ -58,4 +58,4 @@ Set the placement of the dropdown menu. The default placement is `bottom-end`.
 }
 ```
 
-</demo>
+</Demo>

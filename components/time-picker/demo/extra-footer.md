@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Extra Footer
 
@@ -25,4 +25,4 @@ Render extra content at the bottom of the dropdown panel.
 }
 ```
 
-</demo>
+</Demo>

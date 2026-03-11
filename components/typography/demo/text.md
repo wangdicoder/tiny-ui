@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Text
 
@@ -31,4 +31,4 @@ HTML contains several elements for defining text with a special meaning. `Text` 
 }
 ```
 
-</demo>
+</Demo>

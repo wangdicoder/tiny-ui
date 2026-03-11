@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Active
 
@@ -14,4 +14,4 @@ Set `active` to allow the card always in elevation.
 </Card>
 ```
 
-</demo>
+</Demo>

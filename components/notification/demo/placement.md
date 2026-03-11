@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Placement
 
@@ -30,4 +30,4 @@ A notification box can appear from the `topRight`, `bottomRight`, `bottomLeft` o
 }
 ```
 
-</demo>
+</Demo>

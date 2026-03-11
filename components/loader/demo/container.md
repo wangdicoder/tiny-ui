@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Inside a container
 
@@ -23,4 +23,4 @@ A Loader in a container.
 }
 ```
 
-</demo>
+</Demo>

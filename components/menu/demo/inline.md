@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Inline Navigation
 
@@ -34,4 +34,4 @@ Inline navigation menu.
 </Menu>
 ```
 
-</demo>
+</Demo>

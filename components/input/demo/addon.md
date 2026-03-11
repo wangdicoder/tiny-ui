@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Addon
 
@@ -41,4 +41,4 @@ Using `Addon` example.
 }
 ```
 
-</demo>
+</Demo>

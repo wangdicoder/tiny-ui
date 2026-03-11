@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Order
 
@@ -33,4 +33,4 @@ Change the element sort by `order`.
 }
 ```
 
-</demo>
+</Demo>

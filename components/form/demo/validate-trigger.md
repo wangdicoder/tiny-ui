@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Validation Trigger
 
@@ -69,4 +69,4 @@ There are three different triggers for the form validation: `onChange`, `onBlur`
 }
 ```
 
-</demo>
+</Demo>

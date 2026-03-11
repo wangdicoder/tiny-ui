@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic Usage
 
@@ -17,4 +17,4 @@ The simplest use
 </Breadcrumb>
 ```
 
-</demo>
+</Demo>

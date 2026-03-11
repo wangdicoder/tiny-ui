@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Size
 
@@ -14,4 +14,4 @@ Different sizes of input number components.
 </div>
 ```
 
-</demo>
+</Demo>

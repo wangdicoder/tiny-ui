@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### With icon
 
@@ -18,4 +18,4 @@ A relevant icon will make information clearer and more friendly. Use `iconSize` 
 </>
 ```
 
-</demo>
+</Demo>

@@ -20,16 +20,16 @@ import { Anchor } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Affix/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Nested/>
     <OffsetTop/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -43,7 +43,7 @@ import { Anchor } from 'tiny-ui';
 | offsetBottom | Pixels to offset from bottom                 | number                                                                     | -            |
 | getContainer | Scrolling container                          | () => HTMLElement                                                          | () => window |
 | onChange     | Callback when active link changes            | (currentActiveLink: string) => void                                        | -            |
-| onClick      | Callback when a link is clicked              | (e: MouseEvent, link: { title: string; href: string }) => void            | -            |
+| onClick      | Callback when a link is clicked              | (e: MouseEvent, link: \{ title: string; href: string \}) => void            | -            |
 
 ### Anchor.Link
 

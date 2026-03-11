@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Block Button
 
@@ -23,4 +23,4 @@ block property will make the button fit to its parent width.
 };
 ```
 
-</demo>
+</Demo>

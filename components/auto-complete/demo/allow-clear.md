@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Allow Clear
 
@@ -25,4 +25,4 @@ Set `allowClear` to show a clear button when the input has a value.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Placement
 
@@ -105,4 +105,4 @@ There are 12 placement options available.
 }
 ```
 
-</demo>
+</Demo>

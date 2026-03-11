@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -15,4 +15,4 @@ Basic usage of Tabs with the `items` API.
 }
 ```
 
-</demo>
+</Demo>

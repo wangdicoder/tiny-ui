@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Form method
 
@@ -42,4 +42,4 @@ Call form method with `Form.useForm`.
 };
 ```
 
-</demo>
+</Demo>

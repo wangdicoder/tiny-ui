@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Gutter
 
@@ -53,4 +53,4 @@ Use the `gutter` property of `Row` as grid spacing. It is recommended to set it 
 }
 ```
 
-</demo>
+</Demo>

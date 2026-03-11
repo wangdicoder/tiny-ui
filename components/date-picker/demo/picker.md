@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Picker Type
 
@@ -16,4 +16,4 @@ Use `picker` to switch between date, month, and year selection.
 }
 ```
 
-</demo>
+</Demo>

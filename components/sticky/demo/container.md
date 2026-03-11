@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Container to scroll.
 
@@ -31,4 +31,4 @@ Set a target for `Sticky`, which is listen to scroll event of target element (de
 }
 ```
 
-</demo>
+</Demo>

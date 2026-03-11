@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Customized Close Text
 
@@ -8,4 +8,4 @@ Replace the default icon with customized text.
 <Alert closeText="close now">Info alert</Alert>;
 ```
 
-</demo>
+</Demo>

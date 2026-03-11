@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Other Form Controls
 
@@ -103,4 +103,4 @@ A versatile example.
 </Form>
 ```
 
-</demo>
+</Demo>

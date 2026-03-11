@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Precision
 
@@ -15,4 +15,4 @@ Set decimal precision with `precision`, and use `controls` to always show step b
 }
 ```
 
-</demo>
+</Demo>

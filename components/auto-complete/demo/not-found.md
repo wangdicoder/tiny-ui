@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Not Found Content
 
@@ -24,4 +24,4 @@ Use `notFoundContent` to display a message when no options match.
 }
 ```
 
-</demo>
+</Demo>

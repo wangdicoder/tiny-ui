@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic card
 
@@ -14,4 +14,4 @@ A basic card containing a title, content and an extra corner content.
 </Card>
 ```
 
-</demo>
+</Demo>

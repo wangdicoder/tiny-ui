@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Simple card
 
@@ -14,4 +14,4 @@ A simple card only containing a content area.
 </Card>
 ```
 
-</demo>
+</Demo>

@@ -21,18 +21,18 @@ import { Cascader } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Hover/>
     <Sizes/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <DefaultValue/>
     <Disabled/>
     <ChangeOnSelect/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

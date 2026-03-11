@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom spinning indicator
 
@@ -8,4 +8,4 @@ Use custom loading indicator.
 <Loader indicator={<Icon name="sync" size={25} spin/>}/>
 ```
 
-</demo>
+</Demo>

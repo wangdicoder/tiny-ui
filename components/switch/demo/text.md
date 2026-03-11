@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Text & customise element
 
@@ -28,4 +28,4 @@ With text and customise element.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Progress circular
 
@@ -25,4 +25,4 @@ A circular progress.
 }
 ```
 
-</demo>
+</Demo>

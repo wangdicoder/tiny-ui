@@ -14,14 +14,14 @@ import { Icon } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic />
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Spin />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 
 ## List of icons

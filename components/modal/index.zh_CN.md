@@ -19,16 +19,16 @@ import { Modal } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <CustomisedFooter/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Position/>
     <Animation/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

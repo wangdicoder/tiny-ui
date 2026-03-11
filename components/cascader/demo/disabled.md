@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled Options
 
@@ -49,4 +49,4 @@ Disable specific options or the entire cascader.
 }
 ```
 
-</demo>
+</Demo>

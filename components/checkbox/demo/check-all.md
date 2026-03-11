@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Check all
 
@@ -54,4 +54,4 @@ class CheckAllExample extends React.PureComponent {
 }
 ```
 
-</demo>
+</Demo>

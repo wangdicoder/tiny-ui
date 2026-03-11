@@ -4,11 +4,12 @@ import pkg from '../../../../../package.json';
 
 const { version, repository } = pkg;
 import { Icon } from '../../../../../components';
+import logoSvg from '../../../assets/logo/logo.svg';
 
 export const Footer = (): React.ReactElement => (
   <footer className="footer">
     <div className="footer__main">
-      <img src={require('../../../assets/logo/logo.svg')} alt="logo" width={40} />
+      <img src={logoSvg} alt="logo" width={40} />
       <h3 className="footer__title">Tiny UI</h3>
       <p className="footer__version">- v{version} -</p>
     </div>

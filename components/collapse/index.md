@@ -25,18 +25,18 @@ const { Panel } = Collapse;
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Accordion/>
     <Nested/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Borderless/>
     <Deletable/>
     <Extra/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Three sizes of Input
 
@@ -14,4 +14,4 @@ There are three sizes of an Input box: `lg`, `md` and `sm`.
 </div>
 ```
 
-</demo>
+</Demo>

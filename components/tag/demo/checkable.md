@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Checkable
 
@@ -24,4 +24,4 @@
 }
 ```
 
-</demo>
+</Demo>

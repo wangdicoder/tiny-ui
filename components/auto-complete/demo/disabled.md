@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -25,4 +25,4 @@ A disabled AutoComplete.
 }
 ```
 
-</demo>
+</Demo>

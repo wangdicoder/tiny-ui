@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Title
 
@@ -10,4 +10,4 @@ Additional title for alert message.
 </Alert>
 ```
 
-</demo>
+</Demo>

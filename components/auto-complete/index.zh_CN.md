@@ -22,24 +22,24 @@ import { AutoComplete } from 'tiny-ui';
 
 ## 示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Disabled/>
     <NotFound/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <CustomFilter/>
     <AllowClear/>
     <Size/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
 | 属性                      | 说明                                     | 类型                                                          | 默认值  |
 | ------------------------- | ---------------------------------------- | ------------------------------------------------------------- | ------- |
-| options                   | 自动完成的数据源                         | { value, label?, disabled? }[]                                | []      |
+| options                   | 自动完成的数据源                         | \{ value, label?, disabled? \}[]                                | []      |
 | value                     | 受控的输入值                             | string                                                        | -       |
 | defaultValue              | 初始输入值                               | string                                                        | ''      |
 | placeholder               | 输入框占位文本                           | string                                                        | -       |

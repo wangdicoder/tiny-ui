@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Nest
 
@@ -20,4 +20,4 @@ Can be used nested.
 </Split>
 ```
 
-</demo>
+</Demo>

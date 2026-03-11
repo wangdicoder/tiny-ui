@@ -19,10 +19,16 @@ import { Space } from 'tiny-ui';
 
 ## Examples
 
-<Basic />
-<Vertical />
-<Size />
-<Align />
+<Layout>
+  <Column>
+    <Basic />
+    <Vertical />
+  </Column>
+  <Column>
+    <Size />
+    <Align />
+  </Column>
+</Layout>
 
 ## API
 

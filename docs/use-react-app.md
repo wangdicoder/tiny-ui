@@ -28,7 +28,6 @@ Edit `src/App.tsx` to import a Button component from tiny-ui:
 
 ```tsx
 import { Button } from 'tiny-ui';
-import 'tiny-ui/dist/styles/index.css';
 
 const App = () => {
   return (
@@ -41,4 +40,4 @@ const App = () => {
 export default App;
 ```
 
-You should now see a primary button on the page. Vite tree-shakes the ES module build automatically, so only the components you import end up in your bundle.
+You should now see a primary button on the page. Styles are automatically imported alongside each component — no separate CSS import needed. Vite tree-shakes the ES module build automatically, so only the components you import (and their styles) end up in your bundle.

@@ -20,16 +20,16 @@ import { Anchor } from 'tiny-ui';
 
 ## 示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Affix/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Nested/>
     <OffsetTop/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -43,7 +43,7 @@ import { Anchor } from 'tiny-ui';
 | offsetBottom | 距离窗口底部达到指定偏移量后触发   | number                                                                     | -            |
 | getContainer | 指定滚动的容器                     | () => HTMLElement                                                          | () => window |
 | onChange     | 监听锚点链接改变                   | (currentActiveLink: string) => void                                        | -            |
-| onClick      | 点击链接时的回调                   | (e: MouseEvent, link: { title: string; href: string }) => void            | -            |
+| onClick      | 点击链接时的回调                   | (e: MouseEvent, link: \{ title: string; href: string \}) => void            | -            |
 
 ### Anchor.Link
 

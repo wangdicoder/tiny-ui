@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -10,4 +10,4 @@ The simplest usage.
 </Tooltip> 
 ```
 
-</demo>
+</Demo>

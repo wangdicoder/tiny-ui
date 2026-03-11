@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Success
 
@@ -20,4 +20,4 @@ Show successful results.
 />
 ```
 
-</demo>
+</Demo>

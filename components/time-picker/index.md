@@ -20,21 +20,21 @@ import { TimePicker } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Controlled/>
     <Format/>
     <DisabledTime/>
     <ExtraFooter/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Size/>
     <Step/>
     <Disabled/>
     <HideDisabled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Trigger mode
 
@@ -18,4 +18,4 @@ Open the menu by clicking.
 </Dropdown>
 ```
 
-</demo>
+</Demo>

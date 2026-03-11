@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### With clear icon
 
@@ -8,4 +8,4 @@ Allow to clear all content.
 <Input placeholder="input with clear icon" clearable/>
 ```
 
-</demo>
+</Demo>

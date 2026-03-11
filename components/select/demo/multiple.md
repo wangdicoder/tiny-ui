@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Multiple
 
@@ -29,4 +29,4 @@ Multiple selection mode displays selected items as tags. Set `mode="multiple"` a
 }
 ```
 
-</demo>
+</Demo>

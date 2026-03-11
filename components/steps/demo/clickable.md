@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Clickable
 
@@ -13,4 +13,4 @@ Click to switch step.
 </Steps>
 ```
 
-</demo>
+</Demo>

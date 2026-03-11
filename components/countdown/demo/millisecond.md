@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Millisecond
 
@@ -23,4 +23,4 @@ Allow to display millisecond
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -21,4 +21,4 @@ Disable the entire control or individual options.
 }
 ```
 
-</demo>
+</Demo>

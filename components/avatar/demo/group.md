@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Group
 
@@ -38,4 +38,4 @@ Include multiple avatar items inside an `AvatarGroup` container.
 }
 ```
 
-</demo>
+</Demo>

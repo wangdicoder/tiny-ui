@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Fade Effect
 
@@ -24,4 +24,4 @@ Use fade transition instead of scrolling.
 }
 ```
 
-</demo>
+</Demo>

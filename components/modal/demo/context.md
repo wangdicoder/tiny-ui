@@ -1,10 +1,9 @@
-<demo>
+<Demo>
 
 ### Context
 
 Manage multiple modals by ID with `Modal.Provider` and `Modal.useModal`.
 
-<!--start-code-->
 
 ```jsx live
 () => {
@@ -47,4 +46,4 @@ Manage multiple modals by ID with `Modal.Provider` and `Modal.useModal`.
 }
 ```
 
-</demo>
+</Demo>

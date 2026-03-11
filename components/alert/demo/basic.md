@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -8,4 +8,4 @@ The simplest usage for short messages.
 <Alert>Info alert</Alert>;
 ```
 
-</demo>
+</Demo>

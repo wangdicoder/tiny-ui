@@ -19,16 +19,16 @@ import { SpeedDial } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic />
     <Click />
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Direction />
     <CustomIcon />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

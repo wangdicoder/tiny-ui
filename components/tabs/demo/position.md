@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Tab Position
 
@@ -30,4 +30,4 @@ Tabs can be placed on the top, bottom, left, or right.
 }
 ```
 
-</demo>
+</Demo>

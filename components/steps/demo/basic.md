@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -12,4 +12,4 @@ The most basic step bar.
 </Steps>
 ```
 
-</demo>
+</Demo>

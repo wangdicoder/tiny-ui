@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Presence Indicator
 
@@ -21,4 +21,4 @@ Avatar also support presence indicators. Add `online`, `busy`, `away` or `offlin
 }
 ```
 
-</demo>
+</Demo>

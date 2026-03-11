@@ -19,15 +19,15 @@ import { Empty } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Customised/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <NoDesc/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

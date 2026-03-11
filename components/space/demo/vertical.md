@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Vertical Space
 
@@ -15,4 +15,4 @@ Distribute components in a vertical space.
 </Space>
 ```
 
-</demo>
+</Demo>

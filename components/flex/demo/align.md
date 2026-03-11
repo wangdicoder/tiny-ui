@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Alignment
 
@@ -36,4 +36,4 @@ Set `justify` and `align` to control alignment of items.
 }
 ```
 
-</demo>
+</Demo>

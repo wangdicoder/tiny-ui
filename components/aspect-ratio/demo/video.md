@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Embed Video
 
@@ -15,4 +15,4 @@ A `4:3` video.
 </AspectRatio>
 ```
 
-</demo>
+</Demo>

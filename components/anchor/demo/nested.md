@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Nested Links
 
@@ -51,4 +51,4 @@ Anchor supports nested `Anchor.Link` for multi-level navigation. Parent links hi
 }
 ```
 
-</demo>
+</Demo>

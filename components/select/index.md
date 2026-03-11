@@ -26,19 +26,19 @@ const { Option, OptGroup } = Select;
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Search/>
     <Multiple/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Sizes/>
     <Groups/>
     <Custom/>
     <Render/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -59,9 +59,9 @@ const { Option, OptGroup } = Select;
 | size                    | Size of selector                                 | 'sm' &#124; 'md' &#124; 'lg'                                 | 'md'        |
 | maxTagCount             | Max number of tags displayed in multiple mode    | number                                                        | -           |
 | notFoundContent         | Content shown when no options match              | ReactNode                                                     | 'No data'   |
-| options                 | Data-driven options (alternative to children)    | { value, label?, disabled? }[]                                | -           |
-| optionRender            | Custom option rendering                          | (option, { index }) => ReactNode                              | -           |
-| labelRender             | Custom selected label rendering                  | ({ label, value }) => ReactNode                               | -           |
+| options                 | Data-driven options (alternative to children)    | \{ value, label?, disabled? \}[]                                | -           |
+| optionRender            | Custom option rendering                          | (option, \{ index \}) => ReactNode                              | -           |
+| labelRender             | Custom selected label rendering                  | (\{ label, value \}) => ReactNode                               | -           |
 | placeholder             | Placeholder text                                 | string                                                        | -           |
 | disabled                | Whether disabled                                 | boolean                                                       | false       |
 | defaultOpen             | Initial open state of dropdown                   | boolean                                                       | false       |

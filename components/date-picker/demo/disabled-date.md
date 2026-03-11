@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled Date
 
@@ -20,4 +20,4 @@ Use `disabledDate` to make specific dates unselectable. This example disables al
 }
 ```
 
-</demo>
+</Demo>

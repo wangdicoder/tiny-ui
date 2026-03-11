@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Underline
 
@@ -12,4 +12,4 @@ By default, there is an underline style when hovering a link, but it can be remo
 </>
 ```
 
-</demo>
+</Demo>

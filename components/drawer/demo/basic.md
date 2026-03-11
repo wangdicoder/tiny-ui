@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -27,4 +27,4 @@ Basic drawer.
 };
 ```
 
-</demo>
+</Demo>

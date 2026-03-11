@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Info
 
@@ -16,4 +16,4 @@ Show processing results.
 />
 ```
 
-</demo>
+</Demo>

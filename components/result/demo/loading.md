@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Loading
 
@@ -16,4 +16,4 @@ The result is in a loading status.
 />
 ```
 
-</demo>
+</Demo>

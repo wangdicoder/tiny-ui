@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Form Layout
 
@@ -40,4 +40,4 @@ There are three layouts for form: `horizontal`, `vertical` and `inline`.
 }
 ```
 
-</demo>
+</Demo>

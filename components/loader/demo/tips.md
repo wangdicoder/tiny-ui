@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Customized description
 
@@ -25,4 +25,4 @@ Customized description content.
 </>
 ```
 
-</demo>
+</Demo>

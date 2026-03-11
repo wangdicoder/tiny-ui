@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### With Icons
 
@@ -18,4 +18,4 @@ Add icons to segmented options using the `icon` property.
 }
 ```
 
-</demo>
+</Demo>

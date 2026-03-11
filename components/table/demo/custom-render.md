@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Render
 
@@ -55,4 +55,4 @@ Use the `render` property on columns to customize cell content with tags, links,
 }
 ```
 
-</demo>
+</Demo>

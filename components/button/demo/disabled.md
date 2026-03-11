@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -53,4 +53,4 @@ Add the `disabled` property to disable the Button.
 }
 ```
 
-</demo>
+</Demo>

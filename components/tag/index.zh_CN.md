@@ -24,17 +24,17 @@ const { CheckableTag } = Tag;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Dynamic/>
     <Checkable/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Color/>
     <Controlled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

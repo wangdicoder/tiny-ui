@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -12,4 +12,4 @@ A classic mode. File selection dialog pops up when upload button is clicked.
 </Upload>
 ```
 
-</demo>
+</Demo>

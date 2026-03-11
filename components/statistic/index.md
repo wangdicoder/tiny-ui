@@ -18,15 +18,15 @@ import { Statistic } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Formatter/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Style/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

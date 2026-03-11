@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Vertical
 
@@ -12,4 +12,4 @@ A simple step bar in the vertical direction.
 </Steps>
 ```
 
-</demo>
+</Demo>

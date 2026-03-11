@@ -22,19 +22,19 @@ import { Table } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Selection/>
     <Pagination/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Sorting/>
     <CustomRender/>
     <Sizes/>
     <Virtual/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -51,7 +51,7 @@ import { Table } from 'tiny-ui';
 | virtual       | enable virtual scrolling             | boolean                                         | false   |
 | height        | container height (required when virtual) | number                                      |         |
 | itemHeight    | height of each row in px (virtual mode)  | number                                      |         |
-| scroll        | scrollable area                      | { x?: number, y?: number }                      |         |
+| scroll        | scrollable area                      | \{ x?: number, y?: number \}                      |         |
 | rowSelection  | row selection config                 | RowSelection                                    |         |
 | pagination    | pagination config (false to disable) | false \| TablePaginationConfig                  |         |
 | onChange      | sort/pagination change callback      | (pagination, sorter) => void                    |         |

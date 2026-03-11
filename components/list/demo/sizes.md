@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Sizes
 
@@ -41,4 +41,4 @@ Toggle between `sm`, `md`, and `lg` to adjust item density.
 }
 ```
 
-</demo>
+</Demo>

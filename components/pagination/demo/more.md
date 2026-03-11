@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### More Pages
 
@@ -8,4 +8,4 @@ More pages.
 <Pagination defaultCurrent={6} total={500} />
 ```
 
-</demo>
+</Demo>

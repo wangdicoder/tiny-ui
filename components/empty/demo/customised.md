@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Customised
 
@@ -19,4 +19,4 @@ Customize image source, image size, description and extra content.
   </Empty>
 ```
 
-</demo>
+</Demo>

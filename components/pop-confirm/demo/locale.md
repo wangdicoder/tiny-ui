@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Locale text
 
@@ -10,4 +10,4 @@ Set `confirmText` and `cancelText` props to customise button's labels.
 </PopConfirm>
 ```
 
-</demo>
+</Demo>

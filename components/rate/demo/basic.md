@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -8,4 +8,4 @@ The simplest usage.
 <Rate />
 ```
 
-</demo>
+</Demo>

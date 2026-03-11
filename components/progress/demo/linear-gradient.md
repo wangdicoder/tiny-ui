@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom linear gradient
 
@@ -19,4 +19,4 @@ A package of `linear-gradient`. Pass a color array to set the `strokeColor`.
 }
 ```
 
-</demo>
+</Demo>

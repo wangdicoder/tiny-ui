@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Arrows
 
@@ -24,4 +24,4 @@ Show navigation arrows on hover.
 }
 ```
 
-</demo>
+</Demo>

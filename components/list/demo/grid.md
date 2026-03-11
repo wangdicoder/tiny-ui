@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Grid
 
@@ -47,4 +47,4 @@ Render items in a responsive card grid — great for showcasing products, projec
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Clear star
 
@@ -12,4 +12,4 @@ Support set allow to clear star when click again.
 </>
 ```
 
-</demo>
+</Demo>

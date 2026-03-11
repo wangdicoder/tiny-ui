@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Centered timeline
 
@@ -13,4 +13,4 @@ Center the timeline bar.
 </Timeline>
 ```
 
-</demo>
+</Demo>

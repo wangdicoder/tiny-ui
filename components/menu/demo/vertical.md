@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Vertical Navigation
 
@@ -34,4 +34,4 @@ A vertical menu with inline submenus.
 </Menu>
 ```
 
-</demo>
+</Demo>

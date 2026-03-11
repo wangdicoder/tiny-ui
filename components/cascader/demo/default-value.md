@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Default Value
 
@@ -65,4 +65,4 @@ Pre-select a value and customize how the selection is displayed.
 }
 ```
 
-</demo>
+</Demo>

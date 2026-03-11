@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -23,4 +23,4 @@ A basic example.
 }
 ```
 
-</demo>
+</Demo>

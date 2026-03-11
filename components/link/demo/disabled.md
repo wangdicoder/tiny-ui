@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -8,4 +8,4 @@ Disabled state of link.
 <span>This is a disabled <Link disabled href="https://tiny-ui.dev/">link</Link>.</span>
 ```
 
-</demo>
+</Demo>

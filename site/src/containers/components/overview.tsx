@@ -5,18 +5,10 @@ import { Card, Tag } from '../../../../components';
 import { getComponentMenu } from '../../routers';
 import { useLocaleContext } from '../../context/locale-context';
 
-const svgCache: Record<string, string> = {};
+const iconModules = import.meta.glob<string>('../../assets/icon/*.svg', { eager: true, import: 'default' });
 
 function getSvgSrc(route: string): string | undefined {
-  if (svgCache[route] !== undefined) return svgCache[route] || undefined;
-  try {
-    const src = require(`../../assets/icon/${route}.svg`);
-    svgCache[route] = src;
-    return src;
-  } catch {
-    svgCache[route] = '';
-    return undefined;
-  }
+  return iconModules[`../../assets/icon/${route}.svg`];
 }
 
 const ComponentOverview = () => {

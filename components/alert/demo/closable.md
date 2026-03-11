@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Closable
 
@@ -13,4 +13,4 @@ Display a close button to allow to close the alert. Also, it is a smooth unmount
 </>
 ```
 
-</demo>
+</Demo>

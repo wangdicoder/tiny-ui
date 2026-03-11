@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Selectable
 
@@ -53,4 +53,4 @@ class SelectableExample extends React.PureComponent {
 }
 ```
 
-</demo>
+</Demo>

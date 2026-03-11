@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Extra action
 
@@ -24,4 +24,4 @@ Add an extra content to allow more action.
 }
 ```
 
-</demo>
+</Demo>

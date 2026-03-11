@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Borderless
 
@@ -30,4 +30,4 @@ A borderless style of Collapse.
 }
 ```
 
-</demo>
+</Demo>

@@ -18,15 +18,15 @@ import { InputPassword } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <HideButton/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Strength />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

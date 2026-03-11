@@ -22,17 +22,17 @@ import { Rate } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Half/>
     <Clearable/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Disabled/>
     <Character/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

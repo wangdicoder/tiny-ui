@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled Time Options
 
@@ -20,4 +20,4 @@ Use `disabledTime` to make certain hours, minutes, or seconds unselectable.
 }
 ```
 
-</demo>
+</Demo>

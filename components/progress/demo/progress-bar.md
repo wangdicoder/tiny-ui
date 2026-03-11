@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Progress bar
 
@@ -21,4 +21,4 @@ A standard progress bar.
 }
 ```
 
-</demo>
+</Demo>

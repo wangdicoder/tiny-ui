@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Extra Content
 
@@ -46,4 +46,4 @@ Add extra elements in the panel header corner with the `extra` prop.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Vertical
 
@@ -14,4 +14,4 @@ Vertical layout.
 </Descriptions>
 ```
 
-</demo>
+</Demo>

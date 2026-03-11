@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Switch Step
 
@@ -32,4 +32,4 @@ Control the step.
 }
 ```
 
-</demo>
+</Demo>

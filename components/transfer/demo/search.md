@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Search
 
@@ -28,4 +28,4 @@ Transfer with a search box.
 };
 ```
 
-</demo>
+</Demo>

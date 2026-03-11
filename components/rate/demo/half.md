@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Half star
 
@@ -8,4 +8,4 @@ Support select half star.
 <Rate half/>
 ```
 
-</demo>
+</Demo>

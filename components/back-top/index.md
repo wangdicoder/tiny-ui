@@ -18,14 +18,14 @@ import { BackTop } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Custom/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

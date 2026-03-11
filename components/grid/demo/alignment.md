@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Alignment
 
@@ -75,4 +75,4 @@ Child elements vertically aligned.
 }
 ```
 
-</demo>
+</Demo>

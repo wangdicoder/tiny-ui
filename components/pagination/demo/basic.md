@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -8,4 +8,4 @@ Basic pagination.
 <Pagination defaultCurrent={1} total={50} />
 ```
 
-</demo>
+</Demo>

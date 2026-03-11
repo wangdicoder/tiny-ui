@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Inner card
 
@@ -23,4 +23,4 @@ It can be placed inside the ordinary card to display the information of the mult
 </Card>
 ```
 
-</demo>
+</Demo>

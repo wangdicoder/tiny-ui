@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Error
 
@@ -17,4 +17,4 @@ A complicated error feedback.
 />
 ```
 
-</demo>
+</Demo>

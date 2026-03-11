@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Prefix & Suffix
 
@@ -31,4 +31,4 @@ Add prefix or suffix icons inside input.
 }
 ```
 
-</demo>
+</Demo>

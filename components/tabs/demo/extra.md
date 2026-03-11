@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Extra Content
 
@@ -32,4 +32,4 @@ Add extra content to the tab bar with `tabBarExtraContent`. Use icons in tab lab
 }
 ```
 
-</demo>
+</Demo>

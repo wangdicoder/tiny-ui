@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Loading Button
 
@@ -12,4 +12,4 @@ Click the button to load data, then the button displays a loading state.
 </Flex>
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Animation
 
@@ -45,4 +45,4 @@ Use `animation` to set different popup animation.
 }
 ```
 
-</demo>
+</Demo>

@@ -8,6 +8,7 @@ import { useLocaleContext } from '../../context/locale-context';
 import { ThemeToggle } from './theme-toggle';
 import { LocaleToggle } from './locale-toggle';
 import { ColorCustomizer } from './color-customizer';
+import logoSvg from '../../assets/logo/logo.svg';
 
 const { version, repository } = pkg;
 
@@ -30,7 +31,7 @@ export const Header = (): React.ReactElement => {
         </button>
         <NavLink to="/" className="header__link">
           <div className="header__logo">
-            <img src={require('../../assets/logo/logo.svg')} alt="logo" width={35} />
+            <img src={logoSvg} alt="logo" width={35} />
             <span className="header__title">Tiny UI</span>
           </div>
         </NavLink>

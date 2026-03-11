@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Type
 
@@ -17,4 +17,4 @@ There are `default`, `primary`, `outline`, `ghost` and `link` button.
 </Flex>
 ```
 
-</demo>
+</Demo>

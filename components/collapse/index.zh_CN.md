@@ -24,17 +24,17 @@ const { Panel } = Collapse;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Accordion/>
     <Nested/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Borderless/>
     <Deletable/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

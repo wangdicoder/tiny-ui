@@ -23,16 +23,16 @@ const { Item } = Timeline;
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Customised/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Color/>
     <Centered/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

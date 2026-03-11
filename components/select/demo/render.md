@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Rendering
 
@@ -40,4 +40,4 @@ Use `optionRender` to customize dropdown items and `labelRender` to customize th
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -8,4 +8,4 @@ The simplest use.
 <Radio>I'm a radio</Radio>
 ```
 
-</demo>
+</Demo>

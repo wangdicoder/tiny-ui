@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Size
 
@@ -12,4 +12,4 @@ Two different sizes of pagination.
 </>
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Dots
 
@@ -12,4 +12,4 @@ Display dots on the slider bar.
 </>
 ```
 
-</demo>
+</Demo>

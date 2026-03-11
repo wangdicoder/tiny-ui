@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Drag and Drop
 
@@ -19,4 +19,4 @@ You can drag files to a specific area, to upload. Alternatively, you can also up
 </Upload>
 ```
 
-</demo>
+</Demo>

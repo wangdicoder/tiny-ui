@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -8,4 +8,4 @@ A simple textarea.
 <Textarea rows={4} placeholder="Leave something here..."/>
 ```
 
-</demo>
+</Demo>

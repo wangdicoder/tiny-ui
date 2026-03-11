@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -26,4 +26,4 @@ Disabled state of Switch.
 }
 ```
 
-</demo>
+</Demo>

@@ -21,16 +21,16 @@ import { PopConfirm } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Placement/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Locale/>
     <Icon/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

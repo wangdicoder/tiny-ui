@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Format
 
@@ -24,4 +24,4 @@ Toggle between `hex`, `rgb`, and `hsb` output formats.
 }
 ```
 
-</demo>
+</Demo>

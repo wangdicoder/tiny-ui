@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Integrate with `StrengthIndicator`
 
@@ -56,4 +56,4 @@ class Example extends React.PureComponent{
 }
 ```
 
-</demo>
+</Demo>

@@ -22,16 +22,16 @@ const { Group } = Checkbox;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Group/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <CheckAll/>
     <Disabled/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -18,4 +18,4 @@ A very simple dropdown.
 </Dropdown>
 ```
 
-</demo>
+</Demo>

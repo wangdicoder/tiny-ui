@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Control the close time
 
@@ -20,4 +20,4 @@ If set the `duration` value to 0, the notification will never close automaticall
 }
 ```
 
-</demo>
+</Demo>

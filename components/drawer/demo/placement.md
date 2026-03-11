@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Placement
 
@@ -46,4 +46,4 @@ const { Group } = Radio;
 };
 ```
 
-</demo>
+</Demo>

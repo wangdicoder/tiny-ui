@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -8,4 +8,4 @@ A basic example.
 <Slider defaultValue={50}/>
 ```
 
-</demo>
+</Demo>

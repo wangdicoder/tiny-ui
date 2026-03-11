@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Controlled
 
@@ -16,4 +16,4 @@ Controlled page number.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Vertical divider
 
@@ -15,4 +15,4 @@ Top & Bottom.
 </Split>
 ```
 
-</demo>
+</Demo>

@@ -22,15 +22,15 @@ import { Drawer } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Level/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Placement/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

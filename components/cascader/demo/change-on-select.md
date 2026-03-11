@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Change On Select
 
@@ -58,4 +58,4 @@ By default, only selecting a leaf node triggers `onChange`. Set `changeOnSelect`
 }
 ```
 
-</demo>
+</Demo>

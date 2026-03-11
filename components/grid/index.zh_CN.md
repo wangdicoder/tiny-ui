@@ -42,11 +42,11 @@ import { Row, Col } from 'tiny-ui';
 | span      | 栅格占位格数（共 24 格）            | number                                        | -       |
 | offset    | 栅格左侧的偏移格数          | number                                        | 0       |
 | order     | 栅格排列顺序                                  | number                                        | 0       |
-| xs        | 屏幕 < 480px 时的配置或对象               | number &#124; { span, offset, order }         | -       |
-| sm        | 屏幕 >= 600px 时的配置或对象              | number &#124; { span, offset, order }         | -       |
-| md        | 屏幕 >= 840px 时的配置或对象              | number &#124; { span, offset, order }         | -       |
-| lg        | 屏幕 >= 960px 时的配置或对象              | number &#124; { span, offset, order }         | -       |
-| xl        | 屏幕 >= 1280px 时的配置或对象             | number &#124; { span, offset, order }         | -       |
-| xxl       | 屏幕 >= 1440px 时的配置或对象             | number &#124; { span, offset, order }         | -       |
+| xs        | 屏幕 < 480px 时的配置或对象               | number &#124; \{ span, offset, order \}         | -       |
+| sm        | 屏幕 >= 600px 时的配置或对象              | number &#124; \{ span, offset, order \}         | -       |
+| md        | 屏幕 >= 840px 时的配置或对象              | number &#124; \{ span, offset, order \}         | -       |
+| lg        | 屏幕 >= 960px 时的配置或对象              | number &#124; \{ span, offset, order \}         | -       |
+| xl        | 屏幕 >= 1280px 时的配置或对象             | number &#124; \{ span, offset, order \}         | -       |
+| xxl       | 屏幕 >= 1440px 时的配置或对象             | number &#124; \{ span, offset, order \}         | -       |
 | style     | 容器的样式对象                        | CSSProperties                                 | -       |
 | className | 容器的 className                           | string                                        | -       |

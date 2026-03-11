@@ -19,14 +19,14 @@ const { Item } = Flip;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Direction/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

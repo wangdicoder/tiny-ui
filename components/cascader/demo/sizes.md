@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Sizes
 
@@ -63,4 +63,4 @@ Three sizes to match different form densities.
 }
 ```
 
-</demo>
+</Demo>

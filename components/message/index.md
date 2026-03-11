@@ -21,16 +21,16 @@ import { Message } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Duration/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Type/>
     <Extra/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

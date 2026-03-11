@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Color
 
@@ -13,4 +13,4 @@ Set the color of dots via `dotStyle`.
 </Timeline>
 ```
 
-</demo>
+</Demo>

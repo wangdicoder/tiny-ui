@@ -21,15 +21,15 @@ const { Group } = Radio;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Disabled/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Group/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

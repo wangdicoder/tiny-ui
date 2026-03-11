@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -32,4 +32,4 @@ Basic usage. Type to see email suffix suggestions.
 }
 ```
 
-</demo>
+</Demo>

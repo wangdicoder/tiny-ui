@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Controlled
 
@@ -17,4 +17,4 @@ Fully controlled with `value` and `onChange`.
 }
 ```
 
-</demo>
+</Demo>

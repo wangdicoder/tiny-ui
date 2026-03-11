@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Standalone
 
@@ -20,4 +20,4 @@ Used in standalone when children is empty.
 }
 ```
 
-</demo>
+</Demo>

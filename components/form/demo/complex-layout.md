@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### More complex layout
 
@@ -41,4 +41,4 @@ Sometimes it could need to put two fields in a same line.
 }
 ```
 
-</demo>
+</Demo>

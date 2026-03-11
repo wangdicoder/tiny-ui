@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -30,4 +30,4 @@ Different sizes setting by `size` and two shapes are available.
 }
 ```
 
-</demo>
+</Demo>

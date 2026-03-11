@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Reverse direction
 
@@ -35,4 +35,4 @@ Set `reverse` to control the direction.
 }
 ```
 
-</demo>
+</Demo>

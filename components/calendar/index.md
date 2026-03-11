@@ -16,11 +16,11 @@ import { Calendar } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

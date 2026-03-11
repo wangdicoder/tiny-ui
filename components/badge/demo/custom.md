@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Colorful badge
 
@@ -16,4 +16,4 @@ Set `color` to display the dot badge with different colors. `processing` can sho
 </>
 ```
 
-</demo>
+</Demo>

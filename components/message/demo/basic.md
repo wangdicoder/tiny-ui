@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Normal prompt
 
@@ -16,4 +16,4 @@ Normal message for information.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Icon
 
@@ -23,4 +23,4 @@ Customize the FAB icon and the open icon.
 }
 ```
 
-</demo>
+</Demo>

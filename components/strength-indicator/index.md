@@ -18,15 +18,15 @@ import { StrengthIndicator } from 'tiny-ui';
 
 ## Examples
 
-<layout>
- <column>
+<Layout>
+ <Column>
    <Basic />
    <Label />
- </column>
- <column>
+ </Column>
+ <Column>
    <Password />
- </column>
-</layout>
+ </Column>
+</Layout>
 
 ## API
 

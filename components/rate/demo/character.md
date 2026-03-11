@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Other Character
 
@@ -16,4 +16,4 @@ Replace the default star to other character like alphabet, digit, iconfont or ev
 </>
 ```
 
-</demo>
+</Demo>

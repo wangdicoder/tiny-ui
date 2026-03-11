@@ -18,15 +18,15 @@ import { Tree } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic />
     <Selectable />
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Icon />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

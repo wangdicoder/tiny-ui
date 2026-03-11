@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Value Style
 
@@ -30,4 +30,4 @@ Customize value appearance with `valueStyle` and `groupSeparator`.
 }
 ```
 
-</demo>
+</Demo>

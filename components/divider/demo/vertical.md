@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Vertical
 
@@ -14,4 +14,4 @@ Use `type="vertical"` make it vertical.
 </>
 ```
 
-</demo>
+</Demo>

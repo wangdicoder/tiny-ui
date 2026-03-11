@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### No track
 
@@ -8,4 +8,4 @@ Set `track={false}` to hide the track.
 <Slider defaultValue={30} track={false}/>
 ```
 
-</demo>
+</Demo>

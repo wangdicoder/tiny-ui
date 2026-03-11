@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Accordion
 
@@ -30,4 +30,4 @@ Only one panel can be expanded at a time.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Hoverable
 
@@ -14,4 +14,4 @@ Set `hoverable` to allow the card having a hover effect.
 </Card>
 ```
 
-</demo>
+</Demo>

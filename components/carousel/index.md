@@ -15,16 +15,16 @@ import { Carousel } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Fade/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Arrows/>
     <Methods/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Customise tooltip
 
@@ -8,4 +8,4 @@ Use `tipFormatter` to format content of `Tooltip`.
 <Slider defaultValue={50} tipFormatter={(val) => `${val}%`}/>
 ```
 
-</demo>
+</Demo>

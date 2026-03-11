@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Sizes
 
@@ -21,4 +21,4 @@ Three sizes: `sm`, `md` (default), and `lg`.
 </div>
 ```
 
-</demo>
+</Demo>

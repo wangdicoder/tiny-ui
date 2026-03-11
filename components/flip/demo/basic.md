@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -29,4 +29,4 @@ A basic flip
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom text format
 
@@ -45,4 +45,4 @@ Set a custom text by setting the `format` prop.
 }
 ```
 
-</demo>
+</Demo>

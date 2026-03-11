@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic usage
 
@@ -36,4 +36,4 @@ Basic Form data control.
 </Form>
 ```
 
-</demo>
+</Demo>

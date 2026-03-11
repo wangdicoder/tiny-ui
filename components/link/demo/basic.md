@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -8,4 +8,4 @@ A simple usage.
 <span>This is a <Link href="https://tiny-ui.dev/">link</Link>.</span>
 ```
 
-</demo>
+</Demo>

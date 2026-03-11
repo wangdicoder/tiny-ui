@@ -24,19 +24,19 @@ const { Content } = Card;
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <NoBorder/>
     <Simple/>
     <Hoverable/>
     <Active/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <InnerCard/>
     <Image/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

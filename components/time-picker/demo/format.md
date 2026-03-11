@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Format
 
@@ -15,4 +15,4 @@ Use `format` to control what's displayed. Omitting seconds hides the seconds col
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -23,4 +23,4 @@ Simplest usage of Segmented control.
 }
 ```
 
-</demo>
+</Demo>

@@ -17,14 +17,14 @@ import { Textarea } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Count/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

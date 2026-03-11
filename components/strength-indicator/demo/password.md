@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Integrate with `InputPassword`
 
@@ -56,4 +56,4 @@ class PasswordExample extends React.PureComponent{
 }
 ```
 
-</demo>
+</Demo>

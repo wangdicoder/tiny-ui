@@ -19,16 +19,16 @@ import { InputNumber } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Disabled/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Size/>
     <Precision/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

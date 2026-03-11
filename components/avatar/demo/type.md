@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Type
 
@@ -23,4 +23,4 @@ Image, Icon and letter are supported, and the latter two kinds avatar can have c
 }
 ```
 
-</demo>
+</Demo>

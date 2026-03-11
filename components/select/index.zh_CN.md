@@ -25,18 +25,18 @@ const { Option, OptGroup } = Select;
 
 ## 示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Search/>
     <Multiple/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Sizes/>
     <Groups/>
     <Custom/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -57,9 +57,9 @@ const { Option, OptGroup } = Select;
 | size                    | 选择器尺寸                               | 'sm' &#124; 'md' &#124; 'lg'                                 | 'md'        |
 | maxTagCount             | 多选模式下最多显示的标签数               | number                                                        | -           |
 | notFoundContent         | 无匹配选项时显示的内容                   | ReactNode                                                     | 'No data'   |
-| options                 | 数据驱动的选项（children 的替代方式）    | { value, label?, disabled? }[]                                | -           |
-| optionRender            | 自定义选项渲染                           | (option, { index }) => ReactNode                              | -           |
-| labelRender             | 自定义选中标签渲染                       | ({ label, value }) => ReactNode                               | -           |
+| options                 | 数据驱动的选项（children 的替代方式）    | \{ value, label?, disabled? \}[]                                | -           |
+| optionRender            | 自定义选项渲染                           | (option, \{ index \}) => ReactNode                              | -           |
+| labelRender             | 自定义选中标签渲染                       | (\{ label, value \}) => ReactNode                               | -           |
 | placeholder             | 占位文本                                 | string                                                        | -           |
 | disabled                | 是否禁用                                 | boolean                                                       | false       |
 | defaultOpen             | 下拉菜单的初始展开状态                   | boolean                                                       | false       |

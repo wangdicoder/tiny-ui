@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -17,4 +17,4 @@ A full-size calendar with date selection.
 }
 ```
 
-</demo>
+</Demo>

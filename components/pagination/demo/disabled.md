@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -12,4 +12,4 @@ Disabled style.
 </>
 ```
 
-</demo>
+</Demo>

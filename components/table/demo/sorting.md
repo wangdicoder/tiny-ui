@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Sorting
 
@@ -30,4 +30,4 @@ Click column headers to cycle through ascending, descending, and unsorted states
 }
 ```
 
-</demo>
+</Demo>

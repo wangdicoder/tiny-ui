@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Combination
 
@@ -27,4 +27,4 @@ A complex example.
 </ConfigProvider>
 ```
 
-</demo>
+</Demo>

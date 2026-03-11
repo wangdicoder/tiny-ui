@@ -24,21 +24,21 @@ import { Slider } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Dual/>
     <Dots/>
     <Marker/>
     <Disabled/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Vertical/>
     <CustomisedTooltip/>
     <TooltipVisible/>
     <Track/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -48,7 +48,7 @@ import { Slider } from 'tiny-ui';
 | defaultValue      | the default value of slider.                                                                  | number &#124; [number, number]        |               |
 | min               | the minimum value the slider can slide to.                                                    | number                                | 0             |
 | max               | the maximum value the slider can slide to.                                                    | number                                | 100           |
-| marks             | tick mark of Slider.                                                                          | { number: ReactNode } &#124; { number: { style: CSSProperty, label: ReactNode } }   |     |
+| marks             | tick mark of Slider.                                                                          | \{ number: ReactNode \} &#124; \{ number: \{ style: CSSProperty, label: ReactNode \} \}   |     |
 | dots              | display dots on the track.                                                                    | boolean                               | false         |
 | direction         | the slider direction.                                                                         | enum: `horizontal` &#124; `verical`   | `horizontal`  |
 | step              | the granularity the slider can step through values.                                           | number                                | 1             |

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Four ways to trigger
 
@@ -34,4 +34,4 @@ Mouse to click, right click, focus and move in.
 }
 ```
 
-</demo>
+</Demo>

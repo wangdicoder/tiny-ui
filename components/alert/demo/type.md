@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### More types
 
@@ -13,4 +13,4 @@ There are 4 types of Alert: `success`, `info`, `warning`, `error`. The default t
 </>
 ```
 
-</demo>
+</Demo>

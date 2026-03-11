@@ -19,15 +19,15 @@ import { Divider } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Horizontal/>
     <Vertical/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <AlignTitle/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

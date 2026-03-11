@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Pagination
 
@@ -29,4 +29,4 @@ Table with built-in pagination. Data is automatically sliced by page.
 }
 ```
 
-</demo>
+</Demo>

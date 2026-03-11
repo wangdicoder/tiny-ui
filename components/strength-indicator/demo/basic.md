@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -37,4 +37,4 @@ class BasicExample extends React.PureComponent{
 }
 ```
 
-</demo>
+</Demo>

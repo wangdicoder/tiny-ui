@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### No border
 
@@ -16,4 +16,4 @@ A borderless card on a gray background.
 </div>
 ```
 
-</demo>
+</Demo>

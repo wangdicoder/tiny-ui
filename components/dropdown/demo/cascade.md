@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Cascading menu
 
@@ -27,4 +27,4 @@ The menu has multiple levels.
 </Dropdown>
 ```
 
-</demo>
+</Demo>

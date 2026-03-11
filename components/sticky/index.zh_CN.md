@@ -18,15 +18,15 @@ import { Sticky } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic />
     <Container />
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Callback />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Container to scroll
 
@@ -25,4 +25,4 @@ Set a target, which is listen to scroll event of target element (default is `win
 }
 ```
 
-</demo>
+</Demo>

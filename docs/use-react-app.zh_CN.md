@@ -28,7 +28,6 @@ $ npm install tiny-ui
 
 ```tsx
 import { Button } from 'tiny-ui';
-import 'tiny-ui/dist/styles/index.css';
 
 const App = () => {
   return (
@@ -41,4 +40,4 @@ const App = () => {
 export default App;
 ```
 
-现在你应该能在页面上看到一个主按钮。Vite 会自动对 ES 模块进行 tree-shaking，因此只有你引入的组件才会被打包。
+现在你应该能在页面上看到一个主按钮。样式会随组件自动导入，无需单独引入 CSS 文件。Vite 会自动对 ES 模块进行 tree-shaking，因此只有你引入的组件及其样式才会被打包。

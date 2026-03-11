@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -29,4 +29,4 @@ A simple table with columns, sorting, and row selection.
 }
 ```
 
-</demo>
+</Demo>

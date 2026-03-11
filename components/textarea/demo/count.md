@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Limit & count
 
@@ -12,4 +12,4 @@ Use `limit` to limit the word amount. Also you can use `counter` to customise li
 />
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Size
 
@@ -53,4 +53,4 @@ Customised sizes to fit in a variety of containers.
 };
 ```
 
-</demo>
+</Demo>

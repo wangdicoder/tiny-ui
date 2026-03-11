@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Responsive
 
@@ -36,4 +36,4 @@ Columns respond to viewport width using `xs`, `sm`, `md`, `lg`, `xl`, `xxl` brea
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Border
 
@@ -35,4 +35,4 @@ Descriptions with border.
 </Descriptions>
 ```
 
-</demo>
+</Demo>

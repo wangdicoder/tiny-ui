@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -13,4 +13,4 @@ Simplest Skeleton usage.
 </>
 ```
 
-</demo>
+</Demo>

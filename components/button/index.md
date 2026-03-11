@@ -25,20 +25,20 @@ const { Group } = Button;
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Type/>
     <MoreTypes/>
     <Size/>
     <ButtonGroup/>
     <Loading/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Icon/>
     <Disabled/>
     <Block/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

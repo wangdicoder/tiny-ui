@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Virtual Scroll
 
@@ -33,4 +33,4 @@ Render large lists efficiently with virtual scrolling. Only visible items are re
 }
 ```
 
-</demo>
+</Demo>

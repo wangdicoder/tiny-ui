@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -15,4 +15,4 @@ A disabled tab.
 }
 ```
 
-</demo>
+</Demo>

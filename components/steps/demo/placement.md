@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Label Placement
 
@@ -14,4 +14,4 @@ Use `labelPlacement` to set the direction of title and description.
 </Steps>
 ```
 
-</demo>
+</Demo>

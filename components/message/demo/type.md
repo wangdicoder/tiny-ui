@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Different types of message
 
@@ -22,4 +22,4 @@ Messages of `info`, `success`, `warning`, `error` and `loading` types.
 }
 ```
 
-</demo>
+</Demo>

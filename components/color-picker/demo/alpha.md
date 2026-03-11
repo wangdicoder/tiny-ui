@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Alpha Channel
 
@@ -17,4 +17,4 @@ Enable the alpha slider with `showAlpha`.
 }
 ```
 
-</demo>
+</Demo>

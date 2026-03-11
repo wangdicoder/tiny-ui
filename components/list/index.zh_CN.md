@@ -20,17 +20,17 @@ import { List } from 'tiny-ui';
 
 ## 代码演示
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Actions/>
     <Grid/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Sizes/>
     <Loading/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -46,7 +46,7 @@ import { List } from 'tiny-ui';
 | bordered   | 显示边框           | boolean                                 | false   |
 | split      | 显示分割线         | boolean                                 | true    |
 | size       | 列表尺寸           | 'sm' \| 'md' \| 'lg'                   | md      |
-| grid       | 网格布局配置       | { gutter?: number, column?: number }    |         |
+| grid       | 网格布局配置       | \{ gutter?: number, column?: number \}    |         |
 | pagination | 分页配置           | false \| ListPaginationProps            |         |
 
 ### List.Item

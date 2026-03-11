@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -19,4 +19,4 @@ Disabled the button.
 </SplitButton>
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Custom Rendering & Loading
 
@@ -44,4 +44,4 @@ Use the `options` prop for data-driven rendering, `optionRender` for custom opti
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Media
 
@@ -16,4 +16,4 @@ A card using an image to reinforce the content.
 </Card>
 ```
 
-</demo>
+</Demo>

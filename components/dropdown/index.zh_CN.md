@@ -22,19 +22,19 @@ import { Dropdown } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic />
     <Other />
     <Cascade />
     <Arrow />
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Placement />
     <Trigger />
     <Close />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

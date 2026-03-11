@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -21,4 +21,4 @@ A basic SpeedDial that expands on hover.
 }
 ```
 
-</demo>
+</Demo>

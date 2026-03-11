@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### External
 
@@ -12,4 +12,4 @@ It will open a new window when clicking the link by default. Set `external={fals
 </>
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Size
 
@@ -32,4 +32,4 @@ Use `size` to set different size of select
 }
 ```
 
-</demo>
+</Demo>

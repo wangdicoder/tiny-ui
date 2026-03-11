@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Card Type
 
@@ -15,4 +15,4 @@ Card style tabs.
 }
 ```
 
-</demo>
+</Demo>

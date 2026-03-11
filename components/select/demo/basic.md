@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -25,4 +25,4 @@ Basic usage of Select.
 }
 ```
 
-</demo>
+</Demo>

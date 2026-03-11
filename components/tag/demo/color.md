@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Colorful Tag
 
@@ -31,4 +31,4 @@ We preset a series of colorful tag styles for use in different situations. You c
 </>
 ```
 
-</demo>
+</Demo>

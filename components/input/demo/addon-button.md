@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Addon with Button
 
@@ -43,4 +43,4 @@ Add a button in `Addon` component to compose an input form, like search function
 }
 ```
 
-</demo>
+</Demo>

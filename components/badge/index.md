@@ -20,17 +20,17 @@ import { Badge } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Overflow/>
     <Standalone/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Dot/>
     <Custom/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -26,17 +26,17 @@ import { Notification } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Duration/>
     <Icon/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Placement/>
     <Type/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

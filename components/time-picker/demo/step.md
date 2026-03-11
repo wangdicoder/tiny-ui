@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Step Intervals
 
@@ -17,4 +17,4 @@ Show time options at custom intervals.
 }
 ```
 
-</demo>
+</Demo>

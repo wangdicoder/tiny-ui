@@ -19,15 +19,15 @@ import { SplitButton } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic />
     <Disabled />
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Placement />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

@@ -14,14 +14,14 @@ import { Icon } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic />
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Spin />
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 
 ## 图标列表

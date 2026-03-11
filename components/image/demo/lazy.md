@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Lazy Load
 
@@ -15,4 +15,4 @@ Set `lazy` and `placehoulder` properties to implement the lazy load.
 </div>
 ```
 
-</demo>
+</Demo>

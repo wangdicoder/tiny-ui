@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic Usage
 
@@ -15,4 +15,4 @@ Distribute components in a horizontal space.
 </Space>
 ```
 
-</demo>
+</Demo>

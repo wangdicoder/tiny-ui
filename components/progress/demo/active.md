@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Active Background Style
 
@@ -17,4 +17,4 @@ Set `backgroundType` to display different bar backgrounds.
 }
 ```
 
-</demo>
+</Demo>

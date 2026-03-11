@@ -20,17 +20,17 @@ import { Image } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Size/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Round/>
     <Lazy/>
     <Fallback/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

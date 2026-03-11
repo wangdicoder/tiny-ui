@@ -43,8 +43,8 @@ const { Item, useForm, FormInstance } = Form;
 | ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------- |
 | form              | 经 `Form.useForm()` 创建的表单控制实例。未提供时会自动创建                                     | `FormInstance`                                    | -             |
 | initialValues     | 表单初始化或重置时的默认值                                                                     | object                                            | false         |
-| labelCol          | 标签布局，同 `<Col>` 组件                                                                      | number &#124; { span: number, offset: number }    | 8             |
-| wrapperCol        | 输入控件的布局，同 `labelCol`                                                                  | number &#124; { span: number, offset: number }    | 16            |
+| labelCol          | 标签布局，同 `<Col>` 组件                                                                      | number &#124; \{ span: number, offset: number \}    | 8             |
+| wrapperCol        | 输入控件的布局，同 `labelCol`                                                                  | number &#124; \{ span: number, offset: number \}    | 16            |
 | validateTrigger   | 字段校验触发时机                                                                               | `onChange` &#124; `onBlur` &#124; `onSubmit`      | `onChange`    |
 | layout            | 表单布局方式                                                                                   | `horizontal` &#124; `vertical` &#124; `inline`    | `horizontal`  |
 | onFinish          | 提交表单且数据校验成功后的回调                                                                 | (values) => void                                  | -             |
@@ -65,18 +65,18 @@ const { Item, useForm, FormInstance } = Form;
 | notice            | 类似 `help`，但更醒目                                              | ReactNode                                         | -         |
 | valuePropName     | 子节点的值属性名。例如 `Switch` 的属性为 'checked'                 | string                                            | 'value'   |
 | valueGetter       | 指定如何从事件或其他 `onChange` 参数中获取值                       | (..args: any[]) => any                            | -         |
-| labelCol          | 标签布局                                                          | number &#124; { span: number, offset: number }    | -         |
-| wrapperCol        | 控件布局                                                          | number &#124; { span: number, offset: number }    | -         |
+| labelCol          | 标签布局                                                          | number &#124; \{ span: number, offset: number \}    | -         |
+| wrapperCol        | 控件布局                                                          | number &#124; \{ span: number, offset: number \}    | -         |
 
 ### FormInstance
 
 | 方法              | 说明                                      | 类型                                      |
 | ----------------- | ------------------------------------------------- | ----------------------------------------- |
-| getFieldValues    | 获取一组字段名对应的值                    | () => { [name: string]: any }             |
+| getFieldValues    | 获取一组字段名对应的值                    | () => \{ [name: string]: any \}             |
 | getFieldValue     | 获取指定字段名对应的值                    | (name: string) => any                     |
-| setFieldValues    | 设置一组字段名对应的值                    | ({ [name: string]: any }) => void         |
+| setFieldValues    | 设置一组字段名对应的值                    | (\{ [name: string]: any \}) => void         |
 | setFieldValue     | 设置指定字段名对应的值                    | (name: string, value: any) => void        |
-| getFiledErrors    | 获取一组字段名对应的错误信息              | () => { [name: string]: string[] }        |
+| getFiledErrors    | 获取一组字段名对应的错误信息              | () => \{ [name: string]: string[] \}        |
 | getFieldError     | 获取指定字段名对应的错误信息              | (name: string) => string[]                |
 | setFieldError     | 设置指定字段名对应的错误信息              | (name: string, errors: string[]) => void  |
 | resetFields       | 重置字段为 initialValues                  | () => void                                |

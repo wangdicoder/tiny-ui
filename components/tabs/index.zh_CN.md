@@ -16,17 +16,17 @@ import { Tabs } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Card/>
     <Editable/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Disabled/>
     <Position/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

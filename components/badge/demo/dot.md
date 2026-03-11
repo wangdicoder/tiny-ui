@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Red badge
 
@@ -26,4 +26,4 @@ Display a red badge without a specific count.
 }
 ```
 
-</demo>
+</Demo>

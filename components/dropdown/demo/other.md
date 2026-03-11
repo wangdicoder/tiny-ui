@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Other elements
 
@@ -19,4 +19,4 @@ Divider and disabled menu item.
 </Dropdown>
 ```
 
-</demo>
+</Demo>

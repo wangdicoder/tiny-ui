@@ -22,19 +22,19 @@ import { Loader } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Container/>
     <Tips/>
     <Indicator/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Size/>
     <State/>
     <Blur/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

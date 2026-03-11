@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Radio Group
 
@@ -40,4 +40,4 @@ A group of radio components.
 }
 ```
 
-</demo>
+</Demo>

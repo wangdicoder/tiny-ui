@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Warning
 
@@ -16,4 +16,4 @@ The result of the warning.
 />
 ```
 
-</demo>
+</Demo>

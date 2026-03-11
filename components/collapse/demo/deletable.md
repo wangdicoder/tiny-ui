@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Deletable
 
@@ -30,4 +30,4 @@
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Row Selection
 
@@ -38,4 +38,4 @@ Select rows with checkboxes. Use `rowSelection.type` for radio mode.
 }
 ```
 
-</demo>
+</Demo>

@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic Collapse
 
@@ -34,4 +34,4 @@ By default, any number of panels can be expanded at a time. The first panel is e
 }
 ```
 
-</demo>
+</Demo>

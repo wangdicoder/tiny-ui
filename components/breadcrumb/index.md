@@ -23,15 +23,15 @@ const { Item } = Breadcrumb;
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Separator/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Icon/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

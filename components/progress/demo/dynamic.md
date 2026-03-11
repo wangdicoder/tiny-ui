@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Dynamic progress
 
@@ -31,4 +31,4 @@ Control the value.
 }
 ```
 
-</demo>
+</Demo>

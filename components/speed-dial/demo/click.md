@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Click Trigger
 
@@ -20,4 +20,4 @@ Use `trigger="click"` to open the SpeedDial on click instead of hover.
 }
 ```
 
-</demo>
+</Demo>

@@ -21,18 +21,18 @@ import { Table } from 'tiny-ui';
 
 ## 代码演示
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Selection/>
     <Pagination/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Sorting/>
     <CustomRender/>
     <Sizes/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -46,7 +46,7 @@ import { Table } from 'tiny-ui';
 | loading       | 加载状态             | boolean                                         | false   |
 | bordered      | 显示边框             | boolean                                         | false   |
 | size          | 表格尺寸             | 'sm' \| 'md' \| 'lg'                           | md      |
-| scroll        | 滚动区域             | { x?: number, y?: number }                      |         |
+| scroll        | 滚动区域             | \{ x?: number, y?: number \}                      |         |
 | rowSelection  | 行选择配置           | RowSelection                                    |         |
 | pagination    | 分页配置             | false \| TablePaginationConfig                  |         |
 | onChange      | 排序/分页变化回调    | (pagination, sorter) => void                    |         |

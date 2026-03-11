@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Search
 
@@ -28,4 +28,4 @@ Select with search functionality. Set `showSearch` to enable filtering.
 }
 ```
 
-</demo>
+</Demo>

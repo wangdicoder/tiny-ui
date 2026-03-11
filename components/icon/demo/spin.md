@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Spin
 
@@ -14,4 +14,4 @@ Rotate the icon with animation.
 </>
 ```
 
-</demo>
+</Demo>

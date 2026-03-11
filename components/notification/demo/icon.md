@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Customized Icon
 
@@ -20,4 +20,4 @@ The icon can be customized to any react node.
 }
 ```
 
-</demo>
+</Demo>

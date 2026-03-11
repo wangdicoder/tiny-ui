@@ -43,8 +43,8 @@ const { Item, useForm, FormInstance } = Form;
 | ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------- |
 | form              | form control instance created by `Form.useForm()`. Automatically created when not provided    | `FormInstance`                                    | -             |
 | initialValues     | set value by Form initialisation or reset                                                     | object                                            | false         |
-| labelCol          | label layout, like `<Col>` component                                                          | number &#124; { span: number, offset: number }    | 8             |
-| wrapperCol        | the layout for input controls, same as `labelCol`                                             | number &#124; { span: number, offset: number }    | 16            |
+| labelCol          | label layout, like `<Col>` component                                                          | number &#124; \{ span: number, offset: number \}    | 8             |
+| wrapperCol        | the layout for input controls, same as `labelCol`                                             | number &#124; \{ span: number, offset: number \}    | 16            |
 | validateTrigger   | config field validate trigger                                                                 | `onChange` &#124; `onBlur` &#124; `onSubmit`      | `onChange`    |
 | layout            | form layout                                                                                   | `horizontal` &#124; `vertical` &#124; `inline`    | `horizontal`  |
 | onFinish          | trigger after submitting the form and verifying data successfully                             | (values) => void                                  | -             |
@@ -65,18 +65,18 @@ Form field component for data bidirectional binding, validation and layout.
 | notice            | similar with `help`, but more impressive                                  | ReactNode                                         | -         |
 | valuePropName     | props of children node. For example, the prop of `Switch` is 'checked'.   | string                                            | 'value'   |
 | valueGetter       | specify how to get value from event or other `onChange` arguments         | (..args: any[]) => any                            | -         |
-| labelCol          | the layout of label                                                       | number &#124; { span: number, offset: number }    | -         |
-| wrapperCol        | the layout of controls                                                    | number &#124; { span: number, offset: number }    | -         |
+| labelCol          | the layout of label                                                       | number &#124; \{ span: number, offset: number \}    | -         |
+| wrapperCol        | the layout of controls                                                    | number &#124; \{ span: number, offset: number \}    | -         |
 
 ### FormInstance
 
 | Method            | Description                                       | Type                                      |
 | ----------------- | ------------------------------------------------- | ----------------------------------------- |
-| getFieldValues    | get values by a set of field names                | () => { [name: string]: any }             |
+| getFieldValues    | get values by a set of field names                | () => \{ [name: string]: any \}             |
 | getFieldValue     | get the value by the field name                   | (name: string) => any                     |
-| setFieldValues    | set values by a set of field names                | ({ [name: string]: any }) => void         |
+| setFieldValues    | set values by a set of field names                | (\{ [name: string]: any \}) => void         |
 | setFieldValue     | set the value by the field name                   | (name: string, value: any) => void        |
-| getFiledErrors    | get errors by a set of field names                | () => { [name: string]: string[] }        |
+| getFiledErrors    | get errors by a set of field names                | () => \{ [name: string]: string[] \}        |
 | getFieldError     | get the error messages by the field name          | (name: string) => string[]                |
 | setFieldError     | set the error messages by the field name          | (name: string, errors: string[]) => void  |
 | resetFields       | reset fields to initialValues                     | () => void                                |

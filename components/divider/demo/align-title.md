@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Align Title
 
@@ -13,4 +13,4 @@ Set orientation of divider to left or right, default is `center`.
 </>
 ```
 
-</demo>
+</Demo>

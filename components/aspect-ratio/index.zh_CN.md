@@ -18,15 +18,15 @@ import { AspectRatio } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Video/>
     <Map/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Image/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

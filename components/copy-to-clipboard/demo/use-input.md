@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Copy from input
 
@@ -19,4 +19,4 @@
 )};
 ```
 
-</demo>
+</Demo>

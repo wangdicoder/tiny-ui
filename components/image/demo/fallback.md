@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Fallback
 
@@ -8,4 +8,4 @@ Providing a fallback image for when there is an error loading the src of the ima
 <Image src="" fallback="https://via.placeholder.com/150"/>
 ```
 
-</demo>
+</Demo>

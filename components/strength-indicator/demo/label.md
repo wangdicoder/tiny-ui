@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Label
 
@@ -8,4 +8,4 @@ Display labels.
 <StrengthIndicator labels current={2}/>
 ```
 
-</demo>
+</Demo>

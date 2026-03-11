@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Step
 
@@ -15,4 +15,4 @@ Allow moving by a certain distance.
 </Split>
 ```
 
-</demo>
+</Demo>

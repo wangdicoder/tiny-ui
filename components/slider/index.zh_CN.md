@@ -24,21 +24,21 @@ import { Slider } from 'tiny-ui';
 
 ## 代码示例
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Dual/>
     <Dots/>
     <Marker/>
     <Disabled/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Vertical/>
     <CustomisedTooltip/>
     <TooltipVisible/>
     <Track/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 
@@ -48,7 +48,7 @@ import { Slider } from 'tiny-ui';
 | defaultValue      | 滑块的默认值                                                                                  | number &#124; [number, number]        |               |
 | min               | 滑块可滑动到的最小值                                                                          | number                                | 0             |
 | max               | 滑块可滑动到的最大值                                                                          | number                                | 100           |
-| marks             | 滑块的刻度标记                                                                                | { number: ReactNode } &#124; { number: { style: CSSProperty, label: ReactNode } }   |     |
+| marks             | 滑块的刻度标记                                                                                | \{ number: ReactNode \} &#124; \{ number: \{ style: CSSProperty, label: ReactNode \} \}   |     |
 | dots              | 是否在轨道上显示圆点                                                                          | boolean                               | false         |
 | direction         | 滑块方向                                                                                      | enum: `horizontal` &#124; `verical`   | `horizontal`  |
 | step              | 滑块步进的粒度                                                                                | number                                | 1             |

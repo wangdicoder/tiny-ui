@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -16,4 +16,4 @@
 }  
 ```
 
-</demo>
+</Demo>

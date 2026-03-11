@@ -20,15 +20,15 @@ import { Upload } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <UploadList/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Drag/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

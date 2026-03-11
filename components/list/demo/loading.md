@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Loading
 
@@ -40,4 +40,4 @@ Show a loading indicator while data is being fetched.
 }
 ```
 
-</demo>
+</Demo>

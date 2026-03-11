@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Embed Image
 
@@ -10,4 +10,4 @@ A `ratio=1` image.
 </AspectRatio>
 ```
 
-</demo>
+</Demo>

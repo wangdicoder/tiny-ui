@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### No description
 
@@ -8,4 +8,4 @@ Set `description={false}` to hide description.
 <Empty description={false} />
 ```
 
-</demo>
+</Demo>

@@ -17,18 +17,18 @@ import { DatePicker } from 'tiny-ui';
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Picker/>
     <DisabledDate/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Size/>
     <Disabled/>
     <ExtraFooter/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

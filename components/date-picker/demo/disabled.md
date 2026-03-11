@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled
 
@@ -8,4 +8,4 @@ A disabled date picker.
 <DatePicker disabled defaultValue={new Date(2024, 0, 15)} />
 ```
 
-</demo>
+</Demo>

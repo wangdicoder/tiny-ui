@@ -22,17 +22,17 @@ const { Group } = Avatar;
 
 ## Examples
 
-<layout>
-  <column>
+<Layout>
+  <Column>
     <Basic/>
     <Type/>
     <Group/>
-  </column>
-  <column>
+  </Column>
+  <Column>
     <Presence/>
     <AutoFont/>
-  </column>
-</layout>
+  </Column>
+</Layout>
 
 ## API
 

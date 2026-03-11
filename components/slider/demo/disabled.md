@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Disabled Slider
 
@@ -11,4 +11,4 @@ Disabled Sliders.
 </>
 ```
 
-</demo>
+</Demo>

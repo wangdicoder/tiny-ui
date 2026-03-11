@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -21,4 +21,4 @@ Click the swatch to open the color picker panel.
 }
 ```
 
-</demo>
+</Demo>

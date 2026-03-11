@@ -6,6 +6,8 @@ import { Footer } from './footer';
 import { useLocaleContext } from '../../context/locale-context';
 import { getComponentMenu } from '../../routers';
 import pkg from '../../../../package.json';
+import reactLogoSvg from '../../assets/logo/react-logo.svg';
+import logoSvg from '../../assets/logo/logo.svg';
 
 const { repository } = pkg;
 
@@ -46,13 +48,13 @@ const HomePage = (): React.ReactElement => {
     <div className="home">
       <div className="home__react-login-container">
         <img
-          src={require('../../assets/logo/react-logo.svg')}
+          src={reactLogoSvg}
           alt="react"
           className="home__react-logo"
         />
       </div>
       <div className="home__slider">
-        <img src={require('../../assets/logo/logo.svg')} alt="logo" className="home__logo" />
+        <img src={logoSvg} alt="logo" className="home__logo" />
         <Typography.Heading level={1} className="home__title">Tiny UI</Typography.Heading>
         <Typography.Heading level={2} className="home__subtitle">{s.home.subtitle}</Typography.Heading>
         <Flex gap="sm" className="home__btn-group">

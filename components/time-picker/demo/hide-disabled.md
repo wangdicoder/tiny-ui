@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Hide Disabled Options
 
@@ -19,4 +19,4 @@ Combine `disabledTime` with `hideDisabledOptions` to remove unavailable times fr
 }
 ```
 
-</demo>
+</Demo>

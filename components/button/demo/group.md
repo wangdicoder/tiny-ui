@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Button Group
 
@@ -48,4 +48,4 @@ Buttons can be grouped by placing multiple `Button` components into a `Button.Gr
 }
 ```
 
-</demo>
+</Demo>

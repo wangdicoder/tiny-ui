@@ -1,4 +1,4 @@
-<demo>
+<Demo>
 
 ### Basic
 
@@ -27,4 +27,4 @@ The most basic usage of `Transfer` involves providing the source data and target
 };
 ```
 
-</demo>
+</Demo>
