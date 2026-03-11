@@ -49,7 +49,7 @@ function setThemeMode(next: ThemeMode): void {
 }
 
 // Listen for system preference changes at module level
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   window
     .matchMedia('(prefers-color-scheme: dark)')
     .addEventListener('change', () => {
