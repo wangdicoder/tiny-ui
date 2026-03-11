@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { LinkProps } from './types';
 
-const Link = (props: LinkProps): React.ReactElement => {
+const Link = React.memo((props: LinkProps): React.ReactElement => {
   const {
     disabled = false,
     external = true,
@@ -40,7 +40,7 @@ const Link = (props: LinkProps): React.ReactElement => {
       <span>{children}</span>
     </a>
   );
-};
+});
 
 Link.displayName = 'Link';
 

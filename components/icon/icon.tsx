@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { IconProps } from './types';
 
-const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
+const Icon = React.memo(React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   const {
     name,
     color,
@@ -21,7 +21,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     [`${prefixCls}_spin`]: spin,
   });
   return <i ref={ref} className={cls} style={{ color, fontSize: size, ...style }} {...otherProps} />;
-});
+}));
 
 Icon.displayName = 'Icon';
 

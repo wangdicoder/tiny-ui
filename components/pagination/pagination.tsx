@@ -147,7 +147,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
             type === 'jump-next' ? 'Jump forward 5 pages' :
             `Page ${label}`;
           return (
-            <li key={idx} className={cls}>
+            <li key={type + '-' + label} className={cls}>
               <button
                 type="button"
                 disabled={itemDisabled}

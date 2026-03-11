@@ -5,7 +5,7 @@ import { getPrefixCls } from '../_utils/general';
 import { useLocale } from '../_utils/use-locale';
 import { EmptyProps } from './types';
 
-const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, ref) => {
+const Empty = React.memo(React.forwardRef<HTMLDivElement, EmptyProps>((props, ref) => {
   const locale = useLocale();
   const {
     description = locale.Empty.description,
@@ -61,7 +61,7 @@ const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, ref) => {
       {children && <div className={`${prefixCls}__footer`}>{children}</div>}
     </div>
   );
-});
+}));
 
 Empty.displayName = 'Empty';
 

@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState, ReactNode, useContext } from 'react';
 import classNames from 'classnames';
-import { KeyCode } from '../_utils/enum';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { CloseCircle } from '../_utils/components';
@@ -46,7 +45,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const inputOnKeydown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-      if (e.keyCode === KeyCode.ENTER) {
+      if (e.key === 'Enter') {
         onEnterPress && onEnterPress(e);
       }
       onKeyDown && onKeyDown(e);
@@ -93,7 +92,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     useEffect(() => {
       'value' in props && typeof props.value !== 'undefined' && setValue(props.value);
-    }, [props]);
+    }, [props.value]);
 
     return (
       <div className={cls} style={style}>

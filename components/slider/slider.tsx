@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, ReactNode, useEffect } from 'react';
+import React, { useContext, useRef, useState, ReactNode, useEffect, useCallback } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -50,9 +50,9 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const mouseStartPos = useRef(0);
     const trackStartPos = useRef(0);
     const currVal = useRef(0);
+    const sliderValuesRef = useRef(sliderValues);
+    sliderValuesRef.current = sliderValues;
     const isVertical = direction === 'vertical';
-    const railNode = railRef.current;
-    const trackNode = trackRef.current;
 
     const getValueToPercent = (value: number): number => {
       return ((value - min) * 100) / (max - min);
@@ -76,7 +76,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
         return [val];
       }
 
-      const values = sliderValues;
+      const values = [...sliderValues];
       const val1 = values[0];
       const val2 = values[1];
       if ((val1 < val2 && val1 > val) || (val1 > val2 && val1 < val)) {
@@ -110,12 +110,13 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     const handleOnChange = (value: number[]): void => {
       !('value' in props) && setSliderValues([...value]);
       onChange &&
-        onChange(sliderValues.length === 1 ? sliderValues[0] : [sliderValues[0], sliderValues[1]]);
+        onChange(value.length === 1 ? value[0] : [value[0], value[1]]);
     };
 
     const getWidthToValue = (width: number): number => {
       const numOfSteps = (max - min) / step;
       let percent = 0;
+      const railNode = railRef.current;
       if (railNode) {
         percent = (width / railNode[isVertical ? 'clientHeight' : 'clientWidth']) * 100;
       }
@@ -137,6 +138,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       if (isDragging.current || disabled) {
         return;
       }
+      const railNode = railRef.current;
       if (railNode) {
         const markOffset = railNode.getBoundingClientRect();
         const value = getWidthToValue(
@@ -147,31 +149,38 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       onClick && onClick(e);
     };
 
-    const handleThumbOnDragging = (e: MouseEvent): void => {
+    // Store latest drag/dragEnd handlers in refs so window listeners
+    // always dispatch to the current closure (no stale captures).
+    const draggingRef = useRef<(e: MouseEvent) => void>(() => {});
+    const dragEndRef = useRef<() => void>(() => {});
+
+    draggingRef.current = (e: MouseEvent): void => {
       if (!isDragging.current) {
         return;
       }
       const sliderVal = getWidthToValue(
         e[isVertical ? 'clientY' : 'clientX'] - mouseStartPos.current + trackStartPos.current
       );
-      const val = sliderValues;
+      const val = [...sliderValuesRef.current];
       if (sliderVal !== currVal.current) {
         val[thumbIdx.current] = sliderVal;
-
         handleOnChange(val);
         currVal.current = sliderVal;
       }
     };
 
-    const handleThumbOnDragEnd = (): void => {
+    dragEndRef.current = (): void => {
       isDragging.current = false;
-      window.removeEventListener('mousemove', handleThumbOnDragging);
-      window.removeEventListener('mouseup', handleThumbOnDragEnd);
+      window.removeEventListener('mousemove', stableOnDragging);
+      window.removeEventListener('mouseup', stableOnDragEnd);
+      const vals = sliderValuesRef.current;
       onAfterChange &&
-        onAfterChange(
-          sliderValues.length === 1 ? sliderValues[0] : [sliderValues[0], sliderValues[1]]
-        );
+        onAfterChange(vals.length === 1 ? vals[0] : [vals[0], vals[1]]);
     };
+
+    // Stable function references for window event listeners
+    const stableOnDragging = useCallback((e: MouseEvent) => draggingRef.current(e), []);
+    const stableOnDragEnd = useCallback(() => dragEndRef.current(), []);
 
     /**
      * Get track width info when click down the thumb button
@@ -184,6 +193,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
       thumbIdx.current = idx;
       isDragging.current = true;
       mouseStartPos.current = e[isVertical ? 'clientY' : 'clientX'];
+      const trackNode = trackRef.current;
       if (trackNode) {
         trackStartPos.current = isVertical ? trackNode.offsetTop : trackNode.clientWidth;
 
@@ -202,8 +212,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
         }
       }
 
-      window.addEventListener('mousemove', handleThumbOnDragging, { capture: true });
-      window.addEventListener('mouseup', handleThumbOnDragEnd, { capture: true });
+      window.addEventListener('mousemove', stableOnDragging, { capture: true });
+      window.addEventListener('mouseup', stableOnDragEnd, { capture: true });
     };
 
     /**
@@ -257,8 +267,10 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
     };
 
     useEffect(() => {
-      'value' in props && setSliderValues(sliderValues);
-    }, [props, sliderValues]);
+      if ('value' in props && props.value !== undefined) {
+        setSliderValues(Array.isArray(props.value) ? props.value : [props.value]);
+      }
+    }, [props.value]);
 
     const trackStyle = calculateTrackStyle();
     return (

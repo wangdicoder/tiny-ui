@@ -52,7 +52,7 @@ const SpeedDial = React.forwardRef<HTMLDivElement, SpeedDialProps>(
       }
     }, [isOpen, handleOpen, handleClose]);
 
-    useClickOutside(containerRef.current as HTMLDivElement, () => {
+    useClickOutside(containerRef, () => {
       if (trigger === 'click' && isOpen) {
         handleClose();
       }

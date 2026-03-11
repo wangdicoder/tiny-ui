@@ -11,7 +11,7 @@ import {
 } from '../_utils/components';
 import { ResultProps } from './types';
 
-const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps, ref) => {
+const Result = React.memo(React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps, ref) => {
   const {
     status = 'info',
     prefixCls: customisedCls,
@@ -58,7 +58,7 @@ const Result = React.forwardRef<HTMLDivElement, ResultProps>((props: ResultProps
       {children && <div className={`${prefixCls}__content`}>{children}</div>}
     </div>
   );
-});
+}));
 
 Result.displayName = 'Result';
 

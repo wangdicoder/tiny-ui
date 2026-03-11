@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 import { useClickOutside, useDebounce } from '../hooks';
 
 describe('useClickOutside', () => {
-  // useClickOutside reads the target element directly (not a ref), so we need
-  // a state-based ref pattern that triggers a re-render once the element mounts.
   function ClickOutsideHarness() {
     const [clicked, setClicked] = useState(false);
-    const [el, setEl] = useState<HTMLDivElement | null>(null);
+    const ref = useRef<HTMLDivElement>(null);
 
-    useClickOutside(el as HTMLDivElement, () => setClicked(true));
+    useClickOutside(ref, () => setClicked(true));
 
     return (
       <div>
-        <div ref={setEl} data-testid="inside">Inside</div>
+        <div ref={ref} data-testid="inside">Inside</div>
         <div data-testid="outside">Outside</div>
         <span data-testid="result">{String(clicked)}</span>
       </div>
@@ -35,7 +33,7 @@ describe('useClickOutside', () => {
 
 describe('useDebounce', () => {
   function DebounceHarness({ value, delay }: { value: string; delay?: number }) {
-    const [debounced] = useDebounce(value, delay);
+    const debounced = useDebounce(value, delay);
     return <span data-testid="debounced">{debounced}</span>;
   }
 

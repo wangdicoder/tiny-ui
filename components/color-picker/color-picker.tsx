@@ -58,7 +58,7 @@ const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((props, _
     if ('open' in props) setOpen(props.open as boolean);
   }, [props.open]);
 
-  useClickOutside(wrapperRef.current as HTMLDivElement, () => {
+  useClickOutside(wrapperRef, () => {
     if (controlledOpen === undefined) setOpen(false);
     props.onOpenChange?.(false);
   });

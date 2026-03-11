@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { SkeletonProps } from './types';
 
-const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
+const Skeleton = React.memo(React.forwardRef<HTMLDivElement, SkeletonProps>(
   (props: SkeletonProps, ref): JSX.Element => {
     const {
       active = false,
@@ -27,7 +27,7 @@ const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
       </div>
     );
   }
-);
+));
 
 Skeleton.displayName = 'Skeleton';
 

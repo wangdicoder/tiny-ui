@@ -12,6 +12,8 @@ const zh_CN: Locale = {
   },
   TimePicker: {
     selectTime: '请选择时间',
+    now: '此刻',
+    okText: '确定',
   },
   Modal: {
     okText: '确定',

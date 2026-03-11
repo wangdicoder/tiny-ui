@@ -12,6 +12,8 @@ const en_US: Locale = {
   },
   TimePicker: {
     selectTime: 'Select time',
+    now: 'Now',
+    okText: 'OK',
   },
   Modal: {
     okText: 'OK',

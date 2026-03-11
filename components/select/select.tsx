@@ -143,7 +143,7 @@ const Select = (props: SelectProps): React.ReactElement => {
     [`${prefixCls}__arrow_reverse`]: combo.isOpen,
   });
 
-  useClickOutside(ref.current as HTMLDivElement, () => {
+  useClickOutside(ref, () => {
     if (!('open' in props)) {
       combo.closeDropdown();
     }

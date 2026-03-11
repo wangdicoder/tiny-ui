@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { PresetColors, TagProps } from './types';
 
-const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
+const Tag = React.memo(forwardRef<HTMLDivElement, TagProps>((props, ref) => {
   const {
     closable = false,
     defaultVisible = true,
@@ -61,7 +61,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
       )}
     </div>
   );
-});
+}));
 
 Tag.displayName = 'Tag';
 

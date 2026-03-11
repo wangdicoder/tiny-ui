@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { DividerProps } from './types';
 
-const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
+const Divider = React.memo(React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
   const {
     type = 'horizontal',
     dashed = false,
@@ -26,7 +26,7 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
       {children && <span className={`${prefixCls}_inner-text`}>{children}</span>}
     </div>
   );
-});
+}));
 
 Divider.displayName = 'Divider';
 

@@ -104,7 +104,7 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
 
   useEffect(() => {
     'visible' in props && setPopupVisible(props.visible as boolean);
-  }, [props]);
+  }, [props.visible]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape' && popupVisible) {

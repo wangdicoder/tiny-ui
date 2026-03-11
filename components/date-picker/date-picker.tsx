@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { useLocale } from '../_utils/use-locale';
-import { useClickOutside } from '../_utils/hooks';
+import { CalendarIcon, ClearIcon } from '../_utils/components';
 import Popup from '../popup';
 import PickerHeader from './picker-header';
 import PickerDay from './picker-day';
@@ -11,18 +11,6 @@ import PickerMonth from './picker-month';
 import PickerYear from './picker-year';
 import { DatePickerProps, PanelMode } from './types';
 
-
-const CalendarIcon = () => (
-  <svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-    <path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zm0-448H184V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136z" />
-  </svg>
-);
-
-const ClearIcon = () => (
-  <svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" />
-  </svg>
-);
 
 function formatDate(date: Date, format: string): string {
   const y = date.getFullYear();
@@ -77,6 +65,7 @@ const DatePicker = (props: DatePickerProps) => {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<PanelMode>(picker === 'date' ? 'date' : picker);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isOpen = controlledOpen ?? open;
 
@@ -92,10 +81,16 @@ const DatePicker = (props: DatePickerProps) => {
     if (controlledOpen !== undefined) setOpen(controlledOpen);
   }, [controlledOpen]);
 
-  useClickOutside(wrapperRef.current as HTMLDivElement, () => {
-    if (controlledOpen === undefined) setOpen(false);
-    onOpenChange?.(false);
-  });
+  useEffect(() => {
+    const listener = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (wrapperRef.current?.contains(target) || dropdownRef.current?.contains(target)) return;
+      if (controlledOpen === undefined) setOpen(false);
+      onOpenChange?.(false);
+    };
+    document.addEventListener('click', listener);
+    return () => document.removeEventListener('click', listener);
+  }, [controlledOpen, onOpenChange]);
 
   const toggleOpen = useCallback((val: boolean) => {
     if (controlledOpen === undefined) setOpen(val);
@@ -186,7 +181,7 @@ const DatePicker = (props: DatePickerProps) => {
   };
 
   const renderOverlay = () => (
-    <div className={`${prefixCls}__dropdown`}>
+    <div className={`${prefixCls}__dropdown`} ref={dropdownRef}>
       <PickerHeader
         date={panelDate}
         mode={mode}
@@ -211,7 +206,7 @@ const DatePicker = (props: DatePickerProps) => {
     <div className={cls} style={style} ref={wrapperRef}>
       <Popup
         trigger="manual"
-        placement="bottom"
+        placement="bottom-start"
         arrow={false}
         visible={isOpen}
         content={renderOverlay()}>
@@ -231,11 +226,11 @@ const DatePicker = (props: DatePickerProps) => {
           <span className={`${prefixCls}__suffix`}>
             {allowClear && hasValue && !disabled ? (
               <button type="button" className={`${prefixCls}__clear`} onClick={handleClear} aria-label="Clear date">
-                <ClearIcon />
+                <ClearIcon size="1em" />
               </button>
             ) : null}
             <span className={`${prefixCls}__icon`}>
-              {suffixIcon ?? <CalendarIcon />}
+              {suffixIcon ?? <CalendarIcon size="1em" />}
             </span>
           </span>
         </div>

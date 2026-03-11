@@ -1,6 +1,26 @@
 import React, { useRef, useState } from 'react';
 import './code-block.scss';
-import { Highlight, themes, type Language } from 'prism-react-renderer';
+import { Highlight, themes, Prism, type Language } from 'prism-react-renderer';
+
+// Register bash/shell grammar (not included in prism-react-renderer's default bundle)
+Prism.languages.bash = Prism.languages.shell = {
+  comment: { pattern: /(^|[^"{\\$])#.*/, lookbehind: true },
+  'shell-symbol': { pattern: /^\$(?=\s)/m, alias: 'punctuation' },
+  string: [
+    { pattern: /\$'(?:[^'\\]|\\[\s\S])*'/, greedy: true },
+    { pattern: /(^|[^\\])"(?:[^"\\]|\\.)*"/, lookbehind: true, greedy: true },
+    { pattern: /(^|[^\\])'[^']*'/, lookbehind: true, greedy: true },
+  ],
+  variable: [/\$\{[^}]+\}/, /\$\([^)]+\)/, /\$(?:\w+|[!#?*@_])/],
+  keyword:
+    /\b(?:if|then|else|elif|fi|for|do|done|case|esac|while|until|function|in|select|return|exit)\b/,
+  function:
+    /\b(?:npm|npx|node|yarn|pnpm|bun|git|curl|wget|mkdir|cp|mv|rm|ls|cat|grep|sed|awk|chmod|chown|sudo|apt|brew|pip|python|ruby|go|cargo|make|docker|cd|echo|export|source|touch)\b/,
+  'flag': { pattern: /(^|\s)--?[\w-]+/, lookbehind: true, alias: 'keyword' },
+  number: /\b\d+\b/,
+  operator: /&&|\|\||[|;]/,
+  punctuation: /[{}[\]()]/,
+};
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { LightCodeTheme, DarkCodeTheme } from './code-theme';
 import * as Components from '../../../../components';

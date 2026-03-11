@@ -5,7 +5,7 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { BadgeProps } from './types';
 
-const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
+const Badge = React.memo(React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const {
     count,
     color = '#f2453d',
@@ -59,7 +59,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
       )}
     </span>
   );
-});
+}));
 
 Badge.displayName = 'Badge';
 

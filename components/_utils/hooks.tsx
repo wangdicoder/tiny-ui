@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { Target } from './dom';
 
 export const useEventListener = (
@@ -25,10 +25,11 @@ export const useEventListener = (
   }, [eventName, target]);
 };
 
-export const useClickOutside = (target: HTMLElement, handler: (event: MouseEvent) => void): void => {
+export const useClickOutside = (target: RefObject<HTMLElement | null>, handler: (event: MouseEvent) => void): void => {
   useEffect(() => {
     const listener = (event: MouseEvent): void => {
-      if (!target || target.contains(event.target as HTMLElement)) {
+      const el = target.current;
+      if (!el || el.contains(event.target as HTMLElement)) {
         return;
       }
       handler(event);
@@ -40,7 +41,7 @@ export const useClickOutside = (target: HTMLElement, handler: (event: MouseEvent
   }, [target, handler]);
 };
 
-export function useDebounce<T>(value: T, delay = 300): [T] {
+export function useDebounce<T>(value: T, delay = 300): T {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
@@ -53,5 +54,5 @@ export function useDebounce<T>(value: T, delay = 300): [T] {
     };
   }, [value, delay]);
 
-  return [debouncedValue];
+  return debouncedValue;
 }

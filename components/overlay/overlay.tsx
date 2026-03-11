@@ -6,6 +6,8 @@ import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { OverlayProps } from './types';
 
+let scrollLockCount = 0;
+
 const Overlay = (props: OverlayProps): JSX.Element => {
   const {
     isShow = false,
@@ -29,11 +31,19 @@ const Overlay = (props: OverlayProps): JSX.Element => {
 
   useEffect(() => {
     if (isShow) {
+      scrollLockCount++;
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
     }
-  });
+    return () => {
+      if (isShow) {
+        scrollLockCount--;
+        if (scrollLockCount <= 0) {
+          scrollLockCount = 0;
+          document.body.style.overflow = '';
+        }
+      }
+    };
+  }, [isShow]);
 
   return (
     <Portal>

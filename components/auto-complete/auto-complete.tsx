@@ -81,7 +81,7 @@ const AutoComplete = React.forwardRef<HTMLDivElement, AutoCompleteProps>(
     });
 
     // Click outside to close
-    useClickOutside(wrapperRef.current as HTMLDivElement, () => {
+    useClickOutside(wrapperRef, () => {
       if (!('open' in props)) {
         combo.closeDropdown();
       }

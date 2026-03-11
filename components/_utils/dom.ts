@@ -4,7 +4,7 @@ export const getScroll = (node: Target, isVertical = true): number => {
   if (typeof window === 'undefined') {
     return 0;
   }
-  const windowProp = isVertical ? 'pageYOffset' : 'pageXOffset';
+  const windowProp = isVertical ? 'scrollY' : 'scrollX';
   const elementProp = isVertical ? 'scrollTop' : 'scrollLeft';
   return node === window ? (node as Window)[windowProp] : (node as HTMLElement)[elementProp];
 };

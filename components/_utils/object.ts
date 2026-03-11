@@ -37,14 +37,34 @@ export function deepSet(obj: any, path: string, value: any) {
 }
 
 export function deepCopy<T>(target: T): T {
+  if (target === undefined || target === null) {
+    return target;
+  }
+
   const type = typeof target;
 
-  if (target === null || type === 'boolean' || type === 'number' || type === 'string') {
+  if (type === 'boolean' || type === 'number' || type === 'string') {
     return target;
   }
 
   if (target instanceof Date) {
     return new Date(target.getTime()) as any;
+  }
+
+  if (target instanceof RegExp) {
+    return new RegExp(target.source, target.flags) as any;
+  }
+
+  if (target instanceof Map) {
+    const map = new Map();
+    target.forEach((val, key) => map.set(deepCopy(key), deepCopy(val)));
+    return map as any;
+  }
+
+  if (target instanceof Set) {
+    const set = new Set();
+    target.forEach((val) => set.add(deepCopy(val)));
+    return set as any;
   }
 
   if (Array.isArray(target)) {
@@ -61,5 +81,5 @@ export function deepCopy<T>(target: T): T {
     return obj;
   }
 
-  return undefined as any;
+  return target;
 }

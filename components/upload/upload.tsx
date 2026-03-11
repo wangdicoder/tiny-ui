@@ -82,7 +82,7 @@ const Upload = React.forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
   const postRequest = (file: File): void => {
     // Create a upload file instance
     const uploadFile: UploadFile = {
-      uid: 'file-' + Date.now(),
+      uid: 'file-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9),
       name: file.name,
       status: 'ready',
       percent: 0,

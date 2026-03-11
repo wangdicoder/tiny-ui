@@ -93,13 +93,6 @@ const Carousel = forwardRef<CarouselRef, CarouselProps>((props, ref) => {
     afterChange?.(current);
   }, [afterChange, current]);
 
-  // ---- Autoplay ----
-  useEffect(() => {
-    if (!autoplay || slideCount <= 1) return;
-    const timer = window.setInterval(next, autoplaySpeed);
-    return () => window.clearInterval(timer);
-  }, [autoplay, autoplaySpeed, next, slideCount]);
-
   // ---- Drag ----
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     if (!draggable) return;
@@ -129,12 +122,8 @@ const Carousel = forwardRef<CarouselRef, CarouselProps>((props, ref) => {
 
   // ---- Pause on hover ----
   const [paused, setPaused] = useState(false);
-  useEffect(() => {
-    if (!autoplay || !paused) return;
-    // Autoplay effect handles timer — paused state is checked via dependency
-  }, [autoplay, paused]);
 
-  // Override autoplay to account for pause
+  // ---- Autoplay ----
   useEffect(() => {
     if (!autoplay || slideCount <= 1 || paused) return;
     const timer = window.setInterval(next, autoplaySpeed);

@@ -10,6 +10,8 @@ export type Locale = {
   };
   TimePicker: {
     selectTime: string;
+    now: string;
+    okText: string;
   };
   Modal: {
     okText: string;
