@@ -7,6 +7,7 @@ import Disabled from './demo/disabled.md'
 import DisabledTime from './demo/disabled-time.md'
 import HideDisabled from './demo/hide-disabled.md'
 import ExtraFooter from './demo/extra-footer.md'
+import Loop from './demo/loop.md'
 
 # TimePicker
 
@@ -33,6 +34,7 @@ import { TimePicker } from 'tiny-ui';
     <Step/>
     <Disabled/>
     <HideDisabled/>
+    <Loop/>
   </Column>
 </Layout>
 
@@ -55,8 +57,10 @@ import { TimePicker } from 'tiny-ui';
 | inputReadOnly       | Prevent keyboard input               | boolean                                 | true          |
 | disabledTime        | Specify unavailable times            | () => DisabledTime                      | -             |
 | hideDisabledOptions | Hide disabled time options           | boolean                                 | false         |
+| showNow             | Show "Now" button in footer          | boolean                                 | true          |
 | renderExtraFooter   | Extra content in the footer          | () => ReactNode                         | -             |
 | suffixIcon          | Custom suffix icon                   | ReactNode                               | Clock icon    |
+| loop                | Enable infinite circular scrolling   | boolean                                 | false         |
 | onChange            | Callback when time changes           | (date: Date &#124; null) => void        | -             |
 | onOpenChange        | Callback on popup open/close         | (open: boolean) => void                 | -             |
 | style               | Style object of container            | CSSProperties                           | -             |

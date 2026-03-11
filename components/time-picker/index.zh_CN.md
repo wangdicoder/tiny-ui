@@ -7,6 +7,7 @@ import Disabled from './demo/disabled.md'
 import DisabledTime from './demo/disabled-time.md'
 import HideDisabled from './demo/hide-disabled.md'
 import ExtraFooter from './demo/extra-footer.md'
+import Loop from './demo/loop.md'
 
 # TimePicker
 
@@ -33,6 +34,7 @@ import { TimePicker } from 'tiny-ui';
     <Step/>
     <Disabled/>
     <HideDisabled/>
+    <Loop/>
   </Column>
 </Layout>
 
@@ -55,8 +57,10 @@ import { TimePicker } from 'tiny-ui';
 | inputReadOnly       | 阻止键盘输入                         | boolean                                 | true          |
 | disabledTime        | 指定不可选择的时间                   | () => DisabledTime                      | -             |
 | hideDisabledOptions | 隐藏禁用的时间选项                   | boolean                                 | false         |
+| showNow             | 显示"此刻"按钮                       | boolean                                 | true          |
 | renderExtraFooter   | 页脚附加内容                         | () => ReactNode                         | -             |
 | suffixIcon          | 自定义后缀图标                       | ReactNode                               | Clock icon    |
+| loop                | 启用无限循环滚动                     | boolean                                 | false         |
 | onChange            | 时间变化时的回调                     | (date: Date &#124; null) => void        | -             |
 | onOpenChange        | 弹出层打开/关闭时的回调             | (open: boolean) => void                 | -             |
 | style               | 容器的样式对象                       | CSSProperties                           | -             |
