@@ -47,7 +47,7 @@ const zh_CN: SiteLocale = {
   guideMenu: {
     introduction: '介绍',
     getStarted: '快速开始',
-    useInCRA: '在 create-react-app 中使用',
+    useWithVite: '在 Vite 中使用',
     customiseTheme: '自定义主题',
     colors: '色彩',
     changelog: '更新日志',

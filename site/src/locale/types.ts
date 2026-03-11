@@ -45,7 +45,7 @@ export type SiteLocale = {
   guideMenu: {
     introduction: string;
     getStarted: string;
-    useInCRA: string;
+    useWithVite: string;
     customiseTheme: string;
     colors: string;
     changelog: string;

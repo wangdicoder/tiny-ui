@@ -51,7 +51,7 @@ const en_US: SiteLocale = {
   guideMenu: {
     introduction: 'Introduction',
     getStarted: 'Get Started',
-    useInCRA: 'Use in create-react-app',
+    useWithVite: 'Use with Vite',
     customiseTheme: 'Customise Theme',
     colors: 'Colors',
     changelog: 'Changelog',

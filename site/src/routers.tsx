@@ -28,7 +28,7 @@ const guide = {
     () => import('../../docs/get-started.md'),
     () => import('../../docs/get-started.zh_CN.md'),
   ),
-  useInCRA: ll(
+  useWithVite: ll(
     () => import('../../docs/use-react-app.md'),
     () => import('../../docs/use-react-app.zh_CN.md'),
   ),
@@ -136,7 +136,7 @@ export const getGuideMenu = (s: SiteLocale): RouterItem[] => {
   return [
     { title: s.guideMenu.introduction, route: 'introduction', component: pick(guide.introduction, isZh) },
     { title: s.guideMenu.getStarted, route: 'get-started', component: pick(guide.getStarted, isZh) },
-    { title: s.guideMenu.useInCRA, route: 'use-with-create-react-app', component: pick(guide.useInCRA, isZh) },
+    { title: s.guideMenu.useWithVite, route: 'use-with-vite', component: pick(guide.useWithVite, isZh) },
     { title: s.guideMenu.customiseTheme, route: 'customise-theme', component: pick(guide.customiseTheme, isZh) },
     { title: s.guideMenu.colors, route: 'colors', component: pick(guide.colors, isZh) },
     { title: s.guideMenu.changelog, route: 'changelog', component: pick(guide.changelog, isZh) },

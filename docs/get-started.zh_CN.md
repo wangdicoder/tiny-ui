@@ -2,18 +2,22 @@
 
 ## 安装
 
-### 使用 npm 或 yarn
+### 使用包管理器
 
 你需要先在本地正确安装和配置好 `Node.js` 环境。
 
 ```bash
-$ npm install tiny-ui --save
+$ npm install tiny-ui
 ```
-
-如果你使用 yarn，也可以通过 yarn 安装
+<br />
 
 ```bash
 $ yarn add tiny-ui
+```
+<br />
+
+```bash
+$ pnpm add tiny-ui
 ```
 
 ### 在浏览器中引入
@@ -40,6 +44,7 @@ $ yarn add tiny-ui
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Button } from 'tiny-ui';
+import 'tiny-ui/dist/styles/index.css';
 
 const App = () => {
   return <Button>Hello World</Button>;
@@ -48,41 +53,7 @@ const App = () => {
 createRoot(document.getElementById('root')).render(<App />);
 ```
 
-同时需要手动引入样式文件，
-```jsx
-import 'tiny-ui/dist/styles/index.css';
-```
-
-### 按需加载 tiny-ui
-
-为了避免在生产环境中打包文件过大的问题，可以按需加载组件。
-
-- 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)（推荐）
-
-    ```json
-    // webpack babel loader option or .babelrc
-
-    {
-      "plugins": [
-        ["import", { "libraryName": "tiny-ui", "style": "css" }] // `style: true` for scss
-      ]
-    }
-    ```
-
-    这样你就可以从 tiny-ui 中引入组件，而无需手动引入对应的样式文件。babel 插件会自动引入样式。
-
-    ```jsx
-    // import js and css modularly, parsed by babel-plugin-import
-    import { Avatar } from 'tiny-ui';
-    ```
-
-- 手动引入
-
-    ```jsx
-    import Avatar from 'tiny-ui/lib/avatar';        // for js
-    import 'tiny-ui/lib/avatar/style/css';          // for css
-    // import 'tiny-ui/lib/avatar/style';           // that will import scss
-    ```
+Tiny UI 通过 `es/` 目录提供 ES 模块，因此 webpack、Vite、Rollup 等现代打包工具会自动对未使用的组件进行 tree-shaking，无需额外插件。
 
 ### 在浏览器中使用（UMD）
 
@@ -93,7 +64,7 @@ import 'tiny-ui/dist/styles/index.css';
     <meta charset="utf-8"/>
     <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tiny-ui@{version_number}/dist/styles/index.css" crossorigin>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
