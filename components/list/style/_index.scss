@@ -61,37 +61,6 @@
     color: var(--ty-color-text-secondary, #{$gray-500});
   }
 
-  &__pagination {
-    display: flex;
-    justify-content: flex-end;
-    padding: 16px;
-    gap: 4px;
-  }
-
-  &__page-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 32px;
-    height: 32px;
-    padding: 0 6px;
-    border: 1px solid var(--ty-list-border, #{$gray-300});
-    border-radius: $border-radius;
-    background: transparent;
-    cursor: pointer;
-    font-size: $font-size-sm;
-
-    &:hover {
-      color: var(--ty-color-primary, #{$primary-color});
-      border-color: var(--ty-color-primary, #{$primary-color});
-    }
-
-    &_active {
-      color: var(--ty-color-primary, #{$primary-color});
-      border-color: var(--ty-color-primary, #{$primary-color});
-      font-weight: 500;
-    }
-  }
 }
 
 .#{$prefix}-list-item {

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { useVirtualScroll } from '../_utils/use-virtual-scroll';
+import Pagination from '../pagination';
 import { ListProps } from './types';
 
 const ITEM_HEIGHT_MAP = { sm: 41, md: 49, lg: 57 } as const;
@@ -128,7 +129,6 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
   const showPagination = pagination && !isVirtual;
   const paginationConfig = pagination && typeof pagination === 'object' ? pagination : undefined;
   const totalItems = paginationConfig?.total ?? dataSource.length;
-  const totalPages = Math.ceil(totalItems / pageSize);
   const activePage = paginationConfig?.current ?? currentPage;
 
   const bodyCls = classNames(`${prefixCls}__body`, {
@@ -150,21 +150,17 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
         )}
       </div>
       {footer && <div className={`${prefixCls}__footer`}>{footer}</div>}
-      {showPagination && totalPages > 1 && (
-        <div className={`${prefixCls}__pagination`}>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              type="button"
-              className={classNames(`${prefixCls}__page-btn`, {
-                [`${prefixCls}__page-btn_active`]: page === activePage,
-              })}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+      {showPagination && (
+        <Pagination
+          current={activePage}
+          total={totalItems}
+          pageSize={pageSize}
+          align={paginationConfig?.align ?? 'right'}
+          size={paginationConfig?.size}
+          disabled={paginationConfig?.disabled}
+          onChange={(page) => handlePageChange(page)}
+          style={{ padding: 16 }}
+        />
       )}
     </div>
   );

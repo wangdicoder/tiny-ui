@@ -1,5 +1,6 @@
 import React from 'react';
 import { BaseProps, SizeType } from '../_utils/props';
+import { PaginationProps } from '../pagination/types';
 
 export type SortOrder = 'ascend' | 'descend' | null;
 export type ColumnAlign = 'left' | 'center' | 'right';
@@ -24,7 +25,7 @@ export type RowSelection<T = any> = {
   type?: 'checkbox' | 'radio';
 };
 
-export interface TablePaginationConfig {
+export interface TablePaginationConfig extends Pick<PaginationProps, 'size' | 'align' | 'disabled'> {
   current?: number;
   pageSize?: number;
   total?: number;

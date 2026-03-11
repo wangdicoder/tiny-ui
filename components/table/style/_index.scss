@@ -140,42 +140,4 @@
     color: var(--ty-color-text-secondary, #{$gray-500});
   }
 
-  // Pagination
-  &__pagination {
-    display: flex;
-    justify-content: flex-end;
-    padding: 16px 0;
-    gap: 4px;
-  }
-
-  &__page-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 32px;
-    height: 32px;
-    padding: 0 6px;
-    border: 1px solid var(--ty-table-border, #{$gray-300});
-    border-radius: $border-radius;
-    background: transparent;
-    cursor: pointer;
-    font-size: $font-size-sm;
-    color: var(--ty-color-text, #{$gray-700});
-
-    &:hover:not(:disabled) {
-      color: var(--ty-color-primary, #{$primary-color});
-      border-color: var(--ty-color-primary, #{$primary-color});
-    }
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    &_active {
-      color: var(--ty-color-primary, #{$primary-color});
-      border-color: var(--ty-color-primary, #{$primary-color});
-      font-weight: 500;
-    }
-  }
 }

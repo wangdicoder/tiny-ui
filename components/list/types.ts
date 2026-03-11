@@ -1,5 +1,6 @@
 import React from 'react';
 import { BaseProps, SizeType } from '../_utils/props';
+import { PaginationProps } from '../pagination/types';
 
 export interface ListProps<T = any>
   extends BaseProps,
@@ -26,7 +27,7 @@ export interface ListGridType {
   column?: number;
 }
 
-export interface ListPaginationProps {
+export interface ListPaginationProps extends Pick<PaginationProps, 'size' | 'align' | 'disabled'> {
   current?: number;
   pageSize?: number;
   total?: number;

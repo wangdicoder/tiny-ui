@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { useVirtualScroll } from '../_utils/use-virtual-scroll';
+import Pagination from '../pagination';
 import { TableProps, ColumnType, SortOrder } from './types';
 
 const ROW_HEIGHT_MAP = { sm: 40, md: 48, lg: 56 } as const;
@@ -121,7 +122,6 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
 
   const paginationConfig = pagination && typeof pagination === 'object' ? pagination : undefined;
   const totalItems = paginationConfig?.total ?? dataSource.length;
-  const totalPages = Math.ceil(totalItems / pageSize);
   const activePage = paginationConfig?.current ?? currentPage;
 
   const handleSort = (col: ColumnType) => {
@@ -362,37 +362,17 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
           </tbody>
         </table>
       </div>
-      {showPagination && totalPages > 1 && (
-        <div className={`${prefixCls}__pagination`}>
-          <button
-            type="button"
-            className={`${prefixCls}__page-btn`}
-            disabled={activePage <= 1}
-            onClick={() => handlePageChange(activePage - 1)}
-          >
-            ‹
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              type="button"
-              className={classNames(`${prefixCls}__page-btn`, {
-                [`${prefixCls}__page-btn_active`]: page === activePage,
-              })}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button
-            type="button"
-            className={`${prefixCls}__page-btn`}
-            disabled={activePage >= totalPages}
-            onClick={() => handlePageChange(activePage + 1)}
-          >
-            ›
-          </button>
-        </div>
+      {showPagination && (
+        <Pagination
+          current={activePage}
+          total={totalItems}
+          pageSize={pageSize}
+          align={paginationConfig?.align ?? 'right'}
+          size={paginationConfig?.size}
+          disabled={paginationConfig?.disabled}
+          onChange={(page) => handlePageChange(page)}
+          style={{ padding: '16px 0' }}
+        />
       )}
     </div>
   );
