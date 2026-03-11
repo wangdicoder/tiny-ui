@@ -11,17 +11,12 @@ function getSystemTheme(): 'light' | 'dark' {
 
 function applyTheme(mode: ThemeMode): void {
   if (typeof document === 'undefined') return;
-  const html = document.documentElement;
-  if (mode === 'system') {
-    html.removeAttribute('data-theme');
-  } else {
-    html.setAttribute('data-theme', mode);
-  }
+  document.documentElement.setAttribute('data-tiny-theme', mode);
 }
 
 function readStoredTheme(): ThemeMode {
-  if (typeof localStorage === 'undefined') return 'system';
-  return (localStorage.getItem(STORAGE_KEY) as ThemeMode) || 'system';
+  if (typeof localStorage === 'undefined') return 'light';
+  return (localStorage.getItem(STORAGE_KEY) as ThemeMode) || 'light';
 }
 
 // ---- Shared store ----
@@ -33,7 +28,7 @@ function getSnapshot(): ThemeMode {
 }
 
 function getServerSnapshot(): ThemeMode {
-  return 'system';
+  return 'light';
 }
 
 function subscribe(cb: () => void): () => void {

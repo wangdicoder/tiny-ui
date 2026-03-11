@@ -9,11 +9,7 @@ const ConfigProvider = (props: ConfigProviderProps): JSX.Element => {
   useEffect(() => {
     if (!theme) return;
     const html = document.documentElement;
-    if (theme === 'system') {
-      html.removeAttribute('data-theme');
-    } else {
-      html.setAttribute('data-theme', theme);
-    }
+    html.setAttribute('data-tiny-theme', theme);
   }, [theme]);
 
   const content = locale ? (
