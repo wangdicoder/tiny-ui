@@ -119,16 +119,25 @@ const Anchor = (props: AnchorProps): JSX.Element => {
 
     let newActiveId = '';
     let maxTop = -Infinity;
+    let firstId = '';
+    let firstTop = Infinity;
     links.forEach((href) => {
       const id = href.replace('#', '');
       const el = document.getElementById(id);
       if (!el) return;
       const elTop = el.getBoundingClientRect().top - containerTop;
+      if (elTop < firstTop) {
+        firstTop = elTop;
+        firstId = id;
+      }
       if (elTop <= offsetTop && elTop > maxTop) {
         maxTop = elTop;
         newActiveId = id;
       }
     });
+    if (!newActiveId && firstId) {
+      newActiveId = firstId;
+    }
 
     setActiveId((prev) => {
       if (prev !== newActiveId) {

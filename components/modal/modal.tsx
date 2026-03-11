@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useId, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import Overlay from '../overlay';
-import Button from '../button/button';
+import { Button, Flex } from '..';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { useLocale } from '../_utils/use-locale';
@@ -99,7 +99,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       return null;
     } else {
       return (
-        <div className={`${prefixCls}__footer`} style={footerStyle}>
+        <Flex gap="sm" justify='end' className={`${prefixCls}__footer`} style={footerStyle}>
           <Button onClick={onCancel} className={`${prefixCls}__footer-btn`} {...cancelButtonProps}>
             {cancelText}
           </Button>
@@ -111,7 +111,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             {...confirmButtonProps}>
             {confirmText}
           </Button>
-        </div>
+        </Flex>
       );
     }
   };

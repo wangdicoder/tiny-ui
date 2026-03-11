@@ -17,12 +17,12 @@ A notification box with a icon at the left side.
   };
   
   return (
-    <>
+    <Flex gap="sm">
       <Button btnType="info" onClick={() => btnOnClick('info')}>Info</Button>
       <Button btnType="success" onClick={() => btnOnClick('success')}>Success</Button>
       <Button btnType="warning" onClick={() => btnOnClick('warning')}>Warning</Button>
       <Button btnType="danger" onClick={() => btnOnClick('error')}>Error</Button>
-    </>
+    </Flex>
   );
 }
 ```

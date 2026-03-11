@@ -11,7 +11,7 @@ Use `animation` to set different popup animation.
     const [visible2, setVisible2] = React.useState(false);
   
     return (
-      <>
+      <Flex gap="sm">
         <Button btnType="primary" onClick={() => setVisible1(true)}>
           Default Slide up and down
         </Button>
@@ -37,7 +37,7 @@ Use `animation` to set different popup animation.
             <div>Some contents...</div>
             <div>Some contents...</div>
         </Modal>      
-      </>
+      </Flex>
     );
   };
   

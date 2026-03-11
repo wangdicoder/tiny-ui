@@ -1,6 +1,6 @@
 {
   "name": "tiny-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A friendly ui component set for react",
   "license": "MIT",
   "keywords": [
@@ -59,7 +59,8 @@
     "test:coverage": "jest --coverage",
     "test:update": "jest --updateSnapshot",
     "lint:style": "stylelint components/**/*.scss --syntax scss",
-    "lint:style:fix": "npm run lint:style -- --fix"
+    "lint:style:fix": "npm run lint:style -- --fix",
+    "changelog": "node scripts/changelog.js"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

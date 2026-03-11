@@ -8,6 +8,25 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 - **z version**: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
 
 
+## [1.0.2](https://github.com/wangdicoder/tiny-ui/compare/v1.0.1...v1.0.2) (2026-03-11)
+
+### Bug Fixes
+
+* CSSTransition issue ([5275a17](https://github.com/wangdicoder/tiny-ui/commit/5275a17))
+
+### Refactors
+
+* reuse Pagination component in Table and List ([444b9a0](https://github.com/wangdicoder/tiny-ui/commit/444b9a0))
+* unify component file structure so index.tsx only re-exports ([60bed2d](https://github.com/wangdicoder/tiny-ui/commit/60bed2d))
+
+## [1.0.1](https://github.com/wangdicoder/tiny-ui/compare/v1.0.0...v1.0.1) (2026-03-10)
+
+### Bug Fixes
+
+* `<Pagination />` - prevent custom props from leaking to DOM element ([#41](https://github.com/wangdicoder/tiny-ui/issues/41)) ([4b5103a](https://github.com/wangdicoder/tiny-ui/commit/4b5103a))
+* `<Grid />` - accept single Col element in RowProps ([#36](https://github.com/wangdicoder/tiny-ui/issues/36)) ([6edf326](https://github.com/wangdicoder/tiny-ui/commit/6edf326))
+* CSSTransition issue ([5275a17](https://github.com/wangdicoder/tiny-ui/commit/5275a17))
+
 ## [1.0.0](https://github.com/wangdicoder/tiny-ui/compare/v0.0.94...v1.0.0) (2026-03-10)
 
 ### Features
@@ -26,7 +45,6 @@ Tiny UI strictly follows [Semantic Versioning 2.0.0](https://semver.org/).
 
 ### Bug Fixes
 
-* `<Pagination />` - prevent custom props from leaking to DOM element ([#41](https://github.com/wangdicoder/tiny-ui/issues/41)) ([4b5103a](https://github.com/wangdicoder/tiny-ui/commit/4b5103a))
 * `<BackTop />` - reset native button styles and support custom children ([095da1e](https://github.com/wangdicoder/tiny-ui/commit/095da1e))
 * `<Tabs />` - reduce editable-card add button size to match tab height ([492cd06](https://github.com/wangdicoder/tiny-ui/commit/492cd06))
 * `<ColorPicker />` - show not-allowed cursor in disabled state ([17eba92](https://github.com/wangdicoder/tiny-ui/commit/17eba92))

@@ -16,12 +16,15 @@ A notification box can appear from the `topRight`, `bottomRight`, `bottomLeft` o
   
   return (
     <>
-      <Button btnType="primary" onClick={() => btnOnClick('topLeft')}>Top Left</Button>
-      <Button btnType="primary" onClick={() => btnOnClick('topRight')}>Top Right</Button>
+      <Flex gap="sm">
+        <Button btnType="primary" onClick={() => btnOnClick('topLeft')}>Top Left</Button>
+        <Button btnType="primary" onClick={() => btnOnClick('topRight')}>Top Right</Button>
+      </Flex>
       <br />
-      <br />
-      <Button btnType="primary" onClick={() => btnOnClick('bottomLeft')}>Bottom Left</Button>
-      <Button btnType="primary" onClick={() => btnOnClick('bottomRight')}>Bottom Right</Button>
+      <Flex gap="sm">
+        <Button btnType="primary" onClick={() => btnOnClick('bottomLeft')}>Bottom Left</Button>
+        <Button btnType="primary" onClick={() => btnOnClick('bottomRight')}>Bottom Right</Button>
+      </Flex>
     </>
   );
 }
