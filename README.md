@@ -64,7 +64,6 @@ yarn add tiny-ui
 
 ```jsx
 import { Button, Switch } from 'tiny-ui';
-import 'tiny-ui/dist/styles/index.css';
 
 const App = () => (
   <>
@@ -74,17 +73,7 @@ const App = () => (
 );
 ```
 
-### On-demand loading
-
-Use [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) to load components and styles on demand:
-
-```json
-{
-  "plugins": [
-    ["import", { "libraryName": "tiny-ui", "style": "css" }]
-  ]
-}
-```
+Styles are automatically imported alongside each component — no separate CSS import needed. Modern bundlers (webpack, Vite, Rollup) will tree-shake unused components and their styles.
 
 ## Theming
 

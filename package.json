@@ -32,8 +32,7 @@
       "require": "./lib/index.js"
     },
     "./lib/*": "./lib/*",
-    "./es/*": "./es/*",
-    "./dist/*": "./dist/*"
+    "./es/*": "./es/*"
   },
   "sideEffects": [
     "**/*.css",
@@ -41,15 +40,14 @@
   ],
   "files": [
     "lib",
-    "es",
-    "dist"
+    "es"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
     "build": "npm run clean && tsdown && node scripts/build-styles.js && node scripts/inject-style-imports.js",
-    "clean": "rimraf lib es dist",
+    "clean": "rimraf lib es",
     "dev": "vite serve site",
     "eslint": "eslint components --ext .ts,.tsx",
     "site:build": "vite build site",
