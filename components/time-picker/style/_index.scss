@@ -206,7 +206,36 @@ $tp: #{$prefix}-time-picker;
   &__footer {
     padding: 8px 12px;
     border-top: 1px solid var(--ty-color-border-light);
-    text-align: center;
     font-size: 12px;
+  }
+
+  &__extra-footer {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  &__footer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__now-btn {
+    color: var(--ty-color-primary);
+    cursor: pointer;
+    &:hover { color: var(--ty-color-primary-hover); }
+  }
+
+  &__ok-btn {
+    padding: 0 8px;
+    height: 24px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    background: var(--ty-color-primary);
+    color: #fff;
+    cursor: pointer;
+    margin-left: auto;
+    &:hover { background: var(--ty-color-primary-hover); }
   }
 }

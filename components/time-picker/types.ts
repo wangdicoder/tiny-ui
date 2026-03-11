@@ -38,6 +38,8 @@ export interface TimePickerProps extends BaseProps {
   disabledTime?: () => DisabledTime;
   /** Hide disabled options in the panel */
   hideDisabledOptions?: boolean;
+  /** Show "Now" button in footer (default: true) */
+  showNow?: boolean;
   /** Extra content in the footer */
   renderExtraFooter?: () => ReactNode;
   /** Suffix icon */
@@ -46,4 +48,6 @@ export interface TimePickerProps extends BaseProps {
   onChange?: (date: Date | null) => void;
   /** Callback when popup opens/closes */
   onOpenChange?: (open: boolean) => void;
+  /** Enable infinite circular scrolling for h/m/s columns */
+  loop?: boolean;
 }

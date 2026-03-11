@@ -3,23 +3,10 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
 import { useLocale } from '../_utils/use-locale';
-import { useClickOutside } from '../_utils/hooks';
+import { ClockIcon, ClearIcon } from '../_utils/components';
 import Popup from '../popup';
 import TimePanel from './time-panel';
 import { TimePickerProps } from './types';
-
-const ClockIcon = () => (
-  <svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" />
-    <path d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z" />
-  </svg>
-);
-
-const ClearIcon = () => (
-  <svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" />
-  </svg>
-);
 
 function formatTime(date: Date, format: string, use12Hours: boolean): string {
   let h = date.getHours();
@@ -73,6 +60,8 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
     inputReadOnly = true,
     disabledTime,
     hideDisabledOptions = false,
+    loop = false,
+    showNow = true,
     renderExtraFooter,
     suffixIcon,
     onChange,
@@ -88,6 +77,7 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
   const [date, setDate] = useState<Date | null>(value ?? defaultValue ?? null);
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isOpen = controlledOpen ?? open;
 
@@ -100,10 +90,16 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
     if (controlledOpen !== undefined) setOpen(controlledOpen);
   }, [controlledOpen]);
 
-  useClickOutside(wrapperRef.current as HTMLDivElement, () => {
-    if (controlledOpen === undefined) setOpen(false);
-    onOpenChange?.(false);
-  });
+  useEffect(() => {
+    const listener = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (wrapperRef.current?.contains(target) || dropdownRef.current?.contains(target)) return;
+      if (controlledOpen === undefined) setOpen(false);
+      onOpenChange?.(false);
+    };
+    document.addEventListener('click', listener);
+    return () => document.removeEventListener('click', listener);
+  }, [controlledOpen, onOpenChange]);
 
   const toggleOpen = useCallback((val: boolean) => {
     if (controlledOpen === undefined) setOpen(val);
@@ -111,7 +107,7 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
   }, [controlledOpen, onOpenChange]);
 
   const updateTime = useCallback((type: 'h' | 'm' | 's', num: number) => {
-    const base = date ? new Date(date) : new Date();
+    const base = date ? new Date(date) : new Date(0, 0, 0, 0, 0, 0, 0);
     if (type === 'h') base.setHours(num);
     else if (type === 'm') base.setMinutes(num);
     else base.setSeconds(num);
@@ -124,6 +120,17 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
     e.stopPropagation();
     if (value === undefined) setDate(null);
     onChange?.(null);
+    toggleOpen(false);
+  };
+
+  const handleNow = () => {
+    const now = new Date();
+    if (value === undefined) setDate(now);
+    onChange?.(now);
+    toggleOpen(false);
+  };
+
+  const handleOk = () => {
     toggleOpen(false);
   };
 
@@ -159,13 +166,14 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
   });
 
   const renderOverlay = () => (
-    <div className={`${prefixCls}__dropdown`}>
+    <div className={`${prefixCls}__dropdown`} ref={dropdownRef}>
       <div className={`${prefixCls}__panel`}>
         <TimePanel
           prefixCls={prefixCls}
           value={date?.getHours() ?? 0}
           items={filteredHours}
           disabledItems={hideDisabledOptions ? [] : disabledHours}
+          loop={loop}
           onChange={(h) => updateTime('h', h)}
         />
         {showsMinutes(format) && (
@@ -174,6 +182,7 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
             value={date?.getMinutes() ?? 0}
             items={filteredMinutes}
             disabledItems={hideDisabledOptions ? [] : disabledMinutes}
+            loop={loop}
             onChange={(m) => updateTime('m', m)}
           />
         )}
@@ -183,15 +192,18 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
             value={date?.getSeconds() ?? 0}
             items={filteredSeconds}
             disabledItems={hideDisabledOptions ? [] : disabledSeconds}
+            loop={loop}
             onChange={(s) => updateTime('s', s)}
           />
         )}
       </div>
-      {renderExtraFooter && (
-        <div className={`${prefixCls}__footer`}>
-          {renderExtraFooter()}
+      <div className={`${prefixCls}__footer`}>
+        {renderExtraFooter && <div className={`${prefixCls}__extra-footer`}>{renderExtraFooter()}</div>}
+        <div className={`${prefixCls}__footer-actions`}>
+          {showNow && <a className={`${prefixCls}__now-btn`} onClick={handleNow}>{locale.TimePicker.now}</a>}
+          <button type="button" className={`${prefixCls}__ok-btn`} onClick={handleOk}>{locale.TimePicker.okText}</button>
         </div>
-      )}
+      </div>
     </div>
   );
 
@@ -199,7 +211,7 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
     <div className={cls} style={style} ref={wrapperRef}>
       <Popup
         trigger="manual"
-        placement="bottom"
+        placement="bottom-start"
         arrow={false}
         visible={isOpen}
         content={renderOverlay()}>
@@ -221,11 +233,11 @@ const TimePicker = (props: TimePickerProps): React.ReactElement => {
           <span className={`${prefixCls}__suffix`}>
             {allowClear && hasValue && !disabled ? (
               <button type="button" className={`${prefixCls}__clear`} onClick={handleClear} aria-label="Clear time">
-                <ClearIcon />
+                <ClearIcon size="1em" />
               </button>
             ) : null}
             <span className={`${prefixCls}__icon`}>
-              {suffixIcon ?? <ClockIcon />}
+              {suffixIcon ?? <ClockIcon size="1em" />}
             </span>
           </span>
         </div>
