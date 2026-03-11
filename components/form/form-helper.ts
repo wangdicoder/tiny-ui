@@ -1,4 +1,5 @@
 import React from 'react';
+import warning from '../_utils/warning';
 import { Rule } from './types';
 
 export function getPropName(valueProp: string | ((type: any) => string), type: any) {
@@ -26,7 +27,7 @@ export function validate(value: any, rule: Rule): string | undefined {
   } = rule;
   const val = transform ? transform(value) : value;
 
-  if (required && !val) {
+  if (required && (val === undefined || val === null || val === '')) {
     return message || 'The value is required';
   }
   if (type && typeof val !== type) {
@@ -42,9 +43,9 @@ export function validate(value: any, rule: Rule): string | undefined {
   }
   if (min) {
     if (typeof val === 'number' && val < min) {
-      return message || 'The value is less than the max';
+      return message || 'The value is less than the min';
     } else if ((typeof val === 'string' || Array.isArray(val)) && val.length < min) {
-      return message || 'The length of value is less than the max';
+      return message || 'The length of value is less than the min';
     }
   }
   if (enumVal && !enumVal.includes(val)) {
@@ -55,7 +56,9 @@ export function validate(value: any, rule: Rule): string | undefined {
   }
   if (validator) {
     const res = validator(val);
-    if (res instanceof Promise ? !res.then(val) : !res) {
+    if (res instanceof Promise) {
+      warning(true, 'Async validators are not supported in synchronous validate(). Use a synchronous validator instead.');
+    } else if (!res) {
       return message || 'The value is validated unsuccessfully';
     }
   }

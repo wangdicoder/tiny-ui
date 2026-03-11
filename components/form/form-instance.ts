@@ -39,7 +39,7 @@ export default class FormInstance {
     Object.keys(values).forEach(name => this.setFieldValue(name, values[name]));
   }
 
-  getFiledErrors(): FormErrors {
+  getFieldErrors(): FormErrors {
     return this.errors;
   }
 
@@ -51,7 +51,7 @@ export default class FormInstance {
     this.errors[name] = errors;
   }
 
-  setFiledRules(name: string, rules: Rule[]): void {
+  setFieldRules(name: string, rules: Rule[]): void {
     this.rules[name] = rules;
   }
 
@@ -72,7 +72,6 @@ export default class FormInstance {
           errMessages.push(res);
         }
       });
-      // update filed errors
       this.setFieldError(name, errMessages);
       this.notify(name);
     }

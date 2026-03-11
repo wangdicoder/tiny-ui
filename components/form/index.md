@@ -5,6 +5,7 @@ import Method from './demo/method.md'
 import ComplexLayout from './demo/complex-layout.md'
 import ValidateTrigger from './demo/validate-trigger.md'
 import Modal from './demo/modal.md'
+import AsyncSubmit from './demo/async-submit.md'
 import OtherControls from './demo/other-controls.md'
 
 # Form
@@ -33,6 +34,7 @@ const { Item, useForm, FormInstance } = Form;
 <ComplexLayout />
 <ValidateTrigger />
 <Modal />
+<AsyncSubmit />
 <OtherControls />
 
 ## API
@@ -76,7 +78,7 @@ Form field component for data bidirectional binding, validation and layout.
 | getFieldValue     | get the value by the field name                   | (name: string) => any                     |
 | setFieldValues    | set values by a set of field names                | (\{ [name: string]: any \}) => void         |
 | setFieldValue     | set the value by the field name                   | (name: string, value: any) => void        |
-| getFiledErrors    | get errors by a set of field names                | () => \{ [name: string]: string[] \}        |
+| getFieldErrors    | get errors by a set of field names                | () => \{ [name: string]: string[] \}        |
 | getFieldError     | get the error messages by the field name          | (name: string) => string[]                |
 | setFieldError     | set the error messages by the field name          | (name: string, errors: string[]) => void  |
 | resetFields       | reset fields to initialValues                     | () => void                                |

@@ -5,6 +5,7 @@ import Method from './demo/method.md'
 import ComplexLayout from './demo/complex-layout.md'
 import ValidateTrigger from './demo/validate-trigger.md'
 import Modal from './demo/modal.md'
+import AsyncSubmit from './demo/async-submit.md'
 import OtherControls from './demo/other-controls.md'
 
 # Form
@@ -33,6 +34,7 @@ const { Item, useForm, FormInstance } = Form;
 <ComplexLayout />
 <ValidateTrigger />
 <Modal />
+<AsyncSubmit />
 <OtherControls />
 
 ## API
@@ -76,7 +78,7 @@ const { Item, useForm, FormInstance } = Form;
 | getFieldValue     | 获取指定字段名对应的值                    | (name: string) => any                     |
 | setFieldValues    | 设置一组字段名对应的值                    | (\{ [name: string]: any \}) => void         |
 | setFieldValue     | 设置指定字段名对应的值                    | (name: string, value: any) => void        |
-| getFiledErrors    | 获取一组字段名对应的错误信息              | () => \{ [name: string]: string[] \}        |
+| getFieldErrors    | 获取一组字段名对应的错误信息              | () => \{ [name: string]: string[] \}        |
 | getFieldError     | 获取指定字段名对应的错误信息              | (name: string) => string[]                |
 | setFieldError     | 设置指定字段名对应的错误信息              | (name: string, errors: string[]) => void  |
 | resetFields       | 重置字段为 initialValues                  | () => void                                |

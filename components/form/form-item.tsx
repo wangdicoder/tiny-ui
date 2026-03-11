@@ -103,7 +103,7 @@ const FormItem = (props: FormItemProps): JSX.Element => {
       return;
     }
 
-    rules && form.setFiledRules(name, rules);
+    rules && form.setFieldRules(name, rules);
 
     return form.subscribe((n) => {
       if (name === '*' || n === name || n === '*') {

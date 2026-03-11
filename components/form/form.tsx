@@ -34,7 +34,7 @@ const Form = (props: FormProps): JSX.Element => {
     const formIns = formRef.current;
     formIns.validateFields();
     const values = formIns.getFieldValues();
-    const errors = formIns.getFiledErrors();
+    const errors = formIns.getFieldErrors();
     if (Object.keys(errors).some((key) => errors[key].length > 0)) {
       onFinishFailed && onFinishFailed({ values, errors });
     } else {
