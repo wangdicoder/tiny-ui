@@ -18,7 +18,7 @@ const TimePanel = (props: TimePanelProps): React.ReactElement => {
   const itemRefs = useRef<Map<number, HTMLLIElement>>(new Map());
   const isResetting = useRef(false);
   const clickedRef = useRef(false);
-  const scrollToItemRef = useRef<(val: number) => void>(null!);
+  const scrollToItemRef = useRef<((val: number) => void) | null>(null);
 
   const oneGroupHeight = items.length * ITEM_HEIGHT;
 
@@ -46,7 +46,7 @@ const TimePanel = (props: TimePanelProps): React.ReactElement => {
       clickedRef.current = false;
       return;
     }
-    scrollToItemRef.current(value);
+    scrollToItemRef.current?.(value);
   }, [value]);
 
   // Scroll reset for loop mode
