@@ -1,0 +1,86 @@
+{
+  "name": "@tiny-ui/react",
+  "version": "1.0.4",
+  "description": "A friendly UI component set for React",
+  "license": "MIT",
+  "keywords": [
+    "tiny",
+    "tiny-ui",
+    "design",
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "ui",
+    "frontend",
+    "react hook component",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangdicoder/tiny-ui.git",
+    "directory": "packages/react"
+  },
+  "author": "Di Wang<wangdicoder@gmail.com>",
+  "homepage": "https://wangdicoder.github.io/tiny-ui/",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    },
+    "./lib/*": "./lib/*",
+    "./es/*": "./es/*"
+  },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "files": [
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsdown && node scripts/build-styles.js && node scripts/inject-style-imports.js",
+    "clean": "rimraf lib es",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:update": "jest --updateSnapshot",
+    "lint": "eslint src/",
+    "lint:style": "stylelint \"src/**/*.scss\"",
+    "lint:style:fix": "npm run lint:style -- --fix"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.4",
+    "classnames": "^2.3.1",
+    "react-transition-group": "^4.4.2",
+    "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-transition-group": "^4.4.4",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.9",
+    "ts-jest": "^29.0.0",
+    "tsdown": "^0.21.1",
+    "typescript": "^5.4.0"
+  }
+}

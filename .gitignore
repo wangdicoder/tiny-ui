@@ -1,15 +1,27 @@
-# Created by .ignore support plugin (hsz.mobi)
-# IntelliJ project files
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+es
+lib
+coverage
+apps/docs/build
+
+# Turbo
+.turbo
+
+# IDE
 .idea
 *.iml
+.vscode
 
-/node_modules
-/site/build
-/site/dist
-/lib
-/es
-/dist
-/coverage
+# OS
+.DS_Store
 
-/site/src/containers/test/index.tsx
+# Claude
 .claude
+
+# Misc
+*.tgz
+*.log

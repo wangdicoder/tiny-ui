@@ -20,25 +20,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
-      - name: Build site
-        run: npx vite build site --base /tiny-ui/
+      - name: Build docs site
+        run: pnpm --filter @tiny-ui/docs build -- --base /tiny-ui/
 
       - name: Copy 404.html for SPA routing
-        run: cp site/build/index.html site/build/404.html
+        run: cp apps/docs/build/index.html apps/docs/build/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/build
+          path: apps/docs/build
 
   deploy:
     environment:

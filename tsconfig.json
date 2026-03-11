@@ -1,36 +1,8 @@
 {
-  "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "checkJs": false,
-    "declaration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "jsx": "react-jsx",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es2020"
-    ],
-    "moduleResolution": "bundler",
-    "noEmit": true,
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noEmitHelpers": true,
-    "noImplicitReturns": true,
-    "pretty": true,
-    "sourceMap": true,
-    "strict": true,
-    "baseUrl": ".",
-    "target": "es2020"
-  },
-  "include": [
-    "components/"
+  "extends": "./tsconfig.base.json",
+  "references": [
+    { "path": "packages/react" },
+    { "path": "apps/docs" }
   ],
-  "exclude": [
-    "components/**/*.test.ts",
-    "components/**/*.test.tsx"
-  ]
+  "files": []
 }

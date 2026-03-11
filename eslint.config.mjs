@@ -7,12 +7,12 @@ import jestDomPlugin from 'eslint-plugin-jest-dom';
 
 export default tseslint.config(
   {
-    ignores: ['dist/', 'es/', 'lib/', 'node_modules/', 'site/build/'],
+    ignores: ['**/dist/', '**/es/', '**/lib/', '**/node_modules/', 'apps/docs/build/'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['components/**/*.{ts,tsx}'],
+    files: ['packages/react/src/**/*.{ts,tsx}'],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
