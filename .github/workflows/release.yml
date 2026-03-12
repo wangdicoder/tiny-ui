@@ -17,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -33,6 +35,56 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Auto-generate changesets for modified packages
+        run: |
+          # Find the latest version tag to diff against
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)
+          echo "Comparing against: $LAST_TAG"
+
+          # Skip if there are already changeset files (manually created)
+          EXISTING=$(find .changeset -name '*.md' ! -name 'README.md' | head -1)
+          if [ -n "$EXISTING" ]; then
+            echo "Changeset files already exist, skipping auto-generation"
+            exit 0
+          fi
+
+          CHANGED_PACKAGES=""
+
+          for pkg_json in packages/*/package.json; do
+            pkg_dir=$(dirname "$pkg_json")
+            pkg_name=$(node -p "require('./$pkg_json').name")
+
+            # Check if any source files changed in this package
+            if git diff --quiet "$LAST_TAG" -- "$pkg_dir/src" 2>/dev/null; then
+              echo "No changes in $pkg_name"
+            else
+              echo "Changes detected in $pkg_name"
+              CHANGED_PACKAGES="$CHANGED_PACKAGES $pkg_name"
+            fi
+          done
+
+          if [ -z "$CHANGED_PACKAGES" ]; then
+            echo "No packages changed, skipping changeset generation"
+            exit 0
+          fi
+
+          # Build the changeset file
+          RANDOM_ID=$(head -c 8 /dev/urandom | od -An -tx1 | tr -d ' \n')
+          CHANGESET_FILE=".changeset/auto-${RANDOM_ID}.md"
+
+          {
+            echo "---"
+            for pkg in $CHANGED_PACKAGES; do
+              echo "'${pkg}': patch"
+            done
+            echo "---"
+            echo ""
+            echo "Auto-detected changes since $LAST_TAG"
+          } > "$CHANGESET_FILE"
+
+          echo "Generated $CHANGESET_FILE for:$CHANGED_PACKAGES"
+          cat "$CHANGESET_FILE"
 
       - name: Creating .npmrc
         run: |
