@@ -1,27 +1,27 @@
 <p align="center">
   <a href="https://tiny-design.dev">
-    <img width="200" src="https://github.com/wangdicoder/tiny-design/blob/master/site/src/assets/logo/logo.svg">
+    <img width="200" src="https://github.com/wangdicoder/tiny-design/blob/master/apps/docs/src/assets/logo/logo.svg">
   </a>
 </p>
 
-<h1 align="center">Tiny UI</h1>
+<h1 align="center">Tiny Design</h1>
 <p align="center">A friendly UI component set for React</p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/tiny-design">
-    <img src="https://img.shields.io/npm/v/tiny-design.svg?style=flat-square" alt="npm version"/>
+  <a href="https://www.npmjs.com/package/@tiny-design/react">
+    <img src="https://img.shields.io/npm/v/@tiny-design/react.svg?style=flat-square" alt="npm version"/>
   </a>
-  <a href="https://www.npmjs.com/package/tiny-design">
-    <img src="https://img.shields.io/npm/dm/tiny-design.svg?style=flat-square" alt="npm downloads"/>
+  <a href="https://www.npmjs.com/package/@tiny-design/react">
+    <img src="https://img.shields.io/npm/dm/@tiny-design/react.svg?style=flat-square" alt="npm downloads"/>
   </a>
-  <a href="https://bundlephobia.com/package/tiny-design">
-    <img src="https://img.shields.io/bundlephobia/minzip/tiny-design.svg?style=flat-square" alt="bundle size"/>
+  <a href="https://bundlephobia.com/package/@tiny-design/react">
+    <img src="https://img.shields.io/bundlephobia/minzip/@tiny-design/react.svg?style=flat-square" alt="bundle size"/>
   </a>
   <a href="https://react.dev">
     <img src="https://img.shields.io/static/v1?label=react&message=%3E=18&color=61dafb&style=flat-square" alt="react version"/>
   </a>
   <a href="https://github.com/wangdicoder/tiny-design/blob/master/LICENSE">
-    <img src="https://img.shields.io/npm/l/tiny-design.svg?style=flat-square" alt="license"/>
+    <img src="https://img.shields.io/npm/l/@tiny-design/react.svg?style=flat-square" alt="license"/>
   </a>
 </p>
 
@@ -29,41 +29,51 @@
 
 ## Features
 
-- 65+ high-quality React components
+- 80+ high-quality React components
 - Written in **TypeScript** with complete type definitions
 - Entirely built with function components and **React Hooks**
 - **Dark mode** support with system preference detection
 - **i18n** built-in — English and Chinese out of the box
 - Follows [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) accessibility standards
-- Customisable themes via SCSS variables
+- Customisable themes via design tokens and SCSS variables
 - Supports tree-shaking for minimal bundle size
+
+## Packages
+
+| Package | Description |
+| ------- | ----------- |
+| [@tiny-design/react](./packages/react) | Core component library |
+| [@tiny-design/tokens](./packages/tokens) | Design tokens and foundational styles |
 
 ## Component Categories
 
 | Category | Components | Examples |
 | -------- | :--------: | -------- |
 | Foundation | 5 | Button, Icon, Image, Link, Typography |
-| Layout | 6 | Grid, Space, Split, Divider, Aspect Ratio |
-| Navigation | 5 | Menu, Breadcrumb, Dropdown, Pagination, Steps |
-| Data Display | 15 | Card, Carousel, Collapse, Tag, Tooltip, Tree |
-| Form | 17 | Input, Select, DatePicker, TimePicker, Checkbox, Radio, Slider |
-| Feedback | 12 | Modal, Drawer, Message, Notification, Alert, Skeleton |
-| Miscellany | 5 | ConfigProvider, BackTop, Sticky, Keyboard |
+| Layout | 7 | Grid, Flex, Space, Split, Divider, Aspect Ratio |
+| Navigation | 7 | Menu, Breadcrumb, Dropdown, Pagination, Steps, Anchor, SpeedDial |
+| Data Display | 19 | Card, Carousel, Collapse, Tag, Tooltip, Tree, Table |
+| Form | 22 | Input, Select, DatePicker, TimePicker, Checkbox, Radio, Slider |
+| Feedback | 13 | Modal, Drawer, Overlay, Message, Notification, Alert, Skeleton |
+| Miscellany | 5 | ConfigProvider, BackTop, Sticky, Keyboard, CopyToClipboard |
 
 ## Install
 
 ```bash
 # npm
-npm install tiny-design
+npm install @tiny-design/react
 
 # yarn
-yarn add tiny-design
+yarn add @tiny-design/react
+
+# pnpm
+pnpm add @tiny-design/react
 ```
 
 ## Quick Start
 
 ```jsx
-import { Button, Switch } from 'tiny-design';
+import { Button, Switch } from '@tiny-design/react';
 
 const App = () => (
   <>
@@ -80,7 +90,7 @@ Styles are automatically imported alongside each component — no separate CSS i
 ### Dark mode
 
 ```jsx
-import { ConfigProvider } from 'tiny-design';
+import { ConfigProvider } from '@tiny-design/react';
 
 <ConfigProvider theme="dark">
   <App />
@@ -92,9 +102,10 @@ import { ConfigProvider } from 'tiny-design';
 Override SCSS variables to customise colours, borders, fonts, and more:
 
 ```scss
-$primary-color: #007bff;
-$font-path: '~tiny-design/themes/fonts';
-@import '~tiny-design/themes/index.scss';
+@use '@tiny-design/tokens/scss/variables' with (
+  $primary-color: #007bff
+);
+@use '@tiny-design/tokens/scss/base';
 ```
 
 See the [Theme Customisation Guide](https://tiny-design.dev/guide/customise-theme) for details.
@@ -104,7 +115,7 @@ See the [Theme Customisation Guide](https://tiny-design.dev/guide/customise-them
 Built-in locale support for English and Chinese. Set locale via `ConfigProvider` or `IntlProvider`:
 
 ```jsx
-import { ConfigProvider, zh_CN } from 'tiny-design';
+import { ConfigProvider, zh_CN } from '@tiny-design/react';
 
 <ConfigProvider locale={zh_CN}>
   <App />

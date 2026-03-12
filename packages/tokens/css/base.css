@@ -800,6 +800,7 @@ html[data-tiny-theme=dark] {
     --ty-calendar-hover: #2a2a2a;
   }
 }
+/* stylelint-disable scss/comment-no-empty */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Correct the line height in all browsers.
@@ -808,7 +809,9 @@ html[data-tiny-theme=dark] {
 html {
   font-size: 14px;
   line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%; /* 2 */
 }
 
 /* Sections
@@ -1000,6 +1003,8 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+     -moz-appearance: button;
+          appearance: button;
 }
 
 /**
@@ -1082,7 +1087,9 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type=search] {
-  -webkit-appearance: textfield; /* 1 */
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
 
@@ -1091,6 +1098,7 @@ textarea {
  */
 [type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
+          appearance: none;
 }
 
 /**
@@ -1098,7 +1106,8 @@ textarea {
  * 2. Change font properties to `inherit` in Safari.
  */
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
+  -webkit-appearance: button;
+          appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
 
