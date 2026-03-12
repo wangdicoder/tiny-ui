@@ -38,7 +38,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm build --filter='!@tiny-design/docs'
 
       - name: Auto-generate changesets for modified packages
         run: |
