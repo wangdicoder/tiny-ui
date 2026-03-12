@@ -129,6 +129,7 @@ const c = {
   speedDial: ll(() => import('../../../packages/react/src/speed-dial/index.md'), () => import('../../../packages/react/src/speed-dial/index.zh_CN.md')),
   anchor: ll(() => import('../../../packages/react/src/anchor/index.md'), () => import('../../../packages/react/src/anchor/index.zh_CN.md')),
   autoComplete: ll(() => import('../../../packages/react/src/auto-complete/index.md'), () => import('../../../packages/react/src/auto-complete/index.zh_CN.md')),
+  overlay: ll(() => import('../../../packages/react/src/overlay/index.md'), () => import('../../../packages/react/src/overlay/index.zh_CN.md')),
 };
 
 export const getGuideMenu = (s: SiteLocale): RouterItem[] => {
@@ -238,6 +239,7 @@ export const getComponentMenu = (s: SiteLocale): RouterItem[] => {
         { title: 'Alert', route: 'alert', component: pick(c.alert, z) },
         { title: 'Drawer', route: 'drawer', component: pick(c.drawer, z) },
         { title: 'Loader', route: 'loader', component: pick(c.loader, z) },
+        { title: 'Overlay', route: 'overlay', component: pick(c.overlay, z) },
         { title: 'Loading Bar', route: 'loading-bar', component: pick(c.loadingBar, z) },
         { title: 'Message', route: 'message', component: pick(c.message, z) },
         { title: 'Modal', route: 'modal', component: pick(c.modal, z) },
