@@ -1,5 +1,4 @@
 export type { IconProps } from './types';
-export { withSpin } from './with-spin';
 
 export { IconLoader } from './icon-loader';
 export { IconLoader3quarter } from './icon-loader-3quarter';
