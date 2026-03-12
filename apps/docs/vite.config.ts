@@ -9,6 +9,7 @@ const reactSrc = path.resolve(__dirname, '../../packages/react/src');
 const iconsSrc = path.resolve(__dirname, '../../packages/icons/src');
 
 export default defineConfig({
+  base: process.env.VITE_BASE || '/',
   plugins: [
     { enforce: 'pre', ...mdx({
       mdxExtensions: ['.mdx', '.md'],
