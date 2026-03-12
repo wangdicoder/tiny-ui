@@ -1,8 +1,7 @@
 name: Release
 
 on:
-  push:
-    branches: [master]
+  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -91,7 +90,8 @@ jobs:
               link="[$short_hash]($REPO_URL/commit/$hash)"
 
               # Strip conventional commit prefix and optional scope for the description
-              desc=$(echo "$msg" | sed -E 's/^(feat|fix|refactor|chore|docs|style|perf|test|ci|build)(\([^)]*\))?[!]?:\s*//')
+              # Wrap bare <Component> tags in backticks so MDX doesn't parse them as JSX
+              desc=$(echo "$msg" | sed -E 's/^(feat|fix|refactor|chore|docs|style|perf|test|ci|build)(\([^)]*\))?[!]?:\s*//' | sed -E 's/<([A-Za-z][A-Za-z0-9]*[^>]*)>/`<\1>`/g')
 
               entry=$(printf '\n* %s (%s)' "$desc" "$link")
               case "$msg" in
