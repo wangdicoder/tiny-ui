@@ -2,7 +2,7 @@ import React from 'react';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
 import pkg from '../../../../../packages/react/package.json';
-import { Icon, Link } from '@tiny-ui/react';
+import { Icon, Link } from '@tiny-design/react';
 import { useSidebarToggle } from '../../context/sidebar-toggle-context';
 import { useLocaleContext } from '../../context/locale-context';
 import { ThemeToggle } from './theme-toggle';

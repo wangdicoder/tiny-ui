@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '@tiny-ui/react';
+import { useTheme } from '@tiny-design/react';
 
 export const ThemeToggle = (): React.ReactElement => {
   const { resolvedTheme, toggle } = useTheme();

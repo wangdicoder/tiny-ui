@@ -2,7 +2,7 @@ import React from 'react';
 import './sidebar-menu.scss';
 import { NavLink } from 'react-router-dom';
 import { RouterItem } from '../../routers';
-import { Layout } from '@tiny-ui/react';
+import { Layout } from '@tiny-design/react';
 import { useSidebarToggle } from '../../context/sidebar-toggle-context';
 
 const { Sidebar } = Layout;

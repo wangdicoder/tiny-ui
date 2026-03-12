@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import { Locale, en_US, zh_CN } from '@tiny-ui/react';
+import { Locale, en_US, zh_CN } from '@tiny-design/react';
 import { SiteLocale, siteEnUS, siteZhCN } from '../locale';
 
 type LocaleContextType = {

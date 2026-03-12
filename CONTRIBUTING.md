@@ -33,7 +33,7 @@ pnpm build
 
 ```
 tiny-ui/
-├── packages/react/       # @tiny-ui/react — component library
+├── packages/react/       # @tiny-design/react — component library
 │   ├── src/              # Component source code
 │   ├── scripts/          # Build scripts
 │   └── package.json
@@ -83,13 +83,13 @@ your-component/
 pnpm test
 
 # Run tests for a specific component
-pnpm --filter @tiny-ui/react test -- --testPathPattern=button
+pnpm --filter @tiny-design/react test -- --testPathPattern=button
 
 # Update snapshots
-pnpm --filter @tiny-ui/react test:update
+pnpm --filter @tiny-design/react test:update
 
 # Run with coverage
-pnpm --filter @tiny-ui/react test:coverage
+pnpm --filter @tiny-design/react test:coverage
 ```
 
 ## Commit Convention
@@ -109,14 +109,14 @@ Examples:
 
 ## Adding a Changeset
 
-We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs. If your PR includes user-facing changes to `@tiny-ui/react`, add a changeset:
+We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs. If your PR includes user-facing changes to `@tiny-design/react`, add a changeset:
 
 ```bash
 pnpm changeset
 ```
 
 You'll be prompted to:
-1. Select the package(s) affected (`@tiny-ui/react`)
+1. Select the package(s) affected (`@tiny-design/react`)
 2. Choose the semver bump type (patch / minor / major)
 3. Write a short summary of your change
 

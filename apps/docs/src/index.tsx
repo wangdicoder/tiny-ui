@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/react';
 import './index.scss';
-import '@tiny-ui/react/style/index.scss';
+import '@tiny-design/react/style/index.scss';
 
-import { IntlProvider } from '@tiny-ui/react';
+import { IntlProvider } from '@tiny-design/react';
 import { components } from './components/markdown-tag';
 import { Header } from './components/header';
 import { SidebarToggleProvider } from './context/sidebar-toggle-context';

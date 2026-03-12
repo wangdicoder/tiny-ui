@@ -1,6 +1,6 @@
 import React from 'react';
 import './feature-block.scss';
-import { Icon } from '@tiny-ui/react';
+import { Icon } from '@tiny-design/react';
 
 type Props = {
   icon: string;

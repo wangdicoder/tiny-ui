@@ -2,7 +2,7 @@ import React, { Suspense, useMemo } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { getGuideMenu } from '../../routers';
 import { SidebarMenu } from '../../components/sidebar-menu';
-import { Layout, Loader, Divider } from '@tiny-ui/react';
+import { Layout, Loader, Divider } from '@tiny-design/react';
 import { DocFooter } from '../../components/doc-footer';
 import { useLocaleContext } from '../../context/locale-context';
 

@@ -20,7 +20,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@tiny-ui/react': reactSrc,
+      '@tiny-design/react': reactSrc,
     },
     dedupe: ['react', 'react-dom'],
   },

@@ -23,9 +23,9 @@ Prism.languages.bash = Prism.languages.shell = {
 };
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { LightCodeTheme, DarkCodeTheme } from './code-theme';
-import * as Components from '@tiny-ui/react';
-import CollapseTransition from '@tiny-ui/react/collapse-transition';
-import { useTheme } from '@tiny-ui/react';
+import * as Components from '@tiny-design/react';
+import CollapseTransition from '@tiny-design/react/collapse-transition';
+import { useTheme } from '@tiny-design/react';
 import { useLocaleContext } from '../../context/locale-context';
 
 type Props = {

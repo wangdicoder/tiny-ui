@@ -1,5 +1,5 @@
 {
-  "name": "@tiny-ui/react",
+  "name": "@tiny-design/react",
   "version": "1.0.4",
   "description": "A friendly UI component set for React",
   "license": "MIT",
@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.4",
-    "@tiny-ui/tokens": "workspace:*",
+    "@tiny-design/tokens": "workspace:*",
     "classnames": "^2.3.1",
     "react-transition-group": "^4.4.2",
     "tslib": "^2.3.1"

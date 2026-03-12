@@ -3,7 +3,7 @@ import './footer.scss';
 import pkg from '../../../../../../packages/react/package.json';
 
 const { version, repository } = pkg;
-import { Icon } from '@tiny-ui/react';
+import { Icon } from '@tiny-design/react';
 import logoSvg from '../../../assets/logo/logo.svg';
 
 export const Footer = (): React.ReactElement => (

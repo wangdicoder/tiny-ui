@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Icon, Flex, Typography, Statistic, Card, Row, Col } from '@tiny-ui/react';
+import { Button, Icon, Flex, Typography, Statistic, Card, Row, Col } from '@tiny-design/react';
 import { Footer } from './footer';
 import { useLocaleContext } from '../../context/locale-context';
 import { getComponentMenu } from '../../routers';

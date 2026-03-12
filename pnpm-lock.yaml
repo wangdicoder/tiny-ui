@@ -65,10 +65,10 @@ importers:
       '@mdx-js/react':
         specifier: ^3.1.1
         version: 3.1.1(@types/react@18.3.28)(react@18.3.1)
-      '@tiny-ui/react':
+      '@tiny-design/react':
         specifier: workspace:*
         version: link:../../packages/react
-      '@tiny-ui/tokens':
+      '@tiny-design/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       react:
@@ -114,7 +114,7 @@ importers:
       '@popperjs/core':
         specifier: ^2.11.4
         version: 2.11.8
-      '@tiny-ui/tokens':
+      '@tiny-design/tokens':
         specifier: workspace:*
         version: link:../tokens
       classnames:

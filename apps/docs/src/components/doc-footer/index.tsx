@@ -2,7 +2,7 @@ import React from 'react';
 import './component-page.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { RouterItem } from '../../routers';
-import { Icon } from '@tiny-ui/react';
+import { Icon } from '@tiny-design/react';
 
 type Props = {
   routers: RouterItem[];

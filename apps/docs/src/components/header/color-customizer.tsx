@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ColorPicker } from '@tiny-ui/react';
-import { hexToHsb, hsbToHex } from '@tiny-ui/react/color-picker/utils';
+import { ColorPicker } from '@tiny-design/react';
+import { hexToHsb, hsbToHex } from '@tiny-design/react/color-picker/utils';
 
 const STORAGE_KEY = 'ty-primary-color';
 const DEFAULT_COLOR = '#6e41bf';

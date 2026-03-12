@@ -17,16 +17,16 @@ A **pre-commit hook** (husky) runs `lint-staged`, which auto-fixes SCSS via styl
 Turborepo handles the dependency graph via `"dependsOn": ["^build"]`:
 
 ```
-@tiny-ui/tokens   →   @tiny-ui/react   →   @tiny-ui/docs
+@tiny-design/tokens   →   @tiny-design/react   →   @tiny-design/docs
 ```
 
 Each package's build step:
 
 | Package | Build Steps |
 |---------|-------------|
-| **@tiny-ui/tokens** | `node scripts/build.js` — sass compiles `scss/base.scss` into `css/base.css` |
-| **@tiny-ui/react** | `tsdown` (TS to JS) → `build-styles.js` (copies base.css from tokens, compiles 78 component SCSS files) → `inject-style-imports.js` (adds CSS imports into JS entry files) |
-| **@tiny-ui/docs** | `vite build` |
+| **@tiny-design/tokens** | `node scripts/build.js` — sass compiles `scss/base.scss` into `css/base.css` |
+| **@tiny-design/react** | `tsdown` (TS to JS) → `build-styles.js` (copies base.css from tokens, compiles 78 component SCSS files) → `inject-style-imports.js` (adds CSS imports into JS entry files) |
+| **@tiny-design/docs** | `vite build` |
 
 ## CI (GitHub Actions)
 

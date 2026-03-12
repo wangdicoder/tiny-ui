@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "noUnusedLocals": false,
     "paths": {
-      "@tiny-ui/react": ["../../packages/react/src"],
-      "@tiny-ui/react/*": ["../../packages/react/src/*"]
+      "@tiny-design/react": ["../../packages/react/src"],
+      "@tiny-design/react/*": ["../../packages/react/src/*"]
     }
   },
   "include": [
