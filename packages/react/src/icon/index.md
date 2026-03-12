@@ -12,6 +12,7 @@ SVG icon components from `@tiny-design/icons`. Each icon is its own module, so b
 ```bash
 $ pnpm add @tiny-design/icons
 ```
+<br />
 
 ```jsx
 import { IconClose, IconPlus } from '@tiny-design/icons';

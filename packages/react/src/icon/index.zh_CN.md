@@ -12,6 +12,7 @@ import SvgIconList from './demo/svg-icons.tsx'
 ```bash
 $ pnpm add @tiny-design/icons
 ```
+<br />
 
 ```jsx
 import { IconClose, IconPlus } from '@tiny-design/icons';

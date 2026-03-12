@@ -6,6 +6,7 @@ import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 import path from 'path';
 
 const reactSrc = path.resolve(__dirname, '../../packages/react/src');
+const iconsSrc = path.resolve(__dirname, '../../packages/icons/src');
 
 export default defineConfig({
   plugins: [
@@ -21,6 +22,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@tiny-design/react': reactSrc,
+      '@tiny-design/icons': iconsSrc,
     },
     dedupe: ['react', 'react-dom'],
   },
