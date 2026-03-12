@@ -1,0 +1,5 @@
+@use '../../style/variables' as *;
+
+.#{$prefix}-icon-spin {
+  animation: ty-rotate 1s linear infinite;
+}

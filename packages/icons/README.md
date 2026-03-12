@@ -39,10 +39,11 @@ All icons accept the following props (plus any standard SVG attributes):
 
 ### Spinning Icons
 
-Use the `withSpin` HOC to create spinning variants (useful for loaders):
+Use the `withSpin` HOC from `@tiny-design/react` to create spinning variants (useful for loaders):
 
 ```tsx
-import { IconLoader, withSpin } from '@tiny-design/icons';
+import { withSpin } from '@tiny-design/react';
+import { IconLoader } from '@tiny-design/icons';
 
 const SpinningLoader = withSpin(IconLoader);
 

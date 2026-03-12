@@ -47,7 +47,8 @@ All icon components share the same props interface (`IconProps`), which extends 
 A higher-order component that wraps any icon to add a continuous spin animation.
 
 ```jsx
-import { IconLoader, withSpin } from '@tiny-design/icons';
+import { withSpin } from '@tiny-design/react';
+import { IconLoader } from '@tiny-design/icons';
 
 const SpinLoader = withSpin(IconLoader);
 

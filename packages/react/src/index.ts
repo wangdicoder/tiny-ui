@@ -80,6 +80,7 @@ export { default as Typography } from './typography';
 export { default as Upload } from './upload';
 
 export { withLocale } from './intl-provider/with-locale';
+export { withSpin } from './with-spin';
 export { en_US, zh_CN } from './locale';
 export type { Locale } from './locale';
 
