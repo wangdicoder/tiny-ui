@@ -86,7 +86,31 @@ jobs:
           echo "Generated $CHANGESET_FILE for:$CHANGED_PACKAGES"
           cat "$CHANGESET_FILE"
 
+      - name: Version packages
+        run: |
+          CHANGESETS=$(find .changeset -name '*.md' ! -name 'README.md' | head -1)
+          if [ -z "$CHANGESETS" ]; then
+            echo "No changesets found, skipping"
+            echo "HAS_CHANGES=false" >> "$GITHUB_ENV"
+            exit 0
+          fi
+
+          pnpm changeset version
+          echo "HAS_CHANGES=true" >> "$GITHUB_ENV"
+
+      - name: Commit version bump
+        if: env.HAS_CHANGES == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: version packages [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Creating .npmrc
+        if: env.HAS_CHANGES == 'true'
         run: |
           cat << EOF > "$HOME/.npmrc"
             //registry.npmjs.org/:_authToken=$NPM_TOKEN
@@ -94,14 +118,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Create Release Pull Request or Publish
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: pnpm changeset version
-          publish: pnpm release
-          title: 'chore: version packages'
-          commit: 'chore: version packages'
+      - name: Publish to npm
+        if: env.HAS_CHANGES == 'true'
+        run: pnpm release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
