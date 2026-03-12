@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Button from '../button';
-import Icon from '../../icon';
+import { IconWifi } from '@tiny-design/icons';
 
 describe('<Button />', () => {
   it('should match the snapshot', () => {
@@ -81,7 +81,7 @@ describe('<Button />', () => {
   });
 
   it('should have icon placement', () => {
-    const { container } = render(<Button icon={<Icon name="wifi" />}>Icon</Button>);
+    const { container } = render(<Button icon={<IconWifi />}>Icon</Button>);
     expect(container.querySelector('.ty-btn__icon-container')).toBeTruthy();
   });
 

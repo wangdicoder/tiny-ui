@@ -65,6 +65,9 @@ importers:
       '@mdx-js/react':
         specifier: ^3.1.1
         version: 3.1.1(@types/react@18.3.28)(react@18.3.1)
+      '@tiny-design/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@tiny-design/react':
         specifier: workspace:*
         version: link:../../packages/react
@@ -109,11 +112,53 @@ importers:
         specifier: ^7.3.1
         version: 7.3.1(@types/node@25.4.0)(jiti@2.6.1)(sass@1.98.0)(yaml@2.8.2)
 
+  packages/icons:
+    devDependencies:
+      '@testing-library/jest-dom':
+        specifier: ^6.0.0
+        version: 6.9.1
+      '@testing-library/react':
+        specifier: ^14.0.0
+        version: 14.3.1(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/jest':
+        specifier: ^29.0.0
+        version: 29.5.14
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.3.28
+      jest:
+        specifier: ^29.0.0
+        version: 29.7.0(@types/node@25.4.0)
+      jest-environment-jsdom:
+        specifier: ^29.0.0
+        version: 29.7.0
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      rimraf:
+        specifier: ^3.0.2
+        version: 3.0.2
+      ts-jest:
+        specifier: ^29.0.0
+        version: 29.4.6(@babel/core@7.29.0)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(jest-util@29.7.0)(jest@29.7.0(@types/node@25.4.0))(typescript@5.9.3)
+      tsdown:
+        specifier: ^0.21.1
+        version: 0.21.2(typescript@5.9.3)
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+
   packages/react:
     dependencies:
       '@popperjs/core':
         specifier: ^2.11.4
         version: 2.11.8
+      '@tiny-design/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@tiny-design/tokens':
         specifier: workspace:*
         version: link:../tokens

@@ -1,38 +1,46 @@
-import Basic from './demo/basic.md'
-import Spin from './demo/spin.md'
-import IconList from './demo/icons.tsx'
+import SvgBasic from './demo/svg-basic.md'
+import SvgSizeColor from './demo/svg-size-color.md'
+import SvgSpin from './demo/svg-spin.md'
+import SvgIconList from './demo/svg-icons.tsx'
 
 # Icon
 
-Element provides a set of common icons.
+SVG icon components from `@tiny-design/icons`. Each icon is its own module, so bundlers can tree-shake unused icons.
 
 ## Usage
 
+```bash
+$ pnpm add @tiny-design/icons
+```
+
 ```jsx
-import { Icon } from 'tiny-design';
+import { IconClose, IconPlus } from '@tiny-design/icons';
 ```
 
 ## Examples
 
 <Layout>
   <Column>
-    <Basic />
+    <SvgBasic />
+    <SvgSpin />
   </Column>
   <Column>
-    <Spin />
+    <SvgSizeColor />
   </Column>
 </Layout>
 
+## API
+
+All icon components share the same props interface (`IconProps`), which extends `SVGAttributes<SVGSVGElement>`.
+
+| Property  | Description                   | Type              | Default         |
+| --------- | ----------------------------- | ----------------- | --------------- |
+| size      | icon size (width & height)    | string \| number  | `'1em'`         |
+| color     | icon fill color               | string            | `'currentColor'`|
+| className | CSS class name                | string            | -               |
+| style     | inline styles                 | CSSProperties     | -               |
+| ref       | forwarded ref                 | Ref\<SVGSVGElement\> | -            |
 
 ## List of icons
 
-<IconList />
-
-## API
-
-| Property  | Description                   | Type          | Default       |
-| --------- | ----------------------------- | ------------- | ------------- |
-| name      | icon name                     | string        | -             |
-| size      | icon size                     | number        | -             |
-| color     | icon color                    | string        | -             |
-| spin      | rotate icon with animation.   | boolean       | false         |
+<SvgIconList />

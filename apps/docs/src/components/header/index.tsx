@@ -2,7 +2,8 @@ import React from 'react';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
 import pkg from '../../../../../packages/react/package.json';
-import { Icon, Link } from '@tiny-design/react';
+import { Link } from '@tiny-design/react';
+import { IconGithub } from '@tiny-design/icons';
 import { useSidebarToggle } from '../../context/sidebar-toggle-context';
 import { useLocaleContext } from '../../context/locale-context';
 import { ThemeToggle } from './theme-toggle';
@@ -64,7 +65,7 @@ export const Header = (): React.ReactElement => {
           </li>
           <li className="header__nav-item">
             <Link href={repository.url} underline={false} rel="noreferrer noopener">
-              <Icon name="github" color="currentColor" size={19} />
+              <IconGithub color="currentColor" size={19} />
             </Link>
           </li>
           <li className="header__nav-item">

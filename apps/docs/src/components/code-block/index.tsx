@@ -24,6 +24,7 @@ Prism.languages.bash = Prism.languages.shell = {
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { LightCodeTheme, DarkCodeTheme } from './code-theme';
 import * as Components from '@tiny-design/react';
+import * as SvgIcons from '@tiny-design/icons';
 import CollapseTransition from '@tiny-design/react/collapse-transition';
 import { useTheme } from '@tiny-design/react';
 import { useLocaleContext } from '../../context/locale-context';
@@ -49,7 +50,7 @@ export const CodeBlock = ({ children, className, live }: Props): React.ReactElem
   if (live) {
     return (
       <div className="code-block__container" ref={ref}>
-        <LiveProvider code={children.trim()} theme={codeTheme} scope={Components}>
+        <LiveProvider code={children.trim()} theme={codeTheme} scope={{ ...Components, ...SvgIcons }}>
           <LivePreview className="code-block__previewer" />
           <LiveError />
           <CollapseTransition isShow={showCode}>

@@ -2,7 +2,7 @@ import React from 'react';
 import './component-page.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { RouterItem } from '../../routers';
-import { Icon } from '@tiny-design/react';
+import { IconLeft, IconRight } from '@tiny-design/icons';
 
 type Props = {
   routers: RouterItem[];
@@ -31,7 +31,7 @@ export const DocFooter = ({ routers }: Props): React.ReactElement => {
     <footer className="component-page__footer">
       {siblingMenus[0] && siblingMenus[0].route !== currRouteName ? (
         <Link to={`${baseUrl}/${siblingMenus[0].route!}`}>
-          <Icon name="left" className="component-page__footer-icon-left" />
+          <IconLeft className="component-page__footer-icon-left" />
           <span className="component-page__footer-label">{siblingMenus[0].title}</span>
         </Link>
       ) : (
@@ -40,7 +40,7 @@ export const DocFooter = ({ routers }: Props): React.ReactElement => {
       {siblingMenus[1] && siblingMenus[1].route !== currRouteName && (
         <Link to={`${baseUrl}/${siblingMenus[1].route!}`}>
           <span className="component-page__footer-label">{siblingMenus[1].title}</span>
-          <Icon name="right" className="component-page__footer-icon-right" />
+          <IconRight className="component-page__footer-icon-right" />
         </Link>
       )}
     </footer>

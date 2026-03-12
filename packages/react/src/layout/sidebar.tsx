@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, useEffect } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
+import { IconLeft } from '@tiny-design/icons';
 import { SidebarContext } from './sidebar-context';
 import { ConfigContext } from '../config-provider/config-context';
 import { getPrefixCls } from '../_utils/general';
@@ -62,7 +62,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
 
       return (
         <button type="button" className={`${prefixCls}__trigger`} onClick={_collapseBtnOnClick} aria-label="Toggle sidebar">
-          <Icon name="left" className={`${prefixCls}__trigger-icon`} />
+          <IconLeft className={`${prefixCls}__trigger-icon`} />
         </button>
       );
     };

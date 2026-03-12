@@ -1,7 +1,13 @@
 import React, { useMemo } from 'react';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Icon, Flex, Typography, Statistic, Card, Row, Col } from '@tiny-design/react';
+import { Button, Flex, Typography, Statistic, Card, Row, Col } from '@tiny-design/react';
+import {
+  IconColorlens, IconOrgUnit, IconPuzzle, IconAccessible,
+  IconStar, IconStructure, IconProcess, IconEye, IconEditFile, IconFeedback,
+  IconGithub,
+} from '@tiny-design/icons';
+import type { IconProps } from '@tiny-design/icons';
 import { Footer } from './footer';
 import { useLocaleContext } from '../../context/locale-context';
 import { getComponentMenu } from '../../routers';
@@ -15,20 +21,20 @@ const HomePage = (): React.ReactElement => {
   const navigate = useNavigate();
   const { siteLocale: s } = useLocaleContext();
 
-  const features = [
-    { icon: 'colorlens', title: s.home.features.themeable, desc: s.home.features.themeableDesc },
-    { icon: 'org-unit', title: s.home.features.elegant, desc: s.home.features.elegantDesc },
-    { icon: 'puzzle', title: s.home.features.composable, desc: s.home.features.composableDesc },
-    { icon: 'accessible', title: s.home.features.accessible, desc: s.home.features.accessibleDesc },
+  const features: { Icon: React.FC<IconProps>; title: string; desc: string }[] = [
+    { Icon: IconColorlens, title: s.home.features.themeable, desc: s.home.features.themeableDesc },
+    { Icon: IconOrgUnit, title: s.home.features.elegant, desc: s.home.features.elegantDesc },
+    { Icon: IconPuzzle, title: s.home.features.composable, desc: s.home.features.composableDesc },
+    { Icon: IconAccessible, title: s.home.features.accessible, desc: s.home.features.accessibleDesc },
   ];
 
-  const categoryIcons = ['star', 'structure', 'process', 'eye', 'edit-file', 'feedback', 'puzzle'];
+  const categoryIcons: React.FC<IconProps>[] = [IconStar, IconStructure, IconProcess, IconEye, IconEditFile, IconFeedback, IconPuzzle];
 
   const { stats, categories } = useMemo(() => {
     const menu = getComponentMenu(s);
     const totalComponents = menu.reduce((sum, cat) => sum + (cat.children?.length ?? 0), 0);
     const cats = menu.map((cat, i) => ({
-      icon: categoryIcons[i] ?? 'puzzle',
+      Icon: categoryIcons[i] ?? IconPuzzle,
       name: cat.title,
       count: cat.children?.length ?? 0,
       route: cat.children?.[0]?.route ?? '',
@@ -68,7 +74,7 @@ const HomePage = (): React.ReactElement => {
           <Button
             className="home__btn"
             size="lg"
-            icon={<Icon name="github" color="currentColor" />}
+            icon={<IconGithub color="currentColor" />}
             onClick={() => window.open(repository.url)}>
             {s.home.github}
           </Button>
@@ -83,7 +89,7 @@ const HomePage = (): React.ReactElement => {
               <Card bordered={false} className="home__feature-card" style={{ animationDelay: `${i * 0.1}s` }}>
                 <Flex vertical align="center" gap="md">
                   <div className="home__feature-icon">
-                    <Icon name={feature.icon} size={24} />
+                    <feature.Icon size={24} />
                   </div>
                   <Typography.Heading level={3}>{feature.title}</Typography.Heading>
                   <Typography.Paragraph>{feature.desc}</Typography.Paragraph>
@@ -111,7 +117,7 @@ const HomePage = (): React.ReactElement => {
               onClick={() => navigate(`/components/${cat.route}`)}
               style={{ animationDelay: `${i * 0.08}s` }}>
               <Flex vertical align="center" gap="sm">
-                <Icon name={cat.icon} size={32} color="currentColor" />
+                <cat.Icon size={32} color="currentColor" />
                 <Typography.Text strong>{cat.name}</Typography.Text>
                 <Typography.Text className="home__category-count">{s.home.nComponents(cat.count)}</Typography.Text>
               </Flex>

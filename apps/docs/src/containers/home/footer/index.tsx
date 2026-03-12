@@ -3,7 +3,7 @@ import './footer.scss';
 import pkg from '../../../../../../packages/react/package.json';
 
 const { version, repository } = pkg;
-import { Icon } from '@tiny-design/react';
+import { IconGithub } from '@tiny-design/icons';
 import logoSvg from '../../../assets/logo/logo.svg';
 
 export const Footer = (): React.ReactElement => (
@@ -15,7 +15,7 @@ export const Footer = (): React.ReactElement => (
     </div>
     <a href={repository.url} target="_blank" className="footer__link" rel="noreferrer noopener">
       <div className="footer__github">
-        <Icon name="github" size={25} color="#fff" className="footer__icon" />
+        <IconGithub size={25} color="#fff" className="footer__icon" />
         <span>GitHub</span>
       </div>
     </a>

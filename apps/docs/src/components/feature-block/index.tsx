@@ -1,18 +1,18 @@
 import React from 'react';
 import './feature-block.scss';
-import { Icon } from '@tiny-design/react';
+import type { IconProps } from '@tiny-design/icons';
 
 type Props = {
-  icon: string;
+  icon: React.FC<IconProps>;
   title: string;
   desc: string;
   style?: React.CSSProperties;
 };
 
-export const FeatureBlock = ({ icon, title, desc, style }: Props): React.ReactElement => (
+export const FeatureBlock = ({ icon: IconComponent, title, desc, style }: Props): React.ReactElement => (
   <div className="feature-block" style={style}>
     <div className="feature-block__icon-container">
-      <Icon name={icon} className="feature-block__icon" size={24} />
+      <IconComponent className="feature-block__icon" size={24} />
     </div>
     <h3 className="feature-block__title">{title}</h3>
     <p className="feature-block__desc">{desc}</p>
