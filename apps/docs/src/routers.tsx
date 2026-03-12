@@ -41,8 +41,8 @@ const guide = {
     () => import('./containers/color'),
   ),
   changelog: ll(
-    () => import('../CHANGELOG.md'),
-    () => import('../CHANGELOG.md'),
+    () => import('../../../packages/react/CHANGELOG.md'),
+    () => import('../../../packages/react/CHANGELOG.md'),
   ),
   faq: ll(
     () => import('../guides/faq.md'),
