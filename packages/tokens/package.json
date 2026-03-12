@@ -1,0 +1,29 @@
+{
+  "name": "@tiny-ui/tokens",
+  "version": "1.0.4",
+  "description": "Design tokens, themes, and foundational styles for Tiny UI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangdicoder/tiny-ui.git",
+    "directory": "packages/tokens"
+  },
+  "main": "css/base.css",
+  "exports": {
+    ".": "./css/base.css",
+    "./css/*": "./css/*",
+    "./scss/*": "./scss/*"
+  },
+  "sideEffects": ["**/*.css"],
+  "files": ["css", "scss"],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "clean": "rimraf css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.9"
+  }
+}
