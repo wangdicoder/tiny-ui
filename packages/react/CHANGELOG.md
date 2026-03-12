@@ -1,5 +1,14 @@
 # @tiny-design/react
 
+## 1.0.8
+
+### Patch Changes
+
+- Auto-detected changes since v0.0.94
+
+- Updated dependencies []:
+  - @tiny-design/icons@1.0.8
+
 ## 1.0.7
 
 ### Patch Changes
