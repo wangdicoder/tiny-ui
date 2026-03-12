@@ -23,6 +23,9 @@
   },
   "author": "Di Wang<wangdicoder@gmail.com>",
   "homepage": "https://wangdicoder.github.io/tiny-design/",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "lib/index.d.ts",
