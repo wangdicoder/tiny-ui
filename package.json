@@ -44,7 +44,7 @@
     "typescript-eslint": "^8.0.0"
   },
   "lint-staged": {
-    "packages/react/src/**/*.scss": [
+    "packages/{react/src,tokens/scss}/**/*.scss": [
       "stylelint --fix"
     ]
   },

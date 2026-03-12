@@ -68,6 +68,9 @@ importers:
       '@tiny-ui/react':
         specifier: workspace:*
         version: link:../../packages/react
+      '@tiny-ui/tokens':
+        specifier: workspace:*
+        version: link:../../packages/tokens
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -111,6 +114,9 @@ importers:
       '@popperjs/core':
         specifier: ^2.11.4
         version: 2.11.8
+      '@tiny-ui/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       classnames:
         specifier: ^2.3.1
         version: 2.5.1
@@ -172,6 +178,21 @@ importers:
       typescript:
         specifier: ^5.4.0
         version: 5.9.3
+
+  packages/tokens:
+    devDependencies:
+      autoprefixer:
+        specifier: ^10.4.4
+        version: 10.4.27(postcss@8.5.8)
+      postcss:
+        specifier: ^8.4.0
+        version: 8.5.8
+      rimraf:
+        specifier: ^3.0.2
+        version: 3.0.2
+      sass:
+        specifier: ^1.49.9
+        version: 1.98.0
 
 packages:
 

@@ -8,6 +8,7 @@ const ROOT = path.resolve(__dirname, '..');
 const COMPONENTS = path.join(ROOT, 'src');
 const ES_DIR = path.join(ROOT, 'es');
 const LIB_DIR = path.join(ROOT, 'lib');
+const NODE_MODULES = path.join(ROOT, 'node_modules');
 
 function mkdirp(dir) {
   fs.mkdirSync(dir, { recursive: true });
@@ -18,19 +19,15 @@ async function processWithPostcss(css) {
   return result.css;
 }
 
-// 1. Base CSS: components/style/base.scss → es/style/base.css + lib/style/base.css
-async function buildBaseCss() {
-  const result = sass.compile(path.join(COMPONENTS, 'style/base.scss'), {
-    loadPaths: [COMPONENTS],
-  });
-  const css = await processWithPostcss(result.css);
-
+// 1. Base CSS: copy pre-built base.css from @tiny-ui/tokens
+function copyBaseCss() {
+  const src = require.resolve('@tiny-ui/tokens/css/base.css');
   for (const dir of [ES_DIR, LIB_DIR]) {
     const outDir = path.join(dir, 'style');
     mkdirp(outDir);
-    fs.writeFileSync(path.join(outDir, 'base.css'), css);
+    fs.copyFileSync(src, path.join(outDir, 'base.css'));
   }
-  console.log('  es/style/base.css + lib/style/base.css');
+  console.log('  es/style/base.css + lib/style/base.css (copied from @tiny-ui/tokens)');
 }
 
 // 2. Per-component CSS: compile each component's _index.scss partial
@@ -50,13 +47,13 @@ async function buildComponentCss() {
     if (fs.existsSync(partialPath)) {
       // Sass partial: compile via @use
       const result = sass.compileString("@use 'index';", {
-        loadPaths: [styleDir, COMPONENTS],
+        loadPaths: [styleDir, COMPONENTS, NODE_MODULES],
       });
       css = await processWithPostcss(result.css);
     } else if (fs.existsSync(directPath)) {
       // Direct scss file (e.g. tabs)
       const result = sass.compile(directPath, {
-        loadPaths: [COMPONENTS],
+        loadPaths: [COMPONENTS, NODE_MODULES],
       });
       css = await processWithPostcss(result.css);
     } else {
@@ -115,7 +112,8 @@ function copyDirRecursive(src, dest) {
 
 async function main() {
   console.log('Building styles...\n');
-  await Promise.all([buildBaseCss(), buildComponentCss()]);
+  copyBaseCss();
+  await buildComponentCss();
   copyScss();
   console.log('\nStyles done.');
 }
