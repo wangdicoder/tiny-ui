@@ -38,7 +38,7 @@
   - extract @tiny-design/icons package with tree-shakeable SVG icons ([2378f8d](https://github.com/wangdicoder/tiny-design/commit/2378f8d6a63461d59319dc7726b01511087f7781))
 
   ### Bug Fixes
-  - replace deprecated <Icon> with named icon components in demos ([e51fca5](https://github.com/wangdicoder/tiny-design/commit/e51fca58a6bdb167d46b5569557107d513094a51))
+  - replace deprecated `<Icon>` with named icon components in demos ([e51fca5](https://github.com/wangdicoder/tiny-design/commit/e51fca58a6bdb167d46b5569557107d513094a51))
   - resolve @tiny-design/icons from source in docs app ([64e7e7b](https://github.com/wangdicoder/tiny-design/commit/64e7e7bf570df1e4b4f79c305c42966133fb2230))
 
   ### Refactors
