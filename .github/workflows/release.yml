@@ -93,15 +93,12 @@ jobs:
               # Strip conventional commit prefix and optional scope for the description
               desc=$(echo "$msg" | sed -E 's/^(feat|fix|refactor|chore|docs|style|perf|test|ci|build)(\([^)]*\))?[!]?:\s*//')
 
+              entry=$(printf '\n* %s (%s)' "$desc" "$link")
               case "$msg" in
-                feat*) FEATURES="$FEATURES
-* $desc ($link)" ;;
-                fix*) FIXES="$FIXES
-* $desc ($link)" ;;
-                refactor*) REFACTORS="$REFACTORS
-* $desc ($link)" ;;
-                *) OTHER="$OTHER
-* $desc ($link)" ;;
+                feat*)     FEATURES="$FEATURES$entry" ;;
+                fix*)      FIXES="$FIXES$entry" ;;
+                refactor*) REFACTORS="$REFACTORS$entry" ;;
+                *)         OTHER="$OTHER$entry" ;;
               esac
             done <<< "$(git log "$LAST_TAG"..HEAD --pretty=format:'%H %s' -- "$pkg_path/src" | awk '!seen[$0]++')"
           done
