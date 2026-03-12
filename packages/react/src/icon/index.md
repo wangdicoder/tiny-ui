@@ -42,6 +42,18 @@ All icon components share the same props interface (`IconProps`), which extends 
 | style     | inline styles                 | CSSProperties     | -               |
 | ref       | forwarded ref                 | Ref\<SVGSVGElement\> | -            |
 
+### withSpin
+
+A higher-order component that wraps any icon to add a continuous spin animation.
+
+```jsx
+import { IconLoader, withSpin } from '@tiny-design/icons';
+
+const SpinLoader = withSpin(IconLoader);
+
+<SpinLoader size={24} />
+```
+
 ## List of icons
 
 <SvgIconList />

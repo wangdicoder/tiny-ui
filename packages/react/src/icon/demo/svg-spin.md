@@ -2,21 +2,22 @@
 
 ### Spin
 
-Add a CSS animation to rotate icons. Useful for loading indicators.
+Use the `withSpin` HOC to create a spinning variant of any icon. Useful for loading indicators.
 
 ```jsx live
 () => {
-  const spinStyle = {
-    animation: 'spin 1s linear infinite',
-  };
+  const SpinLoader = withSpin(IconLoader);
+  const SpinLoaderQuarter = withSpin(IconLoaderQuarter);
+  const SpinLoader3quarter = withSpin(IconLoader3quarter);
+  const SpinLoaderCircle = withSpin(IconLoaderCircle);
+  const SpinSync = withSpin(IconSync);
   return (
     <div style={{ display: 'flex', gap: 16, alignItems: 'center', fontSize: 24 }}>
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
-      <IconLoader style={spinStyle} />
-      <IconLoaderQuarter style={spinStyle} />
-      <IconLoader3quarter style={spinStyle} />
-      <IconLoaderCircle style={spinStyle} />
-      <IconSync style={spinStyle} />
+      <SpinLoader />
+      <SpinLoaderQuarter />
+      <SpinLoader3quarter />
+      <SpinLoaderCircle />
+      <SpinSync />
     </div>
   );
 }

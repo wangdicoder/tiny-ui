@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import { IconClose, IconPlus, IconSearch, IconHeart, IconStar } from '../index';
+import { IconClose, IconPlus, IconSearch, IconHeart, IconStar, withSpin } from '../index';
 
 const sampleIcons = [
   { name: 'IconClose', Component: IconClose },
@@ -70,5 +70,47 @@ describe('Icon components', () => {
     const svg = container.querySelector('svg')!;
     expect(svg.getAttribute('data-testid')).toBe('close-icon');
     expect(svg.getAttribute('aria-hidden')).toBe('true');
+  });
+
+});
+
+describe('withSpin HOC', () => {
+  const SpinClose = withSpin(IconClose);
+
+  it('applies spin animation style', () => {
+    const { container } = render(<SpinClose />);
+    const svg = container.querySelector('svg')!;
+    expect(svg.style.animation).toBe('tiny-icon-spin 1s linear infinite');
+  });
+
+  it('injects keyframes style tag into document head', () => {
+    render(<SpinClose />);
+    const styleEl = document.getElementById('__tiny_icon_spin__');
+    expect(styleEl).toBeTruthy();
+    expect(styleEl!.textContent).toContain('@keyframes tiny-icon-spin');
+  });
+
+  it('passes through icon props', () => {
+    const { container } = render(<SpinClose size={24} color="red" />);
+    const svg = container.querySelector('svg')!;
+    expect(svg.getAttribute('width')).toBe('24');
+    expect(svg.getAttribute('fill')).toBe('red');
+  });
+
+  it('merges custom style with spin animation', () => {
+    const { container } = render(<SpinClose style={{ color: 'red' }} />);
+    const svg = container.querySelector('svg')!;
+    expect(svg.style.animation).toBe('tiny-icon-spin 1s linear infinite');
+    expect(svg.style.color).toBe('red');
+  });
+
+  it('forwards ref', () => {
+    const ref = createRef<SVGSVGElement>();
+    render(<SpinClose ref={ref} />);
+    expect(ref.current).toBeInstanceOf(SVGSVGElement);
+  });
+
+  it('sets displayName', () => {
+    expect(SpinClose.displayName).toBe('withSpin(IconClose)');
   });
 });
