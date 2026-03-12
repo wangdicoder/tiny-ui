@@ -1,0 +1,107 @@
+# @tiny-design/react
+
+A friendly UI component library for React with 80+ components, theming, and i18n support.
+
+## Install
+
+```bash
+npm install @tiny-design/react @tiny-design/tokens
+# or
+pnpm add @tiny-design/react @tiny-design/tokens
+```
+
+**Peer dependencies:** `react >= 18.0.0`, `react-dom >= 18.0.0`
+
+## Quick Start
+
+```tsx
+import '@tiny-design/tokens';
+import { Button, ConfigProvider } from '@tiny-design/react';
+
+function App() {
+  return (
+    <ConfigProvider theme="light">
+      <Button btnType="primary">Hello Tiny</Button>
+    </ConfigProvider>
+  );
+}
+```
+
+## Components
+
+### Layout
+Flex, Layout, Row, Col, Space, Divider, AspectRatio
+
+### Navigation
+Anchor, Breadcrumb, Menu, Link, Pagination, Steps, Tabs
+
+### Forms & Input
+Input, InputNumber, InputPassword, Textarea, Button, Checkbox, Radio, Select, NativeSelect, AutoComplete, Cascader, DatePicker, TimePicker, ColorPicker, Slider, Switch, Rate, Segmented, Upload, Transfer, Form
+
+### Data Display
+Avatar, Badge, Card, Descriptions, Empty, Image, List, Table, Tag, Timeline, Tree, Typography, Progress, Statistic, Skeleton, Carousel
+
+### Feedback
+Modal, Drawer, Alert, Tooltip, Popover, PopConfirm, Notification, Message, Result, Loader, LoadingBar
+
+### Other
+Dropdown, SplitButton, Overlay, Countdown, CopyToClipboard, Flip, BackTop, Sticky, SpeedDial, Split, ScrollIndicator, StrengthIndicator, Transition
+
+## Configuration
+
+Use `ConfigProvider` to set global defaults:
+
+```tsx
+import { ConfigProvider } from '@tiny-design/react';
+
+<ConfigProvider
+  theme="dark"
+  componentSize="lg"
+  locale={zh_CN}
+>
+  <App />
+</ConfigProvider>
+```
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `theme` | `'light' \| 'dark' \| 'system'` | `'light'` | Color theme |
+| `componentSize` | `'sm' \| 'md' \| 'lg'` | `'md'` | Global component size |
+| `locale` | `Locale` | `en_US` | Locale for i18n |
+| `prefixCls` | `string` | `'ty'` | CSS class prefix |
+
+## Theming
+
+Toggle themes programmatically with the `useTheme` hook:
+
+```tsx
+import { useTheme } from '@tiny-design/react';
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  return (
+    <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      Current: {theme}
+    </button>
+  );
+}
+```
+
+Theme preference is persisted to `localStorage` and the `system` option follows `prefers-color-scheme`.
+
+## Localization
+
+Built-in locales: `en_US`, `zh_CN`.
+
+```tsx
+import { ConfigProvider, IntlProvider } from '@tiny-design/react';
+import zh_CN from '@tiny-design/react/es/locale/zh_CN';
+
+<ConfigProvider locale={zh_CN}>
+  <App />
+</ConfigProvider>
+```
+
+## License
+
+MIT
