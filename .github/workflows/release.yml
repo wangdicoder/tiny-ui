@@ -73,6 +73,39 @@ jobs:
             exit 0
           fi
 
+          # Collect commits since last tag for changed packages
+          REPO_URL="https://github.com/${{ github.repository }}"
+          FEATURES=""
+          FIXES=""
+          REFACTORS=""
+          OTHER=""
+
+          for pkg in $CHANGED_PACKAGES; do
+            pkg_dir=$(echo "$pkg" | sed 's|@[^/]*/||')  # e.g. @tiny-design/react -> react
+            pkg_path="packages/$pkg_dir"
+            while IFS= read -r line; do
+              [ -z "$line" ] && continue
+              hash=$(echo "$line" | cut -d' ' -f1)
+              msg=$(echo "$line" | cut -d' ' -f2-)
+              short_hash=$(echo "$hash" | cut -c1-7)
+              link="[$short_hash]($REPO_URL/commit/$hash)"
+
+              # Strip conventional commit prefix and optional scope for the description
+              desc=$(echo "$msg" | sed -E 's/^(feat|fix|refactor|chore|docs|style|perf|test|ci|build)(\([^)]*\))?[!]?:\s*//')
+
+              case "$msg" in
+                feat*) FEATURES="$FEATURES
+* $desc ($link)" ;;
+                fix*) FIXES="$FIXES
+* $desc ($link)" ;;
+                refactor*) REFACTORS="$REFACTORS
+* $desc ($link)" ;;
+                *) OTHER="$OTHER
+* $desc ($link)" ;;
+              esac
+            done <<< "$(git log "$LAST_TAG"..HEAD --pretty=format:'%H %s' -- "$pkg_path/src" | awk '!seen[$0]++')"
+          done
+
           # Build the changeset file
           RANDOM_ID=$(head -c 8 /dev/urandom | od -An -tx1 | tr -d ' \n')
           CHANGESET_FILE=".changeset/auto-${RANDOM_ID}.md"
@@ -84,7 +117,29 @@ jobs:
             done
             echo "---"
             echo ""
-            echo "Auto-detected changes since $LAST_TAG"
+            if [ -n "$FEATURES" ]; then
+              echo "### Features"
+              echo "$FEATURES"
+              echo ""
+            fi
+            if [ -n "$FIXES" ]; then
+              echo "### Bug Fixes"
+              echo "$FIXES"
+              echo ""
+            fi
+            if [ -n "$REFACTORS" ]; then
+              echo "### Refactors"
+              echo "$REFACTORS"
+              echo ""
+            fi
+            if [ -n "$OTHER" ]; then
+              echo "$OTHER"
+              echo ""
+            fi
+            # Fallback if no commits found
+            if [ -z "$FEATURES" ] && [ -z "$FIXES" ] && [ -z "$REFACTORS" ] && [ -z "$OTHER" ]; then
+              echo "* Patch updates"
+            fi
           } > "$CHANGESET_FILE"
 
           echo "Generated $CHANGESET_FILE for:$CHANGED_PACKAGES"
