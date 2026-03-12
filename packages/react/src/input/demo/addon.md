@@ -33,7 +33,7 @@ Using `Addon` example.
       </Group>
       <br/>
       <Group>
-        <Addon><Icon name="user"/></Addon>
+        <Addon><IconUser/></Addon>
         <Input placeholder="Your name"/>
       </Group>
     </div>

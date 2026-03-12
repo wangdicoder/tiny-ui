@@ -13,17 +13,17 @@ Add extra content to the tab bar with `tabBarExtraContent`. Use icons in tab lab
       items={[
         {
           key: '1',
-          label: <span><Icon name="user" /> Profile</span>,
+          label: <span><IconUser /> Profile</span>,
           children: 'Profile content',
         },
         {
           key: '2',
-          label: <span><Icon name="gift" /> Rewards</span>,
+          label: <span><IconGift /> Rewards</span>,
           children: 'Rewards content',
         },
         {
           key: '3',
-          label: <span><Icon name="broadcast" /> Alerts</span>,
+          label: <span><IconBroadcast /> Alerts</span>,
           children: 'Alerts content',
         },
       ]}

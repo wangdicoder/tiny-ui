@@ -13,7 +13,7 @@ A very simple dropdown.
     </Menu>
   )}>
   <a onClick={e => e.preventDefault()}>
-    Hover me <Icon name="down" size={12}/>
+    Hover me <IconDown size={12}/>
   </a>
 </Dropdown>
 ```

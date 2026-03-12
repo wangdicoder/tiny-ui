@@ -16,7 +16,7 @@ Add a button in `Addon` component to compose an input form, like search function
         <Input/>
         <Addon noBorder>
           <Button btnType="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
-            <Icon name="search"/>
+            <IconSearch/>
           </Button>
         </Addon>
       </Group>
@@ -25,7 +25,7 @@ Add a button in `Addon` component to compose an input form, like search function
         <Input/>
         <Addon noBorder>
           <Button btnType="primary" style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0, marginRight: 0}}>
-            <Icon name="search"/>
+            <IconSearch/>
           </Button>
         </Addon>
       </Group>

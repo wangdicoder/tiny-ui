@@ -22,7 +22,7 @@ The menu has multiple levels.
     </Menu>
   )}>
   <a onClick={e => e.preventDefault()}>
-    Cascade dropdowm <Icon name="down" size={12}/>
+    Cascade dropdowm <IconDown size={12}/>
   </a>
 </Dropdown>
 ```

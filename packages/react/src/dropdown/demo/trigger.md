@@ -13,7 +13,7 @@ Open the menu by clicking.
     </Menu>
   )}>
   <a onClick={e => e.preventDefault()}>
-    Click me <Icon name="down" size={12}/>
+    Click me <IconDown size={12}/>
   </a>
 </Dropdown>
 ```

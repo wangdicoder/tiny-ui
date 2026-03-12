@@ -57,7 +57,7 @@ Adding or removing a set of tags dynamically.
         : 
         (
           <Tag onClick={showInput} style={{ background: 'var(--ty-color-bg-container)', borderStyle: 'dashed' }}>
-            <Icon name="plus" size={11}/> New Tag
+            <IconPlus size={11}/> New Tag
           </Tag>
         )}
       </div>

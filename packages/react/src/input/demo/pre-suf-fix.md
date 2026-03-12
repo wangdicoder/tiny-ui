@@ -20,11 +20,11 @@ Add prefix or suffix icons inside input.
       <br/>
       <Input prefix="$" suffix=".00"/>
       <br/>
-      <Input placeholder="Your name" prefix={<Icon name="user"/>}/>
+      <Input placeholder="Your name" prefix={<IconUser/>}/>
       <br/>
-      <Input 
-        placeholder="your domain" 
-        suffix={<Icon name="search" onClick={searchOnClick} style={{ cursor: 'pointer' }}/>}
+      <Input
+        placeholder="your domain"
+        suffix={<IconSearch onClick={searchOnClick} style={{ cursor: 'pointer' }}/>}
       />
     </div>
   );

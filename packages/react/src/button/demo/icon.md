@@ -6,10 +6,10 @@ Use icons to add more meaning to Button. You can use icon alone to save some spa
 
 ```jsx live
 <Flex gap="sm">
-  <Button icon={<Icon name="wifi"/>} color="primary"/>
-  <Button icon={<Icon name="gift"/>} color="primary"/>
-  <Button icon={<Icon name="search"/>} color="primary">Search</Button>
-  <Button btnType="primary">Upload <Icon name="cloud-upload"/></Button>
+  <Button icon={<IconWifi/>} color="primary"/>
+  <Button icon={<IconGift/>} color="primary"/>
+  <Button icon={<IconSearch/>} color="primary">Search</Button>
+  <Button btnType="primary">Upload <IconCloudUpload/></Button>
 </Flex>
 ```
 

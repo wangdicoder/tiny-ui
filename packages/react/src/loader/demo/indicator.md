@@ -5,7 +5,10 @@
 Use custom loading indicator.
 
 ```jsx live
-<Loader indicator={<Icon name="sync" size={25} spin/>}/>
+() => {
+  const SpinningSync = withSpin(IconSync);
+  return <Loader indicator={<SpinningSync size={25}/>}/>;
+}
 ```
 
 </Demo>

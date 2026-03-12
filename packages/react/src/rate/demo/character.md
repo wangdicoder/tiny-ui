@@ -6,7 +6,7 @@ Replace the default star to other character like alphabet, digit, iconfont or ev
 
 ```jsx live
 <>
-  <Rate defaultValue={2} character={<Icon type="heart-fill" size={25}/>} half color="#f30"/>
+  <Rate defaultValue={2} character={<IconHeartFill size={25}/>} half color="#f30"/>
   <br />
   <Rate defaultValue={2} character="A" half style={{ fontSize: 30 }} />
   <br />

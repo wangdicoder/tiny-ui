@@ -8,7 +8,7 @@ Pass `icon` attribute to set the icon.
 <Result
   status="success"
   title="You order has been delivered!"
-  icon={<Icon name="delivered" color="#52c41a" size={80}/>}
+  icon={<IconDelivered color="#52c41a" size={80}/>}
   extra={[
     <Button btnType="primary" key="console">
       Go Console

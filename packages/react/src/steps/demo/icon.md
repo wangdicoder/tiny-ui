@@ -5,12 +5,17 @@
 Use a customised icon for `Step`.
 
 ```jsx live
-<Steps current={2}>
-  <Steps.Step title="Login" icon={<Icon name="user" size={32}/>} />
-  <Steps.Step title="Verification" icon={<Icon name="view-file" size={32}/>}/>
-  <Steps.Step title="Pay" icon={<Icon spin name="sync" size={32}/>}/>
-  <Steps.Step title="Done" icon={<Icon name="check-circle1" size={32}/>}/>
-</Steps>
+() => {
+  const SpinningSync = withSpin(IconSync);
+  return (
+    <Steps current={2}>
+      <Steps.Step title="Login" icon={<IconUser size={32}/>} />
+      <Steps.Step title="Verification" icon={<IconViewFile size={32}/>}/>
+      <Steps.Step title="Pay" icon={<SpinningSync size={32}/>}/>
+      <Steps.Step title="Done" icon={<IconCheckCircle1 size={32}/>}/>
+    </Steps>
+  );
+}
 ```
 
 </Demo>

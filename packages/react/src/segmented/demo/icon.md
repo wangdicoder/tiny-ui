@@ -9,9 +9,9 @@ Add icons to segmented options using the `icon` property.
   return (
     <Segmented
       options={[
-        { label: 'User', value: 'user', icon: <Icon name="user" /> },
-        { label: 'Star', value: 'star', icon: <Icon name="star" /> },
-        { label: 'Wifi', value: 'wifi', icon: <Icon name="wifi" /> },
+        { label: 'User', value: 'user', icon: <IconUser /> },
+        { label: 'Star', value: 'star', icon: <IconStar /> },
+        { label: 'Wifi', value: 'wifi', icon: <IconWifi /> },
       ]}
     />
   );

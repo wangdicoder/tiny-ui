@@ -51,7 +51,7 @@ class IconExample extends React.PureComponent {
     return (
       <Tree 
         data={this.treeData}
-        icon={(isExpanded) => isExpanded ? <Icon name="zoomout"/> : <Icon name="zoomin"/> }
+        icon={(isExpanded) => isExpanded ? <IconZoomout/> : <IconZoomin/> }
       />
     );
   }

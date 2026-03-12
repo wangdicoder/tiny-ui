@@ -10,7 +10,7 @@ The icon can be customized to any react node.
     Notification.open({
       title: 'Notification Title',
       description: 'This is the content of the notification. This is the content of the notification.',
-      icon: <Icon name="broadcast" size={25} color="#1890ff" style={{marginRight: 15}}/>
+      icon: <IconBroadcast size={25} color="#1890ff" style={{marginRight: 15}}/>
     });
   };
   
