@@ -17,7 +17,7 @@ import Size from './demo/size.md'
 ## 引入方式
 
 ```jsx
-import { AutoComplete } from 'tiny-ui';
+import { AutoComplete } from 'tiny-design';
 ```
 
 ## 示例

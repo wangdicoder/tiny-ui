@@ -16,7 +16,7 @@ Used to select data from a hierarchy such as location (country > state > city) o
 ## Usage
 
 ```jsx
-import { Cascader } from 'tiny-ui';
+import { Cascader } from 'tiny-design';
 ```
 
 ## Examples

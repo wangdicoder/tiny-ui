@@ -48,7 +48,7 @@ const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
   const tableSize = size || configContext.componentSize || 'md';
 
   if (virtual && height == null) {
-    console.warn('[tiny-ui: Table] `height` is required when `virtual` is enabled.');
+    console.warn('[tiny-design: Table] `height` is required when `virtual` is enabled.');
   }
 
   const isVirtual = virtual && height != null;

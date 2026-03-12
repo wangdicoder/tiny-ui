@@ -13,7 +13,7 @@ import Callback from './demo/callback.md'
 ## 引入方式
 
 ```jsx
-import { Sticky } from 'tiny-ui';
+import { Sticky } from 'tiny-design';
 ```
 
 ## 代码示例

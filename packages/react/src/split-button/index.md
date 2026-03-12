@@ -14,7 +14,7 @@ or select from a list of mutually exclusive values displayed in a drop-down list
 ## Usage
 
 ```jsx
-import { SplitButton } from 'tiny-ui';
+import { SplitButton } from 'tiny-design';
 ```
 
 ## Examples

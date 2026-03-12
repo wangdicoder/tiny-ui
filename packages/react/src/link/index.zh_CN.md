@@ -12,7 +12,7 @@ import External from './demo/external.md'
 ## 引入方式
 
 ```jsx
-import { Link } from 'tiny-ui';
+import { Link } from 'tiny-design';
 ```
 
 ## 代码示例

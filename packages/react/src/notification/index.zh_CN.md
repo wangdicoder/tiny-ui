@@ -21,7 +21,7 @@ import Type from './demo/type.md'
 ## 引入方式
 
 ```js
-import { Notification } from 'tiny-ui';
+import { Notification } from 'tiny-design';
 ```
 
 ## 代码示例

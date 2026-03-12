@@ -11,7 +11,7 @@ import Basic from './demo/basic.md'
 ## 使用方式
 
 ```jsx
-import { Calendar } from 'tiny-ui';
+import { Calendar } from 'tiny-design';
 ```
 
 ## 代码演示

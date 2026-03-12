@@ -13,7 +13,7 @@ import Password from './demo/password.md'
 ## 引入方式
 
 ```jsx
-import { StrengthIndicator } from 'tiny-ui';
+import { StrengthIndicator } from 'tiny-design';
 ```
 
 ## 代码示例

@@ -17,7 +17,7 @@ Evaluate stuff component.
 ## Usage
 
 ```jsx
-import { Rate } from 'tiny-ui';
+import { Rate } from 'tiny-design';
 ```
 
 ## Examples

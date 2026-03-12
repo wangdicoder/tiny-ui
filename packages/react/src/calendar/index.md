@@ -11,7 +11,7 @@ Display a full calendar view with date selection. Useful for scheduling and date
 ## Usage
 
 ```jsx
-import { Calendar } from 'tiny-ui';
+import { Calendar } from 'tiny-design';
 ```
 
 ## Examples

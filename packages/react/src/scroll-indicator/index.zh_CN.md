@@ -12,7 +12,7 @@ import Target from './demo/target.md'
 ## 引入方式
 
 ```jsx
-import { ScrollIndicator } from 'tiny-ui';
+import { ScrollIndicator } from 'tiny-design';
 ```
 
 ## 代码示例

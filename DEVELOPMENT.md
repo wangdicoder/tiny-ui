@@ -34,7 +34,7 @@ Three workflows triggered on push/PR to `master`:
 
 1. **CI** (`ci.yml`) — install → lint → build → test with coverage
 2. **Release** (`release.yml`) — uses `changesets/action` to either create a "Version Packages" PR or publish to npm. The docs package is excluded from publishing.
-3. **Deploy Site** (`deploy-site.yml`) — builds docs with `--base /tiny-ui/`, deploys to GitHub Pages with SPA routing support.
+3. **Deploy Site** (`deploy-site.yml`) — builds docs with `--base /tiny-design/`, deploys to GitHub Pages with SPA routing support.
 
 ## Release Flow
 

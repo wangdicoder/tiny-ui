@@ -14,7 +14,7 @@ import CustomIcon from './demo/custom-icon.md'
 ## 引入方式
 
 ```jsx
-import { SpeedDial } from 'tiny-ui';
+import { SpeedDial } from 'tiny-design';
 ```
 
 ## 示例

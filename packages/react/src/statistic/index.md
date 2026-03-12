@@ -13,7 +13,7 @@ Used in dashboards and data-heavy pages to highlight key performance indicators 
 ## Usage
 
 ```jsx
-import { Statistic } from 'tiny-ui';
+import { Statistic } from 'tiny-design';
 ```
 
 ## Examples

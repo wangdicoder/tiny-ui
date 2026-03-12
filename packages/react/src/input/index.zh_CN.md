@@ -16,7 +16,7 @@ import Size from './demo/size.md'
 ## 引入方式
 
 ```js
-import { Input } from 'tiny-ui';
+import { Input } from 'tiny-design';
 
 const { Group, Addon } = Input;
 ```

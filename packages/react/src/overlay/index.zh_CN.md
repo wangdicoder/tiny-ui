@@ -14,7 +14,7 @@ import CustomContent from './demo/custom-content.md'
 ## 引入方式
 
 ```jsx
-import { Overlay } from 'tiny-ui';
+import { Overlay } from 'tiny-design';
 ```
 
 ## 代码示例

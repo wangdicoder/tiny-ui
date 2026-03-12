@@ -13,7 +13,7 @@ import Strength from './demo/strength.md'
 ## 引入方式
 
 ```jsx
-import { InputPassword } from 'tiny-ui';
+import { InputPassword } from 'tiny-design';
 ```
 
 ## 代码示例

@@ -14,7 +14,7 @@ Double column transfer choice box.
 ## Usage
 
 ```jsx
-import { Transfer } from 'tiny-ui';
+import { Transfer } from 'tiny-design';
 ```
 
 ## Examples

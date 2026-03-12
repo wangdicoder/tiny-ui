@@ -15,7 +15,7 @@ Display user's profile picture
 ## Usage
 
 ```jsx
-import { Avatar } from 'tiny-ui';
+import { Avatar } from 'tiny-design';
 
 const { Group } = Avatar;
 ```

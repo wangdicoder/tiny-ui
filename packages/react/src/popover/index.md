@@ -16,7 +16,7 @@ Comparing with `Tooltip`, besides information `Popover` can also provide action 
 ## Usage
 
 ```jsx
-import { Popover } from 'tiny-ui';
+import { Popover } from 'tiny-design';
 ```
 
 ## Examples

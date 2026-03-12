@@ -16,7 +16,7 @@ import Controlled from './demo/controlled.md'
 ## 引入方式
 
 ```jsx
-import { Popover } from 'tiny-ui';
+import { Popover } from 'tiny-design';
 ```
 
 ## 代码示例

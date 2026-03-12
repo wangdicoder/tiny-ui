@@ -18,7 +18,7 @@ import Type from './demo/type.md'
 ## 引入方式
 
 ```jsx
-import { Button } from 'tiny-ui';
+import { Button } from 'tiny-design';
 
 const { Group } = Button;
 ```

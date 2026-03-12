@@ -17,7 +17,7 @@ Used for displaying structured data with support for sorting, filtering, row sel
 ## Usage
 
 ```jsx
-import { Table } from 'tiny-ui';
+import { Table } from 'tiny-design';
 ```
 
 ## Examples

@@ -14,7 +14,7 @@ import Position from './demo/position.md'
 ## 引入方式
 
 ```jsx
-import { Modal } from 'tiny-ui';
+import { Modal } from 'tiny-design';
 ```
 
 ## 代码示例

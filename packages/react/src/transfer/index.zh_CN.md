@@ -13,7 +13,7 @@ import Search from './demo/search.md'
 ## 引入方式
 
 ```jsx
-import { Transfer } from 'tiny-ui';
+import { Transfer } from 'tiny-design';
 ```
 
 ## 代码示例

@@ -15,7 +15,7 @@ Select component to select value from options.
 ## Usage
 
 ```js
-import { NativeSelect } from 'tiny-ui';
+import { NativeSelect } from 'tiny-design';
 
 const { Group, Option } = NativeSelect;
 ```

@@ -23,7 +23,7 @@ Tiny UI ships with built-in light and dark themes. Light mode is the default. To
 You can also use the `useTheme` hook to switch themes at runtime:
 
 ```tsx
-import { useTheme } from 'tiny-ui';
+import { useTheme } from 'tiny-design';
 
 const App = () => {
   const { mode, setMode, toggle } = useTheme();
@@ -44,8 +44,8 @@ Every colour, shadow, and visual state is exposed as a `--ty-*` CSS custom prope
 ```
 
 The full list of tokens can be found in the source:
-- [Light theme tokens](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/themes/_light.scss)
-- [Dark theme tokens](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/themes/_dark.scss)
+- [Light theme tokens](https://github.com/wangdicoder/tiny-design/blob/master/components/style/themes/_light.scss)
+- [Dark theme tokens](https://github.com/wangdicoder/tiny-design/blob/master/components/style/themes/_dark.scss)
 
 ## SCSS variables
 
@@ -70,7 +70,7 @@ $border-radius: 4px;
 $font-size-base: 14px;
 
 // Import Tiny UI styles (applies your overrides via !default)
-@use "tiny-ui/es/style/index" as *;
+@use "tiny-design/es/style/index" as *;
 ```
 
 ### 3. Import in your entry file
@@ -79,7 +79,7 @@ $font-size-base: 14px;
 import './theme-variables.scss';
 ```
 
-The full list of SCSS variables can be found in [_variables.scss](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/_variables.scss).
+The full list of SCSS variables can be found in [_variables.scss](https://github.com/wangdicoder/tiny-design/blob/master/components/style/_variables.scss).
 
 Some commonly overridden variables:
 

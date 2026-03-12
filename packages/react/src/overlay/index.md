@@ -14,7 +14,7 @@ When you need a mask layer to cover the page content, such as when displaying a 
 ## Usage
 
 ```jsx
-import { Overlay } from 'tiny-ui';
+import { Overlay } from 'tiny-design';
 ```
 
 ## Examples

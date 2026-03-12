@@ -17,7 +17,7 @@ When there are more than a few options to choose from, you can wrap them in a `D
 ## Usage
 
 ```jsx
-import { Dropdown } from 'tiny-ui';
+import { Dropdown } from 'tiny-design';
 ```
 
 ## Examples

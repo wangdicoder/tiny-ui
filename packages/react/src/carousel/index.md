@@ -10,7 +10,7 @@ A carousel component for cycling through elements like a slideshow.
 ## Usage
 
 ```jsx
-import { Carousel } from 'tiny-ui';
+import { Carousel } from 'tiny-design';
 ```
 
 ## Examples

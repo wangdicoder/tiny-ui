@@ -14,7 +14,7 @@ import Vertical from './demo/vertical.md'
 ## 引入方式
 
 ```jsx
-import { Divider } from 'tiny-ui';
+import { Divider } from 'tiny-design';
 ```
 
 ## 代码示例

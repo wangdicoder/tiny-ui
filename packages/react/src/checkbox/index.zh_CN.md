@@ -15,7 +15,7 @@ import Group from './demo/group.md'
 ## 引入方式
 
 ```jsx
-import { Checkbox } from 'tiny-ui';
+import { Checkbox } from 'tiny-design';
 
 const { Group } = Checkbox;
 ```

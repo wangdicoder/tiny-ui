@@ -17,7 +17,7 @@ import Image from './demo/image.md'
 ## 引入方式
 
 ```jsx
-import { Card } from 'tiny-ui';
+import { Card } from 'tiny-design';
 
 const { Content } = Card;
 ```

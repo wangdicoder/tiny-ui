@@ -14,7 +14,7 @@ import Align from './demo/align.md'
 ## 引入方式
 
 ```jsx
-import { Space } from 'tiny-ui';
+import { Space } from 'tiny-design';
 ```
 
 ## 代码示例

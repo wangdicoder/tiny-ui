@@ -17,7 +17,7 @@ import Dynamic from './demo/dynamic.md'
 ## 引入方式
 
 ```js
-import { Tag } from 'tiny-ui';
+import { Tag } from 'tiny-design';
 
 const { CheckableTag } = Tag;
 ```

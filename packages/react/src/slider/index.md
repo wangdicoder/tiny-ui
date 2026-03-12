@@ -19,7 +19,7 @@ To input a value in a range.
 ## Usage
 
 ```jsx
-import { Slider } from 'tiny-ui';
+import { Slider } from 'tiny-design';
 ```
 
 ## Examples

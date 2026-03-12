@@ -14,7 +14,7 @@ import Wrap from './demo/wrap.md'
 ## 引入方式
 
 ```jsx
-import { Flex } from 'tiny-ui';
+import { Flex } from 'tiny-design';
 ```
 
 ## 代码示例

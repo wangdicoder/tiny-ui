@@ -15,7 +15,7 @@ import Sizes from './demo/sizes.md'
 ## 使用方式
 
 ```jsx
-import { Cascader } from 'tiny-ui';
+import { Cascader } from 'tiny-design';
 ```
 
 ## 代码演示

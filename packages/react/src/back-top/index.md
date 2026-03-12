@@ -13,7 +13,7 @@ Go back to the top of the page.
 ## Usage
 
 ```jsx
-import { BackTop } from 'tiny-ui';
+import { BackTop } from 'tiny-design';
 ```
 
 ## Examples

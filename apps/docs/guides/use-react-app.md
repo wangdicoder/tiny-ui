@@ -1,6 +1,6 @@
 # Use with Vite
 
-[Vite](https://vite.dev/) is the recommended way to scaffold a new React project. This guide walks through setting up tiny-ui in a Vite-based app.
+[Vite](https://vite.dev/) is the recommended way to scaffold a new React project. This guide walks through setting up tiny-design in a Vite-based app.
 
 ## Create a project
 
@@ -18,16 +18,16 @@ $ npm run dev
 
 Open http://localhost:5173/ in your browser.
 
-## Install tiny-ui
+## Install tiny-design
 
 ```bash
-$ npm install tiny-ui
+$ npm install tiny-design
 ```
 
-Edit `src/App.tsx` to import a Button component from tiny-ui:
+Edit `src/App.tsx` to import a Button component from tiny-design:
 
 ```tsx
-import { Button } from 'tiny-ui';
+import { Button } from 'tiny-design';
 
 const App = () => {
   return (

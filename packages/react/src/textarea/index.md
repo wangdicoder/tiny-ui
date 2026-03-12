@@ -12,7 +12,7 @@ Comments, etc.
 ## Usage
 
 ```jsx
-import { Textarea } from 'tiny-ui';
+import { Textarea } from 'tiny-design';
 ```
 
 ## Examples

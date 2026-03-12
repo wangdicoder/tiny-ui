@@ -11,7 +11,7 @@ A keyboard style button.
 ## Usage
 
 ```jsx
-import { Keyboard } from 'tiny-ui';
+import { Keyboard } from 'tiny-design';
 ```
 
 ## Examples

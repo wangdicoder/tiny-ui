@@ -9,7 +9,7 @@ import Fade from './demo/fade.md'
 ## 引入方式
 
 ```jsx
-import { Carousel } from 'tiny-ui';
+import { Carousel } from 'tiny-design';
 ```
 
 ## 代码示例

@@ -15,7 +15,7 @@ import Basic from './demo/basic.md'
 ## 引入方式
 
 ```jsx
-import { Layout } from 'tiny-ui';
+import { Layout } from 'tiny-design';
 
 const { Header, Footer, Content, Sidebar } = Layout;
 ```

@@ -14,7 +14,7 @@ When there multiple contents that need to display together, but some of them nee
 ## Usage
 
 ```jsx
-import { Split } from 'tiny-ui';
+import { Split } from 'tiny-design';
 ```
 
 ## Examples

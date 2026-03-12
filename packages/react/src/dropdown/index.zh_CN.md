@@ -17,7 +17,7 @@ import Close from './demo/close.md'
 ## 引入方式
 
 ```jsx
-import { Dropdown } from 'tiny-ui';
+import { Dropdown } from 'tiny-design';
 ```
 
 ## 代码示例

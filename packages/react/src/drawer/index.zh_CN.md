@@ -17,7 +17,7 @@ import Level from './demo/multi-level.md'
 ## 引入方式
 
 ```jsx
-import { Drawer } from 'tiny-ui';
+import { Drawer } from 'tiny-design';
 ```
 
 ## 代码示例

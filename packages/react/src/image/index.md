@@ -15,7 +15,7 @@ Display an image.
 ## Usage
 
 ```jsx
-import { Image } from 'tiny-ui';
+import { Image } from 'tiny-design';
 ```
 
 ## Examples

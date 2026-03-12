@@ -19,7 +19,7 @@ import Track from './demo/track.md'
 ## 引入方式
 
 ```jsx
-import { Slider } from 'tiny-ui';
+import { Slider } from 'tiny-design';
 ```
 
 ## 代码示例

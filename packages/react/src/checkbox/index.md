@@ -15,7 +15,7 @@ A multiple entry component.
 ## Usage
 
 ```jsx
-import { Checkbox } from 'tiny-ui';
+import { Checkbox } from 'tiny-design';
 
 const { Group } = Checkbox;
 ```

@@ -18,7 +18,7 @@ A button means an operation (or a series of operations). Clicking a button will 
 ## Usage
 
 ```jsx
-import { Button } from 'tiny-ui';
+import { Button } from 'tiny-design';
 
 const { Group } = Button;
 ```

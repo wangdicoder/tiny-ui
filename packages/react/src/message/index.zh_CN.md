@@ -16,7 +16,7 @@ import Type from './demo/type.md'
 ## 引入方式
 
 ```jsx
-import { Message } from 'tiny-ui';
+import { Message } from 'tiny-design';
 ```
 
 ## 代码示例

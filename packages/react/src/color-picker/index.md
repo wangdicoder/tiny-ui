@@ -15,7 +15,7 @@ Used to select colors in visual editing tools, theme customization, and design s
 ## Usage
 
 ```jsx
-import { ColorPicker } from 'tiny-ui';
+import { ColorPicker } from 'tiny-design';
 ```
 
 ## Examples

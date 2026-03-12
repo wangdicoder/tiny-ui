@@ -16,7 +16,7 @@ When a given task is complicated or has a certain sequence in the series of sub 
 ## Usage
 
 ```jsx
-import { Steps } from 'tiny-ui';
+import { Steps } from 'tiny-design';
 
 const { Step } = Steps;
 ```

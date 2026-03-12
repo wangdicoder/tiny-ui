@@ -12,7 +12,7 @@ Display a hyperlink. This component is styled to resemble a hyperlink and semant
 ## Usage
 
 ```jsx
-import { Link } from 'tiny-ui';
+import { Link } from 'tiny-design';
 ```
 
 ## Examples

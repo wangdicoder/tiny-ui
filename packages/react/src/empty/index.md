@@ -14,7 +14,7 @@ Empty state placeholder.
 ## Usage
 
 ```jsx
-import { Empty } from 'tiny-ui';
+import { Empty } from 'tiny-design';
 ```
 
 ## Examples

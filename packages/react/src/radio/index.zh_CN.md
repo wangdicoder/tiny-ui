@@ -14,7 +14,7 @@ import Group from './demo/group.md'
 ## 引入方式
 
 ```jsx
-import { Radio } from 'tiny-ui';
+import { Radio } from 'tiny-design';
 
 const { Group } = Radio;
 ```

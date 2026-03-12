@@ -17,7 +17,7 @@ import Half from './demo/half.md'
 ## 引入方式
 
 ```jsx
-import { Rate } from 'tiny-ui';
+import { Rate } from 'tiny-design';
 ```
 
 ## 代码示例

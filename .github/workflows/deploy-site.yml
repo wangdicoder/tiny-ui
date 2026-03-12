@@ -33,7 +33,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build docs site
-        run: pnpm --filter @tiny-design/docs build -- --base /tiny-ui/
+        run: pnpm --filter @tiny-design/docs build -- --base /tiny-design/
 
       - name: Copy 404.html for SPA routing
         run: cp apps/docs/build/index.html apps/docs/build/404.html

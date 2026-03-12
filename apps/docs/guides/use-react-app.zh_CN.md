@@ -1,6 +1,6 @@
 # 在 Vite 中使用
 
-[Vite](https://vite.dev/) 是目前推荐的 React 项目脚手架工具。本指南将介绍如何在 Vite 项目中使用 tiny-ui。
+[Vite](https://vite.dev/) 是目前推荐的 React 项目脚手架工具。本指南将介绍如何在 Vite 项目中使用 tiny-design。
 
 ## 创建项目
 
@@ -18,16 +18,16 @@ $ npm run dev
 
 在浏览器中打开 http://localhost:5173/。
 
-## 安装 tiny-ui
+## 安装 tiny-design
 
 ```bash
-$ npm install tiny-ui
+$ npm install tiny-design
 ```
 
-修改 `src/App.tsx`，从 tiny-ui 引入 Button 组件：
+修改 `src/App.tsx`，从 tiny-design 引入 Button 组件：
 
 ```tsx
-import { Button } from 'tiny-ui';
+import { Button } from 'tiny-design';
 
 const App = () => {
   return (

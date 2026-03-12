@@ -12,7 +12,7 @@ import Basic from './demo/basic.md'
 ## 引入方式
 
 ```jsx
-import { BackTop } from 'tiny-ui';
+import { BackTop } from 'tiny-design';
 ```
 
 ## 代码示例

@@ -16,7 +16,7 @@ import Pagination from './demo/pagination.md'
 ## 使用方式
 
 ```jsx
-import { Table } from 'tiny-ui';
+import { Table } from 'tiny-design';
 ```
 
 ## 代码演示

@@ -13,7 +13,7 @@ An accessible dropdown menu for the common dropdown menu button design pattern. 
 ## Usage
 
 ```jsx
-import { Menu } from 'tiny-ui';
+import { Menu } from 'tiny-design';
 
 const { Item, SubMenu, ItemGroup, Divider } = Menu;
 ```

@@ -11,7 +11,7 @@ import Basic from './demo/basic.md'
 ## 使用方式
 
 ```jsx
-import { Segmented } from 'tiny-ui';
+import { Segmented } from 'tiny-design';
 ```
 
 ## 代码演示

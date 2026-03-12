@@ -16,7 +16,7 @@ import Clickable from './demo/clickable.md'
 ## 引入方式
 
 ```jsx
-import { Steps } from 'tiny-ui';
+import { Steps } from 'tiny-design';
 
 const { Step } = Steps;
 ```

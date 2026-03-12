@@ -17,7 +17,7 @@ Alert component for feedback.
 ## Usage
 
 ```jsx
-import { Alert } from 'tiny-ui';
+import { Alert } from 'tiny-design';
 ```
 
 ## Examples

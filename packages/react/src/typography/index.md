@@ -13,7 +13,7 @@ Display a title or paragraph contents.
 ## Usage
 
 ```jsx
-import { Typography } from 'tiny-ui';
+import { Typography } from 'tiny-design';
 
 const { Heading, Paragraph, Text } = Typography;
 ```

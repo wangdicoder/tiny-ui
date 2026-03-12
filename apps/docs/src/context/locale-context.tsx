@@ -8,7 +8,7 @@ type LocaleContextType = {
   toggle: () => void;
 };
 
-const STORAGE_KEY = 'tiny-ui-locale';
+const STORAGE_KEY = 'tiny-design-locale';
 
 function isZh(): boolean {
   try {

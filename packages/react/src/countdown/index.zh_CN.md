@@ -12,7 +12,7 @@ import Millisecond from './demo/millisecond.md'
 ## 引入方式
 
 ```js
-import { Countdown } from 'tiny-ui';
+import { Countdown } from 'tiny-design';
 ```
 
 ## 代码示例

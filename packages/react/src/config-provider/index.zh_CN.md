@@ -5,7 +5,7 @@
 ## 引入方式
 
 ```jsx
-import { ConfigProvider, zh_CN } from 'tiny-ui';
+import { ConfigProvider, zh_CN } from 'tiny-design';
 
 // ...
 

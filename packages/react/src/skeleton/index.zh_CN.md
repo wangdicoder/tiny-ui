@@ -15,7 +15,7 @@ import Combination from './demo/combination.md'
 ## 引入方式
 
 ```jsx
-import { Skeleton } from 'tiny-ui';
+import { Skeleton } from 'tiny-design';
 ```
 
 ## 代码示例

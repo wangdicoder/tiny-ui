@@ -13,7 +13,7 @@ import Disabled from './demo/disabled.md'
 ## 引入方式
 
 ```jsx
-import { InputNumber } from 'tiny-ui';
+import { InputNumber } from 'tiny-design';
 ```
 
 ## 代码示例

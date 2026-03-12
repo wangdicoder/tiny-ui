@@ -18,7 +18,7 @@ Can be used to group or hide complex regions to keep the page clean.
 ## Usage
 
 ```jsx
-import { Collapse } from 'tiny-ui';
+import { Collapse } from 'tiny-design';
 
 const { Panel } = Collapse;
 ```

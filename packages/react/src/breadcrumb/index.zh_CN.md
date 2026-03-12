@@ -16,7 +16,7 @@ import Separator from './demo/separator.md'
 ## 引入方式
 
 ```js
-import { Breadcrumb } from 'tiny-ui';
+import { Breadcrumb } from 'tiny-design';
 
 const { Item } = Breadcrumb;
 ```

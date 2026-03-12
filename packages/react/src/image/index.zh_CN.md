@@ -15,7 +15,7 @@ Image 组件用于显示图片。
 ## 引入方式
 
 ```jsx
-import { Image } from 'tiny-ui';
+import { Image } from 'tiny-design';
 ```
 
 ## 代码示例

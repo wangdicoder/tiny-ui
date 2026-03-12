@@ -16,7 +16,7 @@ A breadcrumb displays the current location within a hierarchy. It allows going b
 ## Usage
 
 ```js
-import { Breadcrumb } from 'tiny-ui';
+import { Breadcrumb } from 'tiny-design';
 
 const { Item } = Breadcrumb;
 ```

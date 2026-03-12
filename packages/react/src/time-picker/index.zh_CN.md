@@ -16,7 +16,7 @@ import Loop from './demo/loop.md'
 ## 引入方式
 
 ```jsx
-import { TimePicker } from 'tiny-ui';
+import { TimePicker } from 'tiny-design';
 ```
 
 ## 代码示例

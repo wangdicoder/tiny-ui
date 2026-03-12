@@ -23,7 +23,7 @@ Tiny UI 内置亮色和暗色主题。默认为亮色模式。要启用暗色模
 也可以使用 `useTheme` hook 在运行时切换主题：
 
 ```tsx
-import { useTheme } from 'tiny-ui';
+import { useTheme } from 'tiny-design';
 
 const App = () => {
   const { mode, setMode, toggle } = useTheme();
@@ -44,8 +44,8 @@ const App = () => {
 ```
 
 完整的令牌列表请参考源码：
-- [亮色主题令牌](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/themes/_light.scss)
-- [暗色主题令牌](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/themes/_dark.scss)
+- [亮色主题令牌](https://github.com/wangdicoder/tiny-design/blob/master/components/style/themes/_light.scss)
+- [暗色主题令牌](https://github.com/wangdicoder/tiny-design/blob/master/components/style/themes/_dark.scss)
 
 ## SCSS 变量
 
@@ -70,7 +70,7 @@ $border-radius: 4px;
 $font-size-base: 14px;
 
 // 引入 Tiny UI 样式（通过 !default 应用你的覆盖值）
-@use "tiny-ui/es/style/index" as *;
+@use "tiny-design/es/style/index" as *;
 ```
 
 ### 3. 在入口文件中引入
@@ -79,7 +79,7 @@ $font-size-base: 14px;
 import './theme-variables.scss';
 ```
 
-完整的 SCSS 变量列表请参考 [_variables.scss](https://github.com/wangdicoder/tiny-ui/blob/master/components/style/_variables.scss)。
+完整的 SCSS 变量列表请参考 [_variables.scss](https://github.com/wangdicoder/tiny-design/blob/master/components/style/_variables.scss)。
 
 以下是一些常用的可覆盖变量：
 

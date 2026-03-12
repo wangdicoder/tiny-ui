@@ -17,7 +17,7 @@ import Tips from './demo/tips.md'
 ## 引入方式
 
 ```jsx
-import { Loader } from 'tiny-ui';
+import { Loader } from 'tiny-design';
 ```
 
 ## 代码示例

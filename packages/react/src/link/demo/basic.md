@@ -5,7 +5,7 @@
 A simple usage.
 
 ```jsx live
-<span>This is a <Link href="https://tiny-ui.dev/">link</Link>.</span>
+<span>This is a <Link href="https://tiny-design.dev/">link</Link>.</span>
 ```
 
 </Demo>

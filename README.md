@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://tiny-ui.dev">
-    <img width="200" src="https://github.com/wangdicoder/tiny-ui/blob/master/site/src/assets/logo/logo.svg">
+  <a href="https://tiny-design.dev">
+    <img width="200" src="https://github.com/wangdicoder/tiny-design/blob/master/site/src/assets/logo/logo.svg">
   </a>
 </p>
 
@@ -8,20 +8,20 @@
 <p align="center">A friendly UI component set for React</p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/tiny-ui">
-    <img src="https://img.shields.io/npm/v/tiny-ui.svg?style=flat-square" alt="npm version"/>
+  <a href="https://www.npmjs.com/package/tiny-design">
+    <img src="https://img.shields.io/npm/v/tiny-design.svg?style=flat-square" alt="npm version"/>
   </a>
-  <a href="https://www.npmjs.com/package/tiny-ui">
-    <img src="https://img.shields.io/npm/dm/tiny-ui.svg?style=flat-square" alt="npm downloads"/>
+  <a href="https://www.npmjs.com/package/tiny-design">
+    <img src="https://img.shields.io/npm/dm/tiny-design.svg?style=flat-square" alt="npm downloads"/>
   </a>
-  <a href="https://bundlephobia.com/package/tiny-ui">
-    <img src="https://img.shields.io/bundlephobia/minzip/tiny-ui.svg?style=flat-square" alt="bundle size"/>
+  <a href="https://bundlephobia.com/package/tiny-design">
+    <img src="https://img.shields.io/bundlephobia/minzip/tiny-design.svg?style=flat-square" alt="bundle size"/>
   </a>
   <a href="https://react.dev">
     <img src="https://img.shields.io/static/v1?label=react&message=%3E=18&color=61dafb&style=flat-square" alt="react version"/>
   </a>
-  <a href="https://github.com/wangdicoder/tiny-ui/blob/master/LICENSE">
-    <img src="https://img.shields.io/npm/l/tiny-ui.svg?style=flat-square" alt="license"/>
+  <a href="https://github.com/wangdicoder/tiny-design/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/tiny-design.svg?style=flat-square" alt="license"/>
   </a>
 </p>
 
@@ -54,16 +54,16 @@
 
 ```bash
 # npm
-npm install tiny-ui
+npm install tiny-design
 
 # yarn
-yarn add tiny-ui
+yarn add tiny-design
 ```
 
 ## Quick Start
 
 ```jsx
-import { Button, Switch } from 'tiny-ui';
+import { Button, Switch } from 'tiny-design';
 
 const App = () => (
   <>
@@ -80,7 +80,7 @@ Styles are automatically imported alongside each component — no separate CSS i
 ### Dark mode
 
 ```jsx
-import { ConfigProvider } from 'tiny-ui';
+import { ConfigProvider } from 'tiny-design';
 
 <ConfigProvider theme="dark">
   <App />
@@ -93,18 +93,18 @@ Override SCSS variables to customise colours, borders, fonts, and more:
 
 ```scss
 $primary-color: #007bff;
-$font-path: '~tiny-ui/themes/fonts';
-@import '~tiny-ui/themes/index.scss';
+$font-path: '~tiny-design/themes/fonts';
+@import '~tiny-design/themes/index.scss';
 ```
 
-See the [Theme Customisation Guide](https://tiny-ui.dev/guide/customise-theme) for details.
+See the [Theme Customisation Guide](https://tiny-design.dev/guide/customise-theme) for details.
 
 ## Internationalization
 
 Built-in locale support for English and Chinese. Set locale via `ConfigProvider` or `IntlProvider`:
 
 ```jsx
-import { ConfigProvider, zh_CN } from 'tiny-ui';
+import { ConfigProvider, zh_CN } from 'tiny-design';
 
 <ConfigProvider locale={zh_CN}>
   <App />
@@ -126,10 +126,10 @@ Supports all modern browsers. IE is **not** supported.
 
 ## Links
 
-- [Documentation](https://tiny-ui.dev)
-- [Changelog](https://github.com/wangdicoder/tiny-ui/blob/master/CHANGELOG.md)
-- [Issues](https://github.com/wangdicoder/tiny-ui/issues)
+- [Documentation](https://tiny-design.dev)
+- [Changelog](https://github.com/wangdicoder/tiny-design/blob/master/CHANGELOG.md)
+- [Issues](https://github.com/wangdicoder/tiny-design/issues)
 
 ## License
 
-[MIT](https://github.com/wangdicoder/tiny-ui/blob/master/LICENSE)
+[MIT](https://github.com/wangdicoder/tiny-design/blob/master/LICENSE)

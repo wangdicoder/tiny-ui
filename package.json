@@ -1,12 +1,12 @@
 {
-  "name": "tiny-ui",
+  "name": "tiny-design",
   "version": "1.0.4",
   "private": true,
   "description": "A friendly UI component set for React",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wangdicoder/tiny-ui.git"
+    "url": "https://github.com/wangdicoder/tiny-design.git"
   },
   "author": "Di Wang<wangdicoder@gmail.com>",
   "packageManager": "pnpm@10.32.1",

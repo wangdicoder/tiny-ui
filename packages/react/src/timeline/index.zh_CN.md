@@ -16,7 +16,7 @@ import Customised from './demo/customised.md'
 ## 引入方式
 
 ```jsx
-import { Timeline } from 'tiny-ui';
+import { Timeline } from 'tiny-design';
 
 const { Item } = Timeline;
 ```

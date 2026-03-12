@@ -15,7 +15,7 @@ import VerticalBorder from './demo/vertical-border.md'
 ## 引入方式
 
 ```jsx
-import { Descriptions } from 'tiny-ui';
+import { Descriptions } from 'tiny-design';
 ```
 
 ## 代码示例

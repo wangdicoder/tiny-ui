@@ -16,7 +16,7 @@ Switch 用于在两种对立状态之间切换。
 ## 引入方式
 
 ```jsx
-import { Switch } from 'tiny-ui';
+import { Switch } from 'tiny-design';
 ```
 
 ## 代码示例

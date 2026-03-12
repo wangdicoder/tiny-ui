@@ -13,7 +13,7 @@ import Inline from './demo/inline.md';
 ## 引入方式
 
 ```jsx
-import { Menu } from 'tiny-ui';
+import { Menu } from 'tiny-design';
 
 const { Item, SubMenu, ItemGroup, Divider } = Menu;
 ```

@@ -12,7 +12,7 @@ import ExtraFooter from './demo/extra-footer.md'
 ## 引入方式
 
 ```jsx
-import { DatePicker } from 'tiny-ui';
+import { DatePicker } from 'tiny-design';
 ```
 
 ## 代码示例

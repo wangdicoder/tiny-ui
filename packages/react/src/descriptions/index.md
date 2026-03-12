@@ -15,7 +15,7 @@ Commonly displayed on the details page.
 ## Usage
 
 ```jsx
-import { Descriptions } from 'tiny-ui';
+import { Descriptions } from 'tiny-design';
 ```
 
 ## Examples

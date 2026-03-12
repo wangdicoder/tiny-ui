@@ -12,8 +12,8 @@ Tiny UI is a set of UI components and widgets built on React.js **18+**, which m
 
 ## Version
 
-- Latest [![npm](https://img.shields.io/npm/v/tiny-ui.svg?style=flat-square)](https://www.npmjs.com/package/tiny-ui)
-- Download [![npm](https://img.shields.io/npm/dm/tiny-ui.svg?style=flat-square)](https://www.npmjs.com/package/tiny-ui)
+- Latest [![npm](https://img.shields.io/npm/v/tiny-design.svg?style=flat-square)](https://www.npmjs.com/package/tiny-design)
+- Download [![npm](https://img.shields.io/npm/dm/tiny-design.svg?style=flat-square)](https://www.npmjs.com/package/tiny-design)
 
 ## Environment Support
 

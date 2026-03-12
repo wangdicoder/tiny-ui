@@ -12,7 +12,7 @@ Quickly and easily create layouts with the basic 24-column.
 ## Usage
 
 ```jsx
-import { Row, Col } from 'tiny-ui';
+import { Row, Col } from 'tiny-design';
 ```
 
 ## Examples

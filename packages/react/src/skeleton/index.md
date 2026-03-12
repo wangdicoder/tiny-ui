@@ -15,7 +15,7 @@ Provide a placeholder while the content is loading.
 ## Usage
 
 ```jsx
-import { Skeleton } from 'tiny-ui';
+import { Skeleton } from 'tiny-design';
 ```
 
 ## Examples

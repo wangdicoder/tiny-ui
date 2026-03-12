@@ -15,7 +15,7 @@ import Type from './demo/type.md'
 ## 引入方式
 
 ```jsx
-import { Avatar } from 'tiny-ui';
+import { Avatar } from 'tiny-design';
 
 const { Group } = Avatar;
 ```

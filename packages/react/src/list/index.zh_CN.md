@@ -15,7 +15,7 @@ import Loading from './demo/loading.md'
 ## 使用方式
 
 ```jsx
-import { List } from 'tiny-ui';
+import { List } from 'tiny-design';
 ```
 
 ## 代码演示

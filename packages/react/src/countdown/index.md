@@ -12,7 +12,7 @@ Countdown activities, like sec-kill.
 ## Usage
 
 ```js
-import { Countdown } from 'tiny-ui';
+import { Countdown } from 'tiny-design';
 ```
 
 ## Examples

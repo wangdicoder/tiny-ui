@@ -12,7 +12,7 @@ To select or input a date.
 ## Usage
 
 ```jsx
-import { DatePicker } from 'tiny-ui';
+import { DatePicker } from 'tiny-design';
 ```
 
 ## Examples

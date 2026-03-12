@@ -15,7 +15,7 @@ When requiring users to interact with the application, but without jumping to a 
 ## Usage
 
 ```jsx
-import { Modal } from 'tiny-ui';
+import { Modal } from 'tiny-design';
 ```
 
 ## Examples

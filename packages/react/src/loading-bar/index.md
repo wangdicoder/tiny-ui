@@ -11,7 +11,7 @@ Display a loading bar on the top of a browser to show that the content is fetchi
 ## Usage
 
 ```jsx
-import { LoadingBar } from 'tiny-ui';
+import { LoadingBar } from 'tiny-design';
 
 LoadingBar.start();
 LoadingBar.succeed();

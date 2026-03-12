@@ -5,7 +5,7 @@ This component provides a universal configuration for components.
 ## Usage
 
 ```jsx
-import { ConfigProvider, zh_CN } from 'tiny-ui';
+import { ConfigProvider, zh_CN } from 'tiny-design';
 
 // ...
 

@@ -15,7 +15,7 @@ Badge normally appears in proximity to notifications or user avatars with eye-ca
 ## Usage
 
 ```jsx
-import { Badge } from 'tiny-ui';
+import { Badge } from 'tiny-design';
 ```
 
 ## Examples

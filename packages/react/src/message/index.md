@@ -16,7 +16,7 @@ Display global messages as feedback in response to user operations.
 ## Usage
 
 ```jsx
-import { Message } from 'tiny-ui';
+import { Message } from 'tiny-design';
 ```
 
 ## Examples

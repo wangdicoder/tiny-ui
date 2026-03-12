@@ -11,7 +11,7 @@ import Basic from './demo/basic.md'
 ## 使用方式
 
 ```jsx
-import { ColorPicker } from 'tiny-ui';
+import { ColorPicker } from 'tiny-design';
 ```
 
 ## 代码演示

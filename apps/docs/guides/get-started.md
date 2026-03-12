@@ -7,17 +7,17 @@
 You first need to install and configure the `Node.js` environment properly locally.
 
 ```bash
-$ npm install tiny-ui
+$ npm install tiny-design
 ```
 <br />
 
 ```bash
-$ yarn add tiny-ui
+$ yarn add tiny-design
 ```
 <br />
 
 ```bash
-$ pnpm add tiny-ui
+$ pnpm add tiny-design
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ The following is a simple example of using a default button component.
 ```jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button } from 'tiny-ui';
+import { Button } from 'tiny-design';
 
 const App = () => {
   return <Button>Hello World</Button>;

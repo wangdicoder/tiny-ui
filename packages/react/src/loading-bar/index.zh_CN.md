@@ -11,7 +11,7 @@ import Basic from './demo/basic.md'
 ## 引入方式
 
 ```jsx
-import { LoadingBar } from 'tiny-ui';
+import { LoadingBar } from 'tiny-design';
 
 LoadingBar.start();
 LoadingBar.succeed();

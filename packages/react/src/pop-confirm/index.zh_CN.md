@@ -16,7 +16,7 @@ import Icon from './demo/icon.md'
 ## 引入方式
 
 ```jsx
-import { PopConfirm } from 'tiny-ui';
+import { PopConfirm } from 'tiny-design';
 ```
 
 ## 代码示例

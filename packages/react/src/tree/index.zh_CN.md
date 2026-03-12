@@ -13,7 +13,7 @@ import Icon from './demo/icon.md'
 ## 引入方式
 
 ```jsx
-import { Tree } from 'tiny-ui';
+import { Tree } from 'tiny-design';
 ```
 
 ## 代码示例

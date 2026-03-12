@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wangdicoder/tiny-ui.git",
+    "url": "https://github.com/wangdicoder/tiny-design.git",
     "directory": "packages/tokens"
   },
   "main": "css/base.css",

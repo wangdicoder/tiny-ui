@@ -13,7 +13,7 @@ Anything represented in a tree structure can use the `Tree` component.
 ## Usage
 
 ```jsx
-import { Tree } from 'tiny-ui';
+import { Tree } from 'tiny-design';
 ```
 
 ## Examples

@@ -14,7 +14,7 @@ A single entry component. If there are only two options, consider using the `Swi
 ## Usage
 
 ```jsx
-import { Radio } from 'tiny-ui';
+import { Radio } from 'tiny-design';
 
 const { Group } = Radio;
 ```

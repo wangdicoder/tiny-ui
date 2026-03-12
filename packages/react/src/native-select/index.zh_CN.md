@@ -15,7 +15,7 @@ import Size from './demo/size.md'
 ## 引入方式
 
 ```js
-import { NativeSelect } from 'tiny-ui';
+import { NativeSelect } from 'tiny-design';
 
 const { Group, Option } = NativeSelect;
 ```

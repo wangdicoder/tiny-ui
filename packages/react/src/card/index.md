@@ -17,7 +17,7 @@ A card can be used to display content related to a single subject. The content c
 ## Usage
 
 ```jsx
-import { Card } from 'tiny-ui';
+import { Card } from 'tiny-design';
 
 const { Content } = Card;
 ```

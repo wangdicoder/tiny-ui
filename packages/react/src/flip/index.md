@@ -12,7 +12,7 @@ If one thing with extra content which is not important, you can display the main
 ## Usage
 
 ```jsx
-import { Flip } from 'tiny-ui';
+import { Flip } from 'tiny-design';
 
 const { Item } = Flip;
 ```

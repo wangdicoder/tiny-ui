@@ -15,7 +15,7 @@ import OffsetTop from './demo/offset-top.md'
 ## 引入方式
 
 ```jsx
-import { Anchor } from 'tiny-ui';
+import { Anchor } from 'tiny-design';
 ```
 
 ## 示例

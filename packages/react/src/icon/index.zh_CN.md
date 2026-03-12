@@ -9,7 +9,7 @@ import IconList from './demo/icons.tsx'
 ## 引入方式
 
 ```jsx
-import { Icon } from 'tiny-ui';
+import { Icon } from 'tiny-design';
 ```
 
 ## 代码示例

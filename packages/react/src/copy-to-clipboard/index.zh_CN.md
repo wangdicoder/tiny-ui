@@ -10,7 +10,7 @@ import UseInput from './demo/use-input.md';
 ## 引入方式
 
 ```jsx
-import { CopyToClipboard } from 'tiny-ui';
+import { CopyToClipboard } from 'tiny-design';
 ```
 
 ## 代码示例

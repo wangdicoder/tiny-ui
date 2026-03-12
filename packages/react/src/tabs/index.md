@@ -12,7 +12,7 @@ Tabs make it easy to switch between different views.
 ## Usage
 
 ```jsx
-import { Tabs } from 'tiny-ui';
+import { Tabs } from 'tiny-design';
 ```
 
 ## Examples

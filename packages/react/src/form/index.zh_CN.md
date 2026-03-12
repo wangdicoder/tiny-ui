@@ -20,7 +20,7 @@ import OtherControls from './demo/other-controls.md'
 ## 引入方式
 
 ```jsx
-import { Form } from 'tiny-ui';
+import { Form } from 'tiny-design';
 
 const { Item, useForm, FormInstance } = Form;
 ```

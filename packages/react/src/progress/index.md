@@ -20,7 +20,7 @@ If it will take a long time to complete an operation, you can use Progress to sh
 ## Usage
 
 ```jsx
-import { Progress } from 'tiny-ui';
+import { Progress } from 'tiny-design';
 
 const { Bar, Circle } = Progress;
 ```

@@ -18,7 +18,7 @@ import Controlled from './demo/controlled.md'
 ## 引入方式
 
 ```js
-import { Pagination } from 'tiny-ui';
+import { Pagination } from 'tiny-design';
 ```
 
 ## 代码示例

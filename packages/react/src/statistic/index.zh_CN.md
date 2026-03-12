@@ -11,7 +11,7 @@ import Basic from './demo/basic.md'
 ## 使用方式
 
 ```jsx
-import { Statistic } from 'tiny-ui';
+import { Statistic } from 'tiny-design';
 ```
 
 ## 代码演示

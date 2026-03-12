@@ -9,7 +9,7 @@ Element provides a set of common icons.
 ## Usage
 
 ```jsx
-import { Icon } from 'tiny-ui';
+import { Icon } from 'tiny-design';
 ```
 
 ## Examples

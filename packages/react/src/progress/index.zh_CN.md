@@ -21,7 +21,7 @@ import SquareLinecaps from './demo/square-linecaps.md'
 ## 引入方式
 
 ```jsx
-import { Progress } from 'tiny-ui';
+import { Progress } from 'tiny-design';
 
 const { Bar, Circle } = Progress;
 ```

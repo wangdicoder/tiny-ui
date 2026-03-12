@@ -5,7 +5,7 @@
   "license": "MIT",
   "keywords": [
     "tiny",
-    "tiny-ui",
+    "tiny-design",
     "design",
     "react",
     "react-component",
@@ -18,11 +18,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wangdicoder/tiny-ui.git",
+    "url": "https://github.com/wangdicoder/tiny-design.git",
     "directory": "packages/react"
   },
   "author": "Di Wang<wangdicoder@gmail.com>",
-  "homepage": "https://wangdicoder.github.io/tiny-ui/",
+  "homepage": "https://wangdicoder.github.io/tiny-design/",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "lib/index.d.ts",

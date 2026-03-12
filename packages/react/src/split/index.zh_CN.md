@@ -14,7 +14,7 @@ import Step from './demo/step.md'
 ## 引入方式
 
 ```jsx
-import { Split } from 'tiny-ui';
+import { Split } from 'tiny-design';
 ```
 
 ## 代码示例

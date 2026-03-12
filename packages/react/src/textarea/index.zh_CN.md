@@ -12,7 +12,7 @@ import Count from './demo/count.md'
 ## 引入方式
 
 ```jsx
-import { Textarea } from 'tiny-ui';
+import { Textarea } from 'tiny-design';
 ```
 
 ## 代码示例

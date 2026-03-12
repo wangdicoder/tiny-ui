@@ -15,7 +15,7 @@ UI 元素的小型数值或状态描述符。
 ## 引入方式
 
 ```jsx
-import { Badge } from 'tiny-ui';
+import { Badge } from 'tiny-design';
 ```
 
 ## 代码示例

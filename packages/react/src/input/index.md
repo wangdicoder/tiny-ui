@@ -16,7 +16,7 @@ A user input in a form field is needed.
 ## Usage
 
 ```js
-import { Input } from 'tiny-ui';
+import { Input } from 'tiny-design';
 
 const { Group, Addon } = Input;
 ```

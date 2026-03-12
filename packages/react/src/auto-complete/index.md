@@ -17,7 +17,7 @@ Autocomplete function of input field.
 ## Usage
 
 ```jsx
-import { AutoComplete } from 'tiny-ui';
+import { AutoComplete } from 'tiny-design';
 ```
 
 ## Examples

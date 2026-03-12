@@ -5,7 +5,7 @@
 Disabled state of link.
 
 ```jsx live
-<span>This is a disabled <Link disabled href="https://tiny-ui.dev/">link</Link>.</span>
+<span>This is a disabled <Link disabled href="https://tiny-design.dev/">link</Link>.</span>
 ```
 
 </Demo>

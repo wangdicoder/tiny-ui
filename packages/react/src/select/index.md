@@ -19,7 +19,7 @@ Select component to select value from options.
 ## Usage
 
 ```jsx
-import { Select } from 'tiny-ui';
+import { Select } from 'tiny-design';
 
 const { Option, OptGroup } = Select;
 ```

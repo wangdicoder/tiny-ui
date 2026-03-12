@@ -13,7 +13,7 @@ When use a password form.
 ## Usage
 
 ```jsx
-import { StrengthIndicator } from 'tiny-ui';
+import { StrengthIndicator } from 'tiny-design';
 ```
 
 ## Examples

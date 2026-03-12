@@ -16,7 +16,7 @@ Display a timeline.
 ## Usage
 
 ```jsx
-import { Timeline } from 'tiny-ui';
+import { Timeline } from 'tiny-design';
 
 const { Item } = Timeline;
 ```

@@ -13,8 +13,8 @@ Thanks for your interest in contributing to Tiny UI! This guide will help you ge
 
 ```bash
 # Clone the repo
-git clone https://github.com/wangdicoder/tiny-ui.git
-cd tiny-ui
+git clone https://github.com/wangdicoder/tiny-design.git
+cd tiny-design
 
 # Install dependencies
 pnpm install
@@ -32,7 +32,7 @@ pnpm build
 ## Project Structure
 
 ```
-tiny-ui/
+tiny-design/
 ├── packages/react/       # @tiny-design/react — component library
 │   ├── src/              # Component source code
 │   ├── scripts/          # Build scripts
@@ -133,7 +133,7 @@ This creates a markdown file in `.changeset/` — commit it with your PR. When t
 
 ## Reporting Bugs
 
-Use [GitHub Issues](https://github.com/wangdicoder/tiny-ui/issues) with the bug report template. Include:
+Use [GitHub Issues](https://github.com/wangdicoder/tiny-design/issues) with the bug report template. Include:
 - Steps to reproduce
 - Expected vs actual behavior
 - Browser and OS information

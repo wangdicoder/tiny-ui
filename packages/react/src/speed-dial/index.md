@@ -14,7 +14,7 @@ When you need a floating action button that can reveal multiple related actions.
 ## Usage
 
 ```jsx
-import { SpeedDial } from 'tiny-ui';
+import { SpeedDial } from 'tiny-design';
 ```
 
 ## Examples

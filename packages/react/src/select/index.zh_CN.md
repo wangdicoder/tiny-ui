@@ -18,7 +18,7 @@ import Custom from './demo/custom.md'
 ## 引入方式
 
 ```jsx
-import { Select } from 'tiny-ui';
+import { Select } from 'tiny-design';
 
 const { Option, OptGroup } = Select;
 ```

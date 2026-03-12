@@ -11,7 +11,7 @@ import Alignment from './demo/alignment.md'
 ## 引入方式
 
 ```jsx
-import { Row, Col } from 'tiny-ui';
+import { Row, Col } from 'tiny-design';
 ```
 
 ## 代码示例

@@ -13,7 +13,7 @@ import Text from './demo/text.md'
 ## 引入方式
 
 ```jsx
-import { Typography } from 'tiny-ui';
+import { Typography } from 'tiny-design';
 
 const { Heading, Paragraph, Text } = Typography;
 ```

@@ -14,7 +14,7 @@ A simple text popup tip.
 ## Usage
 
 ```jsx
-import { Tooltip } from 'tiny-ui';
+import { Tooltip } from 'tiny-design';
 ```
 
 ## Examples

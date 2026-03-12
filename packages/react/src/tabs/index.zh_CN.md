@@ -11,7 +11,7 @@ import Editable from './demo/editable.md'
 ## 引入方式
 
 ```jsx
-import { Tabs } from 'tiny-ui';
+import { Tabs } from 'tiny-design';
 ```
 
 ## 代码示例

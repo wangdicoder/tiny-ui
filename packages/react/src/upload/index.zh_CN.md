@@ -15,7 +15,7 @@ import Drag from './demo/drag.md'
 ## 引入方式
 
 ```jsx
-import { Upload } from 'tiny-ui';
+import { Upload } from 'tiny-design';
 ```
 
 ## 代码示例

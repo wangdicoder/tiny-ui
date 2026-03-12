@@ -17,7 +17,7 @@ import Nested from './demo/nested.md'
 ## 引入方式
 
 ```jsx
-import { Collapse } from 'tiny-ui';
+import { Collapse } from 'tiny-design';
 
 const { Panel } = Collapse;
 ```

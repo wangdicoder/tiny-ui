@@ -13,7 +13,7 @@ import Map from './demo/map.md'
 ## 引入方式
 
 ```jsx
-import { AspectRatio } from 'tiny-ui';
+import { AspectRatio } from 'tiny-design';
 ```
 
 ## 代码示例

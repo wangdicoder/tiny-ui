@@ -20,7 +20,7 @@ Form data management, including data collection, verification, and styles.
 ## Usages
 
 ```jsx
-import { Form } from 'tiny-ui';
+import { Form } from 'tiny-design';
 
 const { Item, useForm, FormInstance } = Form;
 ```

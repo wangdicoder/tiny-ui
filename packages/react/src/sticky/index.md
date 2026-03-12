@@ -13,7 +13,7 @@ On longer web pages, its helpful for some content to stick to the viewport. This
 ## Usage
 
 ```jsx
-import { Sticky } from 'tiny-ui';
+import { Sticky } from 'tiny-design';
 ```
 
 ## Examples

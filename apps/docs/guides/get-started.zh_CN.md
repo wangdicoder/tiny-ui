@@ -7,17 +7,17 @@
 你需要先在本地正确安装和配置好 `Node.js` 环境。
 
 ```bash
-$ npm install tiny-ui
+$ npm install tiny-design
 ```
 <br />
 
 ```bash
-$ yarn add tiny-ui
+$ yarn add tiny-design
 ```
 <br />
 
 ```bash
-$ pnpm add tiny-ui
+$ pnpm add tiny-design
 ```
 
 ## 引入方式
@@ -27,7 +27,7 @@ $ pnpm add tiny-ui
 ```jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button } from 'tiny-ui';
+import { Button } from 'tiny-design';
 
 const App = () => {
   return <Button>Hello World</Button>;

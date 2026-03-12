@@ -14,7 +14,7 @@ import Placement from './demo/placement.md'
 ## 引入方式
 
 ```jsx
-import { SplitButton } from 'tiny-ui';
+import { SplitButton } from 'tiny-design';
 ```
 
 ## 代码示例

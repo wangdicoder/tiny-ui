@@ -11,7 +11,7 @@ import Basic from './demo/basic.md'
 ## 引入方式
 
 ```jsx
-import { Keyboard } from 'tiny-ui';
+import { Keyboard } from 'tiny-design';
 ```
 
 ## 代码示例

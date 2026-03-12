@@ -14,7 +14,7 @@ Use Flex when you need a lightweight flexbox layout without wrapping each child 
 ## Usage
 
 ```jsx
-import { Flex } from 'tiny-ui';
+import { Flex } from 'tiny-design';
 ```
 
 ## Examples

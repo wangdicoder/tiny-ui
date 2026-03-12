@@ -15,7 +15,7 @@ Upload files by clicking or drag-and-drop
 ## Usage
 
 ```jsx
-import { Upload } from 'tiny-ui';
+import { Upload } from 'tiny-design';
 ```
 
 ## Examples

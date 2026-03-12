@@ -12,7 +12,7 @@ import Direction from './demo/direction.md'
 ## 引入方式
 
 ```jsx
-import { Flip } from 'tiny-ui';
+import { Flip } from 'tiny-design';
 
 const { Item } = Flip;
 ```

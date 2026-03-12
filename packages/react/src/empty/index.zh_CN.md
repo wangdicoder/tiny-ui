@@ -14,7 +14,7 @@ import NoDesc from './demo/no-desc.md'
 ## 引入方式
 
 ```jsx
-import { Empty } from 'tiny-ui';
+import { Empty } from 'tiny-design';
 ```
 
 ## 代码示例

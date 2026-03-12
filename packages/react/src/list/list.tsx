@@ -36,10 +36,10 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, ref) => {
   const listSize = size || configContext.componentSize || 'md';
 
   if (virtual && height == null) {
-    console.warn('[tiny-ui: List] `height` is required when `virtual` is enabled.');
+    console.warn('[tiny-design: List] `height` is required when `virtual` is enabled.');
   }
   if (virtual && grid) {
-    console.warn('[tiny-ui: List] `virtual` is not supported with `grid` mode. Falling back to normal rendering.');
+    console.warn('[tiny-design: List] `virtual` is not supported with `grid` mode. Falling back to normal rendering.');
   }
 
   const isVirtual = virtual && height != null && !grid;
