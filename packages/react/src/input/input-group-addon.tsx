@@ -27,11 +27,15 @@ const InputGroupAddon = (props: InputGroupAddonProps): React.ReactElement => {
     return (
       <div className={cls} style={style}>
         {React.Children.map(children, (child: React.ReactElement) => {
-          const childProps: Partial<InputProps> = {
-            disabled,
-            size: inputSize as SizeType,
-          };
-          return React.cloneElement(child, childProps);
+          const displayName = (child.type as any)?.displayName;
+          if (displayName === 'Input' || displayName === 'Button' || displayName === 'Select') {
+            const childProps: Partial<InputProps> = {
+              disabled,
+              size: inputSize as SizeType,
+            };
+            return React.cloneElement(child, childProps);
+          }
+          return child;
         })}
       </div>
     );
