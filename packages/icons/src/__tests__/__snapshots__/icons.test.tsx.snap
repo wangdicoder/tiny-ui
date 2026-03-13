@@ -4,6 +4,7 @@ exports[`Icon components IconClose matches snapshot 1`] = `
 <svg
   fill="currentColor"
   height="1em"
+  style="vertical-align: middle;"
   viewBox="0 0 1024 1024"
   width="1em"
 >
@@ -21,6 +22,7 @@ exports[`Icon components IconHeart matches snapshot 1`] = `
 <svg
   fill="currentColor"
   height="1em"
+  style="vertical-align: middle;"
   viewBox="0 0 1024 1024"
   width="1em"
 >
@@ -38,6 +40,7 @@ exports[`Icon components IconPlus matches snapshot 1`] = `
 <svg
   fill="currentColor"
   height="1em"
+  style="vertical-align: middle;"
   viewBox="0 0 1024 1024"
   width="1em"
 >
@@ -55,6 +58,7 @@ exports[`Icon components IconSearch matches snapshot 1`] = `
 <svg
   fill="currentColor"
   height="1em"
+  style="vertical-align: middle;"
   viewBox="0 0 1024 1024"
   width="1em"
 >
@@ -72,6 +76,7 @@ exports[`Icon components IconStar matches snapshot 1`] = `
 <svg
   fill="currentColor"
   height="1em"
+  style="vertical-align: middle;"
   viewBox="0 0 1024 1024"
   width="1em"
 >
