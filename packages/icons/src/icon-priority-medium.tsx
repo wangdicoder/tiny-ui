@@ -11,7 +11,7 @@ const IconPriorityMedium = forwardRef<SVGSVGElement, IconProps>((props, ref) => 
       height={size}
       fill={color}
       className={className}
-      style={style}
+      style={{ verticalAlign: "middle", ...style }}
       {...rest}
     >
       <g transform="translate(0, 896) scale(1, -1)">
