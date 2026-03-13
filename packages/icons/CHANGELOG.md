@@ -1,5 +1,11 @@
 # @tiny-design/icons
 
+## 1.0.11
+
+### Patch Changes
+
+- Added `vertical-align: middle` as default style on all icon SVGs for proper inline text alignment. - [#52](https://github.com/wangdicoder/tiny-design/pull/52) [`927034e`](https://github.com/wangdicoder/tiny-design/commit/927034edfc4e5f99decb3ba04e99e7ac07365c5e)
+
 ## 1.0.10
 
 ## 1.0.12
