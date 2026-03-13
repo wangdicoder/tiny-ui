@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.11
+
+### Patch Changes
+
+- Fixed Input.Addon passing `size` prop to non-input children (e.g. icons), which caused icons to render oversized. - [#52](https://github.com/wangdicoder/tiny-design/pull/52) [`927034e`](https://github.com/wangdicoder/tiny-design/commit/927034edfc4e5f99decb3ba04e99e7ac07365c5e)
+
 ## 1.0.10
 
 ### Patch Changes
