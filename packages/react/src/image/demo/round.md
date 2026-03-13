@@ -5,7 +5,7 @@
 Display a rounded image.
 
 ```jsx live
-<Image round src="/avatar/avatar2.png"/>
+<Image round src="../avatar/avatar2.png"/>
 ```
 
 </Demo>
