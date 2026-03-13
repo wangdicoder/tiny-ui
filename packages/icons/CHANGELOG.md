@@ -1,5 +1,7 @@
 # @tiny-design/icons
 
+## 1.0.10
+
 ## 1.0.12
 
 ### Patch Changes
