@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.10
+
+### Patch Changes
+
+- [#50](https://github.com/wangdicoder/tiny-design/pull/50) [`582bc46`](https://github.com/wangdicoder/tiny-design/commit/582bc46828a5a8032ee9fe4d98ead5f0d547f61e) Thanks [@wangdicoder](https://github.com/wangdicoder)! - Fix conditional hook call in Heading component
+
+- Updated dependencies []:
+  - @tiny-design/icons@1.0.10
+  - @tiny-design/tokens@1.0.10
+
 ## Release Schedule
 
 - **x version**: release is not included in this schedule for breaking change and new features.

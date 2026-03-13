@@ -1,6 +1,6 @@
 {
   "name": "@tiny-design/tokens",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Design tokens, themes, and foundational styles for Tiny UI",
   "license": "MIT",
   "repository": {
@@ -17,8 +17,13 @@
     "./css/*": "./css/*",
     "./scss/*": "./scss/*"
   },
-  "sideEffects": ["**/*.css"],
-  "files": ["css", "scss"],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "css",
+    "scss"
+  ],
   "scripts": {
     "build": "node scripts/build.js",
     "clean": "rimraf css"
