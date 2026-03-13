@@ -1,9 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
-  "changelog": [
-    "@changesets/changelog-github",
-    { "repo": "wangdicoder/tiny-design" }
-  ],
+  "changelog": "./changelog-config.cjs",
   "commit": false,
   "fixed": [
     [
