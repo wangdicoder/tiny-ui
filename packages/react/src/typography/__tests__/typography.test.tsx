@@ -22,4 +22,39 @@ describe('<Typography />', () => {
     const { getByText } = render(<Typography.Text>Inline</Typography.Text>);
     expect(getByText('Inline')).toBeInTheDocument();
   });
+
+  it('should forward ref on Heading', () => {
+    const ref = React.createRef<HTMLHeadingElement>();
+    render(<Typography.Heading ref={ref}>Heading</Typography.Heading>);
+    expect(ref.current).toBeInstanceOf(HTMLHeadingElement);
+    expect(ref.current!.tagName).toBe('H1');
+  });
+
+  it('should render the correct heading level', () => {
+    const { container } = render(<Typography.Heading level={3}>H3</Typography.Heading>);
+    expect(container.querySelector('h3')).toBeInTheDocument();
+  });
+
+  it('should return null for invalid heading level', () => {
+    const spy = jest.spyOn(console, 'warn').mockImplementation();
+    const { container } = render(
+      <Typography.Heading level={0 as any}>Bad</Typography.Heading>
+    );
+    expect(container.innerHTML).toBe('');
+    spy.mockRestore();
+  });
+
+  it('should forward ref on Text', () => {
+    const ref = React.createRef<HTMLSpanElement>();
+    render(<Typography.Text ref={ref}>Inline</Typography.Text>);
+    expect(ref.current).toBeInstanceOf(HTMLSpanElement);
+  });
+
+  it('should keep the same DOM node after re-render (Heading stability)', () => {
+    const ref = React.createRef<HTMLHeadingElement>();
+    const { rerender } = render(<Typography.Heading ref={ref}>First</Typography.Heading>);
+    const firstNode = ref.current;
+    rerender(<Typography.Heading ref={ref}>Second</Typography.Heading>);
+    expect(ref.current).toBe(firstNode);
+  });
 });

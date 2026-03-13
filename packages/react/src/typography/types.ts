@@ -14,7 +14,7 @@ export interface ParagraphProps extends BaseProps, React.PropsWithRef<JSX.Intrin
 export interface HeadingProps
   extends BaseProps,
     React.PropsWithRef<React.HTMLAttributes<HTMLHeadingElement>> {
-  level?: number;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   children?: React.ReactNode;
 }
 

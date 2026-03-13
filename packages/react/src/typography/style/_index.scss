@@ -4,8 +4,6 @@ $tp-prefix: #{$prefix}-typography;
 
 .#{$tp-prefix} {
   box-sizing: border-box;
-  font-family: $font-family;
-
   & + h1.#{$tp-prefix},
   & + h2.#{$tp-prefix},
   & + h3.#{$tp-prefix},
@@ -44,22 +42,6 @@ $tp-prefix: #{$prefix}-typography;
   mark {
     padding: 0;
     background-color: var(--ty-typography-mark-bg);
-  }
-
-  u {
-    text-decoration: underline;
-  }
-
-  del {
-    text-decoration: line-through;
-  }
-
-  strong {
-    font-weight: 600;
-  }
-
-  i {
-    font-style: italic;
   }
 
   sup {
