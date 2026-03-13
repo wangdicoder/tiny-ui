@@ -7,14 +7,13 @@ import { HeadingProps } from './types';
 const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   (props, ref) => {
     const { level = 1, prefixCls: customisedCls, className, children, ...otherProps } = props;
+    const configContext = useContext(ConfigContext);
+    const prefixCls = getPrefixCls('typography', configContext.prefixCls, customisedCls);
 
     if (level < 1 || level > 6) {
       console.warn('The heading level parameter is invalid.');
       return null;
     }
-
-    const configContext = useContext(ConfigContext);
-    const prefixCls = getPrefixCls('typography', configContext.prefixCls, customisedCls);
     const cls = classNames(prefixCls, className);
 
     return React.createElement(
