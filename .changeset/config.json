@@ -5,7 +5,13 @@
     { "repo": "wangdicoder/tiny-design" }
   ],
   "commit": false,
-  "fixed": [],
+  "fixed": [
+    [
+      "@tiny-design/react",
+      "@tiny-design/icons",
+      "@tiny-design/tokens"
+    ]
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "master",

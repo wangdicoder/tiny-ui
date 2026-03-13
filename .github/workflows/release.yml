@@ -1,7 +1,8 @@
 name: Release
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [master]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -39,134 +40,13 @@ jobs:
       - name: Build
         run: pnpm build --filter='!@tiny-design/docs'
 
-      - name: Auto-generate changesets for modified packages
-        run: |
-          # Find the latest version tag to diff against
-          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)
-          echo "Comparing against: $LAST_TAG"
-
-          # Skip if there are already changeset files (manually created)
-          EXISTING=$(find .changeset -name '*.md' ! -name 'README.md' | head -1)
-          if [ -n "$EXISTING" ]; then
-            echo "Changeset files already exist, skipping auto-generation"
-            exit 0
-          fi
-
-          CHANGED_PACKAGES=""
-
-          for pkg_json in packages/*/package.json; do
-            pkg_dir=$(dirname "$pkg_json")
-            pkg_name=$(node -p "require('./$pkg_json').name")
-
-            # Check if any source files changed in this package
-            if git diff --quiet "$LAST_TAG" -- "$pkg_dir/src" 2>/dev/null; then
-              echo "No changes in $pkg_name"
-            else
-              echo "Changes detected in $pkg_name"
-              CHANGED_PACKAGES="$CHANGED_PACKAGES $pkg_name"
-            fi
-          done
-
-          if [ -z "$CHANGED_PACKAGES" ]; then
-            echo "No packages changed, skipping changeset generation"
-            exit 0
-          fi
-
-          # Collect commits since last tag for changed packages
-          REPO_URL="https://github.com/${{ github.repository }}"
-          FEATURES=""
-          FIXES=""
-          REFACTORS=""
-          OTHER=""
-
-          for pkg in $CHANGED_PACKAGES; do
-            pkg_dir=$(echo "$pkg" | sed 's|@[^/]*/||')  # e.g. @tiny-design/react -> react
-            pkg_path="packages/$pkg_dir"
-            while IFS= read -r line; do
-              [ -z "$line" ] && continue
-              hash=$(echo "$line" | cut -d' ' -f1)
-              msg=$(echo "$line" | cut -d' ' -f2-)
-              short_hash=$(echo "$hash" | cut -c1-7)
-              link="[$short_hash]($REPO_URL/commit/$hash)"
-
-              # Strip conventional commit prefix and optional scope for the description
-              # Wrap bare <Component> tags in backticks so MDX doesn't parse them as JSX
-              desc=$(echo "$msg" | sed -E 's/^(feat|fix|refactor|chore|docs|style|perf|test|ci|build)(\([^)]*\))?[!]?:\s*//' | sed -E 's/<([A-Za-z][A-Za-z0-9]*[^>]*)>/`<\1>`/g')
-
-              entry=$(printf '\n* %s (%s)' "$desc" "$link")
-              case "$msg" in
-                feat*)     FEATURES="$FEATURES$entry" ;;
-                fix*)      FIXES="$FIXES$entry" ;;
-                refactor*) REFACTORS="$REFACTORS$entry" ;;
-                *)         OTHER="$OTHER$entry" ;;
-              esac
-            done <<< "$(git log "$LAST_TAG"..HEAD --pretty=format:'%H %s' -- "$pkg_path/src" | awk '!seen[$0]++')"
-          done
-
-          # Build the changeset file
-          RANDOM_ID=$(head -c 8 /dev/urandom | od -An -tx1 | tr -d ' \n')
-          CHANGESET_FILE=".changeset/auto-${RANDOM_ID}.md"
-
-          {
-            echo "---"
-            for pkg in $CHANGED_PACKAGES; do
-              echo "'${pkg}': patch"
-            done
-            echo "---"
-            echo ""
-            if [ -n "$FEATURES" ]; then
-              echo "### Features"
-              echo "$FEATURES"
-              echo ""
-            fi
-            if [ -n "$FIXES" ]; then
-              echo "### Bug Fixes"
-              echo "$FIXES"
-              echo ""
-            fi
-            if [ -n "$REFACTORS" ]; then
-              echo "### Refactors"
-              echo "$REFACTORS"
-              echo ""
-            fi
-            if [ -n "$OTHER" ]; then
-              echo "$OTHER"
-              echo ""
-            fi
-            # Fallback if no commits found
-            if [ -z "$FEATURES" ] && [ -z "$FIXES" ] && [ -z "$REFACTORS" ] && [ -z "$OTHER" ]; then
-              echo "* Patch updates"
-            fi
-          } > "$CHANGESET_FILE"
-
-          echo "Generated $CHANGESET_FILE for:$CHANGED_PACKAGES"
-          cat "$CHANGESET_FILE"
-
-      - name: Version packages
-        run: |
-          CHANGESETS=$(find .changeset -name '*.md' ! -name 'README.md' | head -1)
-          if [ -z "$CHANGESETS" ]; then
-            echo "No changesets found, skipping"
-            echo "HAS_CHANGES=false" >> "$GITHUB_ENV"
-            exit 0
-          fi
-
-          pnpm changeset version
-          echo "HAS_CHANGES=true" >> "$GITHUB_ENV"
-
-      - name: Commit version bump
-        if: env.HAS_CHANGES == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "chore: version packages [skip ci]"
-          git push
+      - name: Create Release PR or Publish
+        uses: changesets/action@v1
+        with:
+          version: pnpm version-packages
+          publish: pnpm release
+          title: 'chore: version packages'
+          commit: 'chore: version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to npm
-        if: env.HAS_CHANGES == 'true'
-        run: pnpm release
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

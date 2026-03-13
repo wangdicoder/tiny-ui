@@ -38,7 +38,9 @@ Three workflows triggered on push/PR to `master`:
 
 ## Release Flow
 
+All three packages use **fixed versioning** — they always share the same version number. A changeset touching any package bumps all three together.
+
 1. Add a changeset: `pnpm changeset`
 2. Merge to `master`
-3. The Release workflow creates a version PR (bumps versions, updates changelogs)
+3. The Release workflow creates a "Version Packages" PR (bumps versions, updates changelogs)
 4. Merging that PR triggers publish to npm and site deploy
